@@ -40,6 +40,11 @@
       .green {
         color: green;
       }
+
+      .consecutive pre {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     </style>
   </head>
   <body>
@@ -532,13 +537,23 @@ fib = splosniFib 0 1
 
 ---
 
+class: center, middle, question
+
+# [prejšnje vaje](https://ucilnica.fmf.uni-lj.si/pluginfile.php/25974/mod_assign/introattachment/0/uvod_vaje.hs?forcedownload=1)
+# [Project Euler #2](https://projecteuler.net/problem=2)
+# [Project Euler #3](https://projecteuler.net/problem=3)
+# [Project Euler #5](https://projecteuler.net/problem=5)
+# [Project Euler #7](https://projecteuler.net/problem=7)
+
+---
+
 class: center, middle
 
 ## Dokazovanje ekvivalenc programov
 
 ---
 
-### Nekaj definiciji
+### Nekaj definicij
 
 ```haskell
 [] ++ ys = ys
@@ -555,25 +570,128 @@ dolzina (x:xs) = 1 + dolzina xs
 
 class: center, middle
 
-```haskell
-dolzina (xs ++ ys)
-```
-# =
-```haskell
-dolzina xs + dolzina ys
-```
+# `obrni [x] = [x]`
+
+---
+
+#### `obrni [x] = [x]`
+
+.consecutive[```haskell
+  obrni [x]
+```]
+--
+.consecutive[```haskell
+= obrni (x:[])
+```]
+--
+.consecutive[```haskell
+= obrni [] ++ [x]
+```]
+--
+.consecutive[```haskell
+= [] ++ [x]
+```]
+--
+.consecutive[```haskell
+= [x]
+```]
 
 ---
 
 class: center, middle
 
+### `dolzina (xs ++ ys)`
+### `=`
+### .spoiler[`dolzina xs + dolzina ys`]
+
+---
+
+#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+
 ```haskell
-obrni (xs ++ ys)
+  dolzina (xs ++ ys)
+= ???
 ```
-# =
-```haskell
-obrni ys + obrni xs
-```
+
+--
+
+# Kako naprej? .spoiler[Indukcija!]
+
+---
+class: center
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### Indukcija na seznamih
+
+### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+
+---
+
+#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+
+#### Osnovni korak
+
+.consecutive[```haskell
+  dolzina ([] ++ ys)
+```]
+--
+.consecutive[```haskell
+= dolzina ys
+```]
+--
+.consecutive[```haskell
+= 0 + dolzina ys
+```]
+--
+.consecutive[```haskell
+= dolzina [] + dolzina ys
+```]
+
+---
+
+#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+
+#### Indukcijski korak
+
+.consecutive[```haskell
+  dolzina ((x:xs) ++ ys)
+```]
+--
+.consecutive[```haskell
+= dolzina (x:(xs ++ ys))
+```]
+--
+.consecutive[```haskell
+= 1 + dolzina (xs ++ ys)
+```]
+--
+.consecutive[```haskell
+= 1 + dolzina xs + dolzina ys
+```]
+--
+.consecutive[```haskell
+= dolzina (x:xs) + dolzina ys
+```]
+
+---
+class: center, middle
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### Indukcija na seznamih
+
+### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+
+---
+
+class: center, middle, question
+
+### `obrni (xs ++ ys)`
+### `=`
+### .spoiler[`obrni ys + obrni xs`]
 
 ---
 
@@ -588,6 +706,7 @@ class: center, middle
     </textarea>
     <script src="../js/jquery-1.11.3.min.js"></script>
     <script src="../js/remark-latest.min.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
       $(document).ready(function() { 
       
