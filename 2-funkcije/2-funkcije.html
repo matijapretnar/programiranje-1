@@ -57,6 +57,153 @@ class: center, middle
 
 class: center, middle
 
+## Opombe z vaj
+
+---
+
+class: center, middle
+
+### Presledki
+
+---
+
+class: center, middle
+
+### Signature
+
+---
+
+### Klicanje funkcij
+
+.red[```
+last(init l)
+```]
+
+--
+
+.orange[```
+last (init l)
+```]
+
+--
+
+.green[```
+last $ init l
+```]
+
+
+---
+
+### Nepotrebni izrazi
+
+.red[```
+if reverse l == l then True else False
+```]
+
+--
+
+.green[```
+reverse l == l
+```]
+
+--
+
+.red[```
+[a | a <- take k l]
+```]
+
+--
+
+.green[```
+take k l
+```]
+
+---
+
+### Pomožne definicije
+
+.red[```
+razdeli k l = (razdelia k l, razdelib k l)
+razdelia k l = take k l
+razdelib k l = drop k l
+```]
+
+--
+
+```
+razdeli k l = (razdelia k l, razdelib k l)
+  where
+    razdelia k l = take k l
+    razdelib k l = drop k l
+```
+
+--
+
+.green[```
+razdeli k l = (take k l, drop k l)
+```]
+
+---
+
+### Funkcije na seznamih
+
+.red[```
+minimum[length xs, length ys]
+```]
+
+--
+
+.green[```
+min (length xs) (length ys)
+```]
+
+--
+
+.red[```
+concat[take k l, drop (k + 1) l]
+```]
+
+--
+
+.green[```
+take k l ++ drop (k + 1) l
+```]
+
+---
+
+### `zip` ni kartezični produkt
+
+.red[```
+zip xs ys = [(x, y) | x <- xs, y <- ys]
+```]
+
+--
+
+```haskell
+λ> zip "AB" "CD"
+[('A','C'),('A','D'),('B','C'),('B','D')]
+```
+
+--
+
+.green[```
+zip xs ys =
+  [(xs !! i, ys !! i) | i <- [0..n - 1]]
+  where
+      n = min (length xs) (length ys)
+```]
+
+--
+
+```haskell
+λ> zip "AB" "CD"
+[('A','C'),('B','D')]
+```
+
+---
+
+class: center, middle
+
 ## Definicije funkcij
 
 ---
