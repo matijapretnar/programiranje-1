@@ -17,7 +17,11 @@
 {\normalfont\Large\bfseries}
 {Trd.~\thesection:}{0.3em}{}
 
-\section*{Osnovne definicije}
+\noindent
+Dostikrat si želimo dokazati, da nek program deluje tako, kot želimo.
+Običajno je to precej zahtevna naloga, saj so programski jeziki nepredvidljivi.
+Ker pa je Haskell čist jezik, so v njem izrazi enakovredni svojim definicijam, zato lahko ene zamenjamo z drugimi in obratno.
+Da bomo imeli kaj, s čimer bomo lahko delali, si najprej definirajmo sledeče tri funkcije:
 
 \begin{align}
   \inline{[] ++ ys} &= \inline{ys} \label{app1} \\
@@ -28,8 +32,33 @@
   \inline{dolzina (x:xs)} &= \inline{1 + dolzina xs} \label{dolzina2}
 \end{align}
 
+\section{$\inline{obrni [x]} = \inline{[x]}$}
+
+To enostavno trditev dokažemo zgolj z odvijanjem definicij.
+
+\begin{align*}
+  \inline{obrni [x]}
+  &= \inline{obrni (x:[])}
+    &&\text{ker je $\inline{[x]}$ okrajšava za $\inline{x:[]}$} \\
+  &= \inline{[] ++ [x]}
+    &&\text{po \eqref{obrni1}} \\
+  &= \inline{[x]}
+    &&\text{po \eqref{app1}}
+\end{align*}
 
 \section{$\inline{dolzina (xs ++ ys)} = \inline{dolzina xs + dolzina ys}$}
+
+Tukaj enostavno odvijanje definicij ne bo pomagalo, saj izraz $\inline{dolzina (xs ++ ys)}$ ne ustreza ne levi ne desni strani nobene od zgoraj naštetih definicij.
+Namesto tega uporabimo načelo indukcije za sezname:
+\[
+  P(\inline{[]}) \land (\forall \inline{x}, \inline{xs}. P(\inline{xs}) \Rightarrow P(\inline{x:xs})) \implies \forall \inline{ys}. P(\inline{ys})
+\]
+Torej, lastnost $P$ velja za vse sezname $\inline{ys}$, kadar (1) velja za prazen seznam $\inline{[]}$ in (2) velja za sestavljen seznam $\inline{x:xs}$ ob predpostavki, da velja za $\inline{xs}$.
+Načelo indukcije je podobno načelu indukcije za naravna števila:
+\[
+  P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n)
+\]
+Torej, lastnost $P$ velja za vsa naravna števila $n$, kadar (1) velja za $0$ in (2) velja za naslednika $m^{+}$ ob predpostavki, da velja za $m$.
 
 Izjavo dokažemo z indukcijo na levi seznam. Indukcija poteka v dveh korakih:
 
@@ -49,8 +78,7 @@ V osnovnem koraku pokažemo, da enakost velja, kadar je levi seznam prazen, tore
 
 \subsection*{Indukcijski korak}
 
-V indukcijskem koraku pokažemo, da ob predpostavki, da enakost velja za seznam $\inline{xs}$,
-enakost velja tudi za sestavljeni seznam $\inline{x:xs}$.
+V indukcijskem koraku pokažemo, da enakost velja za sestavljeni seznam $\inline{x:xs}$ ob predpostavki, da enakost velja za seznam $\inline{xs}$:
 
 \begin{align*}
   \inline{dolzina ((x:xs) ++ ys)}
@@ -156,7 +184,7 @@ Prepostavimo, da velja $\inline{xs ++ (ys ++ zs)} = \inline{(xs ++ ys) ++ zs}$. 
 
 \section{$\inline{obrni (obrni xs)} = \inline{xs}$}
 
-Domača naloga.
+Na kvizu.
 
 \section{$\inline{dolzina (obrni xs)} = \inline{dolzina xs}$}
 
