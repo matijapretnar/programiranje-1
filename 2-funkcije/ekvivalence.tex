@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+
+\begin{document}
+
+\begin{center}
+  \huge \textbf{Dokazovanje ekvivalenc med programi}
+\end{center}
+\newcommand{\inline}[1]{\mbox{\texttt{#1}}}
+\bigskip
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{Trd.~\thesection:}{0.3em}{}
+
+\section*{Osnovne definicije}
+
+\begin{align}
+  \inline{[] ++ ys} &= \inline{ys} \label{app1} \\
+  \inline{(x:xs) ++ ys} &= \inline{x:(xs ++ ys)} \label{app2} \\[1em]
+  \inline{obrni []} &= \inline{[]} \label{obrni1} \\
+  \inline{obrni (x:xs)} &= \inline{obrni xs ++ [x]} \label{obrni2} \\[1em]
+  \inline{dolzina []} &= \inline{0} \label{dolzina1} \\
+  \inline{dolzina (x:xs)} &= \inline{1 + dolzina xs} \label{dolzina2}
+\end{align}
+
+
+\section{$\inline{dolzina (xs ++ ys)} = \inline{dolzina xs + dolzina ys}$}
+
+Izjavo dokažemo z indukcijo na levi seznam. Indukcija poteka v dveh korakih:
+
+\subsection*{Osnovni korak}
+
+V osnovnem koraku pokažemo, da enakost velja, kadar je levi seznam prazen, torej oblike $\inline{[]}$:
+
+\begin{align*}
+  \inline{dolzina ([] ++ ys)}
+  &= \inline{dolzina ys}
+    &&\text{po \eqref{app1}} \\
+  &= \inline{0 + dolzina ys}
+    &&\text{po Peanovih aksiomih} \\
+  &= \inline{dolzina [] + dolzina ys}
+    &&\text{po \eqref{dolzina1}}
+\end{align*}
+
+\subsection*{Indukcijski korak}
+
+V indukcijskem koraku pokažemo, da ob predpostavki, da enakost velja za seznam $\inline{xs}$,
+enakost velja tudi za sestavljeni seznam $\inline{x:xs}$.
+
+\begin{align*}
+  \inline{dolzina ((x:xs) ++ ys)}
+  &= \inline{dolzina (x:(xs ++ ys))}
+    &&\text{po \eqref{app2}} \\
+  &= \inline{1 + dolzina (xs ++ ys)}
+    &&\text{po \eqref{dolzina2}} \\
+  &= \inline{1 + (dolzina xs + dolzina ys)}
+    &&\text{po indukcijski prepostavki} \\
+  &= \inline{(1 + dolzina xs) + dolzina ys)}
+    &&\text{po Peanovih aksiomih} \\
+  &= \inline{dolzina (x:xs) + dolzina ys}
+    &&\text{po \eqref{dolzina2}}
+\end{align*}
+
+
+\section{$\inline{xs ++ []} = \inline{xs}$}
+\label{sec:desna-enota}
+
+Po \eqref{app1} vemo, da je $\inline{[] ++ xs} = \inline{xs}$, torej je $\inline{[]}$ leva enota za $\inline{++}$. To, da je $\inline{[]}$ tudi desna enota, pa ni samoumevno --- za dokaz uporabimo indukcijo.
+
+\subsection*{Osnovni korak}
+
+Po \eqref{app1} velja $\inline{[] ++ []} = \inline{[]}$, kar dokaže osnovni korak.
+
+\subsection*{Indukcijski korak}
+
+Prepostavimo, da velja $\inline{xs ++ []} = \inline{xs}$. Tedaj velja
+
+\begin{align*}
+  \inline{(x:xs) ++ []}
+  &= \inline{x:(xs ++ [])}
+    &&\text{po \eqref{app2}} \\
+  &= \inline{x:xs}
+    &&\text{po indukcijski prepostavki},
+\end{align*}
+
+kar zaključi tudi indukcijski korak.
+
+
+\section{$\inline{xs ++ (ys ++ zs)} = \inline{(xs ++ ys) ++ zs}$}
+\label{sec:asociativnost}
+
+Operacija stikanja seznamov $\inline{++}$ je tudi asociativna, kar dokažemo z indukcijo na $\inline{xs}$. Če zapišete dokaz asociativnosti seštevanja, lahko vidite, da poteka podobno, le da se namesto $\inline{[]}$ pojavlja $0$, namesto $\inline{x:xs}$ pa naslednik $n^{+}$.
+
+\subsection*{Osnovni korak}
+
+\begin{align*}
+  \inline{[] ++ (ys ++ zs)}
+  &= \inline{ys ++ zs}
+    &&\text{po \eqref{app1}} \\
+  &= \inline{([] ++ ys) ++ zs}
+    &&\text{po \eqref{app1}}
+\end{align*}
+
+\subsection*{Indukcijski korak}
+
+Prepostavimo, da velja $\inline{xs ++ (ys ++ zs)} = \inline{(xs ++ ys) ++ zs}$. Tedaj velja
+
+\begin{align*}
+  \inline{(x:xs) ++ (ys ++ zs)}
+  &= \inline{x:(xs ++ (ys ++ zs))}
+    &&\text{po \eqref{app2}} \\
+  &= \inline{x:((xs ++ ys) ++ zs)}
+    &&\text{po indukcijski predpostavki} \\
+  &= \inline{(x:(xs ++ ys)) ++ zs}
+    &&\text{po \eqref{app2}} \\
+  &= \inline{((x:xs) ++ ys) ++ zs}
+    &&\text{po \eqref{app2}}
+\end{align*}
+
+
+\section{$\inline{obrni (xs ++ ys)} = \inline{obrni ys} + \inline{obrni xs}$}
+
+\subsection*{Osnovni korak}
+
+\begin{align*}
+  \inline{obrni ([] ++ ys)}
+  &= \inline{obrni ys}
+    &&\text{po \eqref{app1}} \\
+  &= \inline{obrni ys ++ []}
+    &&\text{po trditvi~\ref{sec:desna-enota}} \\
+  &= \inline{obrni ys ++ obrni []}
+    &&\text{po \eqref{obrni1}}
+\end{align*}
+
+\subsection*{Indukcijski korak}
+
+\begin{align*}
+  \inline{obrni ((x:xs) ++ ys)}
+  &= \inline{obrni (x:(xs ++ ys))}
+    &&\text{po \eqref{app2}} \\
+  &= \inline{obrni (xs ++ ys) ++ [x]}
+    &&\text{po \eqref{obrni2}} \\
+  &= \inline{(obrni ys ++ obrni xs) ++ [x]}
+    &&\text{po indukcijski predpostavki} \\
+  &= \inline{obrni ys ++ (obrni xs ++ [x])}
+    &&\text{po trditvi~\ref{sec:asociativnost}} \\
+  &= \inline{obrni ys ++ obrni (x:xs)}
+    &&\text{po \eqref{obrni2}}
+\end{align*}
+
+
+\section{$\inline{obrni (obrni xs)} = \inline{xs}$}
+
+Domača naloga.
+
+\section{$\inline{dolzina (obrni xs)} = \inline{dolzina xs}$}
+
+Domača naloga.
+
+\end{document}
