@@ -359,6 +359,27 @@ ocena tocke
 
 ---
 
+### `otherwise` je le sinonim za `True`
+
+```haskell
+sicer = True
+ocena 100 = "fantastično, 10/10"
+ocena tocke
+    | tocke >= 90 = "odlično, 10"
+    | tocke >= 80 = "prav dobro, 9"
+    | tocke >= 70 = "prav dobro, 8"
+    | tocke >= 60 = "dobro, 7"
+    | tocke >= 50 = "zadostno, 6"
+    | sicer = "nezadostno"
+```
+
+```haskell
+λ> ocena 30
+"nezadostno"
+```
+
+---
+
 ### Pomožne definicije delamo z `where` in `let`
 
 ```haskell
@@ -483,7 +504,7 @@ ucbenik avtorji naslov =
 
 ---
 
-### Ponavadi so lokalne definicje lepše
+### Ponavadi so lokalne definicije lepše
 
 ```haskell
 ucbenik avtorji naslov =
@@ -629,9 +650,9 @@ class: center
 
 ---
 
-#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+### Osnovni korak
+#### `dolzina ([] ++ ys) = dolzina [] + dolzina ys`
 
-#### Osnovni korak
 
 .consecutive[```haskell
   dolzina ([] ++ ys)
@@ -651,9 +672,10 @@ class: center
 
 ---
 
-#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+### Indukcijski korak
+#### `dolzina (x:xs ++ ys) = dolzina (x:xs) + dolzina ys`
 
-#### Indukcijski korak
+#### Predpostavka: `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
 
 .consecutive[```haskell
   dolzina ((x:xs) ++ ys)

@@ -29,8 +29,8 @@
       }
 
       .question {
-        color: white;
-        background-color: black;
+        /*color: white;*/
+        /*background-color: black;*/
       }
 
       .red {
@@ -60,7 +60,7 @@ class: center, middle
 
 class: center, middle
 
-## Opombe z vaj
+## Opombe z vaj na forumu
 
 ---
 
@@ -170,13 +170,27 @@ zmnozi 2 :: Int -> Int
 
 ---
 
-class: center, middle
+class: center
 
-## Funkcije z več argumenti so v resnici funkcije, ki vračajo funkcije.
+## Funkcija z več argumenti je v resnici funkcija enega argumenta, ki vrne funkcijo.
 
 ### Izraz **`f x y`** je enak **`(f x) y`**.
 
 ### Tip **`A -> B -> C`** je enak **`A -> (B -> C)`**.
+
+---
+
+class: center
+
+## Funkcija z več argumenti je v resnici funkcija enega argumenta, ki vrne funkcijo.
+
+### Izraz **`f x y z`** je enak .spoiler[**`((f x) y) z`**].
+
+### Tip **`A->B->C->D`** je enak .spoiler[**`A->(B->(C->D))`**].
+
+#### Aplikacija je .spoiler[levo] asociativna.
+
+#### `->` je .spoiler[desno] asociativna.
 
 ---
 
@@ -324,7 +338,10 @@ uncurry g = \(x, y) -> g x y
 ```
 --
 
-## $$C^{A \times B} \equiv (C^B)^A$$
+## $$C^{A \times B} \cong (C^B)^A$$
+
+### $$curry \colon C^{A \times B} \to (C^B)^A$$
+### $$uncurry \colon (C^B)^A \to C^{A \times B}$$
 
 ---
 
@@ -477,7 +494,7 @@ class: middle
 
 ```haskell
 foldr f z [] = z
-foldr f z (x:xs) = f z (foldr f x xs)
+foldr f z (x:xs) = f x (foldr f z xs)
 ```
 
 ---
@@ -500,8 +517,46 @@ foldr f z (x:xs) = f z (foldr f x xs)
 = f 1 (f 2 (f 3 z))
 ```
 
-<pre><code class="haskell hljs remark-code">sum = foldr <span class="spoiler">(+)</span> <span class="spoiler">0</span>
+<pre><code class="haskell hljs remark-code">sum xs = foldr <span class="spoiler">(\x acc -> x + acc)</span> <span class="spoiler">0</span> <span class="spoiler">xs</span>
 </code></pre>
+
+---
+
+### Eta ekvivalenca
+
+```haskell
+sum xs = foldr (\x acc -> x + acc) 0 xs
+```
+
+--
+
+```haskell
+sum xs = foldr (+) 0 xs
+```
+--
+
+```haskell
+sum xs = ((foldr (+)) 0) xs
+```
+
+--
+
+```haskell
+sum = ((foldr (+)) 0)
+```
+
+--
+
+```haskell
+sum = foldr (+) 0
+```
+
+--
+
+.center[```haskell
+f x = (...) x
+f = (...)
+```]
 
 ---
 
@@ -577,11 +632,11 @@ foldr f z (x:xs) = f z (foldr f x xs)
 ### Izrazimo `map` s `foldr`
 
 ```haskell
-  map f [1, 2, 3]
-= f 1 : map f [2, 3]
-= f 1 : (f 2 : map f [3])
-= f 1 : (f 2 : (f 3 : map f []))
-= f 1 : (f 2 : (f 3 : []))
+  map g [1, 2, 3]
+= g 1 : map g [2, 3]
+= g 1 : (g 2 : map g [3])
+= g 1 : (g 2 : (g 3 : map g []))
+= g 1 : (g 2 : (g 3 : []))
 ```
 
 ```haskell
@@ -592,30 +647,8 @@ foldr f z (x:xs) = f z (foldr f x xs)
 = f 1 (f 2 (f 3 z))
 ```
 
-<pre><code class="haskell hljs remark-code">map = foldr <span class="spoiler">(\x acc -> f x : acc)</span> <span class="spoiler">[]</span>
+<pre><code class="haskell hljs remark-code">map g = foldr <span class="spoiler">(\x acc -> g x : acc)</span> <span class="spoiler">[]</span>
 </code></pre>
-
----
-
-### Sezname s `foldl` zlagamo z leve
-
-```haskell
-foldr :: (a -> b -> b) -> b -> [a] -> b
-foldr f z [x1, x2, x3]
-  = f x1 (f x2 (f x3 z))
-  = x1 `f` (x2 `f` (x3 `f` z))
-```
-
-```haskell
-foldl :: (b -> a -> b) -> b -> [a] -> b
-foldl f z [x1, x2, x3]
-  = f (f (f z x1) x2) x3
-  = ((z `f` x1) `f` x2) `f` x3
-```
-
-```haskell
-reverse = foldl (\acc x -> x : acc) []
-```
 
 ---
 
@@ -637,6 +670,28 @@ foldr1 f [x1, x2, x3]
 
 ```haskell
 maximum = foldr1 max
+```
+
+---
+
+### Sezname s `foldl` zlagamo z leve
+
+```haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [x1, x2, x3]
+  = f x1 (f x2 (f x3 z))
+  = x1 `f` (x2 `f` (x3 `f` z))
+```
+
+```haskell
+foldl :: (b -> a -> b) -> b -> [a] -> b
+foldl f z [x1, x2, x3]
+  = f (f (f z x1) x2) x3
+  = ((z `f` x1) `f` x2) `f` x3
+```
+
+```haskell
+reverse = foldl (\acc x -> x : acc) []
 ```
 
 ---
