@@ -1,5 +1,5 @@
 -- V tej datoteki so rešitve prvih sedmih problemov na strani Project Euler.
--- Rešitve niti pod razno niso najbolj učinkovite, niti najbolj učinkovite,
+-- Rešitve niti pod razno niso najbolj učinkovite,
 -- kot se jih da napisati v Haskellu.
 
 -- 'prastevila' je seznam vseh praštevil.
