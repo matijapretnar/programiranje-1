@@ -283,6 +283,7 @@ instance  Show a => Show [a]  where
   show xs = "[" ++ pomozna xs ++ "]"
     where
       pomozna [] = ""
+      pomozna [x] = show x
       pomozna (x:xs) =
         show x ++ "," ++ pomozna xs
 ```
