@@ -73,7 +73,7 @@ class: center, middle
 
 ---
 
-### Iz modulov lahko uvozimo vse funkcije
+### Iz modula lahko uvozimo vse vrednosti.
 
 ```haskell
 import NekModul
@@ -94,7 +94,7 @@ def moja_funkcija(x):
 
 ---
 
-### Iz modulov lahko uvozimo posamezne funkcije
+### Iz modula lahko uvozimo nekatere vrednosti.
 
 ```haskell
 import NekModul (nekaFunkcija)
@@ -115,7 +115,7 @@ def moja_funkcija(x):
 
 ---
 
-### Module lahko uvozimo kvalificirano
+### Module lahko uvozimo kvalificirano.
 
 ```haskell
 import qualified NekModul
@@ -136,7 +136,7 @@ def moja_funkcija(x):
 
 ---
 
-### Kvalificirane module lahko preimenujemo
+### Kvalificirane module lahko preimenujemo.
 
 ```haskell
 import qualified NekModul as NM
@@ -157,25 +157,29 @@ def moja_funkcija(x):
 
 ---
 
-### Definicija modula
+### Modul definiramo takole:
+
+`Barva.hs`
 
 ```haskell
 module Barva where
 
-data Barva = Rdeca | Rumena | Modra
-           | Druga String
-           deriving (Eq, Show, Ord)
-
-zmesaj :: Barva -> Barva -> Barva
-zmesaj barva1 barva2 = ...
-
-pomozna :: Barva -> Int
-pomozna barva = ...
+    data Barva = Rdeca | Rumena | Modra
+               | Druga String
+               deriving (Eq, Show, Ord)
+    
+    zmesaj :: Barva -> Barva -> Barva
+    zmesaj barva1 barva2 = ...
+    
+    pomozna :: Barva -> Int
+    pomozna barva = ...
 ```
 
 ---
 
-### Izvozimo lahko le nekatere vrednosti
+### Izvozimo lahko le nekatere vrednosti.
+
+`Barva.hs`
 
 ```haskell
 module Barva
@@ -183,16 +187,22 @@ module Barva
     , zmesaj
     ) where
 
-data Barva = Rdeca | Rumena | Modra
-           | Druga String
-           deriving (Eq, Show, Ord)
-
-zmesaj :: Barva -> Barva -> Barva
-zmesaj barva1 barva2 = ...
-
-pomozna :: Barva -> Int
-pomozna barva = ...
+    data Barva = Rdeca | Rumena | Modra
+               | Druga String
+               deriving (Eq, Show, Ord)
+    
+    zmesaj :: Barva -> Barva -> Barva
+    zmesaj barva1 barva2 = ...
+    
+    pomozna :: Barva -> Int
+    pomozna barva = ...
 ```
+
+---
+
+class: center, middle, question
+
+### Primer: slovarji
 
 ---
 
@@ -202,16 +212,42 @@ class: center, middle
 
 ---
 
-### Kakšen naj bo tip spodnjega programa?
+### Kakšen naj bo tip programa, ki deluje kot:
 
 <pre><code>
 Kako ti je ime? <em>Matija</em>
 Kako se pa pišeš? <em>Pretnar</em>
-Pozdravljeni, Matija Pretnar!
+Pozdravljen, Matija Pretnar!
 </code></pre>
+
 ---
 
-### Programi se izvedejo ob vnosu v konzolo
+### Kakšen je tip spodnjega programa?
+
+```haskell
+helloWorld = putStrLn "Hello, world!"
+```
+
+<pre><code class="haskell hljs remark-code">λ> :t helloWorld
+helloWorld :: <span class="spoiler">IO ()</span>
+</code></pre>
+
+---
+
+### Kaj pomeni `IO ()`?
+
+### `()` je tip, ki vsebuje le ničterico `()`. Uporabimo ga, kadar nas vrnjena vrednost ne zanima.
+
+### `IO a` je tip programov, ki “komunicirajo” s svetom in vračajo vrednosti tipa `a`.
+
+```haskell
+putStrLn :: String -> IO ()
+getLine :: IO String
+interact :: (String -> String) -> IO ()
+```
+---
+
+### Programi se izvedejo ob vnosu v konzolo.
 
 `test.hs`
 
@@ -236,7 +272,7 @@ Hello, world!
 
 ---
 
-### `main` se izvede, če poženemo program, preveden z `ghc`
+### Če poženemo program, preveden z `ghc`, se izvede `main`.
 
 `test.hs`
 
@@ -259,7 +295,7 @@ test.hs:1:1:
 
 ---
 
-### `main` se izvede, če poženemo program, preveden z `ghc`
+### Če poženemo program, preveden z `ghc`, se izvede `main`.
 
 `test.hs`
 
@@ -281,7 +317,7 @@ $ ./test
 
 ---
 
-### `main` se izvede, če z `runghc` izvedemo program
+### Program brez prevajanja lahko poženemo z `runghc`.
 
 `test.hs`
 
@@ -303,10 +339,28 @@ $ runghc test.hs
 
 ```haskell
 main = do
-  putStrLn "Kako ti je ime?"
+  putStr "Kako ti je ime?"
   ime <- getLine
-  putStrLn $ "Živjo, " ++ ime ++ "!"
+  putStrLn "Živjo, " ++ ime ++ "!"
 ```
+
+#### To je okrajšava za
+
+```haskell
+main =
+    putStr "Kako ti je ime? " >>= \_ ->
+    getLine >>= \ime ->
+    putStrLn $ "Živjo, " ++ ime ++ "!"
+```
+
+```haskell
+(>>=) :: IO a -> (a -> IO b) -> IO b
+```
+---
+
+class: center, middle, question
+
+### Primer: štetje črk
 
 ---
 
@@ -351,11 +405,11 @@ import Test.QuickCheck
 povecaj :: [Int] -> [Int]
 povecaj = map succ
 
-prop_SumPovecaj :: [Int] -> Bool
-prop_SumPovecaj xs =
+prop_SumPovecaj' :: [Int] -> Bool
+prop_SumPovecaj' xs =
   sum xs < sum (povecaj xs)
 
-main = quickCheck prop_SumPovecaj
+main = quickCheck prop_SumPovecaj'
 ```
 
 ```
