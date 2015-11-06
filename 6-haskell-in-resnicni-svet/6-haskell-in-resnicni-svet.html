@@ -420,40 +420,47 @@ main = quickCheck prop_SumPovecaj'
 ---
 
 class: small-code
-### Polimorfne funkcije testiramo pri enem tipu.
+### Polimorfne funkcije testiramo pri posameznih tipih.
 
 ```haskell
 import Test.QuickCheck
 
-prop_LenApp :: [Int] -> [Int] -> Bool
-prop_LenApp xs ys =
+prop :: [a] -> [a] -> Bool
+prop xs ys =
   length (xs ++ ys) == length xs + length xs
 
-main = quickCheck prop_LenApp
+main = do
+    quickCheck (prop :: [Int]->[Int]->Bool)
+    quickCheck (prop :: [Char]->[Char]->Bool)
 ```
 
 ```
  *** Failed! Falsifiable
- (after 3 tests and 4 shrinks):    
- [0]
- []
+ (after 3 tests and 2 shrinks):    
+ [] [0]
+ *** Failed! Falsifiable
+ (after 2 tests and 1 shrink): 
+ "" "a"
 ```
 
 ---
 class: small-code
-### Polimorfne funkcije testiramo pri enem tipu.
+### Polimorfne funkcije testiramo pri posameznih tipih.
 
 ```haskell
 import Test.QuickCheck
 
-prop_LenApp :: [Int] -> [Int] -> Bool
-prop_LenApp xs ys =
+prop :: [a] -> [a] -> Bool
+prop xs ys =
   length (xs ++ ys) == length xs + length ys
 
-main = quickCheck prop_LenApp
+main = do
+    quickCheck (prop :: [Int]->[Int]->Bool)
+    quickCheck (prop :: [Char]->[Char]->Bool)
 ```
 
 ```
+ +++ OK, passed 100 tests.
  +++ OK, passed 100 tests.
 ```
 
