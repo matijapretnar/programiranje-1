@@ -10,6 +10,7 @@ dodajCrke d (crka:vrstica) =
         Nothing -> dodajCrke (dodaj d crka 1) vrstica
         Just n -> dodajCrke (dodaj d crka (n + 1)) vrstica
 
+
 dodajaj d =
     do
         vrstica <- getLine
@@ -19,5 +20,7 @@ dodajaj d =
             dodajaj $ dodajCrke d vrstica
 
 main = do
-    d <- dodajaj prazen
-    print d
+    print (dodajCrke moj "abc")
+    quickCheck (\d -> poisci (dodajCrke d "abc") 'a' == Just 1)
+    --d <- dodajaj prazen
+    --print d
