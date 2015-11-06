@@ -15,10 +15,10 @@ instance (Vektorski a, Vektorski b) => Vektorski (a, b) where
 -- smiselne (torej ali je v našem primeru res zadoščeno lastnostim vektorskega
 -- prostora).
 
-instance  Vektorski [Char]  where
-    x ^+^ y = x ++ y
-    a ^*^ x = (show a) ++ " * " ++ x
-
+-- instance  Vektorski [Char]  where
+--     x ^+^ y = x ++ y
+--     a ^*^ x = (show a) ++ " * " ++ x
+-- 
 -- Če želimo tip [Char] dodati v razred Vektorski, moramo na vrhu
 -- datoteke napisati (odkomentirano seveda)
 --   {-# LANGUAGE FlexibleInstances #-}
@@ -59,3 +59,15 @@ instance  Foldable Drevo  where
     foldr f z Prazno = z
     foldr f z (Sestavljeno x l d) =
       foldr f (f x (foldr f z d)) l
+    -- manjkajo še preostale funkcije
+
+
+-- Bolje bi bilo, če bi pisali
+--
+-- data Drevo a
+--   = Prazno
+--   | Sestavljeno (Drevo a) a (Drevo a)
+--  deriving (Show, Functor, Foldable)
+--
+-- V tem primeru mora biti vrednost na sredini, da se fold izvaja v pravem
+-- vrstnem redu.
