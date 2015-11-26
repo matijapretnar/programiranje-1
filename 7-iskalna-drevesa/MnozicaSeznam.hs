@@ -14,9 +14,9 @@ dodaj (M m) x = M (x:m)
 
 main =
     do
-        arg1:arg2:_ <- getArgs
-        let n = read arg1
-        let elementi = if arg2 == "n" then map sin [1..n] else [1..n]
+        args <- getArgs
+        let n = if null args then 1000 else read $ head args
+        let elementi = if n < 0 then map sin [1..(-n)] else [1..n]
         let mnozica = foldl dodaj prazna elementi
         print $ prestej (vsebuje mnozica) elementi
     where

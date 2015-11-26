@@ -18,14 +18,14 @@ s l x d = S h l x d where h = 1 + max (visina l) (visina d)
 
 dodaj :: (Ord a) => Mnozica a -> a -> Mnozica a
 dodaj P x = S 1 P x P
-dodaj m@(S h l y d) x
+dodaj m@(S _ l y d) x
     | x < y = uravnotezi $ s (dodaj l x) y d
     | x > y = uravnotezi $ s l y (dodaj d x)
     | otherwise = m
 
 uravnotezi :: (Ord a) => Mnozica a -> Mnozica a
 uravnotezi P = P
-uravnotezi m@(S h l x d)
+uravnotezi m@(S _ l x d)
     | razlika m == 2 && razlika l == 1 = rotD m
     | razlika m == 2 = rotD $ s (rotL l) x d
     | razlika m == -2 && razlika d == -1 = rotL m
@@ -49,9 +49,9 @@ rotL (S _ l x (S _ ld xd dd)) = s (s l x ld) xd dd
 
 main =
     do
-        arg1:arg2:_ <- getArgs
-        let n = read arg1
-        let elementi = if arg2 == "n" then map sin [1..n] else [1..n]
+        args <- getArgs
+        let n = if null args then 1000 else read $ head args
+        let elementi = if n < 0 then map sin [1..(-n)] else [1..n]
         let mnozica = foldl dodaj prazna elementi
         print $ prestej (vsebuje mnozica) elementi
     where
