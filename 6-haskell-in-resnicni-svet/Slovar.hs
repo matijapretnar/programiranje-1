@@ -3,7 +3,7 @@ module Slovar
     , prazen
     , poisci
     , dodaj
-    )where
+    ) where
 
     import Test.QuickCheck
     import Control.Monad
@@ -35,4 +35,6 @@ module Slovar
         dodaj' [] k v = [(k, v)]
         dodaj' ((k,v):d) k' v'
             | k' == k = (k', v'):d
-            | otherwise = (k,v') : dodaj' d k' v'
+            -- Test poisciDodaj2' nam je povedal, da je tu napaka
+            -- | otherwise = (k,v') : dodaj' d k' v'
+            | otherwise = (k,v) : dodaj' d k' v'

@@ -13,22 +13,28 @@ dodajCrke d (crka:niz) = dodajCrke (dodajCrka d crka) niz
 prop_poisciDodaj :: Slovar Char Int -> Char -> Int -> Bool
 prop_poisciDodaj d k v = poisci (dodaj d k v) k == Just v
 
+-- ta lastnost ne bo v redu, ker ne preveri možnosti, da sta k in k' enaka
 prop_poisciDodaj2 :: Slovar Char Int -> Char -> Char -> Int -> Int -> Bool
 prop_poisciDodaj2 d k k' v v' =
     poisci (dodaj (dodaj d k v) k' v') k == Just v
 
-dodajaj d =
+-- ta lastnost pa bo v redu, ker ne preveri možnosti, da sta k in k' enaka
+prop_poisciDodaj2' :: Slovar Char Int -> Char -> Char -> Int -> Int -> Property
+prop_poisciDodaj2' d k k' v v' =
+    k /= k' ==> poisci (dodaj (dodaj d k v) k' v') k == Just v
+
+dodajaj frekvence =
     do
         vrstica <- getLine
         if null vrstica then
-            return d
+            return frekvence
         else
-            dodajaj $ dodajCrke d vrstica
+            dodajaj $ dodajCrke frekvence vrstica
 
 main = do
     putStrLn "Preverjam, ali vse deluje:"
     quickCheck prop_poisciDodaj
-    quickCheck prop_poisciDodaj2
+    quickCheck prop_poisciDodaj2'
     putStrLn "Da, deluje. Zdaj lahko začnemo z izvajanjem."
     putStrLn "Vnašaj besedilo. Po prazni vrstici bom izpisal drevo frekvenc."
     frekvence <- dodajaj prazen
