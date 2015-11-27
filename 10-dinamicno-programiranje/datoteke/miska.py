@@ -1,3 +1,48 @@
+def stevilo_poti(vrstice, stolpci, macke):
+    # poti[x][y] je stevilo poti od (x, y) do cilja
+    poti = [[0 for _ in range(stolpci)] for _ in range(vrstice)]
+    poti[vrstice - 1][stolpci - 1] = 1
+    for stolpec in range(stolpci - 1, -1, -1):
+        for vrstica in range(vrstice - 1, -1, -1):
+            if (vrstica, stolpec) in macke:
+                continue
+            if vrstica < vrstice - 1:
+                poti[vrstica][stolpec] += poti[vrstica + 1][stolpec]
+            if stolpec < stolpci - 1:
+                poti[vrstica][stolpec] += poti[vrstica][stolpec + 1]
+
+    return poti[0][0]
+
+print(stevilo_poti(5, 6, {(1, 4), (2, 2), (3, 3)}))
+
+print(stevilo_poti(3, 3, {(1, 0)}))
+
+print(stevilo_poti(20, 12, set()))  # moralo bi biti enako 32! / (20! * 12!)
+
+
+def stevilo_poti_alt(vrstice, stolpci, macke):
+    '''Alternativna rešitev'''
+    # poti[x][y] je število poti od začetka do (x, y)
+    poti = [[0 for _ in range(stolpci)] for _ in range(vrstice)]
+    poti[0][0] = 1
+    for stolpec in range(0, stolpci):
+        for vrstica in range(0, vrstice):
+            if (vrstica, stolpec) in macke:
+                continue
+            if vrstica > 0:
+                poti[vrstica][stolpec] += poti[vrstica - 1][stolpec]
+            if stolpec > 0:
+                poti[vrstica][stolpec] += poti[vrstica][stolpec - 1]
+    return poti[vrstice - 1][stolpci - 1]
+
+# moralo bi vrniti isto kot zgoraj
+print(stevilo_poti_alt(5, 6, {(1, 4), (2, 2), (3, 3)}))
+
+print(stevilo_poti_alt(3, 3, {(1, 0)}))
+
+print(stevilo_poti_alt(20, 12, set()))  # moralo bi biti enako 32! / (20! * 12!)
+
+
 def najvec_sira(vrstice, stolpci, siri):
     pozrto = [[0 for _ in range(stolpci)] for _ in range(vrstice)]
     pozrto[0][0] = 0
