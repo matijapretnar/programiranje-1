@@ -49,9 +49,16 @@ pravi01Nahrbtnik maxTeza predmeti = snd $ najboljsaMoznost maxTeza predmeti
     najboljsaMoznost maxTeza (predmet@(_, cena, teza):predmeti)
         | teza <= maxTeza =
             let (cenaBrez, predmetiBrez) = najboljsaMoznost maxTeza predmeti
-                (cenaZ', predmetiZ') = najboljsaMoznost (maxTeza - teza) predmeti
-                (cenaZ, predmetiZ) = (cena + cenaZ', predmet:predmetiZ') in
-            max (cenaZ, predmetiZ) (cenaBrez, predmetiBrez)
+                (cenaPreostanka, predmetiPreostanka) = najboljsaMoznost (maxTeza - teza) predmeti
+                (cenaS, predmetiS) = (cena + cenaPreostanka, predmet:predmetiPreostanka) in
+            max (cenaS, predmetiS) (cenaBrez, predmetiBrez)
+            -- Namesto zadnje vrstice bi lahko pisali tudi tole,
+            -- vendar nam zaradi leksikografske urejenosti parov ni treba.
+            --
+            -- if cenaS <= cenaBrez then
+            --     (cenaBrez, predmetiBrez)
+            -- else
+            --     (cenaS, predmetiS)
         | otherwise = najboljsaMoznost maxTeza predmeti
 
 
@@ -63,16 +70,16 @@ hitri01Nahrbtnik maxTeza predmeti = snd $ najboljsaMoznost maxTeza $ sortOn gost
     najboljsaMoznost maxTeza (predmet@(_, cena, teza):predmeti)
         | teza <= maxTeza =
             let ocenaBrez = vrednost (enostavniNahrbtnik maxTeza predmeti)
-                ocenaZ = cena + vrednost (enostavniNahrbtnik (maxTeza - teza) predmeti)
+                ocenaS = cena + vrednost (enostavniNahrbtnik (maxTeza - teza) predmeti)
                 (cenaBrez, predmetiBrez) = najboljsaMoznost maxTeza predmeti
-                (cenaZ', predmetiZ') = najboljsaMoznost (maxTeza - teza) predmeti
-                (cenaZ, predmetiZ) = (cena + cenaZ', predmet:predmetiZ') in
-            if ocenaZ <= ocenaBrez && ocenaZ <= cenaBrez then
+                (cenaPreostanka, predmetiPreostanka) = najboljsaMoznost (maxTeza - teza) predmeti
+                (cenaS, predmetiS) = (cena + cenaPreostanka, predmet:predmetiPreostanka) in
+            if ocenaS <= ocenaBrez && ocenaS <= cenaBrez then
                 (cenaBrez, predmetiBrez)
-            else if ocenaBrez <= ocenaZ && ocenaBrez <= cenaZ then
-                (cenaZ, predmetiZ)
+            else if ocenaBrez <= ocenaS && ocenaBrez <= cenaS then
+                (cenaS, predmetiS)
             else
-                max (cenaZ, predmetiZ) (cenaBrez, predmetiBrez)
+                max (cenaS, predmetiS) (cenaBrez, predmetiBrez)
         | otherwise = najboljsaMoznost maxTeza predmeti
 
 
