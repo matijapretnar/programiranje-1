@@ -14,7 +14,7 @@ def quicksort(sez):
 
 
 def premeci(sez, i, j):
-    assert j - i > 2
+    assert j - i > 1
     pivot = i
     i += 1
     j -= 1
@@ -35,7 +35,7 @@ def premeci(sez, i, j):
 def quicksort_na_mestu(sez, i=0, j=None):
     if j is None:
         j = len(sez)
-    if j - i <= 2:
+    if j - i <= 1:
         return
     else:
         pivot = premeci(sez, i, j)
