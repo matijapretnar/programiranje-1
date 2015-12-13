@@ -21,6 +21,13 @@ def potenciraj(a, n):
         return a * potenciraj(a ** 2, n // 2)
 
 
+def pocasni_fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+
 def zmnozi(a, b):
     return [[a[0][0] * b[0][0] + a[0][1] * b[1][0],
              a[0][0] * b[0][1] + a[0][1] * b[1][1]],
@@ -35,13 +42,6 @@ def potenciraj_matriko(a, n):
         return potenciraj_matriko(zmnozi(a, a), n // 2)
     else:
         return zmnozi(a, potenciraj_matriko(zmnozi(a, a), n // 2))
-
-
-def pocasni_fibonacci(n):
-    a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
-    return a
 
 
 def fibonacci(n):
