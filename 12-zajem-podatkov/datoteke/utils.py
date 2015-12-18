@@ -1,10 +1,10 @@
 import os
-import re
 import requests
 import sys
 
 
 def shrani(url, ime_datoteke, vsili_prenos=False):
+    '''Vsebino strani na danem naslovu shrani v datoteko z danim imenom.'''
     try:
         print('Shranjujem {}...'.format(url), end='')
         sys.stdout.flush()
@@ -20,11 +20,13 @@ def shrani(url, ime_datoteke, vsili_prenos=False):
         print('shranjeno!')
 
 
-def ujemanja(regex, ime_datoteke):
+def vsebina_datoteke(ime_datoteke):
+    '''Vrne niz z vsebino datoteke z danim imenom.'''
     with open(ime_datoteke) as datoteka:
         vsebina = datoteka.read()
-    return re.finditer(regex, vsebina)
+    return vsebina
 
 
 def datoteke(imenik):
+    '''Vrne imena vseh datotek v danem imeniku skupaj z imenom imenika.'''
     return [os.path.join(imenik, datoteka) for datoteka in os.listdir(imenik)]

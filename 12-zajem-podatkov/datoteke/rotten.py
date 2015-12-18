@@ -1,6 +1,6 @@
 import csv
 import re
-from utils import datoteke, ujemanja, shrani
+from utils import datoteke, vsebina_datoteke, shrani
 
 
 shrani('http://www.rottentomatoes.com/top/', 'podatki/rotten.html')
@@ -9,7 +9,7 @@ regex_url_kategorije = re.compile(
     r'href="(?P<url>/top/bestofrt/top_100_(?P<kategorija>.+?)_movies/)"'
 )
 
-for ujemanje in ujemanja(regex_url_kategorije, 'podatki/rotten.html'):
+for ujemanje in re.finditer(regex_url_kategorije, vsebina_datoteke('podatki/rotten.html')):
     url = 'http://www.rottentomatoes.com{}'.format(ujemanje.group('url'))
     ime_datoteke = 'podatki/rotten/{}.html'.format(ujemanje.group('kategorija'))
     shrani(url, ime_datoteke)
@@ -28,5 +28,5 @@ for html_datoteka in datoteke('podatki/rotten/'):
     with open(csv_datoteka, 'w') as csv_dat:
         writer = csv.DictWriter(csv_dat, fieldnames=imena_polj)
         writer.writeheader()
-        for ujemanje in ujemanja(regex_filma, html_datoteka):
+        for ujemanje in re.finditer(regex_filma, vsebina_datoteke(html_datoteka)):
             writer.writerow(ujemanje.groupdict())
