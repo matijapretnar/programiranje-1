@@ -1,11 +1,46 @@
+depth = 0
+
+def debug(f):
+    def debug_f(*args):
+        global depth
+        print("{}{}({})".format(depth * " ", f.__name__, ", ".join(repr(arg) for arg in args)))
+        depth += 2
+        res = f(*args)
+        depth -= 2
+        return res
+    return debug_f
+
+@debug
+def fakulteta(n):
+    if n == 0:
+        return 1
+    else:
+        return n * fakulteta(n - 1)
+
+# print(fakulteta(10))
+
+@debug
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+# fib(10)
+
+
+# @debug
 def quicksort(sez):
     if len(sez) <= 1:
         return sez
     else:
-        pivot = sez[0]
+        n = len(sez)
+        pivot = sez[n // 2]
         manjsi = []
         vecji = []
-        for x in sez[1:]:
+        for x in sez[:n // 2] + sez[n // 2 + 1:]:
             if x <= pivot:
                 manjsi.append(x)
             else:

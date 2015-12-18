@@ -18,7 +18,7 @@ regex_filma = re.compile(
     r'<tr class="(odd|even) detailed">.*?'
     r'<td class="number">(?P<rang>\d+)\.</td>.*?'
     r'title="(?P<naslov>.*?) \((?P<leto>\d{4})\)".*?'
-    r'title="Users rated this (?P<ocena>.+?)/1',
+    r'title="Users rated this (?P<ocena>.+?)/1(0|1)',
     flags=re.DOTALL
 )
 

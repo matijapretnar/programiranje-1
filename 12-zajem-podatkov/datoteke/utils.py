@@ -14,7 +14,9 @@ def shrani(url, ime_datoteke, vsili_prenos=False):
         r = requests.get(url)
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
-    os.makedirs(os.path.dirname(ime_datoteke), exist_ok=True)
+    imenik = os.path.dirname(ime_datoteke)
+    if imenik:
+        os.makedirs(imenik, exist_ok=True)
     with open(ime_datoteke, 'w') as datoteka:
         datoteka.write(r.text)
         print('shranjeno!')
