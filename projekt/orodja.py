@@ -1,3 +1,4 @@
+import csv
 import os
 import requests
 import sys
@@ -37,3 +38,12 @@ def vsebina_datoteke(ime_datoteke):
 def datoteke(imenik):
     '''Vrne imena vseh datotek v danem imeniku skupaj z imenom imenika.'''
     return [os.path.join(imenik, datoteka) for datoteka in os.listdir(imenik)]
+
+
+def zapisi_tabelo(slovarji, imena_polj, ime_datoteke):
+    pripravi_imenik(ime_datoteke)
+    with open(ime_datoteke, 'w') as csv_dat:
+        writer = csv.DictWriter(csv_dat, fieldnames=imena_polj)
+        writer.writeheader()
+        for slovar in slovarji:
+            writer.writerow(slovar)

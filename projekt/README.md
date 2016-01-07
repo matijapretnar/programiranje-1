@@ -10,8 +10,10 @@ Ker nas slabi filmi ne zanimajo, se bomo omejili le na najboljših 50 filmov v v
 * leto filma
 * žanr filma
 * glavne igralce filma
-* oceno gledalcev (pridobljeno na IMDB)
-* oceno kritikov (pridobljeno na Rotten Tomatoes)
+* oceno gledalcev
+* oceno kritikov
+
+Vse podatke razen ocene kritikov, ki jo bomo zajeli na strani Rotten Tomatoes, bomo zajeli na strani IMDB.
 
 ## Predvidena analiza
 
