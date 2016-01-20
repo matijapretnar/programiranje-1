@@ -43,7 +43,7 @@ def pripravi_imdb():
     )
 
     filmi, igralci, zanri = {}, {}, {}
-    vloge, dolocitve_zanra = [], []
+    vloge, dolocitve_zanra = set(), set()
 
     for html_datoteka in orodja.datoteke('zajete-strani/imdb/'):
         for film in re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka)):
@@ -54,10 +54,15 @@ def pripravi_imdb():
             filmi[id_filma] = podatki
             for id_igralca, ime_igralca in igralci_filma.items():
                 igralci[id_igralca] = {'id': id_igralca, 'ime': ime_igralca}
-                vloge.append({'igralec': id_igralca, 'film': id_filma})
+                vloge.add((id_igralca, id_filma))
             for id_zanra, ime_zanra in zanri_filma.items():
                 zanri[id_zanra] = {'id': id_zanra, 'ime': ime_zanra}
-                dolocitve_zanra.append({'zanr': id_zanra, 'film': id_filma})
+                dolocitve_zanra.add((id_zanra, id_filma))
+
+    vloge = [{'igralec': id_igralca, 'film': id_filma}
+             for id_igralca, id_filma in vloge]
+    dolocitve_zanra = [{'zanr': id_zanra, 'film': id_filma}
+             for id_zanra, id_filma in dolocitve_zanra]
 
     orodja.zapisi_tabelo(filmi.values(), ['id', 'naslov', 'leto', 'ocena'],
                          'csv-datoteke/filmi.csv')
