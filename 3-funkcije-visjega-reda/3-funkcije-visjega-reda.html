@@ -405,10 +405,10 @@ filter p (x:xs)
 [1,2,3]
 ```
 
-<pre><code class="haskell hljs remark-code">takewhile :: <span class="spoiler"><span class="spoiler">(a -> Bool)</span> -> <span class="spoiler">[a]</span> -> <span class="spoiler">[a]</span></span>
-takewhile p [] = <span class="spoiler">[]</span>
-takewhile p (x:xs)
-  | p x = <span class="spoiler">x : takewhile p xs</span>
+<pre><code class="haskell hljs remark-code">takeWhile :: <span class="spoiler"><span class="spoiler">(a -> Bool)</span> -> <span class="spoiler">[a]</span> -> <span class="spoiler">[a]</span></span>
+takeWhile p [] = <span class="spoiler">[]</span>
+takeWhile p (x:xs)
+  | p x = <span class="spoiler">x : takeWhile p xs</span>
   | otherwise = <span class="spoiler">[]</span>
 </code></pre>
 
