@@ -1,605 +1,2832 @@
 id,naslov,leto,ocena
-0104231,Far and Away,1992,6.5
-0097757,The Little Mermaid,1989,7.6
-0209144,Memento,2000,8.5
-1659337,The Perks of Being a Wallflower,2012,8.0
-0092965,Empire of the Sun,1987,7.8
-0350258,Ray,2004,7.7
+0006631,An Enemy to the King,1916,8.2
+0009544,Revenge,1918,7.7
+0010323,The Cabinet of Dr. Caligari,1920,8.1
+0012190,The Four Horsemen of the Apocalypse,1921,7.9
+0012349,The Kid,1921,8.4
+0012364,The Phantom Carriage,1921,8.1
+0012532,Orphans of the Storm,1921,7.9
+0012928,Beauty&#x27;s Worth,1922,8.4
+0013086,Dr. Mabuse: The Gambler,1922,7.9
+0013442,Nosferatu,1922,8.0
+0013750,When Knighthood Was in Flower,1922,8.5
+0014205,Little Old New York,1923,8.3
+0014429,Safety Last!,1923,8.3
+0014636,Zaza,1923,8.5
+0014945,Girl Shy,1924,8.0
+0015022,Janice Meredith,1924,8.5
+0015163,The Navigator,1924,8.1
+0015174,Die Nibelungen: Kriemhild&#x27;s Revenge,1924,7.9
+0015175,Die Nibelungen: Siegfried,1924,8.0
+0015324,Sherlock Jr.,1924,8.3
+0015400,The Thief of Bagdad,1924,7.9
+0015532,The Adventures of Prince Achmed,1926,7.8
+0015624,The Big Parade,1925,8.3
+0015648,Battleship Potemkin,1925,8.0
+0015662,The Calgary Stampede,1925,7.4
+0015841,The Freshman,1925,7.6
+0015864,The Gold Rush,1925,8.3
+0016220,The Phantom of the Opera,1925,7.7
+0016332,Seven Chances,1925,8.0
+0016560,Zander the Great,1925,8.6
+0016641,Ben-Hur: A Tale of the Christ,1925,8.1
+0016646,Beverly of Graustark,1926,8.4
+0016690,Brown of Harvard,1926,8.5
+0016847,Faust,1926,8.1
+0017048,A Page of Madness,1926,7.6
+0017136,Metropolis,1927,8.3
+0017463,3 Bad Men,1926,7.5
+0017567,The Winning of Barbara Worth,1926,7.5
+0017850,The Enemy,1927,8.0
+0017925,The General,1926,8.3
+0018253,The Patent Leather Kid,1927,8.0
+0018306,Ranger of the North,1927,7.4
+0018413,"Slide, Kelly, Slide",1927,8.2
+0018455,Sunrise,1927,8.4
+0018471,Tell It to the Marines,1926,8.2
+0018526,Underworld,1927,7.7
+0018528,The Unknown,1927,7.9
+0018742,The Cameraman,1928,8.3
+0018749,The Cardboard Lover,1928,8.3
+0018839,The Docks of New York,1928,7.7
+0019056,Kit Carson,1928,7.6
+0019071,The Last Command,1928,8.0
+0019098,Lilac Time,1928,8.3
+0019130,The Man Who Laughs,1928,7.8
+0019254,The Passion of Joan of Arc,1928,8.4
+0019379,Show People,1928,8.2
+0019421,"Steamboat Bill, Jr.",1928,8.0
+0019585,The Wind,1928,8.3
+0019811,Desert Nights,1929,8.3
+0020143,Marianne,1929,8.3
+0020332,Rio Rita,1929,7.9
+0020439,Speedway,1929,7.6
+0020629,All Quiet on the Western Front,1930,8.1
+0020815,The Dawn Patrol,1930,7.9
+0020982,Hocuspocus,1930,8.3
+0021079,Little Caesar,1931,7.4
+0021309,The Story of the Fox,1930,7.9
+0021533,Way Out West,1930,8.4
+0021577,L&#x27;Age d&#x27;Or,1930,7.5
+0021723,Caught,1931,7.4
+0021730,The Champ,1931,7.3
+0021749,City Lights,1931,8.6
+0021750,City Streets,1931,7.3
+0021814,Dracula,1931,7.6
+0021873,Five Star Final,1931,7.3
+0021884,Frankenstein,1931,8.0
+0022000,Indiscreet,1931,8.0
+0022074,The Smiling Lieutenant,1931,7.9
+0022100,M,1931,8.4
+0022111,The Maltese Falcon,1931,7.4
+0022246,Palmy Days,1931,8.0
+0022682,The Big Timer,1932,7.3
+0022835,Dr. Jekyll and Mr. Hyde,1931,7.7
+0022880,Fargo Express,1933,7.7
+0022882,Fast Life,1932,8.1
+0022913,Freaks,1932,8.0
+0023027,Horse Feathers,1932,7.7
+0023042,I Am a Fugitive from a Chain Gang,1932,8.1
+0023398,The Rider of Death Valley,1932,8.0
+0023427,Scarface,1932,7.8
+0023622,Trouble in Paradise,1932,8.2
+0023649,Vampyr,1932,7.7
+0023731,"20,000 Years in Sing Sing",1932,7.1
+0023818,Blood Money,1933,7.0
+0023969,Duck Soup,1933,8.0
+0024026,Strawberry Roan,1933,7.7
+0024184,The Invisible Man,1933,7.7
+0024188,Island of Lost Souls,1932,7.6
+0024216,King Kong,1933,8.0
+0024346,Money for Speed,1933,7.3
+0024433,Peg o&#x27; My Heart,1933,8.2
+0024481,Queen Christina,1933,7.9
+0024539,Secrets,1933,7.6
+0024651,The Last Will of Dr. Mabuse,1933,7.7
+0024969,Charlie Chan&#x27;s Courage,1934,8.0
+0025316,It Happened One Night,1934,8.2
+0025509,Les Mis&#xE9;rables,1934,8.0
+0025536,Music in the Air,1934,8.3
+0025607,Operator 13,1934,8.0
+0025878,The Thin Man,1934,8.2
+0025971,West of the Pecos,1934,7.4
+0026127,Border Brigands,1935,7.8
+0026138,Bride of Frankenstein,1935,7.9
+0026393,&#x27;G&#x27; Men,1935,7.2
+0026778,A Night at the Opera,1935,8.1
+0027075,A Tale of Two Cities,1935,7.8
+0027367,Black Legion,1937,7.0
+0027407,Bullets or Ballots,1936,7.1
+0027413,Cain and Mabel,1936,8.0
+0027442,Charlie Chan&#x27;s Secret,1936,7.5
+0027652,Fury,1936,7.9
+0027977,Modern Times,1936,8.6
+0028096,The Petrified Forest,1936,7.6
+0028566,Ali Baba Goes to Town,1937,8.1
+0028691,Captains Courageous,1937,8.0
+0028737,Confession,1937,8.1
+0028772,A Day at the Races,1937,7.7
+0028773,Dead End,1937,7.5
+0028950,La Grande Illusion,1937,8.2
+0029080,Kid Galahad,1937,7.4
+0029162,Lost Horizon,1937,7.8
+0029192,Make Way for Tomorrow,1937,8.3
+0029217,Marked Woman,1937,7.4
+0029583,Snow White and the Seven Dwarfs,1937,7.7
+0029658,They Won&#x27;t Forget,1937,7.3
+0029747,Way Out West,1937,7.8
+0029808,You Only Live Once,1937,7.5
+0029843,The Adventures of Robin Hood,1938,8.0
+0029870,Angels with Dirty Faces,1938,8.0
+0029947,Bringing Up Baby,1938,8.0
+0030341,The Lady Vanishes,1938,8.0
+0031147,Charlie Chan at Treasure Island,1939,7.7
+0031225,Destry Rides Again,1939,7.8
+0031260,Each Dawn I Die,1939,7.4
+0031318,Flaming Lead,1939,7.5
+0031381,Gone with the Wind,1939,8.2
+0031754,On Borrowed Time,1939,7.8
+0031762,Only Angels Have Wings,1939,7.7
+0031867,The Roaring Twenties,1939,7.9
+0031971,Stagecoach,1939,7.9
 0032138,The Wizard of Oz,1939,8.1
-1210166,Moneyball,2011,7.6
-0073629,The Rocky Horror Picture Show,1975,7.4
-0455590,The Last King of Scotland,2006,7.7
-0108052,Schindler&#x27;s List,1993,8.9
-3169706,Pride,2014,7.8
-1187043,3 Idiots,2009,8.5
-0266697,Kill Bill: Vol. 1,2003,8.1
-0169102,Lagaan: Once Upon a Time in India,2001,8.2
-0105236,Reservoir Dogs,1992,8.4
+0032342,City for Conquest,1940,7.3
+0032434,Egy cs&#xF3;k &#xE9;s m&#xE1;s semmi,1941,7.9
+0032455,Fantasia,1940,7.8
+0032553,The Great Dictator,1940,8.5
+0032599,His Girl Friday,1940,8.0
+0032701,The Letter,1940,7.7
+0032707,Lightning Strikes West,1940,7.8
+0032724,Lone Star Raiders,1940,7.8
+0032762,The Mark of Zorro,1940,7.6
+0032877,Operette,1940,8.1
+0032904,The Philadelphia Story,1940,8.1
+0032910,Pinocchio,1940,7.5
+0032976,Rebecca,1940,8.2
+0033149,They Drive by Night,1940,7.3
+0033204,Under Texas Skies,1940,7.5
+0033253,The Westerner,1940,7.5
+0033317,Adventures of Captain Marvel,1941,7.6
+0033467,Citizen Kane,1941,8.4
+0033532,The Devil and Daniel Webster,1941,7.8
+0033563,Dumbo,1941,7.3
+0033582,The Face Behind the Mask,1941,7.2
+0033717,High Sierra,1941,7.6
+0033740,I Wake Up Screaming,1941,7.3
+0033774,Johnny Eager,1941,7.1
+0033836,The Little Foxes,1941,8.2
+0033870,The Maltese Falcon,1941,8.2
+0033995,Pals of the Pecos,1941,7.5
+0034167,Sergeant York,1941,7.8
+0034240,Sullivan&#x27;s Travels,1941,8.1
+0034583,Casablanca,1942,8.6
+0034587,Cat People,1942,7.4
+0034778,Gentleman Jim,1942,7.7
+0034781,Giorgi Saakadze,1942,7.9
+0034785,Ghost Town Law,1942,7.5
+0034798,The Glass Key,1942,7.2
+0034820,La guerra gaucha,1942,7.5
+0035017,Carnival of Sinners,1943,7.5
+0035211,The Pride of the Yankees,1942,7.8
+0035311,Shadows on the Sage,1942,7.5
+0035432,This Gun for Hire,1942,7.6
+0035446,To Be or Not to Be,1942,8.2
+0035543,West of the Law,1942,7.5
+0035567,Woman of the Year,1942,7.3
+0035575,Yankee Doodle Dandy,1942,7.8
+0035825,Do&#xF1;a B&#xE1;rbara,1943,7.7
+0035966,Hangmen Also Die!,1943,7.5
+0036112,The Life and Death of Colonel Blimp,1943,8.2
+0036244,The Ox-Bow Incident,1943,8.1
+0036260,Phantom Lady,1944,7.4
+0036312,Riders of the Rio Grande,1943,7.5
+0036332,Santa Fe Scouts,1943,7.4
+0036613,Arsenic and Old Lace,1944,8.1
+0036775,Double Indemnity,1944,8.4
+0036855,Gaslight,1944,7.9
+0036868,The Best Years of Our Lives,1946,8.2
+0037008,Laura,1944,8.1
+0037055,The Mask of Dimitrios,1944,7.2
+0037075,Ministry of Fear,1944,7.2
+0037077,The Miracle of Morgan&#x27;s Creek,1944,7.9
+0037101,"Murder, My Sweet",1944,7.6
+0037120,National Velvet,1944,7.4
+0037330,The Suspect,1944,7.5
+0037456,Westward Bound,1944,7.9
+0037469,The Woman in the Window,1944,7.8
+0037611,Conflict,1945,7.1
+0037638,Detour,1945,7.5
+0037674,Children of Paradise,1945,8.4
+0037691,Fallen Angel,1945,7.2
+0037865,Leave Her to Heaven,1945,7.7
+0037884,The Lost Weekend,1945,8.0
+0037913,Mildred Pierce,1945,8.0
+0037932,My Name Is Julia Ross,1945,7.2
+0037969,Pampa b&#xE1;rbara,1945,7.4
+0037988,The Picture of Dorian Gray,1945,7.6
+0038050,Santa Fe Saddlemates,1945,7.4
+0038057,Scarlet Street,1945,7.9
+0038109,Spellbound,1945,7.7
+0038348,Beauty and the Beast,1946,8.0
+0038355,The Big Sleep,1946,8.1
+0038360,Black Angel,1946,7.0
+0038369,The Blue Dahlia,1946,7.2
+0038397,The Caravan Trail,1946,7.5
+0038453,The Dark Corner,1946,7.1
+0038455,The Dark Mirror,1946,7.1
+0038461,Deception,1946,7.3
+0038559,Gilda,1946,7.8
+0038650,It&#x27;s a Wonderful Life,1946,8.6
+0038669,The Killers,1946,7.9
+0038700,The Locket,1946,7.2
+0038733,Stairway to Heaven,1946,8.1
+0038762,My Darling Clementine,1946,7.8
+0038780,Nobody Lives Forever,1946,7.0
+0038787,Notorious,1946,8.1
+0038854,The Postman Always Rings Twice,1946,7.6
+0038873,The Razor&#x27;s Edge,1946,7.5
+0038890,"Rome, Open City",1945,8.1
+0038965,Somewhere in the Night,1946,7.1
+0038988,The Strange Love of Martha Ivers,1946,7.5
+0038991,The Stranger,1946,7.4
+0039037,The Time of Their Lives,1946,8.0
+0039080,The Verdict,1946,7.2
+0039204,Body and Soul,1947,7.8
+0039208,Boomerang!,1947,7.3
+0039211,Born to Kill,1947,7.3
+0039224,Brute Force,1947,7.7
+0039286,Crossfire,1947,7.4
+0039302,Dark Passage,1947,7.6
+0039305,Dead Reckoning,1947,7.2
+0039335,A Double Life,1947,7.1
+0039417,Germany Year Zero,1948,7.9
+0039420,The Ghost and Mrs. Muir,1947,7.9
+0039431,Good News,1947,8.0
+0039482,I Walk Alone,1948,7.1
+0039504,Ivy,1947,7.2
+0039536,Kiss of Death,1947,7.5
+0039589,Lured,1947,7.0
+0039628,Miracle on 34th Street,1947,7.9
+0039661,Nightmare Alley,1947,7.8
+0039666,Nora Prentiss,1947,7.0
+0039689,Out of the Past,1947,8.1
+0039725,Possessed,1947,7.2
+0039737,Pursued,1947,7.4
+0039768,Ride the Pink Horse,1947,7.4
+0039881,T-Men,1947,7.1
+0039896,They Won&#x27;t Believe Me,1947,7.1
+0039941,The Unsuspected,1947,7.2
+0039973,The Web,1947,7.0
+0040068,Abbott and Costello Meet Frankenstein,1948,7.6
+0040160,The Big Clock,1948,7.7
+0040202,Call Northside 777,1948,7.4
+0040221,Caught,1949,7.1
+0040257,Cry of the City,1948,7.2
+0040277,Dead Man&#x27;s Gold,1948,7.7
+0040278,Deadline,1948,7.6
+0040366,Force of Evil,1948,7.4
+0040369,Fort Apache,1948,7.6
+0040409,Gun Smugglers,1948,7.5
+0040427,He Walked by Night,1948,7.2
+0040457,I Love Trouble,1948,7.0
+0040458,I Remember Mama,1948,8.3
+0040506,Key Largo,1948,7.9
+0040525,The Lady from Shanghai,1947,7.7
+0040571,Mark of the Lash,1948,7.5
+0040607,Moonrise,1948,7.2
+0040636,The Naked City,1948,7.7
+0040643,Night Has a Thousand Eyes,1948,7.1
+0040695,Pitfall,1948,7.2
+0040723,Raw Deal,1948,7.4
+0040725,The Red Shoes,1948,8.3
+0040740,Road House,1948,7.3
+0040765,The Search,1948,7.9
+0040823,"Sorry, Wrong Number",1948,7.5
+0040843,The Street with No Name,1948,7.1
+0040872,They Live by Night,1948,7.6
+0040887,To the Ends of the Earth,1948,7.3
+0040897,The Treasure of the Sierra Madre,1948,8.3
+0041088,Act of Violence,1948,7.5
+0041161,Barsaat,1949,7.9
+0041172,Beyond the Forest,1949,7.1
+0041178,The Big Steal,1949,7.1
+0041198,Border Incident,1949,7.0
+0041237,Challenge of the Range,1949,7.5
+0041239,Champion,1949,7.4
+0041268,Criss Cross,1949,7.5
+0041452,The Heiress,1949,8.3
+0041487,House of Strangers,1949,7.5
+0041503,Impact,1949,7.0
+0041546,Kind Hearts and Coronets,1949,8.2
+0041694,No Man of Her Own,1950,7.5
+0041719,Orpheus,1950,8.1
+0041723,Outlaw Country,1949,7.4
+0041786,The Reckless Moment,1949,7.3
+0041859,The Set-Up,1949,7.8
+0041866,She Wore a Yellow Ribbon,1949,7.4
+0041954,Tension,1949,7.1
+0041958,Thieves&#x27; Highway,1949,7.7
+0041959,The Third Man,1949,8.3
+0041968,Too Late for Tears,1949,7.3
+0042041,White Heat,1949,8.2
+0042046,The Window,1949,7.5
+0042192,All About Eve,1950,8.3
+0042208,The Asphalt Jungle,1950,7.9
+0042232,Battling Marshal,1950,7.6
+0042281,The Breaking Point,1950,7.5
+0042296,Caged,1950,7.7
+0042332,Cinderella,1950,7.3
+0042359,The Magic Sword,1950,7.9
+0042369,D.O.A.,1950,7.4
+0042376,The Damned Don&#x27;t Cry,1950,7.1
+0042486,Fr&#xFC;hling auf dem Eis,1951,8.0
+0042490,The Furies,1950,7.4
+0042530,Gun Crazy,1950,7.7
+0042531,The Gunfighter,1950,7.7
+0042579,House by the River,1950,7.2
+0042593,In a Lonely Place,1950,8.0
+0042648,Kiss Tomorrow Goodbye,1950,7.2
+0042771,Mystery Street,1950,7.1
+0042788,Night and the City,1950,8.0
+0042792,No Way Out,1950,7.5
+0042804,Los Olvidados,1950,8.3
+0042832,Panic in the Streets,1950,7.3
+0042876,Rashomon,1950,8.3
+0042960,Side Street,1949,7.1
+0042998,Stars in My Crown,1950,7.6
+0043014,Sunset Blvd.,1950,8.5
+0043075,The Sound of Fury,1950,7.3
+0043088,The Underworld Story,1950,7.0
+0043132,Where the Sidewalk Ends,1950,7.7
+0043137,Winchester &#x27;73,1950,7.7
+0043142,Woman on the Run,1950,7.3
+0043265,The African Queen,1951,7.9
+0043274,Alice in Wonderland,1951,7.4
+0043306,Awaara,1951,8.0
+0043338,Ace in the Hole,1951,8.2
+0043411,The King&#x27;s Baker and the Baker&#x27;s King,1952,8.2
+0043435,Cry Danger,1951,7.3
+0043440,The Naked and the Wicked,1951,7.9
+0043456,The Day the Earth Stood Still,1951,7.8
+0043465,Detective Story,1951,7.6
+0043503,The Enforcer,1951,7.4
+0043560,Fourteen Hours,1951,7.2
+0043643,His Kind of Woman,1951,7.1
+0043660,The House on Telegraph Hill,1951,7.0
+0043686,Forbidden Games,1952,7.9
+0043703,Kekec,1951,8.1
+0043812,The Mob,1951,7.0
+0043879,On Dangerous Ground,1951,7.4
+0043908,Patala Bhairavi,1951,7.9
+0043911,Pecos River,1951,7.4
+0043932,Prairie Roundup,1951,7.7
+0043938,The Prowler,1951,7.3
+0044008,A Christmas Carol,1951,8.1
+0044075,Storm Warning,1951,7.2
+0044079,Strangers on a Train,1951,8.1
+0044136,Tomorrow Is Another Day,1951,7.1
+0044202,The Well,1951,7.3
+0044205,Westward the Women,1951,7.6
+0044314,5 Fingers,1952,7.8
+0044357,Angel Face,1952,7.3
+0044474,The Overcoat,1952,7.8
+0044502,Clash by Night,1952,7.2
+0044533,Deadline - U.S.A.,1952,7.2
+0044706,High Noon,1952,8.1
+0044789,Kansas City Confidential,1952,7.4
+0044953,The Naked Spur,1953,7.5
+0044954,The Narrow Margin,1952,7.8
+0045029,Phone Call from a Stranger,1952,7.2
+0045124,Scandal Sheet,1952,7.4
+0045152,Singin&#x27; in the Rain,1952,8.4
+0045205,Sudden Fear,1952,7.5
+0045296,Viva Zapata!,1952,7.5
+0045465,99 River Street,1953,7.5
+0045555,The Big Heat,1953,8.0
+0045669,Dangerous Crossing,1953,7.0
+0045877,The Hitch-Hiker,1953,7.0
+0045897,I Confess,1953,7.3
+0046040,Man on a Tightrope,1953,7.1
+0046126,Niagara,1953,7.1
+0046183,Peter Pan,1953,7.4
+0046187,Pickup on South Street,1953,7.8
+0046250,Roman Holiday,1953,8.1
+0046268,The Wages of Fear,1953,8.2
+0046303,Shane,1953,7.7
+0046359,Stalag 17,1953,8.1
+0046478,Ugetsu,1953,8.2
+0046504,Vesna,1953,8.3
+0046816,The Caine Mutiny,1954,7.9
+0046851,The Crucified Lovers,1954,8.2
+0046878,Crime Wave,1954,7.4
+0046911,Diabolique,1955,8.1
+0046912,Dial M for Murder,1954,8.2
+0047034,Godzilla,1954,7.5
+0047101,Human Desire,1954,7.2
+0047136,Johnny Guitar,1954,7.7
+0047296,On the Waterfront,1954,8.3
+0047396,Rear Window,1954,8.5
+0047417,Riot in Cell Block 11,1954,7.0
+0047472,Seven Brides for Seven Brothers,1954,7.4
+0047478,Seven Samurai,1954,8.7
+0047849,Bad Day at Black Rock,1955,7.8
+0047878,The Big Combo,1955,7.5
+0047930,A Journey to the Beginning of Time,1955,7.5
+0047985,The Desperate Hours,1955,7.6
+0047990,Devdas,1955,8.1
+0048021,Rififi,1955,8.2
+0048199,Illegal,1955,7.0
+0048261,Kiss Me Deadly,1955,7.7
+0048342,The Man from Laramie,1955,7.4
+0048393,Mr. Arkadin,1955,7.4
+0048421,New York Confidential,1955,7.0
+0048424,The Night of the Hunter,1955,8.1
+0048452,Ordet,1955,8.1
+0048460,Outlaw Treasure,1955,7.6
+0048488,The Phenix City Story,1955,7.4
+0048574,Sabar Uparey,1955,7.9
+0048613,Shree 420,1955,8.1
+0048650,Spin and Marty: The Movie,1955,7.5
+0048752,The Unknown Soldier,1955,7.9
+0048977,The Bad Seed,1956,7.5
+0049006,Beyond a Reasonable Doubt,1956,7.0
+0049012,The Burmese Harp,1956,8.1
+0049072,Chori Chori,1956,7.8
+0049096,The Court Jester,1955,8.0
+0049223,Forbidden Planet,1956,7.7
+0049233,Friendly Persuasion,1956,7.5
+0049291,The Harder They Fall,1956,7.6
+0049366,Invasion of the Body Snatchers,1956,7.8
+0049378,Jagte Raho,1956,8.3
+0049406,The Killing,1956,8.1
+0049552,Nightfall,1957,7.2
+0049710,Samurai III: Duel at Ganryu Island,1956,7.8
+0049718,The Scarlet Hour,1956,7.2
+0049730,The Searchers,1956,8.0
+0049743,Seven Men from Now,1956,7.6
+0049752,Shilpi,1956,8.1
+0049778,Somebody Up There Likes Me,1956,7.5
+0049833,The Ten Commandments,1956,7.9
+0049866,"Toto, Peppino, and the Hussy",1956,7.8
+0049902,A Man Escaped,1956,8.2
+0049949,While the City Sleeps,1956,7.0
+0050083,12 Angry Men,1957,8.9
+0050086,3:10 to Yuma,1957,7.6
+0050188,Mother India,1957,8.1
+0050212,The Bridge on the River Kwai,1957,8.2
+0050322,Do Ankhen Barah Haath,1957,8.3
+0050539,The Incredible Shrinking Man,1957,7.7
+0050634,The Cranes Are Flying,1957,8.2
+0050665,Madhumati,1958,8.1
+0050752,In Our Courtyard,1956,8.2
+0050758,Naya Daur,1957,8.1
+0050766,Curse of the Demon,1957,7.6
+0050825,Paths of Glory,1957,8.5
+0050870,Pyaasa,1957,8.5
+0050976,The Seventh Seal,1957,8.2
+0050986,Wild Strawberries,1957,8.3
+0050987,The Snow Queen,1957,7.8
+0051019,The Strange One,1957,7.0
+0051036,Sweet Smell of Success,1957,8.2
+0051201,Witness for the Prosecution,1957,8.4
+0051459,Cat on a Hot Tin Roof,1958,8.1
+0051693,H-8...,1958,8.6
+0051758,I Want to Live!,1958,7.5
+0051792,The Music Room,1958,8.2
+0051808,The Hidden Fortress,1958,8.1
+0051866,The Lineup,1958,7.4
+0051927,Mia zoi tin ehoume,1958,8.3
+0051959,Murder by Contract,1958,7.4
+0051994,A Night to Remember,1958,7.9
+0052050,Party Girl,1958,7.2
+0052080,Ashes and Diamonds,1958,7.9
+0052311,Touch of Evil,1958,8.1
+0052357,Vertigo,1958,8.4
+0052374,The Fabulous World of Jules Verne,1958,7.5
+0052560,Anari,1959,7.9
+0052561,Anatomy of a Murder,1959,8.1
+0052600,Ballad of a Soldier,1959,8.1
+0052618,Ben-Hur,1959,8.1
+0052642,Boris Godunov,1954,7.8
+0052724,Day of the Outlaw,1959,7.4
+0052784,Skeleton of Mrs. Morales,1960,8.0
+0052861,The Great War,1959,8.4
+0052954,Kaagaz Ke Phool,1959,8.1
+0052993,Last Train from Gun Hill,1959,7.4
+0053114,The Human Condition I: No Greater Love,1959,8.5
+0053115,The Human Condition II: Road to Eternity,1959,8.5
+0053121,Fires on the Plain,1959,8.0
+0053125,North by Northwest,1959,8.4
+0053176,Night Train,1959,7.9
+0053198,The 400 Blows,1959,8.2
+0053221,Rio Bravo,1959,8.1
+0053285,Sleeping Beauty,1959,7.3
+0053291,Some Like It Hot,1959,8.3
+0053317,Fate of a Man,1959,8.1
+0053459,Eyes Without a Face,1960,7.8
+0053604,The Apartment,1960,8.3
+0053619,L&#x27;Avventura,1960,8.0
+0053856,General Della Rovere,1959,7.9
+0053935,Ice Cold in Alex,1958,7.9
+0053946,Inherit the Wind,1960,8.2
+0053976,The Virgin Spring,1960,8.1
+0054001,Inspector Palmu&#x27;s Error,1960,8.1
+0054042,Macario,1960,8.4
+0054047,The Magnificent Seven,1960,7.8
+0054073,The Cloud-Capped Star,1960,8.1
+0054098,Mughal-E-Azam,1960,8.4
+0054167,Peeping Tom,1960,7.8
+0054215,Psycho,1960,8.5
+0054248,Rocco and His Brothers,1960,8.3
+0054292,Sergeant Rutledge,1960,7.5
+0054331,Spartacus,1960,7.9
+0054387,The Time Machine,1960,7.6
+0054407,The Hole,1960,8.5
+0054451,Higher Principle,1960,8.2
+0054460,The Bad Sleep Well,1960,8.1
+0054632,Last Year at Marienbad,1961,8.0
+0054665,The Outrageous Baron Munchausen,1962,7.7
+0054749,Two Women,1960,7.9
+0054969,"My Son, the Hero",1961,8.1
+0054997,The Hustler,1961,8.1
+0055018,The Innocents,1961,7.9
+0055031,Judgment at Nuremberg,1961,8.3
+0055038,"Gas, Inspector Palmu!",1961,8.0
+0055153,Mother Joan of the Angels,1961,7.7
+0055184,The Misfits,1961,7.4
+0055233,The Human Condition III: A Soldier&#x27;s Prayer,1961,8.8
+0055602,A Difficult Life,1961,8.1
+0055614,West Side Story,1961,7.6
+0055630,Yojimbo,1961,8.3
+0055635,Za dvumya zaytsami,1963,8.0
+0055798,Birdman of Alcatraz,1962,7.8
+0055852,Cleo from 5 to 7,1962,8.0
+0056058,Harakiri,1962,8.7
+0056111,Ivan&#x27;s Childhood,1962,8.1
+0056160,Two Half-Times in Hell,1961,8.0
+0056172,Lawrence of Arabia,1962,8.4
+0056194,The Loneliness of the Long Distance Runner,1962,7.7
+0056195,Lonely Are the Brave,1962,7.7
+0056197,The Longest Day,1962,7.8
+0056217,The Man Who Shot Liberty Valance,1962,8.1
+0056241,The Miracle Worker,1962,8.1
+0056382,Prozvan je i V-3,1962,8.3
+0056406,Requiem for a Heavyweight,1962,7.9
+0056412,Ride the High Country,1962,7.6
+0056436,Sahib Bibi Aur Ghulam,1962,8.3
+0056443,Sanjuro,1962,8.2
+0056732,The Exterminating Angel,1962,8.2
+0056869,The Birds,1963,7.8
+0056923,Charade,1963,8.0
+0056982,Delovye lyudi,1962,7.8
+0057012,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,1964,8.5
+0057091,The Leopard,1963,8.1
+0057115,The Great Escape,1963,8.3
+0057129,The Haunting,1963,7.6
+0057357,El Naser Salah el Dine,1963,8.0
+0057427,The Trial,1962,7.9
+0057546,The Sword in the Stone,1963,7.2
+0057565,High and Low,1963,8.4
+0057578,This Sporting Life,1963,7.9
+0057591,Monsieur Gangster,1963,7.9
+0057695,"Me, bebia, Iliko da Ilarioni",1962,8.4
+0057841,Memories of My Childhood,1965,7.9
+0057877,Becket,1964,8.0
+0057892,Blood on the Land,1966,7.4
+0057935,Charulata,1964,8.3
+0058182,A Hard Day&#x27;s Night,1964,7.7
+0058275,Lemonade Joe,1964,7.7
+0058277,The Peach Thief,1964,7.9
+0058279,Kwaidan,1964,8.0
+0058331,Mary Poppins,1964,7.8
+0058385,My Fair Lady,1964,7.9
+0058394,"Don&#x27;t Cry, Peter",1964,8.3
+0058430,Onibaba,1964,8.0
+0058439,Forest of the Hanged,1965,8.5
+0058461,A Fistful of Dollars,1964,8.0
+0058604,I Am Cuba,1964,7.9
+0058642,Shadows of Forgotten Ancestors,1965,8.1
+0058715,The Gospel According to St. Matthew,1964,7.9
+0058777,Zulu,1964,7.8
+0058946,The Battle of Algiers,1966,8.1
+0059012,Chimes at Midnight,1965,8.0
+0059074,Cup Fever,1965,8.2
+0059113,Doctor Zhivago,1965,8.0
+0059246,Guide,1965,8.5
+0059274,The Hill,1965,7.9
+0059550,Operation &#x27;Y&#x27; &#x26; Other Shurik&#x27;s Adventures,1965,8.6
+0059578,For a Few Dollars More,1965,8.3
+0059643,The Saragossa Manuscript,1965,8.0
+0059646,Repulsion,1965,7.8
+0059742,The Sound of Music,1965,8.0
+0059776,The Round-Up,1966,7.9
+0059812,The Corporal and Others,1965,8.7
+0059825,The Train,1964,7.9
+0059855,The Monkey King,1965,8.2
+0059884,Voyna i mir I: Andrey Bolkonskiy,1965,8.2
+0060107,Andrei Rublev,1966,8.4
+0060125,For Love and Gold,1966,8.0
+0060161,Watch Out for the Automobile,1966,8.3
+0060165,A Big Hand for the Little Lady,1966,7.4
+0060196,"The Good, the Bad and the Ugly",1966,8.9
+0060277,The Sword of Doom,1966,8.1
+0060305,Le Deuxieme Souffle,1966,8.1
+0060439,Funny Things Happen Down Under,1965,7.9
+0060474,The Great Promenade,1966,8.0
+0060482,The Dacians,1966,7.9
+0060584,"Kidnapping, Caucasian Style",1967,8.5
+0060665,A Man for All Seasons,1966,7.9
 0060827,Persona,1966,8.2
-0293508,The Phantom of the Opera,2004,7.4
-0101761,The Doors,1991,7.2
+0060862,The Professionals,1966,7.4
+0060955,Seconds,1966,7.7
+0061009,Sperrbezirk,1966,8.1
+0061065,The Face of Another,1966,8.0
+0061069,Taro the Dragon Boy,1979,7.6
+0061418,Bonnie and Clyde,1967,7.9
+0061512,Cool Hand Luke,1967,8.2
+0061530,Crne ptice,1967,7.9
+0061619,El Dorado,1966,7.7
+0061722,The Graduate,1967,8.0
+0061752,Even the Wind Is Afraid,1968,7.6
+0061770,Hombre,1967,7.4
+0061811,In the Heat of the Night,1967,8.0
+0061842,Jewel Thief,1967,8.0
+0061852,The Jungle Book,1967,7.6
+0061855,When I Am Dead and Gone,1967,8.1
+0062040,Nihon kyokaku-den: kirikomi,1967,8.2
+0062229,Le Samoura&#xEF;,1967,8.1
+0062453,Viy,1967,7.5
+0062455,Voyna i mir III: 1812 god,1967,8.3
+0062622,2001: A Space Odyssey,1968,8.3
+0062759,The Diamond Arm,1969,8.5
+0062814,Columna,1968,7.8
+0063023,The Adventures of Goopy and Bagha,1969,8.7
+0063032,The Great Silence,1968,7.8
+0063141,Isadora,1968,7.8
+0063227,The Lion in Winter,1968,8.2
+0063278,Marketa Lazarov&#xE1;,1967,8.2
+0063333,"Na voyne, kak na voyne",1969,8.0
+0063350,Night of the Living Dead,1968,8.0
+0063404,Padosan,1968,8.1
+0063442,Planet of the Apes,1968,8.0
+0063501,The Big Gundown,1966,7.4
+0063522,Rosemary&#x27;s Baby,1968,8.0
+0063633,The Cremator,1969,8.1
+0063759,Hour of the Wolf,1968,7.7
+0063777,Vin ciclistii,1968,7.5
+0063845,The Golden Calf,1968,8.5
+0064040,The Army of Shadows,1969,8.2
 0064115,Butch Cassidy and the Sundance Kid,1969,8.1
-0110912,Pulp Fiction,1994,8.9
+0064116,Once Upon a Time in the West,1968,8.6
+0064142,La Celestina,1969,8.6
+0064296,Eros + Massacre,1969,8.3
+0064546,Witchhammer,1970,8.1
+0064815,Pirosmani,1969,7.8
+0065050,The Super Fight,1970,7.8
+0065051,Support Your Local Sheriff!,1969,7.5
+0065067,The Witness,1969,8.5
+0065126,True Grit,1969,7.4
+0065180,Viimne reliikvia,1969,8.0
+0065214,The Wild Bunch,1969,8.0
+0065234,Z,1969,8.2
+0065421,The AristoCats,1970,7.1
+0065457,Beg,1971,8.0
+0065531,Le Cercle Rouge,1970,8.1
+0065630,El tunco Maclovio,1970,7.6
+0065670,Twelve Chairs,1971,8.4
+0065889,Investigation of a Citizen Above Suspicion,1970,8.1
+0065908,How I Unleashed World War II,1970,8.1
+0065988,Little Big Man,1970,7.7
+0066078,Michael the Brave,1970,8.4
+0066206,Patton,1970,8.0
+0066461,One Song a Day Takes Mischief Away,1970,8.5
+0066565,White Sun of the Desert,1970,8.1
+0066612,Companeros,1970,7.5
+0066758,Amar Prem,1972,8.1
+0066763,Anand,1971,8.9
+0066858,The Boy Friend,1971,7.9
+0066921,A Clockwork Orange,1971,8.4
+0067093,Fiddler on the Roof,1971,8.0
+0067185,Harold and Maude,1971,8.0
+0067355,They Call Me Trinity,1970,7.4
+0067411,McCabe &#x26; Mrs. Miller,1971,7.7
+0067698,Sacco &#x26; Vanzetti,1971,7.9
+0067866,El Topo,1970,7.5
+0067919,The Emigrants,1971,8.0
+0067992,Willy Wonka &#x26; the Chocolate Factory,1971,7.8
+0068161,A zori zdes tikhie,1972,8.3
+0068182,"Aguirre, the Wrath of God",1972,8.0
+0068257,Bawarchi,1972,8.0
+0068327,Cabaret,1972,7.9
+0068346,The Mattei Affair,1972,7.8
+0068361,The Discreet Charm of the Bourgeoisie,1972,8.0
+0068421,The Cowboys,1972,7.4
+0068519,Gentlemen of Fortune,1971,8.6
+0068575,Fat City,1972,7.5
+0068646,The Godfather,1972,9.2
+0068699,High Plains Drifter,1973,7.6
+0068762,Jeremiah Johnson,1972,7.6
+0068816,Lone Wolf and Cub: Baby Cart at the River Styx,1972,8.1
+0069035,The New Land,1972,8.0
+0069281,Sleuth,1972,8.1
+0069293,Solaris,1972,8.1
+0069452,Walter Defends Sarajevo,1972,8.2
+0069458,Veronica,1972,7.9
+0069543,Ziva istina,1972,8.4
+0070040,The Spirit of the Beehive,1973,8.0
+0070047,The Exorcist,1973,8.0
+0070215,My Name Is Nobody,1973,7.5
+0070233,Ivan Vasilievich: Back to the Future,1973,8.4
+0070250,Juan Moreira,1973,7.4
+0070377,Maurie,1973,7.5
+0070464,O Lucky Man!,1973,7.9
+0070510,Paper Moon,1973,8.2
+0070511,Papillon,1973,8.0
+0070518,Pat Garrett &#x26; Billy the Kid,1973,7.4
+0070544,Fantastic Planet,1973,7.8
+0070608,Robin Hood,1973,7.6
+0070666,Serpico,1973,7.8
+0070735,The Sting,1973,8.3
+0070832,Three Wishes for Cinderella,1973,8.0
+0070861,Only Old Men Are Going to Battle,1974,8.6
+0070917,The Wicker Man,1973,7.6
+0071101,Actorul si salbaticii,1975,8.7
+0071230,Blazing Saddles,1974,7.8
+0071249,Bring Me the Head of Alfredo Garcia,1974,7.6
+0071315,Chinatown,1974,8.3
+0071360,The Conversation,1974,7.9
+0071381,Celine and Julie Go Boating,1974,7.9
+0071406,Pastoral Hide and Seek,1974,7.9
+0071411,Dersu Uzala,1975,8.3
+0071562,The Godfather: Part II,1974,9.0
+0071615,The Holy Mountain,1973,7.9
+0071691,The Enigma of Kaspar Hauser,1974,7.9
+0071853,Monty Python and the Holy Grail,1975,8.3
+0071899,The Immortals,1974,7.9
+0071956,Otpisani,1974,7.9
+0072021,The Deluge,1974,7.9
+0072190,The Golden Fortress,1974,8.4
+0072205,Stephen the Great - Vaslui 1475,1975,7.9
+0072271,The Texas Chain Saw Massacre,1974,7.5
+0072443,The Mirror,1975,8.2
+0072684,Barry Lyndon,1975,8.1
+0072777,Chhoti Si Baat,1975,8.3
+0072783,Chupke Chupke,1975,8.5
+0072860,Deewaar,1975,8.2
+0072901,The Twelve Tasks of Asterix,1976,7.7
+0073000,The Pinchcliffe Grand Prix,1975,8.3
+0073092,Hard Times,1975,7.4
+0073195,Jaws,1975,8.1
+0073440,Nashville,1975,7.8
+0073486,One Flew Over the Cuckoo&#x27;s Nest,1975,8.7
+0073488,They Fought for Their Country,1975,8.1
+0073582,Deep Red,1975,7.7
+0073629,The Rocky Horror Picture Show,1975,7.4
+0073707,Sholay,1975,8.5
+0073800,The Travelling Players,1975,8.0
+0074119,All the President&#x27;s Men,1976,8.0
+0074174,The Bad News Bears,1976,7.3
+0074369,My Uncle Napoleon,1976,8.6
+0074443,Duelle (une quarantaine),1976,7.9
+0074561,Metamorphosis,1976,7.9
+0074865,"Marecek, Pass Me the Pen!",1976,8.4
+0074896,The Message,1976,8.6
+0075005,The Omen,1976,7.6
+0075029,The Outlaw Josey Wales,1976,7.9
+0075040,Seven Beauties,1975,8.0
+0075094,The Written Off Return,1976,8.0
+0075143,The Message,1976,8.8
+0075148,Rocky,1976,8.1
+0075213,The Shootist,1976,7.7
+0075314,Taxi Driver,1976,8.4
+0075404,The Ascent,1977,8.3
+0075467,The Fifth Seal,1976,8.8
+0075633,Ad&#xE9;la jeste nevecerela,1978,7.8
+0075686,Annie Hall,1977,8.1
+0075811,The Sorcerer&#x27;s Apprentice,1978,7.7
+0075860,Close Encounters of the Third Kind,1977,7.7
+0076027,Filmreg&#xE9;ny - H&#xE1;rom n&#xF6;v&#xE9;r,1978,8.6
+0076276,Who&#x27;s Singin&#x27; Over There?,1980,8.9
+0076311,Fliers of the Open Skies,1977,7.9
+0076340,Ma-ma,1976,8.0
+0076363,The Many Adventures of Winnie the Pooh,1977,7.6
+0076391,Mimino,1977,8.4
+0076426,Music of the Spheres,1984,7.5
+0076723,Slap Shot,1977,7.4
+0076727,Office Romance,1977,8.5
+0076759,Star Wars,1977,8.7
+0076786,Suspiria,1977,7.5
+0077138,The Tree of Wooden Clogs,1978,7.9
+0077235,Big Wednesday,1978,7.3
+0077402,Dawn of the Dead,1978,8.0
+0077416,The Deer Hunter,1978,8.2
+0077631,Grease,1978,7.2
+0077651,Halloween,1978,7.9
+0077860,Qalaqi Anara,1978,8.4
+0077941,Moli&#xE8;re,1978,7.8
+0078054,Beauty and the Beast,1978,7.5
+0078119,"The Prophet, the Gold and the Transylvanians",1978,7.6
+0078349,Swan Lake,1981,7.8
+0078411,Totul pentru fotbal,1982,7.4
+0078480,Watership Down,1978,7.7
+0078724,22 June 1897,1979,7.9
+0078748,Alien,1979,8.5
+0078754,All That Jazz,1979,7.8
+0078788,Apocalypse Now,1979,8.5
+0078842,B&#xE9;keid&#xF6;,1980,9.0
+0078872,The Black Stallion,1979,7.4
+0078876,"Ion: Blestemul pam&#xEE;ntului, blestemul iubirii",1980,8.0
+0078902,Breaking Away,1979,7.7
+0079221,Gol Maal,1979,8.7
+0079261,Hair,1979,7.6
+0079322,I as in Icarus,1979,8.1
+0079470,Life of Brian,1979,8.1
+0079522,Manhattan,1979,8.0
+0079606,National Class Category Up to 785 ccm,1979,8.4
+0079615,"Uncle Marin, the Billionaire",1979,8.5
+0079641,Nosferatu the Vampyre,1979,7.6
+0079820,The King and the Mockingbird,1980,8.0
+0079833,Lupin III: The Castle of Cagliostro,1979,7.8
+0079889,Shankarabharanam,1979,8.6
+0079907,Siberiade,1979,8.1
+0079944,Stalker,1979,8.2
+0080310,Breaker Morant,1980,7.9
+0080322,Aakrosh,1980,7.9
+0080381,Aria dla atlety,1979,7.5
+0080455,The Blues Brothers,1980,7.9
+0080487,Caddyshack,1980,7.4
+0080531,Christmas Mountain,1981,7.4
+0080678,The Elephant Man,1980,8.2
+0080684,Star Wars: Episode V - The Empire Strikes Back,1980,8.8
+0080772,Galaxy Express 999,1979,7.6
+0080856,Heerak Rajar Deshe,1980,8.6
+0080979,Kagemusha,1980,8.0
+0081045,Levins M&#xFC;hle,1980,8.2
+0081059,Lion of the Desert,1981,8.4
+0081398,Raging Bull,1980,8.3
+0081505,The Shining,1980,8.4
+0082010,An American Werewolf in London,1981,7.6
+0082087,Der Bockerer,1981,8.1
+0082096,Das Boot,1981,8.4
+0082158,Chariots of Fire,1981,7.3
+0082162,Chashme Buddoor,1981,8.0
+0082508,Heartland,1979,7.4
+0082694,Mad Max 2: The Road Warrior,1981,7.6
+0082755,Teddy Bear,1981,8.4
+0082783,My Dinner with Andre,1981,7.8
+0082971,Raiders of the Lost Ark,1981,8.5
+0082998,Rhythm of a Crime,1981,7.8
+0083162,The Mysterious Castle in the Carpathians,1981,7.6
+0083275,Variola Vera,1982,8.2
+0083658,Blade Runner,1982,8.2
+0083866,E.T. the Extra-Terrestrial,1982,7.9
+0083907,The Evil Dead,1981,7.6
+0083931,Feh&#xE9;rl&#xF3;fia,1981,7.9
+0083946,Fitzcarraldo,1982,8.2
+0083951,The Flight of Dragons,1982,7.8
+0083987,Gandhi,1982,8.1
+0084302,The Marathon Family,1982,9.0
+0084304,Death of Yazdgerd,1982,8.4
+0084503,Pink Floyd The Wall,1982,8.0
+0084509,The Plague Dogs,1982,7.9
+0084548,Interrogation,1989,8.2
+0084649,The Secret of NIMH,1982,7.6
+0084696,Slyozy kapali,1983,7.9
+0084726,Star Trek II: The Wrath of Khan,1982,7.7
+0084787,The Thing,1982,8.2
+0085178,Ardh Satya,1983,8.2
+0085213,Le Bal,1983,8.0
+0085218,Barefoot Gen,1983,8.1
+0085334,A Christmas Story,1983,8.1
+0085622,The Grey Fox,1982,7.7
+0085743,Who Pays the Piper,1983,8.6
+0085748,"J&#xE1;ra Cimrman Lying, Sleeping",1983,8.0
+0085913,Masoom,1983,8.5
+0085959,The Meaning of Life,1983,7.6
+0086056,"Oro, plata, mata",1982,8.1
+0086102,Phar Lap,1983,7.3
+0086182,Rembetiko,1983,8.3
+0086190,Star Wars: Episode VI - Return of the Jedi,1983,8.4
+0086197,The Right Stuff,1983,7.9
+0086230,Sadma,1983,8.5
+0086231,Sagara Sangamam,1983,8.7
+0086250,Scarface,1983,8.3
+0086261,Scrambled Feet,1983,8.1
+0086447,The Millennial Bee,1983,7.9
+0086477,The Three Veterans,1984,7.8
+0086879,Amadeus,1984,8.3
+0086935,Balkan Spy,1984,8.9
+0087123,Strangler vs. Strangler,1984,8.2
+0087332,Ghostbusters,1984,7.8
+0087349,"Blue Mountains, or Unbelievable Story",1983,8.8
+0087488,"Istv&#xE1;n, a kir&#xE1;ly",1984,8.3
+0087538,The Karate Kid,1984,7.2
+0087544,Nausica&#xE4; of the Valley of the Wind,1984,8.1
+0087553,The Killing Fields,1984,7.9
+0087650,Love and Doves,1985,8.3
+0087660,Super Space Fortress Macross,1984,7.9
+0087731,Give the Devil His Due,1985,8.3
+0087781,The Natural,1984,7.5
+0087800,A Nightmare on Elm Street,1984,7.5
+0087814,Nothing Left to Do but Cry,1984,7.8
+0087843,Once Upon a Time in America,1984,8.4
+0088083,Sexmission,1984,7.8
+0088247,The Terminator,1984,8.1
+0088258,This Is Spinal Tap,1984,8.0
+0088334,Urusei Yatsura 2: Beautiful Dreamer,1984,7.7
+0088338,The Elusive Summer of &#x27;68,1984,8.6
+0088451,Zhenshchina i chetvero yeyo muzhchin,1983,7.9
+0088763,Back to the Future,1985,8.5
+0088846,Brazil,1985,8.0
+0089218,The Goonies,1985,7.8
+0089603,Mishima: A Life in Four Chapters,1985,7.9
+0089767,Pale Rider,1985,7.3
+0089800,The Feather Fairy,1985,7.9
+0089881,Ran,1985,8.3
+0089949,Sabishinb&#xF4;,1985,7.8
+0090022,Silverado,1985,7.2
+0090109,The Pearl,1985,8.1
+0090185,"A Time to Live, a Time to Die",1985,7.8
+0090315,When the Wind Blows,1986,7.8
+0090605,Aliens,1986,8.4
+0091064,The Fly,1986,7.5
+0091214,Man Facing Southeast,1986,7.8
+0091217,Hoosiers,1986,7.6
+0091251,Come and See,1985,8.3
+0091256,Permission,1987,8.2
+0091341,Kin-dza-dza!,1986,8.2
+0091369,Labyrinth,1986,7.4
+0091559,Mouna Ragam,1986,8.5
+0091725,Parting Glances,1986,7.8
+0091759,Dead Man&#x27;s Letters,1986,7.7
+0091763,Platoon,1986,8.1
+0092005,Stand by Me,1986,8.1
+0092067,Castle in the Sky,1986,8.1
+0092086,&#xA1;Three Amigos!,1986,6.4
+0092593,Au Revoir Les Enfants,1987,8.1
+0092603,Babette&#x27;s Feast,1987,7.9
+0092745,A Man from Boulevard des Capucines,1987,7.9
+0092879,Ten Little Indians,1987,8.0
+0092965,Empire of the Sun,1987,7.8
+0092991,Evil Dead II,1987,7.8
+0093058,Full Metal Jacket,1987,8.3
+0093132,Hachi-ko,1987,8.2
+0093191,Wings of Desire,1987,8.1
+0093342,Where is the Friend&#x27;s Home?,1987,8.1
+0093389,The Last Emperor,1987,7.8
+0093509,Matewan,1987,7.9
+0093578,Mr India,1987,7.8
+0093603,Nayakan,1987,8.9
+0093754,Repentance,1984,8.4
+0093773,Predator,1987,7.8
+0093779,The Princess Bride,1987,8.1
+0093870,RoboCop,1987,7.5
+0094242,Reflections,1987,7.7
+0094371,Mirror for a Hero,1988,7.5
+0094625,Akira,1988,8.1
+0094683,Assa,1988,8.0
+0095016,Die Hard,1988,8.2
+0095082,Eight Men Out,1988,7.3
+0095244,Gorod Zero,1989,7.6
+0095250,The Big Blue,1988,7.6
+0095327,Grave of the Fireflies,1988,8.5
+0095441,The Cold Summer of 1953,1988,8.1
+0095467,A Short Film About Love,1988,8.3
+0095468,A Short Film About Killing,1988,8.2
+0095657,The Moromete Family,1987,8.9
+0095715,Alice,1988,7.5
+0095765,Cinema Paradiso,1988,8.5
+0096283,My Neighbor Totoro,1988,8.3
+0096329,Ubit drakona,1989,8.1
+0096403,Time of Violence,1988,8.6
+0096438,Who Framed Roger Rabbit,1988,7.7
+0096487,Young Guns,1988,6.8
+0096754,The Abyss,1989,7.6
+0096827,Apoorva Sagodharargal,1989,8.2
+0096874,Back to the Future Part II,1989,7.8
+0096908,A City of Sadness,1989,8.1
+0097223,Time of the Gypsies,1988,8.3
+0097351,Field of Dreams,1989,7.6
+0097437,Gitanjali,1989,8.3
+0097441,Glory,1989,7.9
+0097576,Indiana Jones and the Last Crusade,1989,8.3
+0097757,The Little Mermaid,1989,7.6
 0097814,Kiki&#x27;s Delivery Service,1989,7.9
 0097815,Major League,1989,7.2
-0808417,Persepolis,2007,8.0
-0117631,Shine,1996,7.7
-0057115,The Great Escape,1963,8.3
-0405159,Million Dollar Baby,2004,8.1
-0032455,Fantasia,1940,7.8
-1707386,Les Mis&#xE9;rables,2012,7.6
-0132477,October Sky,1999,7.8
-0111161,The Shawshank Redemption,1994,9.3
-0910970,WALL&#xB7;E,2008,8.4
-0042332,Cinderella,1950,7.3
-0046303,Shane,1953,7.7
-0043014,Sunset Blvd.,1950,8.5
-1024648,Argo,2012,7.8
-0174856,The Hurricane,1999,7.6
-0063522,Rosemary&#x27;s Baby,1968,8.0
-0047396,Rear Window,1954,8.5
-0077402,Dawn of the Dead,1978,8.0
-0114814,The Usual Suspects,1995,8.6
-0146882,High Fidelity,2000,7.6
-0116231,The Bandit,1996,8.5
-1266029,Nowhere Boy,2009,7.2
-0095250,The Big Blue,1988,7.6
-2199711,Vishwaroopam,2013,8.8
-0065988,Little Big Man,1970,7.7
-1220719,Ip Man,2008,8.1
-0386064,Tae Guk Gi: The Brotherhood of War,2004,8.1
-0031381,Gone with the Wind,1939,8.2
-0381681,Before Sunset,2004,8.1
-0053198,The 400 Blows,1959,8.2
-0013442,Nosferatu,1922,8.0
-0454921,The Pursuit of Happyness,2006,7.9
-0119164,The Full Monty,1997,7.2
-0986264,Like Stars on Earth,2007,8.5
-0050976,The Seventh Seal,1957,8.2
-0079522,Manhattan,1979,8.0
-0453562,42,2013,7.5
-0110357,The Lion King,1994,8.5
-0338013,Eternal Sunshine of the Spotless Mind,2004,8.4
-0043265,The African Queen,1951,7.9
-0166924,Mulholland Dr.,2001,8.0
-0064116,Once Upon a Time in the West,1968,8.6
-0107290,Jurassic Park,1993,8.1
-0316356,Open Range,2003,7.5
-0076759,Star Wars,1977,8.7
-0275277,Cowboy Bebop: The Movie,2001,7.9
-0432283,Fantastic Mr. Fox,2009,7.8
-0059646,Repulsion,1965,7.8
-0140352,The Insider,1999,7.9
-1263670,Crazy Heart,2009,7.3
-0319061,Big Fish,2003,8.0
-0030341,The Lady Vanishes,1938,8.0
-2245084,Big Hero 6,2014,7.9
-0108394,Three Colors: Blue,1993,8.0
-0053285,Sleeping Beauty,1959,7.3
-0099487,Edward Scissorhands,1990,8.0
-0075005,The Omen,1976,7.6
-0325980,Pirates of the Caribbean: The Curse of the Black Pearl,2003,8.1
-0093773,Predator,1987,7.8
-0068646,The Godfather,1972,9.2
-0460989,The Wind That Shakes the Barley,2006,7.5
-0158983,South Park: Bigger Longer &#x26; Uncut,1999,7.8
-0012349,The Kid,1921,8.4
-2377938,Special 26,2013,8.0
-1821700,Waar,2013,8.5
-0390022,Friday Night Lights,2004,7.3
-1631867,Edge of Tomorrow,2014,7.9
-0071562,The Godfather: Part II,1974,9.0
-0093779,The Princess Bride,1987,8.1
-0765429,American Gangster,2007,7.8
-0079261,Hair,1979,7.6
-1646971,How to Train Your Dragon 2,2014,7.9
-0088763,Back to the Future,1985,8.5
-0245429,Spirited Away,2001,8.6
-0462322,Grindhouse,2007,7.6
-0126029,Shrek,2001,7.9
-0053291,Some Like It Hot,1959,8.3
-0167261,The Lord of the Rings: The Two Towers,2002,8.7
-0101414,Beauty and the Beast,1991,8.0
-0050825,Paths of Glory,1957,8.5
-0021749,City Lights,1931,8.6
-1392190,Mad Max: Fury Road,2015,8.2
-0435761,Toy Story 3,2010,8.4
-0049730,The Searchers,1956,8.0
-1255953,Incendies,2010,8.2
-0049406,The Killing,1956,8.1
-0076723,Slap Shot,1977,7.4
-0287467,Talk to Her,2002,8.0
-0034583,Casablanca,1942,8.6
-2582802,Whiplash,2014,8.5
-0046250,Roman Holiday,1953,8.1
-0325710,The Last Samurai,2003,7.7
-0096283,My Neighbor Totoro,1988,8.3
-0055614,West Side Story,1961,7.6
-1170358,The Hobbit: The Desolation of Smaug,2013,7.9
-0378194,Kill Bill: Vol. 2,2004,8.0
-0114369,Se7en,1995,8.6
-0347304,Kal Ho Naa Ho,2003,8.1
-0080455,The Blues Brothers,1980,7.9
-0113568,Ghost in the Shell,1995,8.0
-0112461,The Basketball Diaries,1995,7.3
-0102926,The Silence of the Lambs,1991,8.6
-0121164,Corpse Bride,2005,7.4
-0109117,Andaz Apna Apna,1994,8.7
-1588170,I Saw the Devil,2010,7.8
-1136608,District 9,2009,8.0
-1156466,Undisputed 3: Redemption,2010,7.5
-1201607,Harry Potter and the Deathly Hallows: Part 2,2011,8.1
-0426931,August Rush,2007,7.5
-1049413,Up,2009,8.3
-1562872,Zindagi Na Milegi Dobara,2011,8.1
-0021884,Frankenstein,1931,8.0
-0068361,The Discreet Charm of the Bourgeoisie,1972,8.0
-1490017,The Lego Movie,2014,7.8
-0107207,In the Name of the Father,1993,8.1
-0089767,Pale Rider,1985,7.3
-0038355,The Big Sleep,1946,8.1
-1131729,Pirate Radio,2009,7.4
-0052311,Touch of Evil,1958,8.1
-0208092,Snatch.,2000,8.3
-1398426,Straight Outta Compton,2015,8.1
-0110478,Maverick,1994,7.0
-0033467,Citizen Kane,1941,8.4
-2356180,Bhaag Milkha Bhaag,2013,8.3
-0088247,The Terminator,1984,8.1
-1013753,Milk,2008,7.6
-1192628,Rango,2011,7.3
-0038787,Notorious,1946,8.1
-0032904,The Philadelphia Story,1940,8.1
-0317648,Hidalgo,2004,6.7
-0069293,Solaris,1972,8.1
-2013293,The Wind Rises,2013,7.8
-0103639,Aladdin,1992,8.0
-0074119,All the President&#x27;s Men,1976,8.0
-0061722,The Graduate,1967,8.0
-0058461,A Fistful of Dollars,1964,8.0
-3322420,Queen,2014,8.4
-0031971,Stagecoach,1939,7.9
-1386932,Ip Man 2,2010,7.6
-0475276,United 93,2006,7.6
-1305806,The Secret in Their Eyes,2009,8.2
-0105695,Unforgiven,1992,8.3
-0095327,Grave of the Fireflies,1988,8.5
-3460252,The Hateful Eight,2015,8.1
-2338151,PK,2014,8.3
-0024216,King Kong,1933,8.0
-0017136,Metropolis,1927,8.3
-0029843,The Adventures of Robin Hood,1938,8.0
-3076658,Creed,2015,8.1
-0082158,Chariots of Fire,1981,7.3
-0167404,The Sixth Sense,1999,8.1
-0329575,Seabiscuit,2003,7.3
-2082197,Barfi!,2012,8.2
-0127536,Elizabeth,1998,7.5
-2194499,About Time,2013,7.8
-2278388,The Grand Budapest Hotel,2014,8.1
-0112817,Dead Man,1995,7.7
-0352248,Cinderella Man,2005,8.0
-0045152,Singin&#x27; in the Rain,1952,8.4
-0072684,Barry Lyndon,1975,8.1
-0181875,Almost Famous,2000,7.9
-2024519,The Broken Circle Breakdown,2012,7.8
-0093191,Wings of Desire,1987,8.1
-0058331,Mary Poppins,1964,7.8
-0015648,Battleship Potemkin,1925,8.0
-0129167,The Iron Giant,1999,8.0
-0166813,Spirit: Stallion of the Cimarron,2002,7.0
-0111756,Wyatt Earp,1994,6.6
-0892769,How to Train Your Dragon,2010,8.2
-1877832,X-Men: Days of Future Past,2014,8.0
-0110932,Quiz Show,1994,7.5
-2631186,Baahubali: The Beginning,2015,8.7
-0190590,"O Brother, Where Art Thou?",2000,7.8
-0061852,The Jungle Book,1967,7.6
-0120910,Fantasia/2000,1999,7.3
-0108358,Tombstone,1993,7.8
-0044706,High Noon,1952,8.1
-0040897,The Treasure of the Sierra Madre,1948,8.3
-0080678,The Elephant Man,1980,8.2
-1182345,Moon,2009,8.0
-0059742,The Sound of Music,1965,8.0
-0116282,Fargo,1996,8.2
-0092086,&#xA1;Three Amigos!,1986,6.4
-0107692,Ninja Scroll,1993,7.9
-0166896,The Straight Story,1999,8.0
-0477348,No Country for Old Men,2007,8.1
-1457767,The Conjuring,2013,7.5
-0058182,A Hard Day&#x27;s Night,1964,7.7
-0816692,Interstellar,2014,8.6
-3390572,Haider,2014,8.3
-0026138,Bride of Frankenstein,1935,7.9
-0317219,Cars,2006,7.2
-0385726,Glory Road,2006,7.2
-1291584,Warrior,2011,8.2
-0217505,Gangs of New York,2002,7.5
-0499549,Avatar,2009,7.9
-0046268,The Wages of Fear,1953,8.2
-0046912,Dial M for Murder,1954,8.2
-0043274,Alice in Wonderland,1951,7.4
-0070047,The Exorcist,1973,8.0
-0800308,Appaloosa,2008,6.8
-0038650,It&#x27;s a Wonderful Life,1946,8.6
-1772341,Wreck-It Ralph,2012,7.8
-0112573,Braveheart,1995,8.4
-0089881,Ran,1985,8.3
-0907657,Once,2007,7.9
-0104652,Porco Rosso,1992,7.8
-0061811,In the Heat of the Night,1967,8.0
-0051201,Witness for the Prosecution,1957,8.4
-0088258,This Is Spinal Tap,1984,8.0
-0401383,The Diving Bell and the Butterfly,2007,8.0
-0485947,Mr. Nobody,2009,7.9
-0120731,The Legend of 1900,1998,8.1
-0407887,The Departed,2006,8.5
-0073707,Sholay,1975,8.5
-2488496,Star Wars: The Force Awakens,2015,8.5
-0057546,The Sword in the Stone,1963,7.2
-0050083,12 Angry Men,1957,8.9
-0087544,Nausica&#xE4; of the Valley of the Wind,1984,8.1
-0382932,Ratatouille,2007,8.0
-0081505,The Shining,1980,8.4
-0079944,Stalker,1979,8.2
-0036868,The Best Years of Our Lives,1946,8.2
-0871510,Chakde! India,2007,8.4
-0037008,Laura,1944,8.1
-0062622,2001: A Space Odyssey,1968,8.3
-0304141,Harry Potter and the Prisoner of Azkaban,2004,7.8
-0410097,Hustle &#x26; Flow,2005,7.4
-0075686,Annie Hall,1977,8.1
-0249462,Billy Elliot,2000,7.7
-2096673,Inside Out,2015,8.3
-2024544,12 Years a Slave,2013,8.1
-0085959,The Meaning of Life,1983,7.6
-0066921,A Clockwork Orange,1971,8.4
-0048424,The Night of the Hunter,1955,8.1
-0092005,Stand by Me,1986,8.1
-0010323,The Cabinet of Dr. Caligari,1920,8.1
-0451094,Sympathy for Lady Vengeance,2005,7.7
-0358273,Walk the Line,2005,7.9
-1606392,Win Win,2011,7.2
-0085334,A Christmas Story,1983,8.1
-0379786,Serenity,2005,8.0
-0317248,City of God,2002,8.7
-1156398,Zombieland,2009,7.7
-0056197,The Longest Day,1962,7.8
-0015864,The Gold Rush,1925,8.3
-0041959,The Third Man,1949,8.3
-0168629,Dancer in the Dark,2000,8.0
-0029947,Bringing Up Baby,1938,8.0
-0476735,My Father and My Son,2005,8.7
-0033870,The Maltese Falcon,1941,8.2
-0092067,Castle in the Sky,1986,8.1
-1980929,Begin Again,2013,7.5
-0071315,Chinatown,1974,8.3
-1125849,The Wrestler,2008,7.9
-0083987,Gandhi,1982,8.1
-0293715,My Sassy Girl,2001,8.2
-0047296,On the Waterfront,1954,8.3
-0299977,Hero,2002,7.9
-0268978,A Beautiful Mind,2001,8.2
-1038988,[Rec],2007,7.5
-1981677,Pitch Perfect,2012,7.2
-0203009,Moulin Rouge!,2001,7.6
-0053604,The Apartment,1960,8.3
-0468569,The Dark Knight,2008,9.0
-1323594,Despicable Me,2010,7.7
-0097351,Field of Dreams,1989,7.6
-0120815,Saving Private Ryan,1998,8.6
-0372784,Batman Begins,2005,8.3
-1504320,The King&#x27;s Speech,2010,8.0
-0075314,Taxi Driver,1976,8.4
-0087843,Once Upon a Time in America,1984,8.4
-0099088,Back to the Future Part III,1990,7.4
-0808506,The Girl Who Leapt Through Time,2006,7.9
-0032599,His Girl Friday,1940,8.0
-0057129,The Haunting,1963,7.6
-0387564,Saw,2004,7.7
-0264464,Catch Me If You Can,2002,8.0
-0167260,The Lord of the Rings: The Return of the King,2003,8.9
-0086879,Amadeus,1984,8.3
-0914798,The Boy in the Striped Pajamas,2008,7.8
-0796366,Star Trek,2009,8.0
-0419294,The Three Burials of Melquiades Estrada,2005,7.5
-0018455,Sunrise,1927,8.4
-0033563,Dumbo,1941,7.3
-0120363,Toy Story 2,1999,7.9
-0120689,The Green Mile,1999,8.5
-1555149,Elite Squad: The Enemy Within,2010,8.1
-0119282,Hercules,1997,7.2
-3416742,What We Do in the Shadows,2014,7.6
-0381849,3:10 to Yuma,2007,7.8
-0097576,Indiana Jones and the Last Crusade,1989,8.3
-0082971,Raiders of the Lost Ark,1981,8.5
-0040506,Key Largo,1948,7.9
-0109045,"The Adventures of Priscilla, Queen of the Desert",1994,7.5
-0080684,Star Wars: Episode V - The Empire Strikes Back,1980,8.8
-0421238,The Proposition,2005,7.5
-0027977,Modern Times,1936,8.6
-0114746,Twelve Monkeys,1995,8.1
-0445922,Across the Universe,2007,7.4
-0078748,Alien,1979,8.5
-0069281,Sleuth,1972,8.1
-1185616,Waltz with Bashir,2008,8.0
-0412080,The World&#x27;s Fastest Indian,2005,7.9
-0083907,The Evil Dead,1981,7.6
-0210945,Remember the Titans,2000,7.8
-0075148,Rocky,1976,8.1
-0113862,Mr. Holland&#x27;s Opus,1995,7.3
-0022913,Freaks,1932,8.0
-0049366,Invasion of the Body Snatchers,1956,7.8
-1345836,The Dark Knight Rises,2012,8.5
-0364569,Oldboy,2003,8.4
-0421082,Control,2007,7.8
-0080487,Caddyshack,1980,7.4
-0090022,Silverado,1985,7.2
-2042568,Inside Llewyn Davis,2013,7.4
-0120746,The Mask of Zorro,1998,6.7
-0091217,Hoosiers,1986,7.6
-1226271,The Damned United,2009,7.6
-0104940,The Muppet Christmas Carol,1992,7.7
-2265171,The Raid 2,2014,8.0
-1465522,Tucker and Dale vs. Evil,2010,7.6
-0172495,Gladiator,2000,8.5
-0052618,Ben-Hur,1959,8.1
-0112641,Casino,1995,8.2
-0082096,Das Boot,1981,8.4
-0081398,Raging Bull,1980,8.3
-0498380,Letters from Iwo Jima,2006,7.9
-0058777,Zulu,1964,7.8
-0067093,Fiddler on the Roof,1971,8.0
-0256009,The Devil&#x27;s Backbone,2001,7.5
-1954470,Gangs of Wasseypur,2012,8.3
-0095765,Cinema Paradiso,1988,8.5
-0408236,Sweeney Todd: The Demon Barber of Fleet Street,2007,7.4
-0172684,Kuch Kuch Hota Hai,1998,7.8
-0332379,School of Rock,2003,7.1
-0389557,Black Book,2006,7.8
-0036775,Double Indemnity,1944,8.4
-2015381,Guardians of the Galaxy,2014,8.1
-0169547,American Beauty,1999,8.4
-0077651,Halloween,1978,7.9
-0068327,Cabaret,1972,7.9
-0021814,Dracula,1931,7.6
-0061512,Cool Hand Luke,1967,8.2
-1276419,A Royal Affair,2012,7.6
-0230600,The Others,2001,7.6
-0054331,Spartacus,1960,7.9
-0106308,Army of Darkness,1992,7.6
-0978762,Mary and Max,2009,8.2
-0044079,Strangers on a Train,1951,8.1
-0405508,Rang De Basanti,2006,8.4
-0091064,The Fly,1986,7.5
-0114709,Toy Story,1995,8.3
-0055630,Yojimbo,1961,8.3
-0211915,Am&#xE9;lie,2001,8.4
-0054215,Psycho,1960,8.5
-0051459,Cat on a Hot Tin Roof,1958,8.1
-0059578,For a Few Dollars More,1965,8.3
 0097937,My Left Foot,1989,7.9
-0060196,"The Good, the Bad and the Ugly",1966,8.9
-0118715,The Big Lebowski,1998,8.2
-0073486,One Flew Over the Cuckoo&#x27;s Nest,1975,8.7
-0393162,Coach Carter,2005,7.2
-0111495,Three Colors: Red,1994,8.1
-0083658,Blade Runner,1982,8.2
-0090605,Aliens,1986,8.4
-0056869,The Birds,1963,7.8
-0423866,3-Iron,2004,8.1
-0056217,The Man Who Shot Liberty Valance,1962,8.1
-1028532,Hachi: A Dog&#x27;s Tale,2009,8.2
-0065214,The Wild Bunch,1969,8.0
-0374887,Munna Bhai M.B.B.S.,2003,8.4
-0052561,Anatomy of a Murder,1959,8.1
-0851578,Paprika,2006,7.7
-0088846,Brazil,1985,8.0
-0861739,Elite Squad,2007,8.1
-0087781,The Natural,1984,7.5
-1392214,Prisoners,2013,8.1
-1821480,Kahaani,2012,8.2
-0053221,Rio Bravo,1959,8.1
-0119698,Princess Mononoke,1997,8.4
-0084503,Pink Floyd The Wall,1982,8.0
-0099871,Jacob&#x27;s Ladder,1990,7.5
-0347149,Howl&#x27;s Moving Castle,2004,8.2
-0109830,Forrest Gump,1994,8.8
-0062229,Le Samoura&#xEF;,1967,8.1
-1210819,The Lone Ranger,2013,6.5
-0079470,Life of Brian,1979,8.1
-0046911,Diabolique,1955,8.1
-0056923,Charade,1963,8.0
-0054997,The Hustler,1961,8.1
-0446059,Fearless,2006,7.7
-0318462,The Motorcycle Diaries,2004,7.8
-0032910,Pinocchio,1940,7.5
-0095016,Die Hard,1988,8.2
-0120737,The Lord of the Rings: The Fellowship of the Ring,2001,8.8
-0405094,The Lives of Others,2006,8.5
-0113824,Whisper of the Heart,1995,8.0
-0101765,The Double Life of Veronique,1991,7.9
-0206634,Children of Men,2006,7.9
-3659388,The Martian,2015,8.1
-0327056,Mystic River,2003,8.0
-0479143,Rocky Balboa,2006,7.2
-0116695,Jerry Maguire,1996,7.3
-0848228,The Avengers,2012,8.1
-0110148,Interview with the Vampire: The Vampire Chronicles,1994,7.6
-0289043,28 Days Later...,2002,7.6
-0071853,Monty Python and the Holy Grail,1975,8.3
-0265086,Black Hawk Down,2001,7.7
-0266543,Finding Nemo,2003,8.2
-0077416,The Deer Hunter,1978,8.2
-0338188,The Missing,2003,6.5
-0093058,Full Metal Jacket,1987,8.3
-1798684,Southpaw,2015,7.5
-0434409,V for Vendetta,2005,8.2
-0993846,The Wolf of Wall Street,2013,8.2
-0086197,The Right Stuff,1983,7.9
-1798709,Her,2013,8.0
-0369702,The Sea Inside,2004,8.1
-2267998,Gone Girl,2014,8.2
-0460791,The Fall,2006,7.9
-0086190,Star Wars: Episode VI - Return of the Jedi,1983,8.4
-0113277,Heat,1995,8.3
-0482571,The Prestige,2006,8.5
-0443680,The Assassination of Jesse James by the Coward Robert Ford,2007,7.6
-0758758,Into the Wild,2007,8.2
-0057012,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,1964,8.5
-0371746,Iron Man,2008,7.9
-1139797,Let the Right One In,2008,8.0
-0361748,Inglourious Basterds,2009,8.3
-0084787,The Thing,1982,8.2
-2084970,The Imitation Game,2014,8.1
-1057500,Invictus,2009,7.4
-0248126,Kabhi Khushi Kabhie Gham...,2001,7.5
-0046359,Stalag 17,1953,8.1
-0870111,Frost/Nixon,2008,7.7
-0058946,The Battle of Algiers,1966,8.1
-0038109,Spellbound,1945,7.7
-0025316,It Happened One Night,1934,8.2
-0107822,The Piano,1993,7.6
-0756683,The Man from Earth,2007,8.0
-0102138,JFK,1991,8.0
-0215750,Enemy at the Gates,2001,7.6
-0017925,The General,1926,8.3
-0023969,Duck Soup,1933,8.0
-0120802,The Red Violin,1998,7.7
-0408306,Munich,2005,7.6
-1069238,Departures,2008,8.1
-0087553,The Killing Fields,1984,7.9
-0790636,Dallas Buyers Club,2013,8.0
-0052357,Vertigo,1958,8.4
-0093389,The Last Emperor,1987,7.8
-0058385,My Fair Lady,1964,7.9
-0050212,The Bridge on the River Kwai,1957,8.2
-0363163,Downfall,2004,8.3
-0075029,The Outlaw Josey Wales,1976,7.9
-0109424,Chungking Express,1994,8.1
-0118799,Life Is Beautiful,1997,8.6
-0964517,The Fighter,2010,7.9
-0072271,The Texas Chain Saw Massacre,1974,7.5
-0032553,The Great Dictator,1940,8.5
-0068182,"Aguirre, the Wrath of God",1972,8.0
-0053125,North by Northwest,1959,8.4
-0097441,Glory,1989,7.9
-0104694,A League of Their Own,1992,7.2
-0275847,Lilo &#x26; Stitch,2002,7.2
-0082010,An American Werewolf in London,1981,7.6
-0292490,Dil Chahta Hai,2001,8.2
-1675434,The Intouchables,2011,8.6
-0395169,Hotel Rwanda,2004,8.1
-0450188,La Vie en Rose,2007,7.7
-0119314,The Horse Whisperer,1998,6.5
-3848892,Baby,2015,8.1
-0120735,"Lock, Stock and Two Smoking Barrels",1998,8.2
-0059113,Doctor Zhivago,1965,8.0
-0063442,Planet of the Apes,1968,8.0
-0198781,"Monsters, Inc.",2001,8.1
-0063350,Night of the Living Dead,1968,8.0
-0376968,The Return,2003,8.0
-0065421,The AristoCats,1970,7.1
-0120762,Mulan,1998,7.5
-0112870,Dilwale Dulhania Le Jayenge,1995,8.3
-0365748,Shaun of the Dead,2004,8.0
-0457430,Pan&#x27;s Labyrinth,2006,8.2
-0067992,Willy Wonka &#x26; the Chocolate Factory,1971,7.8
-0283509,No Man&#x27;s Land,2001,8.0
-0372824,The Chorus,2004,7.9
-0903624,The Hobbit: An Unexpected Journey,2012,7.9
+0097955,Pomegranate and Cane,1989,8.2
+0098253,Santa Sangre,1989,7.7
+0098437,The Winter War,1989,7.9
+0098573,Don&#x27;t Let Them Shoot the Kite,1989,8.5
+0099043,Anjali,1990,8.2
+0099077,Awakenings,1990,7.8
+0099088,Back to the Future Part III,1990,7.4
 0099348,Dances with Wolves,1990,8.0
-0091369,Labyrinth,1986,7.4
-0108002,Rudy,1993,7.5
-0050986,Wild Strawberries,1957,8.3
-3863552,Bajrangi Bhaijaan,2015,8.2
-0032976,Rebecca,1940,8.2
-0120586,American History X,1998,8.6
-0158371,Sweet and Lowdown,1999,7.3
-0049833,The Ten Commandments,1956,7.9
-0054047,The Magnificent Seven,1960,7.8
-0243017,Waking Life,2001,7.8
-0107688,The Nightmare Before Christmas,1993,8.0
-0046183,Peter Pan,1953,7.4
-0042192,All About Eve,1950,8.3
-0089218,The Goonies,1985,7.8
-0071230,Blazing Saddles,1974,7.8
-0047478,Seven Samurai,1954,8.7
-0029583,Snow White and the Seven Dwarfs,1937,7.7
-0106364,Batman: Mask of the Phantasm,1993,7.9
-0119488,L.A. Confidential,1997,8.3
-0091763,Platoon,1986,8.1
-2375559,1,2014,8.7
-0070511,Papillon,1973,8.0
-2294629,Frozen,2013,7.6
-0248845,Hedwig and the Angry Inch,2001,7.8
-0353969,Memories of Murder,2003,8.1
-0042876,Rashomon,1950,8.3
-0056172,Lawrence of Arabia,1962,8.4
-3011894,Wild Tales,2014,8.2
-1853728,Django Unchained,2012,8.5
-0384116,G.O.R.A.,2004,7.9
-0092991,Evil Dead II,1987,7.8
-1663202,The Revenant,2015,8.3
-0103874,Dracula,1992,7.5
-0022100,M,1931,8.4
-0094625,Akira,1988,8.1
-0087538,The Karate Kid,1984,7.2
-0067185,Harold and Maude,1971,8.0
-0086250,Scarface,1983,8.3
-0108037,The Sandlot,1993,7.8
-0878804,The Blind Side,2009,7.7
-2140373,Saving Mr. Banks,2013,7.5
-1535109,Captain Phillips,2013,7.9
-1979320,Rush,2013,8.2
-0286244,The Triplets of Belleville,2003,7.8
-0020629,All Quiet on the Western Front,1930,8.1
-1410063,The Flowers of War,2011,7.6
-0385002,Green Street Hooligans,2005,7.5
-0070735,The Sting,1973,8.3
-0286112,Shaolin Soccer,2001,7.3
-0103064,Terminator 2: Judgment Day,1991,8.5
-0118843,"Black Cat, White Cat",1998,8.1
-0096487,Young Guns,1988,6.8
-0103873,Dead Alive,1992,7.6
-1280558,A Wednesday,2008,8.4
-0440963,The Bourne Ultimatum,2007,8.1
-0112471,Before Sunrise,1995,8.1
-0118694,In the Mood for Love,2000,8.1
-0454876,Life of Pi,2012,8.0
-0137523,Fight Club,1999,8.9
-1375666,Inception,2010,8.8
-0184894,Shanghai Noon,2000,6.6
-0110413,L&#xE9;on: The Professional,1994,8.6
-0087800,A Nightmare on Elm Street,1984,7.5
+0099487,Edward Scissorhands,1990,8.0
 0099685,Goodfellas,1990,8.7
-0077631,Grease,1978,7.2
-0317705,The Incredibles,2004,8.0
-0274309,24 Hour Party People,2002,7.4
-0068699,High Plains Drifter,1973,7.6
-0083866,E.T. the Extra-Terrestrial,1982,7.9
-0070917,The Wicker Man,1973,7.6
-0398286,Tangled,2010,7.8
-0066206,Patton,1970,8.0
-0065126,True Grit,1969,7.4
-0363226,Zatoichi,2003,7.6
-0253474,The Pianist,2002,8.5
-0114787,Underground,1995,8.1
-1130884,Shutter Island,2010,8.1
-0109707,Ed Wood,1994,7.9
-0338564,Infernal Affairs,2002,8.1
-0420332,Veer-Zaara,2004,7.9
-0133093,The Matrix,1999,8.7
+0099871,Jacob&#x27;s Ladder,1990,7.5
+0100802,Total Recall,1990,7.5
+0101414,Beauty and the Beast,1991,8.0
+0101649,Thalapathi,1991,8.6
+0101761,The Doors,1991,7.2
+0101765,The Double Life of Veronique,1991,7.9
+0101985,A Brighter Summer Day,1991,8.3
+0102138,JFK,1991,8.0
+0102369,Mother,1991,8.6
+0102571,The Elementary School,1991,8.2
+0102636,Parinda,1989,8.0
+0102701,Prahaar: The Final Attack,1991,8.0
+0102926,The Silence of the Lambs,1991,8.6
+0103064,Terminator 2: Judgment Day,1991,8.5
+0103119,Travis,1991,7.8
+0103639,Aladdin,1992,8.0
+0103873,Dead Alive,1992,7.6
+0103874,Dracula,1992,7.5
+0104231,Far and Away,1992,6.5
+0104350,The Best Intentions,1992,7.8
+0104370,Groza nad Rusyu,1992,7.9
+0104561,Jo Jeeta Wohi Sikandar,1992,8.3
+0104652,Porco Rosso,1992,7.8
+0104694,A League of Their Own,1992,7.2
+0104737,Listopad,1992,7.5
+0104860,We Are Not Angels,1992,8.5
+0104940,The Muppet Christmas Carol,1992,7.7
+0105236,Reservoir Dogs,1992,8.4
+0105271,Roja,1992,8.2
+0105575,The Chieftain&#x27;s Son,1992,8.7
+0105602,Tito and Me,1992,8.0
+0105695,Unforgiven,1992,8.3
+0105888,"Life, and Nothing More...",1992,7.9
+0106308,Army of Darkness,1992,7.6
+0106332,Farewell My Concubine,1993,8.1
+0106364,Batman: Mask of the Phantasm,1993,7.9
+0106417,Sailor Moon R the Movie: The Promise of the Rose,1993,7.7
+0106514,"Candles, Snow and Mistletoe",1993,8.1
 0107048,Groundhog Day,1993,8.1
-0379217,Coffee and Cigarettes,2003,7.1
-0887912,The Hurt Locker,2008,7.6
-0349825,Miracle,2004,7.5
-0061418,Bonnie and Clyde,1967,7.9
-0246578,Donnie Darko,2001,8.1
-0055031,Judgment at Nuremberg,1961,8.3
-0076786,Suspiria,1977,7.5
-0078788,Apocalypse Now,1979,8.5
-1403865,True Grit,2010,7.7
+0107207,In the Name of the Father,1993,8.1
+0107290,Jurassic Park,1993,8.1
+0107419,Lillian,1993,7.9
+0107688,The Nightmare Before Christmas,1993,8.0
+0107692,Ninja Scroll,1993,7.9
+0107720,Nyomkeres&#xF6;,1993,7.8
+0107822,The Piano,1993,7.6
+0108002,Rudy,1993,7.5
+0108037,The Sandlot,1993,7.8
+0108052,Schindler&#x27;s List,1993,8.9
+0108358,Tombstone,1993,7.8
+0108394,Three Colors: Blue,1993,8.0
+0108429,Udzinarta mze,1992,8.7
+0108504,For a Lost Soldier,1992,7.9
+0109045,"The Adventures of Priscilla, Queen of the Desert",1994,7.5
+0109117,Andaz Apna Apna,1994,8.7
+0109277,Sailor Moon S the Movie: Hearts in Ice,1994,7.7
+0109424,Chungking Express,1994,8.1
+0109555,Darr,1993,7.9
+0109707,Ed Wood,1994,7.9
+0109830,Forrest Gump,1994,8.8
+0109900,Giorgino,1994,7.5
+0110081,To Live,1994,8.3
+0110148,Interview with the Vampire: The Vampire Chronicles,1994,7.6
+0110222,Kabhi Haan Kabhi Naa,1994,8.1
 0110322,Legends of the Fall,1994,7.5
-0039628,Miracle on 34th Street,1947,7.9
+0110357,The Lion King,1994,8.5
+0110413,L&#xE9;on: The Professional,1994,8.6
+0110478,Maverick,1994,7.0
+0110877,Il Postino: The Postman,1994,7.8
+0110882,Before the Rain,1994,8.1
+0110912,Pulp Fiction,1994,8.9
+0110932,Quiz Show,1994,7.5
+0111161,The Shawshank Redemption,1994,9.3
+0111341,Satantango,1994,8.6
+0111495,Three Colors: Red,1994,8.1
+0111579,Burnt by the Sun,1994,8.0
+0111596,Vazir,1994,8.0
+0111756,Wyatt Earp,1994,6.6
+0111786,In the Heat of the Sun,1994,8.3
+0112461,The Basketball Diaries,1995,7.3
+0112471,Before Sunrise,1995,8.1
+0112553,Bombay,1995,8.1
+0112573,Braveheart,1995,8.4
+0112641,Casino,1995,8.2
+0112682,The City of Lost Children,1995,7.7
+0112817,Dead Man,1995,7.7
+0112870,Dilwale Dulhania Le Jayenge,1995,8.3
+0112922,The Day of the Beast,1995,7.5
+0113247,La Haine,1995,8.1
+0113277,Heat,1995,8.3
+0113568,Ghost in the Shell,1995,8.0
+0113799,Memories,1995,7.6
+0113824,Whisper of the Heart,1995,8.0
+0113862,Mr. Holland&#x27;s Opus,1995,7.3
+0114369,Se7en,1995,8.6
+0114664,Throwing Down,1995,8.1
+0114709,Toy Story,1995,8.3
+0114746,Twelve Monkeys,1995,8.1
+0114787,Underground,1995,8.1
+0114814,The Usual Suspects,1995,8.6
+0114996,A Chinese Odyssey Part Two: Cinderella,1995,8.1
+0116207,Children of the Sun,1995,8.0
+0116231,The Bandit,1996,8.5
+0116282,Fargo,1996,8.2
+0116506,Hearts &#x26; Minds,1995,8.1
+0116630,Hindustani,1996,8.2
+0116695,Jerry Maguire,1996,7.3
+0116739,How the War Started on My Island,1996,7.9
+0116767,Kids Return,1996,7.6
+0116790,Kolya,1996,7.8
+0116860,"Pretty Village, Pretty Flame",1996,8.6
+0116904,Lone Justice: Showdown at Plum Creek,1996,7.8
+0117555,The Perfect Circle,1997,8.1
+0117615,Shall We Dance?,1996,7.8
+0117631,Shine,1996,7.7
+0117731,Star Trek: First Contact,1996,7.6
+0118694,In the Mood for Love,2000,8.1
+0118715,The Big Lebowski,1998,8.2
+0118799,Life Is Beautiful,1997,8.6
+0118843,"Black Cat, White Cat",1998,8.1
+0118849,Children of Heaven,1997,8.5
+0118929,Dark City,1998,7.7
+0119008,Donnie Brasco,1997,7.8
+0119116,The Fifth Element,1997,7.7
+0119164,The Full Monty,1997,7.2
+0119177,Gattaca,1997,7.8
+0119282,Hercules,1997,7.2
+0119314,The Horse Whisperer,1998,6.5
+0119472,Knockin&#x27; on Heaven&#x27;s Door,1997,8.0
+0119488,L.A. Confidential,1997,8.3
+0119550,Little Ghost,1997,8.2
+0119615,Les marches du palais,1997,7.9
+0119698,Princess Mononoke,1997,8.4
+0119907,Pont Neuf,1997,8.2
+0120363,Toy Story 2,1999,7.9
+0120586,American History X,1998,8.6
+0120689,The Green Mile,1999,8.5
+0120731,The Legend of 1900,1998,8.1
+0120735,"Lock, Stock and Two Smoking Barrels",1998,8.2
+0120737,The Lord of the Rings: The Fellowship of the Ring,2001,8.8
+0120746,The Mask of Zorro,1998,6.7
+0120762,Mulan,1998,7.5
+0120802,The Red Violin,1998,7.7
+0120815,Saving Private Ryan,1998,8.6
+0120910,Fantasia/2000,1999,7.3
+0121164,Corpse Bride,2005,7.4
+0121387,Snow White,1984,7.9
+0121703,Rosaura a las 10,1958,7.9
+0121766,Star Wars: Episode III - Revenge of the Sith,2005,7.6
+0122227,Return to Treasure Island,1988,8.4
+0122234,The Meeting Point,1989,8.2
+0122565,The Counterfeit Coin,1955,8.6
+0122883,Alloimono stous neous,1961,8.2
+0123390,The Miscellaneous Brigade on the Watch,1971,8.6
+0123391,Brigada Diverse intra &#xEE;n actiune,1970,8.6
+0123392,B.D. In the Mountains and on the Seaside,1971,8.6
+0124437,The Ogre of Athens,1956,8.2
+0124770,Patlabor 2: The Movie,1993,7.6
+0125659,Open Your Eyes,1997,7.8
+0125968,Operatiunea &#x27;Monstrul&#x27;,1976,8.8
+0126029,Shrek,2001,7.9
+0126296,The Far Out West,1967,8.2
+0126449,Then I Sentenced Them All to Death,1972,8.1
+0127536,Elizabeth,1998,7.5
+0128126,C&#xEE;ntecele marii,1971,8.0
+0128985,Chalti Ka Naam Gaadi,1958,8.0
+0129167,The Iron Giant,1999,8.0
+0131636,The Little Fox,1981,8.4
+0132477,October Sky,1999,7.8
+0133093,The Matrix,1999,8.7
+0133826,Guru,1997,8.0
+0134066,The Royal Ballet,1960,7.9
+0135481,Jesse James Under the Black Flag,1921,7.4
+0136478,"Pruncul, petrolul si Ardelenii",1981,7.6
+0137226,The Treasure of Swamp Castle,1985,8.0
+0137280,Zafiros: Blue Madness,1997,8.1
+0137523,Fight Club,1999,8.9
+0137925,Our Land,1979,8.7
+0138623,Kung mangarap ka&#x27;t magising,1977,8.2
+0139820,Red Angel,1966,7.9
+0139876,Baasha,1995,8.3
+0140305,No Sympathy for the Devil,1997,7.5
+0140348,Mahanadi,1993,8.5
+0140352,The Insider,1999,7.9
+0140377,Michael Madana Kamarajan,1990,8.4
+0140448,Pathinaru Vayathinile,1977,8.1
+0140919,Cotton Patch Gospel,1988,8.0
+0141573,Chelovek s planety Zemlya,1959,7.9
+0141830,The Story of the Voyages,1983,8.0
+0141904,Titanic Waltz,1964,8.4
+0141998,The Last Spring,1994,7.3
+0142236,Dragon Ball Z: Fusion Reborn,1995,7.8
+0142242,Dragon Ball Z: Broly - The Legendary Super Saiyan,1993,7.5
+0142243,Dragon Ball Z: Wrath of the Dragon,1995,7.7
+0142250,Dragon Ball: The Path to Power,1996,7.5
+0142632,L&#xFA;das Matyi,1977,8.4
+0144681,West and Soda,1965,7.5
+0145072,With Glittering Eyes,1966,8.1
+0145777,Flashback,1969,8.7
+0146645,Dosti,1964,8.4
+0146882,High Fidelity,2000,7.6
+0150101,Chhadmabeshi,1971,8.3
+0150417,Dulhan Wahi Jo Piya Man Bhaaye,1977,8.0
+0151511,Mausam,1975,8.0
+0151750,Niekas nenorejo mirti,1966,8.0
+0153509,Devil&#x27;s Bride,1973,8.5
+0154108,Aarop,1974,8.6
+0154627,Idi Kathakaadu,1979,8.1
+0154855,Samanishvilis dedinatsvali,1977,7.9
+0155124,Rudra Veena,1988,8.3
+0155265,Thillu Mullu,1981,8.6
+0155725,Gorantha Deepam,1978,8.1
+0155844,Magic Temple,1996,7.8
+0155858,"Maria, Mirabella",1981,7.6
+0156042,Sampoorna Ramayanam,1971,7.8
+0156082,Seeta Kalyanam,1976,8.2
+0156130,Thazhvaram,1990,7.7
+0156887,Perfect Blue,1997,7.8
+0156945,The Return of the North Wind,1994,7.6
+0157767,Hooked on Queen,1993,7.9
+0158022,Neelachaley Mahaprabhu,1957,8.2
+0158371,Sweet and Lowdown,1999,7.3
+0158983,South Park: Bigger Longer &#x26; Uncut,1999,7.8
+0159509,Kid&#xF4; senshi Gandamu,1981,7.5
+0159511,Mobile Suit Gundam III: Encounters in Space,1982,7.7
+0159732,"Shame, Shame on the Bixby Boys",1978,7.4
+0163052,Lenz,1971,8.2
+0163111,Mozart - Aufzeichnungen einer Jugend,1976,8.2
+0163494,Space Adventure Cobra,1982,7.5
+0164931,Think Me Nothing,1975,8.9
+0165473,Demons,1971,8.2
+0165546,The Wounds,1998,8.1
+0165623,Angst,1983,7.5
+0165904,Riesutu duona,1979,8.5
+0166275,Mob Law: A Film Portrait of Oscar Goodman,1998,7.8
+0166813,Spirit: Stallion of the Cimarron,2002,7.0
+0166896,The Straight Story,1999,8.0
+0166924,Mulholland Dr.,2001,8.0
+0167260,The Lord of the Rings: The Return of the King,2003,8.9
+0167261,The Lord of the Rings: The Two Towers,2002,8.7
+0167331,Cosy Dens,1999,8.4
+0167400,Time to Love,1965,8.3
+0167404,The Sixth Sense,1999,8.1
+0168269,Cinderella,1947,7.8
+0168629,Dancer in the Dark,2000,8.0
+0168978,Lucia,1998,7.9
+0169102,Lagaan: Once Upon a Time in India,2001,8.2
+0169215,The Secret of the Forest,1956,8.0
+0169547,American Beauty,1999,8.4
+0169828,Father of a Soldier,1965,8.7
+0169858,Neon Genesis Evangelion: The End of Evangelion,1997,8.2
+0169880,Neon Genesis Evangelion: Death &#x26; Rebirth,1997,7.6
+0169911,The Flood,1963,8.2
+0170783,Yesterday,1988,9.2
+0171220,Denovi na iskusenie,1965,8.3
+0171346,Gjeneral gramafoni,1978,8.6
+0171515,Me vkhedav mzes,1965,8.1
+0171699,Rotsa akvavda nushi,1972,8.0
+0172495,Gladiator,2000,8.5
+0172615,Ivan Franko,1956,7.8
+0172684,Kuch Kuch Hota Hai,1998,7.8
+0172776,Mars na Drinu,1964,8.4
+0173406,The Fireman,1971,8.5
+0173504,Zonja nga qyteti,1976,8.3
+0173726,Cherez Gobi i Khingan,1981,8.0
+0174251,Saturday Night,1957,7.5
+0174470,Arachveulebrivi gamopena,1968,7.9
+0174834,The Pied Piper,1986,7.9
+0174856,The Hurricane,1999,7.6
+0175075,The Lost Letter,1972,8.0
+0175157,Sherekilebi,1974,8.6
+0176285,Faithfulness,1965,7.8
+0176694,The Tragedy of Man,2011,7.6
+0177511,The Glass Agency,1999,8.2
+0177879,Karl Marks,1963,8.3
+0177899,Lebedev protiv Lebedeva,1965,9.0
+0179955,Cat City,1986,8.4
+0180261,Moment,1978,8.1
+0181468,Deps,1974,8.1
+0181689,Minority Report,2002,7.7
+0181845,A Holy Place,1990,7.5
+0181875,Almost Famous,2000,7.9
+0182387,Republikata vo plamen,1969,8.0
+0183306,Jinnah,1998,8.2
+0183522,The Past,1998,8.1
+0184316,There Once Was a King...,1955,8.2
+0184756,Mr. Muhsin,1987,8.6
+0184894,Shanghai Noon,2000,6.6
+0186597,Tagos ng dugo,1987,8.3
+0186957,Devatha,1982,8.3
+0186968,Mozart&#x27;s Don Giovanni,1955,7.8
+0187231,Barking at the Stars,1998,8.7
+0187318,Moondram Pirai,1982,8.5
+0187419,Premaabhishekam,1981,8.4
+0187690,All My Friends Are Cowboys,1998,7.9
+0189154,Toplo,1978,8.6
+0190590,"O Brother, Where Art Thou?",2000,7.8
+0190600,L&#x27;Orfeo,1978,8.1
+0191043,The Color of Paradise,1999,8.2
+0192482,Gza shinisaken,1981,8.2
+0195231,Satya,1998,8.2
+0197042,Tis kakomoiras,1963,8.8
+0198781,"Monsters, Inc.",2001,8.1
+0199553,Gentry,1987,8.6
+0200087,Sarfarosh,1999,8.1
+0201368,The Broken Landlord,1985,8.8
+0203009,Moulin Rouge!,2001,7.6
+0203612,Pitfall,1962,7.8
+0204680,Third World,1980,8.2
+0205306,A Nameless Band,1982,8.8
+0206634,Children of Men,2006,7.9
+0208092,Snatch.,2000,8.3
+0208408,Ritzar bez bronya,1966,8.0
+0208502,Angel&#x27;s Egg,1985,7.6
+0209144,Memento,2000,8.5
+0210945,Remember the Titans,2000,7.8
+0211653,The Mystery of the Third Planet,1981,8.1
+0211915,Am&#xE9;lie,2001,8.4
+0212040,Carmen,1969,7.8
+0212132,The Tracker,2002,7.6
+0212160,Flash the Sheepdog,1966,8.2
+0212712,2046,2004,7.5
+0214585,Chithram,1988,8.4
+0214915,The Ornate Lock,1993,8.5
+0215517,Angoor,1982,8.4
+0215750,Enemy at the Gates,2001,7.6
+0215911,Koshish,1972,8.6
+0216030,Netaji Subhash Chandra Bose,1966,8.1
+0216651,Vampire Hunter D: Bloodlust,2000,7.8
+0216818,The Hunting of the Snark,1987,7.9
+0217505,Gangs of New York,2002,7.5
+0217590,Adventures of Mowgli,1973,7.8
+0218246,A Fistful of Rawhide,1970,8.0
+0219392,Adamianta sevda,1987,8.6
+0219945,Neilonis nadzvis khe,1985,8.2
+0220084,Tadon to chikuwa,1998,7.9
+0220656,Mudhalvan,1999,8.3
+0220832,Vaastav: The Reality,1999,8.0
+0221344,Herod&#x27;s Law,1999,8.1
+0222012,Hey Ram,2000,8.1
+0222426,Hedgehogs Are Born Without Spines,1971,8.2
+0228853,"Throw Away Your Books, Rally in the Streets",1971,8.3
+0229371,An Evening of Edgar Allan Poe,1970,7.5
+0229664,Princes and Princesses,2000,7.7
+0230597,Oru Vadakkan Veeragatha,1989,8.3
+0230600,The Others,2001,7.6
+0232152,Nagara Haavu,1972,8.6
+0232878,Upasane,1974,8.0
+0233001,&#xA1;Qu&#xE9; vecinos tan animales!,1998,8.0
+0234658,Satya Harishchandra,1965,8.1
+0234753,Snake Tales,2000,8.0
+0235609,Mullum Malarum,1978,8.0
+0235978,Anakku Sazali,1956,8.0
+0236281,The Legend of Hang Tuah,1957,8.1
+0236843,Black Wind,1965,8.2
+0237089,Chaowa-Pawa,1959,8.3
+0237254,Fuleswari,1974,7.8
+0237376,Kireedam,1989,8.7
+0238380,Equilibrium,2002,7.5
+0239096,The Humpbacked Horse,1975,7.6
+0240425,Comet in Moominland,1992,7.6
+0240879,Sardar,1993,7.8
+0242256,Alai Payuthey,2000,8.2
+0242519,Hera Pheri,2000,8.6
+0243017,Waking Life,2001,7.8
+0245429,Spirited Away,2001,8.6
+0245619,D&#xED;szel&#xF6;ad&#xE1;s,1955,8.0
+0245929,Devils on the Doorstep,2000,8.2
+0246003,Kirayi Rowdylu,1981,8.0
+0246233,Silver Spurs,1922,7.6
+0246422,America Alludu,1985,8.7
+0246578,Donnie Darko,2001,8.1
+0246882,Raja Raja Chozhan,1973,8.0
+0246994,Trimata ot zapasa,1971,8.2
+0247025,The Hedgehogs&#x27; War,1979,8.6
+0247679,Sadiyata,1986,7.9
+0248126,Kabhi Khushi Kabhie Gham...,2001,7.5
+0248428,Shiva,1989,8.0
+0248845,Hedwig and the Angry Inch,2001,7.8
+0249188,Butterflies of the Spraying Rain,1987,8.5
+0249241,Werckmeister Harmonies,2000,8.2
+0249336,Aha Naa Pellanta,1987,8.6
+0249361,Annamayya,1997,7.8
+0249386,The Village Had No Walls,1995,8.0
+0249462,Billy Elliot,2000,7.7
+0249795,Maya Bazaar,1957,8.9
+0249836,Nawab Sirajuddaula,1967,8.0
+0250745,Sri Krishna Deva Raya,1969,7.9
+0250759,Sutradhaarulu,1990,8.0
+0251355,The Love Chariot,1987,8.7
+0251834,Meghasandesam,1983,7.8
+0251847,Missamma,1955,8.0
+0251996,Showkar,1950,8.8
+0252196,Aditya 369,1991,7.8
+0252361,Davaro: Son Eskiya,1981,8.2
+0252487,The Chaos Class,1975,9.4
+0252488,The Chaos Class Failed the Class,1976,9.0
+0252489,The Chaos Class Is on Vacation,1978,8.8
+0252490,The Chaos Class Is Waking Up,1977,8.9
+0252591,King of the Doormen,1976,8.5
+0252597,"Feyzo, the Polite One",1978,8.8
+0252611,Korkusuz Korkak,1979,8.1
+0252619,From the Village to the City,1974,8.4
+0253143,Inek Saban,1978,7.9
+0253474,The Pianist,2002,8.5
+0253592,Il ritorno d&#x27;Ulisse in patria,1980,7.8
+0253614,"Saban, Son of Saban",1977,8.9
+0253779,The Foster Brothers,1976,9.0
+0253784,Tandra Paparayudu,1986,8.0
+0253828,Tosun Pasa,1976,9.1
+0253991,Z&#xFC;b&#xFC;k,1980,8.5
+0253997,The King of the Street Cleaners,1977,8.7
+0255289,Kala Pani,1996,8.2
+0255306,Kilukkam,1991,8.5
+0255643,Thenmavin Kombath,1994,8.0
+0256009,The Devil&#x27;s Backbone,2001,7.5
+0256406,Sri Venkateswara Mahatmyam,1960,8.2
+0256691,Chiranjeevulu,1956,8.2
+0257497,"La Commune (Paris, 1871)",2000,7.9
+0258463,The Bourne Identity,2002,7.9
+0259333,"Goodbye, Casanova",2000,8.2
+0259534,Ramayana: The Legend of Prince Rama,1992,8.2
+0260991,J.S.A.: Joint Security Area,2000,7.9
+0262877,Vishwanatha Nayakudu,1987,7.9
+0263208,Abbas in Flower,1982,8.2
+0263402,Gulebakavali Katha,1962,7.9
+0263806,Ogni,1984,8.6
+0263831,Pandava Vanavasam,1965,8.2
+0263833,Panduranga Mahatyam,1957,8.1
+0263915,Raktha Sambandham,1962,8.6
+0263975,The Girl with the Red Scarf,1978,8.8
+0263993,Shri Datta Darshanam,1985,8.1
+0263994,Shri Krishna Tulabharam,1966,8.1
+0264464,Catch Me If You Can,2002,8.0
+0264916,Monarch,2000,7.6
+0265086,Black Hawk Down,2001,7.7
+0265144,Offside,2000,7.4
+0265799,Sri Krishnarjuna Yudham,1963,8.1
+0266308,Battle Royale,2000,7.7
+0266543,Finding Nemo,2003,8.2
+0266697,Kill Bill: Vol. 1,2003,8.1
+0267351,My Dear Brother,1973,8.8
+0268282,The Elm-Chanted Forest,1986,8.1
+0268380,Ice Age,2002,7.6
+0268533,Phir Subha Hogi,1958,8.2
+0268978,A Beautiful Mind,2001,8.2
+0271383,A Dog&#x27;s Will,2000,8.5
+0274309,24 Hour Party People,2002,7.4
+0274603,The Bloody Wheat,1965,8.2
+0275277,Cowboy Bebop: The Movie,2001,7.9
+0275847,Lilo &#x26; Stitch,2002,7.2
+0275858,Mze shemodgomisa,1973,8.4
+0275942,Aszparuh,1981,8.6
+0276832,Bomba Kemal,1966,8.1
+0277031,Ince Cumali,1967,7.7
+0277689,Elektra,1981,7.8
+0278501,In Harihar Nagar,1990,8.5
+0279901,A Fugitive from the Past,1965,8.0
+0281063,Pesvebi,1987,8.7
+0282778,Nadodikkattu,1987,8.6
+0283509,No Man&#x27;s Land,2001,8.0
+0283524,Opasen char,1984,8.9
+0285665,Kuruthipunal,1995,8.5
+0286112,Shaolin Soccer,2001,7.3
+0286244,The Triplets of Belleville,2003,7.8
+0286813,Mattvis vints mamam miatova,1989,8.0
+0287300,Aile Serefi,1976,8.1
+0287351,Pinocchio,1972,7.6
+0287467,Talk to Her,2002,8.0
+0289043,28 Days Later...,2002,7.6
+0289782,Under the Flag of the Rising Sun,1972,7.9
+0289857,Bashta mi boyadzhiyata,1974,7.9
+0289879,The Butterfly Effect,2004,7.7
+0289967,Laughing Eyes,1977,8.6
+0290334,X2,2003,7.5
+0290937,Yodha,1992,8.2
+0291202,Gewalt! Gewalt: shojo geba-geba,1969,7.7
+0291286,J&#xFB;san-nin renzoku b&#xF4;k&#xF4;ma,1978,7.7
+0291350,Millennium Actress,2001,7.9
+0291855,Devasuram,1993,8.4
+0292246,Spadikam,1995,8.2
+0292490,Dil Chahta Hai,2001,8.2
+0292735,The Who and Special Guests Live at the Royal Albert Hall,2000,7.8
+0293508,The Phantom of the Opera,2004,7.4
+0293715,My Sassy Girl,2001,8.2
+0295187,Beni ec&#xEB;n vet&#xEB;,1975,8.1
+0295364,The Dark World,1953,7.8
+0295394,Liri a vdekje,1979,8.0
+0295730,Tomka dhe shok&#xEB;t e tij,1977,8.1
+0296574,Company,2002,8.1
+0298350,Gospodin za edin den,1983,8.6
+0299977,Hero,2002,7.9
+0301083,Cardcaptor Sakura: The Sealed Card,2000,7.7
+0301634,Frozen Stiff,2002,8.4
+0303187,Veer Savarkar,2001,7.8
+0303719,Basanti,2000,8.3
+0304141,Harry Potter and the Prisoner of Azkaban,2004,7.8
+0305956,Los peloteros,1951,7.6
+0308146,"Dance, Raja, Dance",1987,7.8
+0308294,The Autumn After Love,1986,8.2
+0308476,The Cuckoo,2002,7.9
+0311470,Sellers and Buyers,1989,8.2
+0311594,Nuvvu Naaku Nachchav,2001,8.6
+0312596,Dainamaito don don,1978,7.6
+0312859,A Peck on the Cheek,2002,8.5
+0313573,Selamsiz&#x27;s Band,1987,7.9
+0314067,Philanthropy,2002,8.6
+0315354,Callback,2005,8.8
+0316356,Open Range,2003,7.5
+0316949,Zwei wie wir... und die Eltern wissen von nichts,1966,8.9
+0317219,Cars,2006,7.2
+0317248,City of God,2002,8.7
+0317648,Hidalgo,2004,6.7
+0317705,The Incredibles,2004,8.0
+0318188,Sultan Selim and Hasan the Janissary,1951,8.1
+0318462,The Motorcycle Diaries,2004,7.8
+0318709,Soundtrack,2002,7.9
+0319061,Big Fish,2003,8.0
+0319736,The Legend of Bhagat Singh,2002,8.2
+0319836,The Clay Bird,2002,8.5
+0320110,Mutual Admiration Society,2002,8.3
+0323013,Lakshya,2004,7.9
+0325710,The Last Samurai,2003,7.7
+0325980,Pirates of the Caribbean: The Curse of the Black Pearl,2003,8.1
+0326098,S detza na more,1972,8.6
+0327056,Mystic River,2003,8.0
+0327597,Coraline,2009,7.7
+0327960,Intinti Ramayanam,1979,8.8
+0328810,My Land,2002,8.0
+0329575,Seabiscuit,2003,7.3
+0332379,School of Rock,2003,7.1
+0333215,The Magician&#x27;s Hat,1990,8.2
+0336262,Demir pen&#xE7;e casuslar savasi,1969,8.0
+0338013,Eternal Sunshine of the Spotless Mind,2004,8.4
+0338188,The Missing,2003,6.5
+0338245,Megas&#xF3;nicos,1997,7.9
+0338564,Infernal Affairs,2002,8.1
+0339535,The Professional,2003,8.3
+0342480,Giselle,1970,8.1
+0343956,Laman,2002,8.3
+0346336,The Best of Youth,2003,8.5
+0347149,Howl&#x27;s Moving Castle,2004,8.2
+0347246,Ghost in the Shell 2: Innocence,2004,7.6
+0347304,Kal Ho Naa Ho,2003,8.1
+0347429,Loetoeng kasaroeng,1926,8.2
+0347449,Avellaneda&#x27;s Moon,2004,7.3
+0348171,Tahran macerasi,1968,8.2
+0349825,Miracle,2004,7.5
+0350258,Ray,2004,7.7
+0352248,Cinderella Man,2005,8.0
+0353496,Godfather,1991,8.4
+0353935,Ramji Rav Speaking,1989,8.5
+0353969,Memories of Murder,2003,8.1
+0353975,Sandesham,1991,8.7
+0354770,Nezha Conquers the Dragon King,1979,7.7
+0355742,Manmadhudu,2002,8.2
+0358273,Walk the Line,2005,7.9
+0361748,Inglourious Basterds,2009,8.3
+0363163,Downfall,2004,8.3
+0363226,Zatoichi,2003,7.6
+0363996,Sesh Anka,1963,8.3
+0364569,Oldboy,2003,8.4
+0364647,Virumandi,2004,8.2
+0365748,Shaun of the Dead,2004,8.0
+0366840,Okkadu,2003,8.2
+0367495,Love is God,2003,8.9
+0367883,Indranath Srikanta O Annadadidi,1959,8.2
+0368572,And Should We Die,1966,7.4
+0368667,Interstella 5555: The 5tory of the 5ecret 5tar 5ystem,2003,7.9
+0369702,The Sea Inside,2004,8.1
+0370799,Jai Hanuman,1948,8.1
+0371279,Tajna dvorca I.B.,1951,7.8
+0371392,Watermark,2003,8.7
+0371644,Dongalaku Donga,1977,8.0
+0371742,Indru Pol Endrum Vazhga,1977,8.4
+0371746,Iron Man,2008,7.9
+0371764,Kalanthakulu,1978,8.2
+0371982,Taxi Driver,1981,7.9
+0372011,Uzhaikum Karangal,1976,8.0
+0372784,Batman Begins,2005,8.3
+0372824,The Chorus,2004,7.9
+0373132,Mayagadu,1983,8.1
+0373247,Pralaya Garjanai,1983,8.1
+0373255,Ragile Gundelu,1985,8.2
+0373293,Scallop Pond,2004,7.9
+0374887,Munna Bhai M.B.B.S.,2003,8.4
+0374897,Naila,1965,8.0
+0375093,Srabon Megher Din,1999,8.3
+0375878,Kaakha..Kaakha: The Police,2003,8.0
+0375880,Kadhal Konden,2003,7.9
+0376076,Pithamagan,2003,8.3
+0376127,Anniyan,2005,8.1
+0376968,The Return,2003,8.0
+0378194,Kill Bill: Vol. 2,2004,8.0
+0378284,Machuca,2004,7.8
+0378647,Ramana,2002,8.0
+0379217,Coffee and Cigarettes,2003,7.1
+0379370,Maqbool,2003,8.3
+0379786,Serenity,2005,8.0
+0381681,Before Sunset,2004,8.1
+0381849,3:10 to Yuma,2007,7.8
+0382932,Ratatouille,2007,8.0
+0383177,Aguner Poroshmoni,1994,8.9
+0383846,"When I Grow Up, I&#x27;ll Be a Kangaroo",2004,8.4
+0384116,G.O.R.A.,2004,7.9
+0384369,Before the Fall,2004,7.5
+0384488,Saint Ralph,2004,7.6
+0385002,Green Street Hooligans,2005,7.5
+0385726,Glory Road,2006,7.2
+0386064,Tae Guk Gi: The Brotherhood of War,2004,8.1
+0387154,Danila Prepeleac,1996,7.9
+0387564,Saw,2004,7.7
+0387914,Innocent Voices,2004,8.0
+0388120,"Two Ships, Side by Side",1963,8.0
+0388130,Initial D: Third Stage,2001,7.6
+0388980,The Greatest Game Ever Played,2005,7.5
+0389327,The Right Way,2004,8.4
+0389557,Black Book,2006,7.8
+0390022,Friday Night Lights,2004,7.3
+0392420,Maskeli S&#xFC;vari&#x27;nin d&#xF6;n&#xFC;s&#xFC;,1969,7.4
+0393061,At Night with No Curtains,2004,7.5
+0393162,Coach Carter,2005,7.2
+0395169,Hotel Rwanda,2004,8.1
+0396659,InuYasha the Movie 3: Swords of an Honorable Ruler,2003,7.8
+0398286,Tangled,2010,7.8
+0399471,Paradise Road,1988,8.0
+0400220,Beer Muscles,2004,7.8
+0400234,Black Friday,2004,8.6
+0401248,Beautiful Boxer,2004,7.3
+0401383,The Diving Bell and the Butterfly,2007,8.0
+0401792,Sin City,2005,8.1
+0403375,Ten Beautiful Legs,1964,8.2
+0404420,Devil&#x27;s Servants,1964,8.7
+0405094,The Lives of Others,2006,8.5
+0405159,Million Dollar Baby,2004,8.1
+0405508,Rang De Basanti,2006,8.4
+0407887,The Departed,2006,8.5
+0408236,Sweeney Todd: The Demon Barber of Fleet Street,2007,7.4
+0408306,Munich,2005,7.6
+0409459,Watchmen,2009,7.6
+0410097,Hustle &#x26; Flow,2005,7.4
+0411759,Planet Ibsen,2005,8.1
+0412080,The World&#x27;s Fastest Indian,2005,7.9
+0415046,The Overture,2004,7.9
+0416960,The Lizard,2004,8.6
+0416966,Mattie Fresno and the Holoflux Universe,2007,8.1
+0417015,A Night with Lou Reed,1983,7.8
+0417805,The Island of Adventure,1982,8.1
+0419294,The Three Burials of Melquiades Estrada,2005,7.5
+0419992,My Brother... Nikhil,2005,7.4
+0420332,Veer-Zaara,2004,7.9
+0421082,Control,2007,7.8
+0421238,The Proposition,2005,7.5
+0421715,The Curious Case of Benjamin Button,2008,7.8
+0422320,Ghilli,2004,7.8
+0423866,3-Iron,2004,8.1
+0424227,Turtles Can Fly,2004,8.1
+0426931,August Rush,2007,7.5
+0429766,Cheshmane John Malkovich 1: Viggo Mortensen,2004,7.7
+0430377,Muhammad: The Last Prophet,2002,7.7
+0432283,Fantastic Mr. Fox,2009,7.8
+0432807,The Republic,1998,8.0
+0433443,Rock &#x26; Roll Eulogy,2004,7.9
+0433557,Eternal Embrace,2000,8.2
+0434098,Intamplari cu Alexandra,1989,8.1
+0434409,V for Vendetta,2005,8.2
+0435761,Toy Story 3,2010,8.4
+0435780,The World&#x27;s Greatest Fair,2004,7.9
+0437149,Dead Flesh,2001,7.7
+0438315,Peaceful Warrior,2006,7.3
+0440963,The Bourne Ultimatum,2007,8.1
+0442268,Be with You,2004,8.0
+0443680,The Assassination of Jesse James by the Coward Robert Ford,2007,7.6
+0444982,681 AD: The Glory of Khan,1981,8.1
+0445922,Across the Universe,2007,7.4
+0446059,Fearless,2006,7.7
+0448621,Marathon,2005,7.9
+0449573,California Dreamin&#x27;,2007,7.9
+0450188,La Vie en Rose,2007,7.7
+0451094,Sympathy for Lady Vengeance,2005,7.7
+0451966,The Violin,2005,7.8
+0452039,Mind Game,2004,8.0
+0453190,Raam,2005,7.9
+0453366,Forest of the Gods,2005,7.8
+0453562,42,2013,7.5
+0454314,Vivekananda,1994,7.8
+0454876,Life of Pi,2012,8.0
+0454921,The Pursuit of Happyness,2006,7.9
+0455590,The Last King of Scotland,2006,7.7
+0455959,Heads N TailZ,2005,8.3
+0456144,Lage Raho Munna Bhai,2006,8.2
+0457007,Crying Fist,2005,7.5
+0457430,Pan&#x27;s Labyrinth,2006,8.2
+0459516,Pudhu Pettai,2006,8.2
+0460394,Aithe,2003,8.0
+0460791,The Fall,2006,7.9
+0460989,The Wind That Shakes the Barley,2006,7.5
+0462322,Grindhouse,2007,7.6
+0462600,A Texas Tale of Treason,2006,7.7
+0464955,White Palms,2006,7.6
+0466460,Khosla&#x27;s Nest,2006,8.4
+0468569,The Dark Knight,2008,9.0
+0469553,Saadet sehri,1970,8.3
+0469785,A Limousine the Colour of Midsummer&#x27;s Eve,1981,8.6
+0469903,The Express,2008,7.3
+0470752,Ex Machina,2015,7.7
+0471043,Web of Deceit,2007,8.0
+0471571,Athadu,2005,8.5
+0475276,United 93,2006,7.6
+0476735,My Father and My Son,2005,8.7
+0477348,No Country for Old Men,2007,8.1
+0478319,Vitalii Bianki,1976,8.2
+0479143,Rocky Balboa,2006,7.2
+0481281,Live/Evil - Evil/Live,2005,7.8
+0481989,Beyond Gravity,2000,7.3
+0482571,The Prestige,2006,8.5
+0483785,Raj Kapoor,1987,8.7
+0483993,Return2Sender,2005,7.8
+0485092,Basain,2005,8.6
+0485601,The Secret of Kells,2009,7.7
+0485910,Ganga Addara,1980,8.1
+0485947,Mr. Nobody,2009,7.9
+0488414,Omkara,2006,8.2
+0488935,Addio notte bianca,2005,8.3
+0490851,The Coldest Winter,2005,7.5
+0491157,Souvenir,2006,8.0
+0493287,"Pizza, Pesos, and Pistoleros",2004,7.9
+0494823,Sekerpare,1983,8.1
+0496231,Axegrinder,2006,7.5
+0497915,Gunda,1998,8.0
+0498380,Letters from Iwo Jima,2006,7.9
+0499375,Guru,2007,7.8
+0499420,Altamont Now,2008,8.2
+0499537,Offside,2006,7.3
+0499549,Avatar,2009,7.9
+0756286,Black Dragon Canyon,2005,7.5
+0756683,The Man from Earth,2007,8.0
+0758742,Death Note,2006,8.0
+0758758,Into the Wild,2007,8.2
+0765429,American Gangster,2007,7.8
+0765833,Happy Days,1978,8.8
+0768120,Memories of Matsuko,2006,7.9
+0769515,For the Title,2005,8.3
+0774044,Of Earth and Sky,1996,8.6
+0780061,Redhat and Cousin,1994,8.1
+0787524,The Man Who Knew Infinity,2015,8.1
+0790636,Dallas Buyers Club,2013,8.0
+0794062,Antimoz iverieli,2001,8.3
+0796366,Star Trek,2009,8.0
+0798798,Venice Knights,2006,7.6
+0800308,Appaloosa,2008,6.8
+0805188,Marilena from P7,2006,8.1
+0805515,Dillenger&#x27;s Diablos,2006,7.6
+0808405,"Oh, Mr. Faulkner, Do You Write?",2006,8.1
+0808417,Persepolis,2007,8.0
+0808506,The Girl Who Leapt Through Time,2006,7.9
+0808536,What I Want,2004,8.7
+0814130,The Hammer,2007,7.3
+0815229,We Pedal Uphill,2008,8.4
+0816203,Interrogation,2006,8.2
+0816258,Pokiri,2006,8.0
+0816692,Interstellar,2014,8.6
+0825269,I Wanna Be a Republican,2006,7.8
+0831888,Tekkonkinkreet,2006,7.7
+0843533,Jagajyothi Basaveshwara,1959,8.0
+0843612,Just Like Before,2006,8.0
+0844457,North Face,2008,7.4
+0844847,Fairway to Heaven,2007,7.9
+0845439,Fireworks Wednesday,2006,8.0
+0848228,The Avengers,2012,8.1
+0848554,Travis,2015,7.5
+0851578,Paprika,2006,7.7
+0858419,Bolden!,2015,8.8
+0860906,Evangelion: 2.0 You Can (Not) Advance,2009,8.1
+0861739,Elite Squad,2007,8.1
+0867145,Classmates,2006,7.9
+0870111,Frost/Nixon,2008,7.7
+0871510,Chakde! India,2007,8.4
+0876563,Ponyo,2008,7.7
+0877344,Letters from the Dead,2003,7.9
+0878804,The Blind Side,2009,7.7
+0887912,The Hurt Locker,2008,7.6
+0892769,How to Train Your Dragon,2010,8.2
+0903624,The Hobbit: An Unexpected Journey,2012,7.9
+0907657,Once,2007,7.9
+0910970,WALL&#xB7;E,2008,8.4
+0914798,The Boy in the Striped Pajamas,2008,7.8
+0915747,A Poor Kid&#x27;s Guide to Success,2007,8.1
+0923811,Evangelion: 1.0: You Are (Not) Alone,2007,7.8
+0939609,Eugene Onegin,1988,8.0
+0942384,Shelter,2007,7.9
+0944960,"M&#xE1;ty&#xE1;s, az igazs&#xE1;gos",1982,7.6
+0945513,Source Code,2011,7.5
+0951361,Spooked,2005,7.5
+0962715,13 Months of Sunshine,2007,8.2
+0964517,The Fighter,2010,7.9
+0977227,Nancy Nancy,2006,8.2
+0978762,Mary and Max,2009,8.2
+0979965,Love... and Other Reasons to Panic,2007,7.9
+0983213,5 Centimeters Per Second,2007,7.9
+0986264,Like Stars on Earth,2007,8.5
+0986329,Mungaru Male,2006,8.1
+0989831,Jibon Thekey Neya,1970,9.1
+0990372,Detective Conan: The Phantom of Baker Street,2002,7.7
+0992915,Fuel,2008,7.9
+0993846,The Wolf of Wall Street,2013,8.2
+0994917,Adventure Scouts,2010,7.5
+1000129,Megher Pore Megh,2004,7.9
+1013753,Milk,2008,7.6
+1019960,Sat Bhai Chompa,1968,8.0
+1019962,Shimana Periye,1976,8.1
+1020933,Aljubarrota,2008,7.9
+1020982,Odd Brodsky,2013,8.4
+1024648,Argo,2012,7.8
+1028532,Hachi: A Dog&#x27;s Tale,2009,8.2
+1033483,Kandisha,2008,7.8
+1034053,Mozhi,2007,7.9
+1038988,[Rec],2007,7.5
+1043420,The Unwritten History,2008,8.0
+1047459,Religion,2007,7.9
+1049413,Up,2009,8.3
+1057500,Invictus,2009,7.4
+1068956,In the Name of God,2007,8.4
+1068976,Unflinching Triumph: The Philip Rockhammer Story,2007,7.8
+1069238,Departures,2008,8.1
+1077259,Playbyplaymen and the Art of the Perfect Call,2007,7.4
+1092009,The Hottest Day of the Year,1991,9.0
+1098358,The Attic Door,2009,7.4
+1103271,Loose End,2009,8.1
+1105355,Good Ol&#x27; Boy,2015,8.4
+1125849,The Wrestler,2008,7.9
+1128075,Love Exposure,2008,8.1
+1130884,Shutter Island,2010,8.1
+1131729,Pirate Radio,2009,7.4
+1136608,District 9,2009,8.0
+1139797,Let the Right One In,2008,8.0
+1142588,Woman,2007,7.8
+1144805,King Lines,2007,7.6
+1152282,Love of Siam,2007,8.0
+1153545,Who Shot Mamba?,2009,8.2
+1156398,Zombieland,2009,7.7
+1156466,Undisputed 3: Redemption,2010,7.5
+1170358,The Hobbit: The Desolation of Smaug,2013,7.9
+1171701,The Breath,2009,8.1
+1172203,Sita Sings the Blues,2008,7.7
+1173901,The Island,2007,7.9
+1176908,The Massacre of Glencoe,1971,8.2
+1181343,La Traviata,2006,8.0
+1182345,Moon,2009,8.0
+1185616,Waltz with Bashir,2008,8.0
+1187043,3 Idiots,2009,8.5
+1192628,Rango,2011,7.3
+1196334,After Last Season,2009,7.6
+1201607,Harry Potter and the Deathly Hallows: Part 2,2011,8.1
+1202170,Everywhere at Once,2008,7.9
+1202516,Golden Goal!,2008,7.3
+1205481,Father McGivney,2008,8.1
+1206310,Kadachit,2007,7.9
+1207922,Beyond the Mat,2013,7.4
+1210166,Moneyball,2011,7.6
+1210520,Mahek,2007,8.1
+1210819,The Lone Ranger,2013,6.5
+1220719,Ip Man,2008,8.1
+1221972,S&#xFC;den,2008,8.2
+1225831,Extraordinary Stories,2008,8.1
+1226271,The Damned United,2009,7.6
+1230165,Rock On!!,2008,7.9
+1235408,L&#x27;amour toujours,2008,7.9
+1242786,Silverthread,2013,7.9
+1244553,Gruha Pravesam,1982,8.3
+1244614,Prema Panjaram,1991,8.1
+1244666,Fish Story,2009,7.6
+1247655,Fight the Panda Syndicate,2008,8.2
+1249431,The People&#x27;s Agency,2009,8.2
+1255953,Incendies,2010,8.2
+1260502,Ghost in the Shell 2.0,2008,8.0
+1261047,Gulaal,2009,8.1
+1263670,Crazy Heart,2009,7.3
+1266029,Nowhere Boy,2009,7.2
+1267378,Postales,2010,8.1
+1270798,X-Men: First Class,2011,7.8
+1273240,Under 21,2009,8.4
+1275692,Kuheli,1971,7.8
+1276419,A Royal Affair,2012,7.6
+1277144,References,2009,8.2
+1278060,Kara no Kyoukai: The Garden of Sinners - Paradox Spiral,2008,7.9
+1279235,Papikondalu,1986,8.7
+1279237,Prema Yuddham,1990,8.0
+1280558,A Wednesday,2008,8.4
+1282371,Sorry for the Disturbance,2008,8.0
+1284030,Nowhere Fast,2013,7.8
+1285016,The Social Network,2010,7.8
+1288461,Gurren Lagann,2008,7.8
+1291584,Warrior,2011,8.2
+1305806,The Secret in Their Eyes,2009,8.2
+1307062,The Lady Masquerade,2009,8.2
+1312233,Cruelty,2014,7.6
+1312974,Henry O!,2009,8.0
+1314182,Dream from Leaving,2008,8.6
+1316408,Bullet for Breakfast,1994,7.8
+1318514,Rise of the Planet of the Apes,2011,7.6
+1322911,An Endgame,2008,8.2
+1323594,Despicable Me,2010,7.7
+1336620,Between Heaven and Hell,2008,8.0
+1337574,Your Name Here,2008,8.6
+1345776,Kara no Kyoukai: The Garden of Sinners - A Study in Murder - Part 2,2009,7.6
+1345836,The Dark Knight Rises,2012,8.5
+1346649,Bhakta Kanakadasa,1960,8.0
+1356399,Dig,2010,7.9
+1356939,Betty I Am,2012,8.4
+1358997,The Mustachioed Bandit Meets His End,2007,8.0
+1360860,About Elly,2009,8.1
+1361857,Devil Come to Hell and Stay Where You Belong,2008,7.5
+1364277,The Platinum Peacemaker,2010,7.8
+1367248,Ocean Front Property,2011,8.2
+1371111,Cloud Atlas,2012,7.5
+1372301,Technotise: Edit &#x26; I,2009,7.5
+1375666,Inception,2010,8.8
+1386932,Ip Man 2,2010,7.6
+1389077,Four on the Floor,2009,7.8
+1389526,Mayor Muthanna,1969,8.5
+1392190,Mad Max: Fury Road,2015,8.2
+1392214,Prisoners,2013,8.1
+1398426,Straight Outta Compton,2015,8.1
+1399621,&#xD1;a noniep,2009,8.0
+1403865,True Grit,2010,7.7
+1403990,A Date with Fear,2011,8.3
+1407052,Wrinkles,2011,7.6
+1408101,Star Trek Into Darkness,2013,7.8
+1410063,The Flowers of War,2011,7.6
+1417060,A Pearl in the Forest,2008,8.2
+1422122,Tales from the Golden Age,2009,7.8
+1422651,Gekij&#xF4; ban Tengen toppa guren ragan: Ragan hen,2009,7.8
+1424051,If I Knew What You Said,2009,8.0
+1431118,Nenjam Marappathillai,1963,7.9
+1437627,Prananiki Pranam,1990,8.0
+1439516,Anyone You Want,2010,8.2
+1445591,Beneath the River,2009,8.2
+1446113,My Movie Girl,2009,8.2
+1454468,Gravity,2013,7.9
+1456660,No Man&#x27;s Land,2013,7.4
+1457767,The Conjuring,2013,7.5
+1458696,Urban Wolf,2010,8.3
+1461432,The Hopeful,2011,7.3
+1463775,In the City,2009,8.2
+1465522,Tucker and Dale vs. Evil,2010,7.6
+1474276,Summer Wars,2009,7.6
+1478868,Villa: Sons of the Holocaust,2009,7.7
+1483797,Redline,2009,7.5
+1485763,One Piece: Strong World,2009,7.7
+1487257,Hungry Hills,2009,7.5
+1487266,Man Made Men,2009,8.3
+1490017,The Lego Movie,2014,7.8
+1493876,The Play-Station Killed the Puppet,2010,7.8
+1495990,The Meaning of Filo,2009,8.3
+1496380,Chennai 600028,2007,7.9
+1496402,Mnemonica,2009,7.9
+1496729,Anima and Persona,2010,8.5
+1501298,Kattradhu Thamizh,2007,8.3
+1502960,The Taste of Relation,2009,7.9
+1504320,The King&#x27;s Speech,2010,8.0
+1510936,The Deposition,2011,7.9
+1518211,Boys Soccer Club,2009,7.6
+1521655,Adultolescence,2011,8.1
+1524539,Harishchandrachi Factory,2009,8.2
+1535109,Captain Phillips,2013,7.9
+1540067,The Summer of Walter Hacks,2009,7.4
+1543741,Rescuing Rufus,2009,8.5
+1552189,Camera Obscura,2010,7.5
+1553086,Muttnik,2009,8.7
+1555149,Elite Squad: The Enemy Within,2010,8.1
+1562872,Zindagi Na Milegi Dobara,2011,8.1
+1564563,Half Empty,2011,8.5
+1568921,The Secret World of Arrietty,2010,7.7
+1572781,The Disappearance of Haruhi Suzumiya,2010,8.1
+1573789,Arsin mal alan,1965,8.2
+1575507,Alludu Garu Vacharu,1999,8.0
+1587683,Jhing Chik Jhing,2009,8.1
+1588170,I Saw the Devil,2010,7.8
+1588358,Brother,2010,7.4
+1595021,The Sweetest Heir,2010,8.1
+1596363,The Big Short,2015,8.0
+1603362,Prasthanam,2010,8.1
+1605791,Beyond the Farthest Star,2013,8.2
+1606384,My Way,2011,7.8
+1606392,Win Win,2011,7.2
+1607595,Brian Wilson Presents Smile,2005,7.9
+1618473,Sensory Perception,2015,8.6
+1619647,Eisis,2010,7.9
+1620933,Paan Singh Tomar,2012,8.3
+1621966,Starting Over,2013,8.2
+1626820,Faryad,1993,8.1
+1631365,Renegade,2011,7.6
+1631867,Edge of Tomorrow,2014,7.9
+1634013,Montevideo: Taste of a Dream,2010,8.4
+1634066,The Cedar&#x27;s Tears,2010,8.0
+1638274,Kismet,2010,8.4
+1641824,Prokletstvo Krumpira,2010,8.0
+1646971,How to Train Your Dragon 2,2014,7.9
+1646972,Jasmine,2015,8.2
+1648199,Fate,2013,8.4
+1649431,Vedam,2010,8.1
+1650023,Western Confidential,2011,7.6
+1659337,The Perks of Being a Wallflower,2012,8.0
+1662540,Pratisaad: The Response,2010,7.8
+1663202,The Revenant,2015,8.3
+1675434,The Intouchables,2011,8.6
+1681370,The Algerian,2014,8.5
+1688701,Tash Force,2012,7.6
+1696546,Four Leaf Clover,2010,8.4
+1697889,B&#xF6;y&#xFC;k dayaq,1963,8.5
+1701224,My Name Is &#x27;A&#x27; by Anonymous,2012,8.2
+1703049,Trigun: Badlands Rumble,2010,7.4
+1707386,Les Mis&#xE9;rables,2012,7.6
+1709684,M.O.N.,2006,7.6
+1711364,A3D Ayumi Hamasaki Arena Tour 2009 A: Next Level,2010,8.3
+1714148,Visionary,2012,8.4
+1714743,The Beekeepers,2010,8.4
+1715210,Time of Eve,2010,7.5
+1715751,Chambers Gate,2014,8.3
+1730312,My Life as Abraham Lincoln,2012,8.1
+1737684,Qualia,2012,7.5
+1739249,The Mudman,2011,7.8
+1748280,Veer!,2012,7.5
+1753729,Doraleous and Associates,2010,7.8
+1754109,Les Mis&#xE9;rables in Concert: The 25th Anniversary,2010,8.7
+1754656,The Little Prince,2015,7.8
+1756727,Shakti Pirakkudhu,2010,8.2
+1757936,Woody Island,2010,7.9
+1772321,Noise Matters,2013,8.1
+1772341,Wreck-It Ralph,2012,7.8
+1776114,Centaur,2011,8.1
+1777034,United,2011,7.4
+1780934,Omerta,2011,8.3
+1783234,40 Point Plan,2012,8.6
+1783352,Nainsukh,2010,7.9
+1783721,First Time Loser,2012,8.3
+1784629,Slednecks 13,2010,7.9
+1791611,Spreading Darkness,2015,8.5
+1795369,National Theatre Live: Frankenstein,2011,9.1
+1797528,Tiesto: Elements of Life World Tour,2008,8.1
+1798684,Southpaw,2015,7.5
+1798709,Her,2013,8.0
+1801071,See You in Montevideo,2014,8.5
+1805241,Green Day: 21st Century Breakdown,2010,8.0
+1806905,Exit 727,2012,8.0
+1814809,Niko: Journey to Magika,2014,7.9
+1816518,Ernest &#x26; Celestine,2012,7.9
+1817211,Martina: Farewell to a Champion,1994,8.0
+1821317,Aadukalam,2011,7.9
+1821480,Kahaani,2012,8.2
+1821682,Traffic,2011,7.9
+1821700,Waar,2013,8.5
+1826873,S&#xF6;r&#xFC;ltek - The Movie,2011,8.5
+1833084,Stoked and Broke,2010,8.3
+1843107,Assisted Fishing,2012,7.4
+1843335,Yutham Sei,2011,7.9
+1843866,Captain America: The Winter Soldier,2014,7.8
+1843956,John Wayne Parr: Blessed with Venom,2011,7.9
+1844728,Los Traficantes,2012,7.7
+1845229,HSBC Champions WGC Official Film,2009,7.3
+1845324,Wimbledon Official Film 2001,2001,7.3
+1851894,Defending Against Attack &#x27;The Complete Guide&#x27;,2008,8.1
+1853728,Django Unchained,2012,8.5
+1857670,God&#x27;s Own Child,2011,8.1
+1859606,The Hunting of the Snark,2015,8.0
+1865505,Song of the Sea,2014,8.2
+1866143,Du-re Sori Story,2012,7.9
+1867069,Tear the Whole Thing Down,2010,8.0
+1869677,Starzinger,2011,7.6
+1874522,Here Without Me,2011,8.1
+1877832,X-Men: Days of Future Past,2014,8.0
+1881015,Moose on the Loose,2014,8.1
+1883126,A Little Victory,2010,7.9
+1884338,Lars the Emo Kid,2015,8.3
+1891757,Bol,2011,8.3
+1895587,Spotlight,2015,8.3
+1906386,Guerrilla,2011,8.1
+1920888,Damu,1996,8.3
+1933671,Trial by Self,2011,8.4
+1934226,Dark Blue,2011,8.1
+1935109,Dipu Number 2,1996,8.7
+1951264,The Hunger Games: Catching Fire,2013,7.6
+1954470,Gangs of Wasseypur,2012,8.3
+1954785,Rock N Roll Over,2012,8.3
+1956637,Jail Caesar,2012,8.0
+1961143,...EBONG KANNA,2010,7.7
+1961211,Boy with Blue,2011,8.0
+1977754,Congratulations!,2013,7.9
+1979320,Rush,2013,8.2
+1980929,Begin Again,2013,7.5
+1981677,Pitch Perfect,2012,7.2
+1996223,Crulic - The Path to Beyond,2011,7.6
+2002679,I Hate Tom Petty,2011,8.1
+2007972,Kusume rumal,1985,8.3
+2013293,The Wind Rises,2013,7.8
+2014236,Hiding Place,2010,8.6
+2015381,Guardians of the Galaxy,2014,8.1
+2022441,"Kill Me, Deadly",2015,7.9
+2024519,The Broken Circle Breakdown,2012,7.8
+2024544,12 Years a Slave,2013,8.1
+2027202,RiffTrax Live: House on Haunted Hill,2010,7.8
+2033965,Cast Alaska,2011,7.9
+2040526,Tangled Up in Blue,2011,8.3
+2042568,Inside Llewyn Davis,2013,7.4
+2044774,El-Keif,1985,8.2
+2044863,Starship,2011,7.7
+2049538,Spin the Bottle: The Kiss of Death,2011,7.5
+2055577,Acharya,2011,8.4
+2055637,If I Had Wings to Fly,2011,7.8
+2055781,The Young,2011,7.9
+2056535,Nightcomer,2013,8.0
+2061702,To the Forest of Firefly Lights,2011,7.9
+2063014,Red Butterfly,2014,8.2
+2069020,Distances,2011,7.8
+2069100,The Third Half,2012,8.0
+2069845,Marty&#x27;s Project,2010,8.2
+2069961,The Teller and the Truth,2015,8.3
+2075108,Baishe Srabon,2011,8.0
+2075328,The Age of Reason,2014,8.0
+2077886,The Phantom of the Opera at the Royal Albert Hall,2011,8.9
+2082197,Barfi!,2012,8.2
+2084970,The Imitation Game,2014,8.1
+2088012,Punch,2011,7.3
+2095717,Mozart of Rap,2011,8.6
+2096673,Inside Out,2015,8.3
+2097298,"McFarland, USA",2015,7.4
+2098665,Den relativt store DVD&#x27;en om Radioresepsjonen,2010,8.1
+2103166,Chill: The Killing Games,2013,7.6
+2103281,Dawn of the Planet of the Apes,2014,7.6
+2114454,Red vs. Blue Season 9,2011,8.1
+2123265,Freak of Nurture,2015,7.6
+2124181,Suck it Up Buttercup,2014,8.3
+2126311,Mikeyboy,2013,8.0
+2130186,Running 4 President,2009,8.2
+2133196,Born to Be Blue,2015,8.3
+2138154,Margazhi Raagam,2008,8.0
+2140203,Wolf Children,2012,8.2
+2140373,Saving Mr. Banks,2013,7.5
+2142003,Thunderstruck,2011,8.0
+2145338,The Curse of the Death Cat,2012,8.2
+2146960,Vazhakku Enn 18/9,2012,8.2
+2147449,Official 2011 World Series Film,2011,7.8
+2148924,An Epic Tale,2012,7.5
+2150209,My Grandfather&#x27;s People,2011,8.0
+2152210,Al Abaa&#x27; al Sighar,2005,8.1
+2152731,Generation Me,2012,8.1
+2165659,Brooklyn Gangster: The Story of Jose Lucas,2012,8.1
+2165769,Fictionality,2012,8.1
+2166087,Pulse of the Indigo,2012,8.8
+2166850,Go with Le Flo,2014,8.2
+2167875,Sans pudeur ni morale,2011,8.2
+2179734,A Life Not to Follow,2015,8.6
+2181831,Shahid,2012,8.4
+2182001,Legenda No. 17,2013,7.7
+2182390,The Murder of Hi Good,2012,7.9
+2183080,RiffTrax Live: Manos - The Hands of Fate,2012,7.7
+2184335,Urban Hymn,2015,8.3
+2188831,Mortal Remains,2013,7.6
+2188929,There&#x27;s Something About McConkey,2000,7.4
+2192100,Gizem Birimi,2013,8.4
+2193364,I Am Shahid Afridi,2013,7.9
+2194499,About Time,2013,7.8
+2194724,Puella Magi Madoka Magica the Movie Part 2: Eternal,2012,7.8
+2195804,Pawnshop,2013,8.3
+2196746,C.O.O.L.I.O Time Travel Gangster,2014,7.5
+2199711,Vishwaroopam,2013,8.8
+2204840,Our Beautiful Secret,2013,8.3
+2205599,Satchurated: Live in Montreal,2012,8.2
+2206844,Dearly Departed,2013,8.1
+2208772,The Emigrant,2012,8.4
+2210479,Berserk: The Golden Age Arc I - The Egg of the King,2012,7.7
+2213054,Kai po che!,2013,7.7
+2214985,Downhill: The Bill Johnson Story,2011,7.7
+2218988,Ustad Hotel,2012,8.3
+2220218,Lost Angels,2014,8.4
+2221777,Red Cloud: Deliverance,2013,8.0
+2224219,Hamlet&#x27;s Ghost,2015,8.1
+2224379,November Lies,2013,8.1
+2229522,Dave Matthews Band: Live at Piedmont Park,2007,7.8
+2231681,Welcome to Nowhere (Bullet Hole Road),2012,8.2
+2243299,Final Cut: Ladies and Gentlemen,2012,8.2
+2245084,Big Hero 6,2014,7.9
+2247566,Kano,2014,8.0
+2248661,A Play Entitled Sehnsucht,2012,8.0
+2253947,Consuming Spirits,2012,7.6
+2257144,Slug Street Scrappers: Rise of Ryuken,2012,7.9
+2258337,Eega,2012,8.0
+2259946,Less Lost,2012,8.1
+2259974,Fat Cat,2012,8.0
+2262275,The One Who Loves You,2013,8.0
+2264860,Pacsaw,2013,7.9
+2265171,The Raid 2,2014,8.0
+2265195,Can U Feel It: The UMF Experience,2012,8.0
+2267998,Gone Girl,2014,8.2
+2271563,Forsaken,2015,7.7
+2271581,Saybrook: The Tully Girls,2011,8.5
+2271689,The Telemachy,2012,8.1
+2274246,Ninah&#x27;s Dowry,2012,8.3
+2278388,The Grand Budapest Hotel,2014,8.1
+2281499,The Business of Show Business,1983,8.2
+2283748,OMG: Oh My God!,2012,8.3
+2287677,Massacre County,2015,7.7
+2290828,Road to Ninja: Naruto the Movie,2012,7.8
+2290840,Masquerade,2012,7.8
+2292948,Brutal,2014,7.3
+2294629,Frozen,2013,7.6
+2295570,Young Citizen Patriots: Young Kid Ambassadors,2013,8.2
+2299573,The Wrestling Road Diaries,2009,8.1
+2302575,D&#xE0;nh cho th&#xE1;ng S&#xE1;u,2012,7.6
+2315908,The Brightest Colours Make Grey,2013,8.5
+2317127,Sync,2012,7.5
+2317161,The Bridge School Concerts - 25th Anniversary Edition,2011,8.3
+2317414,The Rakugo Movie,2012,7.5
+2319785,Bonus Features: The Night Brings Charlie,1990,7.5
+2327589,The Survivor,1995,8.1
+2327714,Butterflies of Bill Baker,2013,8.4
+2327760,Akher ayam el ard,2009,8.1
+2329454,B&#xEA;r&#xEE;tan,2006,8.0
+2330098,Upendra,1999,8.6
+2331566,The One Dollar Movie,2012,8.4
+2332966,The Never Daunted,2012,7.8
+2336628,Hultsfredsfestivalen: G&#xE5;r det inte s&#xE5; g&#xE5;r det &#xE4;nd&#xE5;,2012,8.2
+2338151,PK,2014,8.3
+2343655,Misled,2015,8.3
+2347162,Bat Romance,2012,8.3
+2351177,Bhooter Bhabishyat,2012,8.1
+2354069,Hattrick,2012,7.5
+2355909,The Return of Uncle Benon,2011,8.2
+2356180,Bhaag Milkha Bhaag,2013,8.3
+2357300,Scammerhead,2014,8.6
+2358592,Lucia,2013,8.5
+2358911,Berserk: The Golden Age Arc II - The Battle for Doldrey,2012,7.9
+2358913,Berserk: The Golden Age Arc III - The Advent,2013,7.9
+2360430,RiffTrax Live: Birdemic - Shock and Terror,2012,8.2
+2362354,Spirit of Love: The Mike Glenn Story,2013,8.1
+2367680,Runaway Hearts,2015,8.3
+2374144,Gintama the Movie: The Final Chapter - Be Forever Yorozuya,2013,8.2
+2375379,One Piece Film Z,2012,8.0
+2375559,1,2014,8.7
+2377938,Special 26,2013,8.0
+2378145,Gas Light,2015,7.9
+2378585,West of Thunder,2012,7.8
+2378986,LA Underground,2012,7.5
+2379520,In the Name of Love,2012,8.2
+2387627,Zinda Bhaag,2013,7.9
+2387722,Discoverdale,2012,8.0
+2388775,The Mike King Story Special Feature,1993,8.0
+2388781,The Prospector&#x27;s Curse,2012,7.5
+2391492,Balak Palak,2012,8.1
+2395427,Avengers: Age of Ultron,2015,7.6
+2396154,Rock Bottom Creek,2012,7.9
+2396224,It&#x27;s Such a Beautiful Day,2012,8.3
+2396459,To the Hilt,2014,8.0
+2400068,Son of Ghostman,2013,7.6
+2401023,Jack London&#x27;s Love of Life,2012,7.9
+2401621,De Marathon,2012,7.5
+2401878,Anomalisa,2015,7.6
+2402197,The Blackest Days,2012,8.0
+2403876,A Quick Buck,2012,8.5
+2404461,The Past,2013,7.9
+2406478,Locomotive,2013,7.8
+2408922,Amerikan Violence,2014,7.5
+2415834,...Vanities...,2012,8.0
+2425892,No Good Reason at All,2012,8.4
+2427962,The Worst Thing,2012,8.3
+2447266,Deceit,2013,8.1
+2447318,American Bomber,2013,8.1
+2447918,Americano,2013,8.1
+2450056,"Charlie, Trevor and a Girl Savannah",2015,8.3
+2451666,Adriane&#x27;s Castle,2011,8.2
+2451894,Abhay,1995,8.0
+2456330,Butterfly Symphony,2013,8.6
+2457282,Puella Magi Madoka Magica the Movie Part III: Rebellion,2013,7.9
+2457370,Myth Seekers: In Search of Il Brutto,2012,8.2
+2457604,Spiritual Contact the Movie,2014,8.1
+2460440,A Film About Kids and Music. Sant Andreu Jazz Band,2012,8.4
+2464812,Licks,2013,8.9
+2466510,The Backpack,2012,8.2
+2473526,G.N.A.R.,2011,8.4
+2474164,The Script: Homecoming,2011,7.9
+2475352,3:13 Three Thirteen,2014,8.8
+2476090,Cosmic Psychos: Blokes You Can Trust,2013,8.3
+2476682,Doctor Faustus,2012,8.3
+2486856,You Carry Me,2015,7.9
+2488496,Star Wars: The Force Awakens,2015,8.5
+2510820,Community Service the Movie,2012,7.5
+2516280,Dream Team 1935,2012,7.9
+2521086,Attack of La Ni&#xF1;a,2011,7.4
+2524628,The Way I See It,2010,7.9
+2534660,Risttuules,2014,7.9
+2542406,Vagabond,2013,8.1
+2548094,Thanha Rathi Ranga,2014,8.6
+2553928,Better Half,2015,8.5
+2566016,The Laughing Mask,2014,8.1
+2569414,The Catch,2013,8.0
+2571444,Garegin Nzhdeh,2013,7.8
+2571966,A Little Christmas Business,2013,8.0
+2576852,The Tale of the Princess Kaguya,2013,8.1
+2577662,The Rise of the Robots,2015,7.7
+2577902,Cab&#xE1;s,2012,7.5
+2581214,The Jezabels Live at the Hordern,2012,8.0
+2582572,Egaro: The Immortal XI,2011,8.1
+2582802,Whiplash,2014,8.5
+2585562,Pizza,2012,8.1
+2591814,The Garden of Words,2013,7.6
+2603208,Hit Man Returns: David Foster &#x26; Friends,2011,8.2
+2604642,The Two Pamelas,2015,8.8
+2606554,Karma Cartel,2014,8.0
+2608224,The Butterfly&#x27;s Dream,2013,7.9
+2614902,The Cursed Man,2014,7.9
+2622530,When the Ocean Met the Sky,2014,8.8
+2624344,Tell the World,2015,8.1
+2624790,Trash Detective,2015,8.1
+2631186,Baahubali: The Beginning,2015,8.7
+2634336,Boot the Pigeon,2014,8.9
+2636100,Zlatne caklje,2007,8.0
+2636364,I&#x27;m Still Here,2013,8.6
+2637156,King Lee,2013,8.0
+2640460,Queen of the Mountains,2014,8.7
+2641792,Hing Ting Chot,2010,7.9
+2652374,Ashrita,1990,8.0
+2654572,The Preppie Connection,2015,8.3
+2656786,Kid Gloves,2013,7.7
+2662500,Write Now,2012,8.1
+2692938,They Call Me Superseven,2016,8.0
+2717168,Celluloid,2013,7.8
+2717494,Villa Greta,2012,8.0
+2748180,Littekens,2014,8.1
+2759390,Bettada Jeeva,2011,8.3
+2777858,Chopin: The Space Concert,2012,7.9
+2780998,In a Small World,2012,8.0
+2790302,Club Utopia,2013,8.1
+2796688,Mosaic,2013,8.7
+2806870,Revenge,2013,8.1
+2820346,Rock for the Rising Sun,2013,8.0
+2821140,Pretendagers,2014,8.5
+2821854,Il segreto di Italia,2014,8.6
+2827320,Fandry,2013,8.3
+2831172,Sala Budha,2012,8.5
+2837372,Iced Earth: Gettysburg 1863,2005,8.1
+2838024,Narcissist,2013,8.3
+2845432,Bluegrass Kingdom: The Gospel of Kentucky Basketball,2013,8.4
+2861344,Dawn&#x27;s Early Light,2013,7.7
+2861556,A Man&#x27;s Desire for Fifth Wife,2012,7.4
+2872380,Naked Rose,2013,7.8
+2877108,Soodhu Kavvum,2013,8.4
+2882328,Ugly,2013,8.2
+2887966,Thick,2014,8.1
+2888046,Ip Man 3,2015,8.0
+2895692,Slug Street Scrappers: Beat Em Up,2013,7.9
+2904798,Mary Loss of Soul,2014,8.3
+2905772,Thou Gild&#x27;st the Even,2013,8.1
+2911900,9 Summers 10 Autumns,2013,8.1
+2915412,Swing Lowe Sweet Chariote,2013,8.3
+2917334,Sparsha,2000,7.9
+2918226,Let Them Have Their Way,2014,8.6
+2923282,Swaathi Mutthu,2003,8.2
+2924472,Mumbai Police,2013,7.9
+2926068,Manam,2014,8.3
+2929652,Road Games,2015,8.2
+2931194,Guns N&#x27; Roses Appetite for Democracy 3D Live at Hard Rock Las Vegas,2014,8.0
+2934614,Rubber Soul,2014,7.9
+2934644,Kangal Malsat,2013,7.8
+2939630,Snap Factory,2011,8.0
+2943352,Battle of Surabaya,2015,8.6
+2943914,GodsView,2014,8.1
+2958558,The Bloc,2013,8.0
+2961174,The Whore Church Vol. 1,2012,7.6
+2962806,The Gershwin&#x27;s &#x27;Porgy and Bess&#x27;,2013,7.8
+2965446,The Black Tape,2014,7.5
+2966696,The Silent e,2013,7.8
+2966848,The Breaking Point,2014,7.9
+2967286,Steins;Gate the Movie: Loading Area of D&#xE9;j&#xE0; vu,2013,7.9
+2967628,Reporting Live,2013,8.4
+2971790,Trampoline,2014,8.0
+2975776,Fairfield,2014,7.5
+2991224,Tangerines,2013,8.4
+2999196,Silina,2009,7.8
+3011894,Wild Tales,2014,8.2
+3014454,Hunter,2015,8.0
+3020890,The Befuddled Box of Betty Buttifint,2013,7.9
+3029300,Breakdown Forest,2013,8.0
+3034146,The Horror Network Vol. 1,2013,7.7
+3034728,Left Right Left,2013,8.1
+3037582,The Guide,2014,8.4
+3043214,Love and Demons,2014,8.2
+3043330,People Music,2007,8.0
+3051894,Cloud Capped Star,2013,8.1
+3056884,B.D. &#xEE;n alerta - Profesorul de mimica,1970,7.9
+3056888,B.D. &#xEE;n alerta - Vaduve cu termen redus,1971,7.9
+3058712,Styx: Grand Illusion/Pieces of Eight - Live,2012,8.0
+3062890,Pink Floyd Video Anthology,2003,8.1
+3071192,Cruel Summer,2015,7.9
+3072482,Hardcore Henry,2015,8.1
+3073256,Nisshartho Bhalobasha: What is Love!,2013,8.0
+3073898,108 Stitches,2014,7.4
+3075214,Raven the Little Rascal - The Big Race,2015,7.7
+3076658,Creed,2015,8.1
+3090110,6 Bullets to Hell,2014,7.6
+3092790,Two Down,2015,8.3
+3093286,The American Side,2014,8.4
+3098282,The King,2014,8.1
+3098654,Feed the light,2014,7.6
+3109222,Artisse,2013,8.5
+3110446,Mawkib Al-Ebaa&#x27;,2005,8.0
+3113448,All Stars,2014,8.3
+3113466,The Prisoner,2015,7.6
+3113826,Tazza e Kucchjara,2013,8.0
+3116250,As You Like It,2014,7.5
+3124456,Memories,2013,7.9
+3138698,Kizumonogatari,2016,8.3
+3146120,Evil Souls,2015,7.5
+3148856,The Park Bench,2014,8.2
+3149286,Juvenile Transgressions,2013,8.2
+3150796,B.C. Butcher,2016,8.2
+3154822,National Theatre Live: The Audience,2013,8.8
+3163080,"Hello, My Name Is Frank",2014,8.4
+3163224,The Carrier,2015,8.4
+3163336,Uncle Nick,2015,7.3
+3168514,12 Menit,2014,8.2
+3169706,Pride,2014,7.8
+3170866,With Child,2014,8.5
+3173642,House of Temptation,2014,7.9
+3181638,Courting Chaos,2014,8.3
+3181962,The Last Shepherd,2015,8.0
+3183630,Boy &#x26; the World,2013,8.0
+3185772,The Wolf and the Lamb,2013,8.2
+3186122,Remittance,2014,8.4
+3189256,Om,1995,8.5
+3196334,Naanu Nanna Kanasu,2010,8.4
+3197528,Popovich and the Voice of the Fabled American West,2014,7.4
+3198852,O.H.A: Oflu Hoca&#x27;yi Aramak,2014,8.1
+3202828,Before Dawn Cracks,2007,8.7
+3209716,Foals Live at the Royal Albert Hall,2013,8.1
+3210284,Chhutii Aar Picnic,2013,8.2
+3211574,Agnes,2013,8.0
+3219296,WWW: Work Weather Wife,2014,8.3
+3223362,King of the Sands,2013,8.2
+3236222,Medias Res,2015,8.9
+3243474,Bastards y Diablos,2015,8.9
+3247286,All in Time,2015,7.9
+3250556,Fearless Game,2014,8.4
+3257846,Jarden ensoleille,2013,8.1
+3259484,Pop Meets the Void,2015,8.0
+3263378,El Gallo,2013,8.9
+3271344,Astray,2014,8.2
+3274484,Ekskursante,2013,8.4
+3276944,The Midnight Orchestra,2015,7.8
+3278680,Star Wars: The Force Unleashed,2013,7.7
+3278950,Under the Blood-Red Sun,2014,8.2
+3279244,La comodidad en la distancia,2014,8.9
+3279420,The Robert Yummy Sandifer Story,2015,8.3
+3281502,There Is a New World Somewhere,2015,8.5
+3281912,Jatta,2013,7.9
+3283802,They Came from the Ether,2014,8.0
+3305388,Mountain Top,2014,8.1
+3310116,Hidden Assets,2015,8.2
+3312762,In the Sands of Babylon,2013,8.3
+3313066,National Theatre Live: Coriolanus,2014,9.0
+3315642,BadPuss: A Popumentary,2014,8.2
+3320542,Ugramm,2014,8.3
+3321770,Mahjong and the West,2014,8.7
+3322420,Queen,2014,8.4
+3325098,Clandestine,2016,8.2
+3329654,The Rule of Lead,2014,8.3
+3336654,Chalo Paltai,2011,7.5
+3338230,La semilla del silencio,2015,8.3
+3339324,Merrily We Roll Along,2013,7.9
+3340870,Amnesia: Who Are You?,2014,8.1
+3350376,Bloody Slumber Party,2014,7.6
+3358034,Krissy Belle,2013,8.4
+3359650,Crushed,2015,8.4
+3359754,Moments of Clarity,2015,8.0
+3365690,Jaatishwar,2014,8.1
+3367736,Lead Me Astray,2015,7.9
+3369624,Killer Rack,2015,7.5
+3377380,The Wonderful World of Bill Maynard,2013,8.3
+3379812,Bheemli Kabadi Jattu,2010,7.8
+3381610,Breakdown,2016,8.9
+3383126,Mayura,1976,8.7
+3383262,Honeyglue,2015,9.5
+3383784,Binge,2014,7.9
+3388014,"I, Scorpio",2014,7.8
+3390572,Haider,2014,8.3
+3394420,As Seen by the Rest,2014,8.7
+3395608,O21,2014,8.4
+3398252,Samurai Cop 2: Deadly Vengeance,2015,8.2
+3398268,When Marnie Was There,2014,7.8
+3400364,Some Mistakes Are Forever,2014,8.0
+3407024,Space Brothers,2014,8.2
+3409128,The Sacrifice of Love,2014,8.5
+3411556,Adios Vaya Con Dios,2014,9.0
+3416742,What We Do in the Shadows,2014,7.6
+3417316,Leaves of the Tree,2015,8.3
+3417422,Drishyam,2013,8.9
+3418854,Burning Dog,2014,8.6
+3426866,Broken,2010,8.1
+3428882,Tempting Fate,2014,8.3
+3438252,Apur Panchali,2014,8.3
+3441176,I Was a Teenage Superhero Sidekick,2013,7.9
+3449292,Manjhi: The Mountain Man,2015,8.3
+3451406,Pinned,2014,8.3
+3460252,The Hateful Eight,2015,8.1
+3461252,The Blue Elephant,2014,8.3
+3462466,Rooster Teeth: Best of RT Shorts and Animated Adventures,2013,8.6
+3471472,Maharaja Gemunu,2015,8.5
+3478204,Rinoplasticos: A Warrior&#x27;s Journey,2014,8.3
+3478226,The Paths of Kripto,2015,7.8
+3487404,Ek Var Piyu Ne Malva Aavje,2006,8.3
+3498620,Ezekiel&#x27;s Landing,2015,7.6
+3501994,Hawaa Hawaai,2014,7.5
+3503004,Polk Road: The Homecoming,2012,8.2
+3506970,1983,2014,7.7
+3512578,Jhumura,2015,8.3
+3513286,Gzaabneulni,2013,8.8
+3515284,Teenage Kung Fu Cottontails,2014,7.8
+3519248,Die Toten Hosen - Der Krach der Republik,2014,8.2
+3520022,Sally Pacholok,2015,8.6
+3523348,Destiny,2014,7.8
+3527510,The Prosecutor the Defender the Father and His Son,2015,9.6
+3530596,Victims of Fun,2014,8.5
+3532976,The Current,2014,8.2
+3555534,The Singing Pond,2014,8.9
+3564794,Welcome to Happiness,2015,7.8
+3565050,A Hist&#xF3;ria Da Eternidade,2014,7.9
+3565836,Solitude,2014,7.7
+3567806,Revan,2015,7.8
+3569782,Jigarthanda,2014,8.5
+3576220,Shooting the Musical,2014,8.3
+3576728,Bilal,2015,8.8
+3577328,A Father&#x27;s Journey,2015,8.7
+3590304,Cold Empty Hearts,2014,8.7
+3594160,Trapped Abroad,2014,8.3
+3597448,Girl on the Edge,2015,8.3
+3598850,The Zeroes,2014,8.2
+3603758,Finding Hope,2015,8.1
+3607198,Punjab 1984,2014,8.4
+3611318,Trapped,2015,8.9
+3627572,Usturoi,2014,8.3
+3635110,Amka and the Three Golden Rules,2014,8.0
+3636194,The Nanabijou Tapes,2014,7.8
+3638306,We Grew Up Here,2014,8.0
+3644664,Thief of the Mind,2011,8.6
+3645938,72 Miles - Ek Pravas,2013,7.8
+3646462,Let&#x27;s Sin,2014,8.1
+3646946,Attack on Titan: The Wings of Freedom,2015,8.2
+3651028,Yellow,2014,8.2
+3651652,Bad Fellaz,2015,8.0
+3659388,The Martian,2015,8.1
+3665768,The Dark Shack,2015,7.7
+3668162,Bangalore Days,2014,8.3
+3680638,One Day: A Musical,2014,8.0
+3682448,Bridge of Spies,2015,7.8
+3685372,5 Seasons: The Movie,2013,8.0
+3700482,Jhola,2013,8.8
+3703110,Avantasia: Flying Opera - Around the World in 20 Days,2011,7.9
+3704016,Blackmore&#x27;s Night: Paris Moon,2007,7.9
+3717532,The Last: Naruto the Movie,2014,7.8
+3722232,Out of the Heart,2016,8.1
+3727262,The Runaway,2015,8.2
+3729832,No Limit,2011,8.1
+3733932,Anthrax: Chile on Hell,2014,8.1
+3734006,Radio Soulwax Presents: As Heard on Radio Soulwax Pt. 2,2014,8.2
+3735398,Carter High,2015,7.7
+3738624,Drishya,2014,8.3
+3744264,Pali Road,2015,8.5
+3745620,Bogowie,2014,7.8
+3747434,All about Joe,2014,8.2
+3758026,The Redemption of Benjamin Black,2014,8.1
+3773386,Sex Ain&#x27;t Love,2014,8.3
+3779570,Won&#x27;t Back Down,2014,7.6
+3779844,The Open,2015,7.8
+3781812,Full Love,2014,8.0
+3783812,Cast No Shadow,2014,7.8
+3801252,Na Maloom Afraad,2014,8.2
+3801314,Kaththi,2014,8.0
+3810932,Drushyam,2014,8.3
+3813456,Cahaya dari timur: Beta Maluku,2014,8.4
+3813880,Krishna Leela,2015,8.2
+3817950,Hemalkasa,2014,8.7
+3819668,Dragon Ball Z: Resurrection &#x27;F&#x27;,2015,7.6
+3822388,Madras,2014,7.9
+3829278,The Wrath,2015,8.7
+3833546,Footlights,2014,8.1
+3834896,Mari Lari,2014,7.5
+3837248,Love Live! The School Idol Movie,2015,7.8
+3841424,Land of Mine,2015,7.9
+3848892,Baby,2015,8.1
+3858500,What a Wonderful World,2014,8.6
+3863552,Bajrangi Bhaijaan,2015,8.2
+3864024,Lazer Team,2015,7.5
+3865434,"Hit Em Hard, the Story of Zaina Juliette",2014,7.8
+3878978,Reparation,2015,8.5
+3881680,Waffle Street,2015,8.3
+3883976,Curse of Mesopotamia,2015,7.6
+3884666,Franklin: A Symphony of Pain,2015,8.7
+3889450,American Sharia,2015,8.6
+3890676,Caleidoscopio,2014,8.3
+3893826,Mile End,2015,8.1
+3894762,Simply gay le film,2014,8.5
+3903480,Rama Madhav,2014,8.0
+3918794,Morrissey: 25 Live,2013,7.8
+3921314,Muhammad: The Messenger of God,2015,8.4
+3953738,Half of Twenty Two,2014,8.3
+3954068,Enakkul Oru Devathai,2014,8.4
+3963640,Late Night Double Feature,2015,7.5
+3970482,Roger Waters the Wall,2014,8.7
+3973410,Kaakkaa Muttai,2014,8.6
+3977462,Full Out,2015,8.3
+3978090,Ruthe: Shit Happens,2013,8.7
+3981396,The Forsaken Pages,2015,7.6
+3996710,White Orb,2014,7.8
+4003648,Ballade vir &#x27;n Enkeling,2015,8.0
+4007068,When Black Birds Fly,2016,7.8
+4028132,Traffickers,2015,8.5
+4038414,Astraea,2015,7.6
+4047112,Jeeva,2014,7.5
+4047196,A Killer Serve,2015,8.1
+4051644,The Inquisition of Camilo Sanz,2014,8.3
+4063584,Shaheed-E-Azam,2002,8.2
+4065452,On a Quest,2014,8.2
+4071498,Life in Color,2015,8.8
+4075368,"Waterfall 1: No Words, No Sex, Just Relax",2014,8.2
+4085270,Superior,2015,8.3
+4085392,Vrem,2015,7.5
+4085696,Billy Elliot the Musical Live,2014,8.5
+4108984,Metalloids 2,2014,7.9
+4109034,Antique Prayers,2014,8.0
+4112208,Kuttram Kadithal,2015,8.5
+4119110,Der letzte Autrag,2014,8.7
+4129300,A European Citizen Called Bob...,2014,8.2
+4136108,The Barlow House,2015,8.7
+4142012,Emme Fahu Vindhaa Jehendhen,2015,8.3
+4148400,Two Hearts as One,2014,8.4
+4149696,Pawno,2015,8.3
+4151346,Cloudy with a Chance of Sunshine,2015,8.0
+4156348,The Crucible,2014,9.0
+4159734,Time and Place,2014,8.5
+4168188,Chaar Sahibzaade,2014,8.7
+4170330,Lorna,2014,8.2
+4180290,Come Out Fighting,2015,7.7
+4180650,White Cop,2014,8.6
+4185862,Cat Sick Blues,2015,8.0
+4187928,Black Veil Brides: Live in Los Angeles,2015,7.9
+4195236,I Am Me,2015,8.4
+4195278,Telling Tales,2015,8.0
+4195906,Forgive and Forget,2014,8.8
+4197548,A Melody in the Haunted,2015,8.0
+4203824,Elizabeth Ekadashi,2014,8.1
+4219894,Lokmanya Ek Yugpurush,2015,7.9
+4226386,A Murder Beside Yan He River,2014,8.0
+4228378,Shhh,1993,7.6
+4238832,Billy Joel: Live at Shea Stadium,2011,7.9
+4242438,Saheb,1981,7.9
+4245492,Jamaibabu Zindabad,2001,8.1
+4245510,Sasurbari Zindabad,2000,8.0
+4251142,Sangee,2003,8.2
+4262928,The Tartan Horror Story,2009,7.6
+4272866,The Boy and the Beast,2015,7.6
+4280756,Blood Drops of Love,2014,7.9
+4280824,Eh Janam Tumhare Lekhe,2015,8.4
+4285496,Embrace of the Serpent,2015,8.2
+4290746,Pisasu,2014,7.7
+4292478,But Not For Me,2015,7.9
+4294662,Hairmetal Shotgun Zombie Massacre: The Movie,2014,8.3
+4295126,Maikol Yordan Traveling Lost,2014,8.4
+4302726,Nagrik,2014,8.2
+4306116,3 Bahadur,2015,8.1
+4307176,Pallati 176,1986,8.7
+4307880,Digimon Adventure tri. Saikai,2015,8.2
+4308718,Summertime,2006,8.8
+4309356,Ivy,2015,8.1
+4309856,Tutti morimmo a stento,2015,8.6
+4313226,Rajkanya,1965,8.4
+4317990,OH-Mart,2015,8.8
+4326646,Lost Birds,2015,8.6
+4331400,Persona 3 the Movie: #3 Falling Down,2015,7.7
+4346320,Homecoming,2015,8.6
+4354566,The Lost Salesman of Delhi,2014,8.2
+4361348,Les Transporteur,2015,8.0
+4373974,Beyond the Bridge,2015,7.9
+4374460,Aferim!,2015,7.9
+4417520,"Dis ek, Anna",2015,8.8
+4427230,Red vs. Blue: Season 13,2015,8.2
+4429128,Papanasam,2015,8.7
+4430212,Drishyam,2015,8.8
+4430270,Run on Fat: Cereal Killers 2,2015,7.6
+4432144,Nebesnyy verblyud,2015,8.4
+4432480,RangiTaranga,2015,9.1
+4432694,Blue,2015,8.2
+4448446,Zhigrana,2015,8.2
+4457256,Safrom,2015,7.8
+4459758,The Trail to Oregon!,2015,8.0
+4470266,Numb,2015,8.3
+4475992,Belly of the Bulldog,2015,7.6
+4476736,National Theatre Live: Hamlet,2015,8.7
+4480636,Fall Out Boy: The Young Blood Chronicles,2014,8.9
+4489416,Kokoro ga sakebitagatterunda,2015,7.7
+4501276,Rettet Raffi!,2015,8.3
+4513812,Gour Hari Dastaan: The Freedom File,2015,8.2
+4514084,Far Too Far,2015,8.5
+4523112,Selam: Bahara Yolculuk,2015,9.0
+4562030,Reka,2014,7.7
+4582284,Jeff Lynne&#x27;s ELO at Hyde Park,2014,8.5
+4583448,La vera storia di Mamma Lucia,2015,8.6
+4618398,Boruto: Naruto the Movie,2015,8.5
+4621100,Nanak Shah Fakir,2015,8.6
+4627432,Or So the Story Goes: Happy Thoughts,2015,7.7
+4635372,Fly Away Solo,2015,8.2
+4641828,Todd McFarlane&#x27;s Spawn 2,1998,7.5
+4641882,Todd McFarlane&#x27;s Spawn 3: The Ultimate Battle,1999,7.7
+4654964,Miss Match,2014,8.2
+4655628,Max Peril,2015,8.4
+4656004,M&#xE9;moire,2015,8.6
+4658770,Belaseshe,2015,8.7
+4659548,Rebellious Flower,2016,9.6
+4660276,C-Bar,2015,8.4
+4665626,The Return,2015,8.3
+4676508,Princess of Rome,2015,8.1
+4679210,Premam,2015,8.3
+4692368,Jawani Phir Nahi Ani,2015,8.3
+4699498,Milano Trema Ancora: la giustizia ha le ore contate,2015,8.4
+4718508,House of Whores,2015,8.1
+4727512,Srimanthudu,2015,8.1
+4731504,Dofus - Livre 1: Julith,2015,8.2
+4737600,The Rocket List,2015,8.6
+4742670,The von Trapp Family: A Life of Music,2015,7.9
+4744132,Hotath Bristi,1998,8.2
+4769862,The Lawmen,2011,7.6
+4771706,Bhalobasar Anek Naam,2006,8.1
+4771744,Ghatak,2006,7.9
+4772974,Krishnakanter Will,2007,7.9
+4773144,Shakti,2004,8.3
+4786606,Asura,2015,8.3
+4806232,Indru Netru Naalai,2015,8.3
+4833824,Uppi 2,2015,8.9
+4834850,Romance Complicated,2016,8.3
+4836736,Nowhere Boys: The Book of Shadows,2016,7.5
+4846952,Angrej,2015,8.8
+4863374,Alive and Burning,2015,8.4
+4868958,Dulaara,2015,8.6
+4888834,Ennu Ninte Moideen,2015,8.7
+4892912,UFC 189: Mendes vs. McGregor,2015,8.0
+4897890,Killing Veerappan,2016,8.1
+4899880,Shah,2015,7.7
+4905880,Men Dahr Ragel,2016,8.6
+4911794,RiffTrax Live: Santa and the Ice Cream Bunny,2015,8.7
+4914264,Fester,2015,8.1
+4919886,Eternity Hill,2015,7.9
+4924686,Normandy Is My Name,2015,8.3
+4927574,Siccin 2,2015,7.7
+4928620,Pathemari,2015,8.6
+4929720,Patchwork,2015,8.2
+4932720,Khwada,2015,8.9
+4934950,Guilty,2015,8.5
+4937208,Abulele,2015,8.1
+4941596,Love Love You,2015,8.4
+4943992,Manto,2015,8.7
+4944352,Heneral Luna,2015,8.2
+4949418,Zombie Chronicles: The Case Files,2015,7.7
+4956378,Parapancha,2016,9.1
+4957308,Aparichit,2006,8.2
+4964598,Heart Attack,2015,8.2
+4972904,Tudo Que Aprendemos Juntos,2015,7.9
+4977540,Aatagara,2015,8.3
+4987556,Thani Oruvan,2015,8.9
+5009236,King Candy,2015,7.8
+5012994,Abby Sen,2015,8.2
+5016442,Gujjubhai the Great,2015,8.6
+5021536,Kendasampige,2015,8.8
+5037912,Maya,2015,7.8
+5044906,Jan Quadrant Vincent 16,2015,9.1
+5046534,Felix Manalo,2015,9.3
+5061126,Rocky Horror Show Live,2015,8.0
+5072370,Flag Without a Country,2015,8.7
+5086104,Chhello Divas,2015,8.7
+5090116,A Cartel Story,2015,8.7
+5092096,Keechaka,2015,8.3
+5098128,Nannaku Prematho,2016,9.0
+5098548,One Piece 3D2Y,2014,7.7
+5128532,Consequence,2015,8.8
+5137380,Kanche,2015,8.6
+5156652,The Plan,2015,8.4
+5159734,Ouija: Game Never Ends,2015,8.4
+5165936,Daemonium: Soldier of the Underworld,2015,8.1
+5178660,Rosso Mille Miglia,2015,8.7
+5186078,Roxy the Movie,2015,8.9
+5190958,Katyar Kaljat Ghusali,2015,9.1
+5199156,"3: Alif, Lam, Mim",2015,8.7
+5199668,5 Maschere,2015,8.2
+5214110,New Cops,2016,8.2
+5225580,Kabaddi Kabaddi,2015,8.5
+5226764,Cry of Fear,2015,7.6
+5231116,A Capital dos Mortos 2: Mundo Morto,2015,7.9
+5234316,Dohrnii,2015,8.1
+5254458,The Belly of the Beast,2008,8.8
+5285050,Pasanga 2,2015,8.0
+5297750,Taylor Swift: The 1989 World Tour Live,2015,8.2
+5311546,Natsamrat,2016,9.5
+5320522,Monsoon Mangoes,2016,8.6
+5330596,GARAKOWA - Restore the World,2016,8.0
+5334470,Proximity,2016,9.7
+5334704,Twin Peaks: The Missing Pieces,2014,8.2
+5340534,Express Raja,2016,8.0
+5341670,The Stones of Okella,2015,9.8

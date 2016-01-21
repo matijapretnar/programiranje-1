@@ -64,12 +64,16 @@ def pripravi_imdb():
     dolocitve_zanra = [{'zanr': id_zanra, 'film': id_filma}
              for id_zanra, id_filma in dolocitve_zanra]
 
-    orodja.zapisi_tabelo(filmi.values(), ['id', 'naslov', 'leto', 'ocena'],
-                         'csv-datoteke/filmi.csv')
-    orodja.zapisi_tabelo(igralci.values(), ['id', 'ime'], 'csv-datoteke/igralci.csv')
-    orodja.zapisi_tabelo(zanri.values(), ['id', 'ime'], 'csv-datoteke/zanri.csv')
-    orodja.zapisi_tabelo(vloge, ['igralec', 'film'], 'csv-datoteke/vloge.csv')
-    orodja.zapisi_tabelo(dolocitve_zanra, ['film', 'zanr'], 'csv-datoteke/dolocitve_zanra.csv')
+    orodja.zapisi_tabelo(sorted(filmi.values(), key=lambda film: film['id']),
+                         ['id', 'naslov', 'leto', 'ocena'], 'csv-datoteke/filmi.csv')
+    orodja.zapisi_tabelo(sorted(igralci.values(), key=lambda igralec: igralec['id']),
+                         ['id', 'ime'], 'csv-datoteke/igralci.csv')
+    orodja.zapisi_tabelo(sorted(zanri.values(), key=lambda zanr: zanr['id']),
+                         ['id', 'ime'], 'csv-datoteke/zanri.csv')
+    orodja.zapisi_tabelo(sorted(vloge, key=lambda vloga: (vloga['film'], vloga['igralec'])),
+                         ['igralec', 'film'], 'csv-datoteke/vloge.csv')
+    orodja.zapisi_tabelo(sorted(dolocitve_zanra, key=lambda dolocitev: (dolocitev['film'], dolocitev['zanr'])),
+                         ['film', 'zanr'], 'csv-datoteke/dolocitve_zanra.csv')
 
 
 def uredi_film(film):
@@ -112,8 +116,8 @@ def pripravi_rotten():
             podatki = film.groupdict()
             filmi[podatki['id']] = podatki
 
-    orodja.zapisi_tabelo(filmi.values(), ['id', 'naslov', 'leto', 'ocena'],
-                         'csv-datoteke/rotten.csv')
+    orodja.zapisi_tabelo(sorted(filmi.values(), key=lambda film: film['id']),
+                         ['id', 'naslov', 'leto', 'ocena'], 'csv-datoteke/rotten.csv')
 
 
 zajemi_imdb()
