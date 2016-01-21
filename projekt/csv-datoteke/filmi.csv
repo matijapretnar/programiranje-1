@@ -93,7 +93,6 @@ id,naslov,leto,ocena
 0023649,Vampyr,1932,7.7
 0023731,"20,000 Years in Sing Sing",1932,7.1
 0023818,Blood Money,1933,7.0
-0023969,Duck Soup,1933,8.0
 0024026,Strawberry Roan,1933,7.7
 0024184,The Invisible Man,1933,7.7
 0024188,Island of Lost Souls,1932,7.6
@@ -138,7 +137,6 @@ id,naslov,leto,ocena
 0029808,You Only Live Once,1937,7.5
 0029843,The Adventures of Robin Hood,1938,8.0
 0029870,Angels with Dirty Faces,1938,8.0
-0029947,Bringing Up Baby,1938,8.0
 0030341,The Lady Vanishes,1938,8.0
 0031147,Charlie Chan at Treasure Island,1939,7.7
 0031225,Destry Rides Again,1939,7.8
@@ -154,14 +152,11 @@ id,naslov,leto,ocena
 0032434,Egy cs&#xF3;k &#xE9;s m&#xE1;s semmi,1941,7.9
 0032455,Fantasia,1940,7.8
 0032553,The Great Dictator,1940,8.5
-0032599,His Girl Friday,1940,8.0
 0032701,The Letter,1940,7.7
 0032707,Lightning Strikes West,1940,7.8
 0032724,Lone Star Raiders,1940,7.8
 0032762,The Mark of Zorro,1940,7.6
 0032877,Operette,1940,8.1
-0032904,The Philadelphia Story,1940,8.1
-0032910,Pinocchio,1940,7.5
 0032976,Rebecca,1940,8.2
 0033149,They Drive by Night,1940,7.3
 0033204,Under Texas Skies,1940,7.5
@@ -169,7 +164,6 @@ id,naslov,leto,ocena
 0033317,Adventures of Captain Marvel,1941,7.6
 0033467,Citizen Kane,1941,8.4
 0033532,The Devil and Daniel Webster,1941,7.8
-0033563,Dumbo,1941,7.3
 0033582,The Face Behind the Mask,1941,7.2
 0033717,High Sierra,1941,7.6
 0033740,I Wake Up Screaming,1941,7.3
@@ -266,7 +260,6 @@ id,naslov,leto,ocena
 0039504,Ivy,1947,7.2
 0039536,Kiss of Death,1947,7.5
 0039589,Lured,1947,7.0
-0039628,Miracle on 34th Street,1947,7.9
 0039661,Nightmare Alley,1947,7.8
 0039666,Nora Prentiss,1947,7.0
 0039689,Out of the Past,1947,8.1
@@ -335,7 +328,6 @@ id,naslov,leto,ocena
 0042232,Battling Marshal,1950,7.6
 0042281,The Breaking Point,1950,7.5
 0042296,Caged,1950,7.7
-0042332,Cinderella,1950,7.3
 0042359,The Magic Sword,1950,7.9
 0042369,D.O.A.,1950,7.4
 0042376,The Damned Don&#x27;t Cry,1950,7.1
@@ -351,7 +343,6 @@ id,naslov,leto,ocena
 0042792,No Way Out,1950,7.5
 0042804,Los Olvidados,1950,8.3
 0042832,Panic in the Streets,1950,7.3
-0042876,Rashomon,1950,8.3
 0042960,Side Street,1949,7.1
 0042998,Stars in My Crown,1950,7.6
 0043014,Sunset Blvd.,1950,8.5
@@ -361,7 +352,6 @@ id,naslov,leto,ocena
 0043137,Winchester &#x27;73,1950,7.7
 0043142,Woman on the Run,1950,7.3
 0043265,The African Queen,1951,7.9
-0043274,Alice in Wonderland,1951,7.4
 0043306,Awaara,1951,8.0
 0043338,Ace in the Hole,1951,8.2
 0043411,The King&#x27;s Baker and the Baker&#x27;s King,1952,8.2
@@ -398,7 +388,7 @@ id,naslov,leto,ocena
 0044954,The Narrow Margin,1952,7.8
 0045029,Phone Call from a Stranger,1952,7.2
 0045124,Scandal Sheet,1952,7.4
-0045152,Singin&#x27; in the Rain,1952,8.4
+0045152,Singin&#x27; in the Rain,1952,8.3
 0045205,Sudden Fear,1952,7.5
 0045296,Viva Zapata!,1952,7.5
 0045465,99 River Street,1953,7.5
@@ -408,9 +398,7 @@ id,naslov,leto,ocena
 0045897,I Confess,1953,7.3
 0046040,Man on a Tightrope,1953,7.1
 0046126,Niagara,1953,7.1
-0046183,Peter Pan,1953,7.4
 0046187,Pickup on South Street,1953,7.8
-0046250,Roman Holiday,1953,8.1
 0046268,The Wages of Fear,1953,8.2
 0046303,Shane,1953,7.7
 0046359,Stalag 17,1953,8.1
@@ -428,7 +416,6 @@ id,naslov,leto,ocena
 0047396,Rear Window,1954,8.5
 0047417,Riot in Cell Block 11,1954,7.0
 0047472,Seven Brides for Seven Brothers,1954,7.4
-0047478,Seven Samurai,1954,8.7
 0047849,Bad Day at Black Rock,1955,7.8
 0047878,The Big Combo,1955,7.5
 0047930,A Journey to the Beginning of Time,1955,7.5
@@ -466,7 +453,6 @@ id,naslov,leto,ocena
 0049743,Seven Men from Now,1956,7.6
 0049752,Shilpi,1956,8.1
 0049778,Somebody Up There Likes Me,1956,7.5
-0049833,The Ten Commandments,1956,7.9
 0049866,"Toto, Peppino, and the Hussy",1956,7.8
 0049902,A Man Escaped,1956,8.2
 0049949,While the City Sleeps,1956,7.0
@@ -489,7 +475,6 @@ id,naslov,leto,ocena
 0051019,The Strange One,1957,7.0
 0051036,Sweet Smell of Success,1957,8.2
 0051201,Witness for the Prosecution,1957,8.4
-0051459,Cat on a Hot Tin Roof,1958,8.1
 0051693,H-8...,1958,8.6
 0051758,I Want to Live!,1958,7.5
 0051792,The Music Room,1958,8.2
@@ -520,7 +505,6 @@ id,naslov,leto,ocena
 0053176,Night Train,1959,7.9
 0053198,The 400 Blows,1959,8.2
 0053221,Rio Bravo,1959,8.1
-0053285,Sleeping Beauty,1959,7.3
 0053291,Some Like It Hot,1959,8.3
 0053317,Fate of a Man,1959,8.1
 0053459,Eyes Without a Face,1960,7.8
@@ -556,7 +540,6 @@ id,naslov,leto,ocena
 0055184,The Misfits,1961,7.4
 0055233,The Human Condition III: A Soldier&#x27;s Prayer,1961,8.8
 0055602,A Difficult Life,1961,8.1
-0055614,West Side Story,1961,7.6
 0055630,Yojimbo,1961,8.3
 0055635,Za dvumya zaytsami,1963,8.0
 0055798,Birdman of Alcatraz,1962,7.8
@@ -567,7 +550,6 @@ id,naslov,leto,ocena
 0056172,Lawrence of Arabia,1962,8.4
 0056194,The Loneliness of the Long Distance Runner,1962,7.7
 0056195,Lonely Are the Brave,1962,7.7
-0056197,The Longest Day,1962,7.8
 0056217,The Man Who Shot Liberty Valance,1962,8.1
 0056241,The Miracle Worker,1962,8.1
 0056382,Prozvan je i V-3,1962,8.3
@@ -576,7 +558,7 @@ id,naslov,leto,ocena
 0056436,Sahib Bibi Aur Ghulam,1962,8.3
 0056443,Sanjuro,1962,8.2
 0056732,The Exterminating Angel,1962,8.2
-0056869,The Birds,1963,7.8
+0056869,The Birds,1963,7.7
 0056923,Charade,1963,8.0
 0056982,Delovye lyudi,1962,7.8
 0057012,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,1964,8.5
@@ -585,7 +567,6 @@ id,naslov,leto,ocena
 0057129,The Haunting,1963,7.6
 0057357,El Naser Salah el Dine,1963,8.0
 0057427,The Trial,1962,7.9
-0057546,The Sword in the Stone,1963,7.2
 0057565,High and Low,1963,8.4
 0057578,This Sporting Life,1963,7.9
 0057591,Monsieur Gangster,1963,7.9
@@ -594,11 +575,9 @@ id,naslov,leto,ocena
 0057877,Becket,1964,8.0
 0057892,Blood on the Land,1966,7.4
 0057935,Charulata,1964,8.3
-0058182,A Hard Day&#x27;s Night,1964,7.7
 0058275,Lemonade Joe,1964,7.7
 0058277,The Peach Thief,1964,7.9
 0058279,Kwaidan,1964,8.0
-0058331,Mary Poppins,1964,7.8
 0058385,My Fair Lady,1964,7.9
 0058394,"Don&#x27;t Cry, Peter",1964,8.3
 0058430,Onibaba,1964,8.0
@@ -607,7 +586,6 @@ id,naslov,leto,ocena
 0058604,I Am Cuba,1964,7.9
 0058642,Shadows of Forgotten Ancestors,1965,8.1
 0058715,The Gospel According to St. Matthew,1964,7.9
-0058777,Zulu,1964,7.8
 0058946,The Battle of Algiers,1966,8.1
 0059012,Chimes at Midnight,1965,8.0
 0059074,Cup Fever,1965,8.2
@@ -642,11 +620,9 @@ id,naslov,leto,ocena
 0061009,Sperrbezirk,1966,8.1
 0061065,The Face of Another,1966,8.0
 0061069,Taro the Dragon Boy,1979,7.6
-0061418,Bonnie and Clyde,1967,7.9
 0061512,Cool Hand Luke,1967,8.2
 0061530,Crne ptice,1967,7.9
 0061619,El Dorado,1966,7.7
-0061722,The Graduate,1967,8.0
 0061752,Even the Wind Is Afraid,1968,7.6
 0061770,Hombre,1967,7.4
 0061811,In the Heat of the Night,1967,8.0
@@ -689,7 +665,6 @@ id,naslov,leto,ocena
 0065180,Viimne reliikvia,1969,8.0
 0065214,The Wild Bunch,1969,8.0
 0065234,Z,1969,8.2
-0065421,The AristoCats,1970,7.1
 0065457,Beg,1971,8.0
 0065531,Le Cercle Rouge,1970,8.1
 0065630,El tunco Maclovio,1970,7.6
@@ -707,7 +682,6 @@ id,naslov,leto,ocena
 0066858,The Boy Friend,1971,7.9
 0066921,A Clockwork Orange,1971,8.4
 0067093,Fiddler on the Roof,1971,8.0
-0067185,Harold and Maude,1971,8.0
 0067355,They Call Me Trinity,1970,7.4
 0067411,McCabe &#x26; Mrs. Miller,1971,7.7
 0067698,Sacco &#x26; Vanzetti,1971,7.9
@@ -717,7 +691,6 @@ id,naslov,leto,ocena
 0068161,A zori zdes tikhie,1972,8.3
 0068182,"Aguirre, the Wrath of God",1972,8.0
 0068257,Bawarchi,1972,8.0
-0068327,Cabaret,1972,7.9
 0068346,The Mattei Affair,1972,7.8
 0068361,The Discreet Charm of the Bourgeoisie,1972,8.0
 0068421,The Cowboys,1972,7.4
@@ -778,10 +751,8 @@ id,naslov,leto,ocena
 0073092,Hard Times,1975,7.4
 0073195,Jaws,1975,8.1
 0073440,Nashville,1975,7.8
-0073486,One Flew Over the Cuckoo&#x27;s Nest,1975,8.7
 0073488,They Fought for Their Country,1975,8.1
 0073582,Deep Red,1975,7.7
-0073629,The Rocky Horror Picture Show,1975,7.4
 0073707,Sholay,1975,8.5
 0073800,The Travelling Players,1975,8.0
 0074119,All the President&#x27;s Men,1976,8.0
@@ -796,13 +767,11 @@ id,naslov,leto,ocena
 0075040,Seven Beauties,1975,8.0
 0075094,The Written Off Return,1976,8.0
 0075143,The Message,1976,8.8
-0075148,Rocky,1976,8.1
 0075213,The Shootist,1976,7.7
 0075314,Taxi Driver,1976,8.4
 0075404,The Ascent,1977,8.3
 0075467,The Fifth Seal,1976,8.8
 0075633,Ad&#xE9;la jeste nevecerela,1978,7.8
-0075686,Annie Hall,1977,8.1
 0075811,The Sorcerer&#x27;s Apprentice,1978,7.7
 0075860,Close Encounters of the Third Kind,1977,7.7
 0076027,Filmreg&#xE9;ny - H&#xE1;rom n&#xF6;v&#xE9;r,1978,8.6
@@ -815,12 +784,9 @@ id,naslov,leto,ocena
 0076723,Slap Shot,1977,7.4
 0076727,Office Romance,1977,8.5
 0076759,Star Wars,1977,8.7
-0076786,Suspiria,1977,7.5
 0077138,The Tree of Wooden Clogs,1978,7.9
 0077235,Big Wednesday,1978,7.3
-0077402,Dawn of the Dead,1978,8.0
 0077416,The Deer Hunter,1978,8.2
-0077631,Grease,1978,7.2
 0077651,Halloween,1978,7.9
 0077860,Qalaqi Anara,1978,8.4
 0077941,Moli&#xE8;re,1978,7.8
@@ -838,10 +804,7 @@ id,naslov,leto,ocena
 0078876,"Ion: Blestemul pam&#xEE;ntului, blestemul iubirii",1980,8.0
 0078902,Breaking Away,1979,7.7
 0079221,Gol Maal,1979,8.7
-0079261,Hair,1979,7.6
 0079322,I as in Icarus,1979,8.1
-0079470,Life of Brian,1979,8.1
-0079522,Manhattan,1979,8.0
 0079606,National Class Category Up to 785 ccm,1979,8.4
 0079615,"Uncle Marin, the Billionaire",1979,8.5
 0079641,Nosferatu the Vampyre,1979,7.6
@@ -868,7 +831,6 @@ id,naslov,leto,ocena
 0082010,An American Werewolf in London,1981,7.6
 0082087,Der Bockerer,1981,8.1
 0082096,Das Boot,1981,8.4
-0082158,Chariots of Fire,1981,7.3
 0082162,Chashme Buddoor,1981,8.0
 0082508,Heartland,1979,7.4
 0082694,Mad Max 2: The Road Warrior,1981,7.6
@@ -902,7 +864,6 @@ id,naslov,leto,ocena
 0085743,Who Pays the Piper,1983,8.6
 0085748,"J&#xE1;ra Cimrman Lying, Sleeping",1983,8.0
 0085913,Masoom,1983,8.5
-0085959,The Meaning of Life,1983,7.6
 0086056,"Oro, plata, mata",1982,8.1
 0086102,Phar Lap,1983,7.3
 0086182,Rembetiko,1983,8.3
@@ -920,31 +881,25 @@ id,naslov,leto,ocena
 0087332,Ghostbusters,1984,7.8
 0087349,"Blue Mountains, or Unbelievable Story",1983,8.8
 0087488,"Istv&#xE1;n, a kir&#xE1;ly",1984,8.3
-0087538,The Karate Kid,1984,7.2
 0087544,Nausica&#xE4; of the Valley of the Wind,1984,8.1
 0087553,The Killing Fields,1984,7.9
 0087650,Love and Doves,1985,8.3
 0087660,Super Space Fortress Macross,1984,7.9
 0087731,Give the Devil His Due,1985,8.3
-0087781,The Natural,1984,7.5
 0087800,A Nightmare on Elm Street,1984,7.5
 0087814,Nothing Left to Do but Cry,1984,7.8
 0087843,Once Upon a Time in America,1984,8.4
 0088083,Sexmission,1984,7.8
 0088247,The Terminator,1984,8.1
-0088258,This Is Spinal Tap,1984,8.0
 0088334,Urusei Yatsura 2: Beautiful Dreamer,1984,7.7
 0088338,The Elusive Summer of &#x27;68,1984,8.6
 0088451,Zhenshchina i chetvero yeyo muzhchin,1983,7.9
 0088763,Back to the Future,1985,8.5
 0088846,Brazil,1985,8.0
-0089218,The Goonies,1985,7.8
 0089603,Mishima: A Life in Four Chapters,1985,7.9
-0089767,Pale Rider,1985,7.3
 0089800,The Feather Fairy,1985,7.9
 0089881,Ran,1985,8.3
 0089949,Sabishinb&#xF4;,1985,7.8
-0090022,Silverado,1985,7.2
 0090109,The Pearl,1985,8.1
 0090185,"A Time to Live, a Time to Die",1985,7.8
 0090315,When the Wind Blows,1986,7.8
@@ -955,19 +910,16 @@ id,naslov,leto,ocena
 0091251,Come and See,1985,8.3
 0091256,Permission,1987,8.2
 0091341,Kin-dza-dza!,1986,8.2
-0091369,Labyrinth,1986,7.4
 0091559,Mouna Ragam,1986,8.5
 0091725,Parting Glances,1986,7.8
 0091759,Dead Man&#x27;s Letters,1986,7.7
 0091763,Platoon,1986,8.1
 0092005,Stand by Me,1986,8.1
 0092067,Castle in the Sky,1986,8.1
-0092086,&#xA1;Three Amigos!,1986,6.4
 0092593,Au Revoir Les Enfants,1987,8.1
 0092603,Babette&#x27;s Feast,1987,7.9
 0092745,A Man from Boulevard des Capucines,1987,7.9
 0092879,Ten Little Indians,1987,8.0
-0092965,Empire of the Sun,1987,7.8
 0092991,Evil Dead II,1987,7.8
 0093058,Full Metal Jacket,1987,8.3
 0093132,Hachi-ko,1987,8.2
@@ -995,12 +947,10 @@ id,naslov,leto,ocena
 0095468,A Short Film About Killing,1988,8.2
 0095657,The Moromete Family,1987,8.9
 0095715,Alice,1988,7.5
-0095765,Cinema Paradiso,1988,8.5
 0096283,My Neighbor Totoro,1988,8.3
 0096329,Ubit drakona,1989,8.1
 0096403,Time of Violence,1988,8.6
 0096438,Who Framed Roger Rabbit,1988,7.7
-0096487,Young Guns,1988,6.8
 0096754,The Abyss,1989,7.6
 0096827,Apoorva Sagodharargal,1989,8.2
 0096874,Back to the Future Part II,1989,7.8
@@ -1012,7 +962,6 @@ id,naslov,leto,ocena
 0097576,Indiana Jones and the Last Crusade,1989,8.3
 0097757,The Little Mermaid,1989,7.6
 0097814,Kiki&#x27;s Delivery Service,1989,7.9
-0097815,Major League,1989,7.2
 0097937,My Left Foot,1989,7.9
 0097955,Pomegranate and Cane,1989,8.2
 0098253,Santa Sangre,1989,7.7
@@ -1020,7 +969,6 @@ id,naslov,leto,ocena
 0098573,Don&#x27;t Let Them Shoot the Kite,1989,8.5
 0099043,Anjali,1990,8.2
 0099077,Awakenings,1990,7.8
-0099088,Back to the Future Part III,1990,7.4
 0099348,Dances with Wolves,1990,8.0
 0099487,Edward Scissorhands,1990,8.0
 0099685,Goodfellas,1990,8.7
@@ -1028,7 +976,6 @@ id,naslov,leto,ocena
 0100802,Total Recall,1990,7.5
 0101414,Beauty and the Beast,1991,8.0
 0101649,Thalapathi,1991,8.6
-0101761,The Doors,1991,7.2
 0101765,The Double Life of Veronique,1991,7.9
 0101985,A Brighter Summer Day,1991,8.3
 0102138,JFK,1991,8.0
@@ -1042,15 +989,12 @@ id,naslov,leto,ocena
 0103639,Aladdin,1992,8.0
 0103873,Dead Alive,1992,7.6
 0103874,Dracula,1992,7.5
-0104231,Far and Away,1992,6.5
 0104350,The Best Intentions,1992,7.8
 0104370,Groza nad Rusyu,1992,7.9
 0104561,Jo Jeeta Wohi Sikandar,1992,8.3
 0104652,Porco Rosso,1992,7.8
-0104694,A League of Their Own,1992,7.2
 0104737,Listopad,1992,7.5
 0104860,We Are Not Angels,1992,8.5
-0104940,The Muppet Christmas Carol,1992,7.7
 0105236,Reservoir Dogs,1992,8.4
 0105271,Roja,1992,8.2
 0105575,The Chieftain&#x27;s Son,1992,8.7
@@ -1069,7 +1013,6 @@ id,naslov,leto,ocena
 0107688,The Nightmare Before Christmas,1993,8.0
 0107692,Ninja Scroll,1993,7.9
 0107720,Nyomkeres&#xF6;,1993,7.8
-0107822,The Piano,1993,7.6
 0108002,Rudy,1993,7.5
 0108037,The Sandlot,1993,7.8
 0108052,Schindler&#x27;s List,1993,8.9
@@ -1077,10 +1020,8 @@ id,naslov,leto,ocena
 0108394,Three Colors: Blue,1993,8.0
 0108429,Udzinarta mze,1992,8.7
 0108504,For a Lost Soldier,1992,7.9
-0109045,"The Adventures of Priscilla, Queen of the Desert",1994,7.5
 0109117,Andaz Apna Apna,1994,8.7
 0109277,Sailor Moon S the Movie: Hearts in Ice,1994,7.7
-0109424,Chungking Express,1994,8.1
 0109555,Darr,1993,7.9
 0109707,Ed Wood,1994,7.9
 0109830,Forrest Gump,1994,8.8
@@ -1091,20 +1032,16 @@ id,naslov,leto,ocena
 0110322,Legends of the Fall,1994,7.5
 0110357,The Lion King,1994,8.5
 0110413,L&#xE9;on: The Professional,1994,8.6
-0110478,Maverick,1994,7.0
 0110877,Il Postino: The Postman,1994,7.8
 0110882,Before the Rain,1994,8.1
 0110912,Pulp Fiction,1994,8.9
-0110932,Quiz Show,1994,7.5
 0111161,The Shawshank Redemption,1994,9.3
 0111341,Satantango,1994,8.6
 0111495,Three Colors: Red,1994,8.1
 0111579,Burnt by the Sun,1994,8.0
 0111596,Vazir,1994,8.0
-0111756,Wyatt Earp,1994,6.6
 0111786,In the Heat of the Sun,1994,8.3
 0112461,The Basketball Diaries,1995,7.3
-0112471,Before Sunrise,1995,8.1
 0112553,Bombay,1995,8.1
 0112573,Braveheart,1995,8.4
 0112641,Casino,1995,8.2
@@ -1117,7 +1054,6 @@ id,naslov,leto,ocena
 0113568,Ghost in the Shell,1995,8.0
 0113799,Memories,1995,7.6
 0113824,Whisper of the Heart,1995,8.0
-0113862,Mr. Holland&#x27;s Opus,1995,7.3
 0114369,Se7en,1995,8.6
 0114664,Throwing Down,1995,8.1
 0114709,Toy Story,1995,8.3
@@ -1138,9 +1074,7 @@ id,naslov,leto,ocena
 0116904,Lone Justice: Showdown at Plum Creek,1996,7.8
 0117555,The Perfect Circle,1997,8.1
 0117615,Shall We Dance?,1996,7.8
-0117631,Shine,1996,7.7
 0117731,Star Trek: First Contact,1996,7.6
-0118694,In the Mood for Love,2000,8.1
 0118715,The Big Lebowski,1998,8.2
 0118799,Life Is Beautiful,1997,8.6
 0118843,"Black Cat, White Cat",1998,8.1
@@ -1148,10 +1082,7 @@ id,naslov,leto,ocena
 0118929,Dark City,1998,7.7
 0119008,Donnie Brasco,1997,7.8
 0119116,The Fifth Element,1997,7.7
-0119164,The Full Monty,1997,7.2
 0119177,Gattaca,1997,7.8
-0119282,Hercules,1997,7.2
-0119314,The Horse Whisperer,1998,6.5
 0119472,Knockin&#x27; on Heaven&#x27;s Door,1997,8.0
 0119488,L.A. Confidential,1997,8.3
 0119550,Little Ghost,1997,8.2
@@ -1164,12 +1095,7 @@ id,naslov,leto,ocena
 0120731,The Legend of 1900,1998,8.1
 0120735,"Lock, Stock and Two Smoking Barrels",1998,8.2
 0120737,The Lord of the Rings: The Fellowship of the Ring,2001,8.8
-0120746,The Mask of Zorro,1998,6.7
-0120762,Mulan,1998,7.5
-0120802,The Red Violin,1998,7.7
 0120815,Saving Private Ryan,1998,8.6
-0120910,Fantasia/2000,1999,7.3
-0121164,Corpse Bride,2005,7.4
 0121387,Snow White,1984,7.9
 0121703,Rosaura a las 10,1958,7.9
 0121766,Star Wars: Episode III - Revenge of the Sith,2005,7.6
@@ -1187,7 +1113,6 @@ id,naslov,leto,ocena
 0126029,Shrek,2001,7.9
 0126296,The Far Out West,1967,8.2
 0126449,Then I Sentenced Them All to Death,1972,8.1
-0127536,Elizabeth,1998,7.5
 0128126,C&#xEE;ntecele marii,1971,8.0
 0128985,Chalti Ka Naam Gaadi,1958,8.0
 0129167,The Iron Giant,1999,8.0
@@ -1224,7 +1149,6 @@ id,naslov,leto,ocena
 0145072,With Glittering Eyes,1966,8.1
 0145777,Flashback,1969,8.7
 0146645,Dosti,1964,8.4
-0146882,High Fidelity,2000,7.6
 0150101,Chhadmabeshi,1971,8.3
 0150417,Dulhan Wahi Jo Piya Man Bhaaye,1977,8.0
 0151511,Mausam,1975,8.0
@@ -1245,7 +1169,6 @@ id,naslov,leto,ocena
 0156945,The Return of the North Wind,1994,7.6
 0157767,Hooked on Queen,1993,7.9
 0158022,Neelachaley Mahaprabhu,1957,8.2
-0158371,Sweet and Lowdown,1999,7.3
 0158983,South Park: Bigger Longer &#x26; Uncut,1999,7.8
 0159509,Kid&#xF4; senshi Gandamu,1981,7.5
 0159511,Mobile Suit Gundam III: Encounters in Space,1982,7.7
@@ -1259,7 +1182,6 @@ id,naslov,leto,ocena
 0165623,Angst,1983,7.5
 0165904,Riesutu duona,1979,8.5
 0166275,Mob Law: A Film Portrait of Oscar Goodman,1998,7.8
-0166813,Spirit: Stallion of the Cimarron,2002,7.0
 0166896,The Straight Story,1999,8.0
 0166924,Mulholland Dr.,2001,8.0
 0167260,The Lord of the Rings: The Return of the King,2003,8.9
@@ -1268,11 +1190,9 @@ id,naslov,leto,ocena
 0167400,Time to Love,1965,8.3
 0167404,The Sixth Sense,1999,8.1
 0168269,Cinderella,1947,7.8
-0168629,Dancer in the Dark,2000,8.0
 0168978,Lucia,1998,7.9
 0169102,Lagaan: Once Upon a Time in India,2001,8.2
 0169215,The Secret of the Forest,1956,8.0
-0169547,American Beauty,1999,8.4
 0169828,Father of a Soldier,1965,8.7
 0169858,Neon Genesis Evangelion: The End of Evangelion,1997,8.2
 0169880,Neon Genesis Evangelion: Death &#x26; Rebirth,1997,7.6
@@ -1284,7 +1204,6 @@ id,naslov,leto,ocena
 0171699,Rotsa akvavda nushi,1972,8.0
 0172495,Gladiator,2000,8.5
 0172615,Ivan Franko,1956,7.8
-0172684,Kuch Kuch Hota Hai,1998,7.8
 0172776,Mars na Drinu,1964,8.4
 0173406,The Fireman,1971,8.5
 0173504,Zonja nga qyteti,1976,8.3
@@ -1311,7 +1230,6 @@ id,naslov,leto,ocena
 0183522,The Past,1998,8.1
 0184316,There Once Was a King...,1955,8.2
 0184756,Mr. Muhsin,1987,8.6
-0184894,Shanghai Noon,2000,6.6
 0186597,Tagos ng dugo,1987,8.3
 0186957,Devatha,1982,8.3
 0186968,Mozart&#x27;s Don Giovanni,1955,7.8
@@ -1330,7 +1248,6 @@ id,naslov,leto,ocena
 0199553,Gentry,1987,8.6
 0200087,Sarfarosh,1999,8.1
 0201368,The Broken Landlord,1985,8.8
-0203009,Moulin Rouge!,2001,7.6
 0203612,Pitfall,1962,7.8
 0204680,Third World,1980,8.2
 0205306,A Nameless Band,1982,8.8
@@ -1349,12 +1266,10 @@ id,naslov,leto,ocena
 0214585,Chithram,1988,8.4
 0214915,The Ornate Lock,1993,8.5
 0215517,Angoor,1982,8.4
-0215750,Enemy at the Gates,2001,7.6
 0215911,Koshish,1972,8.6
 0216030,Netaji Subhash Chandra Bose,1966,8.1
 0216651,Vampire Hunter D: Bloodlust,2000,7.8
 0216818,The Hunting of the Snark,1987,7.9
-0217505,Gangs of New York,2002,7.5
 0217590,Adventures of Mowgli,1973,7.8
 0218246,A Fistful of Rawhide,1970,8.0
 0219392,Adamianta sevda,1987,8.6
@@ -1400,7 +1315,6 @@ id,naslov,leto,ocena
 0246994,Trimata ot zapasa,1971,8.2
 0247025,The Hedgehogs&#x27; War,1979,8.6
 0247679,Sadiyata,1986,7.9
-0248126,Kabhi Khushi Kabhie Gham...,2001,7.5
 0248428,Shiva,1989,8.0
 0248845,Hedwig and the Angry Inch,2001,7.8
 0249188,Butterflies of the Spraying Rain,1987,8.5
@@ -1408,7 +1322,6 @@ id,naslov,leto,ocena
 0249336,Aha Naa Pellanta,1987,8.6
 0249361,Annamayya,1997,7.8
 0249386,The Village Had No Walls,1995,8.0
-0249462,Billy Elliot,2000,7.7
 0249795,Maya Bazaar,1957,8.9
 0249836,Nawab Sirajuddaula,1967,8.0
 0250745,Sri Krishna Deva Raya,1969,7.9
@@ -1459,11 +1372,10 @@ id,naslov,leto,ocena
 0263994,Shri Krishna Tulabharam,1966,8.1
 0264464,Catch Me If You Can,2002,8.0
 0264916,Monarch,2000,7.6
-0265086,Black Hawk Down,2001,7.7
 0265144,Offside,2000,7.4
 0265799,Sri Krishnarjuna Yudham,1963,8.1
 0266308,Battle Royale,2000,7.7
-0266543,Finding Nemo,2003,8.2
+0266543,Finding Nemo,2003,8.1
 0266697,Kill Bill: Vol. 1,2003,8.1
 0267351,My Dear Brother,1973,8.8
 0268282,The Elm-Chanted Forest,1986,8.1
@@ -1471,10 +1383,8 @@ id,naslov,leto,ocena
 0268533,Phir Subha Hogi,1958,8.2
 0268978,A Beautiful Mind,2001,8.2
 0271383,A Dog&#x27;s Will,2000,8.5
-0274309,24 Hour Party People,2002,7.4
 0274603,The Bloody Wheat,1965,8.2
 0275277,Cowboy Bebop: The Movie,2001,7.9
-0275847,Lilo &#x26; Stitch,2002,7.2
 0275858,Mze shemodgomisa,1973,8.4
 0275942,Aszparuh,1981,8.6
 0276832,Bomba Kemal,1966,8.1
@@ -1505,9 +1415,7 @@ id,naslov,leto,ocena
 0291350,Millennium Actress,2001,7.9
 0291855,Devasuram,1993,8.4
 0292246,Spadikam,1995,8.2
-0292490,Dil Chahta Hai,2001,8.2
 0292735,The Who and Special Guests Live at the Royal Albert Hall,2000,7.8
-0293508,The Phantom of the Opera,2004,7.4
 0293715,My Sassy Girl,2001,8.2
 0295187,Beni ec&#xEB;n vet&#xEB;,1975,8.1
 0295364,The Dark World,1953,7.8
@@ -1534,19 +1442,15 @@ id,naslov,leto,ocena
 0315354,Callback,2005,8.8
 0316356,Open Range,2003,7.5
 0316949,Zwei wie wir... und die Eltern wissen von nichts,1966,8.9
-0317219,Cars,2006,7.2
 0317248,City of God,2002,8.7
-0317648,Hidalgo,2004,6.7
 0317705,The Incredibles,2004,8.0
 0318188,Sultan Selim and Hasan the Janissary,1951,8.1
-0318462,The Motorcycle Diaries,2004,7.8
 0318709,Soundtrack,2002,7.9
 0319061,Big Fish,2003,8.0
 0319736,The Legend of Bhagat Singh,2002,8.2
 0319836,The Clay Bird,2002,8.5
 0320110,Mutual Admiration Society,2002,8.3
 0323013,Lakshya,2004,7.9
-0325710,The Last Samurai,2003,7.7
 0325980,Pirates of the Caribbean: The Curse of the Black Pearl,2003,8.1
 0326098,S detza na more,1972,8.6
 0327056,Mystic River,2003,8.0
@@ -1554,11 +1458,9 @@ id,naslov,leto,ocena
 0327960,Intinti Ramayanam,1979,8.8
 0328810,My Land,2002,8.0
 0329575,Seabiscuit,2003,7.3
-0332379,School of Rock,2003,7.1
 0333215,The Magician&#x27;s Hat,1990,8.2
 0336262,Demir pen&#xE7;e casuslar savasi,1969,8.0
 0338013,Eternal Sunshine of the Spotless Mind,2004,8.4
-0338188,The Missing,2003,6.5
 0338245,Megas&#xF3;nicos,1997,7.9
 0338564,Infernal Affairs,2002,8.1
 0339535,The Professional,2003,8.3
@@ -1567,7 +1469,6 @@ id,naslov,leto,ocena
 0346336,The Best of Youth,2003,8.5
 0347149,Howl&#x27;s Moving Castle,2004,8.2
 0347246,Ghost in the Shell 2: Innocence,2004,7.6
-0347304,Kal Ho Naa Ho,2003,8.1
 0347429,Loetoeng kasaroeng,1926,8.2
 0347449,Avellaneda&#x27;s Moon,2004,7.3
 0348171,Tahran macerasi,1968,8.2
@@ -1583,7 +1484,6 @@ id,naslov,leto,ocena
 0358273,Walk the Line,2005,7.9
 0361748,Inglourious Basterds,2009,8.3
 0363163,Downfall,2004,8.3
-0363226,Zatoichi,2003,7.6
 0363996,Sesh Anka,1963,8.3
 0364569,Oldboy,2003,8.4
 0364647,Virumandi,2004,8.2
@@ -1620,11 +1520,8 @@ id,naslov,leto,ocena
 0378194,Kill Bill: Vol. 2,2004,8.0
 0378284,Machuca,2004,7.8
 0378647,Ramana,2002,8.0
-0379217,Coffee and Cigarettes,2003,7.1
 0379370,Maqbool,2003,8.3
 0379786,Serenity,2005,8.0
-0381681,Before Sunset,2004,8.1
-0381849,3:10 to Yuma,2007,7.8
 0382932,Ratatouille,2007,8.0
 0383177,Aguner Poroshmoni,1994,8.9
 0383846,"When I Grow Up, I&#x27;ll Be a Kangaroo",2004,8.4
@@ -1632,20 +1529,16 @@ id,naslov,leto,ocena
 0384369,Before the Fall,2004,7.5
 0384488,Saint Ralph,2004,7.6
 0385002,Green Street Hooligans,2005,7.5
-0385726,Glory Road,2006,7.2
 0386064,Tae Guk Gi: The Brotherhood of War,2004,8.1
 0387154,Danila Prepeleac,1996,7.9
-0387564,Saw,2004,7.7
 0387914,Innocent Voices,2004,8.0
 0388120,"Two Ships, Side by Side",1963,8.0
 0388130,Initial D: Third Stage,2001,7.6
 0388980,The Greatest Game Ever Played,2005,7.5
 0389327,The Right Way,2004,8.4
-0389557,Black Book,2006,7.8
 0390022,Friday Night Lights,2004,7.3
 0392420,Maskeli S&#xFC;vari&#x27;nin d&#xF6;n&#xFC;s&#xFC;,1969,7.4
 0393061,At Night with No Curtains,2004,7.5
-0393162,Coach Carter,2005,7.2
 0395169,Hotel Rwanda,2004,8.1
 0396659,InuYasha the Movie 3: Swords of an Honorable Ruler,2003,7.8
 0398286,Tangled,2010,7.8
@@ -1661,10 +1554,7 @@ id,naslov,leto,ocena
 0405159,Million Dollar Baby,2004,8.1
 0405508,Rang De Basanti,2006,8.4
 0407887,The Departed,2006,8.5
-0408236,Sweeney Todd: The Demon Barber of Fleet Street,2007,7.4
-0408306,Munich,2005,7.6
 0409459,Watchmen,2009,7.6
-0410097,Hustle &#x26; Flow,2005,7.4
 0411759,Planet Ibsen,2005,8.1
 0412080,The World&#x27;s Fastest Indian,2005,7.9
 0415046,The Overture,2004,7.9
@@ -1676,12 +1566,10 @@ id,naslov,leto,ocena
 0419992,My Brother... Nikhil,2005,7.4
 0420332,Veer-Zaara,2004,7.9
 0421082,Control,2007,7.8
-0421238,The Proposition,2005,7.5
 0421715,The Curious Case of Benjamin Button,2008,7.8
 0422320,Ghilli,2004,7.8
 0423866,3-Iron,2004,8.1
 0424227,Turtles Can Fly,2004,8.1
-0426931,August Rush,2007,7.5
 0429766,Cheshmane John Malkovich 1: Viggo Mortensen,2004,7.7
 0430377,Muhammad: The Last Prophet,2002,7.7
 0432283,Fantastic Mr. Fox,2009,7.8
@@ -1696,13 +1584,11 @@ id,naslov,leto,ocena
 0438315,Peaceful Warrior,2006,7.3
 0440963,The Bourne Ultimatum,2007,8.1
 0442268,Be with You,2004,8.0
-0443680,The Assassination of Jesse James by the Coward Robert Ford,2007,7.6
+0443680,The Assassination of Jesse James by the Coward Robert Ford,2007,7.5
 0444982,681 AD: The Glory of Khan,1981,8.1
-0445922,Across the Universe,2007,7.4
 0446059,Fearless,2006,7.7
 0448621,Marathon,2005,7.9
 0449573,California Dreamin&#x27;,2007,7.9
-0450188,La Vie en Rose,2007,7.7
 0451094,Sympathy for Lady Vengeance,2005,7.7
 0451966,The Violin,2005,7.8
 0452039,Mind Game,2004,8.0
@@ -1711,8 +1597,6 @@ id,naslov,leto,ocena
 0453562,42,2013,7.5
 0454314,Vivekananda,1994,7.8
 0454876,Life of Pi,2012,8.0
-0454921,The Pursuit of Happyness,2006,7.9
-0455590,The Last King of Scotland,2006,7.7
 0455959,Heads N TailZ,2005,8.3
 0456144,Lage Raho Munna Bhai,2006,8.2
 0457007,Crying Fist,2005,7.5
@@ -1720,8 +1604,6 @@ id,naslov,leto,ocena
 0459516,Pudhu Pettai,2006,8.2
 0460394,Aithe,2003,8.0
 0460791,The Fall,2006,7.9
-0460989,The Wind That Shakes the Barley,2006,7.5
-0462322,Grindhouse,2007,7.6
 0462600,A Texas Tale of Treason,2006,7.7
 0464955,White Palms,2006,7.6
 0466460,Khosla&#x27;s Nest,2006,8.4
@@ -1732,11 +1614,9 @@ id,naslov,leto,ocena
 0470752,Ex Machina,2015,7.7
 0471043,Web of Deceit,2007,8.0
 0471571,Athadu,2005,8.5
-0475276,United 93,2006,7.6
 0476735,My Father and My Son,2005,8.7
 0477348,No Country for Old Men,2007,8.1
 0478319,Vitalii Bianki,1976,8.2
-0479143,Rocky Balboa,2006,7.2
 0481281,Live/Evil - Evil/Live,2005,7.8
 0481989,Beyond Gravity,2000,7.3
 0482571,The Prestige,2006,8.5
@@ -1774,7 +1654,6 @@ id,naslov,leto,ocena
 0794062,Antimoz iverieli,2001,8.3
 0796366,Star Trek,2009,8.0
 0798798,Venice Knights,2006,7.6
-0800308,Appaloosa,2008,6.8
 0805188,Marilena from P7,2006,8.1
 0805515,Dillenger&#x27;s Diablos,2006,7.6
 0808405,"Oh, Mr. Faulkner, Do You Write?",2006,8.1
@@ -1800,17 +1679,14 @@ id,naslov,leto,ocena
 0860906,Evangelion: 2.0 You Can (Not) Advance,2009,8.1
 0861739,Elite Squad,2007,8.1
 0867145,Classmates,2006,7.9
-0870111,Frost/Nixon,2008,7.7
 0871510,Chakde! India,2007,8.4
 0876563,Ponyo,2008,7.7
 0877344,Letters from the Dead,2003,7.9
 0878804,The Blind Side,2009,7.7
-0887912,The Hurt Locker,2008,7.6
 0892769,How to Train Your Dragon,2010,8.2
 0903624,The Hobbit: An Unexpected Journey,2012,7.9
 0907657,Once,2007,7.9
 0910970,WALL&#xB7;E,2008,8.4
-0914798,The Boy in the Striped Pajamas,2008,7.8
 0915747,A Poor Kid&#x27;s Guide to Success,2007,8.1
 0923811,Evangelion: 1.0: You Are (Not) Alone,2007,7.8
 0939609,Eugene Onegin,1988,8.0
@@ -1832,7 +1708,6 @@ id,naslov,leto,ocena
 0993846,The Wolf of Wall Street,2013,8.2
 0994917,Adventure Scouts,2010,7.5
 1000129,Megher Pore Megh,2004,7.9
-1013753,Milk,2008,7.6
 1019960,Sat Bhai Chompa,1968,8.0
 1019962,Shimana Periye,1976,8.1
 1020933,Aljubarrota,2008,7.9
@@ -1857,7 +1732,6 @@ id,naslov,leto,ocena
 1125849,The Wrestler,2008,7.9
 1128075,Love Exposure,2008,8.1
 1130884,Shutter Island,2010,8.1
-1131729,Pirate Radio,2009,7.4
 1136608,District 9,2009,8.0
 1139797,Let the Right One In,2008,8.0
 1142588,Woman,2007,7.8
@@ -1874,8 +1748,7 @@ id,naslov,leto,ocena
 1181343,La Traviata,2006,8.0
 1182345,Moon,2009,8.0
 1185616,Waltz with Bashir,2008,8.0
-1187043,3 Idiots,2009,8.5
-1192628,Rango,2011,7.3
+1187043,3 Idiots,2009,8.4
 1196334,After Last Season,2009,7.6
 1201607,Harry Potter and the Deathly Hallows: Part 2,2011,8.1
 1202170,Everywhere at Once,2008,7.9
@@ -1885,7 +1758,6 @@ id,naslov,leto,ocena
 1207922,Beyond the Mat,2013,7.4
 1210166,Moneyball,2011,7.6
 1210520,Mahek,2007,8.1
-1210819,The Lone Ranger,2013,6.5
 1220719,Ip Man,2008,8.1
 1221972,S&#xFC;den,2008,8.2
 1225831,Extraordinary Stories,2008,8.1
@@ -1901,13 +1773,10 @@ id,naslov,leto,ocena
 1255953,Incendies,2010,8.2
 1260502,Ghost in the Shell 2.0,2008,8.0
 1261047,Gulaal,2009,8.1
-1263670,Crazy Heart,2009,7.3
-1266029,Nowhere Boy,2009,7.2
 1267378,Postales,2010,8.1
 1270798,X-Men: First Class,2011,7.8
 1273240,Under 21,2009,8.4
 1275692,Kuheli,1971,7.8
-1276419,A Royal Affair,2012,7.6
 1277144,References,2009,8.2
 1278060,Kara no Kyoukai: The Garden of Sinners - Paradox Spiral,2008,7.9
 1279235,Papikondalu,1986,8.7
@@ -1953,7 +1822,6 @@ id,naslov,leto,ocena
 1403990,A Date with Fear,2011,8.3
 1407052,Wrinkles,2011,7.6
 1408101,Star Trek Into Darkness,2013,7.8
-1410063,The Flowers of War,2011,7.6
 1417060,A Pearl in the Forest,2008,8.2
 1422122,Tales from the Golden Age,2009,7.8
 1422651,Gekij&#xF4; ban Tengen toppa guren ragan: Ragan hen,2009,7.8
@@ -2009,7 +1877,6 @@ id,naslov,leto,ocena
 1603362,Prasthanam,2010,8.1
 1605791,Beyond the Farthest Star,2013,8.2
 1606384,My Way,2011,7.8
-1606392,Win Win,2011,7.2
 1607595,Brian Wilson Presents Smile,2005,7.9
 1618473,Sensory Perception,2015,8.6
 1619647,Eisis,2010,7.9
@@ -2017,7 +1884,6 @@ id,naslov,leto,ocena
 1621966,Starting Over,2013,8.2
 1626820,Faryad,1993,8.1
 1631365,Renegade,2011,7.6
-1631867,Edge of Tomorrow,2014,7.9
 1634013,Montevideo: Taste of a Dream,2010,8.4
 1634066,The Cedar&#x27;s Tears,2010,8.0
 1638274,Kismet,2010,8.4
@@ -2027,7 +1893,6 @@ id,naslov,leto,ocena
 1648199,Fate,2013,8.4
 1649431,Vedam,2010,8.1
 1650023,Western Confidential,2011,7.6
-1659337,The Perks of Being a Wallflower,2012,8.0
 1662540,Pratisaad: The Response,2010,7.8
 1663202,The Revenant,2015,8.3
 1675434,The Intouchables,2011,8.6
@@ -2037,7 +1902,6 @@ id,naslov,leto,ocena
 1697889,B&#xF6;y&#xFC;k dayaq,1963,8.5
 1701224,My Name Is &#x27;A&#x27; by Anonymous,2012,8.2
 1703049,Trigun: Badlands Rumble,2010,7.4
-1707386,Les Mis&#xE9;rables,2012,7.6
 1709684,M.O.N.,2006,7.6
 1711364,A3D Ayumi Hamasaki Arena Tour 2009 A: Next Level,2010,8.3
 1714148,Visionary,2012,8.4
@@ -2114,8 +1978,6 @@ id,naslov,leto,ocena
 1961211,Boy with Blue,2011,8.0
 1977754,Congratulations!,2013,7.9
 1979320,Rush,2013,8.2
-1980929,Begin Again,2013,7.5
-1981677,Pitch Perfect,2012,7.2
 1996223,Crulic - The Path to Beyond,2011,7.6
 2002679,I Hate Tom Petty,2011,8.1
 2007972,Kusume rumal,1985,8.3
@@ -2128,7 +1990,6 @@ id,naslov,leto,ocena
 2027202,RiffTrax Live: House on Haunted Hill,2010,7.8
 2033965,Cast Alaska,2011,7.9
 2040526,Tangled Up in Blue,2011,8.3
-2042568,Inside Llewyn Davis,2013,7.4
 2044774,El-Keif,1985,8.2
 2044863,Starship,2011,7.7
 2049538,Spin the Bottle: The Kiss of Death,2011,7.5
@@ -2162,7 +2023,6 @@ id,naslov,leto,ocena
 2133196,Born to Be Blue,2015,8.3
 2138154,Margazhi Raagam,2008,8.0
 2140203,Wolf Children,2012,8.2
-2140373,Saving Mr. Banks,2013,7.5
 2142003,Thunderstruck,2011,8.0
 2145338,The Curse of the Death Cat,2012,8.2
 2146960,Vazhakku Enn 18/9,2012,8.2
@@ -2190,7 +2050,7 @@ id,naslov,leto,ocena
 2194724,Puella Magi Madoka Magica the Movie Part 2: Eternal,2012,7.8
 2195804,Pawnshop,2013,8.3
 2196746,C.O.O.L.I.O Time Travel Gangster,2014,7.5
-2199711,Vishwaroopam,2013,8.8
+2199711,Vishwaroopam,2013,8.7
 2204840,Our Beautiful Secret,2013,8.3
 2205599,Satchurated: Live in Montreal,2012,8.2
 2206844,Dearly Departed,2013,8.1
@@ -2263,7 +2123,7 @@ id,naslov,leto,ocena
 2367680,Runaway Hearts,2015,8.3
 2374144,Gintama the Movie: The Final Chapter - Be Forever Yorozuya,2013,8.2
 2375379,One Piece Film Z,2012,8.0
-2375559,1,2014,8.7
+2375559,1,2014,8.6
 2377938,Special 26,2013,8.0
 2378145,Gas Light,2015,7.9
 2378585,West of Thunder,2012,7.8
@@ -2309,7 +2169,7 @@ id,naslov,leto,ocena
 2476090,Cosmic Psychos: Blokes You Can Trust,2013,8.3
 2476682,Doctor Faustus,2012,8.3
 2486856,You Carry Me,2015,7.9
-2488496,Star Wars: The Force Awakens,2015,8.5
+2488496,Star Wars: The Force Awakens,2015,8.4
 2510820,Community Service the Movie,2012,7.5
 2516280,Dream Team 1935,2012,7.9
 2521086,Attack of La Ni&#xF1;a,2011,7.4
@@ -2327,7 +2187,6 @@ id,naslov,leto,ocena
 2577902,Cab&#xE1;s,2012,7.5
 2581214,The Jezabels Live at the Hordern,2012,8.0
 2582572,Egaro: The Immortal XI,2011,8.1
-2582802,Whiplash,2014,8.5
 2585562,Pizza,2012,8.1
 2591814,The Garden of Words,2013,7.6
 2603208,Hit Man Returns: David Foster &#x26; Friends,2011,8.2
@@ -2338,7 +2197,7 @@ id,naslov,leto,ocena
 2622530,When the Ocean Met the Sky,2014,8.8
 2624344,Tell the World,2015,8.1
 2624790,Trash Detective,2015,8.1
-2631186,Baahubali: The Beginning,2015,8.7
+2631186,Baahubali: The Beginning,2015,8.6
 2634336,Boot the Pigeon,2014,8.9
 2636100,Zlatne caklje,2007,8.0
 2636364,I&#x27;m Still Here,2013,8.6
@@ -2422,7 +2281,7 @@ id,naslov,leto,ocena
 3073256,Nisshartho Bhalobasha: What is Love!,2013,8.0
 3073898,108 Stitches,2014,7.4
 3075214,Raven the Little Rascal - The Big Race,2015,7.7
-3076658,Creed,2015,8.1
+3076658,Creed,2015,8.0
 3090110,6 Bullets to Hell,2014,7.6
 3092790,Two Down,2015,8.3
 3093286,The American Side,2014,8.4
@@ -2614,7 +2473,6 @@ id,naslov,leto,ocena
 3841424,Land of Mine,2015,7.9
 3848892,Baby,2015,8.1
 3858500,What a Wonderful World,2014,8.6
-3863552,Bajrangi Bhaijaan,2015,8.2
 3864024,Lazer Team,2015,7.5
 3865434,"Hit Em Hard, the Story of Zaina Juliette",2014,7.8
 3878978,Reparation,2015,8.5

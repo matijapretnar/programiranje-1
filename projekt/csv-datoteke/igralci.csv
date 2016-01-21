@@ -59,14 +59,10 @@ id,ime
 0000076,FranÃ§ois Truffaut
 0000078,John Wayne
 0000080,Orson Welles
-0000081,Natalie Wood
 0000084,Li Gong
 0000086,Louis de FunÃ¨s
-0000090,Armin Mueller-Stahl
 0000092,John Cleese
 0000093,Brad Pitt
-0000095,Woody Allen
-0000096,Gillian Anderson
 0000098,Jennifer Aniston
 0000101,Dan Aykroyd
 0000102,Kevin Bacon
@@ -75,7 +71,6 @@ id,ime
 0000111,Matthew Broderick
 0000113,Sandra Bullock
 0000114,Steve Buscemi
-0000119,Tia Carrere
 0000120,Jim Carrey
 0000122,Charles Chaplin
 0000123,George Clooney
@@ -115,9 +110,7 @@ id,ime
 0000172,Harvey Keitel
 0000173,Nicole Kidman
 0000174,Val Kilmer
-0000177,Kevin Kline
 0000179,Jude Law
-0000188,Steve Martin
 0000190,Matthew McConaughey
 0000191,Ewan McGregor
 0000193,Demi Moore
@@ -133,13 +126,9 @@ id,ime
 0000204,Natalie Portman
 0000206,Keanu Reeves
 0000209,Tim Robbins
-0000212,Meg Ryan
 0000213,Winona Ryder
-0000215,Susan Sarandon
 0000216,Arnold Schwarzenegger
-0000218,Kristin Scott Thomas
 0000221,Charlie Sheen
-0000223,Elisabeth Shue
 0000226,Will Smith
 0000228,Kevin Spacey
 0000230,Sylvester Stallone
@@ -176,24 +165,18 @@ id,ime
 0000300,Juliette Binoche
 0000301,Thora Birch
 0000304,Linda Blair
-0000305,Mel Blanc
 0000307,Helena Bonham Carter
 0000308,Ernest Borgnine
-0000309,David Bowie
 0000313,Jeff Bridges
 0000314,Charles Bronson
 0000317,Clancy Brown
 0000321,Gabriel Byrne
 0000323,Michael Caine
-0000329,Jackie Chan
-0000330,Stockard Channing
 0000331,Chevy Chase
 0000332,Don Cheadle
 0000335,Glenn Close
 0000336,James Coburn
-0000342,James Cromwell
 0000345,Billy Crystal
-0000347,Tim Curry
 0000348,Tony Curtis
 0000349,Joan Cusack
 0000350,Beverly D'Angelo
@@ -212,7 +195,6 @@ id,ime
 0000385,Sam Elliott
 0000387,Robert Englund
 0000388,R. Lee Ermey
-0000389,Emilio Estevez
 0000397,Corey Feldman
 0000401,Laurence Fishburne
 0000402,Carrie Fisher
@@ -221,7 +203,6 @@ id,ime
 0000410,Stephen Fry
 0000411,Edward Furlong
 0000414,Teri Garr
-0000416,Terry Gilliam
 0000417,Crispin Glover
 0000418,Danny Glover
 0000421,Cuba Gooding Jr.
@@ -234,8 +215,6 @@ id,ime
 0000438,Ed Harris
 0000439,Neil Patrick Harris
 0000442,Rutger Hauer
-0000444,Glenne Headly
-0000446,Mariel Hemingway
 0000450,Philip Seymour Hoffman
 0000454,Dennis Hopper
 0000456,Holly Hunter
@@ -244,7 +223,6 @@ id,ime
 0000461,Michael Ironside
 0000469,James Earl Jones
 0000472,Boris Karloff
-0000473,Diane Keaton
 0000474,Michael Keaton
 0000476,Sally Kirkland
 0000480,Elias Koteas
@@ -275,7 +253,6 @@ id,ime
 0000552,Eddie Murphy
 0000553,Liam Neeson
 0000554,Sam Neill
-0000556,Olivia Newton-John
 0000558,Leslie Nielsen
 0000559,Leonard Nimoy
 0000560,Nick Nolte
@@ -308,14 +285,12 @@ id,ime
 0000649,Paul Sorvino
 0000651,Sissy Spacek
 0000653,Brent Spiner
-0000654,Terence Stamp
 0000656,Madeleine Stowe
 0000658,Meryl Streep
 0000661,Donald Sutherland
 0000662,Kiefer Sutherland
 0000663,Dominique Swain
 0000667,David Thewlis
-0000668,Emma Thompson
 0000670,Lea Thompson
 0000671,Billy Bob Thornton
 0000673,Marisa Tomei
@@ -327,7 +302,6 @@ id,ime
 0000698,Gene Wilder
 0000701,Kate Winslet
 0000702,Reese Witherspoon
-0000703,BD Wong
 0000704,Elijah Wood
 0000705,Robin Wright
 0000707,Sean Young
@@ -337,7 +311,6 @@ id,ime
 0000730,John Agar
 0000731,Brian Aherne
 0000732,Danny Aiello
-0000734,Eddie Albert
 0000738,Muhammad Ali
 0000741,Tim Allen
 0000742,June Allyson
@@ -374,7 +347,6 @@ id,ime
 0000889,Bonnie Bedelia
 0000891,Wallace Beery
 0000895,Barbara Bel Geddes
-0000897,Ralph Bellamy
 0000901,Jean-Paul Belmondo
 0000904,William Bendix
 0000905,Roberto Benigni
@@ -383,10 +355,8 @@ id,ime
 0000912,Jack Benny
 0000913,Robby Benson
 0000925,Steven Berkoff
-0000929,Corbin Bernsen
 0000931,Elizabeth Berridge
 0000932,Halle Berry
-0000937,Richard Beymer
 0000947,Karen Black
 0000949,Cate Blanchett
 0000951,Joan Blondell
@@ -425,7 +395,6 @@ id,ime
 0001057,Toni Collette
 0001065,Harry Connick Jr.
 0001067,Jackie Coogan
-0001069,Bud Cort
 0001072,Joseph Cotten
 0001075,Peter Coyote
 0001076,Joan Crawford
@@ -461,8 +430,6 @@ id,ime
 0001200,Gary Farmer
 0001201,Mia Farrow
 0001207,JosÃ© Ferrer
-0001209,William Fichtner
-0001212,Joseph Fiennes
 0001215,Albert Finney
 0001217,Fionnula Flanagan
 0001221,Louise Fletcher
@@ -472,7 +439,6 @@ id,ime
 0001230,Harrison Ford
 0001231,Claire Forlani
 0001234,John Forsythe
-0001247,Eva Gabor
 0001256,Greta Garbo
 0001257,Ava Gardner
 0001258,James Garner
@@ -489,7 +455,6 @@ id,ime
 0001321,Richard Harris
 0001322,Rex Harrison
 0001324,Ian Hart
-0001326,Josh Hartnett
 0001330,Sterling Hayden
 0001333,Susan Hayward
 0001335,Tippi Hedren
@@ -498,12 +463,10 @@ id,ime
 0001347,Barbara Hershey
 0001352,Terence Hill
 0001354,CiarÃ¡n Hinds
-0001359,Sterling Holloway
 0001364,Bob Hoskins
 0001366,Leslie Howard
 0001369,Rock Hudson
 0001371,Tom Hulce
-0001372,Bonnie Hunt
 0001374,Jeffrey Hunter
 0001375,Kim Hunter
 0001379,John Huston
@@ -523,12 +486,10 @@ id,ime
 0001421,George Kennedy
 0001426,Ben Kingsley
 0001428,Klaus Kinski
-0001429,Takeshi Kitano
 0001434,Kris Kristofferson
 0001444,Lorenzo Lamas
 0001445,Martin Landau
 0001448,Jessica Lange
-0001449,Frank Langella
 0001452,Charles Laughton
 0001453,Piper Laurie
 0001458,Cloris Leachman
@@ -540,8 +501,6 @@ id,ime
 0001479,Carole Lombard
 0001481,Tina Louise
 0001485,Myrna Loy
-0001492,Kyle MacLachlan
-0001494,Ralph Macchio
 0001497,Tobey Maguire
 0001500,Karl Malden
 0001509,Dean Martin
@@ -560,8 +519,6 @@ id,ime
 0001544,Ricardo Montalban
 0001547,Agnes Moorehead
 0001550,Cathy Moriarty
-0001552,Pat Morita
-0001555,Rob Morrow
 0001556,David Morse
 0001557,Viggo Mortensen
 0001567,Connie Nielsen
@@ -571,7 +528,6 @@ id,ime
 0001575,Tatum O'Neal
 0001577,Maureen O'Sullivan
 0001588,Jack Palance
-0001589,Michael Palin
 0001590,Chazz Palminteri
 0001592,Joe Pantoliano
 0001593,Anna Paquin
@@ -579,9 +535,7 @@ id,ime
 0001599,Will Patton
 0001602,Guy Pearce
 0001608,Barry Pepper
-0001614,Lori Petty
 0001615,Elizabeth PeÃ±a
-0001617,Lou Diamond Phillips
 0001618,Joaquin Phoenix
 0001620,Slim Pickens
 0001626,Christopher Plummer
@@ -601,8 +555,6 @@ id,ime
 0001661,Rob Reiner
 0001665,Lee Remick
 0001666,Debbie Reynolds
-0001667,Jonathan Rhys Meyers
-0001669,Miranda Richardson
 0001673,Jason Robards
 0001677,Ginger Rogers
 0001682,Mickey Rooney
@@ -624,7 +576,6 @@ id,ime
 0001731,Sam Shepard
 0001732,Cybill Shepherd
 0001735,Talia Shire
-0001737,Martin Short
 0001739,Jean Simmons
 0001744,Tom Sizemore
 0001766,Barbara Stanwyck
@@ -634,7 +585,6 @@ id,ime
 0001777,Dean Stockwell
 0001778,Matt Stone
 0001784,Gloria Stuart
-0001787,Jeffrey Tambor
 0001791,Robert Taylor
 0001792,Rod Taylor
 0001794,Henry Thomas
@@ -643,22 +593,17 @@ id,ime
 0001805,Lana Turner
 0001806,John Turturro
 0001812,Lee Van Cleef
-0001813,Dick Van Dyke
 0001821,Jan-Michael Vincent
-0001823,Tom Waits
 0001828,Melora Walters
 0001832,Sam Waterston
 0001833,Emily Watson
 0001835,Carl Weathers
-0001840,Ming-Na Wen
 0001845,Forest Whitaker
 0001847,Richard Widmark
 0001848,Dianne Wiest
-0001852,Treat Williams
 0001859,Shelley Winters
 0001868,Michael York
 0001870,Robert Young
-0001876,Catherine Zeta-Jones
 0001884,Max von Sydow
 0001898,Bryan Adams
 0001916,Arletty
@@ -676,7 +621,6 @@ id,ime
 0001979,Tom Burlinson
 0001982,Sebastian Cabot
 0001993,Vincent Cassel
-0001995,George Chakiris
 0001998,Cyd Charisse
 0002000,Leslie Cheung
 0002001,Maurice Chevalier
@@ -687,7 +631,6 @@ id,ime
 0002022,Jeanne Crain
 0002024,Broderick Crawford
 0002025,Hume Cronyn
-0002027,Ben Cross
 0002029,Maria Grazia Cucinotta
 0002032,Roger Daltrey
 0002034,Jane Darwell
@@ -722,7 +665,6 @@ id,ime
 0002311,Montagu Love
 0002438,Burnie Burns
 0002503,Harry Carey
-0002536,Emmy Rossum
 0002663,Diane Ladd
 0002994,Kevin McCarthy
 0003110,Cesar Romero
@@ -766,7 +708,6 @@ id,ime
 0004647,Carroll Baker
 0004650,Marisa Paredes
 0004660,Rajkumar
-0004692,Mark Addy
 0004715,Will Arnett
 0004735,James Van Der Beek
 0004741,Camilla Belle
@@ -778,15 +719,12 @@ id,ime
 0004831,Natalie Cole
 0004851,PenÃ©lope Cruz
 0004874,Vin Diesel
-0004883,Tate Donovan
 0004916,Conchata Ferrell
 0004936,Ben Foster
 0004937,Jamie Foxx
 0004950,Jennifer Garner
 0004951,Brad Garrett
-0004959,Thomas Gibson
 0005009,Laura Harring
-0005013,Iben Hjejle
 0005023,Djimon Hounsou
 0005024,Terrence Howard
 0005028,Kate Hudson
@@ -800,8 +738,6 @@ id,ime
 0005118,Ali Landry
 0005132,Heath Ledger
 0005134,Jason Lee
-0005154,Lucy Liu
-0005200,Paul McCartney
 0005210,Tim McGraw
 0005212,Ian McKellen
 0005251,Carrie-Anne Moss
@@ -817,8 +753,6 @@ id,ime
 0005460,Mary Steenburgen
 0005476,Hilary Swank
 0005493,Justin Timberlake
-0005562,Owen Wilson
-0006168,John Lennon
 0006189,Brian May
 0006198,Freddie Mercury
 0006348,Rajendra Kumar
@@ -920,7 +854,6 @@ id,ime
 0025779,Romualds Ancans
 0025886,Sandy Andolong
 0025954,Jacqueline Andere
-0026364,Anthony Anderson
 0026860,Jan Anderson
 0026963,Jon Anderson
 0027215,Miles Anderson
@@ -964,11 +897,9 @@ id,ime
 0039733,Moris Assa
 0039989,Nils Asther
 0040309,Aysen Atav
-0041066,Antonella Attili
 0041112,Michael Attwell
 0041281,Rene Auberjonois
 0041411,Juliet Aubrey
-0041598,Eleanor Audley
 0041614,Marie-FranÃ§oise Audollent
 0041681,Mischa Auer
 0043247,Vasilis Avlonitis
@@ -999,7 +930,6 @@ id,ime
 0048003,Riju Bajaj
 0048075,Manoj Bajpayee
 0048121,Miroslaw Baka
-0048939,Stanley Baker
 0049395,Balakrishna
 0050187,Arun Bali
 0050555,Elspeth Ballantyne
@@ -1028,10 +958,8 @@ id,ime
 0058290,Vladimir Barsky
 0059431,Jay Baruchel
 0059461,Sunil Barve
-0059654,David Alan Basche
 0059823,Relja Basic
 0059847,Oleg Basilashvili
-0059934,James Baskett
 0060002,Vladimir Basov
 0060584,Othon Bastos
 0060610,Gangapada Basu
@@ -1045,7 +973,6 @@ id,ime
 0062684,Ben Baxter
 0062736,George Baxter
 0063202,Buba Bayour
-0064607,Kathryn Beaumont
 0065169,Jeff Beck
 0065861,Ron Becks
 0065975,Don Beddoe
@@ -1055,7 +982,6 @@ id,ime
 0067377,VladimÃ­r Bejval
 0067643,Joe Belcher
 0068042,Ashley Bell
-0068260,Jamie Bell
 0068338,Kristen Bell
 0068644,Joey Belladonna
 0069051,Paul Bellini
@@ -1099,7 +1025,6 @@ id,ime
 0080385,Ashwini Bhave
 0080447,Gopal Raj Bhutani
 0080771,Ugo Bianchi
-0081175,Jean-Luc Bideau
 0081449,Dragan Bjelogrlic
 0081572,Craig Bierko
 0082052,Jan Bijvoet
@@ -1172,7 +1097,6 @@ id,ime
 0102787,Eddie Bracken
 0102925,Jimmy Braddock
 0103722,Scott Brady
-0104051,Justin Braine
 0104103,Vojislav Brajovic
 0104183,Wilfrid Brambell
 0104507,Neville Brand
@@ -1199,7 +1123,6 @@ id,ime
 0111612,Clive Brook
 0111997,Geraldine Brooks
 0112014,Hazel Brooks
-0112395,Edward Brophy
 0113427,Don Brown
 0113595,Garrett M. Brown
 0113814,Jefferson Brown
@@ -1212,7 +1135,6 @@ id,ime
 0117673,Christian BrÃ¼ckner
 0117709,Daniel BrÃ¼hl
 0117834,Stepan Bubnov
-0117885,Flavio Bucci
 0119118,Betty Buehler
 0119793,Marek Bukowski
 0119918,Senka Bulic
@@ -1258,7 +1180,6 @@ id,ime
 0132824,Ross Campbell
 0133448,Erkan Can
 0133899,Guillaume Canet
-0134073,Enzo Cannavale
 0134086,Tony Cannella
 0134251,Pomeroy Cannon
 0134449,Richard Cansino
@@ -1284,7 +1205,6 @@ id,ime
 0142910,Delia Casanova
 0143018,MarÃ­a Casares
 0143314,Adriana Caselotti
-0143743,Stefania Casini
 0144045,Jean-Pierre Cassel
 0144594,Pilar Castel
 0145303,Mary Castle
@@ -1292,7 +1212,6 @@ id,ime
 0146542,Joan Caulfield
 0147070,Glen Cavender
 0147250,Alec Cawthorne
-0147605,Carlo Cecchi
 0148051,Ingrid Celia
 0148212,Iga Cembrzynska
 0148313,Shamaine Buencamino
@@ -1313,7 +1232,6 @@ id,ime
 0151755,Kuo-Chu Chang
 0152447,Lia Chapman
 0153100,Melissa Fahn
-0153182,Ian Charleson
 0153556,Spencer Charters
 0153738,Daveigh Chase
 0153855,Will Chase
@@ -1374,7 +1292,6 @@ id,ime
 0167952,Roberto Cobo
 0168215,Steve Cochran
 0169067,Frank Coghlan Jr.
-0169480,Jeff Cohen
 0169565,Lynn Cohen
 0169806,Taika Waititi
 0170541,Eric Michael Cole
@@ -1389,12 +1306,10 @@ id,ime
 0174566,Mon Confiado
 0175262,Billy Connolly
 0175369,Walter Connolly
-0175788,Hans Conried
 0175834,Kevin Conroy
 0176037,Jean Constantin
 0176039,Michel Constantin
 0176093,Corina Constantinescu
-0176869,Steve Coogan
 0177703,James Coombes
 0177896,Bradley Cooper
 0177933,Chris Cooper
@@ -1409,9 +1324,7 @@ id,ime
 0181425,Jesse Corti
 0181595,Pete Corum
 0181920,James Cosmo
-0182250,Mary Costa
 0182579,Lou Costello
-0182839,Marion Cotillard
 0183822,Tom Courtenay
 0184292,Jacques Couture
 0184785,Jane Cowl
@@ -1437,7 +1350,6 @@ id,ime
 0192033,Peggy Cummins
 0192110,Lester Cuneo
 0192117,Sharon Cuneta
-0192377,Liam Cunningham
 0193232,Alan Curtis
 0194193,Zbigniew Cybulski
 0194242,Adam Cyprian
@@ -1530,7 +1442,6 @@ id,ime
 0229314,Nikola Djuricko
 0229733,Anica Dobra
 0229874,Lyubov Dobrzhanskaya
-0229943,Vernon Dobtcheff
 0230029,Michal DocolomanskÃ½
 0230082,Jimmie Dodd
 0230674,Mika Doi
@@ -1554,7 +1465,6 @@ id,ime
 0238445,Joanne Dru
 0238454,Tatyana Drubich
 0240318,Lola DueÃ±as
-0240359,Anne-Marie Duff
 0240482,William Dufris
 0241131,Davor Dujmovic
 0241325,Vlatko Dulic
@@ -1570,11 +1480,9 @@ id,ime
 0246006,William Dysart
 0246386,MÃ©lissa DÃ©sormeaux-Poulin
 0247932,ShinjirÃ´ Ehara
-0248600,Andrea Eckert
 0249291,Joel Edgerton
 0250366,Snitz Edwards
 0250436,Vince Edwards
-0250743,Susan Egan
 0250752,Hisao Egawa
 0250790,Aud Egede-Nissen
 0251634,Natan Eidelman
@@ -1632,7 +1540,6 @@ id,ime
 0268012,Felicia Farr
 0268199,Colin Farrell
 0268225,Glenda Farrell
-0268297,Nicholas Farrell
 0268488,Amir Farrokh Hashemian
 0268838,Natalya Fateeva
 0269463,Jon Favreau
@@ -1662,7 +1569,6 @@ id,ime
 0278366,Ion Fintesteanu
 0278384,Itzhak Finzi
 0278673,Mackenzie Firgens
-0279545,Isla Fisher
 0279727,Patrice Fisher
 0280132,Peter Fitz
 0280178,Barry Fitzgerald
@@ -1708,7 +1614,6 @@ id,ime
 0294600,Leonard Frey
 0294892,Gertrud Fridh
 0296545,Nick Frost
-0296614,Toby Froud
 0297054,Gustav FrÃ¶hlich
 0297076,Samuel FrÃ¶ler
 0297578,Patrick Fugit
@@ -1774,7 +1679,6 @@ id,ime
 0315642,Petrica Gheorghiu
 0315917,Robi Ghosh
 0315942,Salim Ghouse
-0316079,Paul Giamatti
 0316284,Giancarlo Giannini
 0316701,Mary Gibbs
 0316995,Hoot Gibson
@@ -1797,14 +1701,12 @@ id,ime
 0322977,Nebojsa Glogovac
 0323098,Bruce Glover
 0323576,Hilda Gobbi
-0324397,Dave Goelz
 0324845,Vikram Gokhale
 0326538,Natasa GollovÃ¡
 0326599,Aleksandr Goloborodko
 0326928,Marc Gomes
 0327089,Thomas Gomez
 0327106,Archil Gomiashvili
-0327779,Rick Gonzalez
 0328494,Tacho GonzÃ¡lez
 0328828,Matthew Goode
 0329094,Henry Goodman
@@ -1836,7 +1738,6 @@ id,ime
 0338426,Andrew Greenan
 0339307,Charlotte Greenwood
 0339452,Jane Greer
-0339621,Pascal Greggory
 0339737,Andre Gregory
 0339834,James Gregory
 0339918,Paul Gregory
@@ -1859,10 +1760,8 @@ id,ime
 0348409,Bob Gunton
 0348490,Rajendra Gupta
 0348558,Lyudmila Gurchenko
-0350324,Edmund Gwenn
 0350393,JÃ³zsef Gyabronka
 0350453,Jake Gyllenhaal
-0350454,Maggie Gyllenhaal
 0351405,JÃ¡nos GÃ¶rbe
 0351576,Ernst GÃ¼nther
 0351868,Ville Haapasalo
@@ -1898,13 +1797,11 @@ id,ime
 0362766,Tom Hardy
 0362869,Dean Harens
 0362959,Christine Hargreaves
-0363888,Jessica Harper
 0364203,William Harrigan
 0364915,Julie Harris
 0365140,Naomie Harris
 0365201,Phil Harris
 0365445,Wood Harris
-0365600,George Harrison
 0365692,Kathleen Harrison
 0365893,Susan Harrison
 0366253,Dorothy Hart
@@ -1920,7 +1817,6 @@ id,ime
 0369318,Per Theodor Haugen
 0370144,Jack Hawkins
 0370677,Megumi Hayashibara
-0370821,Richard Haydn
 0371565,Walker Haynes
 0371775,Louis Hayward
 0372898,Suresh Heblikar
@@ -1944,11 +1840,9 @@ id,ime
 0380729,Petr Herrman
 0381116,Don Hertzfeldt
 0382216,Christopher Heyerdahl
-0382402,Jean Heywood
 0382830,Dan Hicks
 0383022,Noriko Hidaka
 0383092,Sachiko Hidari
-0383603,Freddie Highmore
 0384152,Conleth Hill
 0384473,Les Hill
 0384494,Marianna Hill
@@ -1969,7 +1863,6 @@ id,ime
 0388129,Ty Hodges
 0388303,John Hodiak
 0388588,Tobias Hoesl
-0389109,Thom Hoffman
 0391361,Stanley Holloway
 0392073,Tina Holmes
 0392436,Hans Holt
@@ -1988,7 +1881,6 @@ id,ime
 0396096,Toshiyuki Hosokawa
 0396558,Nicholas Hoult
 0396886,Robin Houston
-0396924,Carice van Houten
 0397212,Clint Howard
 0397364,Julie Ann Taylor
 0397878,Michael Howe
@@ -2047,14 +1939,12 @@ id,ime
 0412652,Stefania Iwinska
 0412910,Ramana Murthi J.V.
 0413168,Hugh Jackman
-0414965,Ulla Jacobsson
 0415538,Jagadish
 0415549,Jagathi Sreekumar
 0415773,Jai
 0416245,Jesse James Jr.
 0416274,Anne James
 0416378,Clifton James
-0416694,Lennie James
 0417301,Janagaraj
 0417370,Krystyna Janda
 0417389,Ivan Jandl
@@ -2094,7 +1984,6 @@ id,ime
 0427607,Booker T. Jones
 0427659,Buck Jones
 0427700,Carolyn Jones
-0427934,Dickie Jones
 0427977,Duane Jones
 0428216,Henry Jones
 0428856,Mickey Jones
@@ -2130,7 +2019,6 @@ id,ime
 0436776,Akira Kamiya
 0436778,Hiroshi Kamiya
 0437511,Ken Kaneko
-0437580,Takeshi Kaneshiro
 0437630,Kar-Ying Law
 0437646,Sung Kang
 0438463,Anil Kapoor
@@ -2163,7 +2051,6 @@ id,ime
 0446525,Joseph P. Kelly
 0446715,Nancy Kelly
 0447515,Josef Kemr
-0447695,Anna Kendrick
 0447913,Arthur Kennedy
 0448655,April Kent
 0448894,MÃ¼sfik Kenter
@@ -2183,7 +2070,6 @@ id,ime
 0451307,Saif Ali Khan
 0451313,Sanjay Khan
 0451321,Shah Rukh Khan
-0451379,Akshaye Khanna
 0451396,Vinod Khanna
 0451561,Sachin Khedekar
 0451600,Anupam Kher
@@ -2229,7 +2115,6 @@ id,ime
 0463827,Sonja Kolacaric
 0464027,Irena Kolesar
 0464060,Todor Kolev
-0464855,Christoph Koncz
 0465160,Katsuyuki Konishi
 0465244,Mikhail Kononov
 0465664,Thomas Kopache
@@ -2355,13 +2240,11 @@ id,ime
 0503275,Zvonko Lepetic
 0503443,Chete Lera
 0503499,Preben Lerdorff Rye
-0503567,Logan Lerman
 0503627,Michael Lerner
 0504125,Joan Leslie
 0504641,FranÃ§ois Leterrier
 0504897,Tony Chiu Wai Leung
 0504899,Tony Ka Fai Leung
-0505824,James Levine
 0505869,Kevin Levine
 0506784,JosÃ© Lewgoy
 0507592,Norm Lewis
@@ -2370,7 +2253,6 @@ id,ime
 0509583,Jan Josef Liefers
 0509881,Catarina Ligendza
 0510134,Paul Lukas
-0510857,Brigitte Lin
 0511458,Gunnel Lindblom
 0512267,Margaret Lindsay
 0513205,Illona Linthwaite
@@ -2396,14 +2278,11 @@ id,ime
 0519765,Theodor Loos
 0520602,Liza Lorena
 0521156,Joan Lorring
-0521974,Todd Louiso
 0522205,Sam Louwyck
 0522481,Frank Lovejoy
 0523821,Olaf Lubaszenko
-0524197,Josh Lucas
 0524240,Matt Lucas
 0524468,Enrique Lucero
-0524839,Ludacris
 0524853,Barbara Luddy
 0525518,Florian Lukas
 0525557,Olgierd Lukaszewicz
@@ -2429,7 +2308,6 @@ id,ime
 0530244,Marga LÃ³pez
 0530365,Sergi LÃ³pez
 0531759,J. Farrell MacDonald
-0531763,James MacDonald
 0532277,Niall MacGinnis
 0532997,Helen Mack
 0533045,Marion Mack
@@ -2573,7 +2451,6 @@ id,ime
 0586445,Mikhail Mikhajlov
 0586450,Viktor Mikhaylov
 0586482,Nikita Mikhalkov
-0586568,Mads Mikkelsen
 0586645,Ivan Mykolaichuk
 0586733,RentarÃ´ Mikuni
 0586978,Frane Milcinski
@@ -2638,7 +2515,6 @@ id,ime
 0604656,Frank Morgan
 0604976,Richard Morgan
 0605270,Masayuki Mori
-0605363,Michael Moriarty
 0605432,Francesca Moriggi
 0605452,Toshiyuki Morikawa
 0605480,Leo Morimoto
@@ -2711,7 +2587,6 @@ id,ime
 0621937,Nasser
 0622070,Marie-JosÃ© Nat
 0622193,Prem Nath
-0622407,Yui Natsukawa
 0622544,David Naughton
 0622732,Deepti Naval
 0623146,Martina Navratilova
@@ -2733,7 +2608,6 @@ id,ime
 0628704,Jinpachi Nezu
 0628806,Man Tat Ng
 0628955,Haing S. Ngor
-0629538,Austin Nichols
 0630453,Daria Nicolodi
 0631102,Leon Niemczyk
 0631413,Anjul Nigam
@@ -2797,7 +2671,6 @@ id,ime
 0646829,Edna May Oliver
 0647167,Maricruz Olivier
 0648193,Draga Olteanu Matei
-0648249,Timothy Olyphant
 0648360,Gianfranco Ombuen
 0648409,Toshinori Omi
 0648866,Masaya Onosaka
@@ -2881,7 +2754,6 @@ id,ime
 0680983,Ellen Page
 0681927,Jack Pickford
 0681933,Mary Pickford
-0681954,Vivian Pickles
 0682074,Walter Pidgeon
 0682495,Wendell Pierce
 0682692,FrÃ©dÃ©ric Pierrot
@@ -2990,14 +2862,12 @@ id,ime
 0718203,Scott H. Reiniger
 0719562,Renjini
 0719606,Patrick Renna
-0719637,Jeremy Renner
 0719678,Callum Keith Rennie
 0719692,Michael Rennie
 0719738,Kelly Reno
 0720763,Revathy
 0721073,Fernando Rey
 0721851,Marjorie Reynolds
-0722647,Robert Ri'chard
 0723658,Irene Rich
 0723954,Ann Richards
 0724143,Jeff Richards
@@ -3022,11 +2892,9 @@ id,ime
 0730888,Bret Roberts
 0731499,Rachel Roberts
 0731507,Roy Roberts
-0731634,Tony Roberts
 0731910,John S. Robertson
 0732220,Michel Robin
 0732784,Julianna Robinson
-0733196,Zuleikha Robinson
 0733598,Daniela Rocca
 0733678,Alex Rocco
 0734019,Claire Rochelle
@@ -3050,20 +2918,16 @@ id,ime
 0747172,Ronit Roy
 0747178,Sandhya Roy
 0747635,Lojze Rozman
-0747759,Christian Rub
 0748620,Paul Rudd
 0748964,Lars Rudolph
 0749104,BelÃ©n Rueda
 0749263,Mark Ruffalo
 0749363,Rufus
-0749476,Charles Ruggles
 0750559,Mariya Rusalieva
 0751149,Gail Russell
-0751426,Rosalind Russell
 0751881,Ilya Rutberg
 0751899,Babe Ruth
 0751983,Margaret Rutherford
-0752407,Amy Ryan
 0752648,Kathleen Ryan
 0752813,Robert Ryan
 0753086,Alfred Ryder
@@ -3099,7 +2963,6 @@ id,ime
 0759967,Tatyana Samoylova
 0760796,Hiroyuki Sanada
 0761420,Otto Sander
-0761498,Chris Sanders
 0761890,Sandhya
 0762248,Stefania Sandrelli
 0762445,Ellen Sandweiss
@@ -3167,7 +3030,6 @@ id,ime
 0789032,Helen Wood
 0790006,Tommy Shaw
 0790452,Moira Shearer
-0790688,Michael Sheen
 0790863,Javed Sheikh
 0791226,Rachel Shelley
 0791282,Petr Shelokhonov
@@ -3183,7 +3045,6 @@ id,ime
 0794044,Masayuki Shionoya
 0794186,Ayano Shiraishi
 0794297,Anne Shirley
-0794301,Bill Shirley
 0794363,Namrata Shirodkar
 0794511,Om Shivpuri
 0794885,Hristo Shopov
@@ -3208,7 +3069,6 @@ id,ime
 0802378,Vidya Sinha
 0802458,Imre Sinkovits
 0803033,Risto Siskov
-0803310,Ping Lam Siu
 0803397,Jamie Sives
 0803705,Victor SjÃ¶strÃ¶m
 0803762,Corey Skaggs
@@ -3226,8 +3086,6 @@ id,ime
 0808949,Kent Smith
 0810550,Innokentiy Smoktunovskiy
 0810646,Frantisek SmolÃ­k
-0811202,Carrie Snodgress
-0811242,Brittany Snow
 0811621,Michael Somes
 0811794,Shobana
 0812188,Cristian Sofron
@@ -3241,7 +3099,6 @@ id,ime
 0814280,Kang-ho Song
 0814734,TÃ¼rkan Soray
 0814773,Alberto Sordi
-0814862,Rickie Sorensen
 0815435,E.H. Sothern
 0815474,Bert Sotlar
 0815537,Hugo Soto
@@ -3301,9 +3158,7 @@ id,ime
 0835423,Bozena StryjkÃ³wna
 0835836,Randy Stuart
 0836044,Zdena StudenkovÃ¡
-0836070,Daniel Studi
 0836136,Jerzy Stuhr
-0836343,Jim Sturgess
 0836946,Ivan Subic
 0837352,KantarÃ´ Suga
 0837523,Tomokazu Sugita
@@ -3325,7 +3180,6 @@ id,ime
 0841797,Gloria Swanson
 0841915,Swarnamalya
 0842251,Gary Sweet
-0842425,Karl Swenson
 0842770,Tilda Swinton
 0843213,William Sylvester
 0843401,Sylvia Syms
@@ -3377,7 +3231,6 @@ id,ime
 0856062,Phillip Terry
 0856086,Todd Terry
 0856227,Jan Tesarz
-0856500,Sylvie Testud
 0856501,Robert Testut
 0856917,Anna Thalbach
 0856918,Katharina Thalbach
@@ -3385,9 +3238,7 @@ id,ime
 0857187,Phyllis Thaxter
 0857620,Justin Theroux
 0858128,Thilakan
-0858988,Jay Thomas
 0860233,Jack Thompson
-0861027,John Thomson
 0861412,Melissa Thorne
 0862026,Ingrid Thulin
 0862937,Lawrence Tierney
@@ -3403,7 +3254,6 @@ id,ime
 0866271,Reino Tolvanen
 0866697,MÃ®na Tominaga
 0866745,Yasuko Tomita
-0866835,David Tomlinson
 0867144,Franchot Tone
 0867391,EijirÃ´ TÃ´no
 0867694,Topol
@@ -3479,7 +3329,6 @@ id,ime
 0891998,Conrad Veidt
 0892299,Manuela Velasco
 0893142,Venkatesh Daggubati
-0893257,Milo Ventimiglia
 0893341,Lino Ventura
 0893449,Nedumudi Venu
 0894340,Deven Verma
@@ -3526,7 +3375,6 @@ id,ime
 0908695,Jean Wallace
 0908919,Eli Wallach
 0908973,Stefan de Walle
-0910278,Julie Walters
 0910607,Christoph Waltz
 0910947,Faye Wong
 0911688,Lillian Ward
@@ -3559,8 +3407,6 @@ id,ime
 0924009,Alison Whelan
 0924643,Dan White
 0924916,Jacqueline White
-0925234,Mike White
-0926209,Steve Whitmire
 0926599,Dame May Whitty
 0927145,Ellen Widmann
 0928948,Roman Wilhelmi
@@ -3589,7 +3435,6 @@ id,ime
 0939697,Evan Rachel Wood
 0939991,Salvador Wood
 0940579,Donald Woods
-0940627,Ilene Woods
 0940919,Edward Woodward
 0940946,Joanne Woodward
 0941777,Sam Worthington
@@ -3601,7 +3446,6 @@ id,ime
 0943553,Jane Wyatt
 0943837,Jane Wyman
 0943936,Peter Wyngarde
-0943956,Ed Wynn
 0944073,Dana Wynter
 0944206,Gunn WÃ¥llgren
 0944464,Yu Xia
@@ -3756,7 +3600,6 @@ id,ime
 1085951,Lorelei Linklater
 1090406,Kang-jo Lee
 1092088,Kent Harper
-1093951,Aaron Taylor-Johnson
 1095324,Leo Bill
 1097393,Joel Thomas Hynes
 1098430,Chandrakant Mandhre
@@ -3768,7 +3611,6 @@ id,ime
 1102988,Venus Williams
 1105416,KÃ´ji Imada
 1106395,Shyamali
-1107001,Anthony Mackie
 1110649,Dizzy Reed
 1111221,Poornam Vishwanathan
 1111296,Snowy White
@@ -3809,7 +3651,6 @@ id,ime
 1146916,Eliza Bennett
 1154161,Laura Bailey
 1154282,Emil Petrov
-1154919,Liza ColÃ³n-Zayas
 1155994,Mara Nicolescu
 1156262,Ruza Rosoci
 1156377,Meher Afroz Shaon
@@ -3918,7 +3759,6 @@ id,ime
 1304020,Anshu
 1305136,Harshdeep Kaur
 1307435,Alex Hassell
-1310016,Brian Geraghty
 1310368,Minka Kelly
 1310709,Scott Mechlowicz
 1312350,Christina Daoust
@@ -4081,7 +3921,6 @@ id,ime
 1616373,Ryan Patrick Bachand
 1617048,Nils Oliveto
 1617969,Jacoba Rozema
-1620989,Antonio Tarver
 1625669,Yigit Ãzsener
 1631269,ChloÃ« Grace Moretz
 1631384,Emmett J Scanlan
@@ -4105,7 +3944,6 @@ id,ime
 1651432,Caroline Luft
 1658395,Goran Ivanisevic
 1659141,Prabhas
-1659547,Carey Mulligan
 1661064,Nate Panning
 1662074,Bahram Ibrahimi
 1662443,Anne Griffin
@@ -4113,7 +3951,6 @@ id,ime
 1665526,Mahmoud Yassine
 1666600,ZoltÃ¡n MiklÃ³s Hajdu
 1669816,Joe Castiglione
-1670029,Rupert Friend
 1670659,Jesse Randhawa
 1673908,Sonja O'Hara
 1675786,Soha Ali Khan
@@ -4146,7 +3983,6 @@ id,ime
 1720103,Kymberly Mellen
 1720177,Mandy Schneider
 1721095,Chris Todd
-1725848,Joe Anderson
 1727210,Ãner Erkan
 1727304,Domhnall Gleeson
 1728487,Haripriya
@@ -4156,7 +3992,6 @@ id,ime
 1732597,Kirsten Roeters
 1738026,Kaushik Banerjee
 1738172,Toby Hemingway
-1747013,Adam Levine
 1747518,Creagen Dow
 1750377,Duran Fulton Brown
 1751327,Katharyn Grant
@@ -4305,7 +4140,6 @@ id,ime
 2059961,Agni P. Arkadewi
 2060939,Kamal Nandi
 2072730,Aslihan GÃ¼ner
-2073546,Padraic Delaney
 2074262,Joseph Trohman
 2077159,David Sakurai
 2079292,Saber Abar
@@ -4412,8 +4246,6 @@ id,ime
 2303012,Kyle Flood
 2304132,Jack Derges
 2307792,Antonio San Miguel
-2309517,Armie Hammer
-2313103,Rebel Wilson
 2316350,David Bronfman
 2317345,Jeff Manabat
 2318797,Diana Cavallioti
@@ -4541,7 +4373,6 @@ id,ime
 2609396,Charlie Robson
 2612279,Hiroki Goto
 2614264,Daniel Bonjour
-2633535,Asa Butterfield
 2633551,Jennifer Lynn Malloy
 2635644,Ingrid Backstrom
 2639722,Mark Hapka
@@ -4678,7 +4509,6 @@ id,ime
 2999289,Ence Bagus
 3001807,Santosh Juvekar
 3007005,Natalie Burt
-3009232,Ezra Miller
 3016197,Ana Mulvoy-Ten
 3016212,Peter Blomquist
 3017684,Valerie Renay
@@ -5032,7 +4862,6 @@ id,ime
 3989558,Reasha Honaker
 3989987,Armin Habibovich
 3994407,Ryan Potter
-4003520,Annie Rose Buckley
 4003752,Darina Naumova
 4013413,Joey Richter
 4015380,Srinivas Avasarala
@@ -5295,7 +5124,6 @@ id,ime
 4802220,Liana Alexandra
 4803520,Heather Nimmo
 4808823,Ben Forster
-4809043,Ni Ni
 4823237,Caro Angus
 4831604,Amzath Khan
 4836118,Tsubasa Honda
@@ -5396,7 +5224,6 @@ id,ime
 5139109,Duangchan Boonrueng
 5140661,Melissa Malone
 5146515,David Rawle
-5149048,Xinyi Zhang
 5150320,Stef Poelmans
 5154031,Brandon Alexander
 5162552,Norbert Kecha
@@ -5877,7 +5704,6 @@ id,ime
 7320677,Abigail Gerdes
 7367695,Sai Pallavi
 7371790,Madonna Sebastian
-7372970,Harshaali Malhotra
 7389118,Chad Hendrick
 7402186,Vennela Rama Rao
 7415435,Robert Grey

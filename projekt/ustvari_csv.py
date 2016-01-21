@@ -47,7 +47,6 @@ def pripravi_imdb():
     filmi, igralci, zanri = {}, {}, {}
     vloge, dolocitve_zanra = set(), set()
     zanri_korenov = {}
-    stevilo_korenov = {}
 
     for html_datoteka in orodja.datoteke('zajete-strani/imdb/'):
         for film in re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka)):
@@ -68,7 +67,6 @@ def pripravi_imdb():
                 for id_zanra in zanri_filma:
                     zanri_korena[id_zanra] = zanri_korena.get(id_zanra, 0) + 1
                 zanri_korenov[koren] = zanri_korena
-                stevilo_korenov[koren] = stevilo_korenov.get(koren, 0) + 1
 
     vloge = [{'igralec': id_igralca, 'film': id_filma}
              for id_igralca, id_filma in vloge]
@@ -77,7 +75,6 @@ def pripravi_imdb():
     for koren in zanri_korenov:
         for id_zanra in zanri:
             zanri_korenov[koren].setdefault(id_zanra, 0)
-        zanri_korenov[koren]['stevilo'] = stevilo_korenov[koren]
 
     orodja.zapisi_tabelo(sorted(filmi.values(), key=lambda film: film['id']),
                          ['id', 'naslov', 'leto', 'ocena'], 'csv-datoteke/filmi.csv')
@@ -90,7 +87,7 @@ def pripravi_imdb():
     orodja.zapisi_tabelo(sorted(dolocitve_zanra, key=lambda dolocitev: (dolocitev['film'], dolocitev['zanr'])),
                          ['film', 'zanr'], 'csv-datoteke/dolocitve_zanra.csv')
     orodja.zapisi_tabelo(sorted(zanri_korenov.values(), key=lambda koren: koren['koren']),
-                        ['koren', 'stevilo'] + list(zanri), 'csv-datoteke/zanri_korenov.csv')
+                        ['koren'] + list(zanri), 'csv-datoteke/zanri_korenov.csv')
 
 
 def uredi_film(film):
