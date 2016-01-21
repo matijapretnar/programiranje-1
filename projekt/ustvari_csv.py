@@ -51,27 +51,31 @@ def pripravi_imdb():
     for html_datoteka in orodja.datoteke('zajete-strani/imdb/'):
         for film in re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka)):
             id_filma, podatki = uredi_film(film)
-            # print(id_filma, podatki)
-            igralci_filma = podatki.pop('igralci')
-            zanri_filma = podatki.pop('zanri')
-            opis_filma = podatki.pop('opis')
             filmi[id_filma] = podatki
-            for id_igralca, ime_igralca in igralci_filma.items():
-                igralci[id_igralca] = {'id': id_igralca, 'ime': ime_igralca}
-                vloge.add((id_igralca, id_filma))
-            for id_zanra, ime_zanra in zanri_filma.items():
-                zanri[id_zanra] = {'id': id_zanra, 'ime': ime_zanra}
-                dolocitve_zanra.add((id_zanra, id_filma))
-            for koren in orodja.koreni_besed(opis_filma):
-                zanri_korena = zanri_korenov.get(koren, {'koren': koren})
-                for id_zanra in zanri_filma:
-                    zanri_korena[id_zanra] = zanri_korena.get(id_zanra, 0) + 1
-                zanri_korenov[koren] = zanri_korena
+
+    for id_filma, film in filmi.items():
+        opis_filma = film.pop('opis')
+        igralci_filma = film.pop('igralci')
+        zanri_filma = film.pop('zanri')
+        for id_igralca, ime_igralca in igralci_filma.items():
+            igralci[id_igralca] = {'id': id_igralca, 'ime': ime_igralca}
+            vloge.add((id_igralca, id_filma))
+        for id_zanra, ime_zanra in zanri_filma.items():
+            zanri[id_zanra] = {'id': id_zanra, 'ime': ime_zanra}
+            dolocitve_zanra.add((id_zanra, id_filma))
+        for koren in orodja.koreni_besed(opis_filma):
+            if koren == 'vader':
+                print(film)
+            zanri_korena = zanri_korenov.get(koren, {'koren': koren})
+            for id_zanra in zanri_filma:
+                zanri_korena[id_zanra] = zanri_korena.get(id_zanra, 0) + 1
+            zanri_korenov[koren] = zanri_korena
 
     vloge = [{'igralec': id_igralca, 'film': id_filma}
              for id_igralca, id_filma in vloge]
     dolocitve_zanra = [{'zanr': id_zanra, 'film': id_filma}
              for id_zanra, id_filma in dolocitve_zanra]
+
     for koren in zanri_korenov:
         for id_zanra in zanri:
             zanri_korenov[koren].setdefault(id_zanra, 0)
