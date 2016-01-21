@@ -37,6 +37,7 @@ def pripravi_imdb():
         r'href="/title/tt(?P<id>\d+)/".*?'
         r'title="(?P<naslov>.*?) \((?P<leto>\d{4})\)".*?'
         r'title="Users rated this (?P<ocena>.+?)/1(0|1).*?'
+        r'<span class="outline">(?P<opis>.+?)</span>.*?'
         r'<span class="credit">.*?With: (?P<igralci>.*?)</span>.*?'
         r'<span class="genre">(?P<zanri>.*?)</span>',
         flags=re.DOTALL
@@ -44,6 +45,8 @@ def pripravi_imdb():
 
     filmi, igralci, zanri = {}, {}, {}
     vloge, dolocitve_zanra = set(), set()
+    zanri_korenov = {}
+    stevilo_korenov = {}
 
     for html_datoteka in orodja.datoteke('zajete-strani/imdb/'):
         for film in re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka)):
@@ -51,6 +54,7 @@ def pripravi_imdb():
             # print(id_filma, podatki)
             igralci_filma = podatki.pop('igralci')
             zanri_filma = podatki.pop('zanri')
+            opis_filma = podatki.pop('opis')
             filmi[id_filma] = podatki
             for id_igralca, ime_igralca in igralci_filma.items():
                 igralci[id_igralca] = {'id': id_igralca, 'ime': ime_igralca}
@@ -58,11 +62,21 @@ def pripravi_imdb():
             for id_zanra, ime_zanra in zanri_filma.items():
                 zanri[id_zanra] = {'id': id_zanra, 'ime': ime_zanra}
                 dolocitve_zanra.add((id_zanra, id_filma))
+            for koren in orodja.koreni_besed(opis_filma):
+                zanri_korena = zanri_korenov.get(koren, {'koren': koren})
+                for id_zanra in zanri_filma:
+                    zanri_korena[id_zanra] = zanri_korena.get(id_zanra, 0) + 1
+                zanri_korenov[koren] = zanri_korena
+                stevilo_korenov[koren] = stevilo_korenov.get(koren, 0) + 1
 
     vloge = [{'igralec': id_igralca, 'film': id_filma}
              for id_igralca, id_filma in vloge]
     dolocitve_zanra = [{'zanr': id_zanra, 'film': id_filma}
              for id_zanra, id_filma in dolocitve_zanra]
+    for koren in zanri_korenov:
+        for id_zanra in zanri:
+            zanri_korenov[koren].setdefault(id_zanra, 0)
+        zanri_korenov[koren]['stevilo'] = stevilo_korenov[koren]
 
     orodja.zapisi_tabelo(sorted(filmi.values(), key=lambda film: film['id']),
                          ['id', 'naslov', 'leto', 'ocena'], 'csv-datoteke/filmi.csv')
@@ -74,6 +88,8 @@ def pripravi_imdb():
                          ['igralec', 'film'], 'csv-datoteke/vloge.csv')
     orodja.zapisi_tabelo(sorted(dolocitve_zanra, key=lambda dolocitev: (dolocitev['film'], dolocitev['zanr'])),
                          ['film', 'zanr'], 'csv-datoteke/dolocitve_zanra.csv')
+    orodja.zapisi_tabelo(sorted(zanri_korenov.values(), key=lambda koren: koren['koren']),
+                        ['koren', 'stevilo'] + list(zanri), 'csv-datoteke/zanri_korenov.csv')
 
 
 def uredi_film(film):
