@@ -12,9 +12,10 @@ def zajemi_imdb():
 
     for zanr in re.finditer(regex_url_zanra,
                             orodja.vsebina_datoteke('zajete-strani/imdb.html')):
-        url = 'http://www.imdb.com{}'.format(zanr.group('url'))
-        ime_datoteke = 'zajete-strani/imdb/{}.html'.format(zanr.group('zanr'))
-        orodja.shrani(url, ime_datoteke)
+        for i in range(1, 201, 50):
+            url = 'http://www.imdb.com{}?&start={}'.format(zanr.group('url'), i)
+            ime_datoteke = 'zajete-strani/imdb/{}-{}.html'.format(zanr.group('zanr'), i)
+            orodja.shrani(url, ime_datoteke)
 
 
 def zajemi_rotten():
