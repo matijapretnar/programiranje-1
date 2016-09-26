@@ -5,6 +5,11 @@
 # literarnih besedil, kot je na primer koroška narodna pripovedka *Hvaležni
 # medved*.
 #
+# Grateful Bear
+#
+# In this exercise we will write a few functions that help us analyse literary
+# texts, such as the Carinthian folk tale "Grateful Bear".
+#
 ##########################################################################
 
 odlomek = """Gori nekje v gorah, ne ve se več, ali je bilo pri Macigoju ali
@@ -21,9 +26,16 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # 1) Sestavite funkcijo najdi_besede(besedilo, podniz), ki vrne množico
 # vseh besed, ki se pojavijo v nizu besedilo in vsebujejo niz podniz.
 # Zgled:
-# 
-# >>> najdi_besede(odlomek, 'il')
-# {'mil', 'Postavil', 'razveselil', 'opazil', 'bil', 'prestrašil', 'pril'}
+#
+# >>> najdi_besede(odlomek, 'de')
+# {'izdere', 'debel', 'oddide', 'začudeno'}
+#
+# 1) Write a function find_words(text, substring) that returns a set of all the
+#    words in the text containing substring as substring.
+#
+# Example:
+# >>> find_words(odlomek, 'de')
+# {'izdere', 'debel', 'oddide', 'začudeno'}
 ##########################################################################
 
 
@@ -31,8 +43,15 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # 2) Sestavite funkcijo najdi_predpono(besedilo, predpona), ki vrne množico
 # vseh besed, ki se pojavijo v nizu besedilo in imajo predpono predpona.
 # Zgled:
-# 
+#
 # >>> najdi_predpono(odlomek, 'zi')
+# {'zibala', 'zibel', 'zibelko'}
+#
+# 2) Write a function find_prefix(text, prefix) which returns the set of all
+#    words in the text starting with prefix.
+#
+# Example:
+# >>> find_prefix(odlomek, 'zi')
 # {'zibala', 'zibel', 'zibelko'}
 ##########################################################################
 
@@ -41,17 +60,31 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # 3) Sestavite funkcijo najdi_pripono(besedilo, pripona), ki vrne množico
 # vseh besed, ki se pojavijo v nizu besedilo in imajo pripono pripona.
 # Zgled:
-# 
+#
 # >>> najdi_pripono(odlomek, 'la')
-# {'prestrašila', 'sla', 'zibala', 'razveselila', 'opazila', 'tla', 'šivala'}
+# {'zibala', 'razveselila', 'prestrašila', 'šivala', 'opazila', 'tla'}
+#
+# 3) Write a function find_suffix(text, suffix) which returns the set of all
+#    words in the text ending with suffix.
+#
+# Example:
+# >>> find_suffix(odlomek, 'la')
+# {'zibala', 'razveselila', 'prestrašila', 'šivala', 'opazila', 'tla'}
 ##########################################################################
 
 
 ##########################################################################
 # 4) Sestavite funkcijo podvojene_crke(besedilo), ki sprejme niz besedilo
 # in vrne množico vseh besed, ki vsebujejo podvojene črke. Zgled:
-# 
+#
 # >>> podvojene_crke('A volunteer is worth twenty pressed men.')
 # {'pressed', 'volunteer'}
+#
+# 4) Write a function double_letters(text) that returns the set of words in
+#    text that contain the same letter twice consecutively.
+#
+# Example:
+# >>> double_letters('A volunteer is worth twenty pressed men.')
+# {'volunteer', 'pressed'}
 ##########################################################################
 
