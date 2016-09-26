@@ -12,6 +12,8 @@
 #
 ##########################################################################
 
+import re
+
 odlomek = """Gori nekje v gorah, ne ve se več, ali je bilo pri Macigoju ali
 Naravniku, je šivala gospodinja v senci pod drevesom in zibala otroka. Naenkrat
 prilomasti - pa prej ni ničesar opazila - medved in ji moli taco, v kateri je
@@ -38,6 +40,14 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # {'izdere', 'debel', 'oddide', 'začudeno'}
 ##########################################################################
 
+def find_words(text, substring):
+    r = r'\b\w*' + substring + r'\w*\b'
+    return set (re.findall(r, text))
+
+# text.split() splits by consecutive whitespace, not removing punctuation from
+# words. This yields a different result for example for find_words_str(odlomek, 'de')
+def find_words_str(text, substring):
+    return {w for w in text.split() if substring in w}
 
 ##########################################################################
 # 2) Sestavite funkcijo najdi_predpono(besedilo, predpona), ki vrne množico
@@ -55,6 +65,13 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # {'zibala', 'zibel', 'zibelko'}
 ##########################################################################
 
+def find_prefix(text, prefix):
+    r = r'\b' + prefix + r'\w*\b'
+    return set (re.findall (r, text))
+
+# this version suffers from the same problem as find_words_str
+def find_prefix_str(text, prefix):
+    return {w for w in text.split() if w.startswith(prefix)}
 
 ##########################################################################
 # 3) Sestavite funkcijo najdi_pripono(besedilo, pripona), ki vrne množico
@@ -72,6 +89,9 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # {'zibala', 'razveselila', 'prestrašila', 'šivala', 'opazila', 'tla'}
 ##########################################################################
 
+def find_suffix(text, suffix):
+    r = r'\b\w*' + suffix + r'\b'
+    return set (re.findall (r, text))
 
 ##########################################################################
 # 4) Sestavite funkcijo podvojene_crke(besedilo), ki sprejme niz besedilo
@@ -88,3 +108,6 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # {'volunteer', 'pressed'}
 ##########################################################################
 
+def double_letters(text):
+    r = r'(\b\w*(.)\2\w*\b)'
+    return { w[0] for w in (re.findall (r, text)) }
