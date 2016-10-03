@@ -29,40 +29,37 @@ def zlij(sez1, sez2):
     return zliti_sez
 
 
-def uredi_na_mestu(sez, zac=None, kon=None):
-    n = len(sez)
-    if zac is None:
-        zac = 0
+def uredi_na_mestu(seznam, zac=0, kon=None):
     if kon is None:
-        kon = n
+        kon = len(seznam)
     if kon - zac <= 1:
         return
     else:
         sre = (zac + kon) // 2
-        uredi_na_mestu(sez, zac, sre)
-        uredi_na_mestu(sez, sre, kon)
-        zlij_na_mestu(sez, zac, sre, kon)
+        uredi_na_mestu(seznam, zac, sre)
+        uredi_na_mestu(seznam, sre, kon)
+        zlij_na_mestu(seznam, zac, sre, kon)
 
 
-def zlij_na_mestu(sez, zac, sre, kon):
-    zliti_sez = (kon - zac) * [None]
+def zlij_na_mestu(seznam, zac, sre, kon):
+    zliti_seznam = (kon - zac) * [None]
     i1, i2, i = zac, sre, 0
     while i1 < sre or i2 < kon:
         if i1 == sre:
-            zliti_sez[i] = sez[i2]
+            zliti_seznam[i] = seznam[i2]
             i2 += 1
         elif i2 == kon:
-            zliti_sez[i] = sez[i1]
+            zliti_seznam[i] = seznam[i1]
             i1 += 1
-        elif sez[i1] <= sez[i2]:
-            zliti_sez[i] = sez[i1]
+        elif seznam[i1] <= seznam[i2]:
+            zliti_seznam[i] = seznam[i1]
             i1 += 1
         else:
-            assert sez[i1] > sez[i2]
-            zliti_sez[i] = sez[i2]
+            assert seznam[i1] > seznam[i2]
+            zliti_seznam[i] = seznam[i2]
             i2 += 1
         i += 1
-    sez[zac:kon] = zliti_sez
+    seznam[zac:kon] = zliti_seznam
 
 
 import timeit
