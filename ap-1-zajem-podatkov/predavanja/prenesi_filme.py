@@ -2,9 +2,9 @@ import orodja
 import re
 
 
-for stran in range(1, 50):
+for stran in range(1, 51):
     osnovni_naslov = 'http://www.imdb.com/search/title'
-    parametri = 'sort=user_rating,desc&title_type=feature&num_votes=50000,'
+    parametri = 'sort=num_votes,desc&title_type=feature&num_votes=25000,'
     naslov = '{}?{}&page={}'.format(osnovni_naslov, parametri, stran)
     datoteka = 'imdb/{:02}.html'.format(stran)
     orodja.shrani(naslov, datoteka)

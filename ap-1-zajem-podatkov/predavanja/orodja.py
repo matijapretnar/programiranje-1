@@ -19,7 +19,7 @@ def shrani(url, ime_datoteke, vsili_prenos=False):
         if os.path.isfile(ime_datoteke) and not vsili_prenos:
             print('shranjeno že od prej!')
             return
-        r = requests.get(url)
+        r = requests.get(url, headers={'Accept-Language': 'en'})
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
     else:
