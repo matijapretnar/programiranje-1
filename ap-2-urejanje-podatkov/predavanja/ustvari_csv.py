@@ -11,6 +11,16 @@ def zajemi_imdb():
         orodja.shrani(naslov, ime_datoteke)
 
 
+def pocisti_film(film):
+    podatki = film.groupdict()
+    podatki['id'] = int(podatki['id'])
+    podatki['runtime'] = int(podatki['runtime'])
+    podatki['leto'] = int(podatki['leto'])
+    podatki['opis'] = podatki['opis'].strip()
+    podatki['ocena'] = float(podatki['ocena'])
+    return podatki
+
+
 def pripravi_imdb():
     regex_filma = re.compile(
         r'href="/title/tt(?P<id>\d+)/\?ref_=adv_li_tt"[^>]*?'
@@ -25,15 +35,9 @@ def pripravi_imdb():
     )
 
     filmi = []
-    for i, html_datoteka in enumerate(orodja.datoteke('imdb/')):
-        for j, film in enumerate(re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka))):
-            podatki = film.groupdict()
-            podatki['id'] = int(podatki['id'])
-            podatki['runtime'] = int(podatki['runtime'])
-            podatki['leto'] = int(podatki['leto'])
-            podatki['opis'] = podatki['opis'].strip()
-            podatki['ocena'] = float(podatki['ocena'])
-            filmi.append(podatki)
+    for html_datoteka in orodja.datoteke('imdb/'):
+        for film in re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka)):
+            filmi.append(pocisti_film(film))
 
     orodja.zapisi_tabelo(filmi, ['id', 'naslov', 'leto', 'reziser', 'certifikat', 'runtime', 'ocena', 'opis'], 'filmi.csv')
 
