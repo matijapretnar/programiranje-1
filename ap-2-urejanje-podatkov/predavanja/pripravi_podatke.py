@@ -14,7 +14,7 @@ def zajemi_spletne_strani():
 def pocisti_film(film):
     podatki = film.groupdict()
     podatki['id'] = int(podatki['id'])
-    podatki['runtime'] = int(podatki['runtime'])
+    podatki['dolzina'] = int(podatki['dolzina'])
     podatki['leto'] = int(podatki['leto'])
     podatki['opis'] = podatki['opis'].strip()
     podatki['ocena'] = float(podatki['ocena'])
@@ -26,8 +26,7 @@ def ustvari_csv_datoteke():
         r'href="/title/tt(?P<id>\d+)/\?ref_=adv_li_tt"[^>]*?'
         r'>(?P<naslov>.*?)</a>.*?'
         r'lister-item-year text-muted unbold">.*?\((?P<leto>\d{4})\)</span>.*?'
-        r'(certificate">(?P<certifikat>.*?)</.*?)?'
-        r'runtime">(?P<runtime>.*?) min</.*?'
+        r'runtime">(?P<dolzina>.*?) min</.*?'
         r'<strong>(?P<ocena>.+?)</strong>.*?'
         r'<p class="text-muted">(?P<opis>.+?)<.*?'
         r'Directors?:.*?<a href=.*?>(?P<reziser>.+?)</a>.*?',
@@ -39,7 +38,7 @@ def ustvari_csv_datoteke():
         for film in re.finditer(regex_filma, orodja.vsebina_datoteke(html_datoteka)):
             filmi.append(pocisti_film(film))
 
-    orodja.zapisi_tabelo(filmi, ['id', 'naslov', 'leto', 'reziser', 'certifikat', 'runtime', 'ocena', 'opis'], 'filmi.csv')
+    orodja.zapisi_tabelo(filmi, ['id', 'naslov', 'leto', 'reziser', 'dolzina', 'ocena', 'opis'], 'filmi.csv')
 
 
 zajemi_spletne_strani()
