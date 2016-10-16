@@ -2,7 +2,7 @@ import re
 import orodja
 
 
-def zajemi_imdb():
+def zajemi_spletne_strani():
     osnovni_naslov = 'http://www.imdb.com/search/title'
     parametri = 'sort=num_votes,desc&title_type=feature&num_votes=25000,'
     for stran in range(1, 51):
@@ -21,7 +21,7 @@ def pocisti_film(film):
     return podatki
 
 
-def pripravi_imdb():
+def ustvari_csv_datoteke():
     regex_filma = re.compile(
         r'href="/title/tt(?P<id>\d+)/\?ref_=adv_li_tt"[^>]*?'
         r'>(?P<naslov>.*?)</a>.*?'
@@ -42,5 +42,5 @@ def pripravi_imdb():
     orodja.zapisi_tabelo(filmi, ['id', 'naslov', 'leto', 'reziser', 'certifikat', 'runtime', 'ocena', 'opis'], 'filmi.csv')
 
 
-zajemi_imdb()
-pripravi_imdb()
+zajemi_spletne_strani()
+ustvari_csv_datoteke()
