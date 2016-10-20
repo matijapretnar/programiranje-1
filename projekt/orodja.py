@@ -19,13 +19,14 @@ def shrani(url, ime_datoteke, vsili_prenos=False):
         if os.path.isfile(ime_datoteke) and not vsili_prenos:
             print('shranjeno že od prej!')
             return
-        r = requests.get(url)
+        r = requests.get(url, headers={'Accept-Language': 'en'})
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
-    pripravi_imenik(ime_datoteke)
-    with open(ime_datoteke, 'w') as datoteka:
-        datoteka.write(r.text)
-        print('shranjeno!')
+    else:
+        pripravi_imenik(ime_datoteke)
+        with open(ime_datoteke, 'w') as datoteka:
+            datoteka.write(r.text)
+            print('shranjeno!')
 
 
 def vsebina_datoteke(ime_datoteke):
@@ -41,25 +42,10 @@ def datoteke(imenik):
 
 
 def zapisi_tabelo(slovarji, imena_polj, ime_datoteke):
+    '''Iz seznama slovarjev ustvari CSV datoteko z glavo.'''
     pripravi_imenik(ime_datoteke)
     with open(ime_datoteke, 'w') as csv_dat:
         writer = csv.DictWriter(csv_dat, fieldnames=imena_polj)
         writer.writeheader()
         for slovar in slovarji:
             writer.writerow(slovar)
-
-
-def koren_besede(beseda):
-    beseda = ''.join(znak for znak in beseda if znak.isalpha())
-    if not beseda:
-        return '$'
-    konec = len(beseda) - 1
-    if beseda[konec] in 'ds':
-        konec -= 1
-    while konec >= 0 and beseda[konec] in 'aeiou':
-        konec -= 1
-    return beseda[:konec + 1]
-
-
-def koreni_besed(niz):
-    return {koren_besede(beseda) for beseda in niz.replace('-', ' ').lower().split() if beseda}
