@@ -19,4 +19,4 @@ Ogledali si bomo:
 
 * Kakšne ocene v povprečju dobivajo filmi danega žanra?
 * Kako so bili žanri zastopani v posameznih desetletjih?
-* Ali iz opisa filma lahko napovemo žanr?
+* Ali iz naslova, opisa in glavnih igralcev filma lahko napovemo žanr?
