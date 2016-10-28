@@ -51,7 +51,7 @@ class: center, middle
 
 ## Uvod v Haskell
 
-### 2. oktober 2015
+### 7. november 2016
 
 ---
 
@@ -301,17 +301,254 @@ Ok, modules loaded: Main.
 
 ---
 
-class: center, middle, question
+### Funkcije lahko definiramo po kosih
 
-# [Project Euler #1](https://projecteuler.net/problem=1)
-# [Project Euler #4](https://projecteuler.net/problem=4)
-# [Project Euler #6](https://projecteuler.net/problem=6)
+```haskell
+pozdravi "Matija" =
+  "Dober dan, gospod predavatelj!"
+pozdravi ime =
+  "Dober dan, " ++ ime ++ "!"
+```
 
-[#2](https://projecteuler.net/problem=2),
-[#3](https://projecteuler.net/problem=3),
-[#5](https://projecteuler.net/problem=5) in
-[#7](https://projecteuler.net/problem=7) naslednji teden
+```haskell
+λ> pozdravi "Urban"
+"Dober dan, Urban!"
 
+λ> pozdravi "Philipp"
+"Dober dan, Philipp!"
+
+λ> pozdravi "Matija"
+"Dober dan, gospod predavatelj!"
+```
+
+---
+
+### Vrstni red definicij je pomemben
+
+```haskell
+pozdravi ime =
+  "Dober dan, " ++ ime ++ "!"
+pozdravi "Matija" =
+  "Dober dan, gospod predavatelj!"
+```
+
+```haskell
+funkcije.hs:1:1: Warning:
+    Pattern match(es) are overlapped
+    In an equation for ‘pozdravi’:
+      pozdravi "Matija" = ...
+
+λ> pozdravi "Matija"
+"Dober dan, Matija!"
+```
+
+---
+
+### Zajeti moramo vse primere
+
+```haskell
+pozdravi "Matija" =
+  "Dober dan, gospod predavatelj!"
+pozdravi "Urban" =
+  "Dober dan, gospod asistent!"
+```
+
+```haskell
+λ> pozdravi "Philipp"
+"*** Exception: funkcije.hs:(1,1)-(2,47):
+  Non-exhaustive patterns
+  in function pozdravi
+```
+
+---
+
+### Na definicije lahko dodamo stranske pogoje
+
+```haskell
+ocena 100 = "fantastično, 10/10"
+ocena tocke
+    | tocke >= 90 = "odlično, 10"
+    | tocke >= 80 = "prav dobro, 9"
+    | tocke >= 70 = "prav dobro, 8"
+    | tocke >= 60 = "dobro, 7"
+    | tocke >= 50 = "zadostno, 6"
+    | otherwise = "nezadostno"
+```
+
+```haskell
+λ> ocena 85
+"prav dobro, 9"
+
+λ> ocena 30
+"nezadostno"
+```
+
+---
+
+### `otherwise` je le sinonim za `True`
+
+```haskell
+sicer = True
+ocena 100 = "fantastično, 10/10"
+ocena tocke
+    | tocke >= 90 = "odlično, 10"
+    | tocke >= 80 = "prav dobro, 9"
+    | tocke >= 70 = "prav dobro, 8"
+    | tocke >= 60 = "dobro, 7"
+    | tocke >= 50 = "zadostno, 6"
+    | sicer = "nezadostno"
+```
+
+```haskell
+λ> ocena 30
+"nezadostno"
+```
+
+---
+
+### Pomožne definicije delamo z `where` in `let`
+
+```haskell
+kvadratna a b c
+    | d < 0 =
+        error "Ni ničel"
+    | d == 0 =
+        (p, p)
+    | otherwise =
+        let q = d ** 0.5 / (2 * a) in
+        (p - q, p + q)
+    where
+    d = b ** 2 - 4 * a * c
+    p = -b / (2 * a)
+```
+
+#### `let`: pred izrazi
+
+#### `where`: za definicijami
+
+---
+
+### Nabore razstavimo z vzorci
+
+```haskell
+sestejVektorja a b =
+  (fst a + fst b, snd a + snd b)  
+```
+
+```haskell
+sestejVektorja' (x1, y1) (x2, y2) =
+  (x1 + x2, y1 + y2)  
+```
+
+---
+
+### Tudi sezname razstavljamo z vzorci
+
+```haskell
+ucbenik [] naslov =
+  naslov  
+ucbenik (avtor:[]) naslov =
+  avtor ++ ": " ++ naslov
+ucbenik (prviAvtor:_) naslov =
+  prviAvtor ++ " in ostali: " ++ naslov
+```
+
+```haskell
+λ> ucbenik [] "Skrivnosti podzemlja"
+"Skrivnosti podzemlja"
+λ> ucbenik ["Novak"] "Arheologija"
+"Novak: Arheologija"
+λ> ucbenik ["Kos", "Golob"] "Fizika 1"
+"Kos in ostali: Fizika 1"
+```
+
+---
+
+### Vzorce lahko uporabljamo povsod
+
+```haskell
+maxPoKomponentah xs ys =
+  [max (fst p) (snd p) | p <- zip xs ys]
+```
+
+```haskell
+maxPoKomponentah' xs ys =
+  [max x y | (x, y) <- zip xs ys]
+```
+
+```haskell
+zadnji xs = x where (x:_) = reverse xs
+```
+
+```haskell
+prvi xs = let (x:_) = xs in x
+```
+
+```haskell
+prvi' (x:_) = x
+```
+
+---
+
+### Vzorce lahko tudi gnezdimo
+
+```haskell
+f [] = 0
+f [(x, _), (y, z)] = x + y + z
+f ((_, x):_) = 3 * x
+```
+
+```haskell
+λ> f []
+0
+λ> f [(1, 2)]
+6
+λ> f [(1, 2), (3, 4)]
+8
+```
+
+---
+
+### V izrazih lahko primere ločimo s `case`
+
+```haskell
+ucbenik [] naslov =
+  naslov  
+ucbenik (avtor:[]) naslov =
+  avtor ++ ": " ++ naslov
+ucbenik (prviAvtor:_) naslov =
+  prviAvtor ++ " in ostali: " ++ naslov
+```
+
+---
+
+### V izrazih lahko primere ločimo s `case`
+
+```haskell
+ucbenik avtorji naslov =
+    opisAvtorjev ++ naslov
+    where
+        opisAvtorjev =
+            case avtorji of
+            [] -> ""
+            [avtor] -> avtor ++ ": "
+            prviAvtor:_ ->
+                prviAvtor ++ "in ostali: "
+```
+
+---
+
+### Ponavadi so lokalne definicije lepše
+
+```haskell
+ucbenik avtorji naslov =
+    opis avtorji ++ naslov
+    where
+        opis [] = ""
+        opis [avtor] = avtor ++ ": "
+        opis (prviAvtor:_) =
+            prviAvtor ++ "in ostali: "
+```
 
 ---
 
@@ -376,14 +613,31 @@ and :: [Bool] -> Bool
 
 ---
 
-class: question, center, middle
+### Kaj je tip funkcije `(++)`?
 
-# Kaj je tip funkcije `(++)`?
-## .green.spoiler[`[a] -> [a] -> [a]`]
+```haskell
+[Bool] -> [Bool] -> [Bool]
 
+[Char] -> [Char] -> [Char]
+
+[[Char]] -> [[Char]] -> [[Char]]
+
+...
+```
+--
+
+```haskell
+∀α. [α] -> [α] -> [α]
+```
+
+--
+
+```haskell
+[a] -> [a] -> [a]
+```
 ---
 
-### Parametrični tipi
+### Parametrični polimorfizem
 
 ```haskell
 λ> :t (++)
@@ -397,6 +651,9 @@ repeat :: a -> [a]
 
 λ> :t zip
 zip :: [a] -> [b] -> [(a, b)]
+
+λ> :t take
+take :: Int -> [a] -> [a]
 ```
 
 ---
@@ -420,10 +677,30 @@ zmnozi x y = x * y
 
 ---
 
-class: question, center, middle
+### Kaj je tip funkcije `max`?
 
-# Kaj je tip funkcije `max`?
-## .green.spoiler[`Ord a => a -> a -> a`]
+```haskell
+Integer -> Integer -> Integer
+
+[Char] -> [Char] -> [Char]
+
+[[Char]] -> [[Char]] -> [[Char]]
+```
+
+--
+
+###.red[`[a] -> [a] -> [a]`]
+
+--
+
+```haskell
+λ> max tail reverse
+???
+```
+
+--
+
+###.green[`Ord a => [a] -> [a] -> [a]`]
 
 ---
 
@@ -678,12 +955,12 @@ class: center, middle
 ### naslednjič...
 
 
-# Funkcije
+# Rekurzija <br>&amp;<br> funkcije višjega reda
 
 
     </textarea>
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/remark-latest.min.js"></script>
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <script src="../../js/remark-latest.min.js"></script>
     <script>
       $(document).ready(function() { 
       

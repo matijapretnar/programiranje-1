@@ -54,467 +54,9 @@ class: center, middle
 
 # Programiranje 1
 
-## Funkcije
+## Rekurzija in funkcije višjega reda
 
-### 9. oktober 2015
-
----
-
-class: center, middle
-
-## Opombe z vaj
-
----
-
-class: center, middle
-
-### Presledki
-
----
-
-class: center, middle
-
-### Signature
-
----
-
-### Klicanje funkcij
-
-.red[```
-last(init l)
-```]
-
---
-
-.orange[```
-last (init l)
-```]
-
---
-
-.green[```
-last $ init l
-```]
-
-
----
-
-### Nepotrebni izrazi
-
-.red[```
-if reverse l == l then True else False
-```]
-
---
-
-.green[```
-reverse l == l
-```]
-
---
-
-.red[```
-[a | a <- take k l]
-```]
-
---
-
-.green[```
-take k l
-```]
-
----
-
-### Pomožne definicije
-
-.red[```
-razdeli k l = (razdelia k l, razdelib k l)
-razdelia k l = take k l
-razdelib k l = drop k l
-```]
-
---
-
-```
-razdeli k l = (razdelia k l, razdelib k l)
-  where
-    razdelia k l = take k l
-    razdelib k l = drop k l
-```
-
---
-
-.green[```
-razdeli k l = (take k l, drop k l)
-```]
-
----
-
-### Funkcije na seznamih
-
-.red[```
-minimum[length xs, length ys]
-```]
-
---
-
-.green[```
-min (length xs) (length ys)
-```]
-
---
-
-.red[```
-concat[take k l, drop (k + 1) l]
-```]
-
---
-
-.green[```
-take k l ++ drop (k + 1) l
-```]
-
----
-
-### `zip` ni kartezični produkt
-
-.red[```
-zip xs ys = [(x, y) | x <- xs, y <- ys]
-```]
-
---
-
-```haskell
-λ> zip "AB" "CD"
-[('A','C'),('A','D'),('B','C'),('B','D')]
-```
-
---
-
-.green[```
-zip xs ys =
-  [(xs !! i, ys !! i) | i <- [0..n - 1]]
-  where
-      n = min (length xs) (length ys)
-```]
-
---
-
-```haskell
-λ> zip "AB" "CD"
-[('A','C'),('B','D')]
-```
-
----
-
-class: center, middle
-
-## Definicije funkcij
-
----
-
-### Funkcije lahko definiramo po kosih
-
-```haskell
-pozdravi "Matija" =
-  "Dober dan, gospod predavatelj!"
-pozdravi ime =
-  "Dober dan, " ++ ime ++ "!"
-```
-
-```haskell
-λ> pozdravi "Nino"
-"Dober dan, Nino!"
-
-λ> pozdravi "Matija"
-"Dober dan, gospod predavatelj!"
-```
-
----
-
-### Vrstni red definicij je pomemben
-
-```haskell
-pozdravi ime =
-  "Dober dan, " ++ ime ++ "!"
-pozdravi "Matija" =
-  "Dober dan, gospod predavatelj!"
-```
-
-```haskell
-funkcije.hs:1:1: Warning:
-    Pattern match(es) are overlapped
-    In an equation for ‘pozdravi’:
-      pozdravi "Matija" = ...
-
-λ> pozdravi "Matija"
-"Dober dan, Matija!"
-```
-
----
-
-### Zajeti moramo vse primere
-
-```haskell
-pozdravi "Matija" =
-  "Dober dan, gospod predavatelj!"
-pozdravi "Nino" =
-  "Dober dan, gospod asistent!"
-```
-
-```haskell
-λ> pozdravi "Alen"
-"*** Exception: funkcije.hs:(1,1)-(2,47):
-  Non-exhaustive patterns
-  in function pozdravi
-```
-
----
-
-### Podrobnejša opozorila vklopimo z `-Wall`
-
-```haskell
-pozdravi "Matija" =
-  "Dober dan, gospod predavatelj!"
-pozdravi "Nino" =
-  "Dober dan, gospod asistent!"
-```
-
-```haskell
-funkcije.hs:1:1: Warning:
-  Pattern match(es) are non-exhaustive
-  In an equation for ‘pozdravi’:
-    Patterns not matched:
-      []
-      (GHC.Types.C# #x) : _
-        with #x `notElem` ['M', 'N']
-      [GHC.Types.C# 'M']
-      ...
-```
-
----
-
-### Opozorila zavračamo z `-Werror`
-
-```haskell
-pozdravi "Matija" =
-  "Dober dan, gospod predavatelj!"
-pozdravi "Nino" =
-  "Dober dan, gospod asistent!"
-```
-
-```haskell
-funkcije.hs:1:1: Warning:
-  Top-level binding with no signature:
-    pozdravi :: [Char] -> [Char]
-
-<no location info>: 
-Failing due to -Werror.
-Failed, modules loaded: none.
-```
-
----
-
-### Opozorila zavračamo z `-Werror`
-
-```haskell
-pozdravi :: String -> String
-pozdravi "Matija" =
-  "Dober dan, gospod predavatelj!"
-pozdravi "Nino" =
-  "Dober dan, gospod asistent!"
-```
-
-```haskell
-funkcije.hs:2:1: Warning:
-  Pattern match(es) are non-exhaustive
-  In an equation for ‘pozdravi’:
-    Patterns not matched:
-      []
-      ...
-```
-
----
-
-### Na definicije lahko dodamo stranske pogoje
-
-```haskell
-ocena 100 = "fantastično, 10/10"
-ocena tocke
-    | tocke >= 90 = "odlično, 10"
-    | tocke >= 80 = "prav dobro, 9"
-    | tocke >= 70 = "prav dobro, 8"
-    | tocke >= 60 = "dobro, 7"
-    | tocke >= 50 = "zadostno, 6"
-    | otherwise = "nezadostno"
-```
-
-```haskell
-λ> ocena 85
-"prav dobro, 9"
-
-λ> ocena 30
-"nezadostno"
-```
-
----
-
-### `otherwise` je le sinonim za `True`
-
-```haskell
-sicer = True
-ocena 100 = "fantastično, 10/10"
-ocena tocke
-    | tocke >= 90 = "odlično, 10"
-    | tocke >= 80 = "prav dobro, 9"
-    | tocke >= 70 = "prav dobro, 8"
-    | tocke >= 60 = "dobro, 7"
-    | tocke >= 50 = "zadostno, 6"
-    | sicer = "nezadostno"
-```
-
-```haskell
-λ> ocena 30
-"nezadostno"
-```
-
----
-
-### Pomožne definicije delamo z `where` in `let`
-
-```haskell
-kvadratna a b c
-    | d < 0 =
-        error "Ni ničel"
-    | d == 0 =
-        (p, p)
-    | otherwise =
-        let q = d ** 0.5 / (2 * a) in
-        (p - q, p + q)
-    where
-    d = b ** 2 - 4 * a * c
-    p = -b / (2 * a)
-```
-
-#### `let`: pred izrazi
-
-#### `where`: za definicijami
-
----
-
-### Nabore razstavimo z vzorci
-
-```haskell
-sestejVektorja a b =
-  (fst a + fst b, snd a + snd b)  
-```
-
-```haskell
-sestejVektorja' (x1, y1) (x2, y2) =
-  (x1 + x2, y1 + y2)  
-```
-
----
-
-### Tudi sezname razstavljamo z vzorci
-
-```haskell
-ucbenik [] naslov =
-  "?: " ++ naslov  
-ucbenik (avtor:[]) naslov =
-  avtor ++ ": " ++ naslov
-ucbenik (prviAvtor:_) naslov =
-  prviAvtor ++ " in ostali: " ++ naslov
-```
-
-```haskell
-λ> ucbenik [] "Skrivnosti podzemlja"
-"?: Skrivnosti podzemlja"
-λ> ucbenik ["Novak"] "Arheologija"
-"Novak: Arheologija"
-λ> ucbenik ["Kos", "Golob"] "Fizika 1"
-"Kos in ostali: Fizika 1"
-```
-
----
-
-### Vzorce lahko uporabljamo povsod
-
-```haskell
-maxPoKomponentah xs ys =
-  [max (fst p) (snd p) | p <- zip xs ys]
-```
-
-```haskell
-maxPoKomponentah' xs ys =
-  [max x y | (x, y) <- zip xs ys]
-```
-
-```haskell
-zadnji xs = x where (x:_) = reverse xs
-```
-
-```haskell
-prvi xs = let (x:_) = xs in x
-```
-
-```haskell
-prvi' (x:_) = x
-```
-
----
-
-### Vzorce lahko tudi gnezdimo
-
-```haskell
-f :: [(Integer, Integer)] -> Integer
-f [] = 0
-f [(x, _), (y, z)] = x + y + z
-f ((_, x):_) = 3 * x
-```
-
----
-
-### V izrazih lahko primere ločimo s `case`
-
-```haskell
-ucbenik [] naslov =
-  "?: " ++ naslov  
-ucbenik (avtor:[]) naslov =
-  avtor ++ ": " ++ naslov
-ucbenik (prviAvtor:_) naslov =
-  prviAvtor ++ " in ostali: " ++ naslov
-```
-
----
-
-### V izrazih lahko primere ločimo s `case`
-
-```haskell
-ucbenik avtorji naslov =
-    opisAvtorjev ++ ": " ++ naslov
-    where
-        opisAvtorjev =
-            case avtorji of
-            [] -> "?"
-            [avtor] -> avtor
-            prviAvtor:_ ->
-                prviAvtor ++ "in ostali"
-```
-
----
-
-### Ponavadi so lokalne definicije lepše
-
-```haskell
-ucbenik avtorji naslov =
-    opis avtorji ++ ": " ++ naslov
-    where
-        opis [] = "?"
-        opis [avtor] = avtor
-        opis (prviAvtor:_) =
-            prviAvtor ++ "in ostali"
-```
+### 14. november 2016
 
 ---
 
@@ -558,162 +100,647 @@ fib = splosniFib 0 1
 
 ---
 
-class: center, middle, question
-
-# [prejšnje vaje](https://ucilnica.fmf.uni-lj.si/pluginfile.php/25974/mod_assign/introattachment/0/uvod_vaje.hs?forcedownload=1)
-# [Project Euler #2](https://projecteuler.net/problem=2)
-# [Project Euler #3](https://projecteuler.net/problem=3)
-# [Project Euler #5](https://projecteuler.net/problem=5)
-# [Project Euler #7](https://projecteuler.net/problem=7)
-
----
-
 class: center, middle
 
-## Dokazovanje ekvivalenc programov
+## Funkcije višjega reda
 
 ---
 
-### Nekaj definicij
+### Kaj, če funkciji ne podamo vseh argumentov?
 
 ```haskell
-[] ++ ys = ys
-(x:xs) ++ ys = x:(xs ++ ys)
-
-obrni [] = []
-obrni (x:xs) = obrni xs ++ [x]
-
-dolzina [] = 0
-dolzina (x:xs) = 1 + dolzina xs
-```
-
----
-
-class: center, middle
-
-# `obrni [x] = [x]`
-
----
-
-#### `obrni [x] = [x]`
-
-.consecutive[```haskell
-  obrni [x]
-```]
---
-.consecutive[```haskell
-= obrni (x:[])
-```]
---
-.consecutive[```haskell
-= obrni [] ++ [x]
-```]
---
-.consecutive[```haskell
-= [] ++ [x]
-```]
---
-.consecutive[```haskell
-= [x]
-```]
-
----
-
-class: center, middle
-
-### `dolzina (xs ++ ys)`
-### `=`
-### .spoiler[`dolzina xs + dolzina ys`]
-
----
-
-#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
-
-```haskell
-  dolzina (xs ++ ys)
-= ???
+zmnozi :: Int -> Int -> Int
+zmnozi x y = x * y
 ```
 
 --
 
-# Kako naprej? .spoiler[Indukcija!]
+```haskell
+λ> zmnozi 2 3
+6
+```
+
+--
+
+```haskell
+λ> zmnozi 2
+<interactive>:3:1:
+No instance for (Show (Int -> Int))
+...
+```
+
+--
+
+```haskell
+λ> :t zmnozi 2
+zmnozi 2 :: Int -> Int
+```
+
+---
+
+### Kaj, če funkciji ne podamo vseh argumentov?
+
+```haskell
+λ> let podvoji = zmnozi 2
+
+λ> podvoji 10
+20
+
+λ> podvoji 3
+6
+```
+
+--
+
+```haskell
+λ> (zmnozi 2) 3
+6
+```
+
+---
+
+### Delno uporabljene funkcije
+
+```haskell
+λ> let ostevilci = zip [1..]
+
+λ> ostevilci "abcde"
+[(1,'a'),(2,'b'),(3,'c'),(4,'d'),(5,'e')]
+
+λ> ostevilci [True, False, True]
+[(1,True),(2,False),(3,True)]
+```
+
+```haskell
+λ> let triGlave = take 3
+
+λ> triGlave "Triglavska roža"
+"Tri"
+```
+
+---
+
+### Delno uporabljene infiksne funkcije
+
+```haskell
+λ> let razpolovi = (/ 2)
+
+λ> razpolovi 3
+1.5
+```
+
+```haskell
+λ> let inverz = (1 /)
+
+λ> inverz 7
+0.14285714285714285
+```
+
+```haskell
+λ> let zadnjaStevka = (`mod` 10)
+
+λ> zadnjaStevka 12345
+5
+```
+
+
+---
+
+class: center
+
+## Funkcija z več argumenti je v resnici funkcija enega argumenta, ki vrne funkcijo.
+
+### Izraz **`f x y`** je enak **`(f x) y`**.
+
+### Tip **`A -> B -> C`** je enak **`A -> (B -> C)`**.
+
+---
+
+class: center
+
+## Funkcija z več argumenti je v resnici funkcija enega argumenta, ki vrne funkcijo.
+
+### Izraz **`f x y z`** je enak .spoiler[**`((f x) y) z`**].
+
+### Tip **`A->B->C->D`** je enak .spoiler[**`A->(B->(C->D))`**].
+
+#### Aplikacija je .spoiler[levo] asociativna.
+
+#### `->` je .spoiler[desno] asociativna.
+
+---
+
+### Funkcije lahko podamo kot argumente funkcij
+
+```haskell
+trikrat :: (a -> a) -> a -> a
+trikrat f x = f (f (f x))
+```
+
+```haskell
+λ> trikrat succ 39
+42
+
+λ> trikrat (+ 3) 5
+14
+
+λ> let mojaFunkcija x = 2 * x + 1
+
+λ> trikrat mojaFunkcija 1
+15
+```
+
+---
+
+class: question
+
+### Ali razumem, kako deluje `trikrat`?
+
+<pre><code class="haskell hljs remark-code">λ> trikrat (trikrat succ) 1
+<span class="spoiler">10</span>
+</code></pre>
+
+<pre><code class="haskell hljs remark-code">λ> (trikrat trikrat) succ 1
+<span class="spoiler">28</span>
+</code></pre>
+
+---
+
+### Neimenovane funkcije pišemo kot `\x -> ...`
+
+```haskell
+λ> let mojaFunkcija x = 2 * x + 1
+
+λ> trikrat mojaFunkcija 1
+15
+```
+
+```haskell
+λ> trikrat (\x -> 2 * x + 1) 1
+15
+```
+
+```haskell
+λ> trikrat (\x -> 5 * x - 2) 1
+63
+```
+
+```haskell
+λ> let mojaFunkcija' =  \x -> 2 * x + 1
+```
 
 ---
 class: center
-### Indukcija na naravnih številih
 
-### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+### Zgodovina lambde
 
-### Indukcija na seznamih
+--
 
-### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+### $$x \mapsto x + 3$$
+
+--
+
+### $$\hat{x} . x + 3$$
+
+--
+
+### $$\hat{} x . x + 3$$
+
+--
+
+### $$\lambda x . x + 3$$
+
+--
+
+### `\x -> x + 3`
 
 ---
 
-### Osnovni korak
-#### `dolzina ([] ++ ys) = dolzina [] + dolzina ys`
-
-
-.consecutive[```haskell
-  dolzina ([] ++ ys)
-```]
---
-.consecutive[```haskell
-= dolzina ys
-```]
---
-.consecutive[```haskell
-= 0 + dolzina ys
-```]
---
-.consecutive[```haskell
-= dolzina [] + dolzina ys
-```]
+class: center, middle 
+## Osnovne funkcije za delo s funkcijami
 
 ---
 
-### Indukcijski korak
-#### `dolzina (x:xs ++ ys) = dolzina (x:xs) + dolzina ys`
+### Funkcije uporabljamo z `$`
 
-#### Predpostavka: `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+```haskell
+($) :: (a -> b) -> a -> b
+f $ x = f x
+```
 
-.consecutive[```haskell
-  dolzina ((x:xs) ++ ys)
-```]
---
-.consecutive[```haskell
-= dolzina (x:(xs ++ ys))
-```]
---
-.consecutive[```haskell
-= 1 + dolzina (xs ++ ys)
-```]
---
-.consecutive[```haskell
-= 1 + dolzina xs + dolzina ys
-```]
---
-.consecutive[```haskell
-= dolzina (x:xs) + dolzina ys
-```]
+```haskell
+  f $ g $ h $ x
+
+= f $ (g $ (h $ x))
+
+= f (g (h x))
+```
 
 ---
+
+### Funkcije komponiramo s `.`
+
+```haskell
+(.) :: (b -> c) -> (a -> b) -> a -> c
+f . g = \x -> f (g x)
+```
+
+```haskell
+λ> let f = succ . (* 3)
+
+λ> f 13
+40
+```
+
+```haskell
+λ> let g = (* 3) . succ
+
+λ> g 13
+42
+```
+
+---
+
+### Funkcije curryiramo s `curry`
+
+```haskell
+curry :: ((a, b) -> c) -> a -> b -> c
+curry f = \x -> \y -> f (x, y)
+```
+
+```haskell
+uncurry :: (a -> b -> c) -> (a, b) -> c
+uncurry g = \(x, y) -> g x y
+```
+--
+
+## $$C^{A \times B} \cong (C^B)^A$$
+
+### $$curry \colon C^{A \times B} \to (C^B)^A$$
+### $$uncurry \colon (C^B)^A \to C^{A \times B}$$
+
+---
+
+class: middle, center
+## Osnovne funkcije za delo s seznami
+
+---
+
+### Z `map` funkcijo uporabimo po elementih
+
+```haskell
+λ> map (*5) [10, 20, 30]
+[50,100,150]
+
+λ> map length ["Jaz", "sem", "robot"]
+[3,3,5]
+
+λ> map (\n -> 3 * n + 1) [1..10]
+[4,7,10,13,16,19,22,25,28,31]
+```
+
+<pre><code class="haskell hljs remark-code">map :: <span class="spoiler"><span class="spoiler">(a -> b)</span> -> <span class="spoiler">[a]</span> -> <span class="spoiler">[b]</span></span>
+map f [] = <span class="spoiler">[]</span>
+map f (x:xs) = <span class="spoiler">f x : map f xs</span>
+</code></pre>
+
+
+
+---
+
+### Iz seznamov izbiramo s `filter`
+
+```haskell
+λ> filter even [1..10]
+[2,4,6,8,10]
+
+λ> filter (\n -> n `mod` 5 == 1) [1..30]
+[1,6,11,16,21,26]
+
+λ> filter (`elem` "aeiou") "abrakadabra"
+"aaaaa"
+```
+
+
+<pre><code class="haskell hljs remark-code">filter :: <span class="spoiler"><span class="spoiler">(a -> Bool)</span> -> <span class="spoiler">[a]</span> -> <span class="spoiler">[a]</span></span>
+filter p [] = <span class="spoiler">[]</span>
+filter p (x:xs)
+  | p x = <span class="spoiler">x : filter p xs</span>
+  | otherwise = <span class="spoiler">filter p xs</span>
+</code></pre>
+
+---
+
+### Ustrezen začetek izberemo s `takeWhile`
+
+```haskell
+λ> takeWhile odd [1,3,5,2,1,2,5]
+[1,3,5]
+
+λ> takeWhile (\n -> 6 `mod` n == 0) [1..]
+[1,2,3]
+```
+
+<pre><code class="haskell hljs remark-code">takeWhile :: <span class="spoiler"><span class="spoiler">(a -> Bool)</span> -> <span class="spoiler">[a]</span> -> <span class="spoiler">[a]</span></span>
+takeWhile p [] = <span class="spoiler">[]</span>
+takeWhile p (x:xs)
+  | p x = <span class="spoiler">x : takeWhile p xs</span>
+  | otherwise = <span class="spoiler">[]</span>
+</code></pre>
+
+---
+
 class: center, middle
-### Indukcija na naravnih številih
 
-### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+## Zlaganje seznamov
 
-### Indukcija na seznamih
+---
 
-### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+class: middle
+
+```haskell
+  sum [1, 2, 3]
+= 1 + sum [2, 3]
+= 1 + (2 + sum [3])
+= 1 + (2 + (3 + sum []))
+= 1 + (2 + (3 + 0))
+```
+
+---
+
+class: middle
+
+```haskell
+  product [1, 2, 3]
+= 1 * product [2, 3]
+= 1 * (2 * product [3])
+= 1 * (2 * (3 * product []))
+= 1 * (2 * (3 * 1))
+```
+
+---
+
+class: middle
+
+```haskell
+  length [1, 2, 3]
+= 1 + length [2, 3]
+= 1 + (1 + length [3])
+= 1 + (1 + (1 + length []))
+= 1 + (1 + (1 + 0))
+```
+
+---
+
+class: middle
+
+```haskell
+  reverse [1, 2, 3]
+= reverse [2, 3] ++ [1]
+= (reverse [3] ++ [2]) ++ [1]
+= ((reverse [] ++ [3]) ++ [2]) ++ [1]
+= (([] ++ [3]) ++ [2]) ++ [1]
+```
+
+---
+
+class: middle
+
+```haskell
+  map f [1, 2, 3]
+= f 1 : map f [2, 3]
+= f 1 : (f 2 : map f [3])
+= f 1 : (f 2 : (f 3 : map f []))
+= f 1 : (f 2 : (f 3 : []))
+```
+
+---
+
+class: middle
+
+```haskell
+  foldr f z [1, 2, 3]
+= f 1 (foldr f z [2, 3])
+= f 1 (f 2 (foldr f z [3]))
+= f 1 (f 2 (f 3 (foldr f z [])))
+= f 1 (f 2 (f 3 z))
+```
+
+--
+
+```haskell
+foldr f z [] = z
+foldr f z (x:xs) = f x (foldr f z xs)
+```
+
+---
+
+### Izrazimo `sum` s `foldr`
+
+```haskell
+  sum [1, 2, 3]
+= 1 + sum [2, 3]
+= 1 + (2 + sum [3])
+= 1 + (2 + (3 + sum []))
+= 1 + (2 + (3 + 0))
+```
+
+```haskell
+  foldr f z [1, 2, 3]
+= f 1 (foldr f z [2, 3])
+= f 1 (f 2 (foldr f z [3]))
+= f 1 (f 2 (f 3 (foldr f z [])))
+= f 1 (f 2 (f 3 z))
+```
+
+<pre><code class="haskell hljs remark-code">sum xs = foldr <span class="spoiler">(\x acc -> x + acc)</span> <span class="spoiler">0</span> <span class="spoiler">xs</span>
+</code></pre>
+
+---
+
+### Eta ekvivalenca
+
+```haskell
+sum xs = foldr (\x acc -> x + acc) 0 xs
+```
+
+--
+
+```haskell
+sum xs = foldr (+) 0 xs
+```
+--
+
+```haskell
+sum xs = ((foldr (+)) 0) xs
+```
+
+--
+
+```haskell
+sum = ((foldr (+)) 0)
+```
+
+--
+
+```haskell
+sum = foldr (+) 0
+```
+
+--
+
+.center[```haskell
+f x = (...) x
+f = (...)
+```]
+
+---
+
+### Izrazimo `product` s `foldr`
+
+```haskell
+  product [1, 2, 3]
+= 1 * product [2, 3]
+= 1 * (2 * product [3])
+= 1 * (2 * (3 * product []))
+= 1 * (2 * (3 * 1))
+```
+
+```haskell
+  foldr f z [1, 2, 3]
+= f 1 (foldr f z [2, 3])
+= f 1 (f 2 (foldr f z [3]))
+= f 1 (f 2 (f 3 (foldr f z [])))
+= f 1 (f 2 (f 3 z))
+```
+
+<pre><code class="haskell hljs remark-code">product = foldr <span class="spoiler">(*)</span> <span class="spoiler">1</span>
+</code></pre>
+
+---
+
+### Izrazimo `length` s `foldr`
+
+```haskell
+  length [1, 2, 3]
+= 1 + length [2, 3]
+= 1 + (1 + length [3])
+= 1 + (1 + (1 + length []))
+= 1 + (1 + (1 + 0))
+```
+
+```haskell
+  foldr f z [1, 2, 3]
+= f 1 (foldr f z [2, 3])
+= f 1 (f 2 (foldr f z [3]))
+= f 1 (f 2 (f 3 (foldr f z [])))
+= f 1 (f 2 (f 3 z))
+```
+
+<pre><code class="haskell hljs remark-code">length = foldr <span class="spoiler">(\_ acc -> 1 + acc)</span> <span class="spoiler">0</span>
+</code></pre>
+
+---
+
+### Izrazimo `reverse` s `foldr`
+
+```haskell
+  reverse [1, 2, 3]
+= reverse [2, 3] ++ [1]
+= (reverse [3] ++ [2]) ++ [1]
+= ((reverse [] ++ [3]) ++ [2]) ++ [1]
+= (([] ++ [3]) ++ [2]) ++ [1]
+```
+
+```haskell
+  foldr f z [1, 2, 3]
+= f 1 (foldr f z [2, 3])
+= f 1 (f 2 (foldr f z [3]))
+= f 1 (f 2 (f 3 (foldr f z [])))
+= f 1 (f 2 (f 3 z))
+```
+
+<pre><code class="haskell hljs remark-code">reverse = foldr <span class="spoiler">(\x acc -> acc ++ [x])</span> <span class="spoiler">[]</span>
+</code></pre>
+
+---
+
+### Izrazimo `map` s `foldr`
+
+```haskell
+  map g [1, 2, 3]
+= g 1 : map g [2, 3]
+= g 1 : (g 2 : map g [3])
+= g 1 : (g 2 : (g 3 : map g []))
+= g 1 : (g 2 : (g 3 : []))
+```
+
+```haskell
+  foldr f z [1, 2, 3]
+= f 1 (foldr f z [2, 3])
+= f 1 (f 2 (foldr f z [3]))
+= f 1 (f 2 (f 3 (foldr f z [])))
+= f 1 (f 2 (f 3 z))
+```
+
+<pre><code class="haskell hljs remark-code">map g = foldr <span class="spoiler">(\x acc -> g x : acc)</span> <span class="spoiler">[]</span>
+</code></pre>
+
+---
+
+### Neprazne sezname zlagamo s `foldr1`
+
+```haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [x1, x2, x3]
+  = f x1 (f x2 (f x3 z))
+  = x1 `f` (x2 `f` (x3 `f` z))
+```
+
+```haskell
+foldr1 :: (a -> a -> a) -> [a] -> a
+foldr1 f [x1, x2, x3]
+  = f x1 (f x2 x3)
+  = x1 `f` (x2 `f` x3)
+```
+
+```haskell
+maximum = foldr1 max
+```
+
+---
+
+### Sezname s `foldl` zlagamo z leve
+
+```haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [x1, x2, x3]
+  = f x1 (f x2 (f x3 z))
+  = x1 `f` (x2 `f` (x3 `f` z))
+```
+
+```haskell
+foldl :: (b -> a -> b) -> b -> [a] -> b
+foldl f z [x1, x2, x3]
+  = f (f (f z x1) x2) x3
+  = ((z `f` x1) `f` x2) `f` x3
+```
+
+```haskell
+reverse = foldl (\acc x -> x : acc) []
+```
 
 ---
 
 class: center, middle, question
 
-### `obrni (xs ++ ys)`
-### `=`
-### .spoiler[`obrni ys + obrni xs`]
+### [Project Euler #1](https://projecteuler.net/problem=1)
+### [Project Euler #2](https://projecteuler.net/problem=2)
+### [Project Euler #3](https://projecteuler.net/problem=3)
+### [Project Euler #4](https://projecteuler.net/problem=4)
+### [Project Euler #5](https://projecteuler.net/problem=5)
+### [Project Euler #6](https://projecteuler.net/problem=6)
+### [Project Euler #7](https://projecteuler.net/problem=7)
 
 ---
 
@@ -722,23 +749,23 @@ class: center, middle
 ### naslednjič...
 
 
-# Funkcije višjega reda
+# Definicije tipov
 
 
     </textarea>
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/remark-latest.min.js"></script>
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <script src="../../js/remark-latest.min.js"></script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
       $(document).ready(function() { 
       
-      $("span.spoiler").hide();
+      $(".spoiler").hide();
       
-       $('<a class="reveal">???</a>').insertBefore('.spoiler');
+      $('<a class="reveal">???</a>').insertBefore('.spoiler');
 
       $("a.reveal").click(function(){
-        $(this).parent().children("span.spoiler").fadeIn(100);
-        $(this).parent().children("a.reveal").hide();
+        $(this).next().fadeIn(500);
+        $(this).hide();
       });
 
     }); 

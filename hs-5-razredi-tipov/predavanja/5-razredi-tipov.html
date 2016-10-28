@@ -172,6 +172,24 @@ instance  Osebni Bool  where
 
 ---
 
+### Parametrični in ad-hoc polimorfizem
+
+#### Pri parametričnem polimorfizmu ena sama funkcija deluje na vseh tipih.
+
+#### Pri ad-hoc polimorfizmu moramo za vsak tip definirati svojo funkcijo.
+
+```haskell
+show True = "True"
+show False = "False"
+```
+
+```haskell
+show 0 = "0"
+show 1 = "1"
+```
+
+---
+
 ### Razredu lahko pripada več vrednosti.
 
 ```haskell
