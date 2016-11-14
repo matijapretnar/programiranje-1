@@ -57,7 +57,7 @@ class: center, middle
 
 # Programiranje 1
 
-### 6. november 2015
+### 12. december 2016
 
 ---
 
@@ -361,108 +361,6 @@ main =
 class: center, middle, question
 
 ### Primer: štetje črk
-
----
-
-class: center, middle
-
-## QuickCheck
-
----
-
-class: center, middle
-
-### Včasih si lastnosti programov ne želimo formalno dokazovati.
-
----
-
-### QuickCheck pravilnost preverja na naključnih primerih.
-
-```haskell
-import Test.QuickCheck
-
-povecaj :: [Int] -> [Int]
-povecaj = map succ
-
-prop_SumPovecaj :: [Int] -> Bool
-prop_SumPovecaj xs =
-  sum xs + length xs == sum (povecaj xs)
-
-main = quickCheck prop_SumPovecaj
-```
-
-```
- +++ OK, passed 100 tests.
-```
-
----
-
-### QuickCheck pravilnost preverja na naključnih primerih.
-
-```haskell
-import Test.QuickCheck
-
-povecaj :: [Int] -> [Int]
-povecaj = map succ
-
-prop_SumPovecaj' :: [Int] -> Bool
-prop_SumPovecaj' xs =
-  sum xs < sum (povecaj xs)
-
-main = quickCheck prop_SumPovecaj'
-```
-
-```
- *** Failed! Falsifiable (after 1 test):  
- []
-```
-
----
-
-class: small-code
-### Polimorfne funkcije testiramo pri posameznih tipih.
-
-```haskell
-import Test.QuickCheck
-
-prop :: [a] -> [a] -> Bool
-prop xs ys =
-  length (xs ++ ys) == length xs + length xs
-
-main = do
-    quickCheck (prop :: [Int]->[Int]->Bool)
-    quickCheck (prop :: [Char]->[Char]->Bool)
-```
-
-```
- *** Failed! Falsifiable
- (after 3 tests and 2 shrinks):    
- [] [0]
- *** Failed! Falsifiable
- (after 2 tests and 1 shrink): 
- "" "a"
-```
-
----
-class: small-code
-### Polimorfne funkcije testiramo pri posameznih tipih.
-
-```haskell
-import Test.QuickCheck
-
-prop :: [a] -> [a] -> Bool
-prop xs ys =
-  length (xs ++ ys) == length xs + length ys
-
-main = do
-    quickCheck (prop :: [Int]->[Int]->Bool)
-    quickCheck (prop :: [Char]->[Char]->Bool)
-```
-
-```
- +++ OK, passed 100 tests.
- +++ OK, passed 100 tests.
-```
 
 ---
 

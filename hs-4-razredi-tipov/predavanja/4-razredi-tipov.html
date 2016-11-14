@@ -54,7 +54,7 @@ class: center, middle
 
 # Programiranje 1
 
-### 30. oktober 2015
+### 28. november 2016
 
 ---
 
@@ -103,7 +103,7 @@ prazenSeznam = []
 f $ x = f x
 ```
 
-#### Takim definicijam pravimo, da so polimorfne.
+#### Takim definicijam pravimo, da so parametrično polimorfne.
 
 ---
 
@@ -139,7 +139,7 @@ najnaj :: Bool
 najnaj = True
 ```
 
-#### Tudi to ni dovoljeno.
+#### Takim definicijam pravimo, da so ad-hoc polimorfne.<br>Vendar v tej obliki iz istega razloga kot prej niso dovoljene.
 
 ```haskell
 test.hs:4:1:
@@ -158,7 +158,7 @@ class  Osebni a  where
     najnaj :: a
 ```
 
-#### V definiciji razreda podamo signature.
+#### Razred podamo s signaturo: imeni in tipi vrednosti
 
 ```haskell
 instance  Osebni Integer  where
@@ -168,29 +168,11 @@ instance  Osebni Bool  where
     najnaj = True
 ```
 
-#### V definiciji primerka podamo vrednosti.
+#### Člana razreda podamo z definicijo vrednosti iz signature.
 
 ---
 
-### Parametrični in ad-hoc polimorfizem
-
-#### Pri parametričnem polimorfizmu ena sama funkcija deluje na vseh tipih.
-
-#### Pri ad-hoc polimorfizmu moramo za vsak tip definirati svojo funkcijo.
-
-```haskell
-show True = "True"
-show False = "False"
-```
-
-```haskell
-show 0 = "0"
-show 1 = "1"
-```
-
----
-
-### Razredu lahko pripada več vrednosti.
+### V signaturi lahko naštejemo več vrednosti.
 
 ```haskell
 class  Osebni a  where
@@ -428,12 +410,12 @@ class: center, middle
 
 ### naslednjič...
 
-# Monade
+# Pravilnost programov
 
 
     </textarea>
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/remark-latest.min.js"></script>
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <script src="../../js/remark-latest.min.js"></script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
       $(document).ready(function() { 
