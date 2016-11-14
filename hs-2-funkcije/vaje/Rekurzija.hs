@@ -21,8 +21,8 @@ range a b
 -- [1,2,7,3,4,5]
 vstavi :: a -> [a] -> Int -> [a]
 vstavi x [] 0 = [x]
+vstavi x [] _ = error "Seznam je prekratek!"
 vstavi x l@(y:ys) i
-	| i > length l = error "Seznam je prekratek!"
 	| i == 0 = x : l
 	| otherwise = y : vstavi x ys (i-1)
 
@@ -46,8 +46,9 @@ poparckaj (x:y:zs) = (x,y) : poparckaj zs
 -- ghci> jeNepadajoce [-1,2,5,3,5,7,7]
 -- False
 jeNepadajoce :: (Ord a) => [a] -> Bool
-jeNepadajoce xs | length xs <= 1 = True
-jeNepadajoce (x:xs) = (x <= head xs) && jeNepadajoce xs
+jeNepadajoce [] = True
+jeNepadajoce [_] = True
+jeNepadajoce (x:y:zs) = (x <= y) && jeNepadajoce (y:zs)
 
 -- Stirlingova števila druge vrste S(n, k) štejejo razbitja n elemente množice na k
 -- nepraznih podmnožic. Za  Strilingova števila druge vrste velja rekurzivna zveza:
@@ -116,7 +117,6 @@ permutacije (x:xs) = [vstavi x p i | p <- permutacije xs, i <- [0..(length xs)]
 hanoi :: Int -> Int -> Int -> [(Int, Int)]
 hanoi n a b
 	| n == 0 = []
-	| n == 1 = [(a,b)]
 	| otherwise = hanoi (n-1) a c ++ [(a,b)] ++ hanoi (n-1) c b
 	where c = head $ filter (\x -> x/=a && x/=b) $ [1,2,3]
 
