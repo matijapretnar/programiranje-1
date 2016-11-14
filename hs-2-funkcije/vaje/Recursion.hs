@@ -27,6 +27,7 @@ range a b =
 -- [1,2,7,3,4,5]
 insert :: Integral n => a -> [a] -> n -> [a]
 insert x lst 0 = x : lst
+insert _x [] _n = undefined
 insert x (y : lst) i = y : (insert x lst (i - 1))
 
 -- ***

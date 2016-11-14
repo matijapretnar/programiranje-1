@@ -19,6 +19,8 @@
 -- *
 -- 'penultimateElement l' returns the second-to-last element of the list l
 penultimateElement :: [a] -> a
+penultimateElement [] = undefined
+penultimateElement [_x] = undefined
 penultimateElement ([x, _y]) = x
 penultimateElement (_h : l) = penultimateElement l
 
@@ -34,8 +36,9 @@ append (h : l1) l2 = h : (append l1 l2)
 -- ghci> get 2 [0,0,1,0,0,0]
 -- 1
 get :: Integral n => n -> [a] -> a
+get _n [] = undefined
 get 0 (h : _lst) = h
-get n (_ : lst) = get (n - 1) lst
+get n (_h : lst) = get (n - 1) lst
 
 -- **
 -- 'double l' "doubles" the list l
@@ -55,6 +58,7 @@ double (x : xs) = [x, x] `append` (double xs)
 -- ([1,1],[1,2,2,2])
 divide :: Integral n => n -> [a] -> ([a], [a])
 divide 0 l = ([], l)
+divide _n [] = undefined
 divide n (h : l) =
   let (l1, l2) = divide (n - 1) l in
     (l1 `append` [h], l2)
@@ -65,7 +69,8 @@ divide n (h : l) =
 -- ghci> delete 3 [0,0,0,1,0,0,0]
 -- [0,0,0,0,0,0]
 delete :: Integral n => n -> [a] -> [a]
-delete 0 (_ : l) = l
+delete _n [] = undefined
+delete 0 (_h : l) = l
 delete n (h : l) = h : (delete (n - 1) l)
 
 -- ***
@@ -76,9 +81,11 @@ delete n (h : l) = h : (delete (n - 1) l)
 -- ghci> slice 3 6 [0,0,0,1,2,3,0,0,0]
 -- [1,2,3]
 slice :: Integral n => n -> n -> [a] -> [a]
-slice 0 k l = take' k l
+slice 0 k lst = take' k lst
   where take' 0 _l = []
-        take' k (h : l) = h : (take' (k - 1) l)
+        take' _n [] = undefined
+        take' k' (h : l) = h : (take' (k' - 1) l)
+slice _i _k [] = undefined
 slice n k (_h : l) = slice (n - 1) (k - 1) l
 
 -- **
@@ -88,6 +95,7 @@ slice n k (_h : l) = slice (n - 1) (k - 1) l
 -- [0,0,0,0,0,2,0]
 insert :: Integral n => a -> n -> [a] -> [a]
 insert x 0 l = x : l
+insert _x _n [] = undefined
 insert x n (h : l) = h : (insert x (n - 1) l)
 
 -- **
@@ -96,6 +104,7 @@ insert x n (h : l) = h : (insert x (n - 1) l)
 -- ghci> rotate 2 [1,2,3,4,5]
 -- [3,4,5,1,2]
 rotate :: Integral n => n -> [a] -> [a]
+rotate _n [] = []
 rotate 0 l = l
 rotate n (h : l) = rotate (n - 1) (l `append` [h])
 
@@ -115,8 +124,8 @@ remove x (h : l) = if x == h then rest else (h : rest)
 reverseLength :: [a] -> ([a], Double)
 reverseLength [] = ([], 0)
 reverseLength (h : l) =
-  let (l, n) = reverseLength l in
-    (append l [h], n + 1)
+  let (l', n) = reverseLength l in
+    (append l' [h], n + 1)
 
 -- ***
 -- 'isPalindrome lst' is a predicate that checks if 'lst' is a palindrome
@@ -138,9 +147,11 @@ isPalindrome l =
       isPalindromeHelper l rev middle
   where
     isPalindromeHelper :: Eq a => [a] -> [a] -> Integer -> Bool
-    isPalindromeHelper _l _rev 0 = True
-    isPalindromeHelper (h : l) (r : rev) n =
-      h == r && isPalindromeHelper l rev (n - 1)
+    isPalindromeHelper _l' _rev 0 = True
+    isPalindromeHelper [] _rev _n = undefined
+    isPalindromeHelper _l' [] _n = undefined
+    isPalindromeHelper (h : l') (r : rev) n =
+      h == r && isPalindromeHelper l' rev (n - 1)
 
 -- **
 -- 'pointwiseMax l1 l2' returns the list of maximum elements in l1 and l2 at each
@@ -149,8 +160,8 @@ isPalindrome l =
 -- ghci> pointwiseMax [1,10,5,6] [2,3,7,4,8]
 -- [2,10,7,6]
 pointwiseMax :: Ord a => [a] -> [a] -> [a]
-pointwiseMax [] _ = []
-pointwiseMax _ [] = []
+pointwiseMax [] _l2 = []
+pointwiseMax _l1 [] = []
 pointwiseMax (h1 : l1) (h2 : l2) = (max h1 h2) : (pointwiseMax l1 l2)
 
 -- ****
@@ -162,10 +173,12 @@ pointwiseMax (h1 : l1) (h2 : l2) = (max h1 h2) : (pointwiseMax l1 l2)
 -- ghci> secondLargest [1,10,5,6]
 -- 6
 secondLargest :: Ord a => [a] -> a
+secondLargest [] = undefined
+secondLargest [_x] = undefined
 secondLargest (x : y : l) =
    let (lar_base, sec_base) = if x > y then (x, y) else (y, x) in
       fold' lar_base sec_base l
-    where fold' _ sec [] = sec
+    where fold' _lar sec [] = sec
           fold' lar sec (h : l') =
             let (lar', sec') =
                   if h > lar
@@ -179,6 +192,8 @@ secondLargest (x : y : l) =
 -- **
 -- rewrite secondLargest without recursion but instead using 'foldl'
 secondLargest' :: Ord a => [a] -> a
+secondLargest' [] = undefined
+secondLargest' [_x] = undefined
 secondLargest' (x : y : l) =
    let base = if x > y then (x, y) else (y, x) in
     snd $ foldl
