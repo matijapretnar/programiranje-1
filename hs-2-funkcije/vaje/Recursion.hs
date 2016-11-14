@@ -34,14 +34,14 @@ insert = undefined
 couples = undefined
 
 -- **
--- 'nonDecreasing lst' checks that the elements of 'lst' are in non decreasing order.
+-- 'isNonDecreasing lst' checks that the elements of 'lst' are in non decreasing order.
 --
 -- Example:
--- ghci> nonDecreasing [-1,2,5,5,5,7,7]
+-- ghci> isNonDecreasing [-1,2,5,5,5,7,7]
 -- True
--- ghci> nonDecreasing [-1,2,5,3,5,7,7]
+-- ghci> isNonDecreasing [-1,2,5,3,5,7,7]
 -- False
-nonDecreasing = undefined
+isNonDecreasing = undefined
 
 -- **
 -- A Stirling number of the second kind (or Stirling partition number), denoted

@@ -21,7 +21,7 @@
 penultimateElement = undefined
 
 -- **
--- 'append l1 l2' appends the list l2 at the end of l1, like the (++) operator
+-- 'append l1 l2' puts the elements of l1 in front of l2, like the (++) operator
 append = undefined
 
 -- **
@@ -124,4 +124,4 @@ secondLargest = undefined
 
 -- **
 -- rewrite secondLargest without recursion but instead using 'foldl'
-secondLargest = undefined
+secondLargest' = undefined
