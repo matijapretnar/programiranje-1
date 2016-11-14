@@ -25,7 +25,7 @@ penultimateElement ([x, _y]) = x
 penultimateElement (_h : l) = penultimateElement l
 
 -- **
--- 'append l1 l2' appends the list l2 at the end of l1, like the (++) operator
+-- 'append l1 l2' puts the elements of l1 in front of l2, like the (++) operator
 append :: [a] -> [a] -> [a]
 append [] l2 = l2
 append (h : l1) l2 = h : (append l1 l2)

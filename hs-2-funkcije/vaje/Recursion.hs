@@ -44,17 +44,17 @@ couples [_x] = []
 couples [] = []
 
 -- **
--- 'nonDecreasing lst' checks that the elements of 'lst' are in non decreasing order.
+-- 'isNonDecreasing lst' checks that the elements of 'lst' are in non decreasing order.
 --
 -- Example:
--- ghci> nonDecreasing [-1,2,5,5,5,7,7]
+-- ghci> isNonDecreasing [-1,2,5,5,5,7,7]
 -- True
--- ghci> nonDecreasing [-1,2,5,3,5,7,7]
+-- ghci> isNonDecreasing [-1,2,5,3,5,7,7]
 -- False
-nonDecreasing :: Ord a => [a] -> Bool
-nonDecreasing (x : y : lst) = x <= y && nonDecreasing (y : lst)
-nonDecreasing [_x] = True
-nonDecreasing [] = True
+isNonDecreasing :: Ord a => [a] -> Bool
+isNonDecreasing (x : y : lst) = x <= y && isNonDecreasing (y : lst)
+isNonDecreasing [_x] = True
+isNonDecreasing [] = True
 
 -- **
 -- A Stirling number of the second kind (or Stirling partition number), denoted
