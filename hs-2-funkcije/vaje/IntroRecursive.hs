@@ -167,14 +167,14 @@ secondLargest (x : y : l) =
       fold' lar_base sec_base l
     where fold' _ sec [] = sec
           fold' lar sec (h : l') =
-            let (lar, sec) =
+            let (lar', sec') =
                   if h > lar
                   then (h, lar)
                   else if h > sec
                        then (lar, h)
                        else (lar, sec)
             in
-              fold' lar sec l'
+              fold' lar' sec' l'
 
 -- **
 -- rewrite secondLargest without recursion but instead using 'foldl'
