@@ -11,7 +11,11 @@
 -- [5,6,7,8,9,10]
 -- ghci> range 10 5
 -- []
-range = undefined
+range :: Integral a => a -> a -> [a]
+range a b =
+  if a <= b
+  then a : (range (a + 1) b)
+  else []
 
 -- **
 -- 'insert x lst i' inserts 'x' into the list 'lst' at index 'i'.
@@ -21,7 +25,9 @@ range = undefined
 -- Example:
 -- ghci> insert 7 [1,2,3,4,5] 2
 -- [1,2,7,3,4,5]
-insert = undefined
+insert :: Integral n => a -> [a] -> n -> [a]
+insert x lst 0 = x : lst
+insert x (y : lst) i = y : (insert x lst (i - 1))
 
 -- ***
 -- 'couples lst' pairs each two consecutive elements in 'lst' into a couple.
@@ -31,7 +37,10 @@ insert = undefined
 -- Example:
 -- ghci> couples ["Toni", "Majda", "Andrej", "Boris", "Petra"]
 -- [("Toni","Majda"),("Andrej","Boris")]
-couples = undefined
+couples :: [a] -> [(a, a)]
+couples (x : y : lst) = (x, y) : couples lst
+couples [_x] = []
+couples [] = []
 
 -- **
 -- 'nonDecreasing lst' checks that the elements of 'lst' are in non decreasing order.
@@ -41,7 +50,10 @@ couples = undefined
 -- True
 -- ghci> nonDecreasing [-1,2,5,3,5,7,7]
 -- False
-nonDecreasing = undefined
+nonDecreasing :: Ord a => [a] -> Bool
+nonDecreasing (x : y : lst) = x <= y && nonDecreasing (y : lst)
+nonDecreasing [_x] = True
+nonDecreasing [] = True
 
 -- **
 -- A Stirling number of the second kind (or Stirling partition number), denoted
@@ -56,7 +68,12 @@ nonDecreasing = undefined
 -- Example:
 -- ghci> stirling2 5 2
 -- 15
-stirling2 = undefined
+stirling2 :: Integral n => n -> n -> n
+stirling2 0 0 = 1
+stirling2 _ 0 = 0
+stirling2 0 _ = 0
+stirling2 s_n k = k * (stirling2 n k) + (stirling2 n (k - 1))
+  where n = s_n - 1
 
 -- ***
 -- Write a function 'cantor n' that computes the n-th approximation of the
@@ -69,7 +86,10 @@ stirling2 = undefined
 -- "* *"
 -- ghci> cantor 2
 -- "* *   * *"
-cantor = undefined
+cantor :: Int -> String
+cantor 0 = "*"
+cantor n = prev ++ (take (3 ^ (n - 1)) (repeat ' ')) ++ prev
+  where prev = cantor (n - 1)
 
 -- **
 -- 'myGcd n m' calculates the greatest common divisor (gcd) of m and n.
@@ -78,7 +98,11 @@ cantor = undefined
 -- Example:
 -- ghci> myGcd 50 70
 -- 10
-myGcd = undefined
+myGcd :: Integral a => a -> a -> a
+myGcd n m
+  | n == m    =  n
+  | n >  m    =  myGcd (n - m) m
+  | otherwise =  myGcd n (m - n)
 
 
 -- ****
@@ -87,7 +111,12 @@ myGcd = undefined
 -- Example:
 -- ghci> permutations [1,2,3]
 -- [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-permutations = undefined
+permutations :: [a] -> [[a]]
+permutations []        = [[]]
+permutations (h : lst) =
+  let perms = permutations lst in
+    let n = length (head perms) in
+      [ insert h perm i | i <- (range 0 n), perm <- perms ]
 
 
 -- ***
@@ -102,4 +131,11 @@ permutations = undefined
 -- [(1,3),(1,2),(3,2),(1,3),(2,1),(2,3),(1,3)]
 -- ghci> hanoi 4 1 3
 -- [(1,2),(1,3),(2,3),(1,2),(3,1),(3,2),(1,2),(1,3),(2,3),(2,1),(3,1),(2,3),(1,2),(1,3),(2,3)]
-hanoi = undefined
+hanoi :: Int -> Int -> Int -> [(Int, Int)]
+hanoi 0 _ _ = []
+hanoi n a b =
+  (hanoi (n - 1) a c) ++        -- move all but the last disk to the other rod
+  [(a, b)] ++                   -- move the biggest disk to the actual destination
+  (hanoi (n - 1) c b)           -- move the remaining disks to the destination
+  where c = 6 - a - b           -- this is the other rod (ie the one that is
+                                -- not 'a' or 'b')

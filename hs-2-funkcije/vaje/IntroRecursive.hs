@@ -18,18 +18,24 @@
 
 -- *
 -- 'penultimateElement l' returns the second-to-last element of the list l
-penultimateElement = undefined
+penultimateElement :: [a] -> a
+penultimateElement ([x, _y]) = x
+penultimateElement (_h : l) = penultimateElement l
 
 -- **
 -- 'append l1 l2' appends the list l2 at the end of l1, like the (++) operator
-append = undefined
+append :: [a] -> [a] -> [a]
+append [] l2 = l2
+append (h : l1) l2 = h : (append l1 l2)
 
 -- **
 -- 'get k l' returns the k-th element in the list l
 -- Example:
 -- ghci> get 2 [0,0,1,0,0,0]
 -- 1
-get = undefined
+get :: Integral n => n -> [a] -> a
+get 0 (h : _lst) = h
+get n (_ : lst) = get (n - 1) lst
 
 -- **
 -- 'double l' "doubles" the list l
@@ -37,7 +43,9 @@ get = undefined
 -- Example:
 -- ghci> double [1,2,3,3]
 -- [1,1,2,2,3,3,3,3]
-double = undefined
+double :: [a] -> [a]
+double [] = []
+double (x : xs) = [x, x] `append` (double xs)
 
 -- ***
 -- 'divide k l' divides the list l into a pair of a list of the first k elements
@@ -45,14 +53,20 @@ double = undefined
 -- Example:
 -- ghci> divide 2 [1,1,1,2,2,2]
 -- ([1,1],[1,2,2,2])
-divide = undefined
+divide :: Integral n => n -> [a] -> ([a], [a])
+divide 0 l = ([], l)
+divide n (h : l) =
+  let (l1, l2) = divide (n - 1) l in
+    (l1 `append` [h], l2)
 
 -- **
 -- 'delete k l' returns the list l with the k-th element removed
 -- Example:
 -- ghci> delete 3 [0,0,0,1,0,0,0]
 -- [0,0,0,0,0,0]
-delete = undefined
+delete :: Integral n => n -> [a] -> [a]
+delete 0 (_ : l) = l
+delete n (h : l) = h : (delete (n - 1) l)
 
 -- ***
 -- 'slice i k l' returns the sub-list of l from the i-th up to (excluding) the k-th element
@@ -61,33 +75,48 @@ delete = undefined
 -- Example:
 -- ghci> slice 3 6 [0,0,0,1,2,3,0,0,0]
 -- [1,2,3]
-slice = undefined
+slice :: Integral n => n -> n -> [a] -> [a]
+slice 0 k l = take' k l
+  where take' 0 _l = []
+        take' k (h : l) = h : (take' (k - 1) l)
+slice n k (_h : l) = slice (n - 1) (k - 1) l
 
 -- **
 -- 'insert x k l' inserts x at index k into l
 -- Example:
 -- ghci> insert 2 5 [0,0,0,0,0,0]
 -- [0,0,0,0,0,2,0]
-insert = undefined
+insert :: Integral n => a -> n -> [a] -> [a]
+insert x 0 l = x : l
+insert x n (h : l) = h : (insert x (n - 1) l)
 
 -- **
 -- 'rotate n l' rotates l to the left by n places
 -- Example:
 -- ghci> rotate 2 [1,2,3,4,5]
 -- [3,4,5,1,2]
-rotate = undefined
+rotate :: Integral n => n -> [a] -> [a]
+rotate 0 l = l
+rotate n (h : l) = rotate (n - 1) (l `append` [h])
 
 -- **
 -- 'remove x l' returns a l with *all* occurances of x removed
 -- Example:
 -- ghci> remove 'a' "abrakadabra"
 -- "brkdbr"
-remove = undefined
+remove :: Eq a => a -> [a] -> [a]
+remove _x [] = []
+remove x (h : l) = if x == h then rest else (h : rest)
+  where rest = remove x l
 
 -- **
 -- 'reverseLength lst' computes a couple of the reversed list of 'lst' and its length
 -- Note: you should compute both results with one single recursion.
-reverseLength = undefined
+reverseLength :: [a] -> ([a], Double)
+reverseLength [] = ([], 0)
+reverseLength (h : l) =
+  let (l, n) = reverseLength l in
+    (append l [h], n + 1)
 
 -- ***
 -- 'isPalindrome lst' is a predicate that checks if 'lst' is a palindrome
@@ -102,7 +131,16 @@ reverseLength = undefined
 -- True
 -- ghci> isPalindrome [1,2,3]
 -- False
-isPalindrome = undefined
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome l =
+  let (rev, len) = reverseLength l in
+    let middle = floor $ len / 2 in
+      isPalindromeHelper l rev middle
+  where
+    isPalindromeHelper :: Eq a => [a] -> [a] -> Integer -> Bool
+    isPalindromeHelper _l _rev 0 = True
+    isPalindromeHelper (h : l) (r : rev) n =
+      h == r && isPalindromeHelper l rev (n - 1)
 
 -- **
 -- 'pointwiseMax l1 l2' returns the list of maximum elements in l1 and l2 at each
@@ -110,7 +148,10 @@ isPalindrome = undefined
 -- Example:
 -- ghci> pointwiseMax [1,10,5,6] [2,3,7,4,8]
 -- [2,10,7,6]
-pointwiseMax = undefined
+pointwiseMax :: Ord a => [a] -> [a] -> [a]
+pointwiseMax [] _ = []
+pointwiseMax _ [] = []
+pointwiseMax (h1 : l1) (h2 : l2) = (max h1 h2) : (pointwiseMax l1 l2)
 
 -- ****
 -- 'secondLargest l' returns the second largest element of l.
@@ -120,8 +161,26 @@ pointwiseMax = undefined
 -- Example:
 -- ghci> secondLargest [1,10,5,6]
 -- 6
-secondLargest = undefined
+secondLargest :: Ord a => [a] -> a
+secondLargest (x : y : l) =
+   let (lar_base, sec_base) = if x > y then (x, y) else (y, x) in
+      fold' lar_base sec_base l
+    where fold' _ sec [] = sec
+          fold' lar sec (h : l') =
+            let (lar, sec) =
+                  if h > lar
+                  then (h, lar)
+                  else if h > sec
+                       then (lar, h)
+                       else (lar, sec)
+            in
+              fold' lar sec l'
 
 -- **
 -- rewrite secondLargest without recursion but instead using 'foldl'
-secondLargest = undefined
+secondLargest' :: Ord a => [a] -> a
+secondLargest' (x : y : l) =
+   let base = if x > y then (x, y) else (y, x) in
+    snd $ foldl
+   (\ (lar, sec) h ->
+       if h > lar then (h, lar) else if h > sec then (lar, h) else (lar, sec)) base l
