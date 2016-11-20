@@ -51,11 +51,11 @@ steviloElementov = undefined
 
 prezrcali = undefined
 
--- Sestavite funkcijo, ki drevo prezrcali, tako da levo postane desno, desno pa levo.
+-- Sestavite funkcijo, ki vrne najblj levi element v drevesu.
 -- Zgled:
 -- ghci> let d = Sestavljeno 3 (Sestavljeno 7 Prazno (Sestavljeno 2 Prazno Prazno)) (Sestavljeno 8 Prazno Prazno)
--- ghci> prezrcali d
--- Sestavljeno 3 (Sestavljeno 8 Prazno Prazno) (Sestavljeno 7 (Sestavljeno 2 Prazno Prazno) Prazno)
+-- ghci> najboljLevi d
+-- 7
 
 najboljLevi = undefined
 
