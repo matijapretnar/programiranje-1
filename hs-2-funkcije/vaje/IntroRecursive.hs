@@ -48,7 +48,7 @@ get n (_h : lst) = get (n - 1) lst
 -- [1,1,2,2,3,3,3,3]
 double :: [a] -> [a]
 double [] = []
-double (x : xs) = [x, x] `append` (double xs)
+double (x : xs) = x : x : double xs
 
 -- ***
 -- 'divide k l' divides the list l into a pair of a list of the first k elements
@@ -61,7 +61,7 @@ divide 0 l = ([], l)
 divide _n [] = undefined
 divide n (h : l) =
   let (l1, l2) = divide (n - 1) l in
-    (l1 `append` [h], l2)
+    (h : l1, l2)
 
 -- **
 -- 'delete k l' returns the list l with the k-th element removed
@@ -115,7 +115,9 @@ rotate n (h : l) = rotate (n - 1) (l `append` [h])
 -- "brkdbr"
 remove :: Eq a => a -> [a] -> [a]
 remove _x [] = []
-remove x (h : l) = if x == h then rest else (h : rest)
+remove x (h : l)
+  | x == h    = rest
+  | otherwise = h : rest
   where rest = remove x l
 
 -- **
@@ -144,14 +146,14 @@ isPalindrome :: Eq a => [a] -> Bool
 isPalindrome l =
   let (rev, len) = reverseLength l in
     let middle = floor $ len / 2 in
-      isPalindromeHelper l rev middle
+      equalPrefix l rev middle
   where
-    isPalindromeHelper :: Eq a => [a] -> [a] -> Integer -> Bool
-    isPalindromeHelper _l' _rev 0 = True
-    isPalindromeHelper [] _rev _n = undefined
-    isPalindromeHelper _l' [] _n = undefined
-    isPalindromeHelper (h : l') (r : rev) n =
-      h == r && isPalindromeHelper l' rev (n - 1)
+    equalPrefix :: Eq a => [a] -> [a] -> Integer -> Bool
+    equalPrefix _l' _rev 0 = True
+    equalPrefix [] _rev _n = undefined
+    equalPrefix _l' [] _n = undefined
+    equalPrefix (h : l') (r : rev) n =
+      h == r && equalPrefix l' rev (n - 1)
 
 -- **
 -- 'pointwiseMax l1 l2' returns the list of maximum elements in l1 and l2 at each
@@ -162,7 +164,10 @@ isPalindrome l =
 pointwiseMax :: Ord a => [a] -> [a] -> [a]
 pointwiseMax [] _l2 = []
 pointwiseMax _l1 [] = []
-pointwiseMax (h1 : l1) (h2 : l2) = (max h1 h2) : (pointwiseMax l1 l2)
+pointwiseMax (h1 : l1) (h2 : l2)
+  | h1 > h2   = h1 : rest
+  | otherwise = h2 : rest
+  where rest = pointwiseMax l1 l2
 
 -- ****
 -- 'secondLargest l' returns the second largest element of l.

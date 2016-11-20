@@ -89,7 +89,7 @@ stirling2 s_n k = k * (stirling2 n k) + (stirling2 n (k - 1))
 -- "* *   * *"
 cantor :: Int -> String
 cantor 0 = "*"
-cantor n = prev ++ (take (3 ^ (n - 1)) (repeat ' ')) ++ prev
+cantor n = prev ++ (replicate (3 ^ (n - 1)) ' ') ++ prev
   where prev = cantor (n - 1)
 
 -- **
@@ -116,7 +116,7 @@ permutations :: [a] -> [[a]]
 permutations []        = [[]]
 permutations (h : lst) =
   let perms = permutations lst in
-    let n = length (head perms) in
+    let n = length lst in
       [ insert h perm i | i <- (range 0 n), perm <- perms ]
 
 
