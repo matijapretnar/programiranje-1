@@ -119,11 +119,7 @@ konjugiraj = undefined
 -- Definiran je podatkovni tip Polinom, ki predstavlja polinom nad kolobarjem
 -- celih števil. Dodali bomo še nekaj funkcij za delo s polinomi.
 
-<<<<<<< d468bdbfe403b6d019ba75de2f94ad2240237b53
-data Polinom = Polinom [Rational]
-=======
-data Polinom = Polinom [Integer] deriving (Show)
->>>>>>> Popravil vaje.
+data Polinom = Polinom [Rational] deriving (Show)
 
 x :: Polinom
 x = Polinom [0, 1]
