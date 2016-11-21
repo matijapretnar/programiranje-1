@@ -98,7 +98,7 @@ instance Show Kompleksno where
 -- Definiran je podatkovni tip Polinom, ki predstavlja polinom nad kolobarjem
 -- celih števil. Dodali bomo še nekaj funkcij za delo s polinomi.
 
-data Polinom = Polinom [Integer]
+data Polinom = Polinom [Rational]
 
 x :: Polinom
 x = Polinom [0, 1]

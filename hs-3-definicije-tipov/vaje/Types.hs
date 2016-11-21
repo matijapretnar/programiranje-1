@@ -97,10 +97,10 @@ instance Show Complex where
 -- ===========
 
 -- We define a datatype Polynomial, which represents polynomials in one
--- variable over the ring of integers, with coefficients in increasing order.
+-- variable over the field of rationals, with coefficients in increasing order.
 -- We will add more functions to work with polynomials.
 
-data Polynomial = Polynomial [Integer]
+data Polynomial = Polynomial [Rational]
 
 -- Example: the polynomial x^1 + 0
 p_x :: Polynomial
