@@ -2,6 +2,45 @@
  - Exercise set 3: Datatypes
  -}
 
+-- Natural numbers
+-- ===============
+
+data Natural = Zero | Succ Natural deriving (Show)
+
+-- 'add m n' returns the sum of natural numbers 'm' and 'n'
+
+add :: Natural -> Natural -> Natural
+add = undefined
+
+-- 'multiply m n' returns the product of natural numbers 'm' and 'n'
+
+multiply :: Natural -> Natural -> Natural
+multiply = undefined
+
+-- 'toNatural n' converts an integer 'n' into a natural number
+-- 
+-- Example:
+-- ghci> toNatural 0
+-- Zero
+-- ghci> toNatural 2
+-- Succ (Succ Zero)
+
+toNatural :: Integer -> Natural
+toNatural = undefined
+
+-- 'fromNatural n' converts a natural number 'n' to an integer
+-- 
+-- Example:
+-- ghci> fromNatural Zero
+-- 0
+-- ghci> fromNatural (Succ (Succ Zero))
+-- 2
+
+fromNatural :: Natural -> Integer
+fromNatural = undefined
+
+
+
 -- Trees
 -- =====
 
@@ -9,20 +48,11 @@
 -- work on trees, like the sumTree example, which calculates the sum of the
 -- elements of a tree.
 
-data Tree a = Leaf | Node a (Tree a) (Tree a)
+data Tree a = Leaf | Node a (Tree a) (Tree a) deriving (Show)
 
 sumTree :: Num a => Tree a -> a
 sumTree Leaf = 0
 sumTree (Node x left right) = x + sumTree left + sumTree right
-
--- The following code allows us to display trees.
-
-instance (Show a) => Show (Tree a) where
-    show Leaf = "Leaf"
-    show (Node x Leaf Leaf) = "Node " ++ show x ++ " Leaf Leaf"
-    show (Node x Leaf right) = "Node " ++ show x ++ " Leaf (" ++ show right ++ ")"
-    show (Node x left Leaf) = "Node " ++ show x ++ " (" ++ show left ++ ") Leaf"
-    show (Node x left right) = "Node " ++ show x ++ " (" ++ show left ++ ") (" ++ show right ++ ")"
 
 -- 'depth tr' returns the depth of a tree. Leaves have depth 0.
 --
@@ -68,7 +98,7 @@ leftMost = undefined
 -- We have defined a datatype Complex, which represents complex numbers. We
 -- will add some functions to work with complex numbers.
 
-data Complex = Complex Double Double
+data Complex = Complex Double Double deriving (Show)
 
 -- 're x' returns the real part of the complex number x.
 
@@ -82,16 +112,6 @@ im = undefined
 
 conjugate = undefined
 
--- Make Complex a member of the type class Num.
-
-instance Num Complex where
-    (Complex x1 y1) + (Complex x2 y2) = undefined
-
--- Ensure that we can display complex numbers nicely (in the form of 3 + 5i)
--- bonus: what to do with 0?
-
-instance Show Complex where
-
 
 -- Polynomials
 -- ===========
@@ -100,7 +120,7 @@ instance Show Complex where
 -- variable over the field of rationals, with coefficients in increasing order.
 -- We will add more functions to work with polynomials.
 
-data Polynomial = Polynomial [Rational]
+data Polynomial = Polynomial [Rational] deriving (Show)
 
 -- Example: the polynomial x^1 + 0
 p_x :: Polynomial
@@ -123,12 +143,3 @@ derivative = undefined
 -- 'integral p' computes the indefinite integral of p.
 
 integral = undefined
-
--- Make the Polynomial datatype an instance of the Num typeclass.
-
-instance Num Polynomial where
-    signum = error "Polynomial: The operation \"signum\" does not make sense"
-
--- Ensure that we can display polynomials.
-
-instance Show Polynomial where

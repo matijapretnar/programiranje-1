@@ -2,6 +2,46 @@
  - Vaja 3: Podatkovni tipi
  -}
 
+
+-- Naravna števila
+-- ===============
+
+data Naravno = Nic | Nasl Naravno deriving (Show)
+
+-- Sestavite funkcijo sestej, ki vrne vsoto naravnih števil.
+
+sestej :: Naravno -> Naravno -> Naravno
+sestej = undefined
+
+-- Sestavite funkcijo zmnoži, ki vrne zmnožek naravnih števil.
+
+zmnozi :: Naravno -> Naravno -> Naravno
+zmnozi = undefined
+
+-- Sestavite funkcijo vNaravno, ki Integer pretvori v naravno število
+--
+-- Zgled:
+-- ghci> vNaravno 0
+-- Nic
+-- ghci> vNaravno 2
+-- Nasl (Nasl Nic)
+
+vNaravno :: Integer -> Naravno
+vNaravno = undefined
+
+-- Sestavite funkcijo izNaravnega, ki naravno število pretvori v Integer
+-- 
+-- Zgled:
+-- ghci> izNaravnega Nic
+-- 0
+-- ghci> izNaravnega (Nasl (Nasl Nic))
+-- 2
+
+izNaravnega :: Naravno -> Integer
+izNaravnega = undefined
+
+
+
 -- Drevesa
 -- =======
 
@@ -9,20 +49,11 @@
 -- funkcij za delo s tipom Drevo. Kot zgled je že definirana funkcija vsota, ki
 -- izračuna vsoto vseh elementov v drevesu.
 
-data Drevo a = Prazno | Sestavljeno a (Drevo a) (Drevo a)
+data Drevo a = Prazno | Sestavljeno a (Drevo a) (Drevo a) deriving (Show)
 
 vsota :: Num a => Drevo a -> a
 vsota Prazno = 0
 vsota (Sestavljeno x levo desno) = x + vsota levo + vsota desno
-
--- Da se drevesa lahko izpišejo na zaslon, uporabimo naslednjo kodo.
-
-instance (Show a) => Show (Drevo a) where
-    show Prazno = "Prazno"
-    show (Sestavljeno x Prazno Prazno) = "Sestavljeno " ++ show x ++ " Prazno Prazno"
-    show (Sestavljeno x Prazno desno) = "Sestavljeno " ++ show x ++ " Prazno (" ++ show desno ++ ")"
-    show (Sestavljeno x levo Prazno) = "Sestavljeno " ++ show x ++ " (" ++ show levo ++ ") Prazno"
-    show (Sestavljeno x levo desno) = "Sestavljeno " ++ show x ++ " (" ++ show levo ++ ") (" ++ show desno ++ ")"
 
 -- Sestavite funkcijo globina, ki vrne globino drevesa. Prazno drevo ima globino 0.
 -- 
@@ -67,7 +98,7 @@ najboljLevi = undefined
 -- Definiran je podatkovni tip Kompleksno, ki predstavlja kompleksno število.
 -- Dodali bomo še nekaj funkcij za delo s kompleksnimi števili.
 
-data Kompleksno = Kompleksno Double Double
+data Kompleksno = Kompleksno Double Double deriving (Show)
 
 -- Sestavite funkcijo, ki vrne realni del kompleksnega števila.
 
@@ -81,16 +112,6 @@ im = undefined
 
 konjugiraj = undefined
 
--- Napravite podatkovni tip Kompleksno kot primerek razreda števil Num.
-
-instance Num Kompleksno where
-    (Kompleksno x1 y1) + (Kompleksno x2 y2) = undefined
-
--- Poskrbite, da se kompleksna števila izpišejo na zaslon (v obliki 3 + 5i).
-
-instance Show Kompleksno where
-
-
 
 -- Polinomi
 -- ========
@@ -98,7 +119,11 @@ instance Show Kompleksno where
 -- Definiran je podatkovni tip Polinom, ki predstavlja polinom nad kolobarjem
 -- celih števil. Dodali bomo še nekaj funkcij za delo s polinomi.
 
+<<<<<<< d468bdbfe403b6d019ba75de2f94ad2240237b53
 data Polinom = Polinom [Rational]
+=======
+data Polinom = Polinom [Integer] deriving (Show)
+>>>>>>> Popravil vaje.
 
 x :: Polinom
 x = Polinom [0, 1]
@@ -119,12 +144,3 @@ odvod = undefined
 -- Sestavite funkcijo, ki izračuna nedoločeni integral polinoma.
 
 integral = undefined
-
--- Napravite podatkovni tip Polinom kot primerek razreda Num.
-
-instance Num Polinom where
-    signum = error "Polinom: operacija signum nima smisla"
-
--- Poskrbite, da se polinomi izpišejo na zaslon.
-    
-instance Show Polinom where
