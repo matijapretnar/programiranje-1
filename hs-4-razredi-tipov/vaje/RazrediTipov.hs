@@ -1,5 +1,56 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 
+
+-- Porazdelitve
+-- ============
+
+-- Podatkovni tip Porazdelitev a je definiran takole:
+
+data Porazdelitev a = Porazdelitev [(a, Rational)] deriving Show
+
+-- Dva enostavna primera:
+
+kovanec = Porazdelitev [("cifra", 1/2), ("grb", 1/2)]
+kocka = Porazdelitev [(1, 1/6), (2, 1/6), (3, 1/6), (4, 1/6), (5, 1/6), (6, 1/6)]
+
+-- Sestavite funkcijo jePorazdelitev, ki preveri, če je porazdelitev zares
+-- porazdelitev, tj. če se verjetnosti seštejejo v 1.
+
+jePorazdelitev = undefined
+
+-- Funkcija urediPorazdelitev naj "uredi" porazdelitev,
+-- tj. dogodke naj uredi in združi skupaj enake dogodke.
+
+urediPorazdelitev = undefined
+
+-- Funkcija najverjetnejsi naj vzame porazdelitev in vrne
+-- najverjetnejši izid (če jih je več, tistega, ki je najbolj desno).
+
+najverjetnejsi = undefined
+
+-- Funkcija enakomerna naj vzame seznam in vrne enakomerno porazdelitev, kjer so
+-- dogodki elementi tega seznama.
+
+enakomerna = undefined
+
+-- Funkcija upanje naj dobi slučajno spremenljivko, kot funkcijo iz a v Rational
+-- in naj vrne matematično upanje (=pričakovana vrednost).
+
+upanje = undefined    
+
+-- Funkcija utezenaVsota na vzame neko decimalno število p med 0 in 1 in vrne
+-- uteženo vsoto dveh porazdelitev, kjer je prva utežena s p, druga pa z
+-- (1 - p). Predpostavimo, da sta obe porazdelitvi urejeni in ju lahko
+-- združimo z zlivanjem.
+
+utezenaVsota = undefined 
+
+-- Pokažite, da konstruktor tipov Porazdelitev pripada razredu Functor.
+
+instance  Functor Porazdelitev  where
+    fmap = undefined
+
+
 -- Algebraične stukture
 -- ====================
 
@@ -78,6 +129,9 @@ class  Izomorfno a b  where
 --
 -- Sestavite funkcijo poteza, ki sprejme podatke o samici in samcu ter vrne
 -- vsakega od obeh pajkov ustrezno premakne.
---
+
+poteza = undefined
+
 -- Nazadnje sestavite funkcijo simuliraj, ki simulira obnašanje samice in samca.
 
+simuliraj = undefined
