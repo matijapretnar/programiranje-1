@@ -8,36 +8,36 @@
 data Natural = Zero | Succ Natural deriving (Show)
 
 -- 'add m n' returns the sum of natural numbers 'm' and 'n'
-
 add :: Natural -> Natural -> Natural
-add = undefined
+add Zero n = n
+add (Succ m) n = add m (Succ n)
 
 -- 'multiply m n' returns the product of natural numbers 'm' and 'n'
-
 multiply :: Natural -> Natural -> Natural
-multiply = undefined
+multiply Zero n = n
+multiply (Succ m) n = add n (multiply m n)
 
 -- 'toNatural n' converts an integer 'n' into a natural number
--- 
+--
 -- Example:
 -- ghci> toNatural 0
 -- Zero
 -- ghci> toNatural 2
 -- Succ (Succ Zero)
-
 toNatural :: Integer -> Natural
-toNatural = undefined
+toNatural 0 = Zero
+toNatural n = Succ (toNatural (n-1))
 
 -- 'fromNatural n' converts a natural number 'n' to an integer
--- 
+--
 -- Example:
 -- ghci> fromNatural Zero
 -- 0
 -- ghci> fromNatural (Succ (Succ Zero))
 -- 2
-
 fromNatural :: Natural -> Integer
-fromNatural = undefined
+fromNatural Zero = 0
+fromNatural (Succ m) = 1+ (fromNatural m)
 
 
 
@@ -138,13 +138,17 @@ p_x = Polynomial [0, 1]
 -- ghci> let p = Polynomial [2,0,-1]
 -- ghci> eval p 2
 -- -2
-eval :: Polynomial -> 
-eval = undefined
+eval :: Polynomial -> Rational -> Rational
+eval (Polynomial p) x =
+  snd $ foldl (\ (pow, res) k -> (pow+1, res + k * (x ^ pow))) (0::Int, 0) p
 
 -- 'derivative p' computes the first derivative of p.
 
-derivative = undefined
+derivative :: Polynomial -> Polynomial
+derivative (Polynomial []) = Polynomial []
+derivative (Polynomial (_ : p)) = Polynomial $ zipWith (*) p [1..]
 
 -- 'integral p' computes the indefinite integral of p.
-
-integral = undefined
+integral :: Polynomial -> Polynomial
+integral (Polynomial []) = Polynomial []
+integral (Polynomial p) = Polynomial $ 0 : (zipWith (/) p [1..])
