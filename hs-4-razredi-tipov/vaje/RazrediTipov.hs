@@ -1,6 +1,72 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 
 
+-- Kompleksna števila
+-- ==================
+-- 
+-- Pokažite, da tipi Naravno, Kompleksno in Polinom s prejšnjih vaj pripadajo
+-- razredu Num:
+
+data Naravno = Nic | Nasl Naravno deriving (Show)
+
+data Kompleksno = Kompleksno Double Double
+
+data Polinom = Polinom [Rational] deriving (Show)
+
+instance Num Naravno where
+    Nic + n = n
+    (Nasl m) + n = Nasl (m + n)
+    -- TODO
+
+instance Num Kompleksno where
+    (Kompleksno x1 y1) + (Kompleksno x2 y2) = undefined
+    -- TODO
+
+instance Num Polinom where
+    -- TODO
+    signum = error "Polinom: operacija signum nima smisla"
+
+ 
+-- Algebraične stukture
+-- ====================
+
+-- Razred Polgrupa lahko definiramo na sledeč način:
+
+class  Polgrupa a  where
+    (***) :: a -> a -> a
+
+-- Definirajte še naslednje razrede:
+--
+-- PolgrupaZEnoto (s posebno vrednostjo "enota")
+--
+-- Grupa (s posebno vrednostjo "inv")
+--
+-- Kolobar
+
+
+
+-- Pokažite, da cela števila pripadajo razredu Kolobar. 
+
+-- Pokažite, da tip Bool pripada razredu Grupa.
+
+-- Pokažite, da podatkovni tip Z_2 (definiran spodaj) pripada razredu Grupa.
+
+data Z_2 =  Nicla | Ena deriving (Show)
+
+-- Pokažite, da kartezični produkt tipov v razredu Grupa pripada razredu Grupa.
+
+
+
+-- Naj tipa a in b pripadata razredu Grupa. Če želimo povedati, da sta grupi a
+-- in b izomorfni, lahko uporabimo razred Izomorfno:
+
+class  Izomorfno a b  where
+    naprej :: a -> b
+    nazaj :: b -> a
+
+-- Pokažite, da je grupa Bool izomorfna grupi Z_2.
+
+
 -- Porazdelitve
 -- ============
 
@@ -49,46 +115,6 @@ utezenaVsota = undefined
 
 instance  Functor Porazdelitev  where
     fmap = undefined
-
-
--- Algebraične stukture
--- ====================
-
--- Razred Polgrupa lahko definiramo na sledeč način:
-
-class  Polgrupa a  where
-    (***) :: a -> a -> a
-
--- Definirajte še naslednje razrede:
---
--- PolgrupaZEnoto (s posebno vrednostjo "enota")
---
--- Grupa (s posebno vrednostjo "inv")
---
--- Kolobar
-
-
-
--- Pokažite, da cela števila pripadajo razredu Kolobar. 
-
--- Pokažite, da tip Bool pripada razredu Grupa.
-
--- Pokažite, da podatkovni tip Z_2 (definiran spodaj) pripada razredu Grupa.
-
-data Z_2 =  Nic | Ena deriving (Show)
-
--- Pokažite, da kartezični produkt tipov v razredu Grupa pripada razredu Grupa.
-
-
-
--- Naj tipa a in b pripadata razredu Grupa. Če želimo povedati, da sta grupi a
--- in b izomorfni, lahko uporabimo razred Izomorfno:
-
-class  Izomorfno a b  where
-    naprej :: a -> b
-    nazaj :: b -> a
-
--- Pokažite, da je grupa Bool izomorfna grupi Z_2.
 
 
 -- Premikanje v prostoru
