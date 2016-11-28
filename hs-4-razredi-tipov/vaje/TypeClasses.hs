@@ -15,15 +15,43 @@ data Polynomial = Polynomial [Rational] deriving (Show)
 instance Num Natural where
   Zero + n = n
   (Succ m) + n = Succ (m + n)
-  -- TODO
+  Zero * n = n
+  (Succ m) * n = n + (m * n)
+  fromInteger 0 = Zero
+  fromInteger n = Succ (fromInteger (n-1))
+  abs n = n
+  signum Zero = 0
+  signum (Succ _) = 1
+  negate = error "Natural: operation negate not available"
 
 instance Num Complex where
-  (Complex x1 y1) + (Complex x2 y2) = undefined
-  -- TODO
+    fromInteger n = Complex (fromInteger n) 0
+    (Complex x1 y1) + (Complex x2 y2) = Complex (x1 + x2) (y1 + y2)
+    negate (Complex x y) = Complex (-x) (-y)
+    (Complex x1 y1) * (Complex x2 y2) = Complex (x1 * x2 - y1 * y2) (y1 * x2 + x1 * y2)
+    abs (Complex x y) = Complex (sqrt (x**2 + y**2)) 0
+    signum (Complex 0 0) = Complex 0 0
+    signum (Complex x y) = Complex (x / norm) (y / norm)
+      where norm = sqrt (x**2 + y**2)
+
+
+scalarMult :: Rational -> [Rational] -> [Rational]
+scalarMult x ys = map ((*) x) ys
+addCoefs :: [Rational] -> [Rational] -> [Rational]
+addCoefs = zipWith (+)
+
+multCoefs :: [Rational] -> [Rational] -> [Rational]
+multCoefs _ [] = []
+multCoefs [] _ = []
+multCoefs (x:xs) (y:ys) = (x * y) : scalarMult x ys `addCoefs` (xs `multCoefs` (y:ys))
 
 instance Num Polynomial where
-  -- TODO
-  signum = error "Polynomial: operation signum does not make sense"
+    negate (Polynomial coefs) = Polynomial $ map ((*) (-1)) coefs
+    fromInteger x = Polynomial $ [fromInteger x]
+    abs    = error "Polynomial: operation abs does not make sense"
+    signum = error "Polynomial: operation signum does not make sense"
+    (Polynomial coefs1) + (Polynomial coefs2) = Polynomial $ zipWith (+) coefs1 coefs2
+    (Polynomial coefs1) * (Polynomial coefs2) = Polynomial $ multCoefs coefs1 coefs2
 
 
 -- Algebraic structures
@@ -37,21 +65,77 @@ class  Semigroup a  where
 
 -- Define the following classes (extensions):
 -- + SemigroupWithUnit (with a special element "unit")
+
+class  Semigroup a => SemigroupWithUnit a  where
+  unit :: a
+
 -- + Group (with an "inv" function)
+
+class  SemigroupWithUnit a => Group a  where
+  inv :: a -> a
+
 -- + Ring
+
+-- kind of a bad example because we need overlapping instances over the base
+
+-- class  (Group a, SemigroupWithUnit a) => Ring a  where
+--   add :: a -> a -> a
+class  Ring a  where
+  add :: a -> a -> a
+  mult :: a -> a -> a
+  add_inv :: a -> a
+  add_unit  :: a
+  mult_unit :: a
+
 
 -- Show that the integers belong to the Ring class
 
+instance Ring Integer where
+  add = (Prelude.+)
+  mult = (Prelude.*)
+  add_inv x = -x
+  add_unit = 0
+  mult_unit = 1
+
 -- Show that Bool belongs to Group
+
+instance  Semigroup Bool where
+  (***) = (||)
+
+instance  SemigroupWithUnit Bool where
+  unit = False
+
+instance  Group Bool  where
+  inv = not
 
 -- Show that the type [Z_2] as defined below belongs to Group
 
 data Z_2 =  Zero_2 | One_2 deriving (Show)
 
+instance  Semigroup Z_2 where
+  (***) Zero_2 One_2 = Zero_2
+  (***) One_2 Zero_2 = Zero_2
+  (***) Zero_2 Zero_2 = Zero_2
+  (***) One_2 One_2 = One_2
+
+instance  SemigroupWithUnit Z_2 where
+  unit = One_2
+
+instance  Group Z_2  where
+  inv Zero_2 = One_2
+  inv One_2 = Zero_2
 
 -- Show that the cartesian product type of two types in the Group class belongs
 -- to the Group class
 
+instance (Semigroup a, Semigroup b) => Semigroup (a, b) where
+  (***) (a, b) (a', b') = (a *** a', b *** b')
+
+instance (SemigroupWithUnit a, SemigroupWithUnit b) => SemigroupWithUnit (a, b) where
+  unit = (unit, unit)
+
+instance (Group a, Group b) => Group (a, b) where
+  inv (a, b) = (inv a, inv b)
 
 -- Let types [a] and [b] belong to the Group class. To say that [a] and [b] are
 -- isomorphic, we can define the Isomorphism class:
@@ -62,6 +146,11 @@ class  Isomorphism a b  where
 
 -- Show that [Bool] and [Z_2] are isomorphic as groups
 
+instance Isomorphism Bool Z_2 where
+  towards False = One_2
+  towards True = Zero_2
+  backwards One_2 = False
+  backwards Zero_2 = True
 
 
 -- Distributions
@@ -76,43 +165,59 @@ data Distribution a = Distribution [(a, Rational)] deriving Show
 data Coin = Heads | Tails
 coin :: Distribution Coin
 coin = Distribution [(Heads, 1/2), (Tails, 1/2)]
+
 die :: Distribution Int
 die = Distribution [(1, 1/6), (2, 1/6), (3, 1/6), (4, 1/6), (5, 1/6), (6, 1/6)]
 
 -- [isDistribution d] checks that d really is a distribution, ie that the
 -- probabilities sum up to 1.
-
-isDistribution = undefined
+isDistribution :: Distribution a -> Bool
+isDistribution (Distribution d) = foldl (\s e -> s + snd e) 0 d == 1
 
 -- [cleanDistribution d] merges together repeated events
-
-cleanDistribution = undefined
+cleanDistribution :: Eq a => Distribution a -> Distribution a
+cleanDistribution (Distribution d) =
+  Distribution d_clean
+  where d_clean = foldl merger [] d
+          where merger =
+                  \d' el@(ev,p) ->
+                    case lookup ev d' of
+                      Nothing -> el : d'
+                      Just p' -> (ev, p+p') : d'
 
 -- [mostLikely d] returns the most likely event in [d], and the last one listed
 -- if it is not unique.
-
-mostLikely = undefined
+mostLikely :: Distribution a -> a
+mostLikely (Distribution []) = undefined
+mostLikely (Distribution (base : d)) =
+  fst $ foldl chooser base d
+  where
+    chooser (el@(_,p)) el'@(_,p') = if p' >= p then el' else el
 
 -- [uniform d] returns a uniform distribution of the events in d
-
-uniform = undefined
+uniform :: Distribution a -> Distribution a
+uniform (Distribution d) =
+  Distribution $ map (\(ev,_) -> (ev,p)) d
+  where p = 1 / (toRational $ length d)
 
 -- [expectation d] returns the expected value of d
-
-expectation = undefined
+expectation :: Distribution Rational -> Rational
+expectation (Distribution d) =
+  foldl (\ex (ev,p) -> ex + ev * p) 0 d
 
 -- [weightedSum p d1 d2] computes a distribution obtained by merging the
 -- (compatible) distributions [d1] and [d2], scaling events in [d1] by
 -- the weight [p] and events in [d2] by (1-p).
-
-weightedSum = undefined
-
+weightedSum :: Rational -> Distribution a -> Distribution a -> Distribution a
+weightedSum p (Distribution d1) (Distribution d2) =
+  Distribution $ (map (scale p) d1) ++ (map (scale (1-p)) d2)
+  where scale weight (ev,p') = (ev,weight*p')
 
 -- Show that the type constructor [Distribution] belongs to the [Functor] type
 -- class.
 
 instance  Functor Distribution  where
-    fmap = undefined
+    fmap f (Distribution d) = Distribution $ map (\(ev,p) -> (f ev, p)) d
 
 
 
