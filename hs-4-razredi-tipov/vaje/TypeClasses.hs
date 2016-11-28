@@ -1,5 +1,68 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 
+-- Complex Numbers
+-- ===============
+--
+-- Show that the types Natural, Complex and Polynomial of the previous lesson
+-- belong to the Num class:
+
+data Natural = Zero | Succ Natural deriving (Show)
+
+data Complex = Complex Double Double deriving (Show)
+
+data Polynomial = Polynomial [Rational] deriving (Show)
+
+instance Num Natural where
+  Zero + n = n
+  (Succ m) + n = Succ (m + n)
+  -- TODO
+
+instance Num Complex where
+  (Complex x1 y1) + (Complex x2 y2) = undefined
+  -- TODO
+
+instance Num Polynomial where
+  -- TODO
+  signum = error "Polynomial: operation signum does not make sense"
+
+
+-- Algebraic structures
+-- ====================
+
+-- The [Semigroup] class can be defined like this:
+
+class  Semigroup a  where
+    (***) :: a -> a -> a
+
+
+-- Define the following classes (extensions):
+-- + SemigroupWithUnit (with a special element "unit")
+-- + Group (with an "inv" function)
+-- + Ring
+
+-- Show that the integers belong to the Ring class
+
+-- Show that Bool belongs to Group
+
+-- Show that the type [Z_2] as defined below belongs to Group
+
+data Z_2 =  Zero_2 | One_2 deriving (Show)
+
+
+-- Show that the cartesian product type of two types in the Group class belongs
+-- to the Group class
+
+
+-- Let types [a] and [b] belong to the Group class. To say that [a] and [b] are
+-- isomorphic, we can define the Isomorphism class:
+
+class  Isomorphism a b  where
+    towards :: a -> b
+    backwards :: b -> a
+
+-- Show that [Bool] and [Z_2] are isomorphic as groups
+
+
 
 -- Distributions
 -- =============
@@ -11,7 +74,9 @@ data Distribution a = Distribution [(a, Rational)] deriving Show
 -- Two simple examples:
 
 data Coin = Heads | Tails
+coin :: Distribution Coin
 coin = Distribution [(Heads, 1/2), (Tails, 1/2)]
+die :: Distribution Int
 die = Distribution [(1, 1/6), (2, 1/6), (3, 1/6), (4, 1/6), (5, 1/6), (6, 1/6)]
 
 -- [isDistribution d] checks that d really is a distribution, ie that the
@@ -48,43 +113,6 @@ weightedSum = undefined
 
 instance  Functor Distribution  where
     fmap = undefined
-
-
--- Algebraic structures
--- ====================
-
--- The [Semigroup] class can be defined like this:
-
-class  Semigroup a  where
-    (***) :: a -> a -> a
-
-
--- Define the following classes (extensions):
--- + SemigroupWithUnit (with a special element "unit")
--- + Group (with an "inv" function)
--- + Ring
-
--- Show that the integers belong to the Ring class
-
--- Show that Bool belongs to Group
-
--- Show that the type [Z_2] as defined below belongs to Group
-
-data Z_2 =  Zero | One deriving (Show)
-
-
--- Show that the cartesian product type of two types in the Group class belongs
--- to the Group class
-
-
--- Let types [a] and [b] belong to the Group class. To say that [a] and [b] are
--- isomorphic, we can define the Isomorphism class:
-
-class  Isomorphism a b  where
-    towards :: a -> b
-    backwards :: b -> a
-
--- Show that [Bool] and [Z_2] are isomorphic as groups
 
 
 
