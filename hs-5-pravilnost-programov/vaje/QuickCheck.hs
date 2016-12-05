@@ -1,3 +1,4 @@
+import Control.Monad
 import Test.QuickCheck
 
 
@@ -15,7 +16,7 @@ instance (Arbitrary a) => Arbitrary (Drevo a) where
       tree' 0 = return Prazno
       tree' n | n > 0 = 
         oneof [return Prazno,
-              liftM4 Sestavljeno subtree arbitrary subtree]
+              liftM3 Sestavljeno subtree arbitrary subtree]
         where subtree = tree' (n `div` 2)
 
        
@@ -60,7 +61,6 @@ testi1 = do
     quickCheck (prop_globinaPrezrcali :: Drevo Int -> Bool)
     quickCheck (prop_globinaPrezrcali :: Drevo Char -> Bool)
     quickCheck (prop_vsotaPrezrcali :: Drevo Int -> Bool)
-    quickCheck (prop_vsotaPrezrcali :: Drevo Char -> Bool)
 
 -- Slovarje predstavimo z asociativnimi seznami.
 
@@ -95,5 +95,11 @@ prop_poisciDodaj2 :: Slovar k v -> k -> v -> k -> v -> Property
 prop_poisciDodaj2 s k v k' v' = undefined
 
 testi2 = do
-    quickCheck prop_poisciDodaj
-    quickCheck prop_poisciDodaj2
+    quickCheck (prop_poisciDodaj :: Slovar Int Int -> Int -> Int -> Property)
+    quickCheck (prop_poisciDodaj :: Slovar Int String -> Int -> String -> Property)
+    quickCheck (prop_poisciDodaj2 ::  Slovar Int Int -> Int -> Int -> Int -> Int -> Property)
+    quickCheck (prop_poisciDodaj2 ::  Slovar Int String -> Int -> String -> Int -> String -> Property)
+
+main = do
+  testi1
+  testi2
