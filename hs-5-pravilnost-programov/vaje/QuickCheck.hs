@@ -34,7 +34,7 @@ globina = undefined
 
 -- Sestavite funkcijo vsota, ki vrne vsoto vseh elementov v drevesu.
 
-vsota :: Num a => Drevo a -> Int
+vsota :: Num a => Drevo a -> a
 vsota = undefined
 
 -- Če drevo dvakrat prezrcalimo, dobimo spet isto nazaj. Napišite ustrezno
@@ -52,7 +52,7 @@ prop_globinaPrezrcali d = undefined
 -- Če drevo prezrcalimo, se mu vsota pri tem ne spremeni. Napišite ustrezno
 -- lastnost prop_vsotaPrezrcali.
 
-prop_vsotaPrezrcali :: Num a => Drevo a -> Bool
+prop_vsotaPrezrcali :: (Eq a, Num a) => Drevo a -> Bool
 prop_vsotaPrezrcali d = undefined
 
 testi1 = do
@@ -73,32 +73,31 @@ prazen = undefined
 
 -- Definirajte metodo poisci, ki v slovarju poišče vrednost danega ključa.
 
-poisci :: (Ord k) => Slovar k v -> k -> Maybe v
+poisci :: (Eq k) => Slovar k v -> k -> Maybe v
 poisci = undefined
 
 -- Definirajte metodo dodaj, ki v slovar doda podan ključ in vrednost.
 
-dodaj :: (Ord k) => Slovar k v -> k -> v -> Slovar k v
+dodaj :: Slovar k v -> k -> v -> Slovar k v
 dodaj = undefined
 
 -- Če smo v slovar ravnokar vstavili nek ključ in vrednost, moramo dobiti
 -- pri iskanju tega ključa vrednost, ki smo jo ravnokar vstavili.
 
-prop_poisciDodaj :: Slovar k v -> k -> v -> Property
+prop_poisciDodaj :: (Eq k, Eq v) => Slovar k v -> k -> v -> Bool
 prop_poisciDodaj s k v = undefined
 
--- Če vstavimo nek ključ in vrednost v in k ter takoj zatem že nek par
--- v' in k', kjer je v' različna od v, potem moramo pri iskanju vrednosti
--- od ključa k dobiti v.
+-- Če v slovar dodamo k in v, nato pa iščemo nek k', ki je različen od k,
+-- bi morali dobiti isto vrednost kot pri iskanju v starem slovarju.
 
-prop_poisciDodaj2 :: Slovar k v -> k -> v -> k -> v -> Property
-prop_poisciDodaj2 s k v k' v' = undefined
+prop_poisciDodaj2 :: (Eq k, Eq v) => Slovar k v -> k -> v -> k -> Property
+prop_poisciDodaj2 s k v k' = undefined
 
 testi2 = do
-    quickCheck (prop_poisciDodaj :: Slovar Int Int -> Int -> Int -> Property)
-    quickCheck (prop_poisciDodaj :: Slovar Int String -> Int -> String -> Property)
-    quickCheck (prop_poisciDodaj2 ::  Slovar Int Int -> Int -> Int -> Int -> Int -> Property)
-    quickCheck (prop_poisciDodaj2 ::  Slovar Int String -> Int -> String -> Int -> String -> Property)
+    quickCheck (prop_poisciDodaj :: Slovar Int Int -> Int -> Int -> Bool)
+    quickCheck (prop_poisciDodaj :: Slovar Int String -> Int -> String -> Bool)
+    quickCheck (prop_poisciDodaj2 ::  Slovar Int Int -> Int -> Int -> Int -> Property)
+    quickCheck (prop_poisciDodaj2 ::  Slovar Int String -> Int -> String -> Int -> Property)
 
 main = do
   testi1
