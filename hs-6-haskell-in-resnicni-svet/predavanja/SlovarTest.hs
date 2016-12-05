@@ -18,7 +18,7 @@ prop_poisciDodaj2 :: Slovar Char Int -> Char -> Char -> Int -> Int -> Bool
 prop_poisciDodaj2 d k k' v v' =
     poisci (dodaj (dodaj d k v) k' v') k == Just v
 
--- ta lastnost pa bo v redu, ker ne preveri možnosti, da sta k in k' enaka
+-- ta lastnost pa bo v redu, ker preveri možnost, da sta k in k' enaka
 prop_poisciDodaj2' :: Slovar Char Int -> Char -> Char -> Int -> Int -> Property
 prop_poisciDodaj2' d k k' v v' =
     k /= k' ==> poisci (dodaj (dodaj d k v) k' v') k == Just v
