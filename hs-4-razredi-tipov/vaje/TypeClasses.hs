@@ -223,17 +223,31 @@ instance  Functor Distribution  where
 
 -- Moving in space
 -- ===============
+type Position = (Double, Double, Double)
 
 -- Define a [Point] type, which should have the parameters (name, X-coordinate,
 -- Y-coordinate, Z-coordinate). Implement a [show] function for [Point]
+data Point = Point (String, Position) deriving Show
+
 
 -- The point will move through space. Before we can move, we must first be
 -- somewhere. Define a type class [Positioned] with a [currentPosition] value
 -- and show that [Point] is a member of [Positioned]
 
+class Positioned a where
+  currentPosition :: a -> Position
+
+instance Positioned Point where
+  currentPosition (Point (_, pos)) = pos
+
+
 -- Define the [Movable] type class that implements [setNewLocation] and make
 -- [Point] a member of it.
+class Movable a where
+  setNewLocation :: a -> Position -> a
 
+instance Movable Point where
+  setNewLocation (Point (n, _)) pos = Point (n, pos)
 
 -- Za spremenljivke, katerih tip pripada razredu Premakljiv, definirajte
 -- funkcijo premakniZa, ki spremenljivko premakne za določen vektor. Ta funkcija
