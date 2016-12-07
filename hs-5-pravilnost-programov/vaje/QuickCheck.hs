@@ -65,8 +65,10 @@ search :: Eq a => a -> [(a, b)] -> Maybe b
 search = lookup
 
 -- Define an add function that adds a key value pair to a dictionary.
-add :: k -> v -> Dict k v -> Dict k v
-add k v = (:) (k,v)
+add :: (Eq k) => k -> v -> Dict k v -> Dict k v
+add k v d = case d of 
+        [] -> [(k,v)]
+        ((k',v'):ds) -> if k == k' then ((k,v):ds) else ((k',v'):(add k v ds))
 
 -- If we add a key and value, when we search for the key we get back that
 -- value.
