@@ -1,104 +1,88 @@
 import Control.Monad
 import Test.QuickCheck
 
+data Tree a = Leaf | Node (Tree a) a (Tree a)  deriving (Eq, Show)
 
-data Drevo a = Prazno
-             | Sestavljeno (Drevo a) a (Drevo a)
-             deriving (Eq, Show)
-
-              
---                
--- Tole poskrbi, da si QuickCheck zna izmisliti naključno drevo.               
--- 
-instance (Arbitrary a) => Arbitrary (Drevo a) where
+-- We provide a generator for random trees for QuickCheck
+instance (Arbitrary a) => Arbitrary (Tree a) where
   arbitrary = sized tree'
-    where
-      tree' 0 = return Prazno
-      tree' n | n > 0 = 
-        oneof [return Prazno,
-              liftM3 Sestavljeno subtree arbitrary subtree]
-        where subtree = tree' (n `div` 2)
+    where tree' 0         = return Leaf
+          tree' n | n > 0 =
+            oneof [return Leaf,
+                    liftM3 Node subtree arbitrary subtree]
+            where subtree = tree' (n `div` 2)
 
-       
-       
--- Sestavite funkcijo prezrcali, ki med seboj zamenja levo in desno
--- poddrevo (v vseh vozliščih).
+-- Reverse all left and right subtrees of a tree
+flipTree :: Tree a -> Tree a
+flipTree = undefined
 
-prezrcali :: Drevo a -> Drevo a
-prezrcali = undefined
+-- Compute the depth of a tree
+depth :: Tree a -> Int
+depth = undefined
 
--- Sestavite funkcijo globina, ki vrne globino drevesa.
+-- Calculate the sum of the elements of a tree
+sumTree :: Num a => Tree a -> a
+sumTree = undefined
 
-globina :: Drevo a -> Int
-globina = undefined
+-- If you flip a tree twice, you get back the same tree. Write a predicate
+-- asserting this property.
+prop_flip2id :: Eq a => Tree a -> Bool
+prop_flip2id = undefined
 
--- Sestavite funkcijo vsota, ki vrne vsoto vseh elementov v drevesu.
+-- Write a predicate that checks that if you flip a tree, its depth does not
+-- change.
+prop_flipDepth :: Tree a -> Bool
+prop_flipDepth = undefined
 
-vsota :: Num a => Drevo a -> a
-vsota = undefined
+-- Write a predicate to check that flipping a tree does not change its sum.
+prop_flipSum :: (Eq n, Num n) => Tree n -> Bool
+prop_flipSum = undefined
 
--- Če drevo dvakrat prezrcalimo, dobimo spet isto nazaj. Napišite ustrezno
--- lastnost prop_prezrcaliPrezrcali.
+tests1 :: IO ()
+tests1 = do
+    quickCheck (prop_flip2id :: Tree Int -> Bool)
+    quickCheck (prop_flip2id :: Tree Char -> Bool)
+    quickCheck (prop_flipDepth :: Tree Int -> Bool)
+    quickCheck (prop_flipDepth :: Tree Char -> Bool)
+    quickCheck (prop_flipSum :: Tree Int -> Bool)
 
-prop_prezrcaliPrezrcali :: Eq a => Drevo a -> Bool
-prop_prezrcaliPrezrcali d = undefined
 
--- Če drevo prezrcalimo, se mu globina pri tem ne spremeni. Napišite ustrezno
--- lastnost prop_globinaPrezrcali.
 
-prop_globinaPrezrcali :: Drevo a -> Bool
-prop_globinaPrezrcali d = undefined
+-- Dictionaries represented by associative lists.
 
--- Če drevo prezrcalimo, se mu vsota pri tem ne spremeni. Napišite ustrezno
--- lastnost prop_vsotaPrezrcali.
+type Dict k v = [(k, v)]
 
-prop_vsotaPrezrcali :: (Eq a, Num a) => Drevo a -> Bool
-prop_vsotaPrezrcali d = undefined
+-- Define an empty dictionary.
+empty :: Dict k v
+empty = undefined
 
-testi1 = do
-    quickCheck (prop_prezrcaliPrezrcali :: Drevo Int -> Bool)
-    quickCheck (prop_prezrcaliPrezrcali :: Drevo Char -> Bool)
-    quickCheck (prop_globinaPrezrcali :: Drevo Int -> Bool)
-    quickCheck (prop_globinaPrezrcali :: Drevo Char -> Bool)
-    quickCheck (prop_vsotaPrezrcali :: Drevo Int -> Bool)
+-- Define a search function, that find the value associated to a key if it is
+-- present in a dictionary.
+search :: Eq a => a -> [(a, b)] -> Maybe b
+search = undefined
 
--- Slovarje predstavimo z asociativnimi seznami.
+-- Define an add function that adds a key value pair to a dictionary.
+add :: k -> v -> Dict k v -> Dict k v
+add = undefined
 
-type Slovar k v = [(k, v)]
+-- If we add a key and value, when we search for the key we get back that
+-- value.
+prop_addSearch :: (Eq k, Eq v) => k -> v -> Dict k v -> Bool
+prop_addSearch = undefined
 
--- Definirajte prazen slovar.
+-- If we add a value for a key k1, then add a value for a different key k2,
+-- when we search for the value of k1 we get back the value we added.
+prop_addAddSearch :: (Eq k, Eq v) => k -> v -> k -> v -> Dict k v -> Property
+prop_addAddSearch = undefined
 
-prazen :: Slovar k v
-prazen = undefined
+tests2 :: IO ()
+tests2 = do
+    quickCheck (prop_addSearch :: Int -> Int -> Dict Int Int -> Bool)
+    quickCheck (prop_addSearch :: Int -> String -> Dict Int String -> Bool)
+    quickCheck (prop_addAddSearch :: Int -> Int -> Int -> Int -> Dict Int Int -> Property)
+    quickCheck (prop_addAddSearch :: Int -> String -> Int -> String -> Dict Int String -> Property)
 
--- Definirajte metodo poisci, ki v slovarju poišče vrednost danega ključa.
-
-poisci :: (Eq k) => Slovar k v -> k -> Maybe v
-poisci = undefined
-
--- Definirajte metodo dodaj, ki v slovar doda podan ključ in vrednost.
-
-dodaj :: Slovar k v -> k -> v -> Slovar k v
-dodaj = undefined
-
--- Če smo v slovar ravnokar vstavili nek ključ in vrednost, moramo dobiti
--- pri iskanju tega ključa vrednost, ki smo jo ravnokar vstavili.
-
-prop_poisciDodaj :: (Eq k, Eq v) => Slovar k v -> k -> v -> Bool
-prop_poisciDodaj s k v = undefined
-
--- Če v slovar dodamo k in v, nato pa iščemo nek k', ki je različen od k,
--- bi morali dobiti isto vrednost kot pri iskanju v starem slovarju.
-
-prop_poisciDodaj2 :: (Eq k, Eq v) => Slovar k v -> k -> v -> k -> Property
-prop_poisciDodaj2 s k v k' = undefined
-
-testi2 = do
-    quickCheck (prop_poisciDodaj :: Slovar Int Int -> Int -> Int -> Bool)
-    quickCheck (prop_poisciDodaj :: Slovar Int String -> Int -> String -> Bool)
-    quickCheck (prop_poisciDodaj2 ::  Slovar Int Int -> Int -> Int -> Int -> Property)
-    quickCheck (prop_poisciDodaj2 ::  Slovar Int String -> Int -> String -> Int -> Property)
-
+main :: IO ()
 main = do
-  testi1
-  testi2
+  tests1
+  tests2
