@@ -100,30 +100,31 @@ instance Ring Integer where
 -- Show that Bool belongs to Group
 
 instance  Semigroup Bool where
-  (***) = (||)
+  True *** False = True
+  False *** True = True
+  _ *** _ = False
 
 instance  SemigroupWithUnit Bool where
   unit = False
 
 instance  Group Bool  where
-  inv = not
+  inv = id
 
 -- Show that the type [Z_2] as defined below belongs to Group
 
 data Z_2 =  Zero_2 | One_2 deriving (Show)
 
 instance  Semigroup Z_2 where
-  (***) Zero_2 One_2 = Zero_2
-  (***) One_2 Zero_2 = Zero_2
-  (***) Zero_2 Zero_2 = Zero_2
-  (***) One_2 One_2 = One_2
+  Zero_2 *** One_2 = One_2
+  One_2 *** Zero_2 = One_2
+  _ *** _ = Zero_2
 
 instance  SemigroupWithUnit Z_2 where
-  unit = One_2
+  unit = Zero_2
 
 instance  Group Z_2  where
-  inv Zero_2 = One_2
-  inv One_2 = Zero_2
+  inv = id
+
 
 -- Show that the cartesian product type of two types in the Group class belongs
 -- to the Group class
@@ -147,10 +148,10 @@ class  Isomorphism a b  where
 -- Show that [Bool] and [Z_2] are isomorphic as groups
 
 instance Isomorphism Bool Z_2 where
-  towards False = One_2
-  towards True = Zero_2
-  backwards One_2 = False
-  backwards Zero_2 = True
+  towards False = Zero_2
+  towards True = One_2
+  backwards One_2 = True
+  backwards Zero_2 = False
 
 
 -- Distributions
@@ -223,7 +224,7 @@ instance  Functor Distribution  where
 
 -- Moving in space
 -- ===============
-type Position = (Double, Double, Double)
+type Position = (Int, Int, Int)
 
 -- Define a [Point] type, which should have the parameters (name, X-coordinate,
 -- Y-coordinate, Z-coordinate). Implement a [show] function for [Point]
@@ -243,18 +244,19 @@ instance Positioned Point where
 
 -- Define the [Movable] type class that implements [setNewLocation] and make
 -- [Point] a member of it.
-class Movable a where
+class (Positioned a)  => Movable a where
   setNewLocation :: a -> Position -> a
 
 instance Movable Point where
   setNewLocation (Point (n, _)) pos = Point (n, pos)
 
--- Za spremenljivke, katerih tip pripada razredu Premakljiv, definirajte
--- funkcijo premakniZa, ki spremenljivko premakne za določen vektor. Ta funkcija
--- bo tako delovala tudi za poljubno točko!
+-- For variables whose type belongs to the class [Movable], define the function
+-- [moveFor] that moves the variable for a specific vector.
 
--- ??????????????????????
-
+moveFor :: (Movable a) => a -> (Int, Int, Int) -> a
+moveFor t (x,y,z) = setNewLocation t (x + x0, y + y0, z + z0)
+    where
+        (x0, y0, z0) = currentPosition t
 
 -- In some species of spiders, the female is known to eat the male after
 -- mating. The females which eat the males lay more eggs, which produce
@@ -273,8 +275,37 @@ instance Movable Point where
 -- Write a [move f m] function that maps a position of a female [f] and of a
 -- male [m] to a pair of moves.
 
-move = undefined
+moveFemale :: Int -> Int -> Int
+moveFemale u v
+    | u == v = 0
+    | u > v = -1
+    | u < v = 1
+
+moveMale :: Int -> Int -> Int
+moveMale u v
+    | v == 9 = 0
+    | v == 0 = 0
+    | u < v = 1
+    | v < u = -1
+
+move :: Point -> Point -> (Point, Point)
+move female male = (moveFor female deltaFemale, moveFor male deltaMale)
+    where
+        deltaFemale = (moveFemale x0 x1, moveFemale y0 y1, moveFemale z0 z1)
+        deltaMale = (moveMale x0 x1, moveMale y0 y1, moveMale z0 z1)
+        (x0, y0, z0) = currentPosition female
+        (x1, y1, z1) = currentPosition male
+
+x = Point ("female", (0,0,0))
+y = Point ("male", (3,3,2))
 
 -- Finally, write [simulate], which simulates the behaviour of a female and a male.
 
-simulate = undefined
+simulate :: Point -> Point -> [(Point, Point)] 
+simulate female male
+    | (maximum $ map abs [x0 - x1, y0 - y1, z0 - z1]) <= 1 = [(female, male)]
+    | otherwise = (female, male) : (simulate newFemale newMale)
+    where
+        (x0, y0, z0) = currentPosition female
+        (x1, y1, z1) = currentPosition male
+        (newFemale, newMale) = move female male
