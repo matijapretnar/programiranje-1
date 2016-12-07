@@ -406,6 +406,78 @@ main = do
 
 ---
 
+class: small-code
+### Kako bi preverjali implikacijo?
+
+```haskell
+import Test.QuickCheck
+
+sledi :: Bool -> Bool -> Bool
+sledi True False = False
+sledi _ _ = True
+
+prop :: a -> [a] -> [a] -> Bool
+prop x xs xs' =
+  (length xs == length xs')
+  `sledi`
+  (length (x : xs) == length (x : xs'))
+
+main =
+  quickCheck (prop :: Int->[Int]->[Int]->Bool)
+```
+
+```
+ +++ OK, passed 100 tests.
+```
+---
+
+class: small-code
+### Kako bi preverjali implikacijo?
+
+```haskell
+...
+
+*prop :: a -> [a] -> [a] -> Property
+prop x xs xs' =
+* collect (length xs == length xs') $
+  (length xs == length xs')
+  `sledi`
+  (length (x : xs) == length (x : xs'))
+
+...
+```
+
+```
+ +++ OK, passed 100 tests.
+ 96% False
+  4% True
+```
+
+---
+
+class: small-code
+### Za implikacije uporabljamo `==>`
+
+```haskell
+import Test.QuickCheck
+
+prop :: a -> [a] -> [a] -> Property
+prop x xs xs' =
+  length xs == length xs'
+  ==>
+  length (x : xs) == length (x : xs')
+
+main =
+  quickCheck
+    (prop :: Int->[Int]->[Int]->Property)
+```
+
+```
+ *** Gave up! Passed only 45 tests.
+```
+
+---
+
 class: center, middle
 
 ### naslednjič...
