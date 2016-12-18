@@ -8,8 +8,6 @@ Ker si ne moremo privoščiti, da bi globino poddreves računali vsakič znova, 
 podatke računamo sproti in hranimo v vozliščih drevesa (konstruktor ima torej
 dodaten parameter). -}
 
-import System.Environment
-
 data AVLDrevo a = Prazno | Sestavljeno Int (AVLDrevo a) a (AVLDrevo a) deriving (Show)
 
 prazno :: AVLDrevo a
@@ -28,6 +26,7 @@ visina (Sestavljeno h _ _ _) = h
 
 -- Implementiraj funkcijo [vsebuje], ki ugotovi, če AVL drevo vsebuje element.
 vsebuje :: (Ord a) => AVLDrevo a -> a -> Bool
+vsebuje Prazno _ = False
 vsebuje (Sestavljeno _ l y d) x
     | x < y = vsebuje l x
     | x > y = vsebuje d x
@@ -44,14 +43,16 @@ razlika (Sestavljeno _ l _ d) = visina l - visina d
 -- oziroma desno rotacijo na AVL drevesu.
 rotD :: AVLDrevo a -> AVLDrevo a
 rotD (Sestavljeno _ (Sestavljeno _ ll xl dl) x d) = avldrevo ll xl (avldrevo dl x d)
+rotD _ = undefined
 
 rotL :: AVLDrevo a -> AVLDrevo a
 rotL (Sestavljeno _ l x (Sestavljeno _ ld xd dd)) = avldrevo (avldrevo l x ld) xd dd
+rotL _ = undefined
 
 -- Implementiraj funkcijo [uravnotezi], ki dano drevo uravnotezi. Predpostavi,
 -- da je dano drevo "skoraj" uravnoteženo: dobili smo ga tako, da smo nekemu AVL
 -- drevesu dodali ali odstranili eno vozlišče.
-uravnotezi :: (Ord a) => AVLDrevo a -> AVLDrevo a
+uravnotezi :: AVLDrevo a -> AVLDrevo a
 uravnotezi Prazno = Prazno
 uravnotezi m@(Sestavljeno _ l x d)
     | razlika m == 2 && razlika l == 1 = rotD m
@@ -82,10 +83,10 @@ najboljLevi (Sestavljeno _ Prazno x _) = Just x
 najboljLevi (Sestavljeno _ l _ _) = najboljLevi l
 
 -- Implementiraj funkcijo [odstrani], ki iz AVL drevesa odstrani element.
-odstrani :: (Ord a, Eq a) => AVLDrevo a -> a -> AVLDrevo a
+odstrani :: Ord a => AVLDrevo a -> a -> AVLDrevo a
 odstrani Prazno _ = Prazno
 odstrani (Sestavljeno _ l x d) y = uravnotezi $ novoDrevo
-    where 
+    where
         novoDrevo = case compare x y of
             LT -> avldrevo l x (odstrani d y)
             EQ -> case najboljLevi d of
