@@ -13,6 +13,24 @@
 
 data AVL a = Leaf | Node Int (AVL a) a (AVL a) deriving Show
 
+-- here's a drawing function, which, combined with [putStrLn], lets you visualise a tree
+data S = L | R
+draw :: Show a => AVL a -> String
+draw t = "\n" ++ draw' Nothing t 0 ++ "\n"
+  where
+    draw' _ Leaf _ = []
+    draw' dir (Node _ l v r) d =
+      draw' (Just R) r (d+1) ++ node dir ++ draw' (Just L) l (d+1)
+      where
+        node dir' = padding d ++
+          case dir' of
+            Nothing -> ""
+            Just L -> "\\- "
+            Just R -> "/- "
+          ++ show v ++ "\n"
+        padding n = replicate (n*4) ' '
+
+
 empty :: AVL a
 empty = Leaf
 
@@ -90,19 +108,3 @@ delete (Node _ l x d) y = rebalance $ newTree
                 Nothing -> l
                 Just min_d -> avl l min_d (delete d min_d)
             GT -> avl (delete l y) x d
-
-data S = L | R
-draw :: Show a => AVL a -> String
-draw t = "\n" ++ draw' Nothing t 0 ++ "\n"
-  where
-    draw' _ Leaf _ = []
-    draw' dir (Node _ l v r) d =
-      draw' (Just R) r (d+1) ++ node dir ++ draw' (Just L) l (d+1)
-      where
-        node dir' = padding d ++
-          case dir' of
-            Nothing -> ""
-            Just L -> "\\-"
-            Just R -> "/-"
-          ++ show v ++ "\n"
-        padding n = replicate (n*4) ' '
