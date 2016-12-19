@@ -62,7 +62,13 @@ rotL = undefined
 -- [rebalance t] performs the rotations necessary to re-balance an almost-AVL
 -- tree which is skewed by at most 2.
 rebalance :: AVL a -> AVL a
-rebalance = undefined
+rebalance Leaf = Leaf
+rebalance m@(Node _ l x d)
+    | skew m == 2 && skew l == 1 = rotR m
+    | skew m == 2 = rotR $ avl (rotL l) x d
+    | skew m == -2 && skew d == -1 = rotL m
+    | skew m == -2 = rotL $ avl l x (rotR d)
+    | otherwise = m
 
 -- [add t a] inserts an element into an AVL tree, ensuring that the invariants
 -- are respected.
