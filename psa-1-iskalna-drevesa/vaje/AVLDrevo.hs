@@ -10,6 +10,24 @@ dodaten parameter). -}
 
 data AVLDrevo a = Prazno | Sestavljeno Int (AVLDrevo a) a (AVLDrevo a) deriving (Show)
 
+-- here's a drawing function, which, combined with [putStrLn], lets you visualise a tree
+data S = L | R
+draw :: Show a => AVL a -> String
+draw t = "\n" ++ draw' Nothing t 0 ++ "\n"
+  where
+    draw' _ Prazno _ = []
+    draw' dir (Sestavljeno _ l v r) d =
+      draw' (Just R) r (d+1) ++ node dir ++ draw' (Just L) l (d+1)
+      where
+        node dir' = padding d ++
+          case dir' of
+            Nothing -> ""
+            Just L -> "\\- "
+            Just R -> "/- "
+          ++ show v ++ "\n"
+        padding n = replicate (n*4) ' '
+
+
 prazno :: AVLDrevo a
 prazno = Prazno
 

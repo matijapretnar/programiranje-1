@@ -13,11 +13,12 @@ vsebuje (S _ l y d) x
     | x > y = vsebuje d x
     | otherwise = True
 
-s :: Mnozica a -> a -> Mnozica a -> Mnozica a
-s l x d = S h l x d where h = 1 + max (visina l) (visina d)
+s l x d = S h l x d
+  where
+    h = 1 + max (visina l) (visina d)
 
 dodaj :: (Ord a) => Mnozica a -> a -> Mnozica a
-dodaj P x = S 1 P x P
+dodaj P x = s P x P
 dodaj m@(S _ l y d) x
     | x < y = uravnotezi $ s (dodaj l x) y d
     | x > y = uravnotezi $ s l y (dodaj d x)
@@ -46,16 +47,10 @@ rotD (S _ (S _ ll xl dl) x d) = s ll xl (s dl x d)
 rotL :: Mnozica a -> Mnozica a
 rotL (S _ l x (S _ ld xd dd)) = s (s l x ld) xd dd
 
-
-main =
-    do
-        args <- getArgs
-        let n = if null args then 1000 else read $ head args
-        let elementi = if n < 0 then map sin [1..(-n)] else [1..n]
-        let mnozica = foldl dodaj prazna elementi
-        print $ prestej (vsebuje mnozica) elementi
-    where
-        prestej _ [] = 0
-        prestej p (x:xs)
-            | p x = 1 + prestej p xs
-            | otherwise = prestej p xs
+preveri :: Int -> Int
+preveri n =
+  length (filter (vsebuje mnozica) elementi)
+  where
+    elementi = if n < 0 then map pomesaj [1..(-n)] else [1..n]
+    mnozica = foldl dodaj prazna elementi
+    pomesaj i = 1234567 * i `mod` n
