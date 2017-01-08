@@ -148,10 +148,11 @@ def run_tests():
 ###########################################################################
 ############################### Quickselect ###############################
 
+# The goal of selection is to find the (k-1)th smallest element in a list.
 
+# All we have to do is make good use of the partitioning procedure we devised
+# for quicksort.
 def quickselect_bounded(xs, k, lo, hi):
-    if lo == hi :
-        return xs[k]
     p = prtn(xs, lo, hi)
     if k < p :
         return quickselect_bounded(xs, k, lo, p - 1)
