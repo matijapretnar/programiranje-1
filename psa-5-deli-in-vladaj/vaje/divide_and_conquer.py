@@ -11,10 +11,13 @@ from hypothesis.strategies import text,lists,integers
 # pivot.
 def partition(xs):
     pivot = xs[0]
-    # TODO
+    le, gt = [], []
     for x in xs[1:]:
-        # TODO
-    return # TODO
+        if x <= pivot:
+            le.append(x)
+        else:
+            gt.append(x)
+    return (le, pivot, gt)
 
 # quicksort works by picking *a pivot* and partitioning the input into a batch
 # of *smaller elements* and a batch of *larger elements*. Once these three data
@@ -22,10 +25,10 @@ def partition(xs):
 # yield the sorted list.
 def quicksort(xs):
     if xs == []:
-        # TODO
+        return xs
     else:
-        # TODO
-
+        le, pivot, gt = partition(xs)
+        return (quicksort(le) + [pivot] + quicksort(gt))
 
 
 ############################### Testing #################################
@@ -73,31 +76,29 @@ def prtn(xs, lo, hi):
 
     # walk through the list
     for i in range(lo, hi):
-        # if an element is smaller than the pivot,
+        # if an element is smaller than the pivot
         if xs[i] <= pvt:
             # increment the ≤ counter and exchange the current element with the
             # element at the new counter position
-            # TODO
+            le += 1
+            xs[le], xs[i] = xs[i], xs[le] # swap
 
-    # of course also the pivot is less-or-equal to itself, so we swap it into
-    # its place
-    # TODO
+    # of course also the pivot is less-or-equal to itself, so we swap it in its
+    # place
+    le += 1
+    xs[le], xs[hi] = xs[hi], xs[le]
 
     # report the position of the pivot
-    # TODO
+    return le
 
 
 # Sort the list xs between the bounds lo and hi
 def qsrt_bounded(xs, lo, hi):
-    # What should be the stopping condition?
-    # TODO
-
-    # partition
-    # TODO
-
-    # and continue (where?)
-    # TODO
-
+    if lo >= hi:
+        return
+    pvt = prtn(xs, lo, hi)
+    qsrt_bounded(xs, lo, pvt-1)
+    qsrt_bounded(xs, pvt+1, hi)
 
 # Finally, sort a list by sorting it from beginning to end.
 def qsrt(xs):
@@ -121,7 +122,6 @@ def test_qsrt_text(lst):
 @given(lists(integers()))
 def test_qsrt_int(lst):
     test_qsrt(lst)
-
 
 
 
