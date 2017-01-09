@@ -143,7 +143,8 @@ def run_tests():
     test_quicksort_int()
     test_qsrt_text()
     test_qsrt_int()
-
+    test_quickselect_text()
+    test_quickselect_int()
 
 ##########################################################################
 ############################### Quickselect ##############################
@@ -251,6 +252,32 @@ def time_algo_raw(algo, generator, n_lists = 1000, minlen = 0, maxlen = 9):
 # May or may not sort the input, run for side-effects only.
 def builtin_sort(xs):
     list(xs).sort()
+
+
+# for comparison
+def insertionsort(xs):
+   for i in range(1, len(xs)) :
+       v = xs[i]
+       j = i
+       while j > 0 and xs[j-1] > v :
+           xs[j] = xs[j-1]
+           j -= 1
+       xs[j]= v
+
+# tests like for "qsrt"
+def test_insertionsort(lst):
+    q = lst.copy()
+    lst.sort()
+    insertionsort(q)
+    assert (q == lst)
+
+@given(lists(text()))
+def test_insertionsort_text(lst):
+    test_insertionsort(lst)
+
+@given(lists(integers()))
+def test_insertionsort_int(lst):
+    test_insertionsort(lst)
 
 
 def quickselect_k(xs_k):
