@@ -1,32 +1,3 @@
-### Indukcija 
-
-> Dokažite, da je dolžina seznama enaka dolžini obrnjenega seznama, tj.
-> `dolzina (obrni xs)` = `dolzina xs`.
-> 
-> Definicije:
-> 
->     (1) dolzina [] = 0
->     (2) dolzina (x:xs) = 1 + dolzina xs
->     (3) obrni [] = []
->     (4) obrni (x:xs) = obrni xs ++ [x]
-> 
-> Uporabite lahko sledečo lemo:
-> `dolzina (xs ++ ys)` = `dolzina xs + dolzina ys`
-
-Za osnovni korak moramo pokazati, da velja `dolzina (obrni [])` = `dolzina []`, kar sledi iz definicije (3).
-
-Za indukcijski korak pa moramo pokazati, da velja `dolzina (obrni (y:ys))` = `dolzina (y:ys)` ob indukcijski predpostavki `dolzina (obrni ys) = dolzina ys`.
-Velja:
-
-* `dolzina (obrni (y:ys))` = `dolzina (obrni ys ++ [y])` (po definiciji (4))
-* `dolzina (obrni ys ++ [y])` = `dolzina (obrni ys) + dolzina [y]` (po zgornji lemi)
-* `dolzina (obrni ys) + dolzina [y]` = `dolzina ys + dolzina [y]` (po indukcijski predpostavki)
-* `dolzina ys + dolzina [y]` = `dolzina ys + 1` (po definicijah (1) in (2))
-* `dolzina ys + 1` = `1 + dolzina ys` (zaradi komutativnosti)
-* `1 + dolzina ys` = `dolzina (y:ys)` (po definiciji (2))
-
-s čimer zaključimo tudi indukcijski korak.
-
 ### `prvaBeseda`
 
 > Sestavite funkcijo `prvaBeseda`, ki kot argument dobi nek niz in vrne prvo besedo v nizu. Besede v nizu so med seboj ločene s presledki. Nalogo rešite z uporabo funkcije `takeWhile`. Funkcija naj deluje tudi, če se niz začne s presledkom.
