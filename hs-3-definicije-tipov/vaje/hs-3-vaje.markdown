@@ -9,15 +9,6 @@
 >     vsota :: Num a => Drevo a -> a
 >     vsota Prazno = 0
 >     vsota (Sestavljeno x levo desno) = x + vsota levo + vsota desno
-> 
->     instance (Show a) => Show (Drevo a) where
->         show Prazno = "Prazno"
->         show (Sestavljeno x Prazno Prazno) = "Sestavljeno " ++ show x ++ " Prazno Prazno"
->         show (Sestavljeno x Prazno desno) = "Sestavljeno " ++ show x ++ " Prazno (" ++ show desno ++ ")"
->         show (Sestavljeno x levo Prazno) = "Sestavljeno " ++ show x ++ " (" ++ show levo ++ ") Prazno"
->         show (Sestavljeno x levo desno) = "Sestavljeno " ++ show x ++ " (" ++ show levo ++ ") (" ++ show desno ++ ")"
-
-Tu vam je asistent že prijazno napisal funkcijo `show`. Če bi bil malo bolj len, bi lahko isto dosegel tudi s tem, da bi za definicijo tipa `Drevo` dodal še `deriving Show`.
 
 ### `globina`
 
@@ -68,23 +59,13 @@ In tudi tu ste vsi (spet s podobnimi napakicami kot zgoraj) napisali:
 
 ### `najboljLevi`
 
-Ne vem, kaj se je tu zgodilo z navodili:
-
->     -- Sestavite funkcijo, ki drevo prezrcali, tako da levo postane desno, desno pa levo.
->     -- Zgled:
->     -- ghci> let d = Sestavljeno 3 (Sestavljeno 7 Prazno (Sestavljeno 2 Prazno Prazno)) (Sestavljeno 8 Prazno Prazno)
->     -- ghci> prezrcali d
->     -- Sestavljeno 3 (Sestavljeno 8 Prazno Prazno) (Sestavljeno 7 (Sestavljeno 2 Prazno Prazno) Prazno)
-
-Verjetno je bilo mišljeno nekaj v stilu:
-
 >     -- Sestavite funkcijo, ki vrne najbolj levi element v drevesu.
 >     -- Zgled:
 >     -- ghci> let d = Sestavljeno 3 (Sestavljeno 7 Prazno (Sestavljeno 2 Prazno Prazno)) (Sestavljeno 8 Prazno Prazno)
 >     -- ghci> najboljLevi d
 >     -- 7
 
-kar bi naredili z:
+Rešitev je:
      
     najboljLevi :: Drevo a -> a
     najboljLevi (Sestavljeno x Prazno _) = x
@@ -138,89 +119,16 @@ Pravilne rešitve bi (in večinoma tudi so) bile
 
 (Ste videli, kako lahko za dve funkciji z istim tipom hkrati povemo signaturo? Ravno prava stvar za tiste bolj lenobne med vami.)
 
-### `instance Num Kompleksno`
-
-Tudi tu so vam stvari načeloma šle (z izjemo par računskih spodrsljajev, ki niso moja odgovornost, vas bom pa zatožil prof. Černetu):
-
-    instance Num Kompleksno where
-        (Kompleksno x1 y1) + (Kompleksno x2 y2) = Kompleksno (x1 + x2) (y1 + y2)
-        (Kompleksno x1 y1) * (Kompleksno x2 y2) = Kompleksno (x1 * x2 - y1 * y2) (x1 * y2 + x2 * y1)
-        abs (Kompleksno x y) = Kompleksno (sqrt (x^2 + y^2)) 0
-        fromInteger n = Kompleksno (fromInteger n) 0
-        negate (Kompleksno x y) = Kompleksno (negate x) (negate y)
-        signum (Kompleksno 0 0) = Kompleksno 0 0
-        signum (Kompleksno x y) = Kompleksno (x / abs) (y / abs)
-          where
-            abs = sqrt (x^2 + y^2)
-
-Nekateri ste mnenja, da kompleksna števila nimajo predznaka, in ste pisali
-
-    signum _ = error "signum: kompleksna števila nimajo predznaka"
-
-ali kaj podobnega. Tudi to je, kar se me tiče, v redu, saj navodila glede tega niso bila natančna. Bomo pa videli, kaj bo porekel prof. Černe…
-
-### `instance Show Kompleksno`
-
-Navodila so pisala:
-
->     -- Kompleksna števila naj bodo izpisana v takšni obliki: 3 + 5i
-
-zato ste pisali
-
-    instance Show Kompleksno where
-        show (Kompleksno x y) = show x ++ " + " ++ show y ++ "i"
-
-ali pa celo bolj natančno kot
-
-    instance Show Kompleksno where
-        show (Kompleksno 0 0) = "0"
-        show (Kompleksno x 0) = show x
-        show (Kompleksno 0 y) = show y ++ "i"
-        show (Kompleksno x y)
-            | y < 0 = show x ++ " - " ++ show (-y) ++ "i"
-            | y > 0 = show x ++ " + " ++ show y ++ "i"
-
-(zakaj v zadnjem primeru pogoj `y = 0` ni potreben?) V resnici pa je dogovor, da funkcija `show` tip prikaže v obliki, ki je berljiva tudi Haskellu. Torej bi navodila morala biti:
-
->     -- Kompleksna števila naj bodo izpisana v takšni obliki: Kompleksno 3 5
-
-kar bi lahko spet dosegli z `deriving Show`. Mogoče vas na tej točki zanima, kaj je potem sploh namen tega, da sami pišemo funkcijo `show`. Včasih je interna oblika človeku res neprebavljiva. Zadnjič smo na predavanjih množice predstavili z iskalnimi drevesi kot:
-
-    data Mnozica a = Prazna | Sestavljena (Mnozica a) a (Mnozica a)
-
-Kot smo videli, je predstavitev z iskalnimi drevesi odlična, vendar nočemo, da bi nam računalnik množico `{1, 2, 3, 4}` prikazal kot
-
-    Sestavljena (Sestavljena Prazna 1 Prazna) 2 (Sestavljena Prazna 3 (Sestavljena Prazna 4 Prazna))
-
-Kako stvar naredimo berljivo tako nam kot računalniku? Na podobno težavo naletimo, kadar hočemo implementacijo skriti – na primer nočemo pokazati, da so množice implementirane z iskalnimi drevesi. Rešitev je, da najprej napišemo pomožno funkcijo `fromList`, ki vrednost sestavi iz seznama
-
-    fromList :: [a] -> Mnozica a
-    fromList = foldl dodaj Prazna
-
-(razumevanje delovanja vam prepuščam za vajo). Nato lahko napišemo
-
-    instance Show a => Show (Mnozica a) where
-        show m = "fromList " ++ show (toList m)
-          where
-            toList Prazna = []
-            toList (Sestavljena l x d) = toList l ++ [x] ++ toList d
-
-in množica `{1, 2, 3, 4}` se bo prikazala kot `fromList [1,2,3,4]`, kar je razumljivo tako človeku kot računalniku.
 
 ### Podatkovni tip `Polinom`
 
->     -- Definiran je podatkovni tip Polinom, ki predstavlja polinom na kolobarjem celih števil. Dodali bomo še
+>     -- Definiran je podatkovni tip Polinom, ki predstavlja polinom nad obsegom racionalnih števil. Dodali bomo še
 >     -- nekaj funkcij za delo s polinomi.
 > 
->     data Polinom = Polinom [Integer]
+>     data Polinom = Polinom [Rational]
 > 
 >     x :: Polinom
 >     x = Polinom [0, 1]     
-
-Kot ste ugotovili na vajah, je celoštevilske polinome malo težje integrirati, zato raje uporabljajmo racionalna števila.
-
-    import Data.Ratio
-    data Polinom = Polinom [Rational]
 
 Praktično je imeti tudi pametni konstruktor, ki s konca pobriše vse ničelne koeficiente, in destruktor, ki vrne seznam koeficientov:
 
@@ -243,21 +151,6 @@ Ta se v vsakem koraku zapelje čez ves seznam, zato deluje v kvadratnem času. P
     polinom = takeWhile (/= 0)
 
 ki res deluje v linearnem času in ne javlja napake, vendar potihem dela napačno (zakaj, ugotovite sami).
-
-### `odvod`
-
-Večina vas je ugotovila, da se odvod enostavno izračuna s pomočjo `zip` in seznama `[1..]`, paziti moramo le na prazen seznam koeficientov. Z `zipWith` je rešitev še malo bolj elegantna:
-
-    odvod :: Polinom -> Polinom
-    odvod (Polinom []) = polinom []
-    odvod (Polinom (_:koef)) = polinom $ zipWith (*) koef [1..]
-
-### `integral`
-
-Tudi tu je rešitev podobna (če delate z racionalnimi števili, seveda :)
-
-    integral :: Polinom -> Polinom
-    integral (Polinom koef) = polinom $ 0 : zipWith (/) koef [1..]
 
 ### `eval`
 
@@ -296,84 +189,18 @@ Skoraj vsaka od teh rešitev je imela kakšno pomanjkljivost (verjetno po naklju
 * odvečni primer `eval (Polinom [k]) _`, ki sledi že iz zgornjih dveh primerov;
 * zadnji primer pisan kot `eval (Polinom koef) x = head koef + x * eval (Polinom (tail koef)) x` namesto z elegantnejšimi in varnejšimi vzorci.
 
+### `odvod`
 
+Večina vas je ugotovila, da se odvod enostavno izračuna s pomočjo `zip` in seznama `[1..]`, paziti moramo le na prazen seznam koeficientov. Z `zipWith` je rešitev še malo bolj elegantna:
 
-### `instance Num Polinom`
+    odvod :: Polinom -> Polinom
+    odvod (Polinom []) = polinom []
+    odvod (Polinom (_:koef)) = polinom $ zipWith (*) koef [1..]
 
-Pri tem, da `Polinom` pripada `Num`, je bilo največ dela s tem, da ste pazili na ustrezno dolžino seznamov pri seštevanju:
+### `integral`
 
-    instance Num Polinom where
-        negate (Polinom koef) = polinom $ pomnoziKoef (-1) koef
-        (Polinom koef1) + (Polinom koef2) = polinom $ sestejKoef koef1 koef2
-        (Polinom koef1) * (Polinom koef2) = polinom $ zmnoziKoef koef1 koef2
-        fromInteger x = polinom $ [fromInteger x]
-        abs = error "abs: polinomi nimajo definirane absolutne vrednosti"
-        signum = error "abs: polinomi nimajo definiranega predznaka"
+Tudi tu je rešitev podobna (če delate z racionalnimi števili, seveda :)
 
-Seveda si moramo le definirati funkcije za delo s koeficienti.
+    integral :: Polinom -> Polinom
+    integral (Polinom koef) = polinom $ 0 : zipWith (/) koef [1..]
 
-    sestejKoef :: [Rational] -> [Rational] -> [Rational]
-    sestejKoef xs [] = xs
-    sestejKoef [] ys = ys
-    sestejKoef (x:xs) (y:ys) = (x + y):(sestejKoef xs ys)
-
-Malo manj učinkovita možnost je, da za seštevanje uporabite `zipWith (+)`, nato pa na konec dodate še preostanek daljšega seznama. Obravnavanju različnih primerov se lahko izognete tudi tako, da na konec dodate oba preostanka, saj bo eden od njiju zagotovo prazen:
-
-    sestejKoef xs ys = vsota ++ drop n xs ++ drop n ys
-      where
-        vsota = zipWith (+) xs ys
-        n = length vsota
-
-Še bolj neučinkovita možnost pa je, da uporabljate `(!!)`, ampak to zdaj že veste. Pri množenju gre podobno (doma si enačbe napišite na list, da vidite, zakaj delujejo pravilno):
-
-    pomnoziKoef :: Rational -> [Rational] -> [Rational]
-    pomnoziKoef a = map (a *)
-
-    zmnoziKoef :: [Rational] -> [Rational] -> [Rational]
-    zmnoziKoef _ [] = []
-    zmnoziKoef [] _ = []
-    zmnoziKoef (x:xs) (y:ys) = (x * y) : pomnoziKoef x ys `sestejKoef` (xs `zmnoziKoef` (y:ys))
-
-Ena od rešitev (tukaj malo poenostavljena) je bila tudi, da ste paroma pomnožili vse monome, nato pa jih združili po potencah:
-
-    pomnoziKoef xs ys =
-        [sum [x | (x, m) <- pari, m == n] | n <- [0..maximum (map snd pari)]]
-          where
-            pari = [(x * y, m + n) | (x, m) <- zip xs [0..], (y, n) <- zip ys [0..]]
-
-Ker moramo za vsako potenco `n` preiskati ves seznam parov za ustrezne potence `m`, ta rešitev ni najbolj učinkovita. Natančneje, njena časovna zahtevnost je $O(n^3)$, kjer je $n$ večja od stopenj vhodnih polinomov. Zgornja rešitev ima časovno zahtevnost $O(n^2)$. Če vas zanima: obstajajo tudi rešitve s še manjšo časovno zahtevnostjo.
-
-
-### `instance Show Polinom`
-
-Najprej si oglejmo enostavni primer, ko so koeficienti celoštevilski. Tudi tu bi lahko polinome prikazali v obliki, ki jo razume računalnik, na primer `Polinom [1, 2, -1]`. Toda ker smo si že definirali polinom `x = Polinom [0, 1]`, s katerim lahko računamo kot bi pričakovali, lahko tudi polinome prikažemo kot `1 + 2 * x - x^2`. Pri lepem prikazu je potrebno paziti na več stvari:
-
-* ne pišemo `3 * x^0 + 2 * x^1 + 4 * x^2` temveč `3 + 2 * x + 4 * x^2`
-* ne pišemo `1 + 0 * x + 2 * x^2` temveč `1 + 2 * x^2`
-* ne pišemo `1 + -2 * x` temveč `1 - 2 * x`
-* vseeno pišemo `-2 * x + 3 * x^2` namesto `- 2 * x + 3 * x^2`
-* ne pišemo `2 + 1 * x` ali `2 - 1 * x` temveč `2 + x` ali `2 - x`
-
-Če upoštevamo vse to, lahko napišemo:
-
-    instance Show Polinom where
-        show (Polinom koef) = prikazi $ filter ((/= 0) . fst) $ zip koef [0..]
-            where
-                prikazi [] = "0"
-                prikazi ((a, 0):monomi) = foldl dodaj (show a) monomi
-                prikazi ((a, n):monomi) = foldl dodaj (koeficient a ++ potenca n) monomi
-                dodaj niz (a, n)
-                    | a > 0 = niz ++ " + " ++ koeficient a ++ potenca n
-                    | a < 0 = niz ++ " - " ++ koeficient (-a) ++ potenca n
-                koeficient 1 = ""
-                koeficient a = show a ++ " * "
-                potenca 0 = ""
-                potenca 1 = "x"
-                potenca n = "x^" ++ show n
-
-Ista koda deluje tudi za racionalne koeficiente, vendar je težava, da izpisa Haskell ne more prebaviti. Zakaj? Če Haskellu podamo `3 * x`, bo vedel, da naj `3` pretvori v `Polinom [3]`, ker smo povedali, da `Polinom` pripada razredu `Num`, torej ima tudi funkcijo `fromInteger`. Če bi želeli podobno doseči za racionalna števila, bi morali pokazati, da `Polinom` pripada razredu `Fractional`, kar pa poleg funkcije `fromRational :: Rational -> Polinom` zahteva tudi deljenje `(/) :: Polinom -> Polinom -> Polinom`. To pa s polinomi ne gre. V tem primeru je najbolj varno napisati
-
-    instance Show Polinom where
-        show (Polinom koef) = "polinom " ++ show koef
-
-Pozorni bodite na to, da sem napisal `"polinom "` namesto `"Polinom "`, da v izpisu ponudim pametni konstruktor.

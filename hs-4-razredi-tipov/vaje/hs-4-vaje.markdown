@@ -1,75 +1,131 @@
-    import Data.Ratio -- Od tu dobimo racionalna števila
-    import Data.List (sort, maximumBy) -- Od tukaj smo dobili sortBy.
-    import Data.Function (on) -- Od tu dobimo on
+## `instance Num OdPrejsnjihVaj`
 
-Zdi se mi, da je bilo v drugi vrstici mišljeno, da bi uvozili `sortBy` namesto `sort`. Ko smo že pri uvažanju, namesto `on` lahko uvozimo tudi `comparing`, h kateremu se bomo kmalu vrnili.
+### `instance Num Kompleksno`
 
-    import Data.Ord (comparing)
+Tu so vam stvari načeloma šle (z izjemo par računskih spodrsljajev, ki niso moja odgovornost, vas bom pa zatožil profesorju za Analizo):
 
-## Neskončne vrste
+    instance Num Kompleksno where
+        (Kompleksno x1 y1) + (Kompleksno x2 y2) = Kompleksno (x1 + x2) (y1 + y2)
+        (Kompleksno x1 y1) * (Kompleksno x2 y2) = Kompleksno (x1 * x2 - y1 * y2) (x1 * y2 + x2 * y1)
+        abs (Kompleksno x y) = Kompleksno (sqrt (x^2 + y^2)) 0
+        fromInteger n = Kompleksno (fromInteger n) 0
+        negate (Kompleksno x y) = Kompleksno (negate x) (negate y)
+        signum (Kompleksno 0 0) = Kompleksno 0 0
+        signum (Kompleksno x y) = Kompleksno (x / abs) (y / abs)
+          where
+            abs = sqrt (x^2 + y^2)
 
+Nekateri ste mnenja, da kompleksna števila nimajo predznaka, in ste pisali
+
+    signum _ = error "signum: kompleksna števila nimajo predznaka"
+
+ali kaj podobnega. Tudi to je, kar se me tiče, v redu, saj navodila glede tega niso bila natančna. Bomo pa videli, kaj bo porekel prof. Černe…
+
+
+### `instance Num Polinom`
+
+Pri tem, da `Polinom` pripada `Num`, je bilo največ dela s tem, da ste pazili na ustrezno dolžino seznamov pri seštevanju:
+
+    instance Num Polinom where
+        negate (Polinom koef) = polinom $ pomnoziKoef (-1) koef
+        (Polinom koef1) + (Polinom koef2) = polinom $ sestejKoef koef1 koef2
+        (Polinom koef1) * (Polinom koef2) = polinom $ zmnoziKoef koef1 koef2
+        fromInteger x = polinom $ [fromInteger x]
+        abs = error "abs: polinomi nimajo definirane absolutne vrednosti"
+        signum = error "abs: polinomi nimajo definiranega predznaka"
+
+Seveda si moramo le definirati funkcije za delo s koeficienti.
+
+    sestejKoef :: [Rational] -> [Rational] -> [Rational]
+    sestejKoef xs [] = xs
+    sestejKoef [] ys = ys
+    sestejKoef (x:xs) (y:ys) = (x + y):(sestejKoef xs ys)
+
+Malo manj učinkovita možnost je, da za seštevanje uporabite `zipWith (+)`, nato pa na konec dodate še preostanek daljšega seznama. Obravnavanju različnih primerov se lahko izognete tudi tako, da na konec dodate oba preostanka, saj bo eden od njiju zagotovo prazen:
+
+    sestejKoef xs ys = vsota ++ drop n xs ++ drop n ys
+      where
+        vsota = zipWith (+) xs ys
+        n = length vsota
+
+Še bolj neučinkovita možnost pa je, da uporabljate `(!!)`, ampak to zdaj že veste. Pri množenju gre podobno (doma si enačbe napišite na list, da vidite, zakaj delujejo pravilno):
+
+    pomnoziKoef :: Rational -> [Rational] -> [Rational]
+    pomnoziKoef a = map (a *)
+
+    zmnoziKoef :: [Rational] -> [Rational] -> [Rational]
+    zmnoziKoef _ [] = []
+    zmnoziKoef [] _ = []
+    zmnoziKoef (x:xs) (y:ys) = (x * y) : pomnoziKoef x ys `sestejKoef` (xs `zmnoziKoef` (y:ys))
+
+Ena od rešitev (tukaj malo poenostavljena) je bila tudi, da ste paroma pomnožili vse monome, nato pa jih združili po potencah:
+
+    pomnoziKoef xs ys =
+        [sum [x | (x, m) <- pari, m == n] | n <- [0..maximum (map snd pari)]]
+          where
+            pari = [(x * y, m + n) | (x, m) <- zip xs [0..], (y, n) <- zip ys [0..]]
+
+Ker moramo za vsako potenco `n` preiskati ves seznam parov za ustrezne potence `m`, ta rešitev ni najbolj učinkovita. Natančneje, njena časovna zahtevnost je $O(n^3)$, kjer je $n$ večja od stopenj vhodnih polinomov. Zgornja rešitev ima časovno zahtevnost $O(n^2)$. Če vas zanima: obstajajo tudi rešitve s še manjšo časovno zahtevnostjo.
+
+## Razredi tipov
+
+
+    -- Algebra
+    -- =======
     
-    -- Polinomi cont'd
-    -- ===============
     
-    -- Vzemite polinom s prejšnjih vaj in preverite, če deluje:
+    -- Definirajmo razred Polgrupa kot:
     
-    -- (1 + x)^5.
+    class  Polgrupa a  where
+        (***) :: a -> a -> a
     
-    -- eksponentna = 1 + integral eksponentna
+    -- Definirajte še razreda PolgrupaZEnoto (s posebno vrednostjo "enota") in
+    -- Grupa (s posebno vrednostjo "inv"), ter pokažite, da vsem trem pripadajo:
+    -- * cela števila za seštevanje
+    -- * kartezični produkt (po komponentah)
+    -- * če imate preveč časa, vprašajte asistenta za ideje
     
-
-Prvi del vam ni delal težav, drugi pa je malo bolj zapleten. Zakaj? Če želimo imeti rekurzivno definicijo neskončne vrste, morajo biti ta definicija *produktivna*, torej da proizvede vsaj en člen, preden pogleda samo sebe. Na primer, seznam `naravna = 1 : 2 : 3 : ...` zadošča tako enakosti `naravna = naravna` kot `naravna = 1 : map succ naravna`, vendar je le druga definicija produktivna, saj gre kot
-
-    naravna
-    = 1 : map succ naravna
-    = 1 : map succ (1 : map succ naravna)
-    = 1 : 2 : map succ (map succ naravna)
-    = ...
-
-prva pa se zacikla. Pri integralih je treba biti malo bolj previden. Če pri definicijah, kot sem jih povedal pri [komentarjih 4. vaj](https://ucilnica.fmf.uni-lj.si/mod/forum/discuss.php?d=6051), definiramo
+    class  Polgrupa a => PolgrupaZEnoto a  where
+        enota :: a
     
-    eksponentna = 1 + integral eksponentna
-
-se bo definicija zaciklala. Težavi sta dve. Prvič smo pisali
-
-    polinom :: [Rational] -> Polinom
-    polinom = Polinom . reverse . dropWhile (== 0) . reverse
+    class  PolgrupaZEnoto a => Grupa a  where
+        inv :: a -> a
     
-    integral :: Polinom -> Polinom
-    integral (Polinom koef) = polinom $ 0 : zipWith (/) koef [1..]
+    
+    instance  Polgrupa Integer  where
+        (***) = (+)
+    
+    instance  PolgrupaZEnoto Integer  where
+        enota = 0
+    
+    instance  Grupa Integer  where
+        inv = negate
+    
+    
+    instance  (Polgrupa a, Polgrupa b) => Polgrupa (a, b)  where
+        (x1, y1) *** (x2, y2) = (x1 *** x2, y1 *** y2)
+    
+    instance  (PolgrupaZEnoto a, PolgrupaZEnoto b) => PolgrupaZEnoto (a, b)  where
+        enota = (enota, enota)
+    
+    instance  (Grupa a, Grupa b) => Grupa (a, b)  where
+        inv (x, y) = (inv x, inv y)
+    
+ 
+Definicije so bile zelo podobne tistim z vektorskimi prostori, ki smo jih naredili na predavanjih. Pozorni bodite na to, da vam signatur ni treba ponavljati. Torej, kljub temu, da ima `PolgrupaZEnoto` tudi operacijo `(***)`, vam ni treba pisati
 
-torej `integral` kliče funkcijo `polinom`, ki vmes seznam obrne na glavo, da se znebi odvečnih ničel s konca. Predstavljate si lahko, da se to pri neskončnih vrstah ne bo končalo dobro. Oziroma sploh končalo. Tudi če pametni konstruktor povsod (tudi v `(+)`, `(-)`, `(*)`, …) nadomestimo z neumnim `Polinom`:
+    class  Polgrupa a => PolgrupaZEnoto a  where
+        (***) :: a -> a -> a
+        enota :: a
 
-    integral (Polinom koef) = Polinom $ 0 : zipWith (/) koef [1..]
+saj je ravno to zajeto v `Polgrupa a =>`. Poleg tega vam Haskell tega ne pusti, ker ima `(***)` že drug pomen. Prav tako ne pišite enačb, ki naj bi veljale:
 
-definicija ne bo delala. Zakaj? Izračunajmo, koliko je `eksponentna`
+    class  Polgrupa a => PolgrupaZEnoto a  where
+        enota :: a
+        x *** enota = x
+        enota *** x = x
 
-    eksponentna
-    = 1 + integral eksponentna
-    = 1 + integral (1 + eksponentna)
-    = 1 + integral (1 + integral (1 + eksponentna))
-    = ...
-
-Druga težava je namreč v tem, da bo funkcija `integral`, preden bo izvrgla prvi člen `0`, svoj argument računala toliko časa, dokler ne bo oblike `Polinom koef`, torej v neskončnost. Če pa definicijo zapišemo malo drugače:
-
-    integral poli = Polinom $ 0 : zipWith (/) (koeficienti poli) [1..]
-
-kjer je funkcija `koeficienti` definirana kot
-
-    koeficienti :: Polinom -> [Rational]
-    koeficienti (Polinom koef) = koef
-
-pa so zadeve videti podobne, vendar so ključno drugačne. Račun tedaj gre kot:
-
-    eksponentna
-    = 1 + integral eksponentna
-    = 1 + Polinom $ 0 : zipWith (/) (koeficienti eksponentna) [1..] = ...
-    = Polinom $ 1 : zipWith (/) (koeficienti eksponentna) [1..] = ...
-    = Polinom $ 1 : zipWith (/) (1 : zipWith (/) (koeficienti eksponentna) [1..]) = ...
-    = Polinom $ 1 : 1 : ...
-
-Torej, `integral` ne gre odvijati definicije funkcije `eksponentna`, temveč takoj začne s koeficientom `0`. Šele ko se računa drugi koeficient, želi funkcija `koeficienti` odviti definicijo, ki pa tedaj že ima obliko `Polinom (1 : ...)`. Kot vidite, znajo biti neskončne rekurzivne definicije malo bolj zvite, zato je treba biti zelo previden.
+saj se `enota` v `x *** enota = x` obnaša kot običajna spremenljivka, zato s tem definirate `(***)` kot konstantno funkcijo v vseh članih razreda, ki nimajo svoje definicije za `(***)`. Zadnja vrstica nima vpliva, ker že prejšnja vrstica polovi vse primere.
 
 
 ## Porazdelitve
@@ -98,13 +154,13 @@ Nekateri ste uporabili izpeljane sezname ali pa namesto `snd` pisali `\(_, p) ->
 
 Oboje načeloma deluje pravilno, vendar ni higienično. Take stvari se začnejo nabirati in programi hitro postanejo nepregledni.
     
-### `porihtaj`
+### `urediPorazdelitev`
 
-    -- Funkcija porihtaj naj "porihta" porazdelitev,
+    -- Funkcija urediPorazdelitev naj "porihta" porazdelitev,
     -- tj. dogodke naj uredi in združi skupaj enake dogodke.
     
-    porihtaj :: Ord a => Porazdelitev a -> Porazdelitev a
-    porihtaj (Porazdelitev d) =
+    urediPorazdelitev :: Ord a => Porazdelitev a -> Porazdelitev a
+    urediPorazdelitev (Porazdelitev d) =
         Porazdelitev $ zdruzi $ sortBy (comparing fst) $ d
         where
         zdruzi ((x1,p1):(x2,p2):xs)
@@ -213,7 +269,7 @@ Tale vam je načeloma šla, tako da nimam posebnih pripomb.
     
     utezenaVsota :: Ord a => Rational -> Porazdelitev a -> Porazdelitev a -> Porazdelitev a
     utezenaVsota p (Porazdelitev d1) (Porazdelitev d2) =
-        porihtaj $ Porazdelitev $ pomnozi p d1 ++ pomnozi (1 - p) d2
+        urediPorazdelitev $ Porazdelitev $ pomnozi p d1 ++ pomnozi (1 - p) d2
 
 Za potrebe te definicije in definicije funkcije `zdruzi` sem si definiral pomožno funkcijo `pomnozi`, ki pa sem jo napisal kar na tipu `[(a, Rational)]`,
 saj ne ohranja porazdelitev (vsota ni več 1), zato je bolje, da to odraža tudi njen tip.
@@ -234,7 +290,7 @@ Tudi ta naloga vam je šla brez večjih težav.
     
     zdruzi :: Ord a => Porazdelitev (Porazdelitev a) -> Porazdelitev a
     zdruzi (Porazdelitev ds) =
-        porihtaj $ Porazdelitev $ foldr (\(Porazdelitev d1, p) d2 -> pomnozi p d1 ++ d2) [] ds
+        urediPorazdelitev $ Porazdelitev $ foldr (\(Porazdelitev d1, p) d2 -> pomnozi p d1 ++ d2) [] ds
 
 Tale je malo bolj zapletena različica funkcije `utezenaVsota`. Načeloma bi lahko z njeno pomočjo definirali tudi
 
@@ -249,66 +305,6 @@ Prednost (no, kakor za koga) Haskella je ta, da lahko funkcije definirate v polj
     instance  Functor Porazdelitev  where
         fmap f (Porazdelitev d) = Porazdelitev [(f x, p) | (x, p) <- d]
 
-Torej, če imamo `f :: a -> b` in porazdelitev na `a`, želimo dobiti porazdelitev na `b`. Očitno moramo le vsak element slikati z `f`. Še bolje bi bilo, če bi porazdelitev potem tudi uredili s funkcijo `porihtaj`. Na primer, kaj se zgodi, če porazdelitev `kocka` slikamo s funkcijo `odd`?
+Torej, če imamo `f :: a -> b` in porazdelitev na `a`, želimo dobiti porazdelitev na `b`. Očitno moramo le vsak element slikati z `f`. Še bolje bi bilo, če bi porazdelitev potem tudi uredili s funkcijo `urediPorazdelitev`. Na primer, kaj se zgodi, če porazdelitev `kocka` slikamo s funkcijo `odd`?
 
-Toda tega žal ne moremo storiti, saj `porihtaj` zahteva `Ord a`, tega pogoja pa nam signatura razreda `Functor` ne dovoli zapisati. Če kdo od vas s tem ni zadovoljen, si lahko ogleda modul [`Control.Functor.Constrained`](https://hackage.haskell.org/package/constrained-categories-0.2.1.1/docs/Control-Functor-Constrained.html).
-
-## Razredi tipov
-
-
-    -- Algebra
-    -- =======
-    
-    
-    -- Definirajmo razred Polgrupa kot:
-    
-    class  Polgrupa a  where
-        (***) :: a -> a -> a
-    
-    -- Definirajte še razreda PolgrupaZEnoto (s posebno vrednostjo "enota") in
-    -- Grupa (s posebno vrednostjo "inv"), ter pokažite, da vsem trem pripadajo:
-    -- * cela števila za seštevanje
-    -- * kartezični produkt (po komponentah)
-    -- * če imate preveč časa, vprašajte asistenta za ideje
-    
-    class  Polgrupa a => PolgrupaZEnoto a  where
-        enota :: a
-    
-    class  PolgrupaZEnoto a => Grupa a  where
-        inv :: a -> a
-    
-    
-    instance  Polgrupa Integer  where
-        (***) = (+)
-    
-    instance  PolgrupaZEnoto Integer  where
-        enota = 0
-    
-    instance  Grupa Integer  where
-        inv = negate
-    
-    
-    instance  (Polgrupa a, Polgrupa b) => Polgrupa (a, b)  where
-        (x1, y1) *** (x2, y2) = (x1 *** x2, y1 *** y2)
-    
-    instance  (PolgrupaZEnoto a, PolgrupaZEnoto b) => PolgrupaZEnoto (a, b)  where
-        enota = (enota, enota)
-    
-    instance  (Grupa a, Grupa b) => Grupa (a, b)  where
-        inv (x, y) = (inv x, inv y)
-    
- 
-Definicije so bile zelo podobne tistim z vektorskimi prostori, ki smo jih naredili na predavanjih. Pozorni bodite na to, da vam signatur ni treba ponavljati. Torej, kljub temu, da ima `PolgrupaZEnoto` tudi operacijo `(***)`, vam ni treba pisati
-
-    class  Polgrupa a => PolgrupaZEnoto a  where
-        (***) :: a -> a -> a
-        enota :: a
-
-saj je ravno to zajeto v `Polgrupa a =>`. Poleg tega vam Haskell tega ne pusti, ker ima `(***)` že drug pomen. Prav tako ne pišite enačb, ki naj bi veljale:
-
-    class  Polgrupa a => PolgrupaZEnoto a  where
-        enota :: a
-        x *** enota = x
-        enota *** x = x
-
-saj se `enota` v `x *** enota = x` obnaša kot običajna spremenljivka, zato s tem definirate `(***)` kot konstantno funkcijo v vseh članih razreda, ki nimajo svoje definicije za `(***)`. Zadnja vrstica nima vpliva, ker že prejšnja vrstica polovi vse primere.
+Toda tega žal ne moremo storiti, saj `urediPorazdelitev` zahteva `Ord a`, tega pogoja pa nam signatura razreda `Functor` ne dovoli zapisati. Če kdo od vas s tem ni zadovoljen, si lahko ogleda modul [`Control.Functor.Constrained`](https://hackage.haskell.org/package/constrained-categories-0.2.1.1/docs/Control-Functor-Constrained.html).
