@@ -116,8 +116,8 @@ konjugiraj = undefined
 -- Polinomi
 -- ========
 
--- Definiran je podatkovni tip Polinom, ki predstavlja polinom nad kolobarjem
--- celih števil. Dodali bomo še nekaj funkcij za delo s polinomi.
+-- Definiran je podatkovni tip Polinom, ki predstavlja polinom nad obsegom
+-- racionalnih števil. Dodali bomo še nekaj funkcij za delo s polinomi.
 
 data Polinom = Polinom [Rational] deriving (Show)
 

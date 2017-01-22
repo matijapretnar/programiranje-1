@@ -188,6 +188,32 @@ Na kvizu.
 
 \section{$\inline{dolzina (obrni xs)} = \inline{dolzina xs}$}
 
-Domača naloga.
+\subsection*{Osnovni korak}
+
+Iz definicije \eqref{obrni1} sledi $\inline{dolzina (obrni [])} = \inline{dolzina []}$,
+
+\subsection*{Indukcijski korak}
+
+Za indukcijski korak moramo pokazati, da velja $\inline{dolzina (obrni (y:ys))} = \inline{dolzina (y:ys)}$ ob indukcijski predpostavki $\inline{dolzina (obrni ys)} = \inline{dolzina ys}$.
+Velja:
+
+\begin{align*}
+  \inline{dolzina (obrni (y:ys))}
+  &= \inline{dolzina (obrni ys ++ [y])}
+    &&\text{po definiciji \eqref{obrni2}} \\
+  &= \inline{dolzina (obrni ys) + dolzina [y]}
+    &&\text{po zgornji lemi} \\
+  &= \inline{dolzina ys + dolzina [y]}
+    &&\text{po indukcijski predpostavki} \\
+  &= \inline{dolzina ys + 1}
+    &&\text{po definicijah \eqref{dolzina1} in \eqref{dolzina2}} \\
+  &= \inline{1 + dolzina ys}
+    &&\text{zaradi komutativnosti} \\
+  &= \inline{dolzina (y:ys)}
+    &&\text{po definiciji \eqref{dolzina2}}
+\end{align*}
+
+s čimer zaključimo tudi indukcijski korak.
+
 
 \end{document}

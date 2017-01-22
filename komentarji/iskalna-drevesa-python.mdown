@@ -1,0 +1,274 @@
+## Iskalna drevesa v Pythonu
+
+    ##########################################################################
+    # Iskalna drevesa
+    #
+    # Implementirali bomo razred IskalnoDrevo. Vsak objekt ima atribut prazno,
+    # ki ima vrednost True, če je drevo prazno, in False sicer. Če drevo ni
+    # prazno ima še atribute vsebina, levo in desno. 
+    #
+    # Konstruktor sprejme iterator in sestavi drevo, ki ga dobimo, če elemente
+    # po vrsti vstavljamo v iskalno drevo.
+    # 
+    # Razredu smo dodali tudi metodo je_pravilno, ki vrne True, če je drevo
+    # res iskalno (torej, če so v levem poddrevesu vsi podatki manjši,  v
+    # desnem pa vsi večji od podatka v korenu).
+    ##########################################################################
+    class IskalnoDrevo:
+    
+        def __init__(self, vsebina=()):
+            self.prazno = True
+            for x in vsebina:
+                self.dodaj(x)
+    
+        def kld_pregled(self):
+            if self.prazno:
+                return
+            yield self.vsebina
+            for x in self.levo.kld_pregled():
+                yield x
+            for x in self.desno.kld_pregled():
+                yield x
+    
+        def __repr__(self):
+            return 'IskalnoDrevo({})'.format(list(self.kld_pregled()))
+    
+        def __str__(self):
+            if self.prazno:
+                return '()'
+            else:
+                s_levo = '' if self.levo.prazno else ', levo=' + str(self.levo)
+                s_desno = '' if self.desno.prazno else ', desno=' + str(self.desno)
+                return '({0}{1}{2})'.format(self.vsebina, s_levo, s_desno)
+    
+        def je_pravilno(self, minimum=None, maksimum=None):
+            if self.prazno:
+                return True
+            elif minimum and (self.vsebina <= minimum):
+                return False
+            elif maksimum and (self.vsebina >= maksimum):
+                return False
+            else:
+                return (self.levo.je_pravilno(minimum, self.vsebina) and
+                        self.desno.je_pravilno(self.vsebina, maksimum))
+
+Tu bi rad le dodal, da od Pythona 3.3 `kld_pregled` napišete na krajše kot:
+
+        def kld_pregled(self):
+            if self.prazno:
+                return
+            yield self.vsebina
+            yield from self.levo.kld_pregled()
+            yield from self.desno.kld_pregled()
+
+### `dodaj`
+
+    ##########################################################################
+    # Sestavite metodo dodaj(self, podatek), ki v iskalno drevo vstavi nov
+    # podatek. Konstruktor kliče metodo dodaj; konstruktor ne bo deloval,
+    # dokler ne napišete pravilne implementacije metode dodaj. Zgled:
+    # 
+    #     >>> d = IskalnoDrevo([6, 9, 4, 7, 5, 1, 3])
+    #     >>> print(d)
+    #     (6, levo=(4, levo=(1, desno=(3)), desno=(5)), desno=(9, levo=(7)))
+    ##########################################################################
+        def dodaj(self, podatek):
+            if self.prazno:
+                self.prazno = False
+                self.levo = IskalnoDrevo()
+                self.vsebina = podatek
+                self.desno = IskalnoDrevo()
+            elif podatek < self.vsebina:
+                self.levo.dodaj(podatek)
+            elif podatek > self.vsebina:
+                self.desno.dodaj(podatek)
+
+Tu je rešitev taka, kot smo jo delali na predavanjih.
+
+### `poisci`
+
+    ##########################################################################
+    # Sestavite metodo poisci(self, podatek), ki v iskalnem drevesu poišče
+    # podatek. Vrne naj (pod)drevo, ki ga vsebuje v korenu, oziroma None, če
+    # ga ni v drevesu. Zgled:
+    # 
+    #     >>> d = IskalnoDrevo([6, 9, 4, 7, 5, 1, 3])
+    #     >>> print(d.poisci(9))
+    #     (9, levo=(7))
+    #     >>> print(d.poisci(11))
+    #     None
+    ##########################################################################
+        def poisci(self, podatek):
+            if self.prazno:
+                return
+            elif podatek < self.vsebina:
+                return self.levo.poisci(podatek)
+            elif podatek > self.vsebina:
+                return self.desno.poisci(podatek)
+            else:
+                return self
+
+Metoda je bila tu malo drugačna kot na predavanjih, saj smo tam vrnili `True`/`False` glede na to, ali je bil podatek v drevesu, tu pa vrnemo celo poddrevo ali pa `None`. Kdo od vas je mogoče še vedno vrnil logično vrednost ali pa podatek v korenu, sicer pa težav ni bilo.
+
+### `najbolj_levi_podatek`
+
+    ##########################################################################
+    # Sestavite metodo najbolj_levi_podatek(self, izbrisi=False), ki poišče
+    # in vrne najbolj levi podatek v drevesu. Do najbolj levega podatka
+    # pridemo tako, da začnemo pri korenu, nato pa skačemo v levo poddrevo.
+    # Najbolj levi podatek je v zadnjem nepraznem poddrevesu na tej poti.
+    # Če metodo pokličemo na praznem drevesu, naj vrne None. Metoda naj ima
+    # še argument izbrisi s privzeto vrednostjo False. V primeru, da je njegova
+    # vrednost True, naj metoda najbolj levo vozlišče izbriše iz drevesa.
+    #
+    # Zgled:
+    # 
+    #     >>> d = IskalnoDrevo([6, 9, 4, 7, 5, 1, 3])
+    #     >>> d.najbolj_levi_podatek()
+    #     1
+    #     >>> print(d)
+    #     (6, levo=(4, levo=(1, desno=(3)), desno=(5)), desno=(9, levo=(7)))
+    #     >>> d.najbolj_levi_podatek(izbrisi=True)
+    #     1
+    #     >>> print(d)
+    #     (6, levo=(4, levo=(3), desno=(5)), desno=(9, levo=(7)))
+    #
+    # Nasvet: Najbolj levo vozlišče lahko izbrišete tako, da njegove atribute
+    # prepišete z desnim poddrevesom.
+    ##########################################################################
+        def zamenjaj(self, drevo):
+            if drevo.prazno:
+                if self.prazno:
+                    pass
+                else:
+                    del self.vsebina
+                    del self.levo
+                    del self.desno
+                    self.prazno = True
+            else:
+                self.vsebina = drevo.vsebina
+                self.levo = drevo.levo
+                self.desno = drevo.desno
+                self.prazno = drevo.prazno
+    
+        def najbolj_levi_podatek(self, izbrisi=False):
+            if self.prazno:
+                return
+            elif self.levo.prazno:
+                podatek = self.vsebina
+                if izbrisi:
+                    self.zamenjaj(self.desno)
+                return podatek
+            else:
+                return self.levo.najbolj_levi_podatek(izbrisi)
+
+Kot je povedal že asistent, za zamenjavo drevesa z desnim poddrevesom ne morete napisati le `self = self.desno`, ker to drevesa ne spremeni. Večina vas je to vedela, zato ste postopoma zamenjali vse atribute. Dosti vas je napisalo pomožno metodo `zamenjaj`, ostali pa ste vso solato z zamenjavo tlačili v `najbolj_levi_podatek` (in kasneje še enkrat v `izbrisi`). Tega ne počnite.
+
+Pa tudi pri `zamenjaj` so bile težave, saj niste obravnavali vseh primerov. Na primer, če je bila zamenjava prazna, ste pri popravljenem drevesu pravilno nastavili atribut `prazno`, pozabili pa ste pobrisati atribute `vsebina`, `levo` in `desno`. Ali pa ste v prazno drevo dodali atribute, pozabili pa ste atribut `prazno` nastaviti na `False`. Precej takih napak se opazi šele takrat, ko je že prepozno, zato vas naprošam, da ste pri spreminjanju objektov v Pythonu zelo previdni.
+
+### `izbrisi`
+
+    ##########################################################################
+    # Sestavite metodo izbrisi(self, podatek), iz drevesa izbriše podatek.
+    # Zgled:
+    #
+    #     >>> d = IskalnoDrevo([6, 9, 4, 7, 5, 1, 3])
+    #     >>> print(d)
+    #     (6, levo=(4, levo=(1, desno=(3)), desno=(5)), desno=(9, levo=(7)))
+    #     >>> d.izbrisi(4)
+    #     >>> print(d)
+    #     (6, levo=(5, levo=(1, desno=(3))), desno=(9, levo=(7)))
+    #     >>> d.izbrisi(5)
+    #     >>> print(d)
+    #     (6, levo=(1, desno=(3)), desno=(9, levo=(7)))
+    # 
+    # Metoda naj deluje tako, da v primeru, ko je desno poddrevo prazno
+    # vozlišče nadomesti z levim poddrevesom. V primeru, da desno poddrevo
+    # ni prazno, pa naj v vozlišče prestavi najbolj levi podatek iz desnega
+    # poddrevesa.
+    ##########################################################################
+        def izbrisi(self, podatek):
+            if self.prazno:
+                return
+            elif podatek < self.vsebina:
+                self.levo.izbrisi(podatek)
+            elif podatek > self.vsebina:
+                self.desno.izbrisi(podatek)
+            else:
+                if self.desno.prazno:
+                    self.zamenjaj(self.levo)
+                else:
+                    najbolj_levi = self.desno.najbolj_levi_podatek(izbrisi=True)
+                    self.vsebina = najbolj_levi
+
+Večina vas je napisala zgornjo varianto. Lahko pa ste bili tudi bolj zviti in si pomagali z metodo `poisci`, ki vrne poddrevo, ki vsebuje iskani podatek v korenu. Ker je seveda to poddrevo del prvotnega drevesa, lahko podatek izbrišete iz poddrevesa, pa se bo pobrisal tudi iz prvotnega drevesa:
+
+        def izbrisi(self, podatek):
+            poddrevo = self.poisci(podatek)
+            if poddrevo is None:
+                return
+            if poddrevo.desno.prazno:
+                poddrevo.zamenjaj(poddrevo.levo)
+            else:
+                najbolj_levi = poddrevo.desno.najbolj_levi_podatek(izbrisi=True)
+                poddrevo.vsebina = najbolj_levi
+
+### `po_vrsti`
+
+    ##########################################################################
+    # Sestavite generator po_vrsti(self), ki našteje vse podatke v drevesu
+    # od najmanjšega do največjega. Zgled:
+    # 
+    #     >>> d = IskalnoDrevo([6, 9, 4, 7, 5, 1, 3])
+    #     >>> [x for x in d.po_vrsti()]
+    #     [1, 3, 4, 5, 6, 7, 9]
+    ##########################################################################
+        def po_vrsti(self):
+            if not self.prazno:
+                yield from self.levo.po_vrsti()
+                yield self.vsebina
+                yield from self.desno.po_vrsti()
+
+Vemo, kako se po vrsti pojavljajo elementi v iskalnem drevesu: najprej so vsi tisti iz levega poddrevesa, nato je koren, nato pa še vsi iz desnega poddrevesa. Tako lahko napišete generator, ki je varianta že podanega `kld_pregled`. Večina vas je napisala rešitev tipa:
+
+    def po_vrsti(self):
+        while not self.prazno:
+            podatek = self.najbolj_levi_podatek(izbrisi=True)
+            yield podatek
+
+kar uniči drevo. To je tako, kot bi napisali:
+
+    def preberi(knjiga):
+        while knjiga.ima_se_kaj_listov:
+            list = knjiga.iztrgaj_list()
+            preberi_obe_strani(list)
+
+Upam, da knjig ne berete na tak način. Taka napaka se zna tudi dobro skriti, če na primer v drevo v vašem programu na enem koncu dodajate elemente, potem pa jih na drugem koncu berete po vrsti, nato pa na prvem koncu spet malo dodajate in tako naprej. Če je novih elementov v drevesu veliko, ne boste opazili, da so vmes stari izginili.
+
+Poleg tega ima taka rešitev časovno zahtevnost $O(n g)$, kjer je $g$ globina drevesa, namesto $O(n)$. Da ne bi uničili prvotnega drevesa, ste si nekateri pomagali z metodo `deepcopy`, ki drevo predhodno shrani, vendar je to tako, kot bi napisali:
+
+    def preberi(knjiga):
+        prepisana_knjiga = knjiga.prepisi_vsebino_knjige()
+        while prepisana_knjiga.ima_se_kaj_listov:
+            list = prepisana_knjiga.iztrgaj_list()
+            preberi_obe_strani(list)
+
+Upam, da tudi na tak način ne berete knjig. Rešitev
+
+    def po_vrsti(self):
+        elementi = []
+        kld_generator = self.kld_pregled()
+        while True:
+            try:
+                naslednji = next(kld_generator)
+                elementi.append(naslednji)
+            except:
+                break
+        elementi.sort()
+        for element in elementi:
+            yield element
+
+pa štejem za goljufanje (poleg tega ima časovno zahtevnost $O(n \log n)$. Če pa že, jo lahko napišete vsaj kot
+
+    def po_vrsti(self):
+        yield from sorted(self.kld_pregled())
