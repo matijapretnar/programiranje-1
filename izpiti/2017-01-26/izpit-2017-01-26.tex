@@ -1,0 +1,59 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\begin{document}
+
+\izpit{Programiranje I: 1.\ izpit}{26.\ januar 2017}{
+  Čas reševanja je 150 minut.
+  \textbf{Funkcij v Haskellu ne pozabite opremiti z ustrezno signaturo.}
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Aritmetični izrazi, 30 točk]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Orbite, 20 točk]
+
+\podnaloga
+  Sestavite funkcijo \texttt{orbita}, ki izračuna seznam vseh različnih
+  elementov, ki jih lahko dobimo z zaporedno uporabo dane funkcije na danem
+  elementu. Na primer:
+  \begin{verbatim}
+  ghci> orbita (\x -> mod (x + 2) 10) 13
+  [13,5,7,9,1,3]
+  ghci> orbita succ 5
+  [5,6,7,8,9,10,11,...]
+  ghci> orbita negate 0
+  [0]
+  ghci> orbita negate 1
+  [1,-1]
+  \end{verbatim}
+
+\podnaloga
+  Sestavite funkcijo \texttt{generatorji}, ki izračuna najkrajši seznam vseh
+  elementov, ki jih potrebujemo, da z zaporedno uporabo dane funkcije dobimo
+  vse elemente danega seznama. Na primer:
+  \begin{verbatim}
+  ghci> generatorji negate [1,-2,-1]
+  [1,-2]
+  ghci> generatorji (\x -> (x + 3) `mod` 10) [1,2,3,4]
+  [1]
+  ghci> generatorji (\x -> (x + 2) `mod` 10) [1,2,3,4]
+  [1,2]
+  ghci> generatorji (\x -> (x + 2) `mod` 10) [1,2,3,4,5,11]
+  [2,11] 
+  \end{verbatim}
+  Če je najkrajših seznamov več, lahko funkcija vrne katerega koli.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Fiksne točke, 10 točk]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Zobniki, 20 točk]
+ 
+\end{document}
+
