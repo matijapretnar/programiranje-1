@@ -17,21 +17,51 @@
 Aritmetični izraz, ki vključuje le cela števila ter njihove vsote in produkte,
 lahko predstavimo s podatkovnim tipom \texttt{Izraz}, ki ga definiramo takole:
 \begin{verbatim}
-  data Izraz = Samo Int | Plus Izraz Izraz | Krat Izraz Izraz deriving Show
+  data Izraz = Samo Integer | Plus Izraz Izraz | Krat Izraz Izraz
 \end{verbatim}
-Aritmetičnemu izrazu \texttt{(1 + 2) * 3} tako ustreza izraz \texttt{Krat (Plus (Samo 1) (Samo 2)) (Samo 3)}.
+Aritmetičnemu izrazu \texttt{(1 + 2) * (3 * 4)} tako ustreza izraz
+\begin{verbatim}
+  Krat (Plus (Samo 1) (Samo 2)) (Krat (Samo 3) (Samo 4))
+\end{verbatim}
+ki si ga lahko predstavljamo z drevesom
+\[
+  \begin{tikzpicture}[level distance=0.7cm,
+    level 1/.style={sibling distance=4cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=2cm}
+    ]
+    \node[circle, draw] {\texttt{*}}
+      child {node[circle, draw] {\texttt{+}}
+        child {node[circle, draw] {1}}
+        child {node[circle, draw] {2}}
+      }
+      child {node[circle, draw] {\texttt{+}}
+        child {node[circle, draw] {3}}
+        child {node[circle, draw] {4}}
+      };
+  \end{tikzpicture}
+\]
 
 \podnaloga
-  Sestavite funkcijo \texttt{izračunaj}, ki izraz evalvira. Na primer:
+  Sestavite funkcijo \texttt{izracunaj}, ki izraz evalvira. Na primer:
   \begin{verbatim}
   ghci> izracunaj (Samo 1)
   1
   ghci> izracunaj (Krat (Plus (Samo 1) (Samo 2)) (Samo 3))
   9
+  ghci> izracunaj (Krat (Plus (Samo 1) (Samo 2)) (Krat (Samo 3) (Samo 4)))
+  36
   \end{verbatim}
 
 \podnaloga
   Podatkovni tip \texttt{Izraz} napravite za primerek razreda tipov \texttt{Num}.
+  Vrednosti \texttt{abs}, \texttt{signum} in \texttt{negate} lahko definirate kot \texttt{undefined}.
+  \begin{verbatim}
+  ghci> 1 + (Samo 2)
+  Plus (Samo 1) (Samo 2)
+  ghci> (1 + 3) * (Plus (Samo 1) (Samo 2))
+  Krat (Plus (Samo 1) (Samo 3)) (Plus (Samo 1) (Samo 2))
+  \end{verbatim}
 
 \podnaloga
   Definirajte podatkovni tip \texttt{RazsirjeniIzraz}, ki ima konstruktorja
@@ -75,64 +105,61 @@ Aritmetičnemu izrazu \texttt{(1 + 2) * 3} tako ustreza izraz \texttt{Krat (Plus
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Fiksne točke, 10 točk]
-
   Sestavite funkcijo \texttt{fiksna}, ki sprejme urejen seznam celih števil 
-  $[x_i]_{i=1}^n$ in vrne najmanjši indeks $i$, za katerega velja $x_i = i$.
-  Če tak indeks ne obstaja, naj funkcija vrne {\sl None} oziroma {\sl Nothing}.
+  $[x_1, \dots, x_n]$ in v času $O(\log n)$ izračuna najmanjši indeks $i$, za katerega velja $x_i = i$.
+  Če tak indeks ne obstaja, naj funkcija vrne \texttt{None} oziroma \texttt{Nothing}.
   Na primer:
 
   \begin{verbatim}
-  ghci> fiksna [-4, -2, 0, 2, 4]
-  Just 4
-  ghci> fiksna [-4, -2, 0, 3, 4]
-  Just 3
-  ghci> fiksna [-4, -2, 0, 2, 3]
-  Nothing
-
-  >>> fiksna([-4, -2, 0, 2, 4])
-  4
-  >>> fiksna([-4, -2, 0, 3, 4])
-  3
-  >>> fiksna([-4, -2, 0, 2, 3])
-  None
+  >>> fiksna([-4, -2, 0, 2, 4])         ghci> fiksna [-4, -2, 0, 2, 4]
+  4                                     Just 4
+  >>> fiksna([-4, -2, 0, 3, 4])         ghci> fiksna [-4, -2, 0, 3, 4]
+  3                                     Just 3
+  >>> fiksna([-4, -2, 0, 2, 3])         ghci> fiksna [-4, -2, 0, 2, 3]
+  None                                  Nothing
   \end{verbatim}   
+  %
+  Nalogo lahko rešujete v Pythonu ali v Haskellu.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\naloga[Nim, 20 točk]
+\naloga[Vžigalice, 20 točk]
 
-  Igralca $A$ in $B$ igrata igro {\em Vžigalice}. Igralca igrata
-  izmenično, igro prične igrati igralec $A$. Na začetku igre je pred igralcema
-  kup $n$ vžigalic. Igralec na potezi s kupa odstrani najmanj $3$ vžigalice 
-  in največ $10$ vžigalic. Izgubi tisti igralec, ki ne more izvesti poteze.
+Igralca $A$ in $B$ igrata igro {\em Vžigalice}. Igralca igrata
+izmenično, igro prične igrati igralec $A$. Na začetku igre je pred igralcema
+kup $n$ vžigalic. Igralec na potezi s kupa odstrani najmanj $3$ vžigalice 
+in največ $10$ vžigalic. Izgubi tisti igralec, ki ne more izvesti poteze.
 
-  \podnaloga
-    Sestavite funkcijo \texttt{kup}, ki za dano število $n$ ugotovi,
-    kateri od igralcev ima zmagovalno strategijo. Na primer:
-    \begin{verbatim}
-    >>> kup(2)
-    B
-    >>> kup(3)
-    A
-    >>> kup(11)
-    B
-    \end{verbatim}
+\podnaloga
+  Sestavite funkcijo \texttt{kup}, ki za dano število $n$ učinkovito izračuna,
+  kateri od igralcev ima zmagovalno strategijo. Na primer:
+  \begin{verbatim}
+  >>> kup(2)                            ghci> kup 2 
+  'B'                                   "B"
+  >>> kup(3)                            ghci> kup 3 
+  'A'                                   "A"
+  >>> kup(11)                           ghci> kup 11 
+  'B'                                   "B"
+  \end{verbatim}
 
-  \podnaloga 
-    Igro razširimo tako, da igralca igrata z večimi kupi vžigalic. Igralec
-    na potezi si izbere kup in z njega odstrani najmanj $3$ in največ $10$
-    vžigalic. Izgubi tisti igralec, ki ne more izvesti poteze. 
-    Sestavite funkcijo \texttt{kupi}, ki za dan seznam naravnih števil
-    ugotovi, kateri od igralcev ima zmagovalno strategijo. Na primer:
-    \begin{verbatim}
-    >>> kupi([11])
-    B
-    >>> kupi([2, 11])
-    A
-    >>> kupi([3, 11])
-    B
-    >>> kupi([2, 3, 11])
-    B
-    \end{verbatim}
+\podnaloga 
+  Igro razširimo tako, da igralca igrata z večimi kupi vžigalic. Igralec
+  na potezi si izbere kup in z njega odstrani najmanj $3$ in največ $10$
+  vžigalic. Izgubi tisti igralec, ki ne more izvesti poteze. 
+  Sestavite funkcijo \texttt{kupi}, ki za dan seznam naravnih števil
+  učinkovito izračuna, kateri od igralcev ima zmagovalno strategijo. Na primer:
+  \begin{verbatim}
+  >>> kupi([11])                        ghci> kupi [11]
+  'B'                                   "B"
+  >>> kupi([2, 11])                     ghci> kupi [2, 11]
+  'A'                                   "A"
+  >>> kupi([3, 11])                     ghci> kupi [3, 11]
+  'B'                                   "B"
+  >>> kupi([2, 3, 11])                  ghci> kupi [2, 3, 11]
+  'B'                                   "B"
+  \end{verbatim}
+%
+Nalogo lahko rešujete v Pythonu ali v Haskellu.
 
 \end{document}
 
