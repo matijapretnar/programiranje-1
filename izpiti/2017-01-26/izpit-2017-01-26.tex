@@ -52,6 +52,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Fiksne točke, 10 točk]
 
+  Sestavite funkcijo \texttt{fiksna}, ki sprejme urejen seznam celih števil 
+  $[x_i]_{i=1}^n$ in vrne najmanjši indeks $i$, za katerega velja $x_i = i$.
+  Če tak indeks ne obstaja, naj funkcija vrne {\sl None} oziroma {\sl Nothing}.
+  Na primer:
+
+  \begin{verbatim}
+  ghci> fiksna [-4, -2, 0, 2, 4]
+  Just 4
+  ghci> fiksna [-4, -2, 0, 3, 4]
+  Just 3
+  ghci> fiksna [-4, -2, 0, 2, 3]
+  Nothing
+
+  >>> fiksna([-4, -2, 0, 2, 4])
+  4
+  >>> fiksna([-4, -2, 0, 3, 4])
+  3
+  >>> fiksna([-4, -2, 0, 2, 3])
+  None
+  \end{verbatim}   
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Zobniki, 20 točk]
  
