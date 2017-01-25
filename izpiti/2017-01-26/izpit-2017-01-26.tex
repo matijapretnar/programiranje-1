@@ -71,15 +71,17 @@ ki si ga lahko predstavljamo z drevesom
   Na primer:
 
   \begin{verbatim}
-  >>> fiksna([-4, -2, 0, 2, 4])         ghci> fiksna [-4, -2, 0, 2, 4]
-  4                                     Just 4
-  >>> fiksna([-4, -2, 0, 3, 4])         ghci> fiksna [-4, -2, 0, 3, 4]
-  3                                     Just 3
-  >>> fiksna([-4, -2, 0, 2, 3])         ghci> fiksna [-4, -2, 0, 2, 3]
-  None                                  Nothing
+  >>> fiksna([-4, -2, 0, 2, 4])
+  4
+  >>> fiksna([-4, -2, 0, 3, 4])
+  3
+  >>> fiksna([-4, -2, 0, 2, 3])
+  None
   \end{verbatim}   
   %
-  Nalogo lahko rešujete v Pythonu ali v Haskellu.
+  Nalogo načeloma rešujte v Pythonu, ker boste tako laže dosegli iskano časovno
+  zahtevnost. Če želite uporabiti Haskell, namesto seznamov uporabite tabele,
+  ki jih ponuja modul \texttt{Data.Array}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Orbite, 20 točk]
