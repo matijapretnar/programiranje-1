@@ -14,6 +14,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Aritmetični izrazi, 30 točk]
 
+Aritmetični izraz, ki vključuje le cela števila ter njihove vsote in produkte,
+lahko predstavimo s podatkovnim tipom \texttt{Izraz}, ki ga definiramo takole:
+\begin{verbatim}
+  data Izraz = Samo Int | Plus Izraz Izraz | Krat Izraz Izraz deriving Show
+\end{verbatim}
+Aritmetičnemu izrazu \texttt{(1 + 2) * 3} tako ustreza izraz \texttt{Krat (Plus (Samo 1) (Samo 2)) (Samo 3)}.
+
+\podnaloga
+  Sestavite funkcijo \texttt{izračunaj}, ki izraz evalvira. Na primer:
+  \begin{verbatim}
+  ghci> izracunaj (Samo 1)
+  1
+  ghci> izracunaj (Krat (Plus (Samo 1) (Samo 2)) (Samo 3))
+  9
+  \end{verbatim}
+
+\podnaloga
+  Podatkovni tip \texttt{Izraz} napravite za primerek razreda tipov \texttt{Num}.
+
+\podnaloga
+  Definirajte podatkovni tip \texttt{RazsirjeniIzraz}, ki ima konstruktorja
+  za seštevanje in množenje, ki sprejmeta seznam objektov tipa \texttt{Izraz}.
+  ???
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Orbite, 20 točk]
 
@@ -74,7 +98,41 @@
   \end{verbatim}   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\naloga[Zobniki, 20 točk]
- 
+\naloga[Nim, 20 točk]
+
+  Igralca $A$ in $B$ igrata igro {\em Vžigalice}. Igralca igrata
+  izmenično, igro prične igrati igralec $A$. Na začetku igre je pred igralcema
+  kup $n$ vžigalic. Igralec na potezi s kupa odstrani najmanj $3$ vžigalice 
+  in največ $10$ vžigalic. Izgubi tisti igralec, ki ne more izvesti poteze.
+
+  \podnaloga
+    Sestavite funkcijo \texttt{kup}, ki za dano število $n$ ugotovi,
+    kateri od igralcev ima zmagovalno strategijo. Na primer:
+    \begin{verbatim}
+    >>> kup(2)
+    B
+    >>> kup(3)
+    A
+    >>> kup(11)
+    B
+    \end{verbatim}
+
+  \podnaloga 
+    Igro razširimo tako, da igralca igrata z večimi kupi vžigalic. Igralec
+    na potezi si izbere kup in z njega odstrani najmanj $3$ in največ $10$
+    vžigalic. Izgubi tisti igralec, ki ne more izvesti poteze. 
+    Sestavite funkcijo \texttt{kupi}, ki za dan seznam naravnih števil
+    ugotovi, kateri od igralcev ima zmagovalno strategijo. Na primer:
+    \begin{verbatim}
+    >>> kupi([11])
+    B
+    >>> kupi([2, 11])
+    A
+    >>> kupi([3, 11])
+    B
+    >>> kupi([2, 3, 11])
+    B
+    \end{verbatim}
+
 \end{document}
 
