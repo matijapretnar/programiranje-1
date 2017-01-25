@@ -64,6 +64,24 @@ ki si ga lahko predstavljamo z drevesom
   \end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Fiksne točke, 20 točk]
+  Sestavite funkcijo \texttt{fiksna}, ki sprejme urejen seznam celih števil 
+  $[x_1, \dots, x_n]$ in v času $O(\log n)$ izračuna najmanjši indeks $i$, za katerega velja $x_i = i$.
+  Če tak indeks ne obstaja, naj funkcija vrne \texttt{None} oziroma \texttt{Nothing}.
+  Na primer:
+
+  \begin{verbatim}
+  >>> fiksna([-4, -2, 0, 2, 4])         ghci> fiksna [-4, -2, 0, 2, 4]
+  4                                     Just 4
+  >>> fiksna([-4, -2, 0, 3, 4])         ghci> fiksna [-4, -2, 0, 3, 4]
+  3                                     Just 3
+  >>> fiksna([-4, -2, 0, 2, 3])         ghci> fiksna [-4, -2, 0, 2, 3]
+  None                                  Nothing
+  \end{verbatim}   
+  %
+  Nalogo lahko rešujete v Pythonu ali v Haskellu.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Orbite, 20 točk]
 
 \podnaloga
@@ -96,25 +114,6 @@ ki si ga lahko predstavljamo z drevesom
   [2,11] 
   \end{verbatim}
   Če je najkrajših seznamov več, lahko funkcija vrne katerega koli.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\naloga[Fiksne točke, 20 točk]
-  Sestavite funkcijo \texttt{fiksna}, ki sprejme urejen seznam celih števil 
-  $[x_1, \dots, x_n]$ in v času $O(\log n)$ izračuna najmanjši indeks $i$, za katerega velja $x_i = i$.
-  Če tak indeks ne obstaja, naj funkcija vrne \texttt{None} oziroma \texttt{Nothing}.
-  Na primer:
-
-  \begin{verbatim}
-  >>> fiksna([-4, -2, 0, 2, 4])         ghci> fiksna [-4, -2, 0, 2, 4]
-  4                                     Just 4
-  >>> fiksna([-4, -2, 0, 3, 4])         ghci> fiksna [-4, -2, 0, 3, 4]
-  3                                     Just 3
-  >>> fiksna([-4, -2, 0, 2, 3])         ghci> fiksna [-4, -2, 0, 2, 3]
-  None                                  Nothing
-  \end{verbatim}   
-  %
-  Nalogo lahko rešujete v Pythonu ali v Haskellu.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
