@@ -12,7 +12,7 @@ re_podatkov_serije = re.compile(
     r'.*?'
     # leto serije
     r'<span class="lister-item-year text-muted unbold">'
-    r'(\((?P<oznaka>I+)\) )?'  # morebitna oznaka za več serij z istim imenom
+    r'(\((?P<oznaka>[IVXLCDM]+)\) )?'  # morebitna oznaka za več serij z istim imenom
     r'\('
     r'(?P<leto_zacetka>\d{4})'
     r'–? ?'
@@ -53,22 +53,28 @@ re_igralca = re.compile(
 
 
 def podatki_serije(blok_serije):
-    serija = re_podatkov_serije.search(blok_serije).groupdict()
-    serija['igralci'] = [
-        ujemanje_igralca.groupdict() for ujemanje_igralca in re_igralca.finditer(serija['igralci'])
-    ]
-    serija['opis'] = serija['opis'].strip()
-    ujemanje_dolzine = re_dolzine.search(serija['podatki'])
-    serija['dolzina'] = ujemanje_dolzine.group('dolzina') if ujemanje_dolzine else None
-    ujemanje_zanrov = re_zanrov.search(serija['podatki'])
-    serija['zanri'] = ujemanje_zanrov.group('zanri').strip().split(', ') if ujemanje_zanrov else []
-    del serija['podatki']
-    return serija
+    ujemanje = re_podatkov_serije.search(blok_serije)
+    if ujemanje:
+        serija = ujemanje.groupdict()
+        serija['id'] = int(serija['id'])
+        serija['igralci'] = [
+            ujemanje_igralca.groupdict() for ujemanje_igralca in re_igralca.finditer(serija['igralci'])
+        ]
+        serija['opis'] = serija['opis'].strip()
+        ujemanje_dolzine = re_dolzine.search(serija['podatki'])
+        serija['dolzina'] = ujemanje_dolzine.group('dolzina') if ujemanje_dolzine else None
+        ujemanje_zanrov = re_zanrov.search(serija['podatki'])
+        serija['zanri'] = ujemanje_zanrov.group('zanri').strip().split(', ') if ujemanje_zanrov else []
+        del serija['podatki']
+        return serija
+    else:
+        print('ENE SERIJE PA NE ZNAM PREBRATI')
+        print(blok_serije)
 
 
 def shrani_serije_v_imenik(imenik, stevilo_strani=20, stevilo_serij_na_stran=100):
     os.makedirs(imenik, exist_ok=True)
-    for stevilka_strani in range(stevilo_strani):
+    for stevilka_strani in range(1, stevilo_strani + 1):
         naslov_strani = (
             'http://www.imdb.com/search/title?'
             'sort=num_votes,desc&title_type=tv_series&'
@@ -85,13 +91,37 @@ def preberi_serije_v_imeniku(imenik):
     serije = []
     for ime_datoteke in os.listdir(imenik):
         polna_pot_datoteke = os.path.join(imenik, ime_datoteke)
-        datoteka = open(polna_pot_datoteke)
-        vsebina_datoteke = datoteka.read()
-        for blok_serije in re_bloka_serije.finditer(vsebina_datoteke):
-            serije.append(podatki_serije(blok_serije.group(0)))
+        with open(polna_pot_datoteke) as datoteka:
+            vsebina_datoteke = datoteka.read()
+            for blok_serije in re_bloka_serije.finditer(vsebina_datoteke):
+                serije.append(podatki_serije(blok_serije.group(0)))
     return serije
 
 
-shrani_serije_v_imenik('testni-imenik-2', 1, 10)
+# shrani_serije_v_imenik('testni-imenik', 10, 10)
 # shrani_serije_v_imenik('serije')
 serije = preberi_serije_v_imeniku('serije')
+
+import json
+with open('serije.json', 'w') as datoteka:
+    json.dump(serije, datoteka, indent=2)
+
+import csv
+with open('serije.csv', 'w') as datoteka:
+    polja = [
+        'id',
+        'ime',
+        'oznaka',
+        'leto_zacetka',
+        'leto_konca',
+        'ocena',
+        'opis',
+        # 'igralci',
+        'stevilo_glasov',
+        'dolzina',
+        # 'zanri'
+    ]
+    pisalec = csv.DictWriter(datoteka, polja, extrasaction='ignore')
+    pisalec.writeheader()
+    for serija in serije:
+        pisalec.writerow(serija)
