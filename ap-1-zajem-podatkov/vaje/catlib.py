@@ -90,7 +90,7 @@ def write_csv(fieldnames, rows, directory, filename):
     cell-value.
 
     '''
-    os.makedir(directory, exists_ok=True)
+    os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
     with open(path, 'w') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
