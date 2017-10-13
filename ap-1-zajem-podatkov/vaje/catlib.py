@@ -78,7 +78,7 @@ def page_to_ads(page):
 # advertisement and extracts from it the following data: Name, price, and
 # the description as displayed on the page.
 def get_dict_from_ad_block(block):
-    '''TODO'''
+    '''Build a dictionary containing the name, description and price of an ad block.'''
     rx = re.compile(r'title="(?P<name>.*?)"'
                     r'.*?</h3>\s*(?P<description>.*?)\s*</?div'
                     r'.*?class="price">(?P<price>.*?)</div',
@@ -91,10 +91,15 @@ def get_dict_from_ad_block(block):
 
 # Write a function that reads a page from a file and returns the list of
 # dictionaries containing the information for each ad on that page.
-def undefined( TODO ):
-    '''TODO'''
-    TODO
+def ads_from_file(filename, directory):
+    '''Parse the ads in filename/directory into a dictionary list.'''
+    page = read_file_to_string(filename, directory)
+    blocks = page_to_ads(page)
+    ads = [get_dict_from_ad_block(block) for block in blocks]
+    return ads
 
+def ads_frontpage():
+    return ads_from_file(cat_directory, frontpage_filename)
 
 
 ########################################################################
@@ -119,6 +124,9 @@ def write_csv(fieldnames, rows, directory, filename):
 
 # Write a function that takes a list of cat advertisement dictionaries and
 # writes it to a csv file.
-def undefined( TODO ):
-    '''TODO'''
-    TODO
+def write_cat_ads_to_csv(ads, directory, filename):
+    '''Write a CSV file containing one ad from "ads" on each row.'''
+    write_csv(ads[0].keys, ads, directory, filename)
+
+def write_cat_csv(ads):
+    write_cat_ads_to_csv(ads, cat_directory, csv_filename)
