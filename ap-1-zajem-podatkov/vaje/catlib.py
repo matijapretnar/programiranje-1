@@ -112,7 +112,7 @@ def write_csv(fieldnames, rows, directory, filename):
     cell-value.
 
     '''
-    os.makedir(directory, exists_ok=True)
+    os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
     with open(path, 'w') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -126,7 +126,8 @@ def write_csv(fieldnames, rows, directory, filename):
 # writes it to a csv file.
 def write_cat_ads_to_csv(ads, directory, filename):
     '''Write a CSV file containing one ad from "ads" on each row.'''
-    write_csv(ads[0].keys, ads, directory, filename)
+    write_csv(ads[0].keys(), ads, directory, filename)
 
 def write_cat_csv(ads):
+    '''Save "ads" to "cat_directory"/"csv_filename"'''
     write_cat_ads_to_csv(ads, cat_directory, csv_filename)
