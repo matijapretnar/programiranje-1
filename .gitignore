@@ -2,3 +2,6 @@
 *.o
 *.pyc
 .ipynb_checkpoints
+*.xdv
+*.fls
+*.fdb_latexmk
