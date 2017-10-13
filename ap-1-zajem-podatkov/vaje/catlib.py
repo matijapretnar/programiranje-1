@@ -79,12 +79,13 @@ def page_to_ads(page):
 # the description as displayed on the page.
 def get_dict_from_ad_block(block):
     '''TODO'''
-    rx = re.compile(r'.*?title="(?P<name>.*?)"'
-                    r'.*?redirectTo=(?P<url>.*?\.html)">',
+    rx = re.compile(r'title="(?P<name>.*?)"'
+                    r'.*?</h3>\s*(?P<description>.*?)\s*</?div'
+                    r'.*?class="price">(?P<price>.*?)</div',
                     re.DOTALL)
     data = re.search(rx, block)
-    dict = data.groupdict()
-    return dict
+    ad_dict = data.groupdict()
+    return ad_dict
 
 
 
