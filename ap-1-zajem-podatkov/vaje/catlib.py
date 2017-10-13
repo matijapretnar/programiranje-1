@@ -65,7 +65,7 @@ def undefined( TODO ):
 # Define a function that takes a string corresponding to the block of one
 # advertisement and extracts from it the following data: Name, URL, price, and
 # the description as displayed on the page. Notice that the URL only starts at
-# the "redirectTo=" component of the href="...".
+# the "redirectTo=" component of the href="...", and it ends at ".html".
 def undefined( TODO ):
     '''TODO'''
     TODO
