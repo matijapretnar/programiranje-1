@@ -14,7 +14,8 @@ cats_frontpage_url = "TODO"
 cat_directory = "TODO"
 # the filename we use to save the frontpage
 frontpage_filename = "TODO"
-
+# the filename for the CSV file for the extracted data
+csv_filename = "TODO"
 
 def download_url_to_string(url):
     '''This function takes a URL as argument and tries to download it
