@@ -12,8 +12,6 @@
 #
 ##########################################################################
 
-import re
-
 odlomek = """Gori nekje v gorah, ne ve se več, ali je bilo pri Macigoju ali
 Naravniku, je šivala gospodinja v senci pod drevesom in zibala otroka. Naenkrat
 prilomasti - pa prej ni ničesar opazila - medved in ji moli taco, v kateri je
@@ -40,14 +38,20 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # {'izdere', 'debel', 'oddide', 'začudeno'}
 ##########################################################################
 
-def find_words(text, substring):
-    r = r'\b\w*' + substring + r'\w*\b'
-    return set (re.findall(r, text))
+# Motivation: Naive splitting on whitespace without regex is too simple minded:
 
 # text.split() splits by consecutive whitespace, not removing punctuation from
 # words. This yields a different result for example for find_words_str(odlomek, 'de')
 def find_words_str(text, substring):
-    return {w for w in text.split() if substring in w}
+    return { w for w in text.split() if substring in w }
+
+# Hint: use boundary   \b   and word  \w
+import re
+def find_words(text, substring):
+    # Remark: for regular expressions always use raw strings   r'...'
+    rx = r'\b\w*' + substring + r'\w*\b'
+    matches = re.findall(rx, text)
+    return set (matches)
 
 ##########################################################################
 # 2) Sestavite funkcijo najdi_predpono(besedilo, predpona), ki vrne množico
@@ -66,12 +70,9 @@ def find_words_str(text, substring):
 ##########################################################################
 
 def find_prefix(text, prefix):
-    r = r'\b' + prefix + r'\w*\b'
-    return set (re.findall (r, text))
-
-# this version suffers from the same problem as find_words_str
-def find_prefix_str(text, prefix):
-    return {w for w in text.split() if w.startswith(prefix)}
+    r'^'
+    rx = r'\b' + prefix + r'\w*\b'
+    return set(re.findall(rx, text))
 
 ##########################################################################
 # 3) Sestavite funkcijo najdi_pripono(besedilo, pripona), ki vrne množico
@@ -93,6 +94,7 @@ def find_suffix(text, suffix):
     r = r'\b\w*' + suffix + r'\b'
     return set (re.findall (r, text))
 
+
 ##########################################################################
 # 4) Sestavite funkcijo podvojene_crke(besedilo), ki sprejme niz besedilo
 # in vrne množico vseh besed, ki vsebujejo podvojene črke. Zgled:
@@ -108,6 +110,10 @@ def find_suffix(text, suffix):
 # {'volunteer', 'pressed'}
 ##########################################################################
 
+# Idea: First find double letters with a backreference, then pick the
+# surrounding words, then fix the backref
+
 def double_letters(text):
-    r = r'(\b\w*(.)\2\w*\b)'
-    return { w[0] for w in (re.findall (r, text)) }
+    rx = r'(\b\w*(\w)\2\w*\b)'
+    matches = re.findall(rx,text)
+    return set([ match[0] for match in matches ])
