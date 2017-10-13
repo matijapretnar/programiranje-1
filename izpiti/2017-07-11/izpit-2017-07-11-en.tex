@@ -1,0 +1,170 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\begin{document}
+
+\izpit{Programiranje I: 2.\ izpit}{11.\ julij 2017}{
+  Čas reševanja je 150 minut.
+  \textbf{Do not forget to equip the Haskell features with an appropriate signature.}
+  Great success!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Študenti, 20 točk]
+
+Students with Programming 1 can be presented with
+Type \texttt{Student}, which we define here:
+\begin{verbatim}
+  type Student = (Ime, Priimek, VpisnaStevilka, Rezultati)
+  type Ime = String
+  type Priimek = String
+  type VpisnaStevilka = Int
+  data Rezultati = Neudelezen | Rezultat (Int, Int, Int, Int) deriving (Show)
+\end{verbatim}
+
+Let's save you another year with the next three students:
+\begin{verbatim}
+  a = ("Ana", "Bertoncelj", 1, Rezultat (10, 20, 15, 2)) :: Student
+  b = ("Bine", "Cencelj", 2, Rezultat (5, 13, 20, 17)) :: Student
+  c = ("Cilka", "Drnovsek", 3, Neudelezen) :: Student
+  
+  type Letnik = [Student]
+  l = [a, b, c] :: Letnik
+\end{verbatim}
+
+\podnaloga
+  Sestavite funkcijo \texttt{vsotaTock}, Which calculates the sum of students' points.
+  \begin{verbatim}
+  ghci> vsotaTock a
+  Just 47
+  ghci> vsotaTock c
+  Nothing
+  \end{verbatim}
+
+\podnaloga
+  Sestavite funkcijo \texttt{najboljsi}, Who returns the student to the year that has achieved the best result.
+  \begin{verbatim}
+  ghci> najboljsi l
+  ("Bine","Cencelj",2,Rezultat (5,13,20,17))
+  \end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Graf, 20 točk]
+
+The data type \texttt{Graph} is represented as follows:
+
+  \begin{verbatim}
+  type Graf = (Vozlisca, Povezave)
+  type Vozlisca = [Int]
+  type Povezave = [(Int, Int)]
+
+  prazniGraf = ([], []) :: Graf
+  \end{verbatim}
+
+Let's save another example of a graph:
+  \begin{verbatim}
+  v = [1,2,3,4,5] :: Sailor
+  p = [(1,2), (1,3), (2,4), (3,5), (4,5)] :: Links
+  g = (v, p) :: Graf
+  \end{verbatim}
+
+\podnaloga
+Compose the \texttt{jeGraf} function to verify that it is input
+The graph really is true, so if all the links listed are only between the given nodes.
+  \begin{verbatim}
+  ghci> jeGraf g
+  True
+  ghci> jeGraf ([1,2], [(1,3)])
+  False
+  \end{verbatim}
+
+\podnaloga
+We enrich the data type to the type \texttt{PaintedGraf} that has it
+Each node is colored. Colors are presented as natural numbers.
+  \begin{verbatim}
+  type PobarvaniGraf = (Graf, [Barva])
+  type Barva = Int
+  \end{verbatim}
+
+Compose the \texttt{nicePathValue} function that accepts the graph and
+It paints it nicely, that is, it returns a colored graph with a property,
+That no two linked nodes are of the same color.
+  \begin{verbatim}
+  ghci> lepoPobarvaj ([1,2], [])
+  (([1,2],[]),[1,1])
+  ghci> lepoPobarvaj ([1,2], [(1,2)])
+  (([1,2],[(1,2)]),[1,2])
+  ghci> lepoPobarvaj g
+  (([1,2,3,4,5],[(1,2),(1,3),(2,4),(3,5),(4,5)]),[1,2,2,1,3])
+  \end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Typing, 20 points]
+Employees at a large Slovenian bank must enter an account number on each computer after each payment.
+For this they use a standard keyboard that has the digits of
+0 to 9 are classified in one row. Every employee is the key only with
+Cursors and at any moment can do one of two words:
+  \begin{enumerate}
+    \item Move any of the cursors to the adjacent key, a
+      Only one at a time.
+    \item Presses the button just below its index finger.
+      It can only press one key at a time.
+  \end{enumerate}
+
+  In order to carry out each of the above two moves, a staff member needs one
+  second. At the beginning, the employee has a left cursor above the 0, the
+  right one Above the 9 key. The number is entered from left to right.
+
+Compose the \texttt{typing} function {\em effective}
+Calculates the minimum time it takes for an employee to
+The computer enters the number.
+  \begin{verbatim}
+  >>> tipkanje("10")
+  4
+  >>> tipkanje("107")
+  7
+  >>> tipkanje("123456789123456789123456789")
+  63
+  >>> tipkanje("4780")
+  13
+  >>> tipkanje("01" * 10)
+  28
+  \end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[The longest interval, 20 points]
+
+Given are $ n $ different integers. Compose the \texttt {farthest}
+function As the input receives the list \texttt {sez} of these numbers, and
+returns the number set $ (a, b) $ from the input list, which is considered to
+contain \texttt{sez} among the numbers $ A $ and $ b $ as many elements, but
+all of these elements lie on The numerical interval $ [a, b] $. If there are
+more options, let the function return the one at Which pair $ (a, b) $ is the
+lexicographic last. The function should work at $ O (n \log n) $.
+
+  Danih je $n$ različnih celih števil. Sestavite funkcijo \texttt{najdaljsi}, ki
+  kot vhod sprejme seznam \texttt{sez} teh števil, vrne pa nabor števil $(a,b)$
+  iz vhodnega seznama, za kateri velja, da \texttt{sez} vsebuje med številoma
+  $a$ in $b$ kar največ elementov, hkrati pa vsi ti elementi ležijo na
+  številskem intervalu $[a,b]$. Če je možnosti več, naj funkcija vrne tisto, pri
+  kateri je par $(a,b)$ leksikografsko zadnji. Funkcija naj deluje v času $O(n
+  \log n)$.
+
+  \begin{verbatim}
+  >>> najdaljsi([0,1,2,-1])
+  (0,2)
+  >>> najdaljsi([9,8,7,6,5,4,3,2,1])
+  (9,9)
+  >>> najdaljsi([0,1,2,-1,5,7,6,8,-2])
+  (-1,8)
+  >>> najdaljsi([-10, 0, -1, 0, 1])
+  (-1,1)
+  \end{verbatim}  
+
+\end{document}
+
