@@ -92,7 +92,8 @@ Shranimo si še en primer grafa:
 
   Sestavite funkcijo \texttt{lepoPobarvaj}, ki sprejme graf in 
   ga lepo pobarva, se pravi vrne pobarvani graf z lastnostjo, 
-  da nobeni dve povezani vozlišči nista enake barve.
+  da nobeni dve povezani vozlišči nista enake barve. Pri tem naj porabi
+  \emph{čim manj} barv.
   \begin{verbatim}
   ghci> lepoPobarvaj ([1,2], [])
   (([1,2],[]),[1,1])
@@ -141,13 +142,13 @@ Shranimo si še en primer grafa:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Najdaljši interval, 20 točk]
 
-  Danih je $n$ različnih celih števil. Sestavite funkcijo \texttt{najdaljsi}, ki
-  kot vhod sprejme seznam \texttt{sez} teh števil, vrne pa nabor števil $(a,b)$
-  iz vhodnega seznama, za kateri velja, da \texttt{sez} vsebuje med številoma
-  $a$ in $b$ kar največ elementov, hkrati pa vsi ti elementi ležijo na
-  številskem intervalu $[a,b]$. Če je možnosti več, naj funkcija vrne tisto, pri
-  kateri je par $(a,b)$ leksikografsko zadnji. Funkcija naj deluje v času $O(n
-  \log n)$.
+  Sestavite funkcijo \texttt{najdaljsi}, ki kot vhod sprejme seznam \texttt{sez}
+  različnih celih števil, vrne pa nabor števil $(a,b)$ iz vhodnega seznama, za
+  kateri velja, da \texttt{sez} vsebuje med številoma $a$ in $b$ kar največ
+  elementov, hkrati pa vsi ti elementi ležijo na številskem intervalu $[a,b]$.
+  Če je možnosti več, naj funkcija vrne tisto, pri kateri je par $(a,b)$
+  leksikografsko zadnji. Funkcija naj deluje v času $O(n \log n)$, pri čemer je
+  $n$ dolžina vhodnega seznama.
 
   \begin{verbatim}
   >>> najdaljsi([0,1,2,-1])
