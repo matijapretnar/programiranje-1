@@ -20,14 +20,22 @@ csv_filename = "TODO"
 def download_url_to_string(url):
     '''This function takes a URL as argument and tries to download it
     using requests. Upon success, it returns the page contents as string.'''
+    try:
+        # some code here that may raise an exception
+        TODO
+        # some more code that won't be run if the exception occured
+    except TODO:
+        # some error handling / recovery code here
+        # we may just display an informative message and quit
+        TODO
+    # continue with the non-exceptional code
     TODO
-
 
 def save_string_to_file(text, directory, filename):
     '''Write "text" to the file "filename" located in directory "directory",
     creating "directory" if necessary. If "directory" is the empty string, use
     the current directory.'''
-    os.makedir(directory, exists_ok=True)
+    os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
     with open(path, 'w') as file_out:
         file_out.write(text)
@@ -66,10 +74,15 @@ def undefined( TODO ):
 # Define a function that takes a string corresponding to the block of one
 # advertisement and extracts from it the following data: Name, price, and
 # the description as displayed on the page.
-def undefined( TODO ):
+def undefined(block):
     '''TODO'''
+    rx_price = re.compile(r'BEGINNING OF PRICE     CAPTURE THE PRICE       END OF PRICE', re.DOTALL)
+    data_price = re.search(rx, block)
+    # EXTRACT MORE DATA
     TODO
-
+    # BUILD A DICTIONARY
+    # documentation: https://docs.python.org/3/library/re.html (linked on učilnica)
+    return ad_dict
 
 
 # Write a function that reads a page from a file and returns the list of
@@ -100,8 +113,9 @@ def write_csv(fieldnames, rows, directory, filename):
     return None
 
 
-# Write a function that takes a list of cat advertisement dictionaries and
-# writes it to a csv file.
+# Write a function that takes a non-empty list of cat advertisement
+# dictionaries and writes it to a csv file. The fieldnames can be read off the
+# dictionary.
 def undefined( TODO ):
     '''TODO'''
     TODO
