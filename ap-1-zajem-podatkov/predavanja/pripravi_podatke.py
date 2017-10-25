@@ -1,6 +1,9 @@
+import csv
+import json
 import os
 import re
 import requests
+
 
 re_bloka_serije = re.compile(
     r'<a href="/title/tt(?P<id>\d+).*?Votes.*?</div>', flags=re.DOTALL
@@ -98,30 +101,40 @@ def preberi_serije_v_imeniku(imenik):
     return serije
 
 
-# shrani_serije_v_imenik('testni-imenik', 10, 10)
+def zapisi_json(podatki, ime_datoteke):
+    with open(ime_datoteke, 'w') as datoteka:
+        json.dump(podatki, datoteka, indent=2)
+
+
+def zapisi_csv(podatki, polja, ime_datoteke):
+    with open(ime_datoteke, 'w') as datoteka:
+        pisalec = csv.DictWriter(datoteka, polja, extrasaction='ignore')
+        pisalec.writeheader()
+        for podatek in podatki:
+            pisalec.writerow(podatek)
+
+
 # shrani_serije_v_imenik('serije')
 serije = preberi_serije_v_imeniku('serije')
+zanri = [
+    {'serija': serija['id'], 'zanr': zanr}
+    for serija in serije for zanr in serija['zanri']
+]
+igralci = {
+    igralec['id']: igralec
+    for serija in serije for igralec in serija['igralci']
+}.values()
+vloge = [
+    {'serija': serija['id'], 'igralec': igralec['id']}
+    for serija in serije for igralec in serija['igralci']
+]
 
-import json
-with open('serije.json', 'w') as datoteka:
-    json.dump(serije, datoteka, indent=2)
-
-import csv
-with open('serije.csv', 'w') as datoteka:
-    polja = [
-        'id',
-        'ime',
-        'oznaka',
-        'leto_zacetka',
-        'leto_konca',
-        'ocena',
-        'opis',
-        # 'igralci',
-        'stevilo_glasov',
-        'dolzina',
-        # 'zanri'
-    ]
-    pisalec = csv.DictWriter(datoteka, polja, extrasaction='ignore')
-    pisalec.writeheader()
-    for serija in serije:
-        pisalec.writerow(serija)
+zapisi_json(serije, 'serije.json')
+polja = [
+    'id', 'ime', 'oznaka', 'leto_zacetka', 'leto_konca', 'ocena',
+    'opis', 'stevilo_glasov', 'dolzina',
+]
+zapisi_csv(serije, polja, 'serije.csv')
+zapisi_csv(zanri, ['serija', 'zanr'], 'zanri.csv')
+zapisi_csv(igralci, ['id', 'ime'], 'igralci.csv')
+zapisi_csv(vloge, ['serija', 'igralec'], 'vloge.csv')
