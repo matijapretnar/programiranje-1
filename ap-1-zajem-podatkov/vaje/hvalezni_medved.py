@@ -49,7 +49,9 @@ def find_words_str(text, substring):
 import re
 def find_words(text, substring):
     # Remark: for regular expressions always use raw strings   r'...'
-    TODO
+    rx = r'\b\w*' + substring + r'\w*\b'
+    matches = re.findall(rx, text)
+    return set (matches)
 
 ##########################################################################
 # 2) Sestavite funkcijo najdi_predpono(besedilo, predpona), ki vrne množico
@@ -68,7 +70,9 @@ def find_words(text, substring):
 ##########################################################################
 
 def find_prefix(text, prefix):
-    TODO
+    r'^'
+    rx = r'\b' + prefix + r'\w*\b'
+    return set(re.findall(rx, text))
 
 ##########################################################################
 # 3) Sestavite funkcijo najdi_pripono(besedilo, pripona), ki vrne množico
@@ -87,7 +91,9 @@ def find_prefix(text, prefix):
 ##########################################################################
 
 def find_suffix(text, suffix):
-    TODO
+    r = r'\b\w*' + suffix + r'\b'
+    return set (re.findall (r, text))
+
 
 ##########################################################################
 # 4) Sestavite funkcijo podvojene_crke(besedilo), ki sprejme niz besedilo
@@ -108,4 +114,6 @@ def find_suffix(text, suffix):
 # surrounding words, then fix the backref
 
 def double_letters(text):
-    TODO
+    rx = r'(\b\w*(\w)\2\w*\b)'
+    matches = re.findall(rx,text)
+    return set([ match[0] for match in matches ])
