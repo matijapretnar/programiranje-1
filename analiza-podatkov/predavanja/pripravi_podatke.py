@@ -18,7 +18,7 @@ re_podatkov_serije = re.compile(
     r'(\((?P<oznaka>[IVXLCDM]+)\) )?'  # morebitna oznaka za več serij z istim imenom
     r'\('
     r'(?P<leto_zacetka>\d{4})'
-    r'–? ?'
+    r'(?P<vezaj_leta>–? ?)'
     r'(?P<leto_konca>\d{4})?'
     r'\)</span>'
     r'.*?'
@@ -68,6 +68,8 @@ def podatki_serije(blok_serije):
         serija['dolzina'] = ujemanje_dolzine.group('dolzina') if ujemanje_dolzine else None
         ujemanje_zanrov = re_zanrov.search(serija['podatki'])
         serija['zanri'] = ujemanje_zanrov.group('zanri').strip().split(', ') if ujemanje_zanrov else []
+        if not serija.pop('vezaj_leta') and not serija['leto_konca']:
+            serija['leto_konca'] = serija['leto_zacetka']
         del serija['podatki']
         return serija
     else:
