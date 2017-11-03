@@ -9,7 +9,7 @@
  - : int = 3
  ---------- *)
 
-let rec predzadnji_element l = ()
+let predzadnji_element l = ()
 
 (* Funkcija "poisci k l" poišče k-ti element v seznamu l.
  Številčenje elementov seznama (kot ponavadi) pričnemo z 0.
@@ -20,7 +20,7 @@ let rec predzadnji_element l = ()
  - : int = 1
  ---------- *)
 
-let rec poisci k l = ()
+let poisci k l = ()
 
 (* Funkcija "podvoji l" podvoji pojavitve elementov v seznamu l.
  ----------
@@ -28,7 +28,7 @@ let rec poisci k l = ()
  - : int list = [1; 1; 2; 2; 3; 3]
  ---------- *)
 
-let rec podvoji l = ()
+let podvoji l = ()
 
 (* Funkcija "razdeli k l" seznam l razdeli na dva seznama. Prvi vsebuje prvih k elementov
  seznama l, v drugem pa vsi ostali. Funkcija vrne par teh dveh seznamov.
@@ -40,7 +40,7 @@ let rec podvoji l = ()
  - : int list * int list = ([1; 2; 3; 4; 5], [])
  ---------- *)
  
-let rec razdeli k l = ()
+let razdeli k l = ()
 
 (* Funkcija "zbrisi k l" iz seznama l pobriše k-ti element.
  V primeru prekratkega seznama funkcija vrne napako.
@@ -49,7 +49,7 @@ let rec razdeli k l = ()
  - : int list = [0; 0; 0; 0; 0]
  ---------- *)
  
-let rec zbrisi k l = ()
+let zbrisi k l = ()
 
 (* Funkcija "rezina i k l" sestavi novi seznam, ki vsebuje elemente seznama l od vključno
  i-tega do k-tega (brez k-tega).
@@ -70,7 +70,7 @@ let rezina i k l = ()
  - : int list = [1; 0; 0; 0; 0; 0]
  ---------- *)
 
-let rec vstavi x k l = ()
+let vstavi x k l = ()
 
 (* Funkcija "zavrti n l" seznam l zavrti za n mest v levo.
  Predpostavimo, da je n v mejah seznama.
@@ -79,7 +79,7 @@ let rec vstavi x k l = ()
  - : int list = [3; 4; 5; 1; 2]
  ---------- *)
 
-let rec zavrti n l = ()
+let zavrti n l = ()
  
 (* Funkcija "pobrisi x l" iz seznam l izbriše vse pojavitve elementa x.
  ----------
@@ -87,7 +87,7 @@ let rec zavrti n l = ()
  - : int list = [2; 3; 2; 3]
  ---------- *)
 
-let rec pobrisi x l = ()
+let pobrisi x l = ()
 
 (* Funkcija "je_palindrom l" ugotovi ali seznam l predstavlja palindrom.
  Namig: Pomagaj si s pomožno funkcijo, ki obrne vrstni red elementov seznama. 
@@ -107,7 +107,7 @@ let je_palindrom l = ()
  # max_po_komponentah [5; 4; 3; 2; 1] [0; 1; 2; 3; 4; 5; 6];;
  - : int list = [5; 4; 3; 3; 4]
  ---------- *)
-let rec max_po_komponentah l1 l2 = ()
+let max_po_komponentah l1 l2 = ()
   
 (* Funkcija "drugi_najvecji l" vrne drugo največjo vrednost v seznamu l.
  Ponovitve elementa se štejejo kot ena vrednost.
