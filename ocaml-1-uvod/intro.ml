@@ -9,7 +9,7 @@
  - : int = 3
  ---------- *)
 
-let rec penultimate_element l = ()
+let penultimate_element l = ()
 
 (* The function "get k l" returns the k-th element in the list l.
  Numbering (as usual) starts with 0.
@@ -20,7 +20,7 @@ let rec penultimate_element l = ()
  - : int = 1
  ---------- *)
 
-let rec get k l = ()
+let get k l = ()
 
 (* The function "double l" doubles the occurences of elements in the list l.
  ----------
@@ -28,7 +28,7 @@ let rec get k l = ()
  - : int list = [1; 1; 2; 2; 3; 3]
  ---------- *)
 
-let rec double l = ()
+let double l = ()
 
 (* The function "divide k l" divides the list l into a pair of lists. The first list
  contains the first k elements of the list l and the second list contains the rest.
@@ -40,7 +40,7 @@ let rec double l = ()
  - : int list * int list = ([1; 2; 3; 4; 5], [])
  ---------- *)
  
-let rec divide k l = ()
+let divide k l = ()
 
 (* The function "delete k l" removes the k-th element of the list l.
  If the list is too short it raises an error.
@@ -49,7 +49,7 @@ let rec divide k l = ()
  - : int list = [0; 0; 0; 0; 0]
  ---------- *)
  
-let rec delete k l = ()
+let delete k l = ()
 
 (* The function "slice i k l" returns the sub-list of l from the i-th up
  to (excluding) the k-th element.
@@ -70,7 +70,7 @@ let slice i k l = ()
  - : int list = [1; 0; 0; 0; 0; 0]
  ---------- *)
 
-let rec insert x k l = ()
+let insert x k l = ()
 
 (* The function "rotate n l" rotates the list l to the left by n places.
  Suppose that n is within the bounds of l.
@@ -79,7 +79,7 @@ let rec insert x k l = ()
  - : int list = [3; 4; 5; 1; 2]
  ---------- *)
 
-let rec rotate n l = ()
+let rotate n l = ()
  
 (* The function "remove x l" removes all occurrences of x in the list l.
  ----------
@@ -87,7 +87,7 @@ let rec rotate n l = ()
  - : int list = [2; 3; 2; 3]
  ---------- *)
 
-let rec remove x l = ()
+let remove x l = ()
 
 (* The function "is_palindrome l" checks if a list is a palindrome.
  Hint: Use an auxiliary function that reverses a list. 
@@ -107,7 +107,7 @@ let is_palindrome l = ()
  # max_on_components [5; 4; 3; 2; 1] [0; 1; 2; 3; 4; 5; 6];;
  - : int list = [5; 4; 3; 3; 4]
  ---------- *)
-let rec max_on_components l1 l2 = ()
+let max_on_components l1 l2 = ()
   
 (* The function "second_largest l" returns the second largest value in the list l.
  Multiple occurrences of the same element count as one value.
