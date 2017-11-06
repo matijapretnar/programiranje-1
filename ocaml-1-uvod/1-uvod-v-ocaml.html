@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Uvod v OCaml</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        font-family: 'Avenir Next';
+      }
+      h3 {
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code {
+        font-family: 'Iosevka';
+      }
+      .remark-inline-code {
+        background-color: #ddd;
+      }
+      .remark-code {
+        font-size: 1.5em;
+      }
+      ol, ul {
+        font-size: 1.5em;
+        line-height: 2;
+      }
+
+      a.reveal {
+        font-weight: bold;
+      }
+
+      a.reveal:hover {
+        cursor:pointer;
+      }
+
+      .question, .question .remark-inline-code {
+        color: white;
+        background-color: black;
+      }
+
+      table {
+        margin: auto;
+        font-size: 1.5em;
+        /*border-collapse: separate;*/
+        border-spacing: 1.5em 0.5em;
+      }
+
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: blue;
+      }
+
+      .good-example pre code {
+        background-color: #ddf !important;
+      }
+
+      .bad-example code {
+        background-color: #fdd !important;
+      }
+
+      .terminal code {
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Programiranje 1
+
+## Uvod v OCaml
+
+### 2. november 2017
+
+---
+
+
+background-image: url(lrg.jpg)
+background-size: auto 90%
+
+---
+
+
+### Naš prvi program v OCamlu
+
+.terminal[```
+# let odgovor = min 8 7 * 6;;
+val odgovor : int = 42
+```]
+--
+
+* vrednosti definiramo z `let`
+--
+
+* izraze v ukazni vrstici zaključimo z `;;`
+--
+
+* poleg vrednosti OCaml izračuna tudi tip programa
+--
+
+* argumente funkcij lahko pišemo brez oklepajev
+--
+
+* uporaba (_aplikacija_) funkcij ima najvišjo prioriteto
+
+---
+
+### Z `let ... in ...` pišemo lokalne definicije
+
+.terminal[```
+# let odgovor =
+    let prvi_delni_izracun = min 8 7 in
+    let drugi_delni_izracun = 6 in
+    prvi_delni_izracun * drugi_delni_izracun;;
+val odgovor : int = 42
+
+# prvi_delni_izracun;;
+  ^^^^^^^^^^^^^^^^^^
+Error: Unbound value prvi_delni_izracun
+```]
+
+---
+
+### Z `and` podamo več lokalnih definicij hkrati
+
+.terminal[```
+# let odgovor =
+    let prvi_delni_izracun = min 8 7
+    and drugi_delni_izracun = 6
+    in
+    prvi_delni_izracun * drugi_delni_izracun;;
+val odgovor : int = 42
+```]
+
+---
+
+### Programe običajno shranjujemo v datoteke
+
+odgovor.ml
+
+.source[```
+let odgovor = min 8 7 * 6
+
+let se_boljsi_odgovor = odgovor + 1
+```]
+
+- - -
+
+.terminal[```
+# #use "odgovor.ml";;
+val odgovor : int = 42
+val se_boljsi_odgovor : int = 43
+
+# let najboljsi_odgovor = se_boljsi_odgovor + 1;;
+val najboljsi_odgovor : int = 44
+```]
+
+---
+
+### Cela števila imajo tip `int`
+
+.terminal[```
+# 12 * (34 + 67) - 89;;
+- : int = 1123
+
+# 22 / 7;;
+- : int = 3
+
+# 22 mod 7;;
+- : int = 1
+
+# succ 5 * pred 8;;
+- : int = 42
+```]
+
+---
+
+### Števila s plavajočo vejico imajo tip `float`
+
+.terminal[```
+# 12.0 *. (34.0 +. 67.0) -. 89.0;;
+- : float = 1123.
+
+# 22. /. 7.;;
+- : float = 3.14285714285714279
+
+# let pi = 4. *. atan 1.;;
+val pi : float = 3.14159265358979312
+
+# cos pi;;
+- : float = -1.
+```]
+
+---
+
+### OCaml **strogo** loči med `int` in `float`
+
+.terminal[```
+# 2 * pi;;
+      ^^
+Error: This expression has type float but an
+  expression was expected of type int
+```]
+
+--
+
+.terminal[```
+# 2. * pi;;
+  ^^
+Error: This expression has type float but an
+  expression was expected of type int
+```]
+
+--
+
+.terminal[```
+# 2. *. pi;;
+- : float = 6.28318530717958623
+```]
+
+---
+
+### Logične vrednosti imajo tip `bool`
+
+.terminal[```
+# false && not (false || true);;
+- : bool = false
+
+# 3 < 5 || 3 >= 5;;
+- : bool = true
+
+# if 3 <> 5 then 10 else 20;;
+- : int = 10
+
+# (if 3 = 4 then cos else sin) pi;;
+- : float = 1.22464679914735321e-16
+```]
+
+---
+
+### Nizi imajo tip `string`
+
+.terminal[```
+# "Programiranje " ^ string_of_int 1;;
+- : string = "Programiranje 1"
+
+# max "abcd" "efg";;
+- : string = "efg"
+```]
+
+### Znaki imajo tip `char`
+
+.terminal[```
+# 'a';;
+- : char = 'a'
+```]
+
+---
+
+### Funkcije imajo tip oblike <code>tip<sub>arg</sub> -> tip<sub>rez</sub></code>
+
+.terminal[```
+# truncate;;
+- : float -> int = <fun>
+
+# let kvadriraj n = n * n;;
+val kvadriraj : int -> int = <fun>
+
+# let zmnozi x y = x * y;;
+val zmnozi : int -> int -> int = <fun>
+
+# let dvakrat_na_nic f = f (f 0);;
+val dvakrat_na_nic : (int -> int) -> int = <fun>
+
+# fun x -> 2 * x + 1;;
+- : int -> int = <fun>
+```]
+
+---
+
+### Funkcijo po kosih definiramo z `match`
+
+.bad-example[```
+let pozdravi ime =
+  if ime = "Matija" then
+    "Dober dan, gospod predavatelj!"
+  else if ime = "Phillip" || ime = "Žiga" then
+    "Oj!"
+  else
+    "Dober dan, " ^ ime ^ "!"
+```]
+
+.good-example[```
+let pozdravi ime =
+  match ime with
+  | "Matija" -> "Dober dan, gospod predavatelj!"
+  | "Phillip" | "Žiga" -> "Oj!"
+  | _ -> "Dober dan, " ^ ime ^ "!"
+```]
+
+---
+
+### Za funkcije, ki takoj izvedejo `match`, raje uporabimo `function`
+
+
+.bad-example[```
+let pozdravi ime =
+  match ime with
+  | "Matija" -> "Dober dan, gospod predavatelj!"
+  | "Phillip" | "Žiga" -> "Oj!"
+  | _ -> "Dober dan, " ^ ime ^ "!"
+```]
+
+.good-example[```
+let pozdravi = function
+  | "Matija" -> "Dober dan, gospod predavatelj!"
+  | "Phillip" | "Žiga" -> "Oj!"
+  | ime -> "Dober dan, " ^ ime ^ "!"
+```]
+
+---
+
+### Vrstni red vzorcev je pomemben
+
+
+.bad-example[```
+let pozdravi = function
+  | ime -> "Dober dan, " ^ ime ^ "!"
+  | "Matija" -> "Dober dan, gospod predavatelj!"
+    ^^^^^^^^
+Warning 11: this match case is unused.
+```]
+
+.terminal[```
+# pozdravi "Matija";;
+- : string = "Dober dan, Matija!"
+```]
+
+---
+
+### Zajeti moramo vse vzorce
+
+.bad-example[```
+let pozdravi = function
+  | "Matija" -> "Dober dan, gospod predavatelj!"
+  | "Phillip" | "Žiga" -> "Oj!"
+
+Warning 8: this pattern-matching is not
+exhaustive. Here is an example of a value that
+is not matched: ""
+```]
+
+.terminal[```
+# pozdravi "naključni študent";;
+Exception: Match_failure ("//toplevel//", 1, 15).
+```]
+
+---
+
+### Rekurzivne funkcije definiramo z `let rec`
+
+.source[```
+let rec fakulteta = function
+  | 0 -> 1
+  | n -> n * fakulteta (n - 1)
+```]
+
+.bad-example[```
+let rec fib = function
+  | 0 -> 0
+  | 1 -> 1
+  | n -> fib (n - 1) + fib (n - 2)
+```]
+
+.good-example[```
+let hitri_fib n =
+  let rec aux n a b =
+    if n = 0 then a else aux (n - 1) b (a + b)
+  in aux n 0 1
+```]
+
+---
+
+### Hkrati lahko definiramo več rekurzivnih funkcij 
+
+.source[```
+let rec je_sodo = function
+  | 0 -> true
+  | n -> je_liho (n - 1)
+
+and je_liho = function
+  | 0 -> false
+  | n -> je_sodo (n - 1)
+```]
+
+---
+
+### Nabori imajo tip <code>tip<sub>1</sub> \* tip<sub>2</sub> \* … \* tip<sub>n</sub></code>
+
+.terminal[```
+# (1, 2 < 3, cos pi);;
+- : int * bool * float = (1, true, -1.)
+
+# (1, (2, 3));;
+- : int * (int * int) = (1, (2, 3))
+```]
+
+### Prazen nabor ima tip `unit`
+
+.terminal[```
+# ();;
+- : unit = ()
+```]
+
+---
+
+### Nabore lahko razstavljamo z vzorci
+
+.terminal[```
+# let (x, y) = (1, "bla");;
+val x : int = 1
+val y : string = "bla"
+```]
+
+.bad-example[```
+let razdalja koord1 koord2 =
+  let dx = fst koord1 -. fst koord2
+  and dy = snd koord1 -. snd koord2
+  in
+  sqrt (dx ** 2. +. dy ** 2.)
+```]
+
+.good-example[```
+let razdalja (x1, y1) (x2, y2) =
+  sqrt ((x1 -. x2) ** 2. +. (y1 -. y2) ** 2.)
+```]
+
+---
+
+class: question, center, middle
+
+## Skalarni produkt v \\(\mathbb{R}^3\\)
+
+---
+
+### Seznami imajo tip <code>tip<sub>el</sub> list</code>
+
+.terminal[```
+# [1; 2; 3; 4];;
+- : int list = [1; 2; 3; 4]
+
+# ['a'; 'b'; 'c'; 'd'];;
+- : char list = ['a'; 'b'; 'c'; 'd']
+
+# 1 :: 2 :: [3; 4];;
+- : int list = [1; 2; 3; 4]
+
+# "a" :: "b" :: ["c"; "d"];;
+- : string list = ["a"; "b"; "c"; "d"]
+
+# [1; 2; 3] @ [4; 5; 6];;
+- : int list = [1; 2; 3; 4; 5; 6]
+```]
+
+---
+
+class: question, center
+
+## Kateri seznami so veljavni?
+
+<table>
+<tr>
+  <td><code>[1; 2] :: [3; 4]</code></td>
+  <td>.red.spoiler[**NE**]</td>
+</tr>
+<tr>
+  <td><code>1 :: 2 :: 3 :: []</code></td>
+  <td>.green.spoiler[**DA**]</td>
+</tr>
+<tr>
+  <td><code>[1; 2] @ [3; 4]</code></td>
+  <td>.green.spoiler[**DA**]</td>
+</tr>
+<tr>
+  <td><code>1 @ 2 @ [3]</code></td>
+  <td>.red.spoiler[**NE**]</td>
+</tr>
+<tr>
+  <td><code>[1, 2] @ [3]</code></td>
+  <td>.red.spoiler[**NE**]</td>
+</tr>
+<tr>
+  <td><code>1 :: 2 :: 3</code></td>
+  <td>.red.spoiler[**NE**]</td>
+</tr>
+<tr>
+  <td><code>[1; 2] @ []</code></td>
+  <td>.green.spoiler[**DA**]</td>
+</tr>
+<tr>
+  <td><code>[1; 2] :: []</code></td>
+  <td>.green.spoiler[**DA**]</td>
+</tr>
+</table>
+
+---
+
+### Tudi sezname razstavljamo z vzorci
+
+.source[```
+let citiraj_knjigo avtorji naslov =
+  match avtorji with
+  | [] -> naslov
+  | [avtor] -> avtor ^ ": " ^ naslov
+  | prvi :: _ -> prvi ^ " in ostali: " ^ naslov
+```]
+
+.terminal[```
+# citiraj_knjigo [] "Skrivnosti podzemlja";;
+- : string = "Skrivnosti podzemlja"
+# citiraj_knjigo ["Kos"; "Golob"] "Fizika 1";;
+- : string = "Kos in ostali: Fizika 1"
+```]
+
+### Pozor: `@` **ne sme** nastopati v vzorcih
+
+---
+
+### Vzorce lahko tudi gnezdimo
+
+.source[```
+let za_lase_privlecena_funkcija = function
+  | [] -> 0
+  | [(x, _); (y, z)] -> x + y + z
+  | ((_, x) :: _) -> 3 * x
+```]
+
+.terminal[```
+# za_lase_privlecena_funkcija [];;
+- : int = 0
+# za_lase_privlecena_funkcija [(1, 2)];;
+- : int = 6
+# za_lase_privlecena_funkcija [(1, 2); (3, 4)];;
+- : int = 8
+```]
+
+---
+
+class: question, center, middle
+
+## Skalarni produkt v \\(\mathbb{R}^n\\)
+
+---
+
+### Kaj je tip funkcije `@`?
+
+.terminal[```
+# [true; false] @ [false; true];;
+- : bool list = [true; false; false; true]
+# [1; 2] @ [3; 4; 5];;
+- : int list = [1; 2; 3; 4; 5]
+```]
+
+--
+
+.center[```
+bool list -> bool list -> bool list
+int list -> int list -> int list
+int list list -> int list list -> int list list
+...
+```]
+
+--
+
+.center[```
+∀α. α list -> α list -> α list
+```]
+
+--
+
+.center[```
+'a list -> 'a list -> 'a list
+```]
+
+---
+
+### Vrednostim, ki imajo v tipih spremenljivke, pravimo **parametrično polimorfne**
+
+.terminal[```
+# (@);;
+- : 'a list -> 'a list -> 'a list = <fun>
+
+# fst;;
+- : 'a * 'b -> 'a = <fun>
+
+# ignore;;
+- : 'a -> unit = <fun>
+
+# [];;
+- : 'a list = []
+```]
+
+---
+
+class: question, center, middle
+
+## `sum`, `length`, `map`
+
+.terminal.left[```
+# sum [10; 20; 30];;
+- : int = 60
+
+# length [10; 20; 30];;
+- : int = 3
+
+# map succ [10; 20; 30];;
+- : int list = [11; 21; 31]
+
+# map kvadriraj [10; 20; 30];;
+- : int list = [100; 400; 900]
+```]
+
+---
+
+class: center, middle
+
+## Primerjava s tipi v Pythonu
+
+---
+
+### Tipi v OCamlu so **statični**
+
+.terminal[```
+# let je_majhen x =
+    if x < 10 then "Da" else false;;
+                             ^^^^^
+Error: This expression has type bool but an
+  expression was expected of type string
+```]
+
+---
+
+### Tipi v Pythonu so **dinamični**
+
+.terminal[```python
+>>> def je_majhen(x):
+...     return 'Da' if x < 10 else False
+```]
+
+.terminal[```python
+>>> je_majhen(3) + '!'
+'Da!'
+
+>>> je_majhen(10) + '!'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s)
+  for +: 'bool' and 'str'
+```]
+
+---
+
+### Tipi v Pythonu so **dinamični**
+
+.terminal[```python
+>>> def fakulteta(n):
+...     if n <= 1:
+...         return 1
+...     else:
+...         n * fakulteta(n - 1)
+```]
+
+--
+
+.terminal[```python
+>>> fakulteta(4)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 5, in fakulteta
+  File "<stdin>", line 5, in fakulteta
+TypeError: unsupported operand type(s)
+  for *: 'int' and 'NoneType'
+```]
+---
+
+### OCamlovi tipi so bogatejši od Pythonovih
+
+.terminal[```
+# [(1, ['a']); (10, []); (0, ['x'; 'y'])];;
+- : (int * char list) list = ...
+
+# ("abc", [10; 20; 30], (true, 'x'));;
+- : string * int list * (bool * char) = ...
+```]
+
+.terminal[```python
+>>> type([(1, ['a']), (10, []), (0, ['x', 'y'])])
+<type 'list'>
+
+>>> type(("abc", [10, 20, 30], (True, 'x')))
+<type 'tuple'>
+```]
+
+
+    </textarea>
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script>
+      $(document).ready(function() { 
+      
+      $("span.spoiler").hide();
+      
+       $('<a class="reveal">???</a>').insertBefore('.spoiler');
+
+      $("a.reveal").click(function(){
+        $(this).parent().children("span.spoiler").fadeIn(100);
+        $(this).parent().children("a.reveal").hide();
+      });
+
+      $('.terminal').addClass('hljs-hybrid');
+
+    }); 
+        var slideshow = remark.create({
+        highlightLines: true,
+        highlightLanguage: "ocaml",
+        highlightStyle: "github",
+        countIncrementalSlides: false,
+      });
+    </script>
+  </body>
+</html>
