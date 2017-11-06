@@ -37,7 +37,7 @@ def save_string_to_file(text, directory, filename):
     the current directory.'''
     os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
-    with open(path, 'w') as file_out:
+    with open(path, 'w', encoding = 'utf-8') as file_out:
         file_out.write(text)
     return None
 
