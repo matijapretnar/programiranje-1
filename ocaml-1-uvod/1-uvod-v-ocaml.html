@@ -608,103 +608,21 @@ int list list -> int list list -> int list list
 
 class: question, center, middle
 
-## `sum`, `length`, `map`
+## `vsota`, `dolzina`, `preslikaj`
 
 .terminal.left[```
-# sum [10; 20; 30];;
+# vsota [10; 20; 30];;
 - : int = 60
 
-# length [10; 20; 30];;
+# dolzina [10; 20; 30];;
 - : int = 3
 
-# map succ [10; 20; 30];;
+# preslikaj succ [10; 20; 30];;
 - : int list = [11; 21; 31]
 
-# map kvadriraj [10; 20; 30];;
+# preslikaj kvadriraj [10; 20; 30];;
 - : int list = [100; 400; 900]
 ```]
-
----
-
-class: center, middle
-
-## Primerjava s tipi v Pythonu
-
----
-
-### Tipi v OCamlu so **statični**
-
-.terminal[```
-# let je_majhen x =
-    if x < 10 then "Da" else false;;
-                             ^^^^^
-Error: This expression has type bool but an
-  expression was expected of type string
-```]
-
----
-
-### Tipi v Pythonu so **dinamični**
-
-.terminal[```python
->>> def je_majhen(x):
-...     return 'Da' if x < 10 else False
-```]
-
-.terminal[```python
->>> je_majhen(3) + '!'
-'Da!'
-
->>> je_majhen(10) + '!'
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: unsupported operand type(s)
-  for +: 'bool' and 'str'
-```]
-
----
-
-### Tipi v Pythonu so **dinamični**
-
-.terminal[```python
->>> def fakulteta(n):
-...     if n <= 1:
-...         return 1
-...     else:
-...         n * fakulteta(n - 1)
-```]
-
---
-
-.terminal[```python
->>> fakulteta(4)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 5, in fakulteta
-  File "<stdin>", line 5, in fakulteta
-TypeError: unsupported operand type(s)
-  for *: 'int' and 'NoneType'
-```]
----
-
-### OCamlovi tipi so bogatejši od Pythonovih
-
-.terminal[```
-# [(1, ['a']); (10, []); (0, ['x'; 'y'])];;
-- : (int * char list) list = ...
-
-# ("abc", [10; 20; 30], (true, 'x'));;
-- : string * int list * (bool * char) = ...
-```]
-
-.terminal[```python
->>> type([(1, ['a']), (10, []), (0, ['x', 'y'])])
-<type 'list'>
-
->>> type(("abc", [10, 20, 30], (True, 'x')))
-<type 'tuple'>
-```]
-
 
     </textarea>
       <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
