@@ -88,6 +88,236 @@ class: center, middle
 
 ---
 
+### Tipi v OCamlu so **statični**
+
+.source[```
+let je_majhen x =
+  if x < 10 then "Da" else false
+```]
+
+.terminal[```
+  Characters 45-50:
+    if x < 10 then "Da" else false
+                             ^^^^^
+Error: This expression has type bool but an
+  expression was expected of type string
+```]
+
+---
+
+### Tipi v Pythonu so **dinamični**
+
+.source[```python
+def je_majhen(x):
+    return 'Da' if x < 10 else False
+```]
+
+.terminal[```python
+>>> je_majhen(3) + '!'
+'Da!'
+
+>>> je_majhen(10) + '!'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s)
+  for +: 'bool' and 'str'
+```]
+
+---
+
+### Tipi v Pythonu so **dinamični**
+
+.source[```python
+def fakulteta(n):
+    if n <= 1:
+        return 1
+    else:
+        n * fakulteta(n - 1)
+```]
+
+--
+
+.terminal[```python
+>>> fakulteta(4)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 5, in fakulteta
+  File "<stdin>", line 5, in fakulteta
+TypeError: unsupported operand type(s)
+  for *: 'int' and 'NoneType'
+```]
+
+---
+
+### OCamlovi tipi so bogatejši od Pythonovih
+
+.terminal[```
+# [(1, ['a']); (10, []); (0, ['x'; 'y'])];;
+- : (int * char list) list = ...
+
+# fun x -> [(x, 0)];;
+- : 'a -> ('a * int) list = <fun>
+```]
+
+.terminal[```python
+>>> type([(1, ['a']), (10, []), (0, ['x', 'y'])])
+<type 'list'>
+
+>>> type(lambda x: [(x, 0)])
+<type 'function'>
+```]
+
+---
+
+### OCaml optimizira **repno rekurzijo**
+
+.source[```
+let rec f x y =
+    if y = 0 then x else f (x + 1) (y - 1)
+```]
+
+.terminal[```
+# f 0 1000;;
+- : int = 1000
+
+# f 0 100000;;
+- : int = 100000
+
+# f 0 10000000;;
+- : int = 10000000
+```]
+
+---
+
+### Klic je repen, če se izvede zadnji
+
+.source[```
+let rec vsota = function
+  | [] -> 0
+  | x :: xs -> x + vsota xs
+```]
+
+```
+  vsota [1; 2; 3]
+= 1 + vsota [2; 3]
+= 1 + (2 + vsota [3])
+= 1 + (2 + (3 + vsota []))
+= 1 + (2 + (3 + 0))
+= 1 + (2 + 3)
+= 1 + 5
+= 6
+```
+
+Računalnik mora najprej izračunati rezultat funkcije, zato si delo odloži na sklad.
+
+---
+
+### Klic je repen, če se izvede zadnji
+
+.source[```
+let rec vsota' acc = function
+  | [] -> acc
+  | x :: xs -> vsota' (acc + x) xs
+```]
+
+```
+  vsota' 0 [1; 2; 3]
+= vsota' (1 + 0) [2; 3]
+= vsota' 1 [2; 3]
+= vsota' (1 + 2) [3]
+= vsota' 3 [3]
+= vsota' (3 + 3) []
+= vsota' 6 []
+= 6
+```
+
+Računalnik pri repnem klicu lahko delo opravi sproti in mu ga ni treba shranjevati.
+
+---
+
+### OCaml optimizira repno rekurzijo
+
+.source[```
+let rec f x y =
+    if y = 0 then x else f (x + 1) (y - 1)
+```]
+
+.terminal[```
+# f 0 1000;;
+- : int = 1000
+
+# f 0 100000;;
+- : int = 100000
+
+# f 0 10000000;;
+- : int = 10000000
+```]
+
+---
+
+### Python (nalašč) ne optimizira repne rekurzije
+
+.source[```python
+def f(x, y):
+    if y == 0:
+        return x
+    else:
+        return f(x + 1, y - 1)
+```]
+
+.terminal[```python
+>>> f(0, 1000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 5, in f
+  ...
+  File "<stdin>", line 2, in f
+RecursionError: maximum recursion depth exceeded
+```]
+
+---
+
+### Če rekurzija ni repna, lahko prekoračimo sklad
+
+.source[```
+let rec f y =
+    if y = 0 then 0 else 1 + f (y - 1)
+```]
+
+.terminal[```
+# f 1000;;
+- : int = 1000
+
+# f 100000;;
+- : int = 100000
+
+# f 10000000;;
+Stack overflow during evaluation
+  (looping recursion?).```]
+
+---
+
+### Python je **proceduralni** &amp; **imperativni** jezik
+
+.source[```python
+fakulteta = 1
+for i in range(1, 11):
+    fakulteta *= i
+```]
+
+Računalniku damo zaporedje ukazov, ki začetno stanje spravijo v želeno stanje.
+
+### OCaml je **funkcijski** &amp; **deklarativni** jezik
+
+.source[```python
+let rec fakulteta n =
+  if n = 0 then 1 else n * fakulteta (n - 1)
+in fakulteta 10
+```]
+
+Želeni rezultat programa opišemo s sestavljanjem funkcij.
+---
+
 ### Nekatere funkcije za argumente sprejemajo druge funkcije
 
 .terminal[```
@@ -126,21 +356,7 @@ val moja_funkcija' : int -> int = <fun>
 
 ---
 
-### Vgrajene funkcije kličemo z `Modul.funkcija`
-
-.terminal[```
-# List.map String.length ["Ti"; "si"; "konj"];;
-- : int list = [2; 2; 4]
-```]
-
-- osnovni modul [`Pervasives`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
-- modul za nize [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html)
-- modul za sezname [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
-- seznam [vseh modulov](http://caml.inria.fr/pub/docs/manual-ocaml/libref/) v standardni knjižnici
-
----
-
-### Kaj se zgodi, če funkciji namesto dveh argumentov podamo samo enega?
+### Funkciji dveh argumentov je podal le enega. Ne boste verjeli, kaj se zgodi potem!
 
 .source[```
 let zmnozi x y = x * y
@@ -182,7 +398,7 @@ val f : int -> int = <fun>
 
 class: center, middle
 
-### funkcija *dveh* argumentov <br>=<br> funkcija *enega* argumenta, ki vrne<br> funkcijo *enega* argumenta.
+### funkcija *dveh* argumentov <br>=<br> funkcija *enega* argumenta (prvega), ki vrne<br> funkcijo *enega* argumenta (drugega)
 
 - - -
 
@@ -235,17 +451,14 @@ val zmnozi' : int * int -> int = <fun>
 ### Uporaba delno uporabljenih funkcij
 
 .terminal[```
-# List.map (zmnozi 2) [10; 20; 30];;
+# preslikaj (zmnozi 2) [10; 20; 30];;
 - : int list = [20; 40; 60]
 
-# List.map ((+) 5) [10; 20; 30];;
+# preslikaj ((+) 5) [10; 20; 30];;
 - : int list = [15; 25; 35]
 
-# List.map (List.map succ) [[10; 20]; [30; 40]];;
-- : int list list = [[11; 21]; [31; 41]]
-
-# List.filter ((>) 10) [10; 15; 5; 20];;
-- : int list = [5]
+# preslikaj (preslikaj succ) [[10; 20]; [30]];;
+- : int list list = [[11; 21]; [31]]
 ```]
 
 ---
@@ -266,12 +479,6 @@ val uncurry :
 ### $$curry \colon C^{A \times B} \to (C^B)^A, uncurry \colon (C^B)^A \to C^{A \times B}$$
 
 ### Postopku pravimo **curryiranje**
-
----
-
-class: center, middle
-
-## Zlaganje seznamov
 
 ---
 
@@ -363,8 +570,6 @@ let rec zlozi_desno f z = function
 = f 1 (f 2 (f 3 z))
 ```
 
-### Vgrajena je pod imenom `List.fold_right`
-
 ---
 
 class: question, center, middle
@@ -394,8 +599,6 @@ class: question, center, middle
 = (f (f (f z 1) 2) 3)
 ```
 
-### Vgrajena je pod imenom `List.fold_left`
-
 ---
 
 class: question, center, middle
@@ -415,218 +618,25 @@ class: question, center, middle
 
 ---
 
-class: center, middle
-
-## Primerjava s Pythonom
-
----
-
-### Tipi v OCamlu so **statični**
-
-.source[```
-let je_majhen x =
-  if x < 10 then "Da" else false
-```]
+### Vgrajene funkcije kličemo z `Modul.funkcija`
 
 .terminal[```
-  Characters 45-50:
-    if x < 10 then "Da" else false
-                             ^^^^^
-Error: This expression has type bool but an
-  expression was expected of type string
+# List.map String.length ["Ti"; "si"; "konj"];;
+- : int list = [2; 2; 4]
 ```]
+
+- osnovni modul [`Pervasives`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
+- modul za nize [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html)
+- modul za sezname [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
+- seznam [vseh modulov](http://caml.inria.fr/pub/docs/manual-ocaml/libref/) v standardni knjižnici
 
 ---
 
-### Tipi v Pythonu so **dinamični**
+class: question
+background-image: url(euler.png)
+background-size: 100% auto
 
-.source[```python
-def je_majhen(x):
-    return 'Da' if x < 10 else False
-```]
 
-.terminal[```python
->>> je_majhen(3) + '!'
-'Da!'
-
->>> je_majhen(10) + '!'
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: unsupported operand type(s)
-  for +: 'bool' and 'str'
-```]
-
----
-
-### Tipi v Pythonu so **dinamični**
-
-.source[```python
-def fakulteta(n):
-    if n <= 1:
-        return 1
-    else:
-        n * fakulteta(n - 1)
-```]
-
---
-
-.terminal[```python
->>> fakulteta(4)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 5, in fakulteta
-  File "<stdin>", line 5, in fakulteta
-TypeError: unsupported operand type(s)
-  for *: 'int' and 'NoneType'
-```]
-
----
-
-### OCamlovi tipi so bogatejši od Pythonovih
-
-.terminal[```
-# [(1, ['a']); (10, []); (0, ['x'; 'y'])];;
-- : (int * char list) list = ...
-
-# ("abc", [10; 20; 30], (true, 'x'));;
-- : string * int list * (bool * char) = ...
-```]
-
-.terminal[```python
->>> type([(1, ['a']), (10, []), (0, ['x', 'y'])])
-<type 'list'>
-
->>> type(("abc", [10, 20, 30], (True, 'x')))
-<type 'tuple'>
-```]
-
----
-
-### OCaml optimizira **repno rekurzijo**
-
-.source[```
-let rec f x y =
-    if y = 0 then x else f (x + 1) (y - 1)
-```]
-
-.terminal[```
-# f 0 1000;;
-- : int = 1000
-
-# f 0 100000;;
-- : int = 100000
-
-# f 0 10000000;;
-- : int = 10000000
-```]
-
----
-
-### Klic je repen, če se izvede zadnji
-
-.source[```
-let rec vsota = function
-  | [] -> 0
-  | x :: xs -> x + vsota xs
-```]
-
-```
-  vsota [1; 2; 3]
-= 1 + vsota [2; 3]
-= 1 + (2 + vsota [3])
-= 1 + (2 + (3 + vsota []))
-= 1 + (2 + (3 + 0))
-= 1 + (2 + 3)
-= 1 + 5
-= 6
-```
-
-Računalnik mora najprej izračunati rezultat funkcije, zato si delo odloži na sklad.
-
----
-
-### Klic je repen, če se izvede zadnji
-
-.source[```
-let rec vsota' acc = function
-  | [] -> acc
-  | x :: xs -> vsota' (acc + x) xs
-```]
-
-```
-  vsota' 0 [1; 2; 3]
-= vsota' (1 + 0) [2; 3]
-= vsota' 1 [2; 3]
-= vsota' (1 + 2) [3]
-= vsota' 3 [3]
-= vsota' (3 + 3) []
-= vsota' 6 []
-= 6
-```
-
-Računalnik pri repnem klicu lahko delo opravi sproti in mu ga ni treba shranjevati.
-
----
-
-### OCaml optimizira repno rekurzijo
-
-.source[```
-let rec f x y =
-    if y = 0 then x else f (x + 1) (y - 1)
-```]
-
-.terminal[```
-# f 0 1000;;
-- : int = 1000
-
-# f 0 100000;;
-- : int = 100000
-
-# f 0 10000000;;
-- : int = 10000000
-```]
-
----
-
-### Python ne optimizira repne rekurzije
-
-.source[```python
-def f(x, y):
-    if y == 0:
-        return x
-    else:
-        return f(x + 1, y - 1)
-```]
-
-.terminal[```python
->>> f(0, 1000)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 5, in f
-  ...
-  File "<stdin>", line 2, in f
-RecursionError: maximum recursion depth exceeded
-```]
-
----
-
-### Če rekurzija ni repna, lahko prekoračimo sklad
-
-.source[```
-let rec f y =
-    if y = 0 then 0 else 1 + f (y - 1)
-```]
-
-.terminal[```
-# f 1000;;
-- : int = 1000
-
-# f 100000;;
-- : int = 100000
-
-# f 10000000;;
-Stack overflow during evaluation
-  (looping recursion?).```]
 
     </textarea>
       <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
