@@ -148,7 +148,7 @@ let exists f l = ()
 let first f none_value l = ()
   
 (* Severnjaki napadajo Medbrezje. Kot vrhovni čarodej poznaš zaporedje urokov s katerimi
- lahko Medbrezje zaščitiš pred napadom, uroki pa so predstavljeni v seznamu oblike
+ lahko Medbrezje zaščitiš pred napadom, zaporedje urokov pa je predstavljeno v seznamu oblike
  [("ime1", vrednost1); ("ime2", vrednost2); ...].
  Na razpolago imaš skupino čarodejov, ki so prav tako predstavljeni v seznamu oblike
  [("ime1", spretnost1); ("ime2", spretnost2); ...].
@@ -156,7 +156,8 @@ let first f none_value l = ()
  vrednosti vseh urokov v zaporedju.
 
  Funkcija "able_protectors spells wizards" vrne seznam imen vseh čarodejov, ki lahko
- zaščitijo Medbrezje.
+ samostojno zaščitijo Medbrezje.
+
 
  Funkcija "fails_on spells wizards" vrne seznam parov (čarodej, neuspešni urok), kjer
  je neuspešni urok prvi urok v zaporedju, za katerega čarodej nima več dovolj spretnosti.

@@ -147,7 +147,7 @@ let exists f l = ()
 let first f none_value l = ()
   
 (* The northerners are attacking Middlebirch. As the archwizard you know the sequence
- of spells needed to protect Middlebirch. The spells are written as a list
+ of spells needed to protect Middlebirch. The sequence of spells is written as a list
  [("name1", value1); ("name2", value2); ...].
  At your disposal is a band of wizards, who are represented as a list
  [("name1", ability1); ("name2", ability2); ...].
@@ -155,7 +155,7 @@ let first f none_value l = ()
  the combined value of all spells in the sequence.
 
  The function "able_protectors spells wizards" returns a list of names of all the
- wizards able to protect Middlebirch.
+ wizards able to protect Middlebirch on their own.
 
  The function "fails_on spells wizards" returns a list of pairs (wizard, failed spell),
  where the failed spell is the first spell in the sequence for which the wizard has 
