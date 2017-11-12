@@ -139,10 +139,10 @@ let exists f l = ()
  za katerega funkcija f vrne true, če takšnega elementa ni, pa vrne none_value.
  Funkcija je repno rekurzivna.
  ----------
- # exists ((<)3) [0; 1; 2; 3; 4; 5];;
- - : bool = true
- # exists ((<)8) [0; 1; 2; 3; 4; 5];;
- - : bool = false
+ # first ((<)3) 0 [1; 1; 2; 3; 5; 8];;
+ - : int = 5
+ # first ((<)8) 0 [1; 1; 2; 3; 5; 8];;
+ - : int = 0
  ---------- *)
 
 let first f none_value l = ()

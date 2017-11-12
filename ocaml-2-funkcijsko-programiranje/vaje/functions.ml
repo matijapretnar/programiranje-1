@@ -138,10 +138,10 @@ let exists f l = ()
  for which f returns true. If such an element does not exist it returns none_value.
  The function is tail recursive.
  ----------
- # exists ((<)3) [0; 1; 2; 3; 4; 5];;
- - : bool = true
- # exists ((<)8) [0; 1; 2; 3; 4; 5];;
- - : bool = false
+ # first ((<)3) 0 [1; 1; 2; 3; 5; 8];;
+ - : int = 5
+ # first ((<)8) 0 [1; 1; 2; 3; 5; 8];;
+ - : int = 0
  ---------- *)
 
 let first f none_value l = ()
