@@ -1,0 +1,527 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     21775,        518]
+NotebookOptionsPosition[     20955,        486]
+NotebookOutlinePosition[     21391,        503]
+CellTagsIndexPosition[     21348,        500]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section",
+ CellChangeTimes->{{3.6004045262781267`*^9, 3.6004045388058434`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["sedla[m_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.600404547072316*^9, 3.600404560792101*^9}, {
+  3.603710248902182*^9, 3.603710250416215*^9}, {3.6134224732608833`*^9, 
+  3.6134224801426477`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"vsiIndeksi", "[", 
+   RowBox[{"n_", ",", "m_"}], "]"}], ":=", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"i", ",", "j"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", "m"}], "}"}]}], "]"}], ",", "1"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maxVrstice", "[", "m_", "]"}], ":=", 
+  RowBox[{"Map", "[", 
+   RowBox[{"Max", ",", "m"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"minStolpca", "[", "m_", "]"}], ":=", 
+  RowBox[{"Map", "[", 
+   RowBox[{"Min", ",", 
+    RowBox[{"Transpose", "[", "m", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sedla", "[", "a_", "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"n", "=", 
+       RowBox[{"Length", "[", "a", "]"}]}], ",", 
+      RowBox[{"m", "=", 
+       RowBox[{"Length", "[", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", 
+      RowBox[{"maxVr", "=", 
+       RowBox[{"maxVrstice", "[", "a", "]"}]}], ",", 
+      RowBox[{"minSt", "=", 
+       RowBox[{"minStolpca", "[", "a", "]"}]}]}], "}"}], ",", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"vsiIndeksi", "[", 
+       RowBox[{"m", ",", "n"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", 
+         RowBox[{"[", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], ",", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "\[Equal]", 
+        RowBox[{"maxVr", "[", 
+         RowBox[{"[", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "\[Equal]", 
+        RowBox[{"minSt", "[", 
+         RowBox[{"[", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6134225512682743`*^9, 3.6134226194138927`*^9}, {
+   3.613422696704997*^9, 3.613422730932681*^9}, {3.6134228910141497`*^9, 
+   3.6134229311482153`*^9}, {3.61342299116245*^9, 3.6134231174064093`*^9}, {
+   3.613423211036551*^9, 3.61342341565071*^9}, {3.613423491713685*^9, 
+   3.613423516923418*^9}, 3.613423626877861*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sedla", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", " ", "2", ",", " ", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4", ",", " ", "5", ",", " ", "6"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", " ", "2", ",", " ", "3"}], "}"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.60040450640399*^9, 3.60040450641199*^9}, {
+  3.6037102583677273`*^9, 3.603710348228656*^9}, {3.603710921528942*^9, 
+  3.603710926561315*^9}, {3.613422500026701*^9, 3.6134225189612007`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6035512614834757`*^9, 3.60355129959832*^9, 3.603710378076995*^9, {
+   3.603710521860488*^9, 3.603710566691991*^9}, {3.603710629537806*^9, 
+   3.60371068243535*^9}, {3.6037109151475163`*^9, 3.603710927216361*^9}, 
+   3.613423136269495*^9, 3.6134232277785*^9, {3.613423263096883*^9, 
+   3.613423271760153*^9}, {3.613423360399291*^9, 3.61342338610515*^9}, 
+   3.613423420127615*^9, 3.613423520476573*^9, 3.613423631602957*^9, 
+   3.613426693095291*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 4", "Section",
+ CellChangeTimes->{{3.538421184045417*^9, 3.538421187597632*^9}, {
+   3.538421220286839*^9, 3.538421221956567*^9}, 3.563106067388606*^9, {
+   3.6004045405009403`*^9, 3.600404540563944*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["hiperkocka[n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.563106068978465*^9, 3.563106070466899*^9}, {
+   3.60036957959042*^9, 3.6003695811036224`*^9}, {3.600404612122037*^9, 
+   3.60040461235305*^9}, 3.603711194094397*^9, {3.613423651878152*^9, 
+   3.613423655539021*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PolarToCartesian", "[", 
+   RowBox[{"{", 
+    RowBox[{"r_", ",", "fi_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"r", "*", 
+     RowBox[{"Cos", "[", "fi", "]"}]}], ",", 
+    RowBox[{"r", "*", 
+     RowBox[{"Sin", "[", "fi", "]"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tocke", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PolarToCartesian", "[", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"2", "*", "Pi", "*", 
+        RowBox[{"#", "/", 
+         RowBox[{"2", "^", "n"}]}]}]}], "}"}], "]"}], "&"}], "/@", 
+   RowBox[{"Range", "[", 
+    RowBox[{"0", ",", 
+     RowBox[{
+      RowBox[{"2", "^", "n"}], "-", "1"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hammingEna", "[", "p_", "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"i", "=", 
+       RowBox[{"p", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+      RowBox[{"j", "=", 
+       RowBox[{"p", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"Plus", "@@", 
+      RowBox[{"IntegerDigits", "[", 
+       RowBox[{
+        RowBox[{"BitXor", "[", 
+         RowBox[{"i", ",", "j"}], "]"}], ",", "2"}], "]"}]}], "\[Equal]", 
+     "1"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"povezave", "[", "n_", "]"}], ":=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"Subsets", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"0", ",", 
+        RowBox[{
+         RowBox[{"2", "^", "n"}], "-", "1"}]}], "]"}], ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}], ",", "hammingEna"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hiperkocka", "[", "n_", "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"t", "=", 
+       RowBox[{"tocke", "[", "n", "]"}]}], ",", 
+      RowBox[{"p", "=", 
+       RowBox[{"povezave", "[", "n", "]"}]}]}], "}"}], ",", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"t", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"t", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], "]"}], "]"}]}], 
+           "}"}], "]"}], "&"}], "/@", "p"}], ",", 
+       RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+       RowBox[{"Point", "/@", "t"}]}], "}"}], "]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.600369677652192*^9, 3.6003697487727165`*^9}, 
+   3.6003697973980017`*^9, {3.603551309470221*^9, 3.60355132288605*^9}, {
+   3.60355141820061*^9, 3.603551435413476*^9}, {3.6035514890254307`*^9, 
+   3.603551539779361*^9}, {3.6035516466509533`*^9, 3.603551659499762*^9}, {
+   3.603551696463369*^9, 3.6035517279311037`*^9}, 3.603551804412175*^9, {
+   3.603551849855497*^9, 3.603551913519877*^9}, {3.603711282098185*^9, 
+   3.603711599996833*^9}, {3.603711636102371*^9, 3.6037116706113577`*^9}, {
+   3.60371184021033*^9, 3.603711902627508*^9}, {3.6037119378734713`*^9, 
+   3.603711968856803*^9}, {3.603712076577545*^9, 3.60371207773421*^9}, {
+   3.6037121134585447`*^9, 3.6037121316453247`*^9}, {3.603712280676817*^9, 
+   3.603712491615654*^9}, {3.6037125448784037`*^9, 3.603712584963238*^9}, {
+   3.6037126262363663`*^9, 3.603712626334367*^9}, {3.603712668185347*^9, 
+   3.603712747140414*^9}, {3.603712803160007*^9, 3.603712810211946*^9}, {
+   3.613423666584976*^9, 3.61342366781679*^9}, 3.613423754585771*^9, {
+   3.613423795236672*^9, 3.6134239080771627`*^9}, {3.613426196573258*^9, 
+   3.613426385240224*^9}, {3.6134264306730433`*^9, 3.613426452907325*^9}, {
+   3.613426491366899*^9, 3.6134264954962053`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"hiperkocka", "[", "1", "]"}], ",", 
+    RowBox[{"hiperkocka", "[", "3", "]"}], ",", 
+    RowBox[{"hiperkocka", "[", "4", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.563106086789118*^9, 3.563106097259109*^9}, {
+  3.6003695954400473`*^9, 3.6003696088716707`*^9}, {3.6003697257002764`*^9, 
+  3.600369727119879*^9}, {3.6004046219025965`*^9, 3.600404623784704*^9}, {
+  3.603711269117518*^9, 3.6037112779103727`*^9}, {3.603712932218431*^9, 
+  3.603712982218026*^9}, {3.613426527603969*^9, 3.613426543727653*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{LineBox[{{1, 0}, {-1, 0}}], 
+       {PointSize[Large], PointBox[{1, 0}], PointBox[{-1, 0}]}}], {193.5, -189.},
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+     GraphicsBox[{{
+        LineBox[NCache[{{1, 0}, {2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{1, 
+           0}, {0.7071067811865475, 0.7071067811865475}}]], 
+        LineBox[{{1, 0}, {0, 1}}], LineBox[{{1, 0}, {-1, 0}}], 
+        LineBox[NCache[{{
+           2^Rational[-1, 2], 2^Rational[-1, 2]}, {-2^Rational[-1, 2], 2^
+            Rational[-1, 2]}}, {{0.7071067811865475, 
+          0.7071067811865475}, {-0.7071067811865475, 0.7071067811865475}}]], 
+        LineBox[NCache[{{
+           2^Rational[-1, 2], 2^
+            Rational[-1, 2]}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+          0.7071067811865475, 
+          0.7071067811865475}, {-0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{0, 1}, {-2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{0,
+            1}, {-0.7071067811865475, 0.7071067811865475}}]], 
+        LineBox[{{0, 1}, {0, -1}}], 
+        LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+           2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-0.7071067811865475, 
+          0.7071067811865475}, {0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{-1, 
+           0}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-1, 
+           0}, {-0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[{{-1, 0}, {0, -1}}], 
+        LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+           2^Rational[-1, 2], -2^
+             Rational[-1, 2]}}, {{-0.7071067811865475, -0.7071067811865475}, {
+          0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{0, -1}, {2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+           0, -1}, {0.7071067811865475, -0.7071067811865475}}]]}, 
+       {PointSize[Large], PointBox[{1, 0}], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475, 
+          0.7071067811865475}]], PointBox[{0, 1}], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-0.7071067811865475,
+           0.7071067811865475}]], PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], -2^
+            Rational[-1, 2]}, {-0.7071067811865475, -0.7071067811865475}]], 
+        PointBox[{0, -1}], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+          0.7071067811865475, -0.7071067811865475}]]}}], {580.5, -189.}, 
+     ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+     GraphicsBox[{{
+        LineBox[NCache[{{1, 0}, {
+           Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}}, {{1, 0}, {
+           0.9238795325112867, 0.3826834323650898}}]], 
+        LineBox[NCache[{{1, 0}, {2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{1, 
+           0}, {0.7071067811865475, 0.7071067811865475}}]], 
+        LineBox[{{1, 0}, {0, 1}}], LineBox[{{1, 0}, {-1, 0}}], 
+        LineBox[NCache[{{Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}, {
+           Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}}, {{
+          0.9238795325112867, 0.3826834323650898}, {0.3826834323650898, 
+          0.9238795325112867}}]], 
+        LineBox[NCache[{{
+           Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}, {-
+            Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}}, {{
+          0.9238795325112867, 0.3826834323650898}, {-0.3826834323650898, 
+          0.9238795325112867}}]], 
+        LineBox[NCache[{{
+           Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}, {-
+            Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}}, {{
+          0.9238795325112867, 
+          0.3826834323650898}, {-0.9238795325112867, -0.3826834323650898}}]], 
+        LineBox[NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+           Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}}, {{
+          0.7071067811865475, 0.7071067811865475}, {0.3826834323650898, 
+          0.9238795325112867}}]], 
+        LineBox[NCache[{{
+           2^Rational[-1, 2], 2^Rational[-1, 2]}, {-2^Rational[-1, 2], 2^
+            Rational[-1, 2]}}, {{0.7071067811865475, 
+          0.7071067811865475}, {-0.7071067811865475, 0.7071067811865475}}]], 
+        LineBox[NCache[{{
+           2^Rational[-1, 2], 2^
+            Rational[-1, 2]}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+          0.7071067811865475, 
+          0.7071067811865475}, {-0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{
+           Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}, {-
+            Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}}, {{
+          0.3826834323650898, 0.9238795325112867}, {-0.9238795325112867, 
+          0.3826834323650898}}]], 
+        LineBox[NCache[{{
+           Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}, {-
+            Sin[Rational[1, 8] Pi], -Cos[Rational[1, 8] Pi]}}, {{
+          0.3826834323650898, 
+          0.9238795325112867}, {-0.3826834323650898, -0.9238795325112867}}]], 
+        LineBox[NCache[{{0, 
+           1}, {-Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}}, {{0, 
+           1}, {-0.3826834323650898, 0.9238795325112867}}]], 
+        LineBox[NCache[{{0, 1}, {-2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{0,
+            1}, {-0.7071067811865475, 0.7071067811865475}}]], 
+        LineBox[{{0, 1}, {0, -1}}], 
+        LineBox[NCache[{{-Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}, {-
+            Cos[Rational[1, 8] Pi], Sin[
+            Rational[1, 8] Pi]}}, {{-0.3826834323650898, 
+          0.9238795325112867}, {-0.9238795325112867, 0.3826834323650898}}]], 
+        LineBox[NCache[{{-Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}, {
+           Sin[Rational[1, 8] Pi], -
+            Cos[Rational[1, 8] Pi]}}, {{-0.3826834323650898, 
+          0.9238795325112867}, {0.3826834323650898, -0.9238795325112867}}]], 
+        LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-
+            Cos[Rational[1, 8] Pi], Sin[
+            Rational[1, 8] Pi]}}, {{-0.7071067811865475, 
+          0.7071067811865475}, {-0.9238795325112867, 0.3826834323650898}}]], 
+        LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+           2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-0.7071067811865475, 
+          0.7071067811865475}, {0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{-Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}, {
+           Cos[Rational[1, 8] Pi], -
+            Sin[Rational[1, 8] Pi]}}, {{-0.9238795325112867, 
+          0.3826834323650898}, {0.9238795325112867, -0.3826834323650898}}]], 
+        LineBox[NCache[{{-1, 
+           0}, {-Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}}, {{-1, 
+           0}, {-0.9238795325112867, -0.3826834323650898}}]], 
+        LineBox[NCache[{{-1, 
+           0}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-1, 
+           0}, {-0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[{{-1, 0}, {0, -1}}], 
+        LineBox[NCache[{{-Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}, {-
+            Sin[Rational[1, 8] Pi], -
+            Cos[Rational[1, 8] 
+              Pi]}}, {{-0.9238795325112867, -0.3826834323650898}, \
+{-0.3826834323650898, -0.9238795325112867}}]], 
+        LineBox[NCache[{{-Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}, {
+           Sin[Rational[1, 8] Pi], -
+            Cos[Rational[1, 8] 
+              Pi]}}, {{-0.9238795325112867, -0.3826834323650898}, {
+          0.3826834323650898, -0.9238795325112867}}]], 
+        LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {-
+            Sin[Rational[1, 8] Pi], -
+            Cos[Rational[1, 8] 
+              Pi]}}, {{-0.7071067811865475, -0.7071067811865475}, \
+{-0.3826834323650898, -0.9238795325112867}}]], 
+        LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+           2^Rational[-1, 2], -2^
+             Rational[-1, 2]}}, {{-0.7071067811865475, -0.7071067811865475}, {
+          0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{-Sin[Rational[1, 8] Pi], -Cos[Rational[1, 8] Pi]}, {
+           Cos[Rational[1, 8] Pi], -
+            Sin[Rational[1, 8] 
+              Pi]}}, {{-0.3826834323650898, -0.9238795325112867}, {
+          0.9238795325112867, -0.3826834323650898}}]], 
+        LineBox[NCache[{{0, -1}, {
+           Sin[Rational[1, 8] Pi], -Cos[Rational[1, 8] Pi]}}, {{0, -1}, {
+           0.3826834323650898, -0.9238795325112867}}]], 
+        LineBox[NCache[{{0, -1}, {2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+           0, -1}, {0.7071067811865475, -0.7071067811865475}}]], 
+        LineBox[NCache[{{Sin[Rational[1, 8] Pi], -Cos[Rational[1, 8] Pi]}, {
+           Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}}, {{
+          0.3826834323650898, -0.9238795325112867}, {
+          0.9238795325112867, -0.3826834323650898}}]], 
+        LineBox[NCache[{{2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+           Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}}, {{
+          0.7071067811865475, -0.7071067811865475}, {
+          0.9238795325112867, -0.3826834323650898}}]]}, 
+       {PointSize[Large], PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Cos[Rational[1, 8] Pi], Sin[Rational[1, 8] Pi]}, {
+          0.9238795325112867, 0.3826834323650898}]], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475, 
+          0.7071067811865475}]], 
+        PointBox[
+         NCache[{Sin[Rational[1, 8] Pi], Cos[Rational[1, 8] Pi]}, {
+          0.3826834323650898, 0.9238795325112867}]], PointBox[{0, 1}], 
+        PointBox[
+         NCache[{-Sin[Rational[1, 8] Pi], Cos[
+           Rational[1, 8] Pi]}, {-0.3826834323650898, 0.9238795325112867}]], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-0.7071067811865475,
+           0.7071067811865475}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 8] Pi], Sin[
+           Rational[1, 8] Pi]}, {-0.9238795325112867, 0.3826834323650898}]], 
+        PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 8] Pi], -
+           Sin[Rational[1, 8] 
+             Pi]}, {-0.9238795325112867, -0.3826834323650898}]], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], -2^
+            Rational[-1, 2]}, {-0.7071067811865475, -0.7071067811865475}]], 
+        PointBox[
+         NCache[{-Sin[Rational[1, 8] Pi], -
+           Cos[Rational[1, 8] 
+             Pi]}, {-0.3826834323650898, -0.9238795325112867}]], 
+        PointBox[{0, -1}], 
+        PointBox[
+         NCache[{Sin[Rational[1, 8] Pi], -Cos[Rational[1, 8] Pi]}, {
+          0.3826834323650898, -0.9238795325112867}]], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+          0.7071067811865475, -0.7071067811865475}]], 
+        PointBox[
+         NCache[{Cos[Rational[1, 8] Pi], -Sin[Rational[1, 8] Pi]}, {
+          0.9238795325112867, -0.3826834323650898}]]}}], {967.5, -189.}, 
+     ImageScaled[{0.5, 0.5}], {360., 360.}]}, {}},
+  ContentSelectable->True,
+  ImageSize->{689., Automatic},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{{3.603712955365468*^9, 3.603712983297792*^9}, 
+   3.6134265442345753`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1062, 549},
+WindowMargins->{{Automatic, 86}, {Automatic, 95}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 81, "Section"],
+Cell[679, 25, 286, 7, 32, "Text"],
+Cell[968, 34, 2367, 66, 121, "Input"],
+Cell[CellGroupData[{
+Cell[3360, 104, 543, 13, 32, "Input"],
+Cell[3906, 119, 645, 14, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4600, 139, 217, 3, 81, "Section"],
+Cell[4820, 144, 361, 8, 32, "Text"],
+Cell[5184, 154, 3968, 103, 143, "Input"],
+Cell[CellGroupData[{
+Cell[9177, 261, 602, 11, 32, "Input"],
+Cell[9782, 274, 11145, 208, 251, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

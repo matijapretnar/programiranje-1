@@ -1,0 +1,264 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8004,        255]
+NotebookOptionsPosition[      7046,        216]
+NotebookOutlinePosition[      7399,        232]
+CellTagsIndexPosition[      7356,        229]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lahka varianta", "Section",
+ CellChangeTimes->{{3.538421184045417*^9, 3.538421187597632*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["vogali[", "Input"],
+ StyleBox["n_", "Input",
+  FontSlant->"Italic"],
+ StyleBox["]", "Input"],
+ ", ki vrne sliko vogalov, kot je prikazano na sliki za ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "7"}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.538420953464491*^9, 3.5384209638371353`*^9}, {
+  3.538421009405819*^9, 3.538421061066408*^9}, {3.53842117115935*^9, 
+  3.538421180438541*^9}, {3.5384212382612143`*^9, 3.538421238652628*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{-1, 0}, {-1, -1}, {0, -1}}], 
+   LineBox[{{-2, 0}, {-2, -2}, {0, -2}}], 
+   LineBox[{{-3, 0}, {-3, -3}, {0, -3}}], 
+   LineBox[{{-4, 0}, {-4, -4}, {0, -4}}], 
+   LineBox[{{-5, 0}, {-5, -5}, {0, -5}}], 
+   LineBox[{{-6, 0}, {-6, -6}, {0, -6}}], 
+   LineBox[{{-7, 0}, {-7, -7}, {0, -7}}]}]], "Output",
+ CellChangeTimes->{3.538421141022222*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Re\[SHacek]itev:", "Subsection",
+ CellChangeTimes->{{3.53842119450428*^9, 3.538421195901819*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vogali", "[", "n_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "k"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "k"}], ",", 
+          RowBox[{"-", "k"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"-", "k"}]}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.538421044734756*^9, 3.538421132442711*^9}, {
+  3.538421163248392*^9, 3.538421168979281*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Te\[ZHacek]ja varianta", "Section",
+ CellChangeTimes->{{3.538421184045417*^9, 3.538421187597632*^9}, {
+  3.538421220286839*^9, 3.538421221956567*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["kaca[", "Input"],
+ StyleBox["n_", "Input",
+  FontSlant->"Italic"],
+ StyleBox["]", "Input"],
+ ", ki vrne sliko, kot je prikazano na sliki za ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "7"}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.538420953464491*^9, 3.5384209638371353`*^9}, {
+  3.538421009405819*^9, 3.538421061066408*^9}, {3.53842117115935*^9, 
+  3.538421180438541*^9}, {3.5384212255257387`*^9, 3.538421246764283*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{LineBox[{{-1, 0}, {0, 0}}], LineBox[{{-3, 0}, {-2, 0}}], 
+    LineBox[{{-5, 0}, {-4, 0}}], LineBox[{{-7, 0}, {-6, 0}}]}, {
+    LineBox[{{0, -2}, {0, -1}}], LineBox[{{0, -4}, {0, -3}}], 
+    LineBox[{{0, -6}, {0, -5}}]}, {LineBox[{{-1, 0}, {-1, -1}, {0, -1}}], 
+    LineBox[{{-2, 0}, {-2, -2}, {0, -2}}], 
+    LineBox[{{-3, 0}, {-3, -3}, {0, -3}}], 
+    LineBox[{{-4, 0}, {-4, -4}, {0, -4}}], 
+    LineBox[{{-5, 0}, {-5, -5}, {0, -5}}], 
+    LineBox[{{-6, 0}, {-6, -6}, {0, -6}}], 
+    LineBox[{{-7, 0}, {-7, -7}, {0, -7}}]}}]], "Output",
+ CellChangeTimes->{
+  3.538421295941491*^9, {3.538421329141447*^9, 3.5384213431825247`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<kaca6.pdf\>\"", ",", 
+   RowBox[{"kaca", "[", "6", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.538421744122898*^9, 3.538421745307993*^9}, {
+  3.538424522510482*^9, 3.538424563779112*^9}}],
+
+Cell[BoxData["\<\"kaca6.pdf\"\>"], "Output",
+ CellChangeTimes->{
+  3.53842174575709*^9, {3.538424523425654*^9, 3.538424564773991*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"kaca", "[", "5", "]"}]], "Input",
+ CellChangeTimes->{{3.53842174612036*^9, 3.5384217471076517`*^9}, {
+  3.538424553941496*^9, 3.5384245540435133`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{LineBox[{{-1, 0}, {0, 0}}], LineBox[{{-3, 0}, {-2, 0}}], 
+    LineBox[{{-5, 0}, {-4, 0}}]}, {LineBox[{{0, -2}, {0, -1}}], 
+    LineBox[{{0, -4}, {0, -3}}]}, {LineBox[{{-1, 0}, {-1, -1}, {0, -1}}], 
+    LineBox[{{-2, 0}, {-2, -2}, {0, -2}}], 
+    LineBox[{{-3, 0}, {-3, -3}, {0, -3}}], 
+    LineBox[{{-4, 0}, {-4, -4}, {0, -4}}], 
+    LineBox[{{-5, 0}, {-5, -5}, {0, -5}}]}}]], "Output",
+ CellChangeTimes->{3.5384217480274267`*^9, 3.538424554504047*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Re\[SHacek]itev:", "Subsection",
+ CellChangeTimes->{{3.53842119450428*^9, 3.538421195901819*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"kaca", "[", "n_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "k"}], ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "k"}], "+", "1"}], ",", "0"}], "}"}]}], "}"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "1", ",", "n", ",", "2"}], "}"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "k"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{
+             RowBox[{"-", "k"}], "+", "1"}]}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "2", ",", "n", ",", "2"}], "}"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "k"}], ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "k"}], ",", 
+            RowBox[{"-", "k"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "k"}]}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.538421044734756*^9, 3.538421132442711*^9}, {
+  3.538421163248392*^9, 3.538421168979281*^9}, {3.538421251223686*^9, 
+  3.5384213406882668`*^9}, {3.538421739893785*^9, 3.5384217403788*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 99, 1, 67, "Section"],
+Cell[681, 25, 534, 14, 26, "Text"],
+Cell[1218, 41, 379, 8, 374, "Output"],
+Cell[CellGroupData[{
+Cell[1622, 53, 103, 1, 34, "Subsection"],
+Cell[1728, 56, 735, 22, 27, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2512, 84, 156, 2, 67, "Section"],
+Cell[2671, 88, 524, 14, 26, "Text"],
+Cell[3198, 104, 659, 12, 374, "Output"],
+Cell[CellGroupData[{
+Cell[3882, 120, 245, 5, 27, "Input"],
+Cell[4130, 127, 134, 2, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4301, 134, 175, 3, 27, "Input"],
+Cell[4479, 139, 481, 8, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4997, 152, 103, 1, 34, "Subsection"],
+Cell[5103, 155, 1915, 57, 73, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

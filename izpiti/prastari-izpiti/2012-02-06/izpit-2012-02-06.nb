@@ -1,0 +1,116 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3264,        107]
+NotebookOptionsPosition[      2866,         88]
+NotebookOutlinePosition[      3221,        104]
+CellTagsIndexPosition[      3178,        101]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section"],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3[z_, v_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.56310575215803*^9, 3.563105765952773*^9}}],
+
+Cell[BoxData[
+ RowBox[{"naloga3", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "14", ",", "16", ",", "19", ",", "20", ",", "27", ",", "31", ",", "38"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", "16", ",", "19", ",", "20", ",", "26", ",", "31", ",", 
+       "35"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", "16", ",", "19", ",", "20", ",", "27", ",", "30", ",", 
+       "38"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", "16", ",", "19", ",", "20", ",", "26", ",", "30", ",", 
+       "37"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "10", ",", "14", ",", "18", ",", "22", ",", "26", ",", "30", ",", 
+       "34"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", "16", ",", "19", ",", "20", ",", "27", ",", "31", ",", 
+       "38"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", "16", ",", "19", ",", "20", ",", "27", ",", "30", ",", 
+       "37"}], "}"}]}], "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]",
+   "]"}]], "Input",
+ CellChangeTimes->{{3.5631057689838257`*^9, 3.5631058060937138`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"naloga3", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "14", ",", "16", ",", "19", ",", "20", ",", "27", ",", "31", ",", "38"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "38", ",", "31", ",", "27", ",", "20", ",", "19", ",", "16", ",", 
+       "14"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "10", ",", "14", ",", "18", ",", "22", ",", "26", ",", "30", ",", 
+       "34"}], "}"}]}], "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]",
+   "]"}]], "Input",
+ CellChangeTimes->{{3.563105776103651*^9, 3.563105792334777*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 752},
+WindowMargins->{{45, Automatic}, {-1, Automatic}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 27, 0, 67, "Section"],
+Cell[609, 24, 189, 5, 26, "Text"],
+Cell[801, 31, 1341, 34, 178, "Input"],
+Cell[2145, 67, 705, 18, 118, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
