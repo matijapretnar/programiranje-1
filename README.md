@@ -2,5 +2,5 @@
 
 ## Prosojnice
 
-* [Uvod v OCaml](https://rawgit.com/matijapretnar/programiranje-1/master/ocaml-1-uvod/1-uvod-v-ocaml.html)
-* [Funkcijsko programiranje](https://rawgit.com/matijapretnar/programiranje-1/master/ocaml-2-funkcijsko-programiranje/2-funkcijsko-programiranje.html)
+* [Uvod v OCaml](https://rawgit.com/matijapretnar/programiranje-1/master/4-uvod-v-ocaml/predavanja/prosojnice.html)
+* [Funkcijsko programiranje](https://rawgit.com/matijapretnar/programiranje-1/master/5-funkcijsko-programiranje/predavanja/prosojnice.html)
