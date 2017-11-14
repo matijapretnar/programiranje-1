@@ -23,7 +23,7 @@ fib = posploseniFib 0 1
 euler1 :: Integer -> Integer
 euler1 n = sum [a | a <- [1..n - 1], a `mod` 3 == 0 || a `mod` 5 == 0]
 
--- 'euler2 n' vrne vsoto vseh sodih Fibonaccijevh števil, večjih ali enakih 'n'.
+-- 'euler2 n' vrne vsoto vseh sodih Fibonaccijevh števil, manjših ali enakih 'n'.
 euler2 :: Integer -> Integer
 euler2 n = sum $ filter even $ takeWhile (< n) $ fib
   where
