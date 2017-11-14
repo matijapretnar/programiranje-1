@@ -18,8 +18,18 @@ ol, ul {
   line-height: 2;
 }
 
+a, a:visited {
+  text-decoration: none;
+  color: #008;
+}
+
+a:hover {
+  color: #00d;
+}
+
 a.reveal {
   font-weight: bold;
+  color: inherit;
 }
 
 a.reveal:hover {
