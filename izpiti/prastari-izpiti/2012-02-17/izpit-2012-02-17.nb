@@ -1,0 +1,71 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1654,         62]
+NotebookOptionsPosition[      1296,         44]
+NotebookOutlinePosition[      1652,         60]
+CellTagsIndexPosition[      1609,         57]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section",
+ CellChangeTimes->{{3.538421184045417*^9, 3.538421187597632*^9}, {
+   3.538421220286839*^9, 3.538421221956567*^9}, 3.563106067388606*^9}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3[n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.563106068978465*^9, 3.563106070466899*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga3", "[", "2", "]"}], ",", 
+    RowBox[{"naloga3", "[", "5", "]"}], ",", 
+    RowBox[{"naloga3", "[", "6", "]"}]}], "\[IndentingNewLine]", "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.563106086789118*^9, 3.563106097259109*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 116}, {Automatic, 23}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 165, 2, 67, "Section"],
+Cell[747, 26, 186, 5, 26, "Text"],
+Cell[936, 33, 344, 8, 58, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

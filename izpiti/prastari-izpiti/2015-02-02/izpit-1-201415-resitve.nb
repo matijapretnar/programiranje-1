@@ -1,0 +1,924 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     38093,        915]
+NotebookOptionsPosition[     36816,        867]
+NotebookOutlinePosition[     37252,        884]
+CellTagsIndexPosition[     37209,        881]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 1", "Section",
+ CellChangeTimes->{{3.6004045262781267`*^9, 3.6004045388058434`*^9}, {
+  3.6318560902978888`*^9, 3.6318560904360447`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["veljavenSprehod[sprehod_, n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.600404547072316*^9, 3.600404560792101*^9}, {
+  3.603710248902182*^9, 3.603710250416215*^9}, {3.6134224732608833`*^9, 
+  3.6134224801426477`*^9}, {3.615809695382742*^9, 3.615809702154962*^9}, {
+  3.631818343190864*^9, 3.631818371659204*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"natankoEnkrat", "[", 
+   RowBox[{"sprehod_", ",", "n_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Sort", "[", "sprehod", "]"}], "==", 
+   RowBox[{"Join", "@@", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"i", ",", "j"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], 
+     "]"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"veljavenKorak", "[", 
+   RowBox[{"{", "}"}], "]"}], ":=", "True"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"veljavenKorak", "[", 
+   RowBox[{"{", "a_", "}"}], "]"}], ":=", "True"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"veljavenKorak", "[", 
+   RowBox[{"{", 
+    RowBox[{"a_", ",", "b_", ",", "ostanek___"}], "}"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Times", "@@", 
+      RowBox[{"Abs", "[", 
+       RowBox[{"a", "-", "b"}], "]"}]}], "\[Equal]", "2"}], ")"}], "&&", 
+   RowBox[{"veljavenKorak", "[", 
+    RowBox[{"{", 
+     RowBox[{"b", ",", "ostanek"}], "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"veljavenSprehod", "[", 
+   RowBox[{"sprehod_", ",", "n_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"veljavenKorak", "[", "sprehod", "]"}], "&&", 
+   RowBox[{"natankoEnkrat", "[", 
+    RowBox[{"sprehod", ",", "n"}], "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.6134225512682743`*^9, 3.6134226194138927`*^9}, {
+   3.613422696704997*^9, 3.613422730932681*^9}, {3.6134228910141497`*^9, 
+   3.6134229311482153`*^9}, {3.61342299116245*^9, 3.6134231174064093`*^9}, {
+   3.613423211036551*^9, 3.61342341565071*^9}, {3.613423491713685*^9, 
+   3.613423516923418*^9}, 3.613423626877861*^9, {3.615808617462062*^9, 
+   3.615808627767717*^9}, {3.615808737808918*^9, 3.615808785802164*^9}, {
+   3.615808874582501*^9, 3.615808986064095*^9}, {3.615809218715115*^9, 
+   3.615809231886937*^9}, {3.615809294066678*^9, 3.615809311067542*^9}, {
+   3.615809400497793*^9, 3.615809453094454*^9}, {3.6158094842570267`*^9, 
+   3.6158095685822268`*^9}, {3.6158096136673803`*^9, 3.61580961525487*^9}, {
+   3.61581010754466*^9, 3.615810194133629*^9}, {3.631818396379719*^9, 
+   3.631818456050137*^9}, {3.631818486653592*^9, 3.631818596162305*^9}, {
+   3.631818645193572*^9, 3.631818721521994*^9}, {3.631818917704833*^9, 
+   3.631818936675872*^9}, {3.631856339457193*^9, 3.631856342713385*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Nekaterih", " ", 
+    RowBox[{"(", 
+     RowBox[{"mnogih", "!"}], ")"}], " ", "polj", " ", "ne", " ", 
+    RowBox[{"obi\[SHacek]\[CHacek]e", "."}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sprehod1", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "4"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"veljavenSprehod", "[", 
+    RowBox[{"sprehod1", ",", "4"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.631818964730894*^9, 3.631819002674226*^9}, {
+   3.6318190485165443`*^9, 3.631819075750945*^9}, {3.631821759081932*^9, 
+   3.63182176099189*^9}, {3.6318219417857637`*^9, 3.631821976380541*^9}, 
+   3.631873198622221*^9}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{
+  3.631819020524125*^9, {3.631819057744008*^9, 3.6318190856529217`*^9}, {
+   3.631821752505987*^9, 3.631821762022154*^9}, 3.631821979277309*^9, 
+   3.6318732148302393`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Nekatera", " ", "polja", " ", "obi\[SHacek]\[CHacek]e", " ", 
+    RowBox[{"ve\[CHacek]krat", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sprehod2", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"veljavenSprehod", "[", 
+    RowBox[{"sprehod2", ",", "4"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.631821288816596*^9, 3.6318214427506113`*^9}, {
+  3.63182151134414*^9, 3.631821528569305*^9}, {3.631821578942396*^9, 
+  3.631821634541501*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.63182159286903*^9, 3.631821635893558*^9, 
+  3.631821750068585*^9, 3.631821981921989*^9, 3.631873214862671*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Enega", " ", "polja", " ", "ne", " ", "obi\[SHacek]\[CHacek]e"}],
+     ",", " ", 
+    RowBox[{
+    "neko", " ", "drugo", " ", "polje", " ", "pa", " ", 
+     "obi\[SHacek]\[CHacek]e", " ", 
+     RowBox[{"dvakrat", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sprehod3", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"3", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"veljavenSprehod", "[", 
+    RowBox[{"sprehod3", ",", "4"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.631821765073353*^9, 3.6318219323000383`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.631821905269156*^9, 3.6318219331577377`*^9}, 
+   3.631821986323792*^9, 3.631873214894767*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Vsebuje", " ", "nedovoljen", " ", 
+    RowBox[{"premik", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sprehod4", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "4"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"veljavenSprehod", "[", 
+    RowBox[{"sprehod4", ",", "4"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.631820958543935*^9, 3.6318211444686604`*^9}, {
+  3.631821644308296*^9, 3.6318216469755583`*^9}, {3.63182172594461*^9, 
+  3.631821728863707*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.631821068573162*^9, 3.631821083968897*^9}, 
+   3.631821131334426*^9, 3.631821647560486*^9, {3.6318217398876467`*^9, 
+   3.631821747569194*^9}, 3.6318219897082777`*^9, 3.631873214938108*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Veljaven", " ", 
+    RowBox[{"sprehod", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sprehod5", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "5"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"veljavenSprehod", "[", 
+    RowBox[{"sprehod5", ",", "6"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.631819142847443*^9, 3.631819196533288*^9}, {
+  3.631820548253261*^9, 3.63182085862775*^9}, {3.631821650481271*^9, 
+  3.631821655491061*^9}, {3.631821733265191*^9, 3.631821736182444*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.631820832264735*^9, 3.631821655791191*^9, {3.631821736787548*^9, 
+   3.631821745492077*^9}, 3.631821994331915*^9, 3.6318732149691677`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 2", "Section",
+ CellChangeTimes->{{3.538421184045417*^9, 3.538421187597632*^9}, {
+   3.538421220286839*^9, 3.538421221956567*^9}, 3.563106067388606*^9, {
+   3.6004045405009403`*^9, 3.600404540563944*^9}, 3.631735490497629*^9}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["lestev[n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.563106068978465*^9, 3.563106070466899*^9}, {
+   3.60036957959042*^9, 3.6003695811036224`*^9}, {3.600404612122037*^9, 
+   3.60040461235305*^9}, 3.603711194094397*^9, {3.613423651878152*^9, 
+   3.613423655539021*^9}, {3.615707701457326*^9, 3.6157077072431927`*^9}, {
+   3.631735493785614*^9, 3.6317355000689507`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PolarToCartesian", "[", 
+   RowBox[{"{", 
+    RowBox[{"r_", ",", "fi_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"r", "*", 
+     RowBox[{"Cos", "[", "fi", "]"}]}], ",", 
+    RowBox[{"r", "*", 
+     RowBox[{"Sin", "[", "fi", "]"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lestev", "[", "n_", "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"notranje", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"PolarToCartesian", "[", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            RowBox[{"i", "*", "2", "*", 
+             RowBox[{"Pi", "/", "n"}]}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", 
+           RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"zunanje", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"PolarToCartesian", "[", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", 
+            RowBox[{"i", "*", "2", "*", 
+             RowBox[{"Pi", "/", "n"}]}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", 
+           RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"PointSize", "[", "Large", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Point", "[", 
+        RowBox[{"notranje", "~", "Join", "~", "zunanje"}], "]"}], ",", 
+       RowBox[{"(*", " ", "vozli\[SHacek]\[CHacek]a", " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"notranje", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+            RowBox[{"zunanje", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+       RowBox[{"(*", " ", "\[SHacek]prikle", " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"notranje", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+            RowBox[{"notranje", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", "+", "1"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"povezave", " ", "na", " ", "notranjem", " ", "ciklu"}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"zunanje", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+            RowBox[{"zunanje", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", "+", "1"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"povezave", " ", "na", " ", "zunanjem", " ", "ciklu"}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"zunanje", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"notranje", "[", 
+           RowBox[{"[", "n", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"zunanje", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], ",", 
+          RowBox[{"notranje", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}]}], 
+      RowBox[{"(*", " ", 
+       RowBox[{"povezavi", ",", " ", 
+        RowBox[{"ki", " ", "se", " ", "prekri\[ZHacek]ata"}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.600369677652192*^9, 3.6003697487727165`*^9}, 
+   3.6003697973980017`*^9, {3.603551309470221*^9, 3.60355132288605*^9}, {
+   3.60355141820061*^9, 3.603551435413476*^9}, {3.6035514890254307`*^9, 
+   3.603551539779361*^9}, {3.6035516466509533`*^9, 3.603551659499762*^9}, {
+   3.603551696463369*^9, 3.6035517279311037`*^9}, 3.603551804412175*^9, {
+   3.603551849855497*^9, 3.603551913519877*^9}, {3.603711282098185*^9, 
+   3.603711599996833*^9}, {3.603711636102371*^9, 3.6037116706113577`*^9}, {
+   3.60371184021033*^9, 3.603711902627508*^9}, {3.6037119378734713`*^9, 
+   3.603711968856803*^9}, {3.603712076577545*^9, 3.60371207773421*^9}, {
+   3.6037121134585447`*^9, 3.6037121316453247`*^9}, {3.603712280676817*^9, 
+   3.603712491615654*^9}, {3.6037125448784037`*^9, 3.603712584963238*^9}, {
+   3.6037126262363663`*^9, 3.603712626334367*^9}, {3.603712668185347*^9, 
+   3.603712747140414*^9}, {3.603712803160007*^9, 3.603712810211946*^9}, {
+   3.613423666584976*^9, 3.61342366781679*^9}, 3.613423754585771*^9, {
+   3.613423795236672*^9, 3.6134239080771627`*^9}, {3.613426196573258*^9, 
+   3.613426385240224*^9}, {3.6134264306730433`*^9, 3.613426452907325*^9}, {
+   3.613426491366899*^9, 3.6134264954962053`*^9}, {3.61570773406651*^9, 
+   3.615707735999341*^9}, {3.615707912824876*^9, 3.61570791552562*^9}, {
+   3.615707980223991*^9, 3.615708024025823*^9}, {3.615708250142293*^9, 
+   3.615708259858313*^9}, {3.615708482872924*^9, 3.615708623879352*^9}, {
+   3.615708671360536*^9, 3.61570874604578*^9}, {3.615708778185615*^9, 
+   3.6157087945568457`*^9}, 3.615805595379141*^9, {3.615805665316987*^9, 
+   3.615805728533976*^9}, {3.615805830283189*^9, 3.6158058513938007`*^9}, {
+   3.615805935147229*^9, 3.61580593795745*^9}, {3.6158060275348463`*^9, 
+   3.6158061224758987`*^9}, 3.615806169739622*^9, {3.631735614358251*^9, 
+   3.63173563040952*^9}, {3.6317356629571857`*^9, 3.631736120893746*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"lestev", "[", "4", "]"}], ",", 
+    RowBox[{"lestev", "[", "5", "]"}], ",", 
+    RowBox[{"lestev", "[", "7", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.563106086789118*^9, 3.563106097259109*^9}, {
+  3.6003695954400473`*^9, 3.6003696088716707`*^9}, {3.6003697257002764`*^9, 
+  3.600369727119879*^9}, {3.6004046219025965`*^9, 3.600404623784704*^9}, {
+  3.603711269117518*^9, 3.6037112779103727`*^9}, {3.603712932218431*^9, 
+  3.603712982218026*^9}, {3.613426527603969*^9, 3.613426543727653*^9}, {
+  3.6157077895758247`*^9, 3.615707807992612*^9}, {3.615806238478714*^9, 
+  3.6158062598013887`*^9}, {3.631735637976633*^9, 3.631735657200362*^9}, {
+  3.631736127429205*^9, 3.631736152468047*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[
+      {PointSize[Large], 
+       PointBox[{{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {2, 0}, {0, 2}, {-2, 0}, {
+        0, -2}}], {LineBox[{{1, 0}, {2, 0}}], LineBox[{{0, 1}, {0, 2}}], 
+        LineBox[{{-1, 0}, {-2, 0}}], LineBox[{{0, -1}, {0, -2}}]}, {
+        LineBox[{{1, 0}, {0, 1}}], LineBox[{{0, 1}, {-1, 0}}], 
+        LineBox[{{-1, 0}, {0, -1}}]}, {LineBox[{{2, 0}, {0, 2}}], 
+        LineBox[{{0, 2}, {-2, 0}}], LineBox[{{-2, 0}, {0, -2}}]}, 
+       LineBox[{{2, 0}, {0, -1}}], LineBox[{{0, -2}, {1, 0}}]}], {193.5, -193.86228251318173`},
+      ImageScaled[{0.5, 0.5}], {360., 369.2614905012985}], InsetBox[
+     GraphicsBox[
+      {PointSize[Large], 
+       PointBox[
+        NCache[{{1, 0}, {
+          Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 4] (-1 - 5^
+            Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 4] (-1 + 
+            5^Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {2, 0}, {
+          Rational[1, 2] (-1 + 5^Rational[1, 2]), 
+           2 (Rational[5, 8] + Rational[1, 8] 5^Rational[1, 2])^
+            Rational[1, 2]}, {
+          Rational[1, 2] (-1 - 5^Rational[1, 2]), 
+           2 (Rational[5, 8] + Rational[-1, 8] 5^Rational[1, 2])^
+            Rational[1, 2]}, {
+          Rational[1, 2] (-1 - 5^
+            Rational[1, 2]), (-2) (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 2] (-1 + 
+            5^Rational[1, 2]), (-2) (Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 0}, {
+          0.30901699437494745`, 0.9510565162951535}, {-0.8090169943749475, 
+          0.5877852522924731}, {-0.8090169943749475, -0.5877852522924731}, {
+          0.30901699437494745`, -0.9510565162951535}, {2, 0}, {
+          0.6180339887498949, 1.902113032590307}, {-1.618033988749895, 
+          1.1755705045849463`}, {-1.618033988749895, -1.1755705045849463`}, {
+          0.6180339887498949, -1.902113032590307}}]], {
+        LineBox[{{1, 0}, {2, 0}}], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 2] (-1 + 5^Rational[1, 2]), 
+            2 (Rational[5, 8] + Rational[1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{0.30901699437494745`, 0.9510565162951535}, {
+          0.6180339887498949, 1.902113032590307}}]], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 2] (-1 - 5^Rational[1, 2]), 
+            2 (Rational[5, 8] + Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{-0.8090169943749475, 
+          0.5877852522924731}, {-1.618033988749895, 1.1755705045849463`}}]], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 - 5^
+             Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 2] (-1 - 5^
+             Rational[1, 2]), (-2) (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[
+              1, 2]}}, {{-0.8090169943749475, -0.5877852522924731}, \
+{-1.618033988749895, -1.1755705045849463`}}]], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 + 
+             5^Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 2] (-1 + 
+             5^Rational[1, 2]), (-2) (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+          0.30901699437494745`, -0.9510565162951535}, {
+          0.6180339887498949, -1.902113032590307}}]]}, {
+        LineBox[NCache[{{1, 0}, {
+           Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 0}, {
+           0.30901699437494745`, 0.9510565162951535}}]], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+          0.30901699437494745`, 0.9510565162951535}, {-0.8090169943749475, 
+          0.5877852522924731}}]], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 - 5^
+             Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{-0.8090169943749475, 
+          0.5877852522924731}, {-0.8090169943749475, -0.5877852522924731}}]], 
+        LineBox[NCache[{{
+           Rational[1, 4] (-1 - 5^
+             Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 + 
+             5^Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{-0.8090169943749475, -0.5877852522924731}, {
+          0.30901699437494745`, -0.9510565162951535}}]]}, {
+        LineBox[NCache[{{2, 0}, {
+           Rational[1, 2] (-1 + 5^Rational[1, 2]), 
+            2 (Rational[5, 8] + Rational[1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{2, 0}, {0.6180339887498949, 
+           1.902113032590307}}]], 
+        LineBox[NCache[{{
+           Rational[1, 2] (-1 + 5^Rational[1, 2]), 
+            2 (Rational[5, 8] + Rational[1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {
+           Rational[1, 2] (-1 - 5^Rational[1, 2]), 
+            2 (Rational[5, 8] + Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{0.6180339887498949, 
+          1.902113032590307}, {-1.618033988749895, 1.1755705045849463`}}]], 
+        LineBox[NCache[{{
+           Rational[1, 2] (-1 - 5^Rational[1, 2]), 
+            2 (Rational[5, 8] + Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {
+           Rational[1, 2] (-1 - 5^
+             Rational[1, 2]), (-2) (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{-1.618033988749895, 
+          1.1755705045849463`}, {-1.618033988749895, -1.1755705045849463`}}]],
+         LineBox[
+         NCache[{{
+           Rational[1, 2] (-1 - 5^
+             Rational[1, 2]), (-2) (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 2] (-1 + 
+             5^Rational[1, 2]), (-2) (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{-1.618033988749895, -1.1755705045849463`}, {
+          0.6180339887498949, -1.902113032590307}}]]}, 
+       LineBox[
+        NCache[{{2, 0}, {
+          Rational[1, 4] (-1 + 
+            5^Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{2, 0}, {
+          0.30901699437494745`, -0.9510565162951535}}]], 
+       LineBox[NCache[{{
+          Rational[1, 2] (-1 + 
+            5^Rational[1, 2]), (-2) (Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {1, 0}}, {{
+          0.6180339887498949, -1.902113032590307}, {1, 0}}]]}], {580.5, -193.86228251318173`},
+      ImageScaled[{0.5, 0.5}], {360., 369.2614905012985}], InsetBox[
+     GraphicsBox[
+      {PointSize[Large], 
+       PointBox[
+        NCache[{{1, 0}, {
+          Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {-
+           Sin[Rational[1, 14] Pi], Cos[Rational[1, 14] Pi]}, {-
+           Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}, {-
+           Cos[Rational[1, 7] Pi], -Sin[Rational[1, 7] Pi]}, {-
+           Sin[Rational[1, 14] Pi], -Cos[Rational[1, 14] Pi]}, {
+          Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {2, 0}, {
+          2 Sin[Rational[3, 14] Pi], 2 Cos[Rational[3, 14] Pi]}, {(-2) 
+           Sin[Rational[1, 14] Pi], 2 Cos[Rational[1, 14] Pi]}, {(-2) 
+           Cos[Rational[1, 7] Pi], 2 Sin[Rational[1, 7] Pi]}, {(-2) 
+           Cos[Rational[1, 7] Pi], (-2) Sin[Rational[1, 7] Pi]}, {(-2) 
+           Sin[Rational[1, 14] Pi], (-2) Cos[Rational[1, 14] Pi]}, {
+          2 Sin[Rational[3, 14] Pi], (-2) Cos[Rational[3, 14] Pi]}}, {{1, 
+          0}, {0.6234898018587335, 0.7818314824680298}, {-0.2225209339563144, 
+          0.9749279121818236}, {-0.9009688679024191, 
+          0.4338837391175581}, {-0.9009688679024191, -0.4338837391175581}, \
+{-0.2225209339563144, -0.9749279121818236}, {
+          0.6234898018587335, -0.7818314824680298}, {2, 0}, {
+          1.246979603717467, 1.5636629649360596`}, {-0.4450418679126288, 
+          1.9498558243636472`}, {-1.8019377358048383`, 
+          0.8677674782351162}, {-1.8019377358048383`, -0.8677674782351162}, \
+{-0.4450418679126288, -1.9498558243636472`}, {
+          1.246979603717467, -1.5636629649360596`}}]], {
+        LineBox[{{1, 0}, {2, 0}}], 
+        LineBox[NCache[{{Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {
+           2 Sin[Rational[3, 14] Pi], 2 Cos[Rational[3, 14] Pi]}}, {{
+          0.6234898018587335, 0.7818314824680298}, {1.246979603717467, 
+          1.5636629649360596`}}]], 
+        LineBox[NCache[{{-Sin[Rational[1, 14] Pi], Cos[
+            Rational[1, 14] Pi]}, {(-2) Sin[Rational[1, 14] Pi], 2 
+            Cos[Rational[1, 14] Pi]}}, {{-0.2225209339563144, 
+          0.9749279121818236}, {-0.4450418679126288, 1.9498558243636472`}}]], 
+        LineBox[NCache[{{-Cos[Rational[1, 7] Pi], Sin[
+            Rational[1, 7] Pi]}, {(-2) Cos[Rational[1, 7] Pi], 2 
+            Sin[Rational[1, 7] Pi]}}, {{-0.9009688679024191, 
+          0.4338837391175581}, {-1.8019377358048383`, 0.8677674782351162}}]], 
+        LineBox[NCache[{{-Cos[Rational[1, 7] Pi], -
+            Sin[Rational[1, 7] Pi]}, {(-2) Cos[Rational[1, 7] Pi], (-2) 
+            Sin[Rational[1, 7] 
+              Pi]}}, {{-0.9009688679024191, -0.4338837391175581}, \
+{-1.8019377358048383`, -0.8677674782351162}}]], 
+        LineBox[NCache[{{-Sin[Rational[1, 14] Pi], -
+            Cos[Rational[1, 14] Pi]}, {(-2) Sin[Rational[1, 14] Pi], (-2) 
+            Cos[Rational[1, 14] 
+              Pi]}}, {{-0.2225209339563144, -0.9749279121818236}, \
+{-0.4450418679126288, -1.9498558243636472`}}]], 
+        LineBox[NCache[{{Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {
+           2 Sin[Rational[3, 14] Pi], (-2) Cos[Rational[3, 14] Pi]}}, {{
+          0.6234898018587335, -0.7818314824680298}, {
+          1.246979603717467, -1.5636629649360596`}}]]}, {
+        LineBox[NCache[{{1, 0}, {
+           Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}}, {{1, 0}, {
+           0.6234898018587335, 0.7818314824680298}}]], 
+        LineBox[NCache[{{
+           Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {-
+            Sin[Rational[1, 14] Pi], Cos[Rational[1, 14] Pi]}}, {{
+          0.6234898018587335, 0.7818314824680298}, {-0.2225209339563144, 
+          0.9749279121818236}}]], 
+        LineBox[NCache[{{-Sin[Rational[1, 14] Pi], Cos[
+            Rational[1, 14] Pi]}, {-Cos[Rational[1, 7] Pi], Sin[
+            Rational[1, 7] Pi]}}, {{-0.2225209339563144, 
+          0.9749279121818236}, {-0.9009688679024191, 0.4338837391175581}}]], 
+        LineBox[NCache[{{-Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}, {-
+            Cos[Rational[1, 7] Pi], -
+            Sin[Rational[1, 7] Pi]}}, {{-0.9009688679024191, 
+          0.4338837391175581}, {-0.9009688679024191, -0.4338837391175581}}]], 
+        LineBox[NCache[{{-Cos[Rational[1, 7] Pi], -Sin[Rational[1, 7] Pi]}, {-
+            Sin[Rational[1, 14] Pi], -
+            Cos[Rational[1, 14] 
+              Pi]}}, {{-0.9009688679024191, -0.4338837391175581}, \
+{-0.2225209339563144, -0.9749279121818236}}]], 
+        LineBox[NCache[{{-Sin[Rational[1, 14] Pi], -
+            Cos[Rational[1, 14] Pi]}, {
+           Sin[Rational[3, 14] Pi], -
+            Cos[Rational[3, 14] 
+              Pi]}}, {{-0.2225209339563144, -0.9749279121818236}, {
+          0.6234898018587335, -0.7818314824680298}}]]}, {
+        LineBox[NCache[{{2, 0}, {
+           2 Sin[Rational[3, 14] Pi], 2 Cos[Rational[3, 14] Pi]}}, {{2, 0}, {
+           1.246979603717467, 1.5636629649360596`}}]], 
+        LineBox[NCache[{{
+           2 Sin[Rational[3, 14] Pi], 2 Cos[Rational[3, 14] Pi]}, {(-2) 
+            Sin[Rational[1, 14] Pi], 2 Cos[Rational[1, 14] Pi]}}, {{
+          1.246979603717467, 1.5636629649360596`}, {-0.4450418679126288, 
+          1.9498558243636472`}}]], 
+        LineBox[NCache[{{(-2) Sin[Rational[1, 14] Pi], 2 
+            Cos[Rational[1, 14] Pi]}, {(-2) Cos[Rational[1, 7] Pi], 2 
+            Sin[Rational[1, 7] Pi]}}, {{-0.4450418679126288, 
+          1.9498558243636472`}, {-1.8019377358048383`, 0.8677674782351162}}]],
+         LineBox[
+         NCache[{{(-2) Cos[Rational[1, 7] Pi], 2 
+            Sin[Rational[1, 7] Pi]}, {(-2) Cos[Rational[1, 7] Pi], (-2) 
+            Sin[Rational[1, 7] Pi]}}, {{-1.8019377358048383`, 
+          0.8677674782351162}, {-1.8019377358048383`, -0.8677674782351162}}]],
+         LineBox[
+         NCache[{{(-2) Cos[Rational[1, 7] Pi], (-2) 
+            Sin[Rational[1, 7] Pi]}, {(-2) Sin[Rational[1, 14] Pi], (-2) 
+            Cos[Rational[1, 14] 
+              Pi]}}, {{-1.8019377358048383`, -0.8677674782351162}, \
+{-0.4450418679126288, -1.9498558243636472`}}]], 
+        LineBox[NCache[{{(-2) Sin[Rational[1, 14] Pi], (-2) 
+            Cos[Rational[1, 14] Pi]}, {
+           2 Sin[Rational[3, 14] Pi], (-2) 
+            Cos[Rational[3, 14] 
+              Pi]}}, {{-0.4450418679126288, -1.9498558243636472`}, {
+          1.246979603717467, -1.5636629649360596`}}]]}, 
+       LineBox[
+        NCache[{{2, 0}, {
+          Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}}, {{2, 0}, {
+          0.6234898018587335, -0.7818314824680298}}]], 
+       LineBox[NCache[{{
+          2 Sin[Rational[3, 14] Pi], (-2) Cos[Rational[3, 14] Pi]}, {1, 
+          0}}, {{1.246979603717467, -1.5636629649360596`}, {1, 0}}]]}], {967.5, -193.86228251318173`},
+      ImageScaled[{0.5, 0.5}], {360., 369.2614905012985}]}, {}},
+  ContentSelectable->True,
+  ImageSize->{689., Automatic},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{{3.603712955365468*^9, 3.603712983297792*^9}, 
+   3.6134265442345753`*^9, {3.615806243776292*^9, 3.6158062604143972`*^9}, {
+   3.631735667144166*^9, 3.63173568061226*^9}, 3.6317359564218817`*^9, {
+   3.631736032103668*^9, 3.631736061924629*^9}, {3.6317361224049273`*^9, 
+   3.631736153149755*^9}, 3.631822010891097*^9, 3.631873215271226*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1020},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 150, 2, 81, "Section"],
+Cell[732, 26, 401, 8, 32, "Text"],
+Cell[1136, 36, 2433, 55, 121, "Input"],
+Cell[CellGroupData[{
+Cell[3594, 95, 1110, 31, 77, "Input"],
+Cell[4707, 128, 225, 4, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4969, 137, 1921, 55, 77, "Input"],
+Cell[6893, 194, 164, 2, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7094, 201, 1691, 50, 77, "Input"],
+Cell[8788, 253, 148, 2, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8973, 260, 1619, 47, 77, "Input"],
+Cell[10595, 309, 244, 3, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10876, 317, 2984, 87, 99, "Input"],
+Cell[13863, 406, 194, 3, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14106, 415, 239, 3, 81, "Section"],
+Cell[14348, 420, 457, 9, 32, "Text"],
+Cell[14808, 431, 6143, 138, 319, "Input"],
+Cell[CellGroupData[{
+Cell[20976, 573, 787, 14, 32, "Input"],
+Cell[21766, 589, 15022, 274, 290, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

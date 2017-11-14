@@ -1,0 +1,269 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{censor}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{changepage}
+\usepackage{paralist}
+\usepackage{amssymb}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+
+\begin{document}
+
+\izpit{Programiranje I: 3.\ pisni izpit}{31.\ velikega srpana leta Gospodovega 2015}{
+  Naloge v Pythonu rešujte na strežniku Tomo, naloge v Mathematici pa v ustreznem   
+  Mathematica zvezku (ki ga najdete na spletni učilnici).
+  Čas reševanja je 150 minut.
+  Doseženih 100 točk šteje za maksimalno oceno.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Polžek, 20 + 10 točk]
+
+Matriko v Mathematici predstavimo kot seznam seznamov, kjer vsak podseznam predstavlja eno vrstico matrike. Na primer, matriko
+$$
+\begin{pmatrix}
+1 & 2 & 3 \\
+5 & 6 & 7 \\
+0 & 4 & 1
+\end{pmatrix}
+$$
+predstavimo s seznamom
+\begin{verbatim}
+  {{1, 2, 3}, {5, 6, 7}, {0, 4, 1}}
+\end{verbatim}
+%
+\podnaloga[20 točk]
+V \emph{Mathematici} sestavite funkcijo \texttt{polzek[l\_]}, ki kot argument dobi seznam \texttt{l} ter sestavi in vrne \emph{kvadratno} matriko, ki vsebuje elemente tega seznama. Prvi element seznama \texttt{l} naj bo v zgornjem levem vogalu matrike. Elementi seznama \texttt{l} naj se v matriki ``zvijejo v polžka'', kot je prikazano na skici:
+
+$$
+\begin{tikzpicture}[scale=0.7]
+\def\stevilke{{7,8,9,10,6,1,2,11,5,4,3,-1}}
+\draw [rounded corners=10pt,color=gray!40, line width=4pt]
+(0, 0) -- (1, 0) -- (2, 0) -- (3, 0) -- (3, -1) -- (3, -2) -- (3, -3) -- (2, -3) -- (1, -3) -- (0, -3) --
+(0, -2) -- (0, -1) -- (1, -1) -- (2, -1) -- (2, -2) -- (1, -2);
+\node at (0, 0) {1};
+\node at (1, 0) {2};
+\node at (2, 0) {3};
+\node at (3, 0) {4};
+\node at (3, -1) {5};
+\node at (3, -2) {6};
+\node at (3, -3) {7};
+\node at (2, -3) {8};
+\node at (1, -3) {9};
+\node at (0, -3) {10};
+\node at (0, -2) {11};
+\node at (0, -1) {12};
+\node at (1, -1) {13};
+\node at (2, -1) {14};
+\node at (2, -2) {15};
+\node at (1, -2) {16};
+\end{tikzpicture}
+$$
+
+\noindent Matrika naj bo tako velika, kot je nujno potrebno, da lahko vanjo pospravimo celega polžka. Morebitna ``prazna polja'' zapolnimo z ničlami.  Zgled:
+%
+\begin{verbatim}
+In[1]:= polzek[{1, 4, -1, -3, 2}]
+Out[1]= {{1, 4, -1}, {0, 0, -3}, {0, 0, 2}}
+In[2]:= polzek[{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 2, 7}]
+Out[2]= {{2, 3, 5, 7}, {7, 0, 0, 11}, {2, 0, 0, 13}, {29, 23, 19, 17}}
+\end{verbatim}
+
+\podnaloga[10 točk]
+V \emph{Mathematici} sestavite še ``inverzno'' funkcijo \texttt{odvij[m\_]}, ki kot argument dobi kvadratno matriko \texttt{m} ter vrne seznam elementov te matrike, tako da bo veljajo $$\texttt{polzek[odvij[m]] == m}.$$ Zgled:
+%
+\begin{verbatim}
+In[3]:= odvij[{{1, 4, -1}, {0, 0, -3}, {0, 0, 2}}]
+Out[3]= {1, 4, -1, -3, 2, 0, 0, 0, 0}
+In[4]:= odvij[{{2, 3, 5, 7}, {7, 0, 0, 11}, {2, 0, 0, 13}, {29, 23, 19, 17}}]
+Out[4]= {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 2, 7, 0, 0, 0, 0}
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Šestkotniki, 30 točk]
+
+Znano je, da lahko ravnino tlakujemo s pravilnimi šestkotniki. Na tako dobljeni šestkotniški mreži vpeljemo koordinatni sistem, tako da vsak element iz $\mathbb{Z} \times \mathbb{Z}$ označuje natanko določen šestkotnik, kot je prikazano na skici:
+
+$$
+\input{hex_lattice.tikz}
+$$
+
+\noindent V \emph{Mathematici} sestavite funkcijo \texttt{benz[l\_]}, ki kot argument dobi seznam \texttt{l} in nariše tiste šest\-kot\-nike, ki so podani v seznamu \texttt{l}. Šestkotniki so podani z zgoraj opisanimi koordinatami, tj. kot pari celih števil (glejte zgornjo skico). Zgledi:
+
+\vspace{\baselineskip}
+
+\begin{center}
+\begin{tabular}{c@{\hspace{1.5cm}}c}
+\includegraphics[scale=0.35]{hex01.pdf} & \includegraphics[scale=0.4]{hex02.pdf}\\
+\texttt{benz[\{\{-1, 0\}, \{0, 0\}\}]} &   \texttt{benz[\{\{0, 0\}, \{1, 0\}, \{1, 1\}, \{0, 2\}, \{-1, 2\}\}]}
+\end{tabular}
+\end{center}
+
+\vspace{\baselineskip}
+
+\noindent \emph{Namig:} Pravokotni koordinatni sistem postavimo tako, da je izhodišče koordinatnega sistema v središču šestkotnika z oznako $(0, 0)$. Katera točka je središče šestkotnika z oznako $(u, v)$?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Dvojiško drevo, 10 + 10 + 10 točk]
+
+Podatkovna struktura \texttt{Drevo} predstavlja dvojiško drevo, ki ima v vsakem vozlišču shranjeno eno celo število. Naslednji izraz v Pythonu ustvari drevo, ki je prikazano na spodnji sliki:
+%
+\begin{verbatim}
+  >>> s = Drevo(20, levo=Drevo(3, levo=Drevo(3)), desno=Drevo(7, levo=Drevo(7),
+          desno=Drevo(0, levo=Drevo(-5), desno=Drevo(5))))
+\end{verbatim}
+
+\noindent Pripadajoča slika:
+\vspace{-0.4cm}
+\begin{center}
+\begin{tikzpicture}[level distance=0.8cm,
+    level 1/.style={sibling distance=3.5cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=1.5cm}
+    ]
+    \node[circle, draw] (d) {20}
+      child {node[circle, draw] {3}
+        child {node[circle, draw] {3}}
+        child[missing] {}
+      }
+      child {node[circle, draw] {7}
+        child {node[circle, draw] {7}}
+        child {node[circle, draw] {0}
+          child {node[circle, draw] {-5}}
+          child {node[circle, draw] {5}}
+        }
+      };
+  \end{tikzpicture}
+\end{center}
+%
+Rekli bomo, da je drevo \emph{sumarno}, če za vsako vozlišče, ki ni list, velja, da je njegova vrednost enaka vsoti vseh števil, ki so pod njim (tj.\ v levem in v desnem poddrevesu). Zgornje drevo je primer sumarnega drevesa.
+
+Razred \texttt{Drevo} je že delno implementiran. Vsako vozlišče ima atribut \texttt{prazno}. Če je njegova vrednost \texttt{True}, predstavlja prazno poddrevo in nima drugih atributov. Če pa drevo ni prazno, ima še atribute \texttt{vsebina}, \texttt{levo} in \texttt{desno}. Dodali bomo še nekaj novih metod.
+%
+\podnaloga[10 točk]
+%
+Razredu \texttt{Drevo} dodajte metodo \texttt{je\_sumarno(self)}, ki vrne \texttt{True}, če je drevo sumarno, in \texttt{False} sicer. Za prazno drevo naj metoda tudi vrne \texttt{True}.
+Zgledi:
+%
+\begin{verbatim}
+  >>> s.je_sumarno()
+  True
+  >>> Drevo(3, levo=Drevo(1), desno=Drevo(1)).je_sumarno()
+  False
+\end{verbatim}
+%
+\podnaloga[10 točk]
+%
+Izkaže se, da so vse vrednosti v sumarnem drevesu enolično določene takoj, ko podamo vrednosti v listih. Razredu \texttt{Drevo} dodajte metodo \texttt{naredi\_sumarno(self)}, ki drevo popravi, tako da le-to postane sumarno. Vrednosti v listih metoda ne sme spreminjati. Zgled:
+%
+\begin{verbatim}
+  >>> d = Drevo(3, levo=Drevo(1), desno=Drevo(1))
+  >>> d.naredi_sumarno()
+  >>> d
+  Drevo(2, levo=Drevo(1), desno=Drevo(1))
+\end{verbatim}
+%
+
+\podnaloga[10 točk]
+%
+Razredu \texttt{Drevo} dodajte metodo \texttt{pristej\_po\_poti(self, x, p)}, ki kot argument dobi število \texttt{x} in seznam \texttt{p}. Začnemo v korenu drevesa in gremo po poti, tako da se vsakič spustimo v eno od poddreves. Elementi seznama \texttt{p} nam povedo, v katero poddrevo se spustimo: niz \texttt{'l'} pomeni, da gremo v levo poddrevo; niz \texttt{'d'} pomeni, da gremo v desno poddrevo. Ko pridemo do praznega poddrevesa, se ustavimo. Če v seznamu \texttt{p} zmanja elementov, začnemo spet pri začetku (kakor da bi bil seznam \texttt{p} cikličen). Drevo pri tem spremenimo tako, da vsem elementom na tej poti prištejemo število \texttt{x}. Primer:
+\begin{verbatim}
+  >>> s.pristej_po_poti(2, ['d', 'l', 'd'])
+  >>> s
+  Drevo(22, levo=Drevo(3, levo=Drevo(3)), desno=Drevo(9, levo=Drevo(9),
+  desno=Drevo(0, levo=Drevo(-5), desno=Drevo(5))))
+\end{verbatim}
+
+\noindent Pripadajoča slika:
+\vspace{-0.4cm}
+\begin{center}
+\begin{tikzpicture}[level distance=0.8cm,
+    level 1/.style={sibling distance=3.5cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=1.5cm}
+    ]
+    \node[circle, draw] (d) {22}
+      child {node[circle, draw] {3}
+        child {node[circle, draw] {3}}
+        child[missing] {}
+      }
+      child {node[circle, draw] {9}
+        child {node[circle, draw] {9}}
+        child {node[circle, draw] {0}
+          child {node[circle, draw] {-5}}
+          child {node[circle, draw] {5}}
+        }
+      };
+  \end{tikzpicture}
+\end{center}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[Igra urejanja, 10 + 10 + 10 točk]
+
+Mojca in Gorazd se igrata zanimivo igro, ki ji pravita \emph{Igra urejanja}. Začneta z nekim seznamom $\ell$ dolžine $n$, ki vsebuje vsa števila med 0 in $n-1$, na primer
+$$
+\ell = [0, 3, 6, 7, 8, 4, 5, 1, 2].
+$$
+Začne Gorazd, ki lahko v eni potezi  med seboj zamenja poljubna dva elementa seznama. Poteza
+$(1, 5)$ pomeni, da med seboj zamenja 1.\ in 5.\ element. Iz gornjega seznama bi tako dobil:
+$$
+[0, 4, 6, 7, 8, 3, 5, 1, 2].
+$$
+Mojca po vsaki Gorazdovi potezi lahko reče ``Dalje!'' ali pa ``Stop!''. Če reče ``Dalje!'', Gorazd nadaljuje s svojo naslednjo potezo. Če Mojca reče ``Stop!'', Gorazd prekine z izvajanjem svojih potez. Mojca pa mora seznam $\ell$ urediti naraščajoče, pri čemer sme porabiti največ toliko potez, kot jih je do tega trenutka naredil Gorazd. Če Mojci ne uspe urediti seznama, izgubi partijo.
+
+\podnaloga[10 točk]
+Mojca je opazila, da seznam $\ell$ pravzaprav predstavlja permutacijo $i \mapsto \ell[i]$ na množici \{0, 1, \ldots, n-1\}. Sestavite funkcijo \texttt{ciklicni\_zapis(l)}, ki vrne ciklični zapis permutacije, ki je podana s seznamom \texttt{l}. Cikli naj bodo urejeni leksikografsko, na prvem mestu v vsakem ciklu pa naj bo najmanjši element. Zgled:
+
+\begin{verbatim}
+  >>> ciklicni_zapis([0, 3, 6, 7, 8, 4, 5, 1, 2])
+  [[0], [1, 3, 7], [2, 6, 5, 4, 8]]
+\end{verbatim}
+
+\noindent 
+
+\podnaloga[10 točk]
+Mojca je ugotovila, da je vsaka Gorazdova poteza v bistvu množenje z leve z ustrezno transpozicijo. V gornjem primeru to pomeni
+$$
+(1\ 5) * (0)\ (1\ 3\ 7)\ (2\ 6\ 5\ 4\ 8) = (0)\ (1\ 4\ 8\ 2\ 6\ 5\ 3\ 7).
+$$
+Mojca je ugotovila še, da lahko z eno transpozicijo:
+\begin{compactitem}
+\item združimo dva cikla v enega ali pa
+\item en cikel razbijemo na dva manjša.
+\end{compactitem}
+Ker urejen seznam ustreza identični permutaciji, moramo vse cikle razbiti do ciklov dolžine 1.
+Minimalno število potez, ki jih za to potrebujemo, lahko preberemo iz cikličnega tipa permutacije (za razbijanje cikla dolžine $d$ potrebujemo $d-1$ transpozicij).
+
+Sestavite funkcijo \texttt{razbij\_cikle(p)}, ki kot argument dobi permutacijo \texttt{p}, ki je podana s cikličnim zapisom. Funkcija naj vrne seznam transpozicij, s katerimi moramo (z leve) pomnožiti permutacijo \texttt{p}, da dobimo identiteto. Število teh transpozicij mora biti najmanjše možno. Zgled:
+
+\begin{verbatim}
+  >>> razbij_cikle([[0, 4, 3], [1, 5], [2], [7, 8, 9, 6]])
+  [(0, 4), (0, 3), (1, 5), (7, 8), (7, 9), (7, 6)]
+\end{verbatim}
+
+\noindent \emph{Opomba:} Tomo bo sprejel vse pravilne rešitve, tudi če vaša funkcija vrne rezultat, ki se razlikuje od ``uradnega''.
+
+\podnaloga[10 točk]
+Prej ko Mojca reče ``Stop!'', več točk bo dobila. Če lahko Mojca seznam uredi po $k$ Gorazdovih potezah, ga lahko uredi tudi po $k + 1$ potezah (npr. tako, da razveljavi zadnjo njegovo potezo in postopa enako, kot bi tudi sicer po $k$-ti njegovi potezi). To pomeni, da lahko minimalno število potez, ki jih potrebuje za zmago, poišče z bisekcijo.
+
+\emph{Napotek:} Po tem, ko Gorazd na seznamu izvede $k$ zamenjav, Mojca poišče ciklični zapis ter pogleda, če za razbijanje ciklov res porabi kvečjemu $k$ transpozicij.
+
+Napišite funkcijo \texttt{min\_potez(l, g)}, ki kot argumenta dobi začetni seznam \texttt{l} in seznam trans\-pozicij \texttt{g}, ki jih bo izvedel Gorazd. Funkcija naj vrne najmanjše število potez, ki jih izvede Gorazd, preden ima Mojca prvo priložnost za zmago. Gorazd poteze dela dovolj dolgo časa, da ima Mojca možnost za zmago. Če je seznam \texttt{l} že na začetku urejen, lahko Mojca zavpije ``Stop!'', še preden Gorazd naredi prvo potezo. Zgled:
+
+\begin{verbatim}
+  >>> min_potez([0, 3, 6, 7, 8, 4, 5, 1, 2],
+                [(1, 5), (1, 2), (4, 5), (7, 8), (2, 3), (1, 6), (3, 7)])
+  5
+\end{verbatim}
+
+\end{document}
