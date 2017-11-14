@@ -1,82 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Funkcijsko programiranje</title>
-    <meta charset="utf-8">
-    <style>
-      body {
-        font-family: 'Avenir Next';
-      }
-      h3 {
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code {
-        font-family: 'Iosevka';
-      }
-      .remark-inline-code {
-        background-color: #ddd;
-      }
-      .remark-code {
-        font-size: 1.5em;
-      }
-      ol, ul {
-        font-size: 1.5em;
-        line-height: 2;
-      }
-
-      a, a:visited {
-        text-decoration: none;
-        color: #008;
-      }
-
-      a:hover {
-        color: #00d;
-      }
-
-      a.reveal {
-        font-weight: bold;
-        color: inherit;
-      }
-
-      a.reveal:hover {
-        cursor:pointer;
-      }
-
-      .question, .question .remark-inline-code {
-        color: white;
-        background-color: black;
-      }
-
-      table {
-        margin: auto;
-        font-size: 1.5em;
-        /*border-collapse: separate;*/
-        border-spacing: 1.5em 0.5em;
-      }
-
-      .red {
-        color: red;
-      }
-
-      .green {
-        color: blue;
-      }
-
-      .good-example pre code {
-        background-color: #ddf !important;
-      }
-
-      .bad-example code {
-        background-color: #fdd !important;
-      }
-
-      .terminal code {
-        border-radius: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
+<head>
+<title>Funkcijsko programiranje</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
 
 class: center, middle
 
@@ -630,40 +560,10 @@ class: question, center, middle
 - modul za sezname [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
 - seznam [vseh modulov](http://caml.inria.fr/pub/docs/manual-ocaml/libref/) v standardni knjižnici
 
----
-
-class: question
-background-image: url(euler.png)
-background-size: 100% auto
-
-
-
-    </textarea>
-      <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script>
-      $(document).ready(function() { 
-      
-      $("span.spoiler").hide();
-      
-       $('<a class="reveal">???</a>').insertBefore('.spoiler');
-
-      $("a.reveal").click(function(){
-        $(this).parent().children("span.spoiler").fadeIn(100);
-        $(this).parent().children("a.reveal").hide();
-      });
-
-      $('.terminal').addClass('hljs-hybrid');
-
-    }); 
-        var slideshow = remark.create({
-        highlightLines: true,
-        highlightLanguage: "ocaml",
-        highlightStyle: "github",
-        countIncrementalSlides: false,
-      });
-    </script>
-  </body>
+</textarea>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
 </html>
