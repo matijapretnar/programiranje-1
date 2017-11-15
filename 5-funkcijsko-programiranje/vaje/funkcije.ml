@@ -167,16 +167,16 @@ let first f none_value l = ()
 
  ----------
  # let spells = [("Protect",51); ("Renounce", 17); ("Blaze", 420); ("Banish",103)] in
-   let wizards = [("Merlin", 1832); ("Frodo", 53); ("Atijam", 1337);
+   let wizards = [("Merlin", 1832); ("Frodo", 53); ("Ajitam", 1337);
   ("Mr Duck", 7); ("Kylo Ren", 589); ("Snoop Dogg", 123)] in
    able_protectors spells wizards;;
- - : string list = ["Merlin"; "Atijam"]
+ - : string list = ["Merlin"; "Ajitam"]
  ----------
  # let spells = [("Protect",51); ("Renounce", 17); ("Blaze", 420); ("Banish",103)] in
-   let wizards = [("Merlin", 1832); ("Frodo", 53); ("Atijam", 1337);
+   let wizards = [("Merlin", 1832); ("Frodo", 53); ("Ajitam", 1337);
   ("Mr Duck", 7); ("Kylo Ren", 589); ("Snoop Dogg", 123)] in
    fails_on spells wizards;;
- - : (string * string) list = [("Merlin", ""); ("Frodo", "Renounce"); ("Atijam", "");
+ - : (string * string) list = [("Merlin", ""); ("Frodo", "Renounce"); ("Ajitam", "");
   ("Mr Duck", "Protect"); ("Kylo Ren", "Banish"); ("Snoop Dogg", "Blaze")]
  ----------*)
 
