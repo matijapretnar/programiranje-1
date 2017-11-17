@@ -67,3 +67,11 @@ table {
 .terminal code {
   border-radius: 10px;
 }
+.handwritten h1 {
+  font-family: "Chalkduster";
+  font-size: 2em;
+}
+      .mini img {
+        width: 45%;
+        height: 45%;
+      }
