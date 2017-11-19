@@ -1,0 +1,144 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4705,        134]
+NotebookOptionsPosition[      4241,        114]
+NotebookOutlinePosition[      4695,        132]
+CellTagsIndexPosition[      4652,        129]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", 
+   RowBox[{"t", ",", "kvadrati"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "y"}], ")"}], "/", "2"}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"x", "+", "1"}], ")"}], "/", "2"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"t", "[", 
+    RowBox[{"Line", "[", "xs_", "]"}], "]"}], ":=", 
+   RowBox[{"Line", "[", 
+    RowBox[{"t", "/@", "xs"}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"kvadrati", "[", "0", "]"}], ":=", 
+  RowBox[{"{", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"kvadrati", "[", "n_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Prepend", "[", 
+   RowBox[{
+    RowBox[{"t", "/@", 
+     RowBox[{"kvadrati", "[", 
+      RowBox[{"n", "-", "1"}], "]"}]}], ",", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.509246129164899*^9, 3.509246240166279*^9}, {
+  3.509246298533998*^9, 3.509246307797511*^9}, {3.509246348964575*^9, 
+  3.509246390807453*^9}, {3.509246430766385*^9, 3.509246467508732*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pic", "=", 
+  RowBox[{
+   RowBox[{"kvadrati", "[", "7", "]"}], "//", "Graphics"}]}]], "Input",
+ CellChangeTimes->{{3.509246364483083*^9, 3.5092464023533382`*^9}, {
+  3.509246474870058*^9, 3.509246475181632*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}, {-1, -1}}], 
+   LineBox[{{1, 0}, {1, 1}, {0, 1}, {0, 0}, {1, 0}}], 
+   LineBox[NCache[{{Rational[1, 2], 1}, {0, 1}, {0, Rational[1, 2]}, {
+      Rational[1, 2], Rational[1, 2]}, {Rational[1, 2], 1}}, {{0.5, 1}, {0, 
+      1}, {0, 0.5}, {0.5, 0.5}, {0.5, 1}}]], 
+   LineBox[NCache[{{0, Rational[3, 4]}, {0, Rational[1, 2]}, {
+      Rational[1, 4], Rational[1, 2]}, {Rational[1, 4], Rational[3, 4]}, {
+      0, Rational[3, 4]}}, {{0, 0.75}, {0, 0.5}, {0.25, 0.5}, {0.25, 0.75}, {
+      0, 0.75}}]], 
+   LineBox[NCache[{{Rational[1, 8], Rational[1, 2]}, {
+      Rational[1, 4], Rational[1, 2]}, {Rational[1, 4], Rational[5, 8]}, {
+      Rational[1, 8], Rational[5, 8]}, {Rational[1, 8], Rational[1, 2]}}, {{
+     0.125, 0.5}, {0.25, 0.5}, {0.25, 0.625}, {0.125, 0.625}, {0.125, 0.5}}]],
+    LineBox[NCache[{{Rational[1, 4], Rational[9, 16]}, {
+      Rational[1, 4], Rational[5, 8]}, {Rational[3, 16], Rational[5, 8]}, {
+      Rational[3, 16], Rational[9, 16]}, {
+      Rational[1, 4], Rational[9, 16]}}, {{0.25, 0.5625}, {0.25, 0.625}, {
+     0.1875, 0.625}, {0.1875, 0.5625}, {0.25, 0.5625}}]], 
+   LineBox[NCache[{{Rational[7, 32], Rational[5, 8]}, {
+      Rational[3, 16], Rational[5, 8]}, {Rational[3, 16], Rational[19, 32]}, {
+      Rational[7, 32], Rational[19, 32]}, {
+      Rational[7, 32], Rational[5, 8]}}, {{0.21875, 0.625}, {0.1875, 0.625}, {
+     0.1875, 0.59375}, {0.21875, 0.59375}, {0.21875, 0.625}}]]}]], "Output",
+ CellChangeTimes->{{3.509246373703939*^9, 3.509246402705721*^9}, {
+  3.5092464385811367`*^9, 3.509246475718873*^9}}]
+}, Open  ]]
+},
+WindowSize->{1011, 712},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.5, 1.5 Inherited],
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 6, \
+2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1787, 55, 205, "Input"],
+Cell[CellGroupData[{
+Cell[2369, 79, 235, 5, 40, "Input"],
+Cell[2607, 86, 1618, 25, 561, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

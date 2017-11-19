@@ -1,0 +1,263 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8632,        254]
+NotebookOptionsPosition[      7275,        206]
+NotebookOutlinePosition[      8284,        240]
+CellTagsIndexPosition[      8241,        237]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section",
+ CellChangeTimes->{{3.568087137065137*^9, 3.568087137495481*^9}, {
+  3.5689466504844313`*^9, 3.568946651905002*^9}, {3.576904707147932*^9, 
+  3.5769047073680468`*^9}, {3.587348579547106*^9, 3.58734858147398*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["a)", "Subsection",
+ CellChangeTimes->{{3.57690665359301*^9, 3.576906654001742*^9}, 
+   3.587348579547312*^9}],
+
+Cell[BoxData[
+ RowBox[{"naloga3a", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", " ", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.587348801418582*^9, 3.5873488137377453`*^9}, {
+  3.587348918172184*^9, 3.5873489506716223`*^9}, {3.587358865921771*^9, 
+  3.587358909383959*^9}, {3.587359340021697*^9, 3.5873593616100683`*^9}, {
+  3.58735949854813*^9, 3.587359518142679*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["b)", "Subsection",
+ CellChangeTimes->{{3.57690665359301*^9, 3.57690665948337*^9}, 
+   3.5873485795480747`*^9}],
+
+Cell[BoxData[
+ RowBox[{"naloga3b", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "3"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.587358920003676*^9, 3.587358933215433*^9}, {
+  3.5873591382462378`*^9, 3.58735917232972*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Re\[SHacek]itve", "Section",
+ CellChangeTimes->{{3.568086992539817*^9, 3.568086993327375*^9}, {
+   3.568087027114079*^9, 3.568087027743815*^9}, {3.568088420625853*^9, 
+   3.5680884216123133`*^9}, 3.5680889183304243`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3a", "[", "sez_", "]"}], ":=", 
+  RowBox[{"With", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"vse", "=", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{"sez", ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"sez", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"sez", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"i", "+", "1"}], ",", "2"}], "]"}], "]"}]}], "}"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{
+             RowBox[{"Length", "[", "sez", "]"}], "-", "1"}]}], "}"}]}], 
+         "]"}]}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Line", "[", "vse", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PointSize", "[", "0.05", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Point", "[", "sez", "]"}]}], "\[IndentingNewLine]", "}"}], 
+     "]"}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.576904730965159*^9, 3.5769047876677303`*^9}, {
+   3.5769048188578444`*^9, 3.5769048325979443`*^9}, 3.576905377770059*^9, {
+   3.57690627786217*^9, 3.576906298247676*^9}, {3.587348609073649*^9, 
+   3.5873486091467667`*^9}, {3.587348697483275*^9, 3.587348828226218*^9}, {
+   3.587348874625092*^9, 3.58734891320277*^9}, {3.587359226081561*^9, 
+   3.5873592437657022`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3pot", "[", 
+   RowBox[{"zac_", ",", "sez_", ",", "kon_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Which", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"MemberQ", "[", 
+      RowBox[{"sez", ",", "zac"}], "]"}], "||", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"zac", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ">", 
+       RowBox[{"kon", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "||", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"zac", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ">", 
+       RowBox[{"kon", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"zac", "\[Equal]", "kon"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", "zac", "}"}], ",", "\[IndentingNewLine]", "True", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"With", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"gor", "=", 
+         RowBox[{"naloga3pot", "[", 
+          RowBox[{
+           RowBox[{"zac", "+", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], ",", "sez", ",", "kon"}], 
+          "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"desno", "=", 
+         RowBox[{"naloga3pot", "[", 
+          RowBox[{
+           RowBox[{"zac", "+", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0"}], "}"}]}], ",", "sez", ",", "kon"}], 
+          "]"}]}]}], "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Which", "[", 
+       RowBox[{
+        RowBox[{"gor", "\[NotEqual]", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"Prepend", "[", 
+         RowBox[{"gor", ",", "zac"}], "]"}], ",", 
+        RowBox[{"desno", "\[NotEqual]", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"Prepend", "[", 
+         RowBox[{"desno", ",", "zac"}], "]"}], ",", "True", ",", 
+        RowBox[{"{", "}"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.58735858262747*^9, 3.587358696620035*^9}, {
+  3.587358727400648*^9, 3.587358858450654*^9}, {3.587358945503819*^9, 
+  3.587358966222765*^9}, {3.587359002938879*^9, 3.5873591005680723`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3b", "[", 
+   RowBox[{"zac_", ",", "sez_", ",", "kon_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"naloga3pot", "[", 
+       RowBox[{"zac", ",", "sez", ",", "kon"}], "]"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PointSize", "[", "0.05", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Point", "[", "zac", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Point", "[", "kon", "]"}], ",", "\[IndentingNewLine]", "Red", 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"Point", "[", "sez", "]"}]}], "\[IndentingNewLine]", "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.587359101783238*^9, 3.587359125764964*^9}, {
+  3.587359251736299*^9, 3.58735928138792*^9}}]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Printout",
+WindowSize->{740, 752},
+WindowMargins->{{Automatic, 170}, {Automatic, 42}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{None, None, None}, {None, None, None}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->False,
+"FirstPageFace"->Right,
+"FirstPageFooter"->False,
+"FirstPageHeader"->False,
+"PrintCellBrackets"->False,
+"PrintMultipleHorizontalPages"->False,
+"PrintRegistrationMarks"->False,
+"PrintingMargins"->{{54, 54}, {0, 0}}},
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.5, 1.5 Inherited],
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 240, 3, 85, "Section"],
+Cell[CellGroupData[{
+Cell[844, 29, 115, 2, 50, "Subsection"],
+Cell[962, 33, 601, 15, 27, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1600, 53, 116, 2, 50, "Subsection"],
+Cell[1719, 57, 526, 16, 27, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2294, 79, 226, 3, 85, "Section"],
+Cell[2523, 84, 1591, 38, 151, "Input"],
+Cell[4117, 124, 2296, 58, 256, "Input"],
+Cell[6416, 184, 843, 19, 169, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

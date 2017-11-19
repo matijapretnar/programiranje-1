@@ -1,0 +1,124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3211,        115]
+NotebookOptionsPosition[      2633,         89]
+NotebookOutlinePosition[      2988,        105]
+CellTagsIndexPosition[      2945,        102]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["3. a)", "Subsection",
+ CellChangeTimes->{{3.550979838121544*^9, 3.5509798518450203`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3a[n_, sez_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.5509798583092947`*^9, 3.55097986267708*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"6", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"7", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"7", ",", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "5"}], "}"}]}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"8", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "3", ",", "4"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.550979889722937*^9, 3.5509799206915627`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. b)", "Subsection",
+ CellChangeTimes->{{3.550979838121544*^9, 3.550979856412218*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3b[n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{3.5509798574764967`*^9}],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga3b", "[", "6", "]"}], ",", 
+    RowBox[{"naloga3b", "[", "8", "]"}], ",", 
+    RowBox[{"naloga3b", "[", "9", "]"}], ",", 
+    RowBox[{"naloga3b", "[", "10", "]"}]}], "\[IndentingNewLine]", "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.550942468354917*^9, 3.5509424770567293`*^9}, {
+  3.5509426503789253`*^9, 3.550942685266025*^9}, {3.5509427851732073`*^9, 
+  3.550942856998974*^9}, {3.550942896848665*^9, 3.550942922142359*^9}, {
+  3.5509434843285418`*^9, 3.550943484469512*^9}, {3.550979922558379*^9, 
+  3.5509799240459538`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 752},
+WindowMargins->{{45, Automatic}, {-1, Automatic}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 27, 0, 67, "Section"],
+Cell[CellGroupData[{
+Cell[631, 26, 95, 1, 34, "Subsection"],
+Cell[729, 29, 194, 5, 26, "Text"],
+Cell[926, 36, 731, 21, 58, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1694, 62, 93, 1, 34, "Subsection"],
+Cell[1790, 65, 165, 5, 26, "Text"],
+Cell[1958, 72, 647, 13, 58, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
