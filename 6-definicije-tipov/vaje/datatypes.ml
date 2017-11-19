@@ -67,6 +67,16 @@ let snoop_dogg = failwith "todo"
 let rec strongest_wizard (wizards : wizard list) : wizard option =
   failwith "todo"
 
+(* Generalise strongest_wizard to a function max_list that computes the max of
+   an arbitrary lists of type 'a.
+
+   It takes as additional argument a function
+     max : 'a -> 'a -> 'a
+   that is used for taking the maximum between two elements.
+*)
+
+
+
 (* Races have either high, normal, or low vulnerability to each school of
    magic. Represent these possibilities as a variant type. *)
 
