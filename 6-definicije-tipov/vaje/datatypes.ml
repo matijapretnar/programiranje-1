@@ -109,8 +109,9 @@ let vulnerable = failwith "todo"
 
 
 (* Write a function cast_spells that casts each of the skills of a wizard, or
-   as many as he has mana for. *)
-let cast_spells wizard : wizard * spell list = failwith "todo"
+   as many as he has mana for. Return the updated caster and the list of
+   spells he managed to cast *)
+let cast_spells (caster : wizard) : wizard * spell list = failwith "todo"
 
 
 (* Write a function that stands off two wizard in a duel. If the attacker is
