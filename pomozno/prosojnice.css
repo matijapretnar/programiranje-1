@@ -1,18 +1,23 @@
 body {
   font-family: 'Avenir Next';
 }
+
 h3 {
   font-weight: normal;
 }
+
 .remark-code, .remark-inline-code {
   font-family: 'Iosevka';
 }
+
 .remark-inline-code {
   background-color: #ddd;
 }
+
 .remark-code {
   font-size: 1.5em;
 }
+
 ol, ul {
   font-size: 1.5em;
   line-height: 2;
@@ -33,7 +38,7 @@ a.reveal {
 }
 
 a.reveal:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .question, .question .remark-inline-code {
@@ -67,11 +72,22 @@ table {
 .terminal code {
   border-radius: 10px;
 }
+
 .handwritten h1 {
   font-family: "Chalkduster";
   font-size: 2em;
 }
-      .mini img {
-        width: 45%;
-        height: 45%;
-      }
+
+.mini img {
+  width: 45%;
+  height: 45%;
+}
+
+.left-column, .right-column {
+  width: 45%;
+  display: inline-block;
+}
+
+.left-column {
+  float: left;
+}
