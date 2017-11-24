@@ -1,11 +1,11 @@
 """
-Eksperimentalna vaja: Časovna zahtevnost metod.
+Experimental exercise: Time complexity tests.
 """
 
-import time                         # Štoparica
-import matplotlib.pyplot as plt     # Risanje grafov
+import time                         # Timer
+import matplotlib.pyplot as plt     # Graphing
 
-# Funkcija, ki meri čas, potreben za izvajanje.
+# Function that measures the time needed for algorith on given input data.
 def measure(algo, data):
     """
     Izmeri potreben čas za izvajanje algoritma.
@@ -15,16 +15,16 @@ def measure(algo, data):
     after = time.time()
     return (after - before)
 
-# Seznami različnih velikosti, ki jih lahko podajamo kot vhod testnim funkcijam.
+# Lists of different sizes used as test inputs.
 small = list(range(10**2, 10**3+1, 2*10))
 medium = list(range(10**3, 10**4+1, 2*10**2))
 large = list(range(10**4, 10**5+1, 2*10**3))
 xlarge = list(range(10**5, 10**6+1, 2*10**4))
 
 #-------------------------------------------------------------------------------
-# Funkcije, ki sestavijo seznam oz. slovar, ki vsebuje elemente od 1 do n.
-# Funkcija add_back dodaja elemente na konec seznama, add_front pa na začetek.
-# V slovar vstavljamo elemente kot ponavadi. 
+# Functions that create a list or dictionary, that includes all elements from 
+# 1 to n. The function add_back adds elements to the back of list, add_front to
+# the front. We add elements to dictionary as per usual.
 #-------------------------------------------------------------------------------
 
 def add_back(n):
@@ -46,15 +46,15 @@ def add_dict(n):
     return
 
 #-------------------------------------------------------------------------------
-# 1.) "test_add_back(test_sizes)" nariše graf potrebnega časa, da zgradimo
-# seznam določene dolžine z dodajanjem na konec.
-# Če je časovna zahtevnost izgranje seznama O(n) premisli kolikšna je časovna
-# zahtevnost enega samega vstavljanja.
+# 1.) "test_add_back(test_sizes)" graphs the necessary time to build a list
+# by adding elements to the back of the list.
 #
-# Priporočen vhod: large in xlarge
+# If the time complexity of the whole algorithm is O(n) what is the time 
+# complexity of a single operation.
+#
+# Suggested input: large in xlarge
 #
 #-------------------------------------------------------------------------------
-
 
 def test_add_back(test_sizes) :
     times1 = []
@@ -65,13 +65,14 @@ def test_add_back(test_sizes) :
     plt.show()
 
 #-------------------------------------------------------------------------------
-# 2.) "test_add_compare(test_sizes)" primerja časovni zahtevnosti dodajanja na
-# konec in dodajanja na začetek.
-# Pri tem se spomni, da iz prejšnjega testa veš, da dodajanje na konec ni
-# konstantno, kot se morda zdi pri tem testu.
-# Spet premisli kolikšna je časovna zahtevnost enega dodajanja na začetek.
+# 2.) "test_add_compare(test_sizes)" compares the time complexity of adding
+# elements to the back and front of the list.
+# Remember that the time complexity of adding to the back is not constant as it
+# might appear in this test.
 #
-# Priporočen vhod: medium
+# Think about the time complexity of a single add operation.
+#
+# Suggested input: medium
 #
 #-------------------------------------------------------------------------------
 
@@ -90,16 +91,16 @@ def test_add_compare(test_sizes) :
 
 
 #-------------------------------------------------------------------------------
-# 3.) "test_add_list_vs_dict(test_sizes)" primerja učinkovitost izgradnje seznama
-# in slovarja.
+# 3.) "test_add_list_vs_dict(test_sizes)" compares the efficiency of building
+# a list and a dictionary.
 #
-# Slovarji uporabljajo tako imenovano 'hash' funkcijo, s katero določajo
-# kam vstaviti nov element. Če je hash funkcija dobra (torej ne slika veliko
-# elementov v isto polje) se to zgodi hitro. Ko pa pride do preveč križanj,
-# (zaradi veliko novih elementov) zamenja hash funkcijo in poveča tabelo v kateri
-# hrani elemente in s tem zmanjša število križanj.
+# Dictionaries use a so called 'hash' function, that determines where to insert
+# the new element. If the hash function is good (it doesnt map multiple elements
+# to the same field) it happens fast. If there are too many bad mappings (due
+# to new elements) the hash function is changed and the array size increased
+# in order to reduce bad mappings.
 #
-# Priporočen vhod: large
+# Suggested input: large
 #
 #-------------------------------------------------------------------------------
 
@@ -118,25 +119,25 @@ def test_add_list_vs_dict(test_sizes):
 
 
 #-------------------------------------------------------------------------------
-# 4.) "test_find_list_vs_dict(test_sizes)" primerja učinkovitost iskanja nekega
-# elementa v seznamu ali slovarju. V testu imamo shranjena števila od 1 do n in
-# vedno iščemo število n, kar je najslabši primer iskanja za seznam.
-# Izvedemo 1000 iskanj (lahko spremeniš kot pomožni parameter).
+# 4.) "test_find_list_vs_dict(test_sizes)" compares the effectivnes of searching
+# for an element in the list and dictionary. In the test we save number from 0
+# to n-1 into the data structures and then search for the number n, which is the
+# worst case search for the list. We do 1000 searches (can be adjusted).
 #
-# Ker slovar s hash funkcijo določa kam shrani element, lahko z isto hash
-# funkcijo pogleda, kje bi element moral biti.
+# Because the dictionary uses the hash function to determine where to store the
+# element, it can be used to quickly check for memebership.
 #
-# Priporočen vhod: medium
+# Suggested input: medium
 #
-# 5.) Prilagodi funkcijo tako, da na graf nariše zgolj vrednosti za slovar.
-# Kakšna se ti zdi časovna zahtevnost iskanja v slovarju?
+# 5.) Change the function to graph only the values for the dictionary.
+# What is the time complexity of searching in dictionary.
 #
-# 6.) Sedaj prilagodi funkcijo tako, da v seznamu vedno iščeš število 0.
-# Kako se spremeni časovna zahtevnost iskanja? Zakaj je to najhitrejši primer
-# za slovar?
+# 6.) Change the function so that you always search for the number 0.
+# How does that affect the time complexity. Why is this the best case for lists?
 #
-# 7.) Kaj se zgodi če namesto iskanja števila n v slovarju iščemo število na
-# indeksu n. Ali se to ujema s tipom List v OCamlu?
+# 7.) What happens if instead of searching for the number n in the list we
+# search for the number at the index n. Does that match the expected complexity
+# for searching in lists in OCaml?
 #
 #-------------------------------------------------------------------------------
 
