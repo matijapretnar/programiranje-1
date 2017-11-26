@@ -168,11 +168,6 @@ let pred bst = ()
    Napiši funkcijo "delete x bst" ['a tree -> 'a tree], ki iz drevesa izbriše
    element x, če ta v drevesu obstaja. Za vajo lahko implementiraš obe verziji
    brisanja elementov.
-   Namig: Premisli kako izbrišeš x iz dreves oblike
-      Node(Empty, x, Empty)
-      Node(Empty, x, r)
-      Node(l, x, Empty)
-      Node(l, x, r)
    ----------
    [Za delete definiran s funkcijo "succ".]
    # delete 7 test_tree;;

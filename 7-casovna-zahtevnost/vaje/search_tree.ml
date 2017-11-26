@@ -168,11 +168,6 @@ let pred bst = ()
    Write a function "delete x bst" ['a tree -> 'a tree], that deletes the
    elements x, should it exist in the tree. For practice, you can implement
    both different algorithms.
-   Hint: Think about dealing with cases
-      Node(Empty, x, Empty)
-      Node(Empty, x, r)
-      Node(l, x, Empty)
-      Node(l, x, r)
    ----------
    [For delete defined with "succ".]
    # delete 7 test_tree;;
