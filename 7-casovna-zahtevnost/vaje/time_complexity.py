@@ -145,26 +145,26 @@ def test_add_list_vs_dict(test_sizes):
 def test_find_list_vs_dict(test_sizes, times=1000):
     times1 = []
     times2 = []
-    #Ne želimo da se seznam oz. slovar po katerem iščemo ustvari v algoritmu, zato
-    #ga definiramo pred definicijo algoritma iskanja.
+    #We do not want to create a list inside the algorithm that we time,
+	#so we use a list (and dict) defined outside of the function.
     temp_l = []
     temp_d = dict()
 
     def find_dict(n):
         for i in range(times):
-            #Poišče element (n-1)
+            #Finds the element (n-1)
             temp_d.get(n-1,0)
         return
     
     def find_list(n):
         for i in range(times):
-            #Poišče indeks za vrednost (n-1) kar je ekvivalentno temu da preveri
-            #če je (n-1) element seznama.
+            #Searches for the index of (n-1) which is equivalent
+			#to searching if an element is in a list
             temp_l.index(n-1)
         return
     
     for size in test_sizes:
-        #Ustvari seznam in slovar za iskanje preden začnemo meriti čas.
+        #Create a list and dict before timing the search algorithm
         temp_l = [x for x in range(size)]
         temp_d = dict((x,x) for x in range(size))
         times1.append(measure(find_list, size))
