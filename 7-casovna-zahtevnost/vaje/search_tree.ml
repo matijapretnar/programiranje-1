@@ -132,7 +132,7 @@ let rec member2 x t = ()
 (* The function "bst_of_list l" ['a list -> 'a tree] forms a bst from a list.
    Hint: in lectures the professor first defined the function "insert".
    ----------
-   # [11;6;7;0;2;5] |> bst_of_list = test_tree;;
+   # [11;6;7;0;2;5] |> bst_of_list |> is_bst;;
    - : bool = true
    ---------- *)
 

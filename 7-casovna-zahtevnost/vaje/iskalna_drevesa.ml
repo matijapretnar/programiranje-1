@@ -133,7 +133,7 @@ let rec member2 x t = ()
    Namig: na predavanjih je profesor najprej definiral funkcijo "insert", ki
    v bst vstavi en element.
    ----------
-   # [11;6;7;0;2;5] |> bst_of_list = test_tree;;
+   # [11;6;7;0;2;5] |> bst_of_list |> is_bst;;
    - : bool = true
    ---------- *)
 
