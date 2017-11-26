@@ -174,7 +174,7 @@ let pred bst = ()
       Node(l, x, Empty)
       Node(l, x, r)
    ----------
-   [Za delete definiran s funkcijo "succ".]
+   [For delete defined with "succ".]
    # delete 7 test_tree;;
    - : int tree =
    Node (Node (Node (Empty, 0, Empty), 2, Empty), 5,
