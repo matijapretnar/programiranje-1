@@ -9,7 +9,10 @@
  - : int = 3
  ---------- *)
 
-let penultimate_element l = ()
+let rec penultimate_element = function
+  | hd :: _ :: [] -> hd
+  | _ :: tl -> penultimate_element tl
+  | [] -> failwith "List too short."
 
 (* The function "get k l" returns the k-th element in the list l.
  Numbering (as usual) starts with 0.
@@ -20,7 +23,9 @@ let penultimate_element l = ()
  - : int = 1
  ---------- *)
 
-let get k l = ()
+let rec get k = function
+  | [] -> failwith "List too short."
+  | hd :: tl -> if k=0 then hd else get (k-1) tl
 
 (* The function "double l" doubles the occurences of elements in the list l.
  ----------
@@ -28,7 +33,9 @@ let get k l = ()
  - : int list = [1; 1; 2; 2; 3; 3]
  ---------- *)
 
-let double l = ()
+let rec double = function
+| hd :: tl -> hd :: hd :: double tl
+| [] -> []
 
 (* The function "divide k l" divides the list l into a pair of lists. The first list
  contains the first k elements of the list l and the second list contains the rest.
@@ -40,7 +47,13 @@ let double l = ()
  - : int list * int list = ([1; 2; 3; 4; 5], [])
  ---------- *)
  
-let divide k l = ()
+let rec divide k l =
+  match (k, l) with
+  | (_, []) -> ([], [])
+  | (0, l) -> ([], l)
+  | (k, hd::tl) -> 
+    let (l1, l2) = divide (k-1) tl in
+	(hd::l1, l2)
 
 (* The function "delete k l" removes the k-th element of the list l.
  If the list is too short it raises an error.
@@ -49,7 +62,10 @@ let divide k l = ()
  - : int list = [0; 0; 0; 0; 0]
  ---------- *)
  
-let delete k l = ()
+let rec delete k = function
+  | [] -> failwith "List too short."
+  | hd :: tl ->
+  if k=0 then tl else hd :: delete (k-1) tl
 
 (* The function "slice i k l" returns the sub-list of l from the i-th up
  to (excluding) the k-th element.
@@ -59,7 +75,10 @@ let delete k l = ()
  - : int list = [1; 2; 3]
  ---------- *)
  
-let slice i k l = ()
+let slice i k l = 
+  let (_, slice1) = divide i l in
+  let (slice2, _) = divide (k-i) slice1 in
+  slice2
 
 (* The function "insert x k l" inserts (not replaces) x into the list l at index k.
  If k is outside of bounds of l insert at the beggining or the end instead.
@@ -70,7 +89,9 @@ let slice i k l = ()
  - : int list = [1; 0; 0; 0; 0; 0]
  ---------- *)
 
-let insert x k l = ()
+let rec insert x k l = 
+  let (l1, l2) = divide k l in
+  l1 @ [x] @ l2
 
 (* The function "rotate n l" rotates the list l to the left by n places.
  Suppose that n is within the bounds of l.
@@ -79,7 +100,9 @@ let insert x k l = ()
  - : int list = [3; 4; 5; 1; 2]
  ---------- *)
 
-let rotate n l = ()
+let rec rotate n l = 
+  let (l1, l2) = divide n l in
+  l2@l1
  
 (* The function "remove x l" removes all occurrences of x in the list l.
  ----------
@@ -87,7 +110,9 @@ let rotate n l = ()
  - : int list = [2; 3; 2; 3]
  ---------- *)
 
-let remove x l = ()
+let rec remove x = function
+  | hd :: tl -> if hd=x then remove x tl else hd :: remove x tl
+  | [] -> []
 
 (* The function "is_palindrome l" checks if a list is a palindrome.
  Hint: Use an auxiliary function that reverses a list. 
@@ -98,7 +123,12 @@ let remove x l = ()
  - : bool = false
  ---------- *)
  
-let is_palindrome l = ()
+let is_palindrome l = 
+  let rec reverse = function
+    | hd :: tl -> reverse tl @ [hd]
+    | [] -> []
+  in
+  l = reverse l
   
 (* The function "max_on_components l1 l2" returns a list with the maximum element
  of lists l1 and l2 at the each index.
@@ -107,7 +137,11 @@ let is_palindrome l = ()
  # max_on_components [5; 4; 3; 2; 1] [0; 1; 2; 3; 4; 5; 6];;
  - : int list = [5; 4; 3; 3; 4]
  ---------- *)
-let max_on_components l1 l2 = ()
+let rec max_on_components l1 l2 = 
+  match (l1,l2) with
+  | (hd1::tl1, hd2::tl2) -> max hd1 hd2 :: max_on_components tl1 tl2
+  | ([], _) -> []
+  | (_, []) -> []
   
 (* The function "second_largest l" returns the second largest value in the list l.
  Multiple occurrences of the same element count as one value.
@@ -118,4 +152,10 @@ let max_on_components l1 l2 = ()
  - : int = 10
  ---------- *)
  
-let second_largest l = ()
+let second_largest l =
+  let rec largest = function
+    | [] -> failwith "List too short."
+	| hd :: [] -> hd
+	| hd :: tl -> max hd (largest tl)
+  in
+  largest (remove (largest l) l)
