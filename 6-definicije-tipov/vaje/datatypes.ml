@@ -143,9 +143,10 @@ let damage_caused spell target =
 let attack wizard spell = {wizard with hp = wizard.hp - damage_caused spell wizard}
 
 (* Write a function cast_spells that casts each of the skills of a wizard, or
-   as many as he has mana for. *)
-let cast_spells wizard =
-  let m = wizard.ability in
+   as many as he has mana for. Return the updated caster and the list of
+   spells he managed to cast.*)
+let cast_spells (caster : wizard) : wizard * spell list =
+  let m = caster.ability in
   let (available, spells_cast) =
     List.fold_left
       (fun (available, spells_cast) spell ->
@@ -154,9 +155,10 @@ let cast_spells wizard =
          then (available - cost, spell::spells_cast)
          else (available, spells_cast))
       (m, [])
-      wizard.skills
+      caster.skills
   in
-  ({wizard with ability = available}, spells_cast)
+  ({caster with ability = available}, spells_cast)
+
 
 (* Write a function that stands off two wizard in a duel. If the attacker is
    dead, the defender wins. The attacker, if he is still alive, casts his
