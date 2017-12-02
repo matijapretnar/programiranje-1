@@ -1,4 +1,4 @@
-(* A priority queue is a data structure that stores elements in order of
+(* A priority queue (PQ) is a data structure that stores elements in order of
    "priority". Elements with high priority are available before elements with
    low priority. *)
 type comparison = LT | EQ | GT
@@ -71,11 +71,11 @@ let _ = Cmp_Int.compare (-9000) 42;;
 let _ = Cmp_Int_inv.compare (-9000) 42;;
 
 
-(* Finally, here is the signature of a heap. We have a type of heaps h, a type
-   of elements el, an empty heap, and operations to push onto and safely pop
-   elements off the heap. Pop returns the new heap and the highest-priority
-   element if the heap is non-empty. *)
-module type Heap = sig
+(* Finally, here is the signature of a priority queue. We have a type of priority queues h, a type
+   of elements el, an empty priority queue, and operations to push onto and safely pop
+   elements off the priority queue. Pop returns the new priority queue and the highest-priority
+   element if the priority queue is non-empty. *)
+module type Priority_Queue = sig
     type h
     type el
     val empty : h
@@ -84,10 +84,10 @@ module type Heap = sig
   end
 
 
-(* We can implement a heap as a sorted list. Write a functor that takes a
-   Comparable module as an argument and implements a heap with Cmp.t lists as
+(* We can implement a priority queue as a sorted list. Write a functor that takes a
+   Comparable module as an argument and implements a priority queue with Cmp.t lists as
    carrier. Be careful about which types you want to hide. *)
-module Sorted_List_Heap (Cmp : Comparable) : Heap with type el = Cmp.t = struct
+module Sorted_List_Priority_Queue (Cmp : Comparable) : Priority_Queue with type el = Cmp.t = struct
 
   type h = Cmp.t list
   type el = Cmp.t
@@ -111,16 +111,16 @@ module Sorted_List_Heap (Cmp : Comparable) : Heap with type el = Cmp.t = struct
 
 end
 
-(* Apply your functor to build a heap of integers, and a heap of strings. *)
-module IntH = Sorted_List_Heap (Cmp_Int)
-module StringH = Sorted_List_Heap (Cmp_String)
+(* Apply your functor to build a priority queue of integers, and a priority queue of strings. *)
+module IntH = Sorted_List_Priority_Queue (Cmp_Int)
+module StringH = Sorted_List_Priority_Queue (Cmp_String)
 
 (* Write some examples using push and pop! *)
 
-(* Write a functor To_List that takes an implementation of Heap as an argument
-   and returns a module with a "to_list" function, that takes a heap and yields
+(* Write a functor To_List that takes an implementation of Priority_Queue as an argument
+   and returns a module with a "to_list" function, that takes a priority queue and yields
    all of its elements as a list. *)
-module To_List (H : Heap) = struct
+module To_List (H : Priority_Queue) = struct
   let rec to_list h =
     match H.pop h with
     | None -> []
@@ -138,7 +138,7 @@ let _ =
   TL.to_list h
 
 let _ =
-  let module H = Sorted_List_Heap (Cmp_inv(Cmp_Int)) in
+  let module H = Sorted_List_Priority_Queue (Cmp_inv(Cmp_Int)) in
   let module L = To_List(H) in
   let h = List.fold_left H.push H.empty [1; 0; 9; 2] in
   L.to_list h
