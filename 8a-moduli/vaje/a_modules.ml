@@ -59,7 +59,11 @@ module type NAT = sig
   end
 
 (* Write a module that implements the NAT signature, using OCaml's "int" type
- as carrier.  *)
+   as carrier.
+
+   Trick : until you're done implementing Nat_int, it won't have the required
+   signature. You can add stubs with `failwith "later"' to make the compiler
+   happy and leave a note for yourself. *)
 module Nat_int : NAT = struct
   type t = int
   let eq = (=)
@@ -111,7 +115,6 @@ module Nat_peano = struct
     | Zero -> 0
     | S n -> 1 + (to_int n)
 end
-
 
 
 (* For those wishing to reenact the glory of 17th century mathematics:
@@ -169,6 +172,7 @@ module Cartesian : COMPLEX = struct
   let inv = div one
 
 end
+
 
 (* Now implement Professor Bessel's complex numbers. The carrier this time
    will be a polar representation, with a magnitude and an argument for each

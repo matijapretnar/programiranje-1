@@ -61,6 +61,7 @@ module Cmp_inv (Cmp : Comparable) : Comparable with type t = Cmp.t  = struct
     | GT -> LT
 end
 
+
 (* To use a functor, like other functions, we have to apply it. One difference
    with other OCaml functions is that we need parenthesis around the
    arguments. *)
@@ -68,6 +69,7 @@ end
 module Cmp_Int_inv = Cmp_inv (Cmp_Int)
 let _ = Cmp_Int.compare (-9000) 42;;
 let _ = Cmp_Int_inv.compare (-9000) 42;;
+
 
 (* Finally, here is the signature of a heap. We have a type of heaps h, a type
    of elements el, an empty heap, and operations to push onto and safely pop
@@ -80,6 +82,7 @@ module type Heap = sig
     val pop : h -> (h * el) option
     val push : h -> el -> h
   end
+
 
 (* We can implement a heap as a sorted list. Write a functor that takes a
    Comparable module as an argument and implements a heap with Cmp.t lists as
@@ -108,7 +111,7 @@ module Sorted_List_Heap (Cmp : Comparable) : Heap with type el = Cmp.t = struct
 
 end
 
-(* Build a heap of integers, and a heap of strings. *)
+(* Apply your functor to build a heap of integers, and a heap of strings. *)
 module IntH = Sorted_List_Heap (Cmp_Int)
 module StringH = Sorted_List_Heap (Cmp_String)
 
