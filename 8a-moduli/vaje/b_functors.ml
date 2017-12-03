@@ -78,7 +78,7 @@ module type Heap = sig
     type el
     val empty : h
     val pop : h -> (h * el) option
-    val push : ...
+    val push : h -> el -> h
   end
  *)
 
