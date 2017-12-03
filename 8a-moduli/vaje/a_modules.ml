@@ -1,6 +1,4 @@
-(* Zgodba, ki naj ostane neprevedena:
-
-"Once upon a time, there was a university with a peculiar tenure policy. All
+(* "Once upon a time, there was a university with a peculiar tenure policy. All
  faculty were tenured, and could only be dismissed for moral turpitude. What
  was peculiar was the definition of moral turpitude: making a false statement
  in class. Needless to say, the university did not teach computer science.
@@ -40,57 +38,44 @@
  *)
 
 
-(* Kompleksna števila so zahtevnejša. Pričnimo z Nat. *)
+(* Complex numbers are more complicated than natural numbers.
+   Let's start with Nat! *)
 
 
-(* Definirajmo signaturo "NAT", ki določa strukturo naravnih števil. Ima
-   osnovni tip, funkcijo enakosti, ničlo in enko, seštevanje, odštevanje in
-   množenje. Hkrati naj vsebuje pretvorbe iz in v OCamlov "int" tip.*)
-
+(* Define a module type "NAT" that specifies the structure of a "natural
+ numbers structure". It should have a carrier type, a function that tests for
+ equality, a zero and a one element, addition, subtraction, and multiplication
+ operations and conversion functions from and to OCaml's "int" type. *)
 module type NAT = sig
     type t
     val eq   : t -> t -> bool
     val zero : t
-    val one : t
-	val add : t -> t -> t
-	val sub : t -> t -> t 
-	val mult : t -> t -> t 
-	val of_int : int -> t
-	val to_int : t -> int 
+    (* add what's missing here! *)
   end
 
-(* Napiši modul, ki zgradi modul s podpisom tipa NAT z uporabo OCamlovega 
-   "int" tipa.
+(* Write a module that implements the NAT signature, using OCaml's "int" type
+   as carrier.
 
-   Opozorilo: Dokler ni implementiranih vse funkcij v Nat_int se bo OCaml
-   pritoževal. Temu se lahko izogneš tako, da funkcije, ki jih še niso napisane
-   nadomestiš s 'failwith "later"'. *)
- 
-
-   
+   Trick : until you're done implementing Nat_int, it won't have the required
+   signature. You can add stubs with `failwith "later"' to make the compiler
+   happy and leave a note for yourself. *)
+(*
 module Nat_int : NAT = struct
-  type t = int 
-  let eq = (=)
-  let zero = 0
-  let one = 1
-  let add = (+)
-  let sub = (-)
-  let mult = fun x y -> x*y 
-  let of_int = fun x -> x
-  let to_int = fun x -> x
-  
+  type t =
+  let eq =
+  ...
 end
+ *)
 
-(* Sedaj naravna števila naredi s pomočjo Peanovih aksiomov
-   https://en.wikipedia.org/wiki/Peano_axioms
-   
-   Osnovni tip modula podaj kot vsotni tip, kjer imaš ničlo in pa 
-   naslednjika nekega naravnega števila [Zero in Successor n].
-
-   Funkcije implementiraj s pomočjo rekurzije. Števili m in n sta enaki, če
-   sta obe 0, ali pa sta naslednika k in l, kjer sta k in l enaki števili. *)
-
-
+(* Write another implementation of NAT, taking inspiration from the Peano
+ axioms: https://en.wikipedia.org/wiki/Peano_axioms
+ - The carrier type is given by a variant type that says that a natural number
+   is either zero or the successor of another natural number.
+ - Equality of k and l is decided by recursion on both k and l. The base case
+   is that Zero = Zero.
+ - All the other functions are also defined by structural recursion (c.f.
+   Wikipedia).
+ *)
 (*
 module ... = struct
 
@@ -100,10 +85,14 @@ module ... = struct
 end
  *)
 
-(* Definiraj signaturo modula kompleksnih števil.
-   Potrebujemo osnovni tip, test enakosti, ničlo, enko, imaginarno konstanto i,
-   negacijo števila, konjugacijo, seštevanje, množenje, deljenje in inverz. *)
 
+(* For those wishing to reenact the glory of 17th century mathematics:
+   Follow the fable told by John Reynolds in the introduction. *)
+
+(* Define the signature of a module of complex numbers.
+   We will need a carrier type, a test for equality, zero, one, i, negation and
+   conjugation, addition, multiplication, division, and taking the inverse.
+ *)
 (* module type COMPLEX = sig
     type t
     val eq : t -> t -> bool
@@ -111,10 +100,13 @@ end
   end
  *)
 
-(* Napiši kartezično implementacijo kompleksnih števil (torej z = x + iy).
-   Deljenje je zahtevnejše, zato si ga lahko s 'failwith' trikom pustiš za kasneje.
+(* Write an implementation of Professor Descartes's complex numbers. Reminder:
+ this should be the cartesian representation (latin_of_french "Descartes" =
+ "Cartesius").
+
+  Recommendation: implement a few basic parts of the module but leave division
+  for later. It's relatively messy.
  *)
- 
 (*
 module Cartesian : COMPLEX = struct
 
@@ -128,10 +120,14 @@ end
  *)
 
 
-(* Sedaj napiši še polarno implementacijo kompleksnih števil (torej z = r e^(i*fi) ).
+(* Now implement Professor Bessel's complex numbers. The carrier this time
+   will be a polar representation, with a magnitude and an argument for each
+   complex number.
 
-   Seštevanje je v polarnih koordinatah zahtevnejše, zato najprej napiši druge reči. *)
-   
+   Recommendation: First implement equality, the constants, negation, and
+   multiplication. Then the rest except for addition. So far, so pleasant.
+   Finally implement addition. Now form an opinion on why nobody likes polar
+   coordinates. *)
 (*
 module Polar : COMPLEX = struct
 
