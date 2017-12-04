@@ -2,14 +2,15 @@
 (* Part 1: functions *)
 (* ================= *)
 
-(* Write a function that takes two numbers and returns their sum. *)
-let add x y = x + y
+(* Write a function that takes a pair of and swaps its components. *)
+let swap (x, y) = (y, x)
 
-(* Write a function f that adds 3 to its argument. *)
-let add3 = add 3
+(* Write a function that takes a value x and a pair p, and replaces the second
+   component of p by x. *)
+let pair_with x (a, _) = (a, x)
 
-(* Write a function that adds 5 to all elements of a list. *)
-let add5_lst = List.map (add 5)
+(* Write a function takes a list of pairs and replaces each second component by 42. *)
+let with_42_list l = List.map (pair_with 42) l
 
 (* Write a safe-to-use head function, that returns the first element of a
    list, if the list is non-empty. Use the option type. *)
