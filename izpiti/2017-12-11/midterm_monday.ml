@@ -6,10 +6,10 @@
 let mult3 x y z = x * y * z
 
 (* Write a function f(x) that computes x^3 + k. *)
-let cube_affine x k = mult3 x x x + k
+let affine_cube x k = mult3 x x x + k
 
 (* Write a function that adds computes x^3 + 2 for all elements x of a list. *)
-let add5_lst = List.map (fun x -> cube_affine x 2)
+let cube_plus_two_lst = List.map (fun x -> cube_affine x 2)
 
 (* Write a function that safely returns the last element of a list, if the list
    is non-empty. Use the option type. *)
