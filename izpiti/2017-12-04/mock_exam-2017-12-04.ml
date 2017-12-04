@@ -38,11 +38,6 @@ let root (Rose (root, _)) = root
 let rec neg_p (Rose (root, forest)) =
   root < 0 || List.exists neg_p forest
 
-(* Write a function that computes the depth of a rose tree, i.e. the longest
-   path from the root to a leaf. *)
-let rec depth (Rose (_, forest)) =
-  List.map depth forest |> List.fold_left max 0 |> (+) 1
-
 (* Write a function wide_tree n that generates trees with a forest containing
    n trees.
    Hint: write a helper function that generates lists of a given length. *)
