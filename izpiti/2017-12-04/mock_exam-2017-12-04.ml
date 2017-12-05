@@ -39,9 +39,9 @@ let rec neg_p (Rose (root, forest)) =
   root < 0 || List.exists neg_p forest
 
 (* Write a function wide_tree n that generates trees with a forest containing
-   n trees.
+   n trees. You can choose an arbitrary value for the root of the k-th tree.
    Hint: write a helper function that generates lists of a given length. *)
-let wide_t n =
+let wide_tree n =
   let rec fold_nat f acc n =
     if n = 0 then acc else let acc = f acc n in fold_nat f acc (n-1)
   in
