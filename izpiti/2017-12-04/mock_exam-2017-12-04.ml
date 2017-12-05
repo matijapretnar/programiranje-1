@@ -40,7 +40,7 @@ let rec neg_p t = ()
 
 
 (* Write a function wide_tree n that generates trees with a forest containing
-   n trees.
+   n trees. You can choose an arbitrary value for the root of the k-th tree.
    Hint: write a helper function that generates lists of a given length. *)
 
 
