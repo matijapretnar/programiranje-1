@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Čistost in učinki</title>
+<title>Učinki in čistost</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../pomozno/prosojnice.css" />
 </head>
@@ -12,34 +12,87 @@ class: center, middle
 
 # Programiranje 1
 
-## Čistost in učinki
+## Učinki in čistost
 
 ### 7. december 2017
 
 ---
 
 class: center, middle
-## programi <br>~<br> matematične funkcije<br>+<br>stranski učinki
+## računalniški programi <br>~<br> matematične funkcije<br>+<br>stranski učinki
 
 ---
 
 ### Možni stranski učinki
 
-* spreminjanje pomnilnika
 * izpisovanje na zaslon
 * branje s tipkovnice
-* delo z datotekami
 * naključne izbire
-* predvajanje zvoka
+* delo z datotekami
+* spreminjanje pomnilnika
 * povezovanje z drugimi računalniki
-* segrevanje ozračja
+* izjeme pri izvajanju
 * …
+
+---
+
+class: center, middle
+
+# ugani število
+
+.terminal.left[```markdown
+Do koliko znaš šteti? 100
+Izmislil sem si število med 1 in 100.
+Katero število sem si izmislil? 50
+Ne, moje število je manjše
+Katero število sem si izmislil? 25
+Ne, moje število je večje
+Katero število sem si izmislil? 37
+Ne, moje število je večje
+Katero število sem si izmislil? 45
+Ne, moje število je manjše
+Katero število sem si izmislil? 42
+BRAVO!
+```]
+
+---
+
+### OCaml nudi **dva prevajalnika** izvorne kode
+
+1. `ocamlc` prevaja v **bitno** kodo (*bytecode*)<br>
+  – počasno izvajanje<br>– hitro prevajanje<br>– prenosljiva
+
+2. `ocamlopt` prevaja v **strojno** kodo (*native code*)<br>
+  – hitro izvajanje<br>– počasno prevajanje<br>– neprenosljiva
+
+---
+
+class: center, question
+
+## hitrost bitne in strojne kode
+
+  <iframe width='80%' height='40%' src='https://gfycat.com/ifr/DelightfulIncredibleAsiaticlesserfreshwaterclam'></iframe>
+  <iframe width='80%' height='40%' src='https://gfycat.com/ifr/GlaringTerrificIndusriverdolphin'></iframe>
+
+---
+
+### Za prevajanje raje uporabljamo `ocamlbuild`,<br>saj poskrbi za pomožne datoteke
+
+1. `ocamlbuild koda.byte` izvorno kodo `koda.ml` prevede v **bitno** kodo
+
+2. `ocamlbuild koda.native` izvorno kodo `koda.ml` prevede v **strojno** kodo
+
+---
+
+class: center, middle, question
+
+# razbitje programov<br>na datoteke
 
 ---
 
 ### Program je **čist**, če nima stranskih učinkov
 
-1. Čist program lahko vedno **zamenjamo** z njegovo **definicijo**.
+1. Čisto funkcijo lahko vedno **zamenjamo** z njeno **definicijo**.
 
 2. Čiste funkcije ob **enakih argumentih** vedno vrnejo **enake rezultate**.
 
@@ -67,7 +120,7 @@ def g(x):
 
 ---
 
-### Vsi **dosedanji** programi v OCamlu so bili čisti
+### Vsi **dosedanji<sup>\*</sup>** programi v OCamlu so bili čisti
 
 .source[```
 let seznam = [1]
@@ -229,27 +282,6 @@ class: center, middle
 
 ---
 
-class: center, middle, question
-
-.source.left[```
-let rec obrni = function
-  | [] -> []
-  | x :: xs -> obrni xs @ [x]
-```]
-
-.source.left[```
-let obrni' =
-  let rec aux acc = function
-    | [] -> aux
-    | x :: xs -> aux (x :: acc) xs
-  in
-  aux []
-```]
-
-# `obrni xs = obrni' xs`
-
----
-
 ### Nekaj definicij
 
 ```
@@ -343,6 +375,26 @@ class: center, middle
 = glbn (S (l, x, d))
 ```]
 
+---
+
+class: center, middle, question
+
+.source.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+.source.left[```
+let obrni' =
+  let rec aux acc = function
+    | [] -> aux
+    | x :: xs -> aux (x :: acc) xs
+  in
+  aux []
+```]
+
+# `obrni xs = obrni' xs`
 
 </textarea>
 <script src="../../pomozno/prosojnice.js"></script>

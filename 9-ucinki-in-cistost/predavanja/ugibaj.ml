@@ -1,3 +1,7 @@
+exception NegativnoStevilo
+
+;;
+
 try
   (* Nastavimo generator psevdo naključnih števil na psevdo naključno vrednost. *)
   Random.self_init ();
@@ -11,7 +15,9 @@ try
   let rec ugibaj () =
     print_string "Katero število sem si izmislil? ";
     let poskus = read_int () in
-    if izmisljeno_stevilo = poskus then
+    if poskus < 0 then
+      raise NegativnoStevilo
+    else if izmisljeno_stevilo = poskus then
       print_endline "BRAVO!"
     else if izmisljeno_stevilo < poskus then
       begin
@@ -27,8 +33,10 @@ try
   ugibaj ()
 with
 | Failure "int_of_string" ->
-  print_endline "Če ne veš, kaj je celo število, tole verjetno nima smisla..."
+  print_endline "Če ne veš, kako se zapiše števila, tole verjetno nima smisla..."
 | Sys.Break ->
   print_endline "Adijo!"
+| NegativnoStevilo ->
+  print_endline "Rekel sem NARAVNO število!"
 | _ ->
   print_endline "Kaj se pa greš?"
