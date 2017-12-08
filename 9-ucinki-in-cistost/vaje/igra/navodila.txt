@@ -1,4 +1,38 @@
+﻿----- HITER VODIČ KOMPILACIJE -----
+
+Tokrat bomo izgradili zgolj majhen projekt, zato ga bomo zgradili z ocamlc.
+Vsi uporabniki linuxov in mac-ov si poglejte navodila na internetu, saj je
+postopek mnogo enostavnejši kot na naši windows namestitvi.
+
+1.) Odpri Cygwin64 terminal (oz. Cygwin32 terminal)
+
+2.) Uporabi ukaz [  cd /cygdrive  ]
+
+3.) Premakni se do mape z datotekami (z uporabo ukaza cd). Najprej moraš
+    izbrati disk. V primeru, da so tvoje datoteke na disku C: uporabi
+    ukaz [  cd c  ].
+    Če se izgubiš si pomagaj z ukazom [  ls  ] ki ti izpiše vse datoteke v
+    trenutni mapi, ukaz [  cd ..  ] pa te vrne eno mapo nazaj.
+
+4.) Ko se nahajaš v mapi z datotekami, uporabi ukaz ocamlc za izgradnjo.
+    Primer:
+    
+    ocamlc field.mli field.ml            izgradi modul field. 
+
+    ocamlc field.mli field.ml game.ml    izgradi celo igro.
+
+5.) Če želiš zagnati igro v notepad++ terminalu, izgradi modul
+    field (field.mli in field.ml) in uporabi:
+
+    #load "field.cmo"
+    #use "game.ml"
+
+    Če želiš zagnati celotno izgrajeno igro, jo zaženi iz Cygwin terminala z
+    ukazom [  ./camlprog.exe  ] (to je privzeto ime programa).
+    
+
 ----- HITER PREGLED MODULA FIELD -----
+
 Odpri datoteki field.ml in field.mli in preveri koliko kode modula je zakrite
 z .mli datoteko.
 
@@ -7,7 +41,9 @@ tipa field skrita?
 
 Uporabi field.mli kot vodič kako porabljati modul Field za preostanek naloge.
 
+
 ----- DOKONČANJE IGRE -----
+
 V datoteki game.ml nekatere funkcije niso definirane do konca.
 Na srečo je gnusno delo s simboli in polji skrito v modulu Field.
 
