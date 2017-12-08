@@ -5,7 +5,7 @@ type result = Victory of Field.symbol | Draw
 let switch_symbol = ()
   (*/// Write a function, that transforms a Circle to Cross, a Cross
         to a Circle, and leaves Empty as Empty. Keep in mind, that the
-        the definitions of types are in modelue Field. ///*)
+        the definitions of types are in module Field. ///*)
 
 (* The function that takes the users input, tries to make a move and handles
    all common exceptions by restarting the turn. *)
