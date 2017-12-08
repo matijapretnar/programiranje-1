@@ -1,0 +1,27 @@
+
+----- QUICK GLANCE AT THE FIELD MODULE -----
+Open up field.ml and field.mli and check how much of the module code is hidden
+by the .mli file.
+
+Why is the type symbol explicitly written in the .mli and why do we want to
+keep the definition of the type field hidden?
+
+Use the field.mli file as a guide on how to use the Field module for the next
+part.
+
+----- FIXING THE GAME -----
+In the file game.ml some function definitions are not complete.
+Luckily all the nasty details of working with symbols and fields are hidden
+in the Field module.
+
+Things to fix in game.ml:
+
+1.) Write the definition of switch_symbol.
+2.) In make_move correct the following:
+      - Print out the player whose turn it is.
+      - After receiving input, set the symbol in the field to correct value.
+      - Write how to handle possible errors.
+3.) In game_loop:
+      - Check if the game was won.
+      - Check if the game is a draw.
+      - Uncomment the rest of the code that continues the loop.
