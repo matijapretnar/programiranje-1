@@ -28,11 +28,32 @@ class: center, middle
 * izpisovanje na zaslon
 * branje s tipkovnice
 * naključne izbire
-* delo z datotekami
-* spreminjanje pomnilnika
-* povezovanje z drugimi računalniki
 * izjeme pri izvajanju
+* spreminjanje pomnilnika (_naslednji teden_)
+* delo z datotekami
+* povezovanje z drugimi računalniki
 * …
+
+---
+
+### V OCamlu učinki v tipih **niso vidni**
+
+.terminal[```
+# print_endline;;
+- : string -> unit = <fun>
+
+# Random.bool;;
+- : unit -> bool = <fun>
+
+# read_line;;
+- : unit -> string = <fun>
+
+# raise;;
+- : exn -> 'a = <fun>
+
+# List.iter;;
+- : ('a -> unit) -> 'a list -> unit = <fun>
+```]
 
 ---
 
@@ -60,7 +81,7 @@ BRAVO!
 ### OCaml nudi **dva prevajalnika** izvorne kode
 
 1. `ocamlc` prevaja v **bitno** kodo (*bytecode*)<br>
-  – počasno izvajanje<br>– hitro prevajanje<br>– prenosljiva
+  – počasno izvajanje<br>– hitro prevajanje<br>– prenosljiva med različnimi procesorji
 
 2. `ocamlopt` prevaja v **strojno** kodo (*native code*)<br>
   – hitro izvajanje<br>– počasno prevajanje<br>– neprenosljiva
@@ -71,16 +92,38 @@ class: center, question
 
 ## hitrost bitne in strojne kode
 
-  <iframe width='80%' height='40%' src='https://gfycat.com/ifr/DelightfulIncredibleAsiaticlesserfreshwaterclam'></iframe>
-  <iframe width='80%' height='40%' src='https://gfycat.com/ifr/GlaringTerrificIndusriverdolphin'></iframe>
+  <iframe width='80%' height='40%' src='https://www.youtube.com/embed/D68Lck4Y5Ig?rel=0&amp;controls=0&amp;showinfo=0&amp;start=20'></iframe>
+  <iframe width='80%' height='40%' src='https://www.youtube.com/embed/FN4PF4ulNpk?rel=0&amp;controls=0&amp;iv_load_policy=3&amp;showinfo=0&amp;start=10'></iframe>
 
 ---
 
 ### Za prevajanje raje uporabljamo `ocamlbuild`,<br>saj poskrbi za pomožne datoteke
 
-1. `ocamlbuild koda.byte` izvorno kodo `koda.ml` prevede v **bitno** kodo
+1. `ocamlbuild moj_program.byte` iz `moj_program.ml` naredi program `moj_program.byte`, ki uporablja **bitno** kodo
 
-2. `ocamlbuild koda.native` izvorno kodo `koda.ml` prevede v **strojno** kodo
+2. `ocamlbuild moj_program.native` izvorno kodo `moj_program.ml` prevede v program `moj_program.native`, ki uporablja **strojno** kodo
+
+---
+
+### Vsaka datoteka v OCamlu je svoj modul
+
+`prva.ml`
+.source[```
+let pomozni_racun = 3 + 3
+let odgovor = pomozni_racun * succ pomozni_racun
+```]
+
+`druga.ml`
+.source[```
+let najboljsi_odgovor = succ Prva.odgovor
+```]
+
+### Signaturo zapišemo v datoteke `.mli`
+
+`prva.mli`
+.source[```
+val odgovor : int
+```]
 
 ---
 
@@ -92,7 +135,7 @@ class: center, middle, question
 
 ### Program je **čist**, če nima stranskih učinkov
 
-1. Čisto funkcijo lahko vedno **zamenjamo** z njeno **definicijo**.
+1. Čist program lahko vedno **zamenjamo** z njihovimi **definicijami**.
 
 2. Čiste funkcije ob **enakih argumentih** vedno vrnejo **enake rezultate**.
 
@@ -211,14 +254,17 @@ class: center, middle
 # Kako naprej? .spoiler[Indukcija!]
 
 ---
-class: center
+
+class: center, middle
 ### Indukcija na naravnih številih
 
 ### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
 
+### &nbsp;
+
 ### Indukcija na seznamih
 
-### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x :: xs)) \implies \forall ys. P(ys) $$
+### $$P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x :: xs)) \implies \forall ys. P(ys) $$
 
 ---
 
@@ -271,18 +317,13 @@ class: center
 
 ---
 
-class: center, middle
-### Indukcija na naravnih številih
+class: center, middle, question
 
-### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
-
-### Indukcija na seznamih
-
-### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x :: xs)) \implies \forall ys. P(ys) $$
+### $$P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x :: xs)) \implies \forall ys. P(ys) $$
 
 ---
 
-### Nekaj definicij
+### Še nekaj definicij
 
 ```
 type 'a drevo =
@@ -373,6 +414,20 @@ class: center, middle
 --
 .consecutive[```
 = glbn (S (l, x, d))
+```]
+
+---
+
+class: center, middle, question
+
+## Kakšna so načela indukcije za sledeče tipe?
+
+.source.left[```
+type nat = Zero | Succ of nat
+
+type bool = True | False
+
+type 'a option = None | Some of 'a
 ```]
 
 ---

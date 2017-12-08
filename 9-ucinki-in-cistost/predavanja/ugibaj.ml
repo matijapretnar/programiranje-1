@@ -1,23 +1,36 @@
+(* Definiramo izjemo, ki jo bomo sprožili ob vnosu negativnega števila *)
 exception NegativnoStevilo
 
 ;;
 
 try
-  (* Nastavimo generator psevdo naključnih števil na psevdo naključno vrednost. *)
+  (* PREDPRIPRAVA *)
+  (* Generatorju psevdonaključnih števil psevdonaključno nastavimo seme. *)
   Random.self_init ();
   (* OCamlu povemo, naj ujame klic za prekinitev programa. *)
   Sys.catch_break true;
-  print_endline "Izmislil si bom naravno število, ti pa ga boš uganil.";
-  print_string "Koliko je največje število, ki si ga sposoben uganiti? ";
+  print_string "Do koliko znaš šteti? ";
+  (* Z vhodne vrstice preberemo niz in ga pretvorimo v število. *)
   let meja = read_int () in
+  (* Izračunamo psevdonaključno število v danih mejah *)
   let izmisljeno_stevilo = 1 + Random.int meja in
+  print_endline ("Izmislil sem si število med 1 in " ^ string_of_int meja);
 
-  let rec ugibaj () =
-    print_string "Katero število sem si izmislil? ";
+  let preberi_stevilo () =
     let poskus = read_int () in
     if poskus < 0 then
+      (* Če je vnešeno število negativno, sprožimo izjemo. *)
       raise NegativnoStevilo
-    else if izmisljeno_stevilo = poskus then
+    else
+      poskus
+  in
+
+  (* GLAVNA ZANKA *)
+  (* Definiramo glavno zanko programa *)
+  let rec ugibaj () =
+    print_string "Katero število sem si izmislil? ";
+    let poskus = preberi_stevilo () in
+    if izmisljeno_stevilo = poskus then
       print_endline "BRAVO!"
     else if izmisljeno_stevilo < poskus then
       begin
@@ -30,9 +43,12 @@ try
         ugibaj ()
       end
   in
+  (* Poženemo glavno zanko programa *)
   ugibaj ()
+
+(* LOVLJENJE IZJEM *)
 with
-| Failure "int_of_string" ->
+| Failure msg when msg = "int_of_string" ->
   print_endline "Če ne veš, kako se zapiše števila, tole verjetno nima smisla..."
 | Sys.Break ->
   print_endline "Adijo!"
