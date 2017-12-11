@@ -13,7 +13,7 @@
 
 (* 1.3) Definirajte funkcijo, ki vzame seznam parov in izračuna nov seznam parov,
    ki imajo drugo komponento zamenjano z 42.
-   Primer: /vsem_zamenjaj_drugo_z_42 [(12,1); (2,4)] = [(12, 42); (2, 42)]/ *)
+   Primer: /vsem_zamenjaj_drugo_z_42 [(12, 1); (2, 4)] = [(12, 42); (2, 42)]/ *)
  let vsem_zamenjaj_drugo_z_42 = failwith "dopolni me"
 
 (* 1.4) Definirajte funkcijo, ki varno vrne glavo seznama v primeru, ko seznam ni prazen.
@@ -23,7 +23,7 @@
 
 (* 1.5) Definirajte funkcijo, vzame funkcijo (f: 'a -> 'b), neko vrednost (x : 'a) in
    celo število n. Funkcija naj vrne vrednost, ki jo dobimo če f n-krat uporabimo na x,
-   torej f (f ...(f x)...).
+   torej f (f ... (f x)...).
    Primer: /uporabi_veckrat succ 0 420 = 420/ *)
  let uporabi_veckrat = failwith "dopolni me"
 
@@ -54,10 +54,10 @@ let t'' = failwith "dopolni me"
 (* 2.3) Definirajte funkcijo, ki vrne gozd rožnega drevesa. *)
 let vrni_gozd = failwith "dopolni me"
 
-(* 2.3) Definirajte funkcijo, ki izpiše vse vrednosti v rožnem drevesu celih števil.
+(* 2.4) Definirajte funkcijo, ki izpiše vse vrednosti v rožnem drevesu celih števil.
    Števila naj bodo v ločenih vrsticah. Uporabite (print_int : int -> unit) in
    (print_newline : unit -> unit). *)
-let vrni_gozd = failwith "dopolni me"
+let izpisi_vrednosti = failwith "dopolni me"
 
 (* 2.5) Definirajte funkcijo, ki izračuna globino rožnega drevesa, t.j. dolžino
    najdaljše poti od korena do lista. *)
@@ -71,7 +71,7 @@ let globoko_drevo = failwith "dopolni me"
    in funkcijo f zloži [fold] preko drevesa (t : 'a drevo). Vrstni red pri tem ni pomemben.
 
    Za primer t' želimo vrednost f (f (f acc 1) 2) 2)  (lahko tudi f (f (f acc 2) 1) 2))
-   Primer: /zlozi (fun acc x -> x + acc) t'' = 6/
+   Primer: /zlozi (fun acc x -> x + acc) 0 t'' = 6/
 
    Če želite vse točke, mora biti funkcija repno rekurzivna.
 
