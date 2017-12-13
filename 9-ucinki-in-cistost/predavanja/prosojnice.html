@@ -144,7 +144,7 @@ class: center, middle, question
 ### Vsi programi v Pythonu **niso čisti**
 
 .source[```python
-seznam = [1]
+seznam = [1, 2, 3]
 def f(x):
     seznam.append(x)
     return len(seznam)
@@ -154,11 +154,11 @@ def g(x):
 
 .terminal[```python
 >>> g(3)
-5
->>> f(3) + f(3)
 9
->>> g(3)
+>>> f(3) + f(3)
 13
+>>> g(3)
+17
 ```]
 
 ---
@@ -166,9 +166,9 @@ def g(x):
 ### Vsi **dosedanji<sup>\*</sup>** programi v OCamlu so bili čisti
 
 .source[```
-let seznam = [1]
+let seznam = [1; 2; 3]
 let f x =
-    let _ = x :: seznam in
+    let seznam = x :: seznam in
     List.length seznam
 let g x =
     f x + f x
@@ -176,11 +176,11 @@ let g x =
 
 .terminal[```
 # g 3;;
-- : int = 2
+- : int = 8
 # f 3 + f 3;;
-- : int = 2
+- : int = 8
 # g 3;;
-- : int = 2
+- : int = 8
 ```]
 
 ---
