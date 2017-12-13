@@ -102,6 +102,28 @@ let g x =
 
 ---
 
+class: question, center
+
+## Kakšno vrednost vrne program
+
+.left.source[```
+let a = 1 in
+let b = ref a in
+let c = ref b in
+let a = 5 in
+let d = ref !b in
+let e = ref a in
+b := 4;
+let b = ref !b in
+b := 3;
+d := 2;
+(a, b, !c, !d, e)
+```]
+
+### .spoiler[`(` .spoiler[`5`], .spoiler[`{cnts` `=` .spoiler[`3`]`}`], .spoiler[`{cnts` `=` .spoiler[`4`]`}`], .spoiler[`2`], .spoiler[`{cnts` `=` .spoiler[`5`]`}`]`)`]
+
+---
+
 ### Reference so izvedene s spremenljivimi zapisi
 
 .source[```
@@ -211,7 +233,7 @@ let obrni_na_mestu tabela =
 
 class: question, center, middle
 
-## `vrni_premesano` in `premesaj_na_mestu`
+## `premesaj_na_mestu` in `vrni_premesano`
 
 ---
 
