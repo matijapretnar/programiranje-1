@@ -83,10 +83,10 @@ let g x =
 ### Reference v OCamlu so **spremenljive**
 
 .source[```
-let kazalec_na_seznam = ref [1; 2; 3]
+let sklic_na_seznam = ref [1; 2; 3]
 let f x =
-    kazalec_na_seznam := x :: !kazalec_na_seznam;
-    List.length !kazalec_na_seznam
+    sklic_na_seznam := x :: !sklic_na_seznam;
+    List.length !sklic_na_seznam
 let g x =
     f x + f x
 ```]
@@ -115,12 +115,12 @@ let d = ref !b in
 let e = ref a in
 b := 4;
 let b = ref !b in
-b := 3;
+!c := 3;
 d := 2;
 (a, b, !c, !d, e)
 ```]
 
-### .spoiler[`(` .spoiler[`5`], .spoiler[`{cnts` `=` .spoiler[`3`]`}`], .spoiler[`{cnts` `=` .spoiler[`4`]`}`], .spoiler[`2`], .spoiler[`{cnts` `=` .spoiler[`5`]`}`]`)`]
+### .spoiler[`(` .spoiler[`5`], .spoiler[`{cnts` `=` .spoiler[`4`]`}`], .spoiler[`{cnts` `=` .spoiler[`3`]`}`], .spoiler[`2`], .spoiler[`{cnts` `=` .spoiler[`5`]`}`]`)`]
 
 ---
 
@@ -138,7 +138,7 @@ let (:=) r x = r.contents <- x
 
 ---
 
-### OCaml ima tudi tip <code>array</code>, namenjen seznamom, predstavljenim s tabelami
+### Tabele v OCamlu imajo tip `array`
 
 .terminal[```
 # let t = [|1; 2; 3|];;
@@ -156,7 +156,7 @@ val m : int array array = [|[|1; 2|]; [|3; 4|]|]
 
 ---
 
-### Tabele so spremenljiv podatkovni tip
+### Tip `array` je spremenljiv
 
 .terminal[```
 # let t = [|1; 2; 3|];;
@@ -177,7 +177,7 @@ val t' : int array = [|1; 2; 3|]
 
 ---
 
-### Modul [`Array`](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html) vsebuje precej<br>funkcij za delo s tabelami
+### Funkcije za delo s tabelami so v modulu [`Array`](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html)
 
 .terminal[```
 # Array.length [|10; 20; 30|];;
@@ -185,6 +185,9 @@ val t' : int array = [|1; 2; 3|]
 
 # Array.make 3 'a';;
 - : char array = [|'a'; 'a'; 'a'|]
+
+# Array.of_list [5; 2; 1; 4; 3; 6; 8; 7];;
+- : int array = [|5; 2; 1; 4; 3; 6; 8; 7|]
 
 # Array.make_matrix 2 2 0;;
 - : int array array = [|[|0; 0|]; [|0; 0|]|]
