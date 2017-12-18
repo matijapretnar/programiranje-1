@@ -10,7 +10,7 @@ type 'a tree =
         2   7
        /   / \
       0   6   11
-   *)
+*)
 
 let leaf x = Node(Empty, x, Empty) (* Funkcija zakrajši zapis lista drevesa. *)
 
@@ -29,7 +29,9 @@ let test_tree = Node( Node(leaf 0, 2, Empty), 5, Node(leaf 6, 7, leaf 11))
    Node (Empty, 2, Node (Empty, 0, Empty)))
    ---------- *)
 
-let rec mirror t = ()
+let rec mirror = function
+  | Empty -> Empty
+  | Node(l, x, r) -> Node(mirror r, x, mirror l)
 
 (* Funkcija "height t" vrne višino oz. globino drevesa, funkcija "size t" pa
    število vseh vozlišč drevesa.
@@ -40,9 +42,13 @@ let rec mirror t = ()
    - : int = 6
    ---------- *)
 
-let rec height t = ()
+let rec height = function
+  | Empty -> 0
+  | Node(l, _, r) -> 1 + max (height l) (height r)
 
-let rec size t = ()
+let rec size = function
+  | Empty -> 0
+  | Node(l, _, r) -> 1 + (size l) + (size r)
 
 (* Funkcija "follow directions t" tipa [direction list -> 'a tree -> 'a option]
    sprejme seznam navodil za premikanje po drevesu. Ker morda navodila ne vodijo
@@ -56,7 +62,13 @@ let rec size t = ()
 
 type direction = Left | Right
 
-let rec follow directions t = ()
+let rec follow directions = function
+  | Empty -> None
+  | Node(l, x, r) ->
+    (match directions with
+     | [] -> Some x
+     | Left::tl -> follow tl l
+     | Right::tl -> follow tl r)
 
 (* Funkcija "prune directions t"  [direction list -> 'a tree -> 'a tree option]
    poišče vozlišče v drevesu glede na navodila, ter izbriše poddrevo, ki se
@@ -69,7 +81,20 @@ let rec follow directions t = ()
    Some (Node (Node (Node (Empty, 0, Empty), 2, Empty), 5, Empty))
    ---------- *)
 
-let rec prune directions t = ()
+let rec prune directions = function
+  | Empty -> None
+  | Node(l, x, r) ->
+    (match directions with
+     | [] -> Some Empty
+     | Left::tl ->
+       (match prune tl l with
+        | None -> None
+        | Some new_l -> Some (Node(new_l, x, r)))
+     | Right::tl ->
+       (match prune tl r with
+        | None -> None
+        | Some new_r -> Some (Node(l, x, new_r)))
+    )
 
 (* Funkcija "map_tree f t"  [('a -> 'b) -> 'a tree -> 'b tree] preslika podatke
    drevesa t s funkcijo f.
@@ -80,7 +105,9 @@ let rec prune directions t = ()
    Node (Node (Empty, true, Empty), true, Node (Empty, true, Empty)))
    ---------- *)
 
-let rec map_tree f t = ()
+let rec map_tree f = function
+  | Empty -> Empty
+  | Node(l, x, r) -> Node( map_tree f l, f x, map_tree f r)
 
 (* Funkcija "list_of_tree t"  ['a tree -> 'a list] preslika podatke
    drevesa t v seznam. Vrstni red naj bo takšen, da v primeru binarnega
@@ -90,7 +117,9 @@ let rec map_tree f t = ()
    - : int list = [0; 2; 5; 6; 7; 11]
    ---------- *)
 
-let rec list_of_tree t = ()
+let rec list_of_tree = function
+  | Empty -> []
+  | Node(l, x, r) -> (list_of_tree l)@[x]@(list_of_tree r)
 
 (* Funkcija "is_bst t" ['a tree -> bool] preveri ali je drevo binarno iskalno
    drevo (Binary Search Tree, BST). Predpostavi, da v drevesu ni ponovitev
@@ -103,7 +132,11 @@ let rec list_of_tree t = ()
    - : bool = false
    ---------- *)
 
-let rec is_bst t = ()
+let rec is_bst t =
+  let rec is_ordered = function
+    | [] | _::[] -> true
+    | x::y::tl -> if x<=y then is_ordered (y::tl) else false
+  in t |> list_of_tree |> is_ordered
 
 (*------------------------------------------------------------------------------
    V nadaljevanju s spremenljivko 'bst' označujemo 'a tree, ki ima strukturo BST
@@ -115,18 +148,36 @@ let rec is_bst t = ()
    # insert 2 (leaf 4);;
    - : int tree = Node (Node (Empty, 2, Empty), 4, Empty)
    # member 3 test_tree;;
-- : bool = false
+   - : bool = false
    ---------- *)
 
-let rec insert x bst = ()
+let rec insert x = function
+  | Empty -> leaf x
+  | Node(l, y, r) as t ->
+    if x < y then
+      Node(insert x l, y, r)
+    else if x=y then
+      t
+    else
+      Node(l, y, insert x r)
 
-let rec member x bst = ()
+let rec member x = function
+  | Empty -> false
+  | Node(l, y, r) ->
+    if x < y then
+      member x l
+    else if x=y then
+      true
+    else
+      member x r
 
 (* Napiši še funkcijo "member2", kjer ne privzameš, da je drevo bst.
    Premisli kakšna je časovna zahtevnost funkcije "member" in kakšna funkcije
    "member2" na drevesu z n vozlišči, ki ima globino log(n). *)
 
-let rec member2 x t = ()
+let rec member2 x = function
+  | Empty -> false
+  | Node(l, y, r) -> x=y || (member2 x l) || (member2 x r)
 
 (* Funkcija "bst_of_list l" ['a list -> 'a tree] iz seznama naredi binarno
    iskalno drevo.
@@ -137,7 +188,8 @@ let rec member2 x t = ()
    - : bool = true
    ---------- *)
 
-let bst_of_list l = ()
+let bst_of_list l =
+  List.fold_right insert l Empty
 
 (* Sestavi funkcijo "tree_sort l" ['a list -> 'a list], ki uredi seznam l.
    ----------
@@ -145,7 +197,7 @@ let bst_of_list l = ()
    - : string list = ["a"; "b"; "c"; "d"; "e"; "f"]
    ---------- *)
 
-let tree_sort l = ()
+let tree_sort l = l |> bst_of_list |> list_of_tree
 
 (* Funkcija "succ bst" ['a tree -> 'a option] vrne naslednjika korena drevesa,
    če obstaja. Torej za drevo oblike bst = Node(l, x, r) vrne najmanjši element
@@ -159,15 +211,36 @@ let tree_sort l = ()
    - : int option = None
    ---------- *)
 
-let succ bst = ()
+let succ bst =
+  let rec min = function
+    | Empty -> None
+    | Node(Empty, x, _) -> Some x
+    | Node(l, _, _) -> min l
+  in
+  match bst with
+  | Empty -> None
+  | Node(_, _, r) -> min r
 
-let pred bst = ()
+let pred bst =
+  let rec max = function
+    | Empty -> None
+    | Node(_, x, Empty) -> Some x
+    | Node(_, _, r) -> max r
+  in
+  match bst with
+  | Empty -> None
+  | Node(l, _, _) -> max l
 
 (* Na predavanjih ste omenili dva načina brisanja elementov iz drevesa.
    Prvi uporablja "succ", drugi pa "pred".
    Napiši funkcijo "delete x bst" ['a tree -> 'a tree], ki iz drevesa izbriše
    element x, če ta v drevesu obstaja. Za vajo lahko implementiraš obe verziji
    brisanja elementov.
+   Namig: Premisli kako izbrišeš x iz dreves oblike
+      Node(Empty, x, Empty)
+      Node(Empty, x, r)
+      Node(l, x, Empty)
+      Node(l, x, r)
    ----------
    [Za delete definiran s funkcijo "succ".]
    # delete 7 test_tree;;
@@ -176,7 +249,20 @@ let pred bst = ()
    Node (Node (Empty, 6, Empty), 11, Empty))
    ---------- *)
 
-let rec delete x bst = ()
+let rec delete x = function
+  | Empty -> Empty
+  | Node(l, y, r) as t->
+    if x > y then
+      Node(l, y, delete x r)
+    else if x < y then
+      Node(delete x l, y, r)
+    else
+      (*Potrebno izbrisati vozlišče.*)
+      match succ t with
+      | None -> l (*To se zgodi le kadar je r enak Empty.*)
+      | Some s ->
+        let clean_r = delete s r in
+        Node(l, s, clean_r)
 
 (* Dodatna možnost je, da spremenimo tip s katerim predstaviljamo drevo.
    Definiraj nov tip drevesa, ki poleg podatka, levega in desnega poddrevesa
@@ -185,7 +271,9 @@ let rec delete x bst = ()
 
 type state = Exists | Ghost
 
-type 'a phantom_tree = unit
+type 'a phantom_tree =
+  | P_Empty
+  | P_Node of 'a phantom_tree * 'a * 'a phantom_tree * state
 
 (* Funkcija "phantomize t" ['a tree -> 'a phantom_tree], ki navadnemu drevesu
    priredi fantomsko drevo.
@@ -205,9 +293,22 @@ type 'a phantom_tree = unit
    P_Node (P_Node (P_Empty, 3, P_Empty, Ghost), 4, P_Empty, Exists), Exists)
    ---------- *)
 
-let rec phantomize t = ()
+let rec phantomize = function
+  | Empty -> P_Empty
+  | Node(l, x, r) ->
+    let p_l = phantomize l in
+    let p_r = phantomize r in
+    P_Node(p_l, x, p_r, Exists)
 
-let rec kill x pt = ()
+let rec kill x = function
+  | P_Empty -> P_Empty
+  | P_Node(p_l, y, p_r, s) ->
+    if x < y then
+      P_Node(kill x p_l, y, p_r, s)
+    else if x > y then
+      P_Node(p_l, y, kill x p_r, s)
+    else
+      P_Node(p_l, y, p_r, Ghost)
 
 (* Funkcija "unphantomize pt" ['a phantom_tree -> 'a tree], ki fantomskemu
    drevesu priredi navadno drevo, ki vsebuje le vozlišča, ki še obstajajo.
@@ -218,7 +319,15 @@ let rec kill x pt = ()
    - : int tree = Node (Node (Node (Empty, 2, Empty), 6, Empty), 11, Empty)
    ---------- *)
 
-let unphantomize pt = ()
+let unphantomize pt =
+  let rec list_of_phantom_tree = function
+    | P_Empty -> []
+    | P_Node(l, x, r, Ghost) ->
+      (list_of_phantom_tree l) @ (list_of_phantom_tree r)
+    | P_Node(l, x, r, Exists) ->
+      (list_of_phantom_tree l) @ [x] @ (list_of_phantom_tree r)
+  in
+  pt |> list_of_phantom_tree |> bst_of_list
 
 (*========== Ideje za dodatne vaje ==========*)
 (*
