@@ -10,8 +10,8 @@ jQuerySrc.onload = function() {
       $('<a class="reveal">???</a>').insertBefore('.spoiler');
 
       $('a.reveal').click(function(){
-        $(this).parent().children('span.spoiler').fadeIn(100);
-        $(this).parent().children('a.reveal').hide();
+        $(this).next().fadeIn(100);
+        $(this).hide();
       });
 
       $('.terminal').addClass('hljs-hybrid');

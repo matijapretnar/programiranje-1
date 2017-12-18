@@ -1,7 +1,9 @@
-*.hi
-*.o
 *.pyc
 .ipynb_checkpoints
-*.xdv
-*.fls
-*.fdb_latexmk
+
+*.byte
+*.cmo
+*.cmi
+*.cmx
+_build
+*.o
