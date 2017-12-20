@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Učinki in čistost</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Programiranje 1
+
+## Učinki in čistost
+
+### 7. december 2017
+
+---
+
+class: center, middle
+## računalniški programi <br>~<br> matematične funkcije<br>+<br>stranski učinki
+
+---
+
+### Možni stranski učinki
+
+* izpisovanje na zaslon
+* branje s tipkovnice
+* naključne izbire
+* izjeme pri izvajanju
+* spreminjanje pomnilnika (_naslednji teden_)
+* delo z datotekami
+* povezovanje z drugimi računalniki
+* …
+
+---
+
+### V OCamlu učinki v tipih **niso vidni**
+
+.terminal[```
+# print_endline;;
+- : string -> unit = <fun>
+
+# Random.bool;;
+- : unit -> bool = <fun>
+
+# read_line;;
+- : unit -> string = <fun>
+
+# raise;;
+- : exn -> 'a = <fun>
+
+# List.iter;;
+- : ('a -> unit) -> 'a list -> unit = <fun>
+```]
+
+---
+
+class: center, middle
+
+# ugani število
+
+.terminal.left[```markdown
+Do koliko znaš šteti? 100
+Izmislil sem si število med 1 in 100.
+Katero število sem si izmislil? 50
+Ne, moje število je manjše
+Katero število sem si izmislil? 25
+Ne, moje število je večje
+Katero število sem si izmislil? 37
+Ne, moje število je večje
+Katero število sem si izmislil? 45
+Ne, moje število je manjše
+Katero število sem si izmislil? 42
+BRAVO!
+```]
+
+---
+
+### OCaml nudi **dva prevajalnika** izvorne kode
+
+1. `ocamlc` prevaja v **bitno** kodo (*bytecode*)<br>
+  – počasno izvajanje<br>– hitro prevajanje<br>– prenosljiva med različnimi procesorji
+
+2. `ocamlopt` prevaja v **strojno** kodo (*native code*)<br>
+  – hitro izvajanje<br>– počasno prevajanje<br>– neprenosljiva
+
+---
+
+class: center, question
+
+## hitrost bitne in strojne kode
+
+  <iframe width='80%' height='40%' src='https://www.youtube.com/embed/D68Lck4Y5Ig?rel=0&amp;controls=0&amp;showinfo=0&amp;start=20'></iframe>
+  <iframe width='80%' height='40%' src='https://www.youtube.com/embed/FN4PF4ulNpk?rel=0&amp;controls=0&amp;iv_load_policy=3&amp;showinfo=0&amp;start=10'></iframe>
+
+---
+
+### Za prevajanje raje uporabljamo `ocamlbuild`,<br>saj poskrbi za pomožne datoteke
+
+1. `ocamlbuild moj_program.byte` iz `moj_program.ml` naredi program `moj_program.byte`, ki uporablja **bitno** kodo
+
+2. `ocamlbuild moj_program.native` izvorno kodo `moj_program.ml` prevede v program `moj_program.native`, ki uporablja **strojno** kodo
+
+---
+
+### Vsaka datoteka v OCamlu je svoj modul
+
+`prva.ml`
+.source[```
+let pomozni_racun = 3 + 3
+let odgovor = pomozni_racun * succ pomozni_racun
+```]
+
+`druga.ml`
+.source[```
+let najboljsi_odgovor = succ Prva.odgovor
+```]
+
+### Signaturo zapišemo v datoteke `.mli`
+
+`prva.mli`
+.source[```
+val odgovor : int
+```]
+
+---
+
+class: center, middle, question
+
+# razbitje programov<br>na datoteke
+
+---
+
+### Program je **čist**, če nima stranskih učinkov
+
+1. Čist program lahko vedno **zamenjamo** z njihovimi **definicijami**.
+
+2. Čiste funkcije ob **enakih argumentih** vedno vrnejo **enake rezultate**.
+
+---
+
+### Vsi programi v Pythonu **niso čisti**
+
+.source[```python
+seznam = [1, 2, 3]
+def f(x):
+    seznam.append(x)
+    return len(seznam)
+def g(x):
+    return f(x) + f(x)
+```]
+
+.terminal[```python
+>>> g(3)
+9
+>>> f(3) + f(3)
+13
+>>> g(3)
+17
+```]
+
+---
+
+### Vsi **dosedanji<sup>\*</sup>** programi v OCamlu so bili čisti
+
+.source[```
+let seznam = [1; 2; 3]
+let f x =
+    let seznam = x :: seznam in
+    List.length seznam
+let g x =
+    f x + f x
+```]
+
+.terminal[```
+# g 3;;
+- : int = 8
+# f 3 + f 3;;
+- : int = 8
+# g 3;;
+- : int = 8
+```]
+
+---
+
+### Nekaj definicij
+
+```
+let rec (@) xs ys =
+  match xs with
+  | [] -> ys
+  | x :: xs ->  x :: xs @ ys
+
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+
+let rec dolzina = function
+  | [] -> 0
+  | x :: xs -> 1 + dolzina xs
+```
+
+---
+
+class: center, middle
+
+# `obrni [x] = [x]`
+
+---
+
+#### `obrni [x] = [x]`
+
+.consecutive[```
+  obrni [x]
+```]
+--
+.consecutive[```
+= obrni (x :: [])
+```]
+--
+.consecutive[```
+= obrni [] @ [x]
+```]
+--
+.consecutive[```
+= [] @ [x]
+```]
+--
+.consecutive[```
+= [x]
+```]
+
+---
+
+class: center, middle
+
+### `dolzina (xs @ ys)`
+### `=`
+### .spoiler[`dolzina xs + dolzina ys`]
+
+---
+
+#### `dolzina (xs @ ys) = dolzina xs + dolzina ys`
+
+```
+  dolzina (xs @ ys)
+= ???
+```
+
+--
+
+# Kako naprej? .spoiler[Indukcija!]
+
+---
+
+class: center, middle
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### &nbsp;
+
+### Indukcija na seznamih
+
+### $$P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x :: xs)) \implies \forall ys. P(ys) $$
+
+---
+
+### Osnovni korak
+#### `dolzina ([] @ ys) = dolzina [] + dolzina ys`
+
+
+.consecutive[```
+  dolzina ([] @ ys)
+```]
+--
+.consecutive[```
+= dolzina ys
+```]
+--
+.consecutive[```
+= 0 + dolzina ys
+```]
+--
+.consecutive[```
+= dolzina [] + dolzina ys
+```]
+
+---
+
+### Indukcijski korak
+#### `dolzina ((x :: xs) @ ys) = dolzina (x :: xs) + dolzina ys`
+
+#### Predpostavka: `dolzina (xs @ ys) = dolzina xs + dolzina ys`
+
+.consecutive[```
+  dolzina ((x :: xs) @ ys)
+```]
+--
+.consecutive[```
+= dolzina (x :: (xs @ ys))
+```]
+--
+.consecutive[```
+= 1 + dolzina (xs @ ys)
+```]
+--
+.consecutive[```
+= 1 + dolzina xs + dolzina ys
+```]
+--
+.consecutive[```
+= dolzina (x :: xs) + dolzina ys
+```]
+
+---
+
+class: center, middle, question
+
+### $$P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x :: xs)) \implies \forall ys. P(ys) $$
+
+---
+
+### Še nekaj definicij
+
+```
+type 'a drevo =
+  | P
+  | S of 'a drevo * 'a * 'a drevo
+
+let rec zrcali = function
+  | P -> P
+  | S (l, x, d) -> S (zrcali d, x, zrcali l)
+
+let rec globina = function
+  | P -> 0
+  | S (l, x, d) ->
+      1 + max (globina l) (globina d)
+```
+
+---
+
+class: center, middle
+
+### `globina (zrcali d) = globina d`
+
+---
+
+class: center, middle
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### Indukcija na seznamih
+
+### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+
+### Indukcija na drevesih
+
+### $$ P(\mathtt{P}) \land (\forall x, l, d. P(l) \land P(d) \Rightarrow P(\mathtt{S}\ l\ x\ d)) \ \Rightarrow\ \forall t. P(t) $$
+
+---
+
+### Osnovni korak
+
+
+.consecutive[```
+  globina (zrcali P)
+```]
+--
+.consecutive[```
+= globina P
+```]
+--
+.consecutive[```
+= 0
+```]
+--
+.consecutive[```
+= globina P
+```]
+
+---
+
+### Indukcijski korak
+
+#### Predpostavki: `glbn (zrcl l) = glbn l` &nbsp;&nbsp;in&nbsp;&nbsp; `glbn (zrcl d) = glbn d`
+
+.consecutive[```
+  glbn (zrcl (S (l, x, d)))
+```]
+--
+.consecutive[```
+= glbn (S (zrcl d) x (zrcl l))
+```]
+--
+.consecutive[```
+= 1 + max (glbn (zrcl d)) (glbn (zrcl l))
+```]
+--
+.consecutive[```
+= 1 + max (glbn d) (glbn (zrcl l))
+```]
+--
+.consecutive[```
+= 1 + max (glbn d) (glbn l)
+```]
+--
+.consecutive[```
+= 1 + max (glbn l) (glbn d)
+```]
+--
+.consecutive[```
+= glbn (S (l, x, d))
+```]
+
+---
+
+class: center, middle, question
+
+## Kakšna so načela indukcije za sledeče tipe?
+
+.source.left[```
+type nat = Zero | Succ of nat
+
+type bool = True | False
+
+type 'a option = None | Some of 'a
+```]
+
+---
+
+class: center, middle, question
+
+.source.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+.source.left[```
+let obrni' =
+  let rec aux acc = function
+    | [] -> aux
+    | x :: xs -> aux (x :: acc) xs
+  in
+  aux []
+```]
+
+# `obrni xs = obrni' xs`
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>
