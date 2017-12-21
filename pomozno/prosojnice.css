@@ -96,3 +96,7 @@ table {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.large {
+  font-size: 1.5em;
+}
