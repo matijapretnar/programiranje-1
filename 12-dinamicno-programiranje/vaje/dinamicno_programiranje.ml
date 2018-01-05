@@ -9,7 +9,12 @@
 
    Napišite funkcijo "max_cheese cheese_matrix", ki dobi matriko z
    masami sirčkov in vrne največjo skupno maso, ki jo bo miška požrla, če gre po
-   optimalni poti. *)
+   optimalni poti.
+
+   ----------
+   # max_cheese test_matrix;;
+   - : int = 13
+   ----------*)
 
 let test_matrix = [| [| 1 ; 2 ; 0 |];
                      [| 2 ; 4 ; 5 |];
