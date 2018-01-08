@@ -41,7 +41,7 @@ let max_cheese cheese_matrix =
    colored blocks.
 
    Hint: Use two auxilary functions. For mutual recursion use the keyword "and".
-   
+
    ----------
    # alternating_towers 10;;
    - : int = 35
