@@ -1,3 +1,13 @@
+def najdaljse_skupno(xs, ys):
+    if not xs or not ys:
+        return ()
+    elif xs[0] == ys[0]:
+        return (xs[0],) + najdaljse_skupno(xs[1:], ys[1:])
+    else:
+        l = najdaljse_skupno(xs, ys[1:])
+        d = najdaljse_skupno(xs[1:], ys)
+        return l if len(l) >= len(d) else d
+
 def najdaljsi_podpalindrom(niz):
     if len(niz) <= 1:
         return niz
