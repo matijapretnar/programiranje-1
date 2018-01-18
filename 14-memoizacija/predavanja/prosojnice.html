@@ -253,6 +253,50 @@ def fib(n):
 
 ---
 
+### Lahko uporabimo tudi dekorator `lru_cache`
+
+.source[```python
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def fib(n):
+    print(n, end='-')
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+```]
+
+.terminal[```
+>>> fib(10)
+10-9-8-7-6-5-4-3-2-1-0-55
+```]
+
+---
+
+### Lahko uporabimo tudi dekorator `lru_cache`
+
+.source[```python
+from functools import lru_cache
+*memoiziraj = lru_cache(maxsize=None)
+
+*@memoiziraj
+def fib(n):
+    print(n, end='-')
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+```]
+
+.terminal[```
+>>> fib(10)
+10-9-8-7-6-5-4-3-2-1-0-55
+```]
+
+---
+
 class: center, middle, question
 
 ## Najdaljši podpalindrom

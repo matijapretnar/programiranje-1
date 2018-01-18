@@ -96,6 +96,49 @@ dolzina ((x :: xs) @ ys)
     (po (6))
 ```
 
+### Pravilnost načela indukcije na seznamih
+
+Zakaj sploh smemo uporabiti načelo indukcije?
+Recimo, da velja
+
+    P([]) ∧ (∀ z, zs. P(zs) ⇒ P(z :: zs))
+
+Zakaj potem velja `P(ws)` za poljuben seznam `ws`?
+Vzemimo nek konkreten seznam, na primer `[1; 2; 3]`, in pokažimo, da velja `P([1; 2; 3])`.
+Res, po prvem delu predpostavke velja `P([])`. Zato po drugem delu predpostavke velja `P([3])`, saj velja `P([])` in je `[3] = 3 :: []`. Podobno potem iz `P([3])` sledi `P([2; 3])` in na koncu tudi `P([1; 2; 3])`. Tak dokaz bi lahko ponovili za vsak konkreten seznam.
+
+V splošnem pa se naslonimo na načelo indukcije za naravna števila.
+Definirajmo:
+
+    Q(n) :=  ∀ ws. |ws| = n ⇒ P(ws)
+
+Torej, `Q(n)` velja, če velja `P(ws)` za vse sezname `ws` dolžine `n`.
+Iz Peanovih aksiomov potem sledi:
+
+    Q(0) ∧ (∀m. Q(m) ⇒ Q(m+)) ⟹ ∀n. Q(n)
+
+Pokažimo, da velja `Q(0)` in `∀m. Q(m) ⇒ Q(m+)`.
+Ker velja `P([])` in je `[]` edini seznam dolžine `0`, velja tudi `Q(0)`.
+Vzemimo poljuben `m` in predpostavimo `Q(m)`.
+Torej za poljuben seznam `zs` dolžine `m` velja `P(zs)`.
+Iz predpostavke potem sledi, da velja tudi `P(z :: zs)`.
+Ker so vsi seznami dolžine `m⁺` take oblike, smo pokazali `Q(m⁺)`.
+Po indukciji na naravnih številih torej sledi `∀n. Q(n)`.
+Ker je vsak seznam `ws` končen, ima za dolžino neko naravno število,
+zato velja `P(ws)` za vse sezname `ws`.
+
+
+Q([])∧(∀x,xs.Q(xs)⇒Q(x::xs))⟹∀ys.Q(ys)
+- - - - - - - - - - - - - - - - - - - - -
+
+definirajmo P(n) := ∀xs.|xs| = n ⇒ Q(xs)
+vemo, da velja P(0) ∧ (∀m.P(m)⇒P(m+))⟹∀n.P(n)
+predpostavimo Q([]) ∧ (∀x,xs.Q(xs)⇒Q(x::xs))
+ali velja P(0)? velja
+ali velja (∀m.P(m)⇒P(m+))? velja
+velja ∀n.P(n) torej
+∀n.∀xs.|xs| = n ⇒ Q(xs)
+
 
 ### `xs @ [] = xs`
 
@@ -309,13 +352,14 @@ let obrni' =
 
 Pokažite, da za vse sezname `xs` velja `obrni xs = obrni' xs`.
 
-### Indukcija na tipih `boole` in `'a mogoce`
+### Indukcija na drugih tipih
 
-Definirajmo tipa
+Definirajmo tipe
 
 ```ocaml
+type naravno = Zero | Succ of naravno
 type boole = Resnica | Laz
 type 'a mogoce = Nic | Nekaj of 'a
 ```
 
-Kakšni sta videti načeli indukcije za ta dva tipa?
+Kakšni sta videti načeli indukcije za te tipe?
