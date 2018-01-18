@@ -13,5 +13,5 @@
 * [Spremenljive podatkovne strukture](https://rawgit.com/matijapretnar/programiranje-1/master/10-spremenljive-podatkovne-strukture/predavanja/prosojnice.html)
 * [Deli in vladaj](https://rawgit.com/matijapretnar/programiranje-1/master/11-deli-in-vladaj/predavanja/prosojnice.html)
 * [Dinamično programiranje](https://rawgit.com/matijapretnar/programiranje-1/master/12-dinamicno-programiranje/predavanja/prosojnice.html)
-* [Memoizacija, 1. del](https://rawgit.com/matijapretnar/programiranje-1/master/13-memoizacija/predavanja/prosojnice.html)
-* [Memoizacija, 2. del](https://rawgit.com/matijapretnar/programiranje-1/master/14-memoizacija/predavanja/prosojnice.html)
+* [Memoizacija 1](https://rawgit.com/matijapretnar/programiranje-1/master/13-memoizacija/predavanja/prosojnice.html)
+* [Memoizacija 2](https://rawgit.com/matijapretnar/programiranje-1/master/14-memoizacija/predavanja/prosojnice.html)
