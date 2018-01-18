@@ -216,6 +216,26 @@ let memoiziraj_rec odviti_f =
 
 #### Sicer je malo ponavljanja kode, ampak je najbolj smiselna koda
 
+
+---
+
+### Koda je zelo podobna običajni memoizaciji
+
+.source[```
+let memoiziraj f =
+  let rezultati = Hashtbl.create 512 in
+  let mem_f x =
+    match Hashtbl.find_opt rezultati x with
+    | None ->
+        let y = f x in
+        Hashtbl.add rezultati x y;
+        y
+    | Some y ->
+        y
+  in
+  mem_f
+```]
+
 ---
 
 ### Za memoizacijo v Pythonu uporabimo **dekoratorje**
