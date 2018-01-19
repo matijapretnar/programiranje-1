@@ -22,7 +22,7 @@ let rec print_all l =
 
    Za maksimalno število točk naj bo funkcija repno rekurzivna.
 
-   Primer: map2_opt [1; 2; 3] [3; 2; 1] (+) = Some [4; 4; 4]
+   Primer: map2_opt [1; 2; 3] [7; 5; 3] (+) = Some [8; 7; 6]
            map2_opt [1; 2; 3] [3; 2] (+) = None
    ========================================================================== *)
 

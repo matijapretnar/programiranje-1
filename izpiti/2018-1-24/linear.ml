@@ -13,15 +13,17 @@
    ========================================================================== *)
 
 module type Linear = sig
-  (* Osnovni tip. *)
+  (* Osnovni tip modula. *)
   type t
   (* Identiteta. *)
   val id : t
   (* Izračun funkcije na podatkih. *)
   val apply : int*int -> t -> int*int
-  (* Pretvori matriko v svoj notranji zapis. *)
+  (* Funkcija, ki sprejme matriko in jo pretvori v osnovni tip modula.
+     Če je osnovni tip modula matrika, pretvori matriko v matriko. *)
   val of_matrix : int*int*int*int -> t
-  (* Pretvori funkcijo v svoj notranji zapis. *)
+  (* Funkcija, ki sprejme funkcijo in jo pretvori v osnovni tip modula. 
+     Če je osnovni tip modula matrika, pretvori funkcijo v matriko. *)
   val of_function : ((int*int) -> (int*int)) -> t
   (* Vrne kompozitum dveh preslikav. *)
   val compose : t -> t -> t

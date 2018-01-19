@@ -28,7 +28,7 @@ let example_tee = Node(10,
 
    Filtracijsko drevo razvršča števila v škatle glede na njihovo vrednost.
    Vozlišče z vrednostjo "k" razvrsti število "n" v levo poddrevo če velja
-   k <= n oz. v desno poddrevo če velja k > n.
+   n <= k oz. v desno poddrevo če velja n > k.
    Ko število doseže škatlo, ga dodamo v seznam števil v škatli.
    Škatle lahko vsebujejo ponovitve in niso nujno urejene.
 
@@ -65,7 +65,7 @@ let rec insert_many l ftree =
    NALOGA 2.4
 
    Definirajte funkcijo, ki sprejme filtracijsko drevo in preveri ali
-   so vsa števila v pravilnih škatlah.
+   so vsa števila v pravilnih škatlah glede na način razvrščanja.
 
    Primer:
        5                                      5
