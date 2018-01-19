@@ -20,6 +20,8 @@
 #          | 0 4 1 1 |
 #          | 8 0 4 2 |
 #
+#  Za vse točke mora biti funkcija učinkovita (ne eksponentna časovna
+#  zahtevnost).
 #
 #  ==========================================================================
 
