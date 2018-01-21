@@ -24,6 +24,8 @@ def stolpi(n):
 def modri_stolpi(n):
     if n == 0:
         return 1
+    eif n < 0:
+        return 0
     vsota = 0
     for k in [2, 3]:
         vsota += rdeci_stolpi(n - k)
@@ -32,6 +34,8 @@ def modri_stolpi(n):
 def rdeci_stolpi(n):
     if n == 0:
         return 1
+    elif n < 0:
+        return 0
     vsota = 0
     for k in [1, 2]:
         vsota += modri_stolpi(n - k)
