@@ -19,12 +19,14 @@ def najdaljsi_podpalindrom(niz):
         return levi if len(levi) >= len(desni) else desni
 
 def stolpi(n):
+    if n == 0:
+        return 0
     return modri_stolpi(n) + rdeci_stolpi(n)
 
 def modri_stolpi(n):
     if n == 0:
         return 1
-    eif n < 0:
+    elif n < 0:
         return 0
     vsota = 0
     for k in [2, 3]:
