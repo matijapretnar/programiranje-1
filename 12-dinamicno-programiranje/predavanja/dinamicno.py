@@ -20,7 +20,7 @@ def najdaljsi_podpalindrom(niz):
 
 def stolpi(n):
     if n == 0:
-        return 0
+        return 1
     return modri_stolpi(n) + rdeci_stolpi(n)
 
 def modri_stolpi(n):
