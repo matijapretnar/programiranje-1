@@ -1,0 +1,64 @@
+----- SIMPLE COMPILATION GUIDE -----
+
+We will only need to compile a small project, so we will do it with ocamlc.
+All linux and mac users should just check the internet on how to use it, as it
+is far simpler than on a windows installation.
+
+1.) Open up the Cygwin64 terminal (or Cygwin32 terminal)
+
+2.) Use the command [  cd /cygdrive  ]
+
+3.) Navigate to your file location (using the cd command). First you must 
+    select the disc. If you have files on C: use [  cd c  ]
+    If you get lost, the command  [  ls  ] will tell you all the files in the 
+    directory and [  cd ..  ] will go one step back.
+
+4.) After you are in the folder where you have your project files use the 
+    command ocamlc to compile files.
+
+    For example:
+
+    ocamlc field.mli field.ml            compiles the module field. 
+
+    ocamlc field.mli field.ml game.ml    compiles the whole game.
+
+5.) If you want to run the game in your notepad++ terminal, compile the 
+    field module (field.mli and field.ml) and use the following:
+
+    #load "field.cmo"
+    #use "game.ml"
+
+    If you want to run the fully compiled game, run it from your Cygwin terminal
+    with the command [  ./camlprog.exe  ] (that is the default name).
+    
+
+
+----- QUICK GLANCE AT THE FIELD MODULE -----
+
+Open up field.ml and field.mli and check how much of the module code is hidden
+by the .mli file.
+
+Why is the type symbol explicitly written in the .mli and why do we want to
+keep the definition of the type field hidden?
+
+Use the field.mli file as a guide on how to use the Field module for the next
+part.
+
+
+----- FIXING THE GAME -----
+
+In the file game.ml some function definitions are not complete.
+Luckily all the nasty details of working with symbols and fields are hidden
+in the Field module.
+
+Things to fix in game.ml:
+
+1.) Write the definition of switch_symbol.
+2.) In make_move correct the following:
+      - Print out the player whose turn it is.
+      - After receiving input, set the symbol in the field to correct value.
+      - Write how to handle possible errors.
+3.) In game_loop:
+      - Check if the game was won.
+      - Check if the game is a draw.
+      - Uncomment the rest of the code that continues the loop.

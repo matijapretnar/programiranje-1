@@ -1,0 +1,1060 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     52010,       1050]
+NotebookOptionsPosition[     51333,       1022]
+NotebookOutlinePosition[     51686,       1038]
+CellTagsIndexPosition[     51643,       1035]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tocka", "[", 
+   RowBox[{"i_", ",", "n_"}], "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\[CurlyPhi]", "=", 
+      RowBox[{"2", "\[Pi]", " ", 
+       RowBox[{"i", "/", "n"}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Cos", "[", "\[CurlyPhi]", "]"}], ",", 
+      RowBox[{"Sin", "[", "\[CurlyPhi]", "]"}]}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.550942512862995*^9, 3.5509425517487793`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3a", "[", 
+   RowBox[{"n_", ",", "sez_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Point", "[", 
+        RowBox[{"tocka", "[", 
+         RowBox[{"i", ",", "n"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"n", "-", "1"}]}], "}"}]}], "\[IndentingNewLine]", "]"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"tocka", "[", 
+           RowBox[{"i", ",", "n"}], "]"}], ",", 
+          RowBox[{"tocka", "[", 
+           RowBox[{
+            RowBox[{"i", "+", "k"}], ",", "n"}], "]"}]}], "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"n", "-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "sez"}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
+    "\[IndentingNewLine]", "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5509423893308287`*^9, 3.5509425005427847`*^9}, {
+   3.550942564917781*^9, 3.550942640941429*^9}, 3.550942730033683*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3b", "[", "n_", "]"}], ":=", 
+  RowBox[{"naloga3a", "[", 
+   RowBox[{"n", ",", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"n", "/", "2"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"CoprimeQ", "[", 
+        RowBox[{"n", ",", "#"}], "]"}], "&"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5509423893308287`*^9, 3.5509425005427847`*^9}, {
+  3.550942564917781*^9, 3.550942640941429*^9}, {3.550942730033683*^9, 
+  3.550942782080093*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"6", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"7", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"7", ",", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "5"}], "}"}]}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"8", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "3", ",", "4"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.550942976069087*^9, 3.5509430296739397`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+          0.8660254037844386}]], 
+        PointBox[
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        PointBox[
+         NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+          0.5, -0.8660254037844386}]]}, {{
+         LineBox[NCache[{{1, 0}, {
+            Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{1, 0}, {0.5, 
+            0.8660254037844386}}]], 
+         LineBox[NCache[{{1, 0}, {
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{1, 
+            0}, {-0.5, 0.8660254037844386}}]]}, {
+         LineBox[NCache[{{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{0.5, 
+           0.8660254037844386}, {-0.5, 0.8660254037844386}}]], 
+         LineBox[NCache[{{
+            Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-1, 0}}, {{0.5,
+             0.8660254037844386}, {-1, 0}}]]}, {
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-1, 
+            0}}, {{-0.5, 0.8660254037844386}, {-1, 0}}]], 
+         LineBox[NCache[{{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{-0.5, 
+           0.8660254037844386}, {-0.5, -0.8660254037844386}}]]}, {
+         LineBox[NCache[{{-1, 0}, {
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{-1, 
+            0}, {-0.5, -0.8660254037844386}}]], 
+         LineBox[NCache[{{-1, 0}, {
+            Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{-1, 0}, {
+            0.5, -0.8660254037844386}}]]}, {
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+            Rational[1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}}, {{-0.5, -0.8660254037844386}, {
+           0.5, -0.8660254037844386}}]], 
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {1, 
+            0}}, {{-0.5, -0.8660254037844386}, {1, 0}}]]}, {
+         LineBox[
+          NCache[{{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {1, 
+            0}}, {{0.5, -0.8660254037844386}, {1, 0}}]], 
+         LineBox[NCache[{{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+            Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           0.5, -0.8660254037844386}, {0.5, 0.8660254037844386}}]]}}}], {194.4, -185.09994390807108`},
+      ImageScaled[{0.5, 0.5}], {360.00000000000006`, 352.57132172965925`}], 
+    InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {
+          0.6234898018587335, 0.7818314824680298}]], 
+        PointBox[
+         NCache[{-Sin[Rational[1, 14] Pi], Cos[
+           Rational[1, 14] Pi]}, {-0.2225209339563144, 0.9749279121818236}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 7] Pi], Sin[
+           Rational[1, 7] Pi]}, {-0.9009688679024191, 0.4338837391175581}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 7] Pi], -
+           Sin[Rational[1, 7] 
+             Pi]}, {-0.9009688679024191, -0.4338837391175581}]], 
+        PointBox[
+         NCache[{-Sin[Rational[1, 14] Pi], -
+           Cos[Rational[1, 14] 
+             Pi]}, {-0.2225209339563144, -0.9749279121818236}]], 
+        PointBox[
+         NCache[{Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {
+          0.6234898018587335, -0.7818314824680298}]]}, {{
+         LineBox[NCache[{{1, 0}, {
+            Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}}, {{1, 0}, {
+            0.6234898018587335, 0.7818314824680298}}]], 
+         LineBox[NCache[{{1, 
+            0}, {-Sin[Rational[1, 14] Pi], Cos[Rational[1, 14] Pi]}}, {{1, 
+            0}, {-0.2225209339563144, 0.9749279121818236}}]]}, {
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {-
+             Sin[Rational[1, 14] Pi], Cos[Rational[1, 14] Pi]}}, {{
+           0.6234898018587335, 0.7818314824680298}, {-0.2225209339563144, 
+           0.9749279121818236}}]], 
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {-
+             Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}}, {{
+           0.6234898018587335, 0.7818314824680298}, {-0.9009688679024191, 
+           0.4338837391175581}}]]}, {
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], Cos[
+             Rational[1, 14] Pi]}, {-Cos[Rational[1, 7] Pi], Sin[
+             Rational[1, 7] Pi]}}, {{-0.2225209339563144, 
+           0.9749279121818236}, {-0.9009688679024191, 0.4338837391175581}}]], 
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], Cos[
+             Rational[1, 14] Pi]}, {-Cos[Rational[1, 7] Pi], -
+             Sin[Rational[1, 7] Pi]}}, {{-0.2225209339563144, 
+           0.9749279121818236}, {-0.9009688679024191, \
+-0.4338837391175581}}]]}, {
+         LineBox[NCache[{{-Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}, {-
+             Cos[Rational[1, 7] Pi], -
+             Sin[Rational[1, 7] Pi]}}, {{-0.9009688679024191, 
+           0.4338837391175581}, {-0.9009688679024191, -0.4338837391175581}}]],
+          LineBox[
+          NCache[{{-Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}, {-
+             Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] Pi]}}, {{-0.9009688679024191, 
+           0.4338837391175581}, {-0.2225209339563144, \
+-0.9749279121818236}}]]}, {
+         LineBox[NCache[{{-Cos[Rational[1, 7] Pi], -
+             Sin[Rational[1, 7] Pi]}, {-Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] 
+               Pi]}}, {{-0.9009688679024191, -0.4338837391175581}, \
+{-0.2225209339563144, -0.9749279121818236}}]], 
+         LineBox[NCache[{{-Cos[Rational[1, 7] Pi], -Sin[Rational[1, 7] Pi]}, {
+            Sin[Rational[3, 14] Pi], -
+             Cos[Rational[3, 14] 
+               Pi]}}, {{-0.9009688679024191, -0.4338837391175581}, {
+           0.6234898018587335, -0.7818314824680298}}]]}, {
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] Pi]}, {
+            Sin[Rational[3, 14] Pi], -
+             Cos[Rational[3, 14] 
+               Pi]}}, {{-0.2225209339563144, -0.9749279121818236}, {
+           0.6234898018587335, -0.7818314824680298}}]], 
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] Pi]}, {1, 
+            0}}, {{-0.2225209339563144, -0.9749279121818236}, {1, 0}}]]}, {
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {1, 0}}, {{
+            0.6234898018587335, -0.7818314824680298}, {1, 0}}]], 
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {
+            Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}}, {{
+           0.6234898018587335, -0.7818314824680298}, {0.6234898018587335, 
+           0.7818314824680298}}]]}}}], {583.2, -185.09994390807108`}, 
+     ImageScaled[{0.5, 0.5}], {360.00000000000006`, 352.57132172965925`}], 
+    InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {
+          0.6234898018587335, 0.7818314824680298}]], 
+        PointBox[
+         NCache[{-Sin[Rational[1, 14] Pi], Cos[
+           Rational[1, 14] Pi]}, {-0.2225209339563144, 0.9749279121818236}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 7] Pi], Sin[
+           Rational[1, 7] Pi]}, {-0.9009688679024191, 0.4338837391175581}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 7] Pi], -
+           Sin[Rational[1, 7] 
+             Pi]}, {-0.9009688679024191, -0.4338837391175581}]], 
+        PointBox[
+         NCache[{-Sin[Rational[1, 14] Pi], -
+           Cos[Rational[1, 14] 
+             Pi]}, {-0.2225209339563144, -0.9749279121818236}]], 
+        PointBox[
+         NCache[{Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {
+          0.6234898018587335, -0.7818314824680298}]]}, {{
+         LineBox[NCache[{{1, 
+            0}, {-Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}}, {{1, 
+            0}, {-0.9009688679024191, 0.4338837391175581}}]], 
+         LineBox[NCache[{{1, 
+            0}, {-Sin[Rational[1, 14] Pi], -Cos[Rational[1, 14] Pi]}}, {{1, 
+            0}, {-0.2225209339563144, -0.9749279121818236}}]]}, {
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {-
+             Cos[Rational[1, 7] Pi], -Sin[Rational[1, 7] Pi]}}, {{
+           0.6234898018587335, 
+           0.7818314824680298}, {-0.9009688679024191, -0.4338837391175581}}]],
+          LineBox[
+          NCache[{{Sin[Rational[3, 14] Pi], Cos[Rational[3, 14] Pi]}, {
+            Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}}, {{
+           0.6234898018587335, 0.7818314824680298}, {
+           0.6234898018587335, -0.7818314824680298}}]]}, {
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], Cos[
+             Rational[1, 14] Pi]}, {-Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] Pi]}}, {{-0.2225209339563144, 
+           0.9749279121818236}, {-0.2225209339563144, -0.9749279121818236}}]],
+          LineBox[
+          NCache[{{-Sin[Rational[1, 14] Pi], Cos[Rational[1, 14] Pi]}, {1, 
+            0}}, {{-0.2225209339563144, 0.9749279121818236}, {1, 0}}]]}, {
+         LineBox[
+          NCache[{{-Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}, {
+            Sin[Rational[3, 14] Pi], -
+             Cos[Rational[3, 14] Pi]}}, {{-0.9009688679024191, 
+           0.4338837391175581}, {0.6234898018587335, -0.7818314824680298}}]], 
+         LineBox[NCache[{{-Cos[Rational[1, 7] Pi], Sin[Rational[1, 7] Pi]}, {
+            Sin[Rational[3, 14] Pi], Cos[
+             Rational[3, 14] Pi]}}, {{-0.9009688679024191, 
+           0.4338837391175581}, {0.6234898018587335, 
+           0.7818314824680298}}]]}, {
+         LineBox[NCache[{{-Cos[Rational[1, 7] Pi], -Sin[Rational[1, 7] Pi]}, {
+            1, 0}}, {{-0.9009688679024191, -0.4338837391175581}, {1, 0}}]], 
+         LineBox[NCache[{{-Cos[Rational[1, 7] Pi], -
+             Sin[Rational[1, 7] Pi]}, {-Sin[Rational[1, 14] Pi], Cos[
+             Rational[1, 14] 
+              Pi]}}, {{-0.9009688679024191, -0.4338837391175581}, \
+{-0.2225209339563144, 0.9749279121818236}}]]}, {
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] Pi]}, {
+            Sin[Rational[3, 14] Pi], Cos[
+             Rational[3, 14] 
+              Pi]}}, {{-0.2225209339563144, -0.9749279121818236}, {
+           0.6234898018587335, 0.7818314824680298}}]], 
+         LineBox[NCache[{{-Sin[Rational[1, 14] Pi], -
+             Cos[Rational[1, 14] Pi]}, {-Cos[Rational[1, 7] Pi], Sin[
+             Rational[1, 7] 
+              Pi]}}, {{-0.2225209339563144, -0.9749279121818236}, \
+{-0.9009688679024191, 0.4338837391175581}}]]}, {
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {-
+             Sin[Rational[1, 14] Pi], Cos[Rational[1, 14] Pi]}}, {{
+           0.6234898018587335, -0.7818314824680298}, {-0.2225209339563144, 
+           0.9749279121818236}}]], 
+         LineBox[NCache[{{
+            Sin[Rational[3, 14] Pi], -Cos[Rational[3, 14] Pi]}, {-
+             Cos[Rational[1, 7] Pi], -Sin[Rational[1, 7] Pi]}}, {{
+           0.6234898018587335, -0.7818314824680298}, {-0.9009688679024191, \
+-0.4338837391175581}}]]}}}], {972., -185.09994390807108`}, 
+     ImageScaled[{0.5, 0.5}], {360., 352.57132172965925`}], InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475, 
+          0.7071067811865475}]], PointBox[{0, 1}], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-0.7071067811865475,
+           0.7071067811865475}]], PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], -2^
+            Rational[-1, 2]}, {-0.7071067811865475, -0.7071067811865475}]], 
+        PointBox[{0, -1}], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+          0.7071067811865475, -0.7071067811865475}]]}, {{
+         LineBox[NCache[{{1, 0}, {2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{1,
+             0}, {0.7071067811865475, 0.7071067811865475}}]], 
+         LineBox[NCache[{{1, 0}, {-2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{
+            1, 0}, {-0.7071067811865475, 0.7071067811865475}}]], 
+         LineBox[{{1, 0}, {-1, 0}}]}, {
+         LineBox[NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0, 1}}, {{
+            0.7071067811865475, 0.7071067811865475}, {0, 1}}]], 
+         LineBox[NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {-1, 0}}, {{
+            0.7071067811865475, 0.7071067811865475}, {-1, 0}}]], 
+         LineBox[NCache[{{
+            2^Rational[-1, 2], 2^
+             Rational[-1, 2]}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+           0.7071067811865475, 
+           0.7071067811865475}, {-0.7071067811865475, \
+-0.7071067811865475}}]]}, {
+         LineBox[NCache[{{0, 1}, {-2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{
+            0, 1}, {-0.7071067811865475, 0.7071067811865475}}]], 
+         LineBox[NCache[{{0, 1}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+            0, 1}, {-0.7071067811865475, -0.7071067811865475}}]], 
+         LineBox[{{0, 1}, {0, -1}}]}, {
+         LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-1, 
+            0}}, {{-0.7071067811865475, 0.7071067811865475}, {-1, 0}}]], 
+         LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+            0, -1}}, {{-0.7071067811865475, 0.7071067811865475}, {0, -1}}]], 
+         LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+            2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-0.7071067811865475, 
+           0.7071067811865475}, {
+           0.7071067811865475, -0.7071067811865475}}]]}, {
+         LineBox[NCache[{{-1, 
+            0}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-1, 
+            0}, {-0.7071067811865475, -0.7071067811865475}}]], 
+         LineBox[
+          NCache[{{-1, 0}, {2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-1, 
+            0}, {0.7071067811865475, -0.7071067811865475}}]], 
+         LineBox[{{-1, 0}, {1, 0}}]}, {
+         LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+            0, -1}}, {{-0.7071067811865475, -0.7071067811865475}, {0, -1}}]], 
+         LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {1, 
+            0}}, {{-0.7071067811865475, -0.7071067811865475}, {1, 0}}]], 
+         LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+            2^Rational[-1, 2], 2^
+             Rational[-1, 2]}}, {{-0.7071067811865475, -0.7071067811865475}, {
+           0.7071067811865475, 0.7071067811865475}}]]}, {
+         LineBox[NCache[{{0, -1}, {2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+            0, -1}, {0.7071067811865475, -0.7071067811865475}}]], 
+         LineBox[NCache[{{0, -1}, {2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{
+            0, -1}, {0.7071067811865475, 0.7071067811865475}}]], 
+         LineBox[{{0, -1}, {0, 1}}]}, {
+         LineBox[NCache[{{2^Rational[-1, 2], -2^Rational[-1, 2]}, {1, 0}}, {{
+            0.7071067811865475, -0.7071067811865475}, {1, 0}}]], 
+         LineBox[NCache[{{2^Rational[-1, 2], -2^Rational[-1, 2]}, {0, 1}}, {{
+            0.7071067811865475, -0.7071067811865475}, {0, 1}}]], 
+         LineBox[NCache[{{
+            2^Rational[-1, 2], -2^Rational[-1, 2]}, {-2^Rational[-1, 2], 2^
+             Rational[-1, 2]}}, {{
+           0.7071067811865475, -0.7071067811865475}, {-0.7071067811865475, 
+           0.7071067811865475}}]]}}}], {1360.8000000000002`, -185.09994390807108`},
+      ImageScaled[{0.5, 0.5}], {359.9999999999998, 352.57132172965925`}]}, {}},
+  ContentSelectable->True,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{{3.550943002675125*^9, 3.5509430308499813`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"naloga3b", "[", "6", "]"}], ",", 
+    RowBox[{"naloga3b", "[", "8", "]"}], ",", 
+    RowBox[{"naloga3b", "[", "9", "]"}], ",", 
+    RowBox[{"naloga3b", "[", "10", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.550942468354917*^9, 3.5509424770567293`*^9}, {
+  3.5509426503789253`*^9, 3.550942685266025*^9}, {3.5509427851732073`*^9, 
+  3.550942856998974*^9}, {3.550942896848665*^9, 3.550942922142359*^9}, {
+  3.5509434843285418`*^9, 3.550943484469512*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+          0.8660254037844386}]], 
+        PointBox[
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        PointBox[
+         NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+          0.5, -0.8660254037844386}]]}, {
+        LineBox[NCache[{{1, 0}, {
+           Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{1, 0}, {0.5, 
+           0.8660254037844386}}]], 
+        LineBox[NCache[{{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{0.5, 
+          0.8660254037844386}, {-0.5, 0.8660254037844386}}]], 
+        LineBox[NCache[{{
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-1, 
+           0}}, {{-0.5, 0.8660254037844386}, {-1, 0}}]], 
+        LineBox[NCache[{{-1, 0}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{-1, 
+           0}, {-0.5, -0.8660254037844386}}]], 
+        LineBox[NCache[{{Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Rational[1, 2], Rational[-1, 2] 
+            3^Rational[1, 2]}}, {{-0.5, -0.8660254037844386}, {
+          0.5, -0.8660254037844386}}]], 
+        LineBox[NCache[{{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           1, 0}}, {{0.5, -0.8660254037844386}, {1, 0}}]]}}], {194.4, -181.08602813536217`},
+      ImageScaled[{0.5, 0.5}], {360.00000000000006`, 344.92576787688034`}], 
+    InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475, 
+          0.7071067811865475}]], PointBox[{0, 1}], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-0.7071067811865475,
+           0.7071067811865475}]], PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{-2^Rational[-1, 2], -2^
+            Rational[-1, 2]}, {-0.7071067811865475, -0.7071067811865475}]], 
+        PointBox[{0, -1}], 
+        PointBox[
+         NCache[{2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+          0.7071067811865475, -0.7071067811865475}]]}, {{
+         LineBox[NCache[{{1, 0}, {2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{1,
+             0}, {0.7071067811865475, 0.7071067811865475}}]], 
+         LineBox[NCache[{{1, 0}, {-2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{
+            1, 0}, {-0.7071067811865475, 0.7071067811865475}}]]}, {
+         LineBox[NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0, 1}}, {{
+            0.7071067811865475, 0.7071067811865475}, {0, 1}}]], 
+         LineBox[NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {-1, 0}}, {{
+            0.7071067811865475, 0.7071067811865475}, {-1, 0}}]]}, {
+         LineBox[NCache[{{0, 1}, {-2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{
+            0, 1}, {-0.7071067811865475, 0.7071067811865475}}]], 
+         LineBox[NCache[{{0, 1}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+            0, 1}, {-0.7071067811865475, -0.7071067811865475}}]]}, {
+         LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {-1, 
+            0}}, {{-0.7071067811865475, 0.7071067811865475}, {-1, 0}}]], 
+         LineBox[NCache[{{-2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+            0, -1}}, {{-0.7071067811865475, 0.7071067811865475}, {
+            0, -1}}]]}, {
+         LineBox[NCache[{{-1, 
+            0}, {-2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-1, 
+            0}, {-0.7071067811865475, -0.7071067811865475}}]], 
+         LineBox[NCache[{{-1, 0}, {
+            2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{-1, 0}, {
+            0.7071067811865475, -0.7071067811865475}}]]}, {
+         LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {
+            0, -1}}, {{-0.7071067811865475, -0.7071067811865475}, {0, -1}}]], 
+         LineBox[NCache[{{-2^Rational[-1, 2], -2^Rational[-1, 2]}, {1, 
+            0}}, {{-0.7071067811865475, -0.7071067811865475}, {1, 0}}]]}, {
+         LineBox[NCache[{{0, -1}, {2^Rational[-1, 2], -2^Rational[-1, 2]}}, {{
+            0, -1}, {0.7071067811865475, -0.7071067811865475}}]], 
+         LineBox[NCache[{{0, -1}, {2^Rational[-1, 2], 2^Rational[-1, 2]}}, {{
+            0, -1}, {0.7071067811865475, 0.7071067811865475}}]]}, {
+         LineBox[NCache[{{2^Rational[-1, 2], -2^Rational[-1, 2]}, {1, 0}}, {{
+            0.7071067811865475, -0.7071067811865475}, {1, 0}}]], 
+         LineBox[
+          NCache[{{2^Rational[-1, 2], -2^Rational[-1, 2]}, {0, 1}}, {{
+            0.7071067811865475, -0.7071067811865475}, {0, 1}}]]}}}], {583.2, -181.08602813536217`},
+      ImageScaled[{0.5, 0.5}], {360.00000000000006`, 344.92576787688034`}], 
+    InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+          0.7660444431189781, 0.6427876096865393}]], 
+        PointBox[
+         NCache[{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+          0.17364817766693033`, 0.984807753012208}]], 
+        PointBox[
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 9] Pi], Sin[
+           Rational[1, 9] Pi]}, {-0.9396926207859084, 0.3420201433256687}]], 
+        PointBox[
+         NCache[{-Cos[Rational[1, 9] Pi], -
+           Sin[Rational[1, 9] 
+             Pi]}, {-0.9396926207859084, -0.3420201433256687}]], 
+        PointBox[
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        PointBox[
+         NCache[{Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+          0.17364817766693033`, -0.984807753012208}]], 
+        PointBox[
+         NCache[{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+          0.7660444431189781, -0.6427876096865393}]]}, {{
+         LineBox[NCache[{{1, 0}, {
+            Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}}, {{1, 0}, {
+            0.7660444431189781, 0.6427876096865393}}]], 
+         LineBox[NCache[{{1, 0}, {
+            Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{1, 0}, {
+            0.17364817766693033`, 0.984807753012208}}]], 
+         LineBox[NCache[{{1, 
+            0}, {-Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{1, 
+            0}, {-0.9396926207859084, 0.3420201433256687}}]]}, {
+         LineBox[NCache[{{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+            Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{
+           0.7660444431189781, 0.6427876096865393}, {0.17364817766693033`, 
+           0.984807753012208}}]], 
+         LineBox[NCache[{{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           0.7660444431189781, 0.6427876096865393}, {-0.5, 
+           0.8660254037844386}}]], 
+         LineBox[NCache[{{
+            Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {-
+             Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}}, {{
+           0.7660444431189781, 
+           0.6427876096865393}, {-0.9396926207859084, \
+-0.3420201433256687}}]]}, {
+         LineBox[NCache[{{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           0.17364817766693033`, 0.984807753012208}, {-0.5, 
+           0.8660254037844386}}]], 
+         LineBox[NCache[{{
+            Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {-
+             Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{
+           0.17364817766693033`, 0.984807753012208}, {-0.9396926207859084, 
+           0.3420201433256687}}]], 
+         LineBox[NCache[{{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           0.17364817766693033`, 
+           0.984807753012208}, {-0.5, -0.8660254037844386}}]]}, {
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-
+             Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{-0.5, 
+           0.8660254037844386}, {-0.9396926207859084, 0.3420201433256687}}]], 
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-
+             Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}}, {{-0.5, 
+           0.8660254037844386}, {-0.9396926207859084, -0.3420201433256687}}]],
+          LineBox[
+          NCache[{{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+            Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}}, {{-0.5, 
+           0.8660254037844386}, {
+           0.17364817766693033`, -0.984807753012208}}]]}, {
+         LineBox[NCache[{{-Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {-
+             Cos[Rational[1, 9] Pi], -
+             Sin[Rational[1, 9] Pi]}}, {{-0.9396926207859084, 
+           0.3420201433256687}, {-0.9396926207859084, -0.3420201433256687}}]],
+          LineBox[
+          NCache[{{-Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {
+            Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}}, {{-0.9396926207859084, 
+           0.3420201433256687}, {-0.5, -0.8660254037844386}}]], 
+         LineBox[
+          NCache[{{-Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {
+            Cos[Rational[2, 9] Pi], -
+             Sin[Rational[2, 9] Pi]}}, {{-0.9396926207859084, 
+           0.3420201433256687}, {
+           0.7660444431189781, -0.6427876096865393}}]]}, {
+         LineBox[NCache[{{-Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}, {
+            Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[
+               1, 2]}}, {{-0.9396926207859084, -0.3420201433256687}, {-0.5, \
+-0.8660254037844386}}]], 
+         LineBox[NCache[{{-Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}, {
+            Sin[Rational[1, 18] Pi], -
+             Cos[Rational[1, 18] 
+               Pi]}}, {{-0.9396926207859084, -0.3420201433256687}, {
+           0.17364817766693033`, -0.984807753012208}}]], 
+         LineBox[NCache[{{-Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}, {
+            1, 0}}, {{-0.9396926207859084, -0.3420201433256687}, {1, 0}}]]}, {
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+            Sin[Rational[1, 18] Pi], -
+             Cos[Rational[1, 18] Pi]}}, {{-0.5, -0.8660254037844386}, {
+           0.17364817766693033`, -0.984807753012208}}]], 
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+            Cos[Rational[2, 9] Pi], -
+             Sin[Rational[2, 9] Pi]}}, {{-0.5, -0.8660254037844386}, {
+           0.7660444431189781, -0.6427876096865393}}]], 
+         LineBox[NCache[{{
+            Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+            Cos[Rational[2, 9] Pi], Sin[
+             Rational[2, 9] Pi]}}, {{-0.5, -0.8660254037844386}, {
+           0.7660444431189781, 0.6427876096865393}}]]}, {
+         LineBox[NCache[{{
+            Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+            Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}}, {{
+           0.17364817766693033`, -0.984807753012208}, {
+           0.7660444431189781, -0.6427876096865393}}]], 
+         LineBox[NCache[{{
+            Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {1, 0}}, {{
+            0.17364817766693033`, -0.984807753012208}, {1, 0}}]], 
+         LineBox[NCache[{{
+            Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+            Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{
+           0.17364817766693033`, -0.984807753012208}, {0.17364817766693033`, 
+           0.984807753012208}}]]}, {
+         LineBox[NCache[{{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+            1, 0}}, {{0.7660444431189781, -0.6427876096865393}, {1, 0}}]], 
+         LineBox[NCache[{{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+            Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}}, {{
+           0.7660444431189781, -0.6427876096865393}, {0.7660444431189781, 
+           0.6427876096865393}}]], 
+         LineBox[NCache[{{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+            Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           0.7660444431189781, -0.6427876096865393}, {-0.5, 
+           0.8660254037844386}}]]}}}], {972., -181.08602813536217`}, 
+     ImageScaled[{0.5, 0.5}], {360., 344.92576787688034`}], InsetBox[
+     GraphicsBox[{{PointBox[{1, 0}], 
+        PointBox[
+         NCache[{Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          0.8090169943749475, 0.5877852522924731}]], 
+        PointBox[
+         NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          0.30901699437494745`, 0.9510565162951535}]], 
+        PointBox[
+         NCache[{Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[1, 8] 5^Rational[1, 2])^
+           Rational[1, 2]}, {-0.30901699437494745`, 0.9510565162951535}]], 
+        PointBox[
+         NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[-1, 8] 5^Rational[1, 2])^
+           Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+        PointBox[{-1, 0}], 
+        PointBox[
+         NCache[{Rational[1, 4] (-1 - 5^
+            Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^
+            Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+        PointBox[
+         NCache[{Rational[1, 4] (1 - 5^
+            Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^
+            Rational[1, 2]}, {-0.30901699437494745`, -0.9510565162951535}]], 
+        PointBox[
+         NCache[{Rational[1, 4] (-1 + 
+            5^Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          0.30901699437494745`, -0.9510565162951535}]], 
+        PointBox[
+         NCache[{Rational[1, 4] (1 + 
+            5^Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          0.8090169943749475, -0.5877852522924731}]]}, {{
+         LineBox[NCache[{{1, 0}, {
+            Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 0}, {
+            0.8090169943749475, 0.5877852522924731}}]], 
+         LineBox[NCache[{{1, 0}, {
+            Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 
+            0}, {-0.30901699437494745`, 0.9510565162951535}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           0.8090169943749475, 0.5877852522924731}, {0.30901699437494745`, 
+           0.9510565162951535}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           0.8090169943749475, 0.5877852522924731}, {-0.8090169943749475, 
+           0.5877852522924731}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           0.30901699437494745`, 0.9510565162951535}, {-0.30901699437494745`, 
+           0.9510565162951535}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {-1, 0}}, {{
+            0.30901699437494745`, 0.9510565162951535}, {-1, 0}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}}, {{-0.30901699437494745`, 
+           0.9510565162951535}, {-0.8090169943749475, 0.5877852522924731}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}}, {{-0.30901699437494745`, 
+           0.9510565162951535}, {-0.8090169943749475, \
+-0.5877852522924731}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {-1, 
+            0}}, {{-0.8090169943749475, 0.5877852522924731}, {-1, 0}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}}, {{-0.8090169943749475, 
+           0.5877852522924731}, {-0.30901699437494745`, \
+-0.9510565162951535}}]]}, {
+         LineBox[NCache[{{-1, 0}, {
+            Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{-1, 
+            0}, {-0.8090169943749475, -0.5877852522924731}}]], 
+         LineBox[NCache[{{-1, 0}, {
+            Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{-1, 0}, {
+            0.30901699437494745`, -0.9510565162951535}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^
+              Rational[
+               1, 2]}}, {{-0.8090169943749475, -0.5877852522924731}, \
+{-0.30901699437494745`, -0.9510565162951535}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}}, {{-0.8090169943749475, -0.5877852522924731}, {
+           0.8090169943749475, -0.5877852522924731}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^
+              Rational[
+               1, 2]}}, {{-0.30901699437494745`, -0.9510565162951535}, {
+           0.30901699437494745`, -0.9510565162951535}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {1, 
+            0}}, {{-0.30901699437494745`, -0.9510565162951535}, {1, 0}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           0.30901699437494745`, -0.9510565162951535}, {
+           0.8090169943749475, -0.5877852522924731}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           0.30901699437494745`, -0.9510565162951535}, {0.8090169943749475, 
+           0.5877852522924731}}]]}, {
+         LineBox[NCache[{{
+            Rational[1, 4] (1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {1, 0}}, {{
+            0.8090169943749475, -0.5877852522924731}, {1, 0}}]], 
+         LineBox[NCache[{{
+            Rational[1, 4] (1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           0.8090169943749475, -0.5877852522924731}, {0.30901699437494745`, 
+           0.9510565162951535}}]]}}}], {1360.8000000000002`, -181.08602813536217`},
+      ImageScaled[{0.5, 0.5}], {359.9999999999998, 344.92576787688034`}]}, {}},
+  ContentSelectable->True,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{{3.550942788815423*^9, 3.550942857422538*^9}, {
+   3.5509428994467297`*^9, 3.550942922521443*^9}, 3.550943485896922*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga3", "[", 
+  RowBox[{"10", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.550942468354917*^9, 3.5509424770567293`*^9}, {
+  3.5509426503789253`*^9, 3.550942721926914*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{PointBox[{1, 0}], 
+    PointBox[NCache[{
+      Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+        Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+      0.8090169943749475, 0.5877852522924731}]], 
+    PointBox[NCache[{
+      Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+        Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+      0.30901699437494745`, 0.9510565162951535}]], 
+    PointBox[NCache[{
+      Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+        Rational[1, 8] 5^Rational[1, 2])^
+       Rational[1, 2]}, {-0.30901699437494745`, 0.9510565162951535}]], 
+    PointBox[NCache[{
+      Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+        Rational[-1, 8] 5^Rational[1, 2])^
+       Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+    PointBox[{-1, 0}], 
+    PointBox[NCache[{
+      Rational[1, 4] (-1 - 5^
+        Rational[1, 2]), -(Rational[5, 8] + Rational[-1, 8] 5^Rational[1, 2])^
+        Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+    PointBox[NCache[{
+      Rational[1, 4] (1 - 5^
+        Rational[1, 2]), -(Rational[5, 8] + Rational[1, 8] 5^Rational[1, 2])^
+        Rational[1, 2]}, {-0.30901699437494745`, -0.9510565162951535}]], 
+    PointBox[NCache[{
+      Rational[1, 4] (-1 + 
+        5^Rational[1, 2]), -(Rational[5, 8] + 
+         Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+      0.30901699437494745`, -0.9510565162951535}]], 
+    PointBox[NCache[{
+      Rational[1, 4] (1 + 
+        5^Rational[1, 2]), -(Rational[5, 8] + 
+         Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+      0.8090169943749475, -0.5877852522924731}]]}, {{
+     LineBox[NCache[{{1, 0}, {
+        Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 0}, {
+        0.8090169943749475, 0.5877852522924731}}]], 
+     LineBox[NCache[{{1, 0}, {
+        Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 
+        0}, {-0.30901699437494745`, 0.9510565162951535}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+       0.8090169943749475, 0.5877852522924731}, {0.30901699437494745`, 
+       0.9510565162951535}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+       0.8090169943749475, 0.5877852522924731}, {-0.8090169943749475, 
+       0.5877852522924731}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+       0.30901699437494745`, 0.9510565162951535}, {-0.30901699437494745`, 
+       0.9510565162951535}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {-1, 0}}, {{
+        0.30901699437494745`, 0.9510565162951535}, {-1, 0}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^
+         Rational[1, 2]}}, {{-0.30901699437494745`, 
+       0.9510565162951535}, {-0.8090169943749475, 0.5877852522924731}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (-1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^
+          Rational[1, 2]}}, {{-0.30901699437494745`, 
+       0.9510565162951535}, {-0.8090169943749475, -0.5877852522924731}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {-1, 
+        0}}, {{-0.8090169943749475, 0.5877852522924731}, {-1, 0}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^
+          Rational[1, 2]}}, {{-0.8090169943749475, 
+       0.5877852522924731}, {-0.30901699437494745`, -0.9510565162951535}}]]}, \
+{LineBox[NCache[{{-1, 0}, {
+        Rational[1, 4] (-1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{-1, 
+        0}, {-0.8090169943749475, -0.5877852522924731}}]], 
+     LineBox[NCache[{{-1, 0}, {
+        Rational[1, 4] (-1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{-1, 0}, {
+        0.30901699437494745`, -0.9510565162951535}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^
+          Rational[
+           1, 2]}}, {{-0.8090169943749475, -0.5877852522924731}, \
+{-0.30901699437494745`, -0.9510565162951535}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^
+          Rational[1, 2]}}, {{-0.8090169943749475, -0.5877852522924731}, {
+       0.8090169943749475, -0.5877852522924731}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (-1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^
+          Rational[1, 2]}}, {{-0.30901699437494745`, -0.9510565162951535}, {
+       0.30901699437494745`, -0.9510565162951535}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (1 - 5^
+          Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {1, 
+        0}}, {{-0.30901699437494745`, -0.9510565162951535}, {1, 0}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+       0.30901699437494745`, -0.9510565162951535}, {
+       0.8090169943749475, -0.5877852522924731}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (-1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+       0.30901699437494745`, -0.9510565162951535}, {0.8090169943749475, 
+       0.5877852522924731}}]]}, {
+     LineBox[NCache[{{
+        Rational[1, 4] (1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {1, 0}}, {{
+        0.8090169943749475, -0.5877852522924731}, {1, 0}}]], 
+     LineBox[NCache[{{
+        Rational[1, 4] (1 + 
+          5^Rational[1, 2]), -(Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+        Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+          Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+       0.8090169943749475, -0.5877852522924731}, {0.30901699437494745`, 
+       0.9510565162951535}}]]}}}]], "Output",
+ CellChangeTimes->{{3.550942473586938*^9, 3.550942477461073*^9}, {
+  3.550942622863267*^9, 3.550942722419759*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 752},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 495, 14, 27, "Input"],
+Cell[1055, 36, 1352, 34, 178, "Input"],
+Cell[2410, 72, 558, 15, 27, "Input"],
+Cell[CellGroupData[{
+Cell[2993, 91, 684, 21, 43, "Input"],
+Cell[3680, 114, 16148, 297, 105, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19865, 416, 547, 11, 27, "Input"],
+Cell[20415, 429, 22064, 406, 104, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42516, 840, 252, 6, 27, "Input"],
+Cell[42771, 848, 8546, 171, 358, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

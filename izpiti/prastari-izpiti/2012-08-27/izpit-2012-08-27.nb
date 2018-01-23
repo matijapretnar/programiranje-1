@@ -1,0 +1,111 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2502,        102]
+NotebookOptionsPosition[      1924,         76]
+NotebookOutlinePosition[      2279,         92]
+CellTagsIndexPosition[      2236,         89]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["3. a)", "Subsection"],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3a[n_, sez_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"6", ",", "3"}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"5", ",", "8"}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"7", ",", "4"}], "]"}], ",", 
+    RowBox[{"naloga3a", "[", 
+     RowBox[{"8", ",", "12"}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+  "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. b)", "Subsection"],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3b[n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga3b", "[", 
+     RowBox[{"{", 
+      RowBox[{"6", ",", "5", ",", "4", ",", "3"}], "}"}], "]"}], ",", 
+    RowBox[{"naloga3b", "[", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "4", ",", "4"}], "}"}], "]"}], ",", 
+    RowBox[{"naloga3b", "[", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "5", ",", "3"}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 752},
+WindowMargins->{{45, Automatic}, {-1, Automatic}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 27, 0, 67, "Section"],
+Cell[CellGroupData[{
+Cell[631, 26, 27, 0, 34, "Subsection"],
+Cell[661, 28, 127, 4, 26, "Text"],
+Cell[791, 34, 433, 12, 58, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1261, 51, 27, 0, 34, "Subsection"],
+Cell[1291, 53, 121, 4, 26, "Text"],
+Cell[1415, 59, 481, 13, 58, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

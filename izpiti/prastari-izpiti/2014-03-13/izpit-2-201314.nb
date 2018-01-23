@@ -1,0 +1,219 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8003,        210]
+NotebookOptionsPosition[      7195,        178]
+NotebookOutlinePosition[      7630,        195]
+CellTagsIndexPosition[      7587,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 3", "Section",
+ CellChangeTimes->{{3.6004045262781267`*^9, 3.6004045388058434`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3[s_, p_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.600404547072316*^9, 3.600404560792101*^9}, {
+  3.603710248902182*^9, 3.603710250416215*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3", "[", 
+   RowBox[{"s_", ",", "p_"}], "]"}], ":="}]], "Input",
+ CellChangeTimes->{{3.6004045877566433`*^9, 3.600404593040945*^9}, {
+  3.6004046917165895`*^9, 3.600404692030607*^9}, {3.603551025062914*^9, 
+  3.603551138344303*^9}, {3.603551174424802*^9, 3.603551184682191*^9}, {
+  3.6035512263362503`*^9, 3.603551256488101*^9}, {3.603710253432713*^9, 
+  3.603710255382161*^9}, {3.6037103657488956`*^9, 3.6037103758996067`*^9}, {
+  3.603710408028296*^9, 3.603710678587264*^9}, {3.603710862377076*^9, 
+  3.6037108627756653`*^9}, {3.603714791554796*^9, 3.603714794316352*^9}, {
+  3.603714850123489*^9, 3.603714850239133*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga3", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<Jani\>\"", ",", "\"\<Tone\>\"", ",", "\"\<Cilka\>\""}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Ana\>\"", ",", "\"\<Franci\>\"", ",", "\"\<Boris\>\""}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Pero\>\"", ",", "\"\<Damir\>\"", ",", "\"\<Bo\[ZHacek]o\>\""}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Jasna\>\"", ",", "\"\<Mojca\>\"", ",", "\"\<Ale\[SHacek]\>\""}], 
+      "}"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "5", ",", "6", ",", "12", ",", "7", ",", "11", ",", "20", ",", 
+     "10", ",", "12", ",", "12", ",", "12", ",", "15", ",", "13"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.60040450640399*^9, 3.60040450641199*^9}, {
+  3.6037102583677273`*^9, 3.603710348228656*^9}, {3.603710921528942*^9, 
+  3.603710926561315*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Boris\"\>", ",", "\<\"Pero\"\>", ",", "\<\"Jasna\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.6035512614834757`*^9, 3.60355129959832*^9, 3.603710378076995*^9, {
+   3.603710521860488*^9, 3.603710566691991*^9}, {3.603710629537806*^9, 
+   3.60371068243535*^9}, {3.6037109151475163`*^9, 3.603710927216361*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 4", "Section",
+ CellChangeTimes->{{3.538421184045417*^9, 3.538421187597632*^9}, {
+   3.538421220286839*^9, 3.538421221956567*^9}, 3.563106067388606*^9, {
+   3.6004045405009403`*^9, 3.600404540563944*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga4[n_]", "Input"],
+ ", kot je zapisano v navodilih."
+}], "Text",
+ CellChangeTimes->{{3.563106068978465*^9, 3.563106070466899*^9}, {
+   3.60036957959042*^9, 3.6003695811036224`*^9}, {3.600404612122037*^9, 
+   3.60040461235305*^9}, 3.603711194094397*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga4", "[", "n_", "]"}], ":="}]], "Input",
+ CellChangeTimes->{{3.600369677652192*^9, 3.6003697487727165`*^9}, 
+   3.6003697973980017`*^9, {3.603551309470221*^9, 3.60355132288605*^9}, {
+   3.60355141820061*^9, 3.603551435413476*^9}, {3.6035514890254307`*^9, 
+   3.603551539779361*^9}, {3.6035516466509533`*^9, 3.603551659499762*^9}, {
+   3.603551696463369*^9, 3.6035517279311037`*^9}, 3.603551804412175*^9, {
+   3.603551849855497*^9, 3.603551913519877*^9}, {3.603711282098185*^9, 
+   3.603711599996833*^9}, {3.603711636102371*^9, 3.6037116706113577`*^9}, {
+   3.60371184021033*^9, 3.603711902627508*^9}, {3.6037119378734713`*^9, 
+   3.603711968856803*^9}, {3.603712076577545*^9, 3.60371207773421*^9}, {
+   3.6037121134585447`*^9, 3.6037121316453247`*^9}, {3.603712280676817*^9, 
+   3.603712491615654*^9}, {3.6037125448784037`*^9, 3.603712584963238*^9}, {
+   3.6037126262363663`*^9, 3.603712626334367*^9}, {3.603712668185347*^9, 
+   3.603712747140414*^9}, {3.603712803160007*^9, 3.603712810211946*^9}, {
+   3.603714798821114*^9, 3.6037148056557837`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"naloga4", "[", "0", "]"}], ",", 
+    RowBox[{"naloga4", "[", "1", "]"}], ",", 
+    RowBox[{"naloga4", "[", "4", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.563106086789118*^9, 3.563106097259109*^9}, {
+  3.6003695954400473`*^9, 3.6003696088716707`*^9}, {3.6003697257002764`*^9, 
+  3.600369727119879*^9}, {3.6004046219025965`*^9, 3.600404623784704*^9}, {
+  3.603711269117518*^9, 3.6037112779103727`*^9}, {3.603712932218431*^9, 
+  3.603712982218026*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{LineBox[{{0, 0}, {2, 0}, {2, 1}, {0, 1}, {0, 0}}], {}}], {193.5, -94.5},
+      ImageScaled[{0.5, 0.5}], {360., 180.}], InsetBox[
+     GraphicsBox[{LineBox[{{0, 0}, {2, 0}, {2, 1}, {0, 1}, {0, 0}}], 
+       LineBox[NCache[{{2/(1 + GoldenRatio), 0}, {2/(1 + GoldenRatio), 1}}, {{
+          0.7639320225002103, 0}, {0.7639320225002103, 1}}]]}], {580.5, -94.5},
+      ImageScaled[{0.5, 0.5}], {360., 180.}], InsetBox[
+     GraphicsBox[{
+       LineBox[{{0, 0}, {2, 0}, {2, 1}, {0, 1}, {0, 0}}], {
+        LineBox[NCache[{{
+           2, 1 - (1 + 
+             GoldenRatio)^(-1) + (1 + 
+               GoldenRatio)^(-1) (-1 + (1 + GoldenRatio)^(-1))}, {
+           2/(1 + GoldenRatio) + (1 + GoldenRatio)^(-1) (2 - 2/(1 + 
+              GoldenRatio)), 
+            1 - (1 + GoldenRatio)^(-1) + (1 + 
+               GoldenRatio)^(-1) (-1 + (1 + GoldenRatio)^(-1))}}, {{
+           2, 0.3819660112501052}, {1.2360679774997898`, 
+           0.3819660112501052}}]], 
+        LineBox[NCache[{{
+           2/(1 + GoldenRatio) + (1 + GoldenRatio)^(-1) (2 - 2/(1 + 
+              GoldenRatio)), 0}, {
+           2/(1 + GoldenRatio) + (1 + GoldenRatio)^(-1) (2 - 2/(1 + 
+              GoldenRatio)), 1 - (1 + GoldenRatio)^(-1)}}, {{
+           1.2360679774997898`, 0}, {1.2360679774997898`, 
+           0.6180339887498949}}]], 
+        LineBox[NCache[{{2, 1 - (1 + GoldenRatio)^(-1)}, {
+           2/(1 + GoldenRatio), 1 - (1 + GoldenRatio)^(-1)}}, {{
+           2, 0.6180339887498949}, {0.7639320225002103, 
+           0.6180339887498949}}]], 
+        LineBox[NCache[{{2/(1 + GoldenRatio), 0}, {
+           2/(1 + GoldenRatio), 1}}, {{0.7639320225002103, 0}, {
+           0.7639320225002103, 1}}]]}}], {967.5, -94.5}, 
+     ImageScaled[{0.5, 0.5}], {360., 180.}]}, {}},
+  ContentSelectable->True,
+  ImageSize->{689., Automatic},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{{3.603712955365468*^9, 3.603712983297792*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1440, 843},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 81, "Section"],
+Cell[679, 25, 239, 6, 32, "Text"],
+Cell[921, 33, 664, 11, 32, "Input"],
+Cell[CellGroupData[{
+Cell[1610, 48, 969, 26, 55, "Input"],
+Cell[2582, 76, 358, 7, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2989, 89, 217, 3, 81, "Section"],
+Cell[3209, 94, 308, 7, 32, "Text"],
+Cell[3520, 103, 1090, 16, 32, "Input"],
+Cell[CellGroupData[{
+Cell[4635, 123, 547, 11, 32, "Input"],
+Cell[5185, 136, 1982, 38, 137, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

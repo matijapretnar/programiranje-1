@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Funkcijsko programiranje</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Programiranje 1
+
+## Funkcijsko programiranje
+
+### 9. november 2017
+
+---
+
+### Tipi v OCamlu so **statični**
+
+.source[```
+let je_majhen x =
+  if x < 10 then "Da" else false
+```]
+
+.terminal[```
+  Characters 45-50:
+    if x < 10 then "Da" else false
+                             ^^^^^
+Error: This expression has type bool but an
+  expression was expected of type string
+```]
+
+---
+
+### Tipi v Pythonu so **dinamični**
+
+.source[```python
+def je_majhen(x):
+    return 'Da' if x < 10 else False
+```]
+
+.terminal[```python
+>>> je_majhen(3) + '!'
+'Da!'
+
+>>> je_majhen(10) + '!'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s)
+  for +: 'bool' and 'str'
+```]
+
+---
+
+### Tipi v Pythonu so **dinamični**
+
+.source[```python
+def fakulteta(n):
+    if n <= 1:
+        return 1
+    else:
+        n * fakulteta(n - 1)
+```]
+
+--
+
+.terminal[```python
+>>> fakulteta(4)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 5, in fakulteta
+  File "<stdin>", line 5, in fakulteta
+TypeError: unsupported operand type(s)
+  for *: 'int' and 'NoneType'
+```]
+
+---
+
+### OCamlovi tipi so bogatejši od Pythonovih
+
+.terminal[```
+# [(1, ['a']); (10, []); (0, ['x'; 'y'])];;
+- : (int * char list) list = ...
+
+# fun x -> [(x, 0)];;
+- : 'a -> ('a * int) list = <fun>
+```]
+
+.terminal[```python
+>>> type([(1, ['a']), (10, []), (0, ['x', 'y'])])
+<type 'list'>
+
+>>> type(lambda x: [(x, 0)])
+<type 'function'>
+```]
+
+---
+
+### OCaml optimizira **repno rekurzijo**
+
+.source[```
+let rec f x y =
+    if y = 0 then x else f (x + 1) (y - 1)
+```]
+
+.terminal[```
+# f 0 1000;;
+- : int = 1000
+
+# f 0 100000;;
+- : int = 100000
+
+# f 0 10000000;;
+- : int = 10000000
+```]
+
+---
+
+### Klic je repen, če se izvede zadnji
+
+.source[```
+let rec vsota = function
+  | [] -> 0
+  | x :: xs -> x + vsota xs
+```]
+
+```
+  vsota [1; 2; 3]
+= 1 + vsota [2; 3]
+= 1 + (2 + vsota [3])
+= 1 + (2 + (3 + vsota []))
+= 1 + (2 + (3 + 0))
+= 1 + (2 + 3)
+= 1 + 5
+= 6
+```
+
+Računalnik mora najprej izračunati rezultat funkcije, zato si delo odloži na sklad.
+
+---
+
+### Klic je repen, če se izvede zadnji
+
+.source[```
+let rec vsota' acc = function
+  | [] -> acc
+  | x :: xs -> vsota' (acc + x) xs
+```]
+
+```
+  vsota' 0 [1; 2; 3]
+= vsota' (1 + 0) [2; 3]
+= vsota' 1 [2; 3]
+= vsota' (1 + 2) [3]
+= vsota' 3 [3]
+= vsota' (3 + 3) []
+= vsota' 6 []
+= 6
+```
+
+Računalnik pri repnem klicu lahko delo opravi sproti in mu ga ni treba shranjevati.
+
+---
+
+### OCaml optimizira repno rekurzijo
+
+.source[```
+let rec f x y =
+    if y = 0 then x else f (x + 1) (y - 1)
+```]
+
+.terminal[```
+# f 0 1000;;
+- : int = 1000
+
+# f 0 100000;;
+- : int = 100000
+
+# f 0 10000000;;
+- : int = 10000000
+```]
+
+---
+
+### Python (nalašč) ne optimizira repne rekurzije
+
+.source[```python
+def f(x, y):
+    if y == 0:
+        return x
+    else:
+        return f(x + 1, y - 1)
+```]
+
+.terminal[```python
+>>> f(0, 1000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 5, in f
+  ...
+  File "<stdin>", line 2, in f
+RecursionError: maximum recursion depth exceeded
+```]
+
+---
+
+### Če rekurzija ni repna, lahko prekoračimo sklad
+
+.source[```
+let rec f y =
+    if y = 0 then 0 else 1 + f (y - 1)
+```]
+
+.terminal[```
+# f 1000;;
+- : int = 1000
+
+# f 100000;;
+- : int = 100000
+
+# f 10000000;;
+Stack overflow during evaluation
+  (looping recursion?).```]
+
+---
+
+### Python je **proceduralni** &amp; **imperativni** jezik
+
+.source[```python
+fakulteta = 1
+for i in range(1, 11):
+    fakulteta *= i
+```]
+
+Računalniku damo zaporedje ukazov, ki začetno stanje spravijo v želeno stanje.
+
+### OCaml je **funkcijski** &amp; **deklarativni** jezik
+
+.source[```python
+let rec fakulteta n =
+  if n = 0 then 1 else n * fakulteta (n - 1)
+in fakulteta 10
+```]
+
+Želeni rezultat programa opišemo s sestavljanjem funkcij.
+---
+
+### Nekatere funkcije za argumente sprejemajo druge funkcije
+
+.terminal[```
+# let trikrat f x = f (f (f x));;
+val trikrat : ('a -> 'a) -> 'a -> 'a = <fun>
+
+# trikrat succ 39;;
+- : int = 42
+
+# trikrat sqrt 16.;;
+- : float = 1.41421356237309515
+```]
+
+### Takim funkcijam pravimo, da so **višjega reda**
+
+---
+
+### Anonimne funkcije pišemo kot `fun x -> ...`
+
+.terminal[```
+# let moja_funkcija x = 2 * x + 1;;
+val moja_funkcija : int -> int = <fun>
+
+# trikrat moja_funkcija 1;;
+- : int = 15
+
+# trikrat (fun x -> 2 * x + 1) 1;;
+- : int = 15
+
+# let moja_funkcija' = fun x -> 2 * x + 1;;
+val moja_funkcija' : int -> int = <fun>
+
+# (fun f (x, y) -> f x * f y) succ (5, 6);;
+- : int = 42
+```]
+
+---
+
+### Funkciji dveh argumentov je podal le enega. Ne boste verjeli, kaj se zgodi potem!
+
+.source[```
+let zmnozi x y = x * y
+```]
+
+.terminal[<pre><code class="ocaml remark-code hljs"># zmnozi 2 3;;
+- : int = 6
+
+# zmnozi 2;;
+.spoiler[\- : int -> int = &amp;lt;fun&amp;gt;]
+</code></pre>]
+
+--
+
+### Ne dobimo napake, temveč novo **funkcijo**
+
+---
+
+### Kakšno funkcijo dobimo?
+
+.terminal[```
+# let f = zmnozi 2;;
+val f : int -> int = <fun>
+
+# f 3;;
+- : int = 6
+# f 10;;
+- : int = 20
+```]
+
+.terminal[```
+# (zmnozi 2) 3;;
+- : int = 6      (* to je isto kot zmnozi 2 3 *)
+# (zmnozi 2) 10;;
+- : int = 20    (* to je isto kot zmnozi 2 10 *)
+```]
+
+---
+
+class: center, middle
+
+### funkcija *dveh* argumentov <br>=<br> funkcija *enega* argumenta (prvega), ki vrne<br> funkcijo *enega* argumenta (drugega)
+
+- - -
+
+### `f x y` = `(f x) y`
+
+### `A -> B -> C` = `A -> (B -> C)`.
+
+### `fun x y -> ...` = `fun x -> fun y -> ...`
+
+- - -
+
+### Takim funkcijam rečemo **curryirane** ([H. Curry](https://en.wikipedia.org/wiki/Haskell_Curry))
+
+---
+
+class: center, middle, question
+
+### `f x y z` = .spoiler[`((f x) y) z`]
+
+### `A -> B -> C -> D` = .spoiler[`A -> (B -> (C -> D))`]
+
+### aplikacija je .spoiler[*levo*] asociativna
+
+### `->` je .spoiler[*desno*] asociativna
+
+---
+
+### Zakaj ne uporabimo funkcije, ki sprejme par?
+
+.terminal[```
+# let zmnozi x y = x * y;;
+val zmnozi : int -> int -> int = <fun>
+# zmnozi 2 3;;
+- : int = 6
+# zmnozi 2 10;;
+- : int = 20
+```]
+
+.terminal[```
+# let zmnozi' (x, y) = x * y;;
+val zmnozi' : int * int -> int = <fun>
+# zmnozi' (2, 3);;
+- : int = 6
+# zmnozi' (2, 10);;
+- : int = 20
+```]
+
+---
+
+### Uporaba delno uporabljenih funkcij
+
+.terminal[```
+# preslikaj (zmnozi 2) [10; 20; 30];;
+- : int list = [20; 40; 60]
+
+# preslikaj ((+) 5) [10; 20; 30];;
+- : int list = [15; 25; 35]
+
+# preslikaj (preslikaj succ) [[10; 20]; [30]];;
+- : int list list = [[11; 21]; [31]]
+```]
+
+---
+
+### Tipa `A * B -> C` in `A -> B -> C` sta izomorfna
+
+.terminal[```
+# let curry f = fun x y -> f (x, y);;
+val curry :
+  ('a * 'b -> 'c) -> 'a -> 'b -> 'c = <fun>
+
+# let uncurry g = fun (x, y) -> g x y;;
+val uncurry :
+  ('a -> 'b -> 'c) -> 'a * 'b -> 'c = <fun>```]
+
+### $$C^{A \times B} \cong (C^B)^A$$
+
+### $$curry \colon C^{A \times B} \to (C^B)^A, uncurry \colon (C^B)^A \to C^{A \times B}$$
+
+### Postopku pravimo **curryiranje**
+
+---
+
+### Veliko funkcij na seznamih ima enako strukturo
+
+.source[```
+let rec vsota = function
+  | [] -> 0
+  | x :: xs -> x + vsota xs
+```]
+
+```
+  vsota [1; 2; 3]
+= 1 + vsota [2; 3]
+= 1 + (2 + vsota [3])
+= 1 + (2 + (3 + vsota []))
+= 1 + (2 + (3 + 0))
+```
+
+---
+
+### Veliko funkcij na seznamih ima enako strukturo
+
+.source[```
+let rec produkt = function
+  | [] -> 1
+  | x :: xs -> x * produkt xs
+```]
+
+```
+  produkt [1; 2; 3]
+= 1 * produkt [2; 3]
+= 1 * (2 * produkt [3])
+= 1 * (2 * (3 * produkt []))
+= 1 * (2 * (3 * 1))
+```
+
+---
+
+### Veliko funkcij na seznamih ima enako strukturo
+
+.source[```
+let rec dolzina = function
+  | [] -> 0
+  | _ :: xs -> 1 + dolzina xs
+```]
+
+```
+  dolzina [1; 2; 3]
+= 1 + dolzina [2; 3]
+= 1 + (1 + dolzina [3])
+= 1 + (1 + (1 + dolzina []))
+= 1 + (1 + (1 + 0))
+```
+
+---
+
+### Veliko funkcij na seznamih ima enako strukturo
+
+.source[```
+let rec preslikaj f = function
+  | [] -> []
+  | x :: xs -> f x :: preslikaj f xs
+```]
+
+```
+  preslikaj f [1; 2; 3]
+= f 1 : preslikaj f [2; 3]
+= f 1 : (f 2 : preslikaj f [3])
+= f 1 : (f 2 : (f 3 : preslikaj f []))
+= f 1 : (f 2 : (f 3 : []))
+```
+
+---
+
+### Splošni vzorec zajame funkcija `zlozi_desno`
+
+.source[```
+let rec zlozi_desno f z = function
+  | [] -> z
+  | x :: xs -> f x (zlozi_desno f z xs)
+```]
+
+```
+  zlozi_desno f [1; 2; 3] z
+= f 1 (zlozi_desno f [2; 3] z)
+= f 1 (f 2 (zlozi_desno f [3] z))
+= f 1 (f 2 (f 3 (zlozi_desno f [] z)))
+= f 1 (f 2 (f 3 z))
+```
+
+---
+
+class: question, center, middle
+
+### izrazi
+## `vsota`, `produkt`, `dolzina`, `preslikaj`
+### z uporabo
+## `zlozi_desno`
+
+---
+
+### Z druge strani zlaga `zlozi_levo`
+
+```
+  zlozi_desno f [1; 2; 3] z
+= f 1 (zlozi_desno f [2; 3] z)
+= f 1 (f 2 (zlozi_desno f [3] z))
+= f 1 (f 2 (f 3 (zlozi_desno f [] z)))
+= f 1 (f 2 (f 3 z))
+```
+
+```
+  zlozi_levo f z [1; 2; 3]
+= zlozi_levo f (f z 1) [2; 3]
+= zlozi_levo f (f (f z 1) 2) [3]
+= zlozi_levo f (f (f (f z 1) 2) 3) []
+= (f (f (f z 1) 2) 3)
+```
+
+---
+
+class: question, center, middle
+
+## `zlozi_levo`
+
+.terminal.left[```
+# zlozi_levo (^) "X" ["A"; "B"; "C"];;
+- : string = "XABC"
+
+# zlozi_levo (+) 0 [10; 20; 30];;
+- : int = 60
+
+# zlozi_levo (fun xs x -> x :: xs) [] [1; 2; 3];;
+- : int list = [3; 2; 1]
+```]
+
+---
+
+### Vgrajene funkcije kličemo z `Modul.funkcija`
+
+.terminal[```
+# List.map String.length ["Ti"; "si"; "konj"];;
+- : int list = [2; 2; 4]
+```]
+
+- osnovni modul [`Pervasives`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
+- modul za nize [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html)
+- modul za sezname [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
+- seznam [vseh modulov](http://caml.inria.fr/pub/docs/manual-ocaml/libref/) v standardni knjižnici
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>

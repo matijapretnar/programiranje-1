@@ -1,0 +1,2618 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    115517,       2609]
+NotebookOptionsPosition[    112093,       2491]
+NotebookOutlinePosition[    113025,       2524]
+CellTagsIndexPosition[    112982,       2521]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Naloga 1", "Section",
+ CellChangeTimes->{{3.568087137065137*^9, 3.568087137495481*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["1. a)", "Subsection",
+ CellChangeTimes->{{3.568087138831079*^9, 3.5680871389916143`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga1a[sez_]", "Input"],
+ ", ki deluje na na\[CHacek]in, grafi\[CHacek]no prikazan na spodnjih slikah. \
+Prvo \[SHacek]tevilo seznama pomeni \[SHacek]tevilo gru\[CHacek] elementov, \
+drugo \[SHacek]tevilo potem \[SHacek]tevilo gru\[CHacek]ic v posamezni gru\
+\[CHacek]i, tretje \[SHacek]tevilo \[SHacek]tevilo gru\[CHacek]i\[CHacek]ic v \
+posamezni gru\[CHacek]ici in tako naprej. Zadnja gru\[CHacek]i\[CHacek]i\
+\[CHacek]ica je sestavljena le iz to\[CHacek]k. (\[CapitalSHacek]tevilo vseh \
+to\[CHacek]k na sliki je ravno produkt vseh \[SHacek]tevil v seznamu)."
+}], "Text",
+ CellChangeTimes->{{3.568087091092124*^9, 3.568087092991809*^9}, {
+  3.568087156602768*^9, 3.568087162409472*^9}, {3.5680872994091043`*^9, 
+  3.568087305639543*^9}, {3.5680876677022247`*^9, 3.5680877566717787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga1a", "[", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "3"}], "}"}], "]"}], ",", 
+    RowBox[{"naloga1a", "[", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "5"}], "}"}], "]"}], ",", 
+    RowBox[{"naloga1a", "[", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "5", ",", "4"}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.568019255808783*^9, 3.5680192849316196`*^9}, {
+  3.5680200638566303`*^9, 3.568020067134585*^9}, {3.568087214103078*^9, 
+  3.5680872162075653`*^9}, {3.568087772470415*^9, 3.568087776149688*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+            0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], {1, 0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+        NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+           Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+         0.30901699437494745`, 0.9510565162951535}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+            0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], {1, 0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+        NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+           Rational[-1, 8] 5^Rational[1, 2])^
+          Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+            0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], {1, 0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+        NCache[{Rational[1, 4] (-1 - 5^
+           Rational[1, 2]), -(Rational[5, 8] + 
+            Rational[-1, 8] 5^Rational[1, 2])^
+           Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+            0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], {1, 0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+        NCache[{Rational[1, 4] (-1 + 
+           5^Rational[1, 2]), -(Rational[5, 8] + 
+            Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+         0.30901699437494745`, -0.9510565162951535}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+            0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], 
+           NCache[{Rational[-1, 2], Rational[-1, 2] 
+             3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 
+             0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+             Center}], {1, 0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}], {193.5, -189.},
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+     GraphicsBox[{
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, 0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, -0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}, {{{
+           0.3333333333333333, 0}, {0, 0.3333333333333333}}, Center}], 
+        NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+         0.8660254037844386}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, 0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, -0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}, {{{
+           0.3333333333333333, 0}, {0, 0.3333333333333333}}, Center}], 
+        NCache[{Rational[-1, 2], Rational[-1, 2] 
+          3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, 0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, -0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[
+            PointBox[{0, 0}], {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}, {{{
+           0.3333333333333333, 0}, {0, 0.3333333333333333}}, Center}], {1, 
+        0}]}], {580.5, -189.}, ImageScaled[{0.5, 0.5}], {360., 360.}], 
+    InsetBox[
+     GraphicsBox[{
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, 0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, -0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}, {{{
+           0.3333333333333333, 0}, {0, 0.3333333333333333}}, Center}], 
+        NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+         0.8660254037844386}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, 0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, -0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}, {{{
+           0.3333333333333333, 0}, {0, 0.3333333333333333}}, Center}], 
+        NCache[{Rational[-1, 2], Rational[-1, 2] 
+          3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+       GeometricTransformationBox[
+        GeometricTransformationBox[{
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, 0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^
+             Rational[1, 2]}, {-0.8090169943749475, 0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 - 5^
+              Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[-1, 8] 5^Rational[1, 2])^
+              Rational[1, 2]}, {-0.8090169943749475, -0.5877852522924731}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], 
+           NCache[{Rational[1, 4] (-1 + 
+              5^Rational[1, 2]), -(Rational[5, 8] + 
+               Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+            0.30901699437494745`, -0.9510565162951535}]], 
+          GeometricTransformationBox[
+           GeometricTransformationBox[{
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, 1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {-1, 0}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {0, -1}], 
+             GeometricTransformationBox[
+              GeometricTransformationBox[
+               PointBox[{0, 0}], {{{0.25, 0}, {0, 0.25}}, Center}], {1, 
+              0}]}, {{{0.2, 0}, {0, 0.2}}, Center}], {1, 0}]}, {{{
+           0.3333333333333333, 0}, {0, 0.3333333333333333}}, Center}], {1, 
+        0}]}], {967.5, -189.}, ImageScaled[{0.5, 0.5}], {360., 360.}]}, {}},
+  ContentSelectable->True,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{3.568087776829441*^9, 3.568088362720812*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1. b)", "Subsection",
+ CellChangeTimes->{{3.568087140584425*^9, 3.5680871406947107`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga1b[n_]", "Input"],
+ ", ki vrne vse mo\[ZHacek]ne sezname \[SHacek]tevil, ki se zmno\[ZHacek]ijo \
+v ",
+ StyleBox["n", "Input"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.5680871113509502`*^9, 3.5680871141954327`*^9}, {
+  3.568087150140345*^9, 3.568087178204723*^9}, {3.568087831498515*^9, 
+  3.5680878388708153`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga1b", "[", "18", "]"}]], "Input",
+ CellChangeTimes->{{3.568019303714575*^9, 3.568019308845318*^9}, {
+   3.568019350220994*^9, 3.5680193506125526`*^9}, 3.568020075727976*^9, {
+   3.568087816269409*^9, 3.5680878201164017`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", "18", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.568087862660365*^9, 3.568088368777111*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga1b", "[", "19", "]"}]], "Input",
+ CellChangeTimes->{{3.568019303714575*^9, 3.568019308845318*^9}, {
+   3.568019350220994*^9, 3.5680193506125526`*^9}, 3.568020075727976*^9, {
+   3.568087183828917*^9, 3.568087184406094*^9}, {3.5680878220596046`*^9, 
+   3.56808782214651*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "19", "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.5680878635803967`*^9, 3.5680883707385902`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1. c)", "Subsection",
+ CellChangeTimes->{{3.568087140584425*^9, 3.5680871461738977`*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga1c[n_]", "Input"],
+ ", ki nari\[SHacek]e vse mo\[ZHacek]ne grafi\[CHacek]ne predstavitve \
+\[SHacek]tevila ",
+ StyleBox["n", "Input"],
+ ". Za lep\[SHacek]i izris si lahko pomagate s funkcijo ",
+ StyleBox["GraphicsGrid", "Input"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.5680871113509502`*^9, 3.5680871141954327`*^9}, {
+  3.568087147348371*^9, 3.568087148989089*^9}, {3.5680871952903337`*^9, 
+  3.568087197649303*^9}, {3.568087874798647*^9, 3.568087943708785*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga1c", "[", "18", "]"}]], "Input",
+ CellChangeTimes->{{3.56801933739126*^9, 3.568019344348941*^9}, 
+   3.568020084248164*^9, {3.568044550131816*^9, 3.568044561993371*^9}, {
+   3.5680447915381517`*^9, 3.5680447931464643`*^9}, {3.5680879558662977`*^9, 
+   3.56808795593071*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+               0, 0.3333333333333333}}, Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+               0, 0.3333333333333333}}, Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+               0, 0.3333333333333333}}, Center}], {1, 0}]}, {{{0.5, 0}, {
+            0, 0.5}}, Center}], {-1, 0}], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+               0, 0.3333333333333333}}, Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+               0, 0.3333333333333333}}, Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+               0, 0.3333333333333333}}, Center}], {1, 0}]}, {{{0.5, 0}, {
+            0, 0.5}}, Center}], {1, 0}]}], {193.5, -193.5}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+             0.766044443118978, 0.6427876096865393}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+             0.17364817766693033`, 0.984807753012208}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{-Cos[Rational[1, 9] Pi], Sin[
+              Rational[1, 9] Pi]}, {-0.9396926207859084, 
+             0.3420201433256687}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{-Cos[Rational[1, 9] Pi], -
+              Sin[Rational[1, 9] 
+                Pi]}, {-0.9396926207859084, -0.3420201433256687}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+             0.17364817766693033`, -0.984807753012208}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+             0.766044443118978, -0.6427876096865393}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+             0.766044443118978, 0.6427876096865393}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+             0.17364817766693033`, 0.984807753012208}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{-Cos[Rational[1, 9] Pi], Sin[
+              Rational[1, 9] Pi]}, {-0.9396926207859084, 
+             0.3420201433256687}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{-Cos[Rational[1, 9] Pi], -
+              Sin[Rational[1, 9] 
+                Pi]}, {-0.9396926207859084, -0.3420201433256687}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+             0.17364817766693033`, -0.984807753012208}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], 
+            NCache[{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+             0.766044443118978, -0.6427876096865393}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.1111111111111111, 0}, {0, 0.1111111111111111}}, 
+              Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+         0}]}], {580.5, -193.5}, ImageScaled[{0.5, 0.5}], {360., 360.}], 
+     InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 
+            0}], GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+            0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+           Center}], 
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 
+            0}], GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+            0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+           Center}], 
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 
+            0}], GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+                0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], 
+               NCache[{
+                Rational[-1, 2], Rational[-1, 2] 
+                 3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 
+                 0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+                 Center}], {1, 0}]}, {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+            0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+           Center}], {1, 0}]}], {967.5, -193.5}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}]}, {InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+            0, 0.3333333333333333}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+            0, 0.3333333333333333}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[{
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+              GeometricTransformationBox[
+               GeometricTransformationBox[
+                PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 
+               0}]}, {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+            0, 0.3333333333333333}}, Center}], {1, 0}]}], {193.5, -580.5}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+             0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+            0, 0.3333333333333333}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+             0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+            0, 0.3333333333333333}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], 
+            NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+             0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.16666666666666666`, 0}, {0, 0.16666666666666666`}}, 
+              Center}], {1, 0}]}, {{{0.3333333333333333, 0}, {
+            0, 0.3333333333333333}}, Center}], {1, 0}]}], {580.5, -580.5}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.16666666666666666`, 0}, {
+            0, 0.16666666666666666`}}, Center}], 
+         NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.16666666666666666`, 0}, {
+            0, 0.16666666666666666`}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.16666666666666666`, 0}, {
+            0, 0.16666666666666666`}}, Center}], {-1, 0}], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.16666666666666666`, 0}, {
+            0, 0.16666666666666666`}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.16666666666666666`, 0}, {
+            0, 0.16666666666666666`}}, Center}], 
+         NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+          0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+             0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], 
+            NCache[{Rational[-1, 2], Rational[-1, 2] 
+              3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 
+              0}], {{{0.3333333333333333, 0}, {0, 0.3333333333333333}}, 
+              Center}], {1, 0}]}, {{{0.16666666666666666`, 0}, {
+            0, 0.16666666666666666`}}, Center}], {1, 0}]}], {967.5, -580.5}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}]}, {InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+          0.766044443118978, 0.6427876096865393}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+          0.17364817766693033`, 0.984807753012208}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{-Cos[Rational[1, 9] Pi], Sin[
+           Rational[1, 9] Pi]}, {-0.9396926207859084, 0.3420201433256687}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{-Cos[Rational[1, 9] Pi], -
+           Sin[Rational[1, 9] 
+             Pi]}, {-0.9396926207859084, -0.3420201433256687}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+          0.17364817766693033`, -0.984807753012208}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], 
+         NCache[{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+          0.766044443118978, -0.6427876096865393}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[{
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {-1, 0}], 
+           GeometricTransformationBox[
+            GeometricTransformationBox[
+             PointBox[{0, 0}], {{{0.5, 0}, {0, 0.5}}, Center}], {1, 0}]}, {{{
+            0.1111111111111111, 0}, {0, 0.1111111111111111}}, Center}], {1, 
+         0}]}], {193.5, -967.5}, ImageScaled[{0.5, 0.5}], {360., 360.}], 
+     InsetBox[
+      GraphicsBox[{
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {
+          0.9396926207859084, 0.3420201433256687}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+          0.766044443118978, 0.6427876096865393}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+          0.17364817766693033`, 0.984807753012208}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{-Sin[Rational[1, 18] Pi], Cos[
+           Rational[1, 18] Pi]}, {-0.17364817766693033`, 0.984807753012208}]],
+         GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-0.5, 
+          0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{-Cos[Rational[2, 9] Pi], Sin[
+           Rational[2, 9] Pi]}, {-0.766044443118978, 0.6427876096865393}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{-Cos[Rational[1, 9] Pi], Sin[
+           Rational[1, 9] Pi]}, {-0.9396926207859084, 0.3420201433256687}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], {-1, 0}], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{-Cos[Rational[1, 9] Pi], -
+           Sin[Rational[1, 9] 
+             Pi]}, {-0.9396926207859084, -0.3420201433256687}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{-Cos[Rational[2, 9] Pi], -
+           Sin[Rational[2, 9] 
+             Pi]}, {-0.766044443118978, -0.6427876096865393}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Rational[-1, 2], Rational[-1, 2] 
+           3^Rational[1, 2]}, {-0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{-Sin[Rational[1, 18] Pi], -
+           Cos[Rational[1, 18] 
+             Pi]}, {-0.17364817766693033`, -0.984807753012208}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+          0.17364817766693033`, -0.984807753012208}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+          0.5, -0.8660254037844386}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+          0.766044443118978, -0.6427876096865393}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], 
+         NCache[{Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}, {
+          0.9396926207859084, -0.3420201433256687}]], 
+        GeometricTransformationBox[
+         GeometricTransformationBox[
+          PointBox[{0, 
+           0}], {{{0.05555555555555555, 0}, {0, 0.05555555555555555}}, 
+           Center}], {1, 0}]}], {580.5, -967.5}, ImageScaled[{0.5, 0.5}], 
+      {360., 360.}], InsetBox[
+      GraphicsBox[{}], {967.5, -967.5}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}]}}, {}},
+  ContentSelectable->True,
+  ImageSize->{191.90646701388746`, Automatic},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{3.568087962392626*^9, 3.568088382381507*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 2", "Section",
+ CellChangeTimes->{{3.568086940981564*^9, 3.568086941195182*^9}, {
+  3.56808700702077*^9, 3.568087007179945*^9}, {3.5680870713275213`*^9, 
+  3.568087071502095*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga2[sez_, k_]", "Input"],
+ ", ki vrne seznam enake dol\[ZHacek]ine kot ",
+ StyleBox["sez", "Input"],
+ ", ki ga dobimo tako, da za\[CHacek]nemo s prvim elementom seznama ",
+ StyleBox["sez", "Input"],
+ " in cikli\[CHacek]no ska\[CHacek]emo po ",
+ StyleBox["k", "Input"],
+ " elementov naprej."
+}], "Text",
+ CellChangeTimes->{{3.568086945917987*^9, 3.568086951041086*^9}, {
+  3.568086998757711*^9, 3.568087017834148*^9}, {3.568087310274993*^9, 
+  3.5680873589877234`*^9}, {3.5680874590496683`*^9, 3.56808746010305*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga2", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8",
+      ",", "9", ",", "10"}], "}"}], ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5680191337284603`*^9, 3.568019204518395*^9}, {
+  3.568044611086787*^9, 3.568044613718066*^9}, {3.568086962824059*^9, 
+  3.5680870193558207`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "4", ",", "7", ",", "10", ",", "3", ",", "6", ",", "9", ",", "2", 
+   ",", "5", ",", "8"}], "}"}]], "Output",
+ CellChangeTimes->{3.5680874860355597`*^9, 3.5680883903868427`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga2", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8",
+      ",", "9", ",", "10"}], "}"}], ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5680191337284603`*^9, 3.568019204518395*^9}, {
+  3.568044611086787*^9, 3.568044613718066*^9}, {3.568086976273529*^9, 
+  3.5680870224023*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "6", ",", "1", ",", "6", ",", "1", ",", "6", ",", "1", ",", "6", 
+   ",", "1", ",", "6"}], "}"}]], "Output",
+ CellChangeTimes->{3.568087487457026*^9, 3.568088391627119*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 3", "Section"],
+
+Cell["\<\
+Kon\[CHacek]no verjetnostno porazdelitev lahko predstavimo s seznamom parov \
+enementov in njihovih verjetnosti. Na primer:\
+\>", "Text",
+ CellChangeTimes->{{3.568087091092124*^9, 3.568087092991809*^9}, {
+  3.568088012407831*^9, 3.568088098066945*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"jasno", ",", "0.2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"sneg", ",", "0.1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"dez", ",", "0.3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"oblacno", ",", "0.4"}], "}"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.568088080934733*^9, 3.568088095346167*^9}}],
+
+Cell["\<\
+predstavlja verjetnostno porazdelitev vremena.\
+\>", "Text",
+ CellChangeTimes->{{3.568087091092124*^9, 3.568087092991809*^9}, {
+  3.568088012407831*^9, 3.5680881143863783`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["3. a)", "Subsection"],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3a[d_]", "Input"],
+ ", ki vrne isto porazdelitev kot ",
+ StyleBox["d", "Input"],
+ ", le da so elementi urejeni od najbolj do najmanj verjetnega."
+}], "Text",
+ CellChangeTimes->{{3.568087091092124*^9, 3.568087092991809*^9}, {
+  3.568088119242023*^9, 3.568088159064188*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga3a", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"jasno", ",", "0.2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"sneg", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"dez", ",", "0.3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"oblacno", ",", "0.4"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{3.568088168796412*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"oblacno", ",", "0.4`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"dez", ",", "0.3`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"jasno", ",", "0.2`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"sneg", ",", "0.1`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.568088181302856*^9, 3.56808839924771*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. b)", "Subsection"],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga3b[d_, p_]", "Input"],
+ ", ki vrne po velikosti najmanj\[SHacek]o mno\[ZHacek]ico, iz katere bomo \
+glede na porazdelitev ",
+ StyleBox["d", "Input"],
+ " izbrali element z verjetnostjo vsaj ",
+ StyleBox["p", "Input"],
+ ". Poleg mno\[ZHacek]ice naj vrne tudi verjetnost, s katero bomo izbrali \
+element iz te mno\[ZHacek]ice."
+}], "Text",
+ CellChangeTimes->{{3.5680871113509502`*^9, 3.5680871141954327`*^9}, {
+  3.568088189236248*^9, 3.568088233687603*^9}, {3.5680883001799088`*^9, 
+  3.5680883173495092`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga3b", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"jasno", ",", "0.2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"sneg", ",", "0.1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"dez", ",", "0.3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"oblacno", ",", "0.4"}], "}"}]}], "}"}], ",", "0.35"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5680194012638683`*^9, 3.568019439477848*^9}, {
+  3.568019914341414*^9, 3.568019915212696*^9}, {3.568019990305728*^9, 
+  3.568020010065196*^9}, {3.568020046552165*^9, 3.568020046670888*^9}, {
+  3.568088247387331*^9, 3.5680882501829557`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "oblacno", "}"}], ",", "0.4`"}], "}"}]], "Output",
+ CellChangeTimes->{3.5680882582124662`*^9, 3.568088326293425*^9, 
+  3.568088405513887*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"naloga3b", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"jasno", ",", "0.2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"sneg", ",", "0.1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"dez", ",", "0.3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"oblacno", ",", "0.4"}], "}"}]}], "}"}], ",", "0.71"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5680194012638683`*^9, 3.568019439477848*^9}, {
+  3.568019914341414*^9, 3.568019915212696*^9}, {3.568019990305728*^9, 
+  3.5680200121609087`*^9}, {3.56802004934363*^9, 3.568020049423501*^9}, {
+  3.568088269741179*^9, 3.568088283943223*^9}, {3.568088330852891*^9, 
+  3.56808833416474*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"oblacno", ",", "dez", ",", "jasno"}], "}"}], ",", 
+   "0.8999999999999999`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5680882625518513`*^9, 3.568088284410178*^9}, {
+   3.568088327799616*^9, 3.568088334753022*^9}, 3.568088407189104*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 4", "Section",
+ CellChangeTimes->{{3.568086992539817*^9, 3.568086993327375*^9}, {
+  3.568087027114079*^9, 3.568087027743815*^9}}],
+
+Cell[TextData[{
+ "Sestavite funkcijo ",
+ StyleBox["naloga4[n_]", "Input"],
+ ", ki nari\[SHacek]e graf na ",
+ StyleBox["n", "Input"],
+ " to\[CHacek]kah, v katerem sta ",
+ Cell[BoxData[
+  FormBox["i", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". in ",
+ Cell[BoxData[
+  FormBox["j", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". to\[CHacek]ka povezana, kadar imata \[SHacek]tevili ",
+ Cell[BoxData[
+  FormBox["i", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " in ",
+ Cell[BoxData[
+  FormBox["j", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " skupnega delitelja, ve\[CHacek]jega od 1, "
+}], "Text",
+ CellChangeTimes->{{3.568087032262931*^9, 3.56808704018403*^9}, {
+  3.568087509950101*^9, 3.568087616534709*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"naloga4", "[", "5", "]"}], ",", 
+    RowBox[{"naloga4", "[", "6", "]"}], ",", 
+    RowBox[{"naloga4", "[", "9", "]"}]}], "\[IndentingNewLine]", "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.568020853387608*^9, 3.5680209369635487`*^9}, {
+  3.568087051878462*^9, 3.5680870559152822`*^9}, {3.568087220438439*^9, 
+  3.5680872219174433`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[{
+       PointBox[
+        NCache[{{
+          Rational[1, 4] (-1 + 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+            Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 4] (-1 - 5^
+            Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+          Rational[1, 4] (-1 + 
+            5^Rational[1, 2]), -(Rational[5, 8] + 
+             Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {1, 0}}, {{
+          0.30901699437494745`, 0.9510565162951535}, {-0.8090169943749475, 
+          0.5877852522924731}, {-0.8090169943749475, -0.5877852522924731}, {
+          0.30901699437494745`, -0.9510565162951535}, {1, 0}}]], 
+       LineBox[NCache[{{{
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 + 
+             5^Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           Rational[1, 4] (-1 - 5^
+             Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 - 5^
+             Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           Rational[1, 4] (-1 + 
+             5^Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 - 5^Rational[1, 2]), (Rational[5, 8] + 
+             Rational[-1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{
+           Rational[1, 4] (-1 + 
+             5^Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}, {
+           Rational[1, 4] (-1 + 
+             5^Rational[1, 2]), -(Rational[5, 8] + 
+              Rational[1, 8] 5^Rational[1, 2])^Rational[1, 2]}}, {{1, 0}, {1, 
+          0}}}, {{{-0.8090169943749475, 
+          0.5877852522924731}, {-0.8090169943749475, 
+          0.5877852522924731}}, {{-0.8090169943749475, 0.5877852522924731}, {
+          0.30901699437494745`, -0.9510565162951535}}, {{-0.8090169943749475, \
+-0.5877852522924731}, {-0.8090169943749475, -0.5877852522924731}}, {{
+          0.30901699437494745`, -0.9510565162951535}, {-0.8090169943749475, 
+          0.5877852522924731}}, {{
+          0.30901699437494745`, -0.9510565162951535}, {
+          0.30901699437494745`, -0.9510565162951535}}, {{1, 0}, {1, 
+          0}}}]]}], {193.5, -172.12247791340008`}, 
+     ImageScaled[{0.5, 0.5}], {360., 327.8523388826668}], InsetBox[
+     GraphicsBox[{
+       PointBox[
+        NCache[{{Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+          Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-1, 0}, {
+          Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+          Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {1, 0}}, {{0.5, 
+          0.8660254037844386}, {-0.5, 0.8660254037844386}, {-1, 
+          0}, {-0.5, -0.8660254037844386}, {0.5, -0.8660254037844386}, {1, 
+          0}}]], LineBox[
+        NCache[{{{Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {1, 0}}, {{-1, 
+          0}, {-1, 0}}, {{-1, 0}, {1, 
+          0}}, {{Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {1, 0}}, {{
+           Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{1, 0}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{1, 0}, {-1, 
+          0}}, {{1, 0}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{1, 0}, {1, 
+          0}}}, {{{-0.5, 0.8660254037844386}, {-0.5, 
+          0.8660254037844386}}, {{-0.5, 
+          0.8660254037844386}, {-0.5, -0.8660254037844386}}, {{-0.5, 
+           0.8660254037844386}, {1, 0}}, {{-1, 0}, {-1, 0}}, {{-1, 0}, {1, 
+          0}}, {{-0.5, -0.8660254037844386}, {-0.5, 
+          0.8660254037844386}}, {{-0.5, -0.8660254037844386}, {-0.5, \
+-0.8660254037844386}}, {{-0.5, -0.8660254037844386}, {1, 0}}, {{
+          0.5, -0.8660254037844386}, {
+          0.5, -0.8660254037844386}}, {{1, 0}, {-0.5, 0.8660254037844386}}, {{
+          1, 0}, {-1, 0}}, {{1, 0}, {-0.5, -0.8660254037844386}}, {{1, 0}, {1,
+           0}}}]]}], {580.5, -172.12247791340008`}, 
+     ImageScaled[{0.5, 0.5}], {360., 327.8523388826668}], InsetBox[
+     GraphicsBox[{
+       PointBox[
+        NCache[{{Cos[Rational[2, 9] Pi], Sin[Rational[2, 9] Pi]}, {
+          Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+          Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {-
+           Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {-
+           Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}, {
+          Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+          Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+          Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {1, 0}}, {{
+          0.766044443118978, 0.6427876096865393}, {0.17364817766693033`, 
+          0.984807753012208}, {-0.5, 
+          0.8660254037844386}, {-0.9396926207859084, 
+          0.3420201433256687}, {-0.9396926207859084, -0.3420201433256687}, \
+{-0.5, -0.8660254037844386}, {0.17364817766693033`, -0.984807753012208}, {
+          0.766044443118978, -0.6427876096865393}, {1, 0}}]], 
+       LineBox[NCache[{{{Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}, {
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}}, {{
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}, {1, 
+           0}}, {{-Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}, {
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}}, {{-
+            Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}, {-
+            Cos[Rational[1, 9] Pi], -Sin[Rational[1, 9] Pi]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}}, {{
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {1, 0}}, {{
+           Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}, {
+           Sin[Rational[1, 18] Pi], -Cos[Rational[1, 18] Pi]}}, {{
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+           Sin[Rational[1, 18] Pi], Cos[Rational[1, 18] Pi]}}, {{
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {-
+            Cos[Rational[1, 9] Pi], Sin[Rational[1, 9] Pi]}}, {{
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}, {
+           Cos[Rational[2, 9] Pi], -Sin[Rational[2, 9] Pi]}}, {{1, 0}, {
+           Rational[-1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{1, 0}, {
+           Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{1, 0}, {1, 
+          0}}}, {{{0.17364817766693033`, 0.984807753012208}, {
+          0.17364817766693033`, 0.984807753012208}}, {{0.17364817766693033`, 
+          0.984807753012208}, {-0.9396926207859084, 0.3420201433256687}}, {{
+          0.17364817766693033`, 
+          0.984807753012208}, {-0.5, -0.8660254037844386}}, {{
+          0.17364817766693033`, 0.984807753012208}, {
+          0.766044443118978, -0.6427876096865393}}, {{-0.5, 
+          0.8660254037844386}, {-0.5, 0.8660254037844386}}, {{-0.5, 
+          0.8660254037844386}, {-0.5, -0.8660254037844386}}, {{-0.5, 
+           0.8660254037844386}, {1, 0}}, {{-0.9396926207859084, 
+          0.3420201433256687}, {0.17364817766693033`, 
+          0.984807753012208}}, {{-0.9396926207859084, 
+          0.3420201433256687}, {-0.9396926207859084, 
+          0.3420201433256687}}, {{-0.9396926207859084, 
+          0.3420201433256687}, {-0.5, -0.8660254037844386}}, \
+{{-0.9396926207859084, 0.3420201433256687}, {
+          0.766044443118978, -0.6427876096865393}}, {{-0.9396926207859084, \
+-0.3420201433256687}, {-0.9396926207859084, -0.3420201433256687}}, {{-0.5, \
+-0.8660254037844386}, {0.17364817766693033`, 
+          0.984807753012208}}, {{-0.5, -0.8660254037844386}, {-0.5, 
+          0.8660254037844386}}, {{-0.5, -0.8660254037844386}, \
+{-0.9396926207859084, 
+          0.3420201433256687}}, {{-0.5, -0.8660254037844386}, {-0.5, \
+-0.8660254037844386}}, {{-0.5, -0.8660254037844386}, {
+          0.766044443118978, -0.6427876096865393}}, {{-0.5, \
+-0.8660254037844386}, {1, 0}}, {{0.17364817766693033`, -0.984807753012208}, {
+          0.17364817766693033`, -0.984807753012208}}, {{
+          0.766044443118978, -0.6427876096865393}, {0.17364817766693033`, 
+          0.984807753012208}}, {{
+          0.766044443118978, -0.6427876096865393}, {-0.9396926207859084, 
+          0.3420201433256687}}, {{
+          0.766044443118978, -0.6427876096865393}, {-0.5, \
+-0.8660254037844386}}, {{0.766044443118978, -0.6427876096865393}, {
+          0.766044443118978, -0.6427876096865393}}, {{1, 0}, {-0.5, 
+           0.8660254037844386}}, {{1, 0}, {-0.5, -0.8660254037844386}}, {{1, 
+          0}, {1, 0}}}]]}], {967.5, -172.12247791340008`}, 
+     ImageScaled[{0.5, 0.5}], {360., 327.8523388826668}]}, {}},
+  ContentSelectable->True,
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{3.568087640562356*^9, 3.568088413929707*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Re\[SHacek]itve", "Section",
+ CellChangeTimes->{{3.568086992539817*^9, 3.568086993327375*^9}, {
+   3.568087027114079*^9, 3.568087027743815*^9}, {3.568088420625853*^9, 
+   3.5680884216123133`*^9}, 3.5680889183304243`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"pomozna1a", "[", 
+    RowBox[{"{", "}"}], "]"}], ":=", 
+   RowBox[{"Point", "[", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pomozna1a", "[", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "sez___"}], "}"}], "]"}], ":=", 
+   RowBox[{"With", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"mali", "=", 
+       RowBox[{"pomozna1a", "[", 
+        RowBox[{"{", "sez", "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Translate", "[", 
+        RowBox[{
+         RowBox[{"Scale", "[", 
+          RowBox[{"mali", ",", 
+           RowBox[{"1", "/", "x"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Cos", "[", 
+            RowBox[{"2", " ", "\[Pi]", " ", 
+             RowBox[{"i", "/", "x"}]}], "]"}], ",", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"2", " ", "\[Pi]", " ", 
+             RowBox[{"i", "/", "x"}]}], "]"}]}], "}"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "x"}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"naloga1a", "[", "sez_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"pomozna1a", "[", "sez", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.568017810340996*^9, 3.568017870247422*^9}, {
+   3.5680181765041533`*^9, 3.568018178732315*^9}, 3.568019294222473*^9, {
+   3.568020051313734*^9, 3.568020061450293*^9}, {3.568087759179729*^9, 
+   3.568087766194117*^9}, 3.568088918330817*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"naloga1b", "[", "1", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"{", "}"}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"naloga1b", "[", "n_", "]"}], ":=", 
+  RowBox[{"Join", "@@", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Prepend", "[", 
+        RowBox[{"#", ",", "d"}], "]"}], "&"}], "/@", 
+      RowBox[{"naloga1b", "[", 
+       RowBox[{"n", "/", "d"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"d", ",", 
+       RowBox[{"Rest", "[", 
+        RowBox[{"Divisors", "[", "n", "]"}], "]"}]}], "}"}]}], 
+    "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.568017955707843*^9, 3.568017955710085*^9}, {
+   3.568018173679483*^9, 3.568018174061343*^9}, {3.568020069442192*^9, 
+   3.568020073673514*^9}, {3.568087842753442*^9, 3.568087845749859*^9}, {
+   3.568087992277246*^9, 3.568087992484909*^9}, 3.568088366629589*^9, 
+   3.5680889183310423`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga1c", "[", "n_", "]"}], ":=", 
+  RowBox[{"With", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"slike", "=", 
+      RowBox[{"naloga1a", "/@", 
+       RowBox[{"naloga1b", "[", "n", "]"}]}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"GraphicsGrid", "[", 
+     RowBox[{"ArrayReshape", "[", 
+      RowBox[{"slike", ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Ceiling", "[", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"Length", "[", "slike", "]"}], "]"}], "]"}], ",", 
+         RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", "}"}], "]"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.568017960516788*^9, 3.5680181400625057`*^9}, {
+   3.568018209971068*^9, 3.568018220194644*^9}, {3.568020078249384*^9, 
+   3.568020080897485*^9}, {3.5680879048661423`*^9, 3.568087906967846*^9}, {
+   3.56808795237416*^9, 3.568087952486031*^9}, 3.568088918331222*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga2", "[", 
+   RowBox[{"sez_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"sez", "[", 
+     RowBox[{"[", 
+      RowBox[{"Mod", "[", 
+       RowBox[{
+        RowBox[{"1", "+", 
+         RowBox[{"k", " ", "i"}]}], ",", 
+        RowBox[{"Length", "[", "sez", "]"}], ",", "1"}], "]"}], "]"}], "]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "0", ",", 
+      RowBox[{
+       RowBox[{"Length", "[", "sez", "]"}], "-", "1"}]}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.568018248393425*^9, 3.568018261416169*^9}, {
+   3.568018307862207*^9, 3.568018330659443*^9}, {3.568018492203969*^9, 
+   3.568018560196026*^9}, {3.5680186048104897`*^9, 3.568018653282743*^9}, {
+   3.568019082644343*^9, 3.568019201896742*^9}, {3.568044587957509*^9, 
+   3.568044600207429*^9}, {3.5680874810495863`*^9, 3.568087482491954*^9}, 
+   3.568088918331408*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga3a", "[", "d_", "]"}], ":=", 
+  RowBox[{"SortBy", "[", 
+   RowBox[{"d", ",", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Last", "[", "#", "]"}]}], "&"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5680186789801397`*^9, 3.568018681067336*^9}, {
+   3.5680187132186403`*^9, 3.5680188561116543`*^9}, {3.568020035473979*^9, 
+   3.568020035664309*^9}, {3.5680439384586077`*^9, 3.5680439393590612`*^9}, 
+   3.568088918331593*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"pomozna3b", "[", "q_", "]"}], "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"mn_", ",", "kum_"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "p_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"kum", "\[GreaterEqual]", "q"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"mn", ",", "kum"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Append", "[", 
+        RowBox[{"mn", ",", "x"}], "]"}], ",", 
+       RowBox[{"kum", "+", "p"}]}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"naloga3b", "[", 
+   RowBox[{"d_", ",", "q_"}], "]"}], ":=", 
+  RowBox[{"With", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"urejene", "=", 
+      RowBox[{"naloga3a", "[", "d", "]"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Fold", "[", 
+     RowBox[{
+      RowBox[{"pomozna3b", "[", "q", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", "0"}], "}"}], ",", "urejene"}], "]"}]}], 
+   "\[IndentingNewLine]", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.568018858066453*^9, 3.5680189627853813`*^9}, {
+   3.5680189929283333`*^9, 3.5680189952886*^9}, {3.5680194975976963`*^9, 
+   3.5680195533189507`*^9}, {3.568019890415401*^9, 3.5680199122623577`*^9}, {
+   3.5680199548901167`*^9, 3.568019982690777*^9}, {3.568020039634068*^9, 
+   3.5680200452252913`*^9}, {3.568044199493026*^9, 3.568044203460065*^9}, {
+   3.5680881706741047`*^9, 3.568088170770063*^9}, {3.5680882530733*^9, 
+   3.568088253591792*^9}, {3.568088320755415*^9, 3.568088322328141*^9}, 
+   3.5680889183317738`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pomozna4", "[", "n_", "]"}], ":=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"Tuples", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Range", "[", "n", "]"}], ",", 
+       RowBox[{"Range", "[", "n", "]"}]}], "}"}], "]"}], ",", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"CoprimeQ", "@@", "#"}]}], "&"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.568020696032984*^9, 3.568020731325244*^9}, {
+   3.568020792655696*^9, 3.5680208061673317`*^9}, {3.5680208619245367`*^9, 
+   3.568020869956214*^9}, {3.5680876288656483`*^9, 3.568087629006237*^9}, 
+   3.5680889183319607`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"naloga4", "[", "n_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Point", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "\[Pi]", " ", "i"}], "n"], "]"}], ",", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "\[Pi]", " ", "i"}], "n"], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             FractionBox[
+              RowBox[{"2", "\[Pi]", " ", 
+               RowBox[{"p", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], "n"], "]"}], ",", 
+            RowBox[{"Sin", "[", 
+             FractionBox[
+              RowBox[{"2", "\[Pi]", " ", 
+               RowBox[{"p", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], "n"], "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             FractionBox[
+              RowBox[{"2", "\[Pi]", " ", 
+               RowBox[{"p", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "n"], "]"}], ",", 
+            RowBox[{"Sin", "[", 
+             FractionBox[
+              RowBox[{"2", "\[Pi]", " ", 
+               RowBox[{"p", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "n"], "]"}]}], "}"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"p", ",", 
+          RowBox[{"pomozna4", "[", "n", "]"}]}], "}"}]}], "]"}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.568018248393425*^9, 3.568018261416169*^9}, {
+   3.568018307862207*^9, 3.568018330659443*^9}, {3.568018492203969*^9, 
+   3.568018560196026*^9}, {3.5680186048104897`*^9, 3.568018653282743*^9}, {
+   3.568019082644343*^9, 3.568019201896742*^9}, {3.56802009173783*^9, 
+   3.5680200918795757`*^9}, {3.568020502779542*^9, 3.568020694333568*^9}, {
+   3.568020814933473*^9, 3.568020852183041*^9}, {3.568087631123444*^9, 
+   3.568087634104969*^9}, 3.568088918332143*^9}]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Printout",
+ShowPageBreaks->True,
+WindowSize->{740, 752},
+WindowMargins->{{Automatic, 166}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{None, None, None}, {None, None, None}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->False,
+"FirstPageFace"->Right,
+"FirstPageFooter"->False,
+"FirstPageHeader"->False,
+"PrintCellBrackets"->False,
+"PrintMultipleHorizontalPages"->False,
+"PrintRegistrationMarks"->False,
+"PrintingMargins"->{{54, 54}, {0, 0}}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 93, 1, 56, "Section"],
+Cell[CellGroupData[{
+Cell[697, 27, 95, 1, 33, "Subsection"],
+Cell[795, 30, 844, 13, 57, "Text"],
+Cell[CellGroupData[{
+Cell[1664, 47, 667, 16, 42, "Input"],
+Cell[2334, 65, 26175, 510, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28558, 581, 95, 1, 33, "Subsection"],
+Cell[28656, 584, 371, 10, 17, "Text"],
+Cell[CellGroupData[{
+Cell[29052, 598, 254, 4, 20, "Input"],
+Cell[29309, 604, 595, 18, 20, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29941, 627, 303, 5, 20, "Input"],
+Cell[30247, 634, 142, 3, 20, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30438, 643, 95, 1, 33, "Subsection"],
+Cell[30536, 646, 519, 12, 30, "Text"],
+Cell[CellGroupData[{
+Cell[31080, 662, 304, 5, 20, "Input"],
+Cell[31387, 669, 50542, 1072, 146, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81990, 1748, 192, 3, 56, "Section"],
+Cell[82185, 1753, 570, 13, 30, "Text"],
+Cell[CellGroupData[{
+Cell[82780, 1770, 392, 9, 20, "Input"],
+Cell[83175, 1781, 229, 5, 20, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83441, 1791, 388, 9, 20, "Input"],
+Cell[83832, 1802, 224, 5, 20, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[84105, 1813, 27, 0, 56, "Section"],
+Cell[84135, 1815, 262, 5, 30, "Text"],
+Cell[84400, 1822, 377, 11, 20, "Input"],
+Cell[84780, 1835, 187, 4, 17, "Text"],
+Cell[CellGroupData[{
+Cell[84992, 1843, 27, 0, 33, "Subsection"],
+Cell[85022, 1845, 329, 8, 30, "Text"],
+Cell[CellGroupData[{
+Cell[85376, 1857, 397, 12, 20, "Input"],
+Cell[85776, 1871, 379, 11, 20, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[86204, 1888, 27, 0, 33, "Subsection"],
+Cell[86234, 1890, 565, 13, 44, "Text"],
+Cell[CellGroupData[{
+Cell[86824, 1907, 657, 17, 20, "Input"],
+Cell[87484, 1926, 197, 5, 20, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[87718, 1936, 704, 18, 20, "Input"],
+Cell[88425, 1956, 306, 7, 20, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[88792, 1970, 142, 2, 56, "Section"],
+Cell[88937, 1974, 751, 24, 30, "Text"],
+Cell[CellGroupData[{
+Cell[89713, 2002, 448, 10, 42, "Input"],
+Cell[90164, 2014, 11736, 194, 89, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[101949, 2214, 226, 3, 56, "Section"],
+Cell[102178, 2219, 1772, 47, 137, "Input"],
+Cell[103953, 2268, 974, 27, 54, "Input"],
+Cell[104930, 2297, 1046, 25, 66, "Input"],
+Cell[105979, 2324, 923, 24, 31, "Input"],
+Cell[106905, 2350, 467, 11, 20, "Input"],
+Cell[107375, 2363, 1690, 44, 90, "Input"],
+Cell[109068, 2409, 627, 16, 20, "Input"],
+Cell[109698, 2427, 2379, 61, 153, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

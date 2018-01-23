@@ -74,7 +74,7 @@ Množice števil v Haskellu predstavimo s seznamom.
   [2, 3, 4]
   ghci> sodokrat [a, a]
   [1, 2, 3]
-  ghci> sodokrat [c,c,c]
+  ghci> sodokrat [c, c, c]
   []
   \end{verbatim}
 
@@ -98,14 +98,14 @@ Množice števil v Haskellu predstavimo s seznamom.
  $[w_i]_{i=1}^n$ in
  število $k$ ter {\em učinkovito} izračuna najmanjšo ceno, ki je potrebna,
  da ves bombaž porazdelimo po natanko $k$ poljih.
- Funkcija naj vrne nabor, ki vsebuje najmanjšo ceno in končni razpored.
 
   \begin{verbatim}
   >>> bombaz([20, 30, 40], [1, 1, 1], 1)
-  (20, [0, 90, 0])
+  20
   >>> bombaz([10, 12, 16, 18, 30, 32], [15, 17, 18, 13, 10, 1], 2)
-  (182, [0, 56, 0, 0, 62, 0])
+  182
   \end{verbatim}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga[Pogost element, 20 točk]

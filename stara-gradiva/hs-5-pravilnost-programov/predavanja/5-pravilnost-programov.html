@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Preverjanje pravilnosti programov</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        font-family: 'Avenir Next';
+      }
+      h3 {
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code {
+        font-family: 'Menlo';
+      }
+      .remark-code {
+        font-size: 1.5em;
+      }
+      .small-code .remark-code {
+        font-size: 1.3em;
+      }
+      ol, ul {
+        font-size: 1.5em;
+      }
+
+      a.reveal {
+        font-weight: bold;
+      }
+
+      a.reveal:hover {
+        cursor:pointer;
+      }
+
+      .question {
+        /*color: white;*/
+        /*background-color: black;*/
+      }
+
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: green;
+      }
+
+      .consecutive pre {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Programiranje 1
+
+### 5. december 2016
+
+---
+
+class: center, middle
+
+## Dokazovanje pravilnosti programov
+
+---
+
+### Nekaj definicij
+
+```haskell
+[] ++ ys = ys
+(x:xs) ++ ys = x:(xs ++ ys)
+
+obrni [] = []
+obrni (x:xs) = obrni xs ++ [x]
+
+dolzina [] = 0
+dolzina (x:xs) = 1 + dolzina xs
+```
+
+---
+
+class: center, middle
+
+# `obrni [x] = [x]`
+
+---
+
+#### `obrni [x] = [x]`
+
+.consecutive[```haskell
+  obrni [x]
+```]
+--
+.consecutive[```haskell
+= obrni (x:[])
+```]
+--
+.consecutive[```haskell
+= obrni [] ++ [x]
+```]
+--
+.consecutive[```haskell
+= [] ++ [x]
+```]
+--
+.consecutive[```haskell
+= [x]
+```]
+
+---
+
+class: center, middle
+
+### `dolzina (xs ++ ys)`
+### `=`
+### .spoiler[`dolzina xs + dolzina ys`]
+
+---
+
+#### `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+
+```haskell
+  dolzina (xs ++ ys)
+= ???
+```
+
+--
+
+# Kako naprej? .spoiler[Indukcija!]
+
+---
+class: center
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### Indukcija na seznamih
+
+### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+
+---
+
+### Osnovni korak
+#### `dolzina ([] ++ ys) = dolzina [] + dolzina ys`
+
+
+.consecutive[```haskell
+  dolzina ([] ++ ys)
+```]
+--
+.consecutive[```haskell
+= dolzina ys
+```]
+--
+.consecutive[```haskell
+= 0 + dolzina ys
+```]
+--
+.consecutive[```haskell
+= dolzina [] + dolzina ys
+```]
+
+---
+
+### Indukcijski korak
+#### `dolzina (x:xs ++ ys) = dolzina (x:xs) + dolzina ys`
+
+#### Predpostavka: `dolzina (xs ++ ys) = dolzina xs + dolzina ys`
+
+.consecutive[```haskell
+  dolzina ((x:xs) ++ ys)
+```]
+--
+.consecutive[```haskell
+= dolzina (x:(xs ++ ys))
+```]
+--
+.consecutive[```haskell
+= 1 + dolzina (xs ++ ys)
+```]
+--
+.consecutive[```haskell
+= 1 + dolzina xs + dolzina ys
+```]
+--
+.consecutive[```haskell
+= dolzina (x:xs) + dolzina ys
+```]
+
+---
+
+class: center, middle
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### Indukcija na seznamih
+
+### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+
+---
+
+class: center, middle, question
+
+### `obrni (xs ++ ys)`
+### `=`
+### .spoiler[`obrni ys ++ obrni xs`]
+
+---
+
+### Nekaj definicij
+
+```haskell
+data Drevo a = Prazno
+             | Sest (Drevo a) a (Drevo a)
+
+zrcali Prazno = Prazno
+zrcali (Sest l x d) =
+  Sest (zrcali d) x (zrcali l)
+
+globina Prazno = 0
+globina (Sest l x d) =
+  1 + max (globina l) (globina d)
+```
+
+---
+
+class: center, middle
+
+### `globina (zrcali d) = globina d`
+
+---
+
+class: center, middle
+### Indukcija na naravnih številih
+
+### $$ P(0) \land (\forall m. P(m) \Rightarrow P(m^{+})) \implies \forall n. P(n) $$
+
+### Indukcija na seznamih
+
+### $$ P([]) \land (\forall x, xs. P(xs) \Rightarrow P(x : xs)) \implies \forall ys. P(ys) $$
+
+### Indukcija na drevesih
+
+### $$ P(\mathtt{P}) \land (\forall x, l, d. P(l) \land P(d) \Rightarrow P(\mathtt{S}\ l\ x\ d)) \ \Rightarrow\ \forall t. P(t) $$
+
+---
+
+### Osnovni korak
+
+
+.consecutive[```haskell
+  globina (zrcali Prazno)
+```]
+--
+.consecutive[```haskell
+= globina Prazno
+```]
+--
+.consecutive[```haskell
+= 0
+```]
+--
+.consecutive[```haskell
+= globina Prazno
+```]
+
+---
+
+### Indukcijski korak
+
+#### Predpostavki: `glo (zrc l) = glo l` &nbsp;&nbsp;in&nbsp;&nbsp; `glo (zrc d) = glo d`
+
+.consecutive[```haskell
+  glo (zrc (Sest l x d))
+```]
+--
+.consecutive[```haskell
+= glo (Sest (zrc d) x (zrc l))
+```]
+--
+.consecutive[```haskell
+= 1 + max (glo (zrc d)) (glo (zrc l))
+```]
+--
+.consecutive[```haskell
+= 1 + max (glo d) (glo (zrc l))
+```]
+--
+.consecutive[```haskell
+= 1 + max (glo d) (glo l)
+```]
+--
+.consecutive[```haskell
+= 1 + max (glo l) (glo d)
+```]
+--
+.consecutive[```haskell
+= glo (Sest l x d)
+```]
+
+---
+
+class: center, middle
+
+## QuickCheck
+
+---
+
+class: center, middle
+
+### Včasih si lastnosti programov ne želimo formalno dokazovati.
+
+---
+
+### QuickCheck pravilnost preverja na naključnih primerih.
+
+```haskell
+import Test.QuickCheck
+
+povecaj :: [Int] -> [Int]
+povecaj = map succ
+
+prop_SumPovecaj :: [Int] -> Bool
+prop_SumPovecaj xs =
+  sum xs + length xs == sum (povecaj xs)
+
+main = quickCheck prop_SumPovecaj
+```
+
+```
+ +++ OK, passed 100 tests.
+```
+
+---
+
+### QuickCheck pravilnost preverja na naključnih primerih.
+
+```haskell
+import Test.QuickCheck
+
+povecaj :: [Int] -> [Int]
+povecaj = map succ
+
+prop_SumPovecaj' :: [Int] -> Bool
+prop_SumPovecaj' xs =
+  sum xs < sum (povecaj xs)
+
+main = quickCheck prop_SumPovecaj'
+```
+
+```
+ *** Failed! Falsifiable (after 1 test):  
+ []
+```
+
+---
+
+class: small-code
+### Polimorfne funkcije testiramo pri posameznih tipih.
+
+```haskell
+import Test.QuickCheck
+
+prop :: [a] -> [a] -> Bool
+prop xs ys =
+  length (xs ++ ys) == length xs + length xs
+
+main = do
+    quickCheck (prop :: [Int]->[Int]->Bool)
+    quickCheck (prop :: [Char]->[Char]->Bool)
+```
+
+```
+ *** Failed! Falsifiable
+ (after 3 tests and 2 shrinks):    
+ [] [0]
+ *** Failed! Falsifiable
+ (after 2 tests and 1 shrink): 
+ "" "a"
+```
+
+---
+class: small-code
+### Polimorfne funkcije testiramo pri posameznih tipih.
+
+```haskell
+import Test.QuickCheck
+
+prop :: [a] -> [a] -> Bool
+prop xs ys =
+  length (xs ++ ys) == length xs + length ys
+
+main = do
+    quickCheck (prop :: [Int]->[Int]->Bool)
+    quickCheck (prop :: [Char]->[Char]->Bool)
+```
+
+```
+ +++ OK, passed 100 tests.
+ +++ OK, passed 100 tests.
+```
+
+---
+
+class: small-code
+### Kako bi preverjali implikacijo?
+
+```haskell
+import Test.QuickCheck
+
+sledi :: Bool -> Bool -> Bool
+sledi True False = False
+sledi _ _ = True
+
+prop :: a -> [a] -> [a] -> Bool
+prop x xs xs' =
+  (length xs == length xs')
+  `sledi`
+  (length (x : xs) == length (x : xs'))
+
+main =
+  quickCheck (prop :: Int->[Int]->[Int]->Bool)
+```
+
+```
+ +++ OK, passed 100 tests.
+```
+---
+
+class: small-code
+### Kako bi preverjali implikacijo?
+
+```haskell
+...
+
+*prop :: a -> [a] -> [a] -> Property
+prop x xs xs' =
+* collect (length xs == length xs') $
+  (length xs == length xs')
+  `sledi`
+  (length (x : xs) == length (x : xs'))
+
+...
+```
+
+```
+ +++ OK, passed 100 tests.
+ 96% False
+  4% True
+```
+
+---
+
+class: small-code
+### Za implikacije uporabljamo `==>`
+
+```haskell
+import Test.QuickCheck
+
+prop :: a -> [a] -> [a] -> Property
+prop x xs xs' =
+  length xs == length xs'
+  ==>
+  length (x : xs) == length (x : xs')
+
+main =
+  quickCheck
+    (prop :: Int->[Int]->[Int]->Property)
+```
+
+```
+ *** Gave up! Passed only 45 tests.
+```
+
+---
+
+class: center, middle
+
+### naslednjič...
+
+# Haskell in resnični svet
+
+    </textarea>
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <script src="../../js/remark-latest.min.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+      $(document).ready(function() { 
+      
+      $(".spoiler").hide();
+      
+      $('<a class="reveal">???</a>').insertBefore('.spoiler');
+
+      $("a.reveal").click(function(){
+        $(this).next().fadeIn(500);
+        $(this).hide();
+      });
+
+    }); 
+        var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Deli in vladaj</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Programiranje 1
+
+## Deli in vladaj
+
+### 21. december 2017
+
+---
+
+### Strategija **deli in vladaj** ima tri korake
+
+1. nalogo razdelimo na manjše podnaloge
+2. podnaloge rekurzivno rešimo
+3. dobljene rešitve združimo v rešitev prvotne naloge
+
+---
+
+### Hitro potenciranje
+
+.large.bad-example[
+\begin{align}
+a^0 &= 1 \\\\
+a^n &= a \cdot a^{n - 1}
+\end{align}
+]
+
+--
+
+### .center[\\\\(T(n) = O(n)\\\\)]
+
+--
+
+.large.good-example[
+\begin{align}
+a^0 &= 1 \\\\
+a^n &= \begin{cases}
+  (a^2)^{n / 2} & \text{$n$ je sod} \\\\
+  a \cdot (a^2)^{(n - 1) / 2} & \text{$n$ je lih}
+  \end{cases}
+\end{align}
+]
+
+--
+
+### .center[\\\\(T(n) = O(\log n)\\\\)]
+
+---
+
+class: question, center, middle
+
+## Kaj je zadnjih 10 števk števila \\(F_{112233445566778899}\\)?
+
+---
+
+class: center
+
+## Urejanje z zlivanjem
+
+![](urejanje-z-zlivanjem.png)
+
+---
+
+class: center
+
+## Hitro urejanje
+
+![](hitro-urejanje.png)
+
+---
+
+### **Urejanje z zlivanjem**
+
+- povprečna časovna zahtevnost: \\(O(n \log n)\\)
+- **najslabša** časovna zahtevnost: \\(O(n \log n)\\)
+- prostorska zahtevnost: \\(O(n)\\)
+
+### **Hitro urejanje**
+
+- povprečna časovna zahtevnost: \\(O(n \log n)\\)
+- **najslabša** časovna zahtevnost: \\(O(n^2)\\)
+- prostorska zahtevnost: \\(O(1)\\)
+- **v praksi hitrejše**, lokalna uporaba medpomnilnika
+
+---
+
+class: center, middle, question
+
+## Iskanje \\(k\\)-tega najmanjšega elementa v seznamu
+
+---
+
+class: center
+
+### Urejanje **s primerjavo** je vedno \\(\Omega(n \log n)\\)
+
+![](odlocitveno-drevo.png)
+
+---
+
+class: center, middle
+
+### [Algoritmi za urejanje **brez primerjave**](https://visualgo.net/en/sorting)
+
+---
+
+class: center, middle
+
+## Rešitev enačbe \\(T(n) = O(n) + 2 T(n / 2)\\)
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>

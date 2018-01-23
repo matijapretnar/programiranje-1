@@ -1,0 +1,102 @@
+body {
+  font-family: 'Avenir Next';
+}
+
+h3 {
+  font-weight: normal;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Iosevka';
+}
+
+.remark-inline-code {
+  background-color: #ddd;
+}
+
+.remark-code {
+  font-size: 1.5em;
+}
+
+ol, ul {
+  font-size: 1.5em;
+  line-height: 2;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #008;
+}
+
+a:hover {
+  color: #00d;
+}
+
+a.reveal {
+  font-weight: bold;
+  color: inherit;
+}
+
+a.reveal:hover {
+  cursor: pointer;
+}
+
+.question, .question .remark-inline-code {
+  color: white;
+  background-color: black;
+}
+
+table {
+  margin: auto;
+  font-size: 1.5em;
+  /*border-collapse: separate;*/
+  border-spacing: 1.5em 0.5em;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: blue;
+}
+
+.good-example pre code {
+  background-color: #ddf !important;
+}
+
+.bad-example code {
+  background-color: #fdd !important;
+}
+
+.terminal code {
+  border-radius: 10px;
+}
+
+.handwritten h1 {
+  font-family: "Chalkduster";
+  font-size: 2em;
+}
+
+.mini img {
+  width: 45%;
+  height: 45%;
+}
+
+.left-column, .right-column {
+  width: 45%;
+  display: inline-block;
+}
+
+.left-column {
+  float: left;
+}
+
+.consecutive pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.large {
+  font-size: 1.5em;
+}

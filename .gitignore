@@ -1,4 +1,9 @@
-*.hi
-*.o
 *.pyc
 .ipynb_checkpoints
+
+*.byte
+*.cmo
+*.cmi
+*.cmx
+_build
+*.o
