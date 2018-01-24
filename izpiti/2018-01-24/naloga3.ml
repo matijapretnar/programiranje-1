@@ -1,24 +1,27 @@
-module type Linear = sig
+type vektor = int * int
+type matrika = int * int * int * int
+
+module type Linearna = sig
   (* Osnovni tip modula. *)
   type t
   (* Identiteta. *)
   val id : t
   (* Izračun funkcije na podatkih. *)
-  val apply : int*int -> t -> int*int
+  val uporabi : vektor -> t -> vektor
   (* Funkcija, ki sprejme matriko in jo pretvori v osnovni tip modula.
      Če je osnovni tip modula matrika, pretvori matriko v matriko. *)
-  val of_matrix : int*int*int*int -> t
+  val iz_matrike : matrika -> t
   (* Funkcija, ki sprejme funkcijo in jo pretvori v osnovni tip modula.
      Če je osnovni tip modula matrika, pretvori funkcijo v matriko. *)
-  val of_function : ((int*int) -> (int*int)) -> t
+  val iz_funkcije : (vektor -> vektor) -> t
   (* Vrne kompozitum dveh preslikav. *)
-  val compose : t -> t -> t
+  val kompozitum : t -> t -> t
 end
 
-module Matrix : Linear = struct
+module Matrika : Linearna = struct
   (* Dopolni me! *)
 end
 
-module Function : Linear = struct
+module Funkcija : Linearna = struct
   (* Dopolni me! *)
 end
