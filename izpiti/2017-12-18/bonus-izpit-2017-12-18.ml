@@ -14,20 +14,20 @@
 (* 1.3) Definirajte funkcijo, ki vzame seznam in izračuna seznam vrednosti funkcije
    f(x) = x^3 + 2 za elemente vhodnega seznama.
    Primer: /vse_kubiraj_in_pristej_dva [1; 2; 3] = [3; 10; 29]/ *)
-let vse_kubiraj_in_pristej_dva = = List.map (fun x -> afin_kub x 2)
+let vse_kubiraj_in_pristej_dva = List.map (fun x -> afin_kub x 2)
 
 (* 1.4) Definirajte funkcijo, ki varno vrne zadnji element seznama v primeru,
    da seznam ni prazen. Uporabite tip option.
    Primer: /zadnji_element [1; 2; 3] = Some 3/ *)
- let zadnji_element = function [] -> None | [x] -> Some x | _ :: xs -> last_opt xs
+ let rec zadnji_element = function |[] -> None | [x] -> Some x | _ :: xs -> zadnji_element xs
 
 (* 1.5) Definirajte funkcijo, ki izračuna n-to Fibonaccijevo število.
    Pri tem upoštevamo začetna pogoja /fibonacci 0 = 1/ in /fibonacci 1 = 1/.
    Primer: /fibonacci 20 = 10946/ *)
-let fibonacci n =
+let rec fibonacci n =
   if n <= 1
   then 1
-  else fib (n-1) + fib (n-2)
+  else fibonacci (n-1) + fibonacci (n-2)
 
 (* ======================================= *)
 (* 2. naloga: podatkovni tipi in rekurzija *)
@@ -58,17 +58,17 @@ let t'' = Rose (3, [Rose (-1, []); t'; Rose (0, [])])
 let je_list (Rose (_, forest)) = (forest = [])
 
 (* 2.4) Definirajte funkcijo, ki preveri, ali drevo celih števil vsebuje zgolj pozitivna števila. *)
-let vsa_pozitivna (Rose (root, forest)) =
+let rec vsa_pozitivna (Rose (root, forest)) =
   let rec for_all f = function
     | [] -> true
     | x :: xs -> f x && for_all f xs
   in
-  root > 0 && for_all all_positive forest
+  root > 0 && for_all vsa_pozitivna forest
 
 (* 2.5) Definirajte funkcijo, ki izračuna največjo širino rožnega drevesa, torej največjo dolžino
    gozda, ki se pojavi v kateremkoli vozlišču rožnega drevesa. *)
-let sirina_drevesa (Rose (_, forest)) =
-  List.map max_width forest |> List.fold_left max (List.length forest)
+let rec sirina_drevesa (Rose (_, forest)) =
+  List.map sirina_drevesa forest |> List.fold_left max (List.length forest)
 
 (* 2.6) Definirajte funkcijo, ki sestavi (poljubno) rožno drevo globine n.
    Vrednosti v korenih so poljubne. *)
