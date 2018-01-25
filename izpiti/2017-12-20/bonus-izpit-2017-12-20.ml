@@ -25,7 +25,7 @@ let vsem_zamenjaj_drugo_z_42 l = List.map (fun p -> zamenjaj_drugo p 42) l
    celo število n. Funkcija naj vrne vrednost, ki jo dobimo če f n-krat uporabimo na x,
    torej f (f ... (f x)...).
    Primer: /uporabi_veckrat succ 0 420 = 420/ *)
-let uporabi_veckrat f x n  =
+let rec uporabi_veckrat f x n  =
   if n <= 0
   then x
   else uporabi_veckrat f (f x) (n-1)
@@ -69,8 +69,8 @@ let izpisi_vrednosti (Rose (root, forest)) =
 
 (* 2.5) Definirajte funkcijo, ki izračuna globino rožnega drevesa, t.j. dolžino
    najdaljše poti od korena do lista. *)
-let globina (Rose (_, forest)) =
-  List.map depth forest |> List.fold_left max 0 |> (+) 1
+let rec globina (Rose (_, forest)) =
+  List.map globina forest |> List.fold_left max 0 |> (+) 1
 
 (* 2.6) Definirajte funkcijo, ki sestavi (poljubno) rožno drevo globine n.
    Vrednosti v korenih so poljubne. *)
