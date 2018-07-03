@@ -12,5 +12,5 @@ let rec list_of_nelist = function
   | Cons (x, xs) -> x :: (list_of_nelist xs)
 
 let rec fold f s = function
-  | Base x -> f x s
-  | Cons (x, l) -> fold f (f x s) l
+  | Base x -> f s x
+  | Cons (x, l) -> fold f (f s x) l
