@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\izpit{Programiranje I: 2.\ izpit}{06.\ July 2018}{
+\izpit{Programiranje I: 2.\ izpit}{6.\ julij 2018}{
   Čas reševanja je 150 minut.
   Veliko uspeha!
 }
@@ -25,27 +25,25 @@ ki uporabi podano funkcijo na podanem argumentu.
 \podnaloga
 Napišite funkcijo
 \begin{verbatim}
-    obrnjeno_uporabi : 'a -> ('a -> 'b) -> 'b
+    ibaropu : 'a -> ('a -> 'b) -> 'b
 \end{verbatim}
-ki izvede obrnjeno uporabo. Naprimer, \verb|obrnjeno_uporabi (obrnjeno_uporabi x f) g| je enakovredno $g (f (x))$.
+ki izvede obrnjeno uporabo. Naprimer, \verb|ibaropu (ibaropu x f) g| je enakovredno $g (f (x))$.
 
 \podnaloga
 Napišite funkcijo
 \begin{verbatim}
     zacetnih : int -> 'a list -> ('a list) option
 \end{verbatim}
-tako da \verb|zacetnih n xs| vrne začetnih \verb|n| elementov seznama \verb|xs|, oziroma \verb|None| v primeru, ko ima seznam \verb|xs| manj kot \verb|n| elementov.
-
-Za vse točke naj bo funkcija \emph{repno-rekurzivna}.
+za katero \verb|zacetnih n xs| vrne začetnih \verb|n| elementov seznama \verb|xs|, oziroma \verb|None| v primeru, ko ima seznam \verb|xs| manj kot \verb|n| elementov. Za vse točke naj bo funkcija \emph{repno-rekurzivna}.
 
 \naloga[]
-Tip seznamov \verb|'a list| predstavlja prazen nabor ali nabor končno mnogo elementov tipa \verb|'a|. V nadaljevanju bomo obravnavali tip, ki predstavlja zgolj \emph{neprazne} sezname elementov tipa \verb|'a|.
+Neprazne sezname lahko v OCamlu predstavimo s tipom
+\begin{verbatim}
+    type 'a neprazen_sez = Konec of 'a | Sestavljen of 'a * 'a neprazen_sez
+\end{verbatim}
 
 \podnaloga
-Definirajte nov tip \verb|'a neprazen_sez| nepraznih seznamov.
-
-\podnaloga
-Napišite funkcijo \verb|prvi_el : 'a neprazen_sez -> 'a|, ki vrne prvi element nepraznega seznama.
+Napišite funkciji \verb|prvi : 'a neprazen_sez -> 'a| in \verb|zadnji : 'a neprazen_sez -> 'a| , ki vrneta prvi in zadnji element nepraznega seznama.
 
 \podnaloga
 Napišite funkcijo \verb|dolzina : 'a neprazen_sez -> int|, ki izračuna dolžino nepraznega seznama.
@@ -58,65 +56,64 @@ Napišite funkcijo \verb|zlozi : ('b -> 'a -> 'b) -> 'b -> 'a neprazen_sez -> 'b
 podobno delovanju funkcije \verb|List.fold_left|.
 
 \naloga[]
-Dr Hannah Habibah je matematičarka, ki se navdušuje nad simetrijo. Po vrnitvi iz izleta v Hajjah, Yemen, je začela iskati simetrije v črtastih črno-belih zapestnicah, ki jih je kupila na potovanju.
+Dr.~Ana Kek je matematičarka, ki se navdušuje nad simetrijo. Po vrnitvi z izleta v Hajjah v Jemnu je začela iskati simetrije v črtastih črno-belih zapestnicah, ki jih je kupila na potovanju.
 
-Dr Habibah želi razdeliti zaporedje črnih in belih črt na zapestnicah na simetrične dele. Njen cilj je poiskati delitev z najmanjšim številom delov.
-Da si delo olajša, se je odločila zaporedje črt predstaviti kot niz ničel in enic.
-
-Obravnava dve vrsti simetrij:
-\begin{itemize}
-\item del je \emph{p-simetričen} če je palindrom
-\item del $D$ dolžine \verb|n| je \emph{vsotno-simetričen} če je vsota prvih
-\verb|int(n/2)|\footnote{OCaml: \verb|int_of_float ((float_of_int n) /. 2.)|} števk $D$
-  in zadnjih \verb|int(n/2)| števk $D$ enaka
-\end{itemize}
+Zato si želi razdeliti zaporedje črnih in belih črt na zapestnicah na simetrične dele. Njen cilj je poiskati delitev z najmanjšim številom delov.
+Da si delo olajša, se je odločila zaporedje črt predstaviti z nizom ničel in enic.
 
 \podnaloga
-Napišite funkcijo \verb|p_simetricen| ki preveri ali je nek del p-simetričen.
+Napišite funkcijo \verb|simetricen|, ki preveri ali je nek del simetričen, torej palindrom.
 \begin{verbatim}
-# Primer:
->>> p_simetricen("01010")
-True
+    # Primer:
+    >>> simetricen("01010")
+    True
 \end{verbatim}
 
 \podnaloga
-Napišite funkcijo \verb|stevilo_delov|, ki izračuna na koliko najmanj delov moramo razdeliti zaporedje, da so vsi deli p-simetrični.
+Napišite funkcijo \verb|stevilo_delov|, ki izračuna na najmanj koliko delov moramo razdeliti zaporedje, da so vsi deli simetrični.
 
 \begin{verbatim}
-# Primer:
->>> stevilo_delov("00101011")
-3
+    # Primer:
+    >>> stevilo_delov("00101011")
+    3
 \end{verbatim}
 
 \podnaloga
-Napišite funkcijo \verb|razdeli|, ki vrne delitev, kjer zaporedje razdelimo na najmanj možno p-simetričnih delov. Če je takšnih delitev več, naj funkcija vrne poljubno pravilno delitev.
+Napišite funkcijo \verb|razdeli|, ki vrne delitev, kjer zaporedje razdelimo na najmanjše možno število simetričnih delov. Če je takšnih delitev več, naj funkcija vrne poljubno izmed njih.
 
 \begin{verbatim}
-# Primer:
->>> razdeli("00101011")
-["0", "01010", "11"]
+    # Primer:
+    >>> razdeli("00101011")
+    ["0", "01010", "11"]
 \end{verbatim}
 
 \podnaloga
-Napišite funkcijo \verb|vsotno_simetricen|, ki preveri ali je del vsotno-simetričen.
-
-Namig: za pretvorbo niza števk $b$ v seznam števil uporabite \verb|l = [int(c) for c in b]|\footnote{OCaml: Naložite modul ``Str'' z ukazom \verb| #load "str.cma" ;; |\\ in nato uporabite \verb|l = List.map int_of_string (Str.split (Str.regexp "") b)|}
+Poleg simetričnih pa se dr.~Ana~Kek zanima tudi za \emph{vsotno-simetrične} dele. To so tisti deli $D$ dolžine $n$, pri katerih je vsota prvih $\lfloor n / 2 \rfloor$ števk enaka vsoti preostalih števk. Napišite funkcijo \verb|vsotno_simetricen|, ki preveri ali je del vsotno-simetričen.
 
 \begin{verbatim}
-# Primer:
->>> vsotno_simetricen("01001000")
-True
->>> vsotno_simetricen("1011")
-False
+    # Primer:
+    >>> vsotno_simetricen("01001000")
+    True
+    >>> vsotno_simetricen("1011")
+    False
+\end{verbatim}
+
+Namig: iz niza števk \verb|b| lahko v Pythonu naredite seznam števil \verb|[int(c) for c in b]|, v OCamlu isto dosežete tako, da naložite modul ``Str'' z ukazom \verb|#load "str.cma" ;;| in uporabite
+\begin{verbatim}
+    List.map int_of_string (Str.split (Str.regexp "") b)
 \end{verbatim}
 
 \podnaloga
-Posplošite funkciji \verb|stevilo_delov| in \verb|razdeli| tako, da dodatno sprejemejo funkcijo, ki preverja ali je nek del simetričen.
+Za primer, da se bo dr.~Ana~Kek kdaj začela zanimati tudi za druge vrste simetrij, funkciji \verb|stevilo_delov| in \verb|razdeli| napišite tako, da za drugi argument spremejo funkcijo, ki preverja ali je nek del simetričen.
 
 \begin{verbatim}
-# Primer:
->>> razdeli("00101011", vsotno_simetricen)
-["00", "101011"]
+    # Primer:
+    >>> razdeli("00101011", simetricen)
+    ["0", "01010", "11"]
+    >>> razdeli("00101011", vsotno_simetricen)
+    ["00", "101011"]
+    >>> razdeli("00101011", simetricen)
+    ["0", "01010", "11"]
 \end{verbatim}
 
 \end{document}
