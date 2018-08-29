@@ -1,9 +1,9 @@
 ################################################################################
-# Hvaležni medved
+# Grateful Bear
 #
-# Pri tej nalogi bomo napisali nekaj funkcij, ki nam bodo v pomoč pri analizi
-# literarnih besedil, kot je na primer koroška narodna pripovedka *Hvaležni
-# medved*.
+# In this exercise we will write a few functions that help us analyse literary
+# texts, such as the Carinthian folk tale *Grateful Bear*.
+#
 ################################################################################
 
 test_text = """Gori nekje v gorah, ne ve se več, ali je bilo pri Macigoju ali
@@ -17,10 +17,10 @@ odracal nazaj v goščavo. "Poglej no", se je razveselila mati, "kakšen hvalež
 medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 
 ################################################################################
-# 1) Sestavite funkcijo [find_words], ki vrne množico vseh besed, ki se pojavijo
-#    v nizu in vsebujejo dan podniz.
+# 1) Write a function [find_words] that returns a set of all the  words in a
+#    string containing the given substring.
 #
-# Namig: Pomagajte si z regex znakom za mejo [\b].
+# Hint: Use the regex character for the boundary [\b].
 #
 # >>> find_words(test_text, 'de')
 # {'izdere', 'debel', 'oddide', 'začudeno'}
@@ -33,8 +33,8 @@ def find_words(text, substring):
     return set (matches)
 
 ################################################################################
-# 2) Sestavite funkcijo [find_prefix], ki vrne množico vseh besed, ki se
-#    pojavijo v nizu in imajo dano predpono.
+# 2) Write a function [find_prefix] which returns the set of all words in a
+#    string starting with the given prefix.
 #
 # >>> find_prefix(test_text, 'zi')
 # {'zibala', 'zibel', 'zibelko'}
@@ -46,8 +46,8 @@ def find_prefix(text, prefix):
     return set(re.findall(rx, text))
 
 ################################################################################
-# 3) Sestavite funkcijo [find_suffix], ki vrne množico vseh besed, ki se
-#    pojavijo v nizu in imajo dano pripono.
+# 3) Write a function [find_suffix] which returns the set of all words in a
+#    string ending with the given suffix.
 #
 # >>> find_suffix(test_text, 'la')
 # {'zibala', 'razveselila', 'prestrašila', 'šivala', 'opazila', 'tla'}
@@ -58,8 +58,8 @@ def find_suffix(text, suffix):
     return set (re.findall (r, text))
 
 ################################################################################
-# 4) Sestavite funkcijo [double_letters], ki sprejme niz in vrne množico vseh
-#    besed, ki vsebujejo podvojene črke.
+# 4) Write a function [double_letters] that returns the set of words in a string
+#    that contain the same letter twice consecutively.
 #
 # >>> double_letters('A volunteer is worth twenty pressed men.')
 # {'volunteer', 'pressed'}
