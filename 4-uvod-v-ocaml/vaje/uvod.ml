@@ -2,14 +2,14 @@
 (* ========== Vaja 1: Uvod v OCaml  ========== *)
 
 (*----------------------------------------------------------------------------*]
- Definirajte funkcijo [predzadnji_elment], ki vrne predzadnji element danega
+ Definirajte funkcijo [predzadnji_element], ki vrne predzadnji element danega
  seznama. V primeru prekratkega seznama naj vrne napako.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # predzadnji_elment [1; 2; 3; 4];;
+ # predzadnji_element [1; 2; 3; 4];;
  - : int = 3
 [*----------------------------------------------------------------------------*)
 
-let rec predzadnji_elment = ()
+let rec predzadnji_element = ()
 
 (*----------------------------------------------------------------------------*]
  Definirajte funkcijo [poisci k lst], ki poišče [k]-ti element v seznamu [lst].
