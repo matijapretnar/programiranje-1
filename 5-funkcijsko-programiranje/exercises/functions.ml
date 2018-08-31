@@ -31,8 +31,8 @@ let rec repeat = ()
 let rec range = ()
 
 (*----------------------------------------------------------------------------*]
-  The function [map f lst] accepts a list [lst] of form [x0; x1; x2; ...] and a
-  function [f] and returns a list of mapped values, [f(x0); f(x1); f(x2); ...].
+ The function [map f list] accepts a list [list] of form [x0; x1; x2; ...] and
+ a function [f] and returns a list of mapped values, [f(x0); f(x1); f(x2); ...].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let plus_two = (+)2 in
    map plus_two [0; 1; 2; 3; 4];;
@@ -103,7 +103,7 @@ let rec unzip = ()
 
 let rec unzip_tlrec = ()
 (*----------------------------------------------------------------------------*]
- The function [fold_left_no_acc f lst] accepts a list [x0; x1; ...; xn] and a
+ The function [fold_left_no_acc f list] accepts a list [x0; x1; ...; xn] and a
  two argument function [f] and returns the value of the computation
  f(... (f (f x0 x1) x2) ... xn).
  If the list has less than two elements it fails.
@@ -129,7 +129,7 @@ let rec fold_left_no_acc = ()
 let rec apply_sequence = ()
 
 (*----------------------------------------------------------------------------*]
- The function [filter f lst] returns a list of elements of [lst] for which
+ The function [filter f list] returns a list of elements of [list] for which
  the function [f] returns [true].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # filter ((<)3) [0; 1; 2; 3; 4; 5];;
@@ -139,9 +139,9 @@ let rec apply_sequence = ()
 let rec filter = ()
 
 (*----------------------------------------------------------------------------*]
- The function [exists] accepts a list and a function and returns [true] if there
- exists an element of the list for which the function returns [true], otherwise
- it returns [false].
+ The function [exists] accepts a list and a function and returns [true] if
+ there exists an element of the list for which the function returns [true],
+ otherwise it returns [false].
  The function is tail recursive.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # exists ((<)3) [0; 1; 2; 3; 4; 5];;
@@ -153,7 +153,7 @@ let rec filter = ()
 let rec exists = ()
 
 (*----------------------------------------------------------------------------*]
- The function [first f default lst] returns the first element of the list for
+ The function [first f default list] returns the first element of the list for
  which [f] returns [true]. If such an element does not exist it returns
  [default].
  The function is tail recursive.

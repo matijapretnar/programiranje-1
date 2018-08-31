@@ -12,7 +12,7 @@
 let rec penultimate_element = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [get k lst] poišče [k]-ti element v seznamu [lst]. Številčenje
+ Funkcija [get k list] poišče [k]-ti element v seznamu [list]. Številčenje
  elementov seznama (kot ponavadi) pričnemo z 0. Če je k negativen, funkcija
  vrne ničti element. V primeru prekratkega seznama funkcija vrne napako.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -32,7 +32,7 @@ let rec get = ()
 let rec double = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [divide k lst] seznam razdeli na dva seznama. Prvi vsebuje prvih [k]
+ Funkcija [divide k list] seznam razdeli na dva seznama. Prvi vsebuje prvih [k]
  elementov, drugi pa vse ostale. Funkcija vrne par teh seznamov. V primeru, ko
  je [k] izven mej seznama, je primeren od seznamov prazen.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -45,7 +45,7 @@ let rec double = ()
 let rec divide = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [delete k lst] iz seznama izbriše [k]-ti element. V primeru
+ Funkcija [delete k list] iz seznama izbriše [k]-ti element. V primeru
  prekratkega seznama funkcija vrne napako.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # delete 3 [0; 0; 0; 1; 0; 0];;
@@ -55,9 +55,9 @@ let rec divide = ()
 let rec delete = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [slice i k lst] sestavi nov seznam, ki vsebuje elemente seznama [lst]
- od vključno [i]-tega do izključno [k]-tega. Predpostavimo, da sta [i] in [k]
- primerna.
+ Funkcija [slice i k list] sestavi nov seznam, ki vsebuje elemente seznama
+ [list] od vključno [i]-tega do izključno [k]-tega. Predpostavimo, da sta [i] in
+ [k] primerna.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # slice 3 6 [0; 0; 0; 1; 2; 3; 0; 0];;
  - : int list = [1; 2; 3]
@@ -66,8 +66,8 @@ let rec delete = ()
 let rec slice = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [insert x k lst] na [k]-to mesto seznama [lst] vrine element [x]. Če
- je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
+ Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
+ Če je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # insert 1 3 [0; 0; 0; 0; 0];;
  - : int list = [0; 0; 0; 1; 0; 0]
@@ -78,8 +78,8 @@ let rec slice = ()
 let rec insert = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [rotate n lst] seznam zavrti za [n] mest v levo. Predpostavimo, da je
- [n] v mejah seznama.
+ Funkcija [rotate n list] seznam zavrti za [n] mest v levo. Predpostavimo, da
+ je [n] v mejah seznama.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # rotate 2 [1; 2; 3; 4; 5];;
  - : int list = [3; 4; 5; 1; 2]
@@ -88,7 +88,7 @@ let rec insert = ()
 let rec rotate = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [remove x lst] iz seznama izbriše vse pojavitve elementa [x].
+ Funkcija [remove x list] iz seznama izbriše vse pojavitve elementa [x].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # remove 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
  - : int list = [2; 3; 2; 3]

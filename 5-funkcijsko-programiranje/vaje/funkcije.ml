@@ -30,8 +30,9 @@ let rec repeat = ()
 let rec range = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [map f lst] sprejme seznam [lst] oblike [x0; x1; x2; ...] in funkcijo
- [f] ter vrne seznam preslikanih vrednosti, torej [f(x0); f(x1); f(x2); ...].
+ Funkcija [map f list] sprejme seznam [list] oblike [x0; x1; x2; ...] in
+ funkcijo [f] ter vrne seznam preslikanih vrednosti, torej
+ [f(x0); f(x1); f(x2); ...].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let plus_two = (+)2 in
    map plus_two [0; 1; 2; 3; 4];;
@@ -104,8 +105,9 @@ let rec unzip = ()
 let rec unzip_tlrec = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [fold_left_no_acc f lst] sprejme seznam [x0; x1; ...; xn] in funkcijo
- dveh argumentov [f] in vrne vrednost izračuna f(... (f (f x0 x1) x2) ... xn).
+ Funkcija [fold_left_no_acc f list] sprejme seznam [x0; x1; ...; xn] in
+ funkcijo dveh argumentov [f] in vrne vrednost izračuna
+ f(... (f (f x0 x1) x2) ... xn).
  V primeru seznama z manj kot dvema elementoma vrne napako.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # fold_left_no_acc (^) ["F"; "I"; "C"; "U"; "S"];;
@@ -129,7 +131,7 @@ let rec fold_left_no_acc = ()
 let rec apply_sequence = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [filter f lst] vrne seznam elementov [lst], pri katerih funkcija [f]
+ Funkcija [filter f list] vrne seznam elementov [list], pri katerih funkcija [f]
  vrne vrednost [true].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # filter ((<)3) [0; 1; 2; 3; 4; 5];;
@@ -152,7 +154,7 @@ let rec filter = ()
 let rec exists = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [first f default lst] vrne prvi element seznama, za katerega
+ Funkcija [first f default list] vrne prvi element seznama, za katerega
  funkcija [f] vrne [true]. Če takšnega elementa ni, vrne [default].
  Funkcija je repno rekurzivna.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
