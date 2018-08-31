@@ -4,11 +4,11 @@
  Hint: Write a function for reversing lists.
 [*----------------------------------------------------------------------------*)
 
-let reverse lst =
+let reverse list =
   let rec reverse_aux acc = function
     | [] -> acc
     | x :: xs -> reverse_aux (x :: acc) xs
-  in reverse_aux lst []
+  in reverse_aux list []
 
 (*----------------------------------------------------------------------------*]
  The function [repeat x n] returns a list with [n] repetitions of [x]. For
@@ -46,7 +46,7 @@ let range n =
   range_aux n []
 
 (*----------------------------------------------------------------------------*]
-  The function [map f lst] accepts a list [lst] of form [x0; x1; x2; ...] and a
+  The function [map f list] accepts a list [list] of form [x0; x1; x2; ...] and a
   function [f] and returns a list of mapped values, [f(x0); f(x1); f(x2); ...].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let plus_two = (+)2 in
@@ -66,32 +66,33 @@ let rec map f = function
  - : int list = [2; 3; 4; 5; 6]
 [*----------------------------------------------------------------------------*)
 
-let map_tlrec f lst =
-  let rec map_aux lst acc =
-    match lst with
+let map_tlrec f list =
+  let rec map_aux list acc =
+    match list with
     | [] -> reverse acc
     | x :: xs -> map_aux xs (f x :: acc)
   in
-  map_aux lst []
+  map_aux list []
 
 (*----------------------------------------------------------------------------*]
-  The function "mapi f l" accepts a list l = [l0; l1; l2; ...] and a function f
- and returns the list [f 0 l0; f 1 l1; f 2 l2; ...].
+ The function [mapi f list] accepts a two argument function and returns a list
+ of the mapped values of [list], where the second argument is the index of the
+ element in [list].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # mapi (+) [0; 0; 0; 2; 2; 2];;
  - : int list = [0; 1; 2; 5; 6; 7]
 [*----------------------------------------------------------------------------*)
 
-let mapi f lst =
-  let rec mapi_aux lst i =
-    match lst with
+let mapi f list =
+  let rec mapi_aux list i =
+    match list with
     | [] -> []
     | x :: xs -> (f i x) :: (mapi_aux xs (i + 1))
   in
-  mapi_aux lst 0
+  mapi_aux list 0
 
 (*----------------------------------------------------------------------------*]
- The function [zip lst1 lst2] accepts two lists and returns a list of pairs of
+ The function [zip list1 list2] accepts two lists and returns a list of pairs of
  same index elements of the given lists. If the lists are of different lengths,
  it fails.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -101,8 +102,8 @@ let mapi f lst =
  Exception: Failure "Different lengths of input lists.".
 [*----------------------------------------------------------------------------*)
 
-let rec zip lst1 lst2 =
-  match lst1, lst2 with
+let rec zip list1 list2 =
+  match list1, list2 with
   | [], [] -> []
   | _, [] | [], _ -> failwith "Different lengths of input lists."
   | x :: xs, y :: ys -> (x, y) :: (zip xs ys)
@@ -116,16 +117,16 @@ let rec zip lst1 lst2 =
  - : (int * string * int) list = [(0, "a", 7); (1, "b", 3); (2, "c", 4)]
 [*----------------------------------------------------------------------------*)
 
-let zip_enum_tlrec lst1 lst2 =
-  let rec zipe_aux lst1 lst2 i acc =
-    match lst1, lst2 with
+let zip_enum_tlrec list1 list2 =
+  let rec zipe_aux list1 list2 i acc =
+    match list1, list2 with
     | [], [] -> reverse acc
     | _, [] | [], _ -> failwith "Different lengths of input lists."
     | x :: xs, y :: ys) ->
       let element = (i, x, y) in
       zipe_aux xs ys (i + 1) (element :: acc)
    in
-   zipe_aux lst1 lst2 0 []
+   zipe_aux list1 list2 0 []
 
 (*----------------------------------------------------------------------------*]
  The function [unzip] is the inverse of [zip]. It accepts a list of pairs
@@ -137,7 +138,7 @@ let zip_enum_tlrec lst1 lst2 =
 
 let rec unzip = function
   | [] -> ([], [])
-  | (x, y) :: tl -> let (lst1, lst2) = unzip tl in (x :: lst1, y :: lst2)
+  | (x, y) :: tl -> let (list1, list2) = unzip tl in (x :: list1, y :: list2)
 
 (*----------------------------------------------------------------------------*]
  The function [unzip_tlrec] is the tail recursive version of [unzip].
@@ -146,16 +147,16 @@ let rec unzip = function
  - : int list * string list = ([0; 1; 2], ["a"; "b"; "c"])
 [*----------------------------------------------------------------------------*)
 
-let unzip_tlrec lst =
-  let rec unzip_aux lst acc1 acc2 =
-    match lst with
+let unzip_tlrec list =
+  let rec unzip_aux list acc1 acc2 =
+    match list with
     | [] -> (reverse acc1, reverse acc2)
     | (x, y) :: tl -> unzip_aux tl (x :: acc1) (y :: acc2)
   in
-  unzip_aux lst [] []
+  unzip_aux list [] []
 
 (*----------------------------------------------------------------------------*]
- The function [fold_left_no_acc f lst] accepts a list [x0; x1; ...; xn] and a
+ The function [fold_left_no_acc f list] accepts a list [x0; x1; ...; xn] and a
  two argument function [f] and returns the value of the computation
  f(... (f (f x0 x1) x2) ... xn).
  If the list has less than two elements it fails.
@@ -191,7 +192,7 @@ let apply_sequence f x n =
   apply_aux f x n []
 
 (*----------------------------------------------------------------------------*]
- The function [filter f lst] returns a list of elements of [lst] for which
+ The function [filter f list] returns a list of elements of [list] for which
  the function [f] returns [true].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # filter ((<)3) [0; 1; 2; 3; 4; 5];;
@@ -219,7 +220,7 @@ let rec exists f = function
   | x :: xs -> if f x then true else exists f xs
 
 (*----------------------------------------------------------------------------*]
- The function [first f default lst] returns the first element of the list for
+ The function [first f default list] returns the first element of the list for
  which [f] returns [true]. If such an element does not exist it returns
  [default].
  The function is tail recursive.
