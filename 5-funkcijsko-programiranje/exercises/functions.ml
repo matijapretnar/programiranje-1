@@ -1,14 +1,14 @@
-(* ========== Vaja 2: Funkcijsko Programiranje  ========== *)
+(* ========== Exercise 2: Functional Programming  ========== *)
 
 (*----------------------------------------------------------------------------*]
-Namig: Definirajte pomožno funkcijo za obračanje seznamov.
+ Hint: Write a function for reversing lists.
 [*----------------------------------------------------------------------------*)
 
 let rec reverse = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [repeat x n] vrne seznam [n] ponovitev vrednosti [x]. Za neprimerne
- vrednosti [n] funkcija vrne prazen seznam.
+ The function [repeat x n] returns a list with [n] repetitions of [x]. For
+ unsuitable values of [n] it returns an empty list.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # repeat "A" 5;;
  - : string list = ["A"; "A"; "A"; "A"; "A"]
@@ -19,9 +19,10 @@ let rec reverse = ()
 let rec repeat = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [range] sprejme število in vrne seznam vseh celih števil od 0 do
- vključno danega števila. Za neprimerne argumente funkcija vrne prazen seznam.
- Funkcija je repno rekurzivna.
+ The function [range] accepts an integer and returns a list of all non-negative
+ integers up to (including) the given number. For unsuitable inputs it returns
+ an empty list.
+ The function is tail recursive.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # range 10;;
  - : int list = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
@@ -30,8 +31,8 @@ let rec repeat = ()
 let rec range = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [map f lst] sprejme seznam [lst] oblike [x0; x1; x2; ...] in funkcijo
- [f] ter vrne seznam preslikanih vrednosti, torej [f(x0); f(x1); f(x2); ...].
+  The function [map f lst] accepts a list [lst] of form [x0; x1; x2; ...] and a
+  function [f] and returns a list of mapped values, [f(x0); f(x1); f(x2); ...].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let plus_two = (+)2 in
    map plus_two [0; 1; 2; 3; 4];;
@@ -41,7 +42,7 @@ let rec range = ()
 let rec map = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [map_tlrec] je repno rekurzivna različica funkcije [map].
+  The function [map_tlrec] is the tail recursive version of map.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let plus_two = (fun x -> x+2) in
    map_tlrec plus_two [0; 1; 2; 3; 4];;
@@ -51,9 +52,8 @@ let rec map = ()
 let rec map_tlrec = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [mapi] sprejme seznam in funkcijo dveh argumentov ter vrne seznam
- preslikanih vrednosti seznama, kjer kot drugi argument funkcije podamo indeks
- elementa v seznamu.
+  The function "mapi f l" accepts a list l = [l0; l1; l2; ...] and a function f
+ and returns the list [f 0 l0; f 1 l1; f 2 l2; ...].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # mapi (+) [0; 0; 0; 2; 2; 2];;
  - : int list = [0; 1; 2; 5; 6; 7]
@@ -62,8 +62,9 @@ let rec map_tlrec = ()
 let rec mapi = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [zip] sprejme dva seznama in vrne seznam parov istoležnih
- elementov podanih seznamov. Če seznama nista enake dolžine vrne napako.
+ The function [zip lst1 lst2] accepts two lists and returns a list of pairs of
+ same index elements of the given lists. If the lists are of different lengths,
+ it fails.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # zip [1; 1; 1; 1] [0; 1; 2; 3];;
  - : (int * int) list = [(1, 0); (1, 1); (1, 2); (1, 3)]
@@ -74,19 +75,18 @@ let rec mapi = ()
 let rec zip = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [zip_enum_tlrec] sprejme seznama [x_0; x_1; ...] in [y_0; y_1; ...]
- ter vrne seznam [(0, x_0, y_0); (1, x_1, y_1); ...]. Funkcija je repno
- rekurzivna. Če seznama nista enake dolžine vrne napako.
+ The function [zip_enum_tlrec] accepts lists [x_0; x_1; ...] and [y_0; y_1; ...]
+ and returns the list [(0, x_0, y_0); (1, x_1, y_1); ...]. The function is tail
+ recursive. If the lists are of different lengths, it fails.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # zip_enum_tlrec ["a"; "b"; "c"] [7; 3; 4];;
  - : (int * string * int) list = [(0, "a", 7); (1, "b", 3); (2, "c", 4)]
 [*----------------------------------------------------------------------------*)
 
 let rec zip_enum_tlrec = ()
-
 (*----------------------------------------------------------------------------*]
- Funkcija [unzip] je inverz funkcije [zip], torej sprejme seznam parov
- [(x0, y0); (x1, y1); ...] in vrne par seznamov ([x0; x1; ...], [y0; y1; ...]).
+ The function [unzip] is the inverse of [zip]. It accepts a list of pairs
+ [(x0, y0); (x1, y1); ...] and returns the pair ([x0; x1; ...], [y0; y1; ...]).
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # unzip [(0,"a"); (1,"b"); (2,"c")];;
  - : int list * string list = ([0; 1; 2], ["a"; "b"; "c"])
@@ -95,18 +95,18 @@ let rec zip_enum_tlrec = ()
 let rec unzip = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [unzip_tlrec] je repno rekurzivna različica funkcije [unzip].
+ The function [unzip_tlrec] is the tail recursive version of [unzip].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # unzip_tlrec [(0,"a"); (1,"b"); (2,"c")];;
  - : int list * string list = ([0; 1; 2], ["a"; "b"; "c"])
 [*----------------------------------------------------------------------------*)
 
 let rec unzip_tlrec = ()
-
 (*----------------------------------------------------------------------------*]
- Funkcija [fold_left_no_acc f lst] sprejme seznam [x0; x1; ...; xn] in funkcijo
- dveh argumentov [f] in vrne vrednost izračuna f(... (f (f x0 x1) x2) ... xn).
- V primeru seznama z manj kot dvema elementoma vrne napako.
+ The function [fold_left_no_acc f lst] accepts a list [x0; x1; ...; xn] and a
+ two argument function [f] and returns the value of the computation
+ f(... (f (f x0 x1) x2) ... xn).
+ If the list has less than two elements it fails.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # fold_left_no_acc (^) ["F"; "I"; "C"; "U"; "S"];;
  - : string = "FICUS"
@@ -115,10 +115,10 @@ let rec unzip_tlrec = ()
 let rec fold_left_no_acc = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [apply_sequence f x n] vrne seznam zaporednih uporab funkcije [f] na
- vrednosti [x] do vključno [n]-te uporabe, torej
- [x; f x; f (f x); ...; (f uporabljena n-krat na x)].
- Funkcija je repno rekurzivna.
+ The function [apply_sequence f x n] returns the list of repeated applications
+ of the function [f] on the value [x] up until the [n]th repeated application,
+ [x; f x; f (f x); ...; (f applied n times on x)].
+ The function is tail recursive.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # apply_sequence (fun x -> x * x) 2 5;;
  - : int list = [2; 4; 16; 256; 65536; 4294967296]
@@ -129,8 +129,8 @@ let rec fold_left_no_acc = ()
 let rec apply_sequence = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [filter f lst] vrne seznam elementov [lst], pri katerih funkcija [f]
- vrne vrednost [true].
+ The function [filter f lst] returns a list of elements of [lst] for which
+ the function [f] returns [true].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # filter ((<)3) [0; 1; 2; 3; 4; 5];;
  - : int list = [4; 5]
@@ -139,9 +139,10 @@ let rec apply_sequence = ()
 let rec filter = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [exists] sprejme seznam in funkcijo, ter vrne vrednost [true] čim
- obstaja element seznama, za katerega funkcija vrne [true] in [false] sicer.
- Funkcija je repno rekurzivna.
+ The function [exists] accepts a list and a function and returns [true] if there
+ exists an element of the list for which the function returns [true], otherwise
+ it returns [false].
+ The function is tail recursive.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # exists ((<)3) [0; 1; 2; 3; 4; 5];;
  - : bool = true
@@ -152,9 +153,10 @@ let rec filter = ()
 let rec exists = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [first f default lst] vrne prvi element seznama, za katerega
- funkcija [f] vrne [true]. Če takšnega elementa ni, vrne [default].
- Funkcija je repno rekurzivna.
+ The function [first f default lst] returns the first element of the list for
+ which [f] returns [true]. If such an element does not exist it returns
+ [default].
+ The function is tail recursive.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # first ((<)3) 0 [1; 1; 2; 3; 5; 8];;
  - : int = 5

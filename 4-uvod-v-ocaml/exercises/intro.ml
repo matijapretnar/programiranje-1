@@ -23,7 +23,7 @@ let rec penultimate_element = ()
  - : int = 1
 [*----------------------------------------------------------------------------*)
 
-let rec get k = ()
+let rec get = ()
 
 (*----------------------------------------------------------------------------*]
  The function [double lst] doubles the occurences of elements in the list.
@@ -46,7 +46,7 @@ let rec double = ()
  - : int list * int list = ([1; 2; 3; 4; 5], [])
 [*----------------------------------------------------------------------------*)
 
-let rec divide k lst = ()
+let rec divide = ()
 
 (*----------------------------------------------------------------------------*]
  The function [delete k lst] removes the [k]-th element of the list.
@@ -56,7 +56,7 @@ let rec divide k lst = ()
  - : int list = [0; 0; 0; 0; 0]
 [*----------------------------------------------------------------------------*)
 
-let rec delete k = ()
+let rec delete = ()
 
 (*----------------------------------------------------------------------------*]
  The function [slice i k lst] returns the sub-list of [lst] from the [i]-th up
@@ -67,7 +67,7 @@ let rec delete k = ()
  - : int list = [1; 2; 3]
 [*----------------------------------------------------------------------------*)
 
-let slice i k lst = ()
+let rec slice = ()
 
 (*----------------------------------------------------------------------------*]
  The function [insert x k lst] inserts (not replaces) [x] into the list at the
@@ -81,7 +81,7 @@ let slice i k lst = ()
  - : int list = [1; 0; 0; 0; 0; 0]
 [*----------------------------------------------------------------------------*)
 
-let rec insert x k l = ()
+let rec insert = ()
 
 (*----------------------------------------------------------------------------*]
  The function [rotate n lst] rotates the list to the left by [n] places.
@@ -91,7 +91,7 @@ let rec insert x k l = ()
  - : int list = [3; 4; 5; 1; 2]
 [*----------------------------------------------------------------------------*)
 
-let rec rotate n lst = ()
+let rec rotate = ()
 
 (*----------------------------------------------------------------------------*]
  The function [remove x lst] removes all occurrences of [x] in the list.
@@ -100,7 +100,7 @@ let rec rotate n lst = ()
  - : int list = [2; 3; 2; 3]
 [*----------------------------------------------------------------------------*)
 
-let rec remove x = ()
+let rec remove = ()
 
 (*----------------------------------------------------------------------------*]
  The function [is_palindrome] checks if a list is a palindrome.
@@ -112,7 +112,7 @@ let rec remove x = ()
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
-let is_palindrome lst = ()
+let rec is_palindrome = ()
 
 (*----------------------------------------------------------------------------*]
  The function [max_on_components] returns a list with the maximum element
@@ -123,7 +123,7 @@ let is_palindrome lst = ()
  - : int list = [5; 4; 3; 3; 4]
 [*----------------------------------------------------------------------------*)
 
-let rec max_on_components lst1 lst2 = ()
+let rec max_on_components = ()
 
 (*----------------------------------------------------------------------------*]
  The function [second_largest] returns the second largest value in the list.
@@ -135,4 +135,4 @@ let rec max_on_components lst1 lst2 = ()
  - : int = 10
 [*----------------------------------------------------------------------------*)
 
-let second_largest l = ()
+let rec second_largest = ()
