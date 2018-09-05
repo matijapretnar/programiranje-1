@@ -1,133 +1,157 @@
-(* Vojne čarodejov se nadaljujejo. *)
+(* ========== Vaja 3: Definicije Tipov  ========== *)
 
-(* Čarodeji, ki se borijo v vojnah so pripadniki teh treh ras.  *)
-type race = Orc | Hobbit | Human
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ Pri modeliranju denarja ponavadi uporabljamo racionalna števila. Problemi se
+ pojavijo, ko uvedemo različne valute.
+ Oglejmo si dva pristopa k izboljšavi varnosti pri uporabi valut.
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
+(*----------------------------------------------------------------------------*]
+ Definirajte tipa [euro] in [dollar], kjer ima vsak od tipov zgolj en
+ konstruktor, ki sprejme racionalno število.
+ Nato napišite funkciji [euro_to_dollar] in [dollar_to_euro], ki primerno
+ pretvarjata valuti (točne vrednosti pridobite na internetu ali pa si jih
+ izmislite).
 
-(* Uroki [spells] prihajajo iz treh šol [school] magije: firewall in blaze sta ognjena uroka [Fire],
-   resurrect in cripple sta nekromantska [Necrotic], in renounce ter
-   banish sta angelska [Angelic].
-
-   Definiraj tipa, ki predstavljata različne uroke in šole magije.
-*)
-
-
-type school = ()
-
-
-type spell = ()
-
-(* Veščine [skills], ki jih je čarodej osvojil, so seznam vseh urokov,
-   ki jih lahko hitro izvede. Definiraj tip `skills'. *)
-
-
-
-(* Čarodeja opišemo z imenom, številom življenskih točk [hp], sposobnost [ability]
-   ki jo predstavimo s številom točk mane, raso [race] in veščino [skills].
-   To shranimo kot zapisni tip (record). *)
-
-type mana = int
-type health = int
-
-type wizard = {name : string; }
-
-
-(* Napiši funkcijo ki vsakemu uroku priredi primerno šolo magije. *)
-let school_of_spell = function
-  () -> ()
-
-(* Glede na tabelo napiši funkcijo, ki uroku priredi količino mane,
-   ki jo čarodej potrebuje za izvršitev uroka:
-  blaze : 420
-  firewall : 35
-  renounce : 17
-  banish : 103
-  resurrect : 178
-  cripple : 250
-
-   Namig: Lahko si pomagaš z regex-replace v Notepad++
- *)
-let mana_of_spell = failwith "todo"
-
-(* Ustvari nekaj primerov čarodejov, tako kot je prikazano na primeru Merlina.
-   Ponovno si lahko pomagaš s regex-replace.*)
-(*
-name : "Frodo",      ability : 53,   hp : 1000,  skills : [Renounce],                      race : Hobbit
-name : "Ajitam",     ability : 1337, hp : 7331,  skills : [Firewall; Resurrect; Firewall], race : Hobbit
-name : "Mr Duck",    ability : 7,    hp : 90000, skills : [Cripple],                       race : Orc
-name : "Kylo Ren",   ability : 589,  hp : 90,    skills : [Resurrect],                     race : Human
-name : "Snoop Dogg", ability : 420,  hp : 4000,  skills : [Blaze],                         race : Orc
-*)
-
-(* let merlin = {name = "Merlin";   ability = 1832; hp = 9001; skills = [Renounce; Banish];  race = Human} *)
-let frodo =  failwith "todo"
-let ajitam = failwith "todo"
-let mrDuck = failwith "todo"
-let kYloReN = failwith "todo"
-let snoop_dogg = failwith "todo"
-
-
-(* Napiši funkcijo, ki iz seznama čarodejev vrne čarodeja z največ mane. *)
-let rec strongest_wizard (wizards : wizard list) : wizard option =
-  failwith "todo"
-
-(* Posploši funkcijo strongest_wizard na funkcijo max_list, ki sprejme seznam
-   in dodatno funkcijo dveh elementov max : 'a -> 'a -> 'a in vrne maksimalni element seznama
-   glede na funkcijo max.
-*)
+ Namig: Občudujte informativnost tipov funkcij.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # dollar_to_euro;;
+ - : dollar -> euro = <fun>
+ # dollar_to_euro (Dollar 0.5);;
+ - : euro = Euro 0.4305
+[*----------------------------------------------------------------------------*)
 
 
 
-(* Rase imajo različno občutljivost [vulnerability] na določene šole magije.
-   Napiši tip s katerim lahko izraziš kdaj ima rasa visoko [High], navadno [Normal]
-   ali pa nizko [Low] občutljivost na urok. *)
+(*----------------------------------------------------------------------------*]
+ Definirajte tip [currency] kot en vsotni tip z konstruktorji za jen, funt
+ in švedsko krono. Nato napišite funkcijo [to_pound], ki primerno pretvori
+ valuto tipa [currency] v funte.
+
+ Namig: V tip dodajte še švicarske franke in se navdušite nad dejstvom, da vas
+        Ocaml sam opozori, da je potrebno popraviti funkcijo [to_pound].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # to_pound (Yen 100.);;
+ - : currency = Pound 0.007
+[*----------------------------------------------------------------------------*)
 
 
-(* Napiši funkcijo, ki glede na šolo uroka in raso izračuna občutljivost.
 
-   Low za:     orcs:necrotic, hobbits:fire, humans:angelic,
-   High za:    hobbit:necrotic, human:fire, orc:angelic
-   Sicer vrne Normal
-*)
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ Želimo uporabljati sezname, ki hranijo tako cela števila kot tudi logične
+ vrednosti. To bi lahko rešili tako da uvedemo nov tip, ki predstavlja celo
+ število ali logično vrednost, v nadaljevanju pa bomo raje konstruirali nov tip
+ seznamov.
 
-(* let effectiveness (school : school) (race : race) : vulnerability =
-...
-*)
+ Spomnimo se, da lahko tip [list] predstavimo s konstruktorjem za prazen seznam
+ [Nil] (oz. [] v Ocamlu) in pa konstruktorjem za člen [Cons(x, xs)] (oz.
+ x :: xs v Ocamlu).
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
-(* Zapiši funkcijo, ki za čarodeja izračuna njegovo občutljivost na podani urok. *)
-let vulnerable = failwith "todo"
+(*----------------------------------------------------------------------------*]
+ Definirajte tip [intbool_list] z konstruktorji za:
+  1.) prazen seznam,
+  2.) člen z celoštevilsko vrednostjo,
+  3.) člen z logično vrednostjo.
 
-
-(* Občutljivost se v boju izrazi kot koeficient škode, ki jo utrpi čarodej, če ga urok zadane.
-   Zapiši funkcijo, ki glede na občutljivost vrne primeren koeficient, tako da čarodej z nizko
-   občutljivostjo utrpi le pol škode, čarodej z visoko občutljivostjo pa dvakratnik.*)
-
-
-(* Vsak urok naredi toliko škode, kot je potrebnih točk mane za izvršitev uroka.
-   Napiši funkcijo, ki glede na urok in čarodeja izračuna koliko škode utrpi,
-   če ga urok zadane.
-
-   Namig: za pretvarjanje med int in float se uporabljata funkciji float_of_int in
-   int_of_float.
-*)
+ Nato napišite testni primer, ki bi predstavljal "[5; true; false; 7]".
+[*----------------------------------------------------------------------------*)
 
 
-(* Zapiši funkcijo, ki vrne novo stanje čarodeja (z znižanimi življenskimi točkami [hp]),
-   po tem, ko ga je zadel izbrani urok.
-   (Novo stanje čarodeja je prav tako tipa wizard)
-*)
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [intbool_map f_int f_bool ib_list] preslika vrednosti [ib_list] v nov
+ [intbool_list] seznam, kjer na elementih uporabi primerno od funkcij [f_int]
+ oz. [f_bool].
+[*----------------------------------------------------------------------------*)
+
+let rec intbool_map = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [intbool_reverse] obrne vrstni red elementov [intbool_list] seznama.
+ Funkcija je repno rekurzivna.
+[*----------------------------------------------------------------------------*)
+
+let rec intbool_reverse = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [intbool_separate ib_list] loči vrednosti [ib_list] v par [list]
+ seznamov, kjer prvi vsebuje vse celoštevilske vrednosti, drugi pa vse logične
+ vrednosti. Funkcija je repno rekurzivna in ohranja vrstni red elementov.
+[*----------------------------------------------------------------------------*)
+
+let rec intbool_separate = ()
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ Določeni ste bili za vzdrževalca baze podatkov za svetovno priznano čarodejsko
+ akademijo "Effemef". Vaša naloga je konstruirati sistem, ki bo omogočil
+ pregledno hranjenje podatkov.
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+(*----------------------------------------------------------------------------*]
+ Čarodeje razvrščamo glede na vrsto magije, ki se ji posvečajo. Definirajte tip
+ [magic], ki loči med magijo ognja, magijo ledu in magijo arkane oz. fire,
+ frost in arcane.
+
+ Ko se čarodej zaposli na akademiji, se usmeri v zgodovino, poučevanje ali
+ raziskovanje oz. historian, teacher in researcher. Definirajte tip
+ [specialisation], ki loči med temi zaposlitvami.
+[*----------------------------------------------------------------------------*)
 
 
-(* Napiši funkcijo, ki za danega čarovnika izvršuje uroke, dokler ne izvede vseh urokov
-   na seznamu, ali pa mu zmanjka točk mane. *)
-let cast_spells wizard : wizard * spell list = failwith "todo"
+
+(*----------------------------------------------------------------------------*]
+ Vsak od čarodejev začne kot začetnik, nato na neki točki postane študent,
+ na koncu pa SE lahko tudi zaposli.
+ Definirajte tip [status], ki določa ali je čarodej:
+  a.) začetnik [Newbie],
+  b.) študent [Student] (in kateri vrsti magije pripada in koliko časa študira),
+  c.) zaposlen [Employed] (in vrsto magije in specializacijo).
+
+ Nato definirajte zapisni tip [wizard] z poljem za ime in poljem za trenuten
+ status.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # professor;;
+ - : wizard = {name = "Matija"; status = Employed (Fire, Teacher)}
+[*----------------------------------------------------------------------------*)
 
 
-(* Napiši funkcijo, ki simulira spopad dveh čarodejev. V primeru, ko napadalec ne more izvršiti
-   nobenega uroka, napadalec izgubi. V nasprotnem primeru uporabi vse uroke, ki jih lahko.
-   Če branilcu zmanjka življenskih točk, izgubi, sicer pa se vlogi napadalca in branilca zamenjata.
-*)
-let rec duel (attacker : wizard) (defender : wizard) : wizard =
-  failwith "todo"
 
-let _ = duel frodo snoop_dogg
+(*----------------------------------------------------------------------------*]
+ Želimo prešteti koliko uporabnikov posamezne od vrst magije imamo na akademiji.
+ Definirajte zapisni tip [magic_counter], ki v posameznem polju hrani število
+ uporabnikov magije.
+ Nato definirajte funkcijo [update counter magic], ki vrne nov števec s
+ posodobljenim poljem glede na vrednost [magic].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # update {fire = 1; frost = 1; arcane = 1} Arcane;;
+ - : magic_counter = {fire = 1; frost = 1; arcane = 2}
+[*----------------------------------------------------------------------------*)
+
+
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [count_magic] sprejme seznam čarodejev in vrne števec uporabnikov
+ različnih vrst magij.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # count_magic [professor; professor; professor];;
+ - : magic_counter = {fire = 3; frost = 0; arcane = 0}
+[*----------------------------------------------------------------------------*)
+
+let rec count_magic = ()
+
+(*----------------------------------------------------------------------------*]
+ Želimo poiskati primernega kandidata za delovni razpis. Študent lahko postane
+ zgodovinar po vsaj treh letih študija, raziskovalec po vsaj štirih letih
+ študija in učitelj po vsaj petih letih študija.
+ Funkcija [find_candidate magic specialisation wizard_list] poišče prvega
+ primernega kandidata na seznamu čarodejev in vrne njegovo ime, čim ustreza
+ zahtevam za [specialisation] in študira vrsto [magic]. V primeru, da ni
+ primernega kandidata, funkcija vrne [None].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # let jaina = {name = "Jaina"; status = Student (Frost, 4)};;
+ # find_candidate Frost Researcher [professor; jaina];;
+ - : string option = Some "Jaina"
+[*----------------------------------------------------------------------------*)
+
+let rec find_candidate = ()

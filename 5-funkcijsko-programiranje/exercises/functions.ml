@@ -52,8 +52,9 @@ let rec map = ()
 let rec map_tlrec = ()
 
 (*----------------------------------------------------------------------------*]
-  The function "mapi f l" accepts a list l = [l0; l1; l2; ...] and a function f
- and returns the list [f 0 l0; f 1 l1; f 2 l2; ...].
+ The function [mapi f list] accepts a two argument function and returns a list
+ of the mapped values of [list], where the second argument is the index of the
+ element in [list].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # mapi (+) [0; 0; 0; 2; 2; 2];;
  - : int list = [0; 1; 2; 5; 6; 7]
@@ -62,9 +63,9 @@ let rec map_tlrec = ()
 let rec mapi = ()
 
 (*----------------------------------------------------------------------------*]
- The function [zip lst1 lst2] accepts two lists and returns a list of pairs of
- same index elements of the given lists. If the lists are of different lengths,
- it fails.
+ The function [zip list1 list2] accepts two lists and returns a list of pairs
+ of same index elements of the given lists. If the lists are of different
+ lengths, it fails.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # zip [1; 1; 1; 1] [0; 1; 2; 3];;
  - : (int * int) list = [(1, 0); (1, 1); (1, 2); (1, 3)]
