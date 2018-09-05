@@ -1,19 +1,18 @@
-(* ========== Vaja 3: Definicije Tipov  ========== *)
+(* ========== Exercise 3: Types  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- Pri modeliranju denarja ponavadi uporabljamo racionalna števila. Problemi se
- pojavijo, ko uvedemo različne valute.
- Oglejmo si dva pristopa k izboljšavi varnosti pri uporabi valut.
+ When modeling money, we usually use floats. However we quickly run into
+ problems when currency is introduced.
+ We shall look at two attempts to improve safety when using currency.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
- Definirajte tipa [euro] in [dollar], kjer ima vsak od tipov zgolj en
- konstruktor, ki sprejme racionalno število.
- Nato napišite funkciji [euro_to_dollar] in [dollar_to_euro], ki primerno
- pretvarjata valuti (točne vrednosti pridobite na internetu ali pa si jih
- izmislite).
+ Define the types [euro] and [dollar], where each has only one constructor,
+ which accepts a float.
+ Then define the functions [euro_to_dollar] and [dollar_to_euro] which convert
+ between the two currencies (get the correct factors online or make them up).
 
- Namig: Občudujte informativnost tipov funkcij.
+ Hint: Marvel at how informative the types are.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # dollar_to_euro;;
  - : dollar -> euro = <fun>
@@ -28,12 +27,12 @@ let dollar_to_euro (Dollar x) = Euro (x *. 0.861)
 let euro_to_dollar (Euro x) = Dollar (x *. 1.161)
 
 (*----------------------------------------------------------------------------*]
- Definirajte tip [currency] kot en vsotni tip z konstruktorji za jen, funt
- in švedsko krono. Nato napišite funkcijo [to_pound], ki primerno pretvori
- valuto tipa [currency] v funte.
+ Define the type [currency] as a single variant type with constructors for the
+ currencies yen, pound and krona. Then define the function [to_pound], which
+ converts the given currency to the pound.
 
- Namig: V tip dodajte še švicarske franke in se navdušite nad dejstvom, da vas
-        Ocaml sam opozori, da je potrebno popraviti funkcijo [to_pound].
+ Hint: Additionally add the franc as a currency and get excited over the fact
+       that Ocaml reminds you to correct the function [to_pound].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # to_pound (Yen 100.);;
  - : currency = Pound 0.007
@@ -47,23 +46,22 @@ let to_pound = function
   | Krona x -> Pound 0.085
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- Želimo uporabljati sezname, ki hranijo tako cela števila kot tudi logične
- vrednosti. To bi lahko rešili tako da uvedemo nov tip, ki predstavlja celo
- število ali logično vrednost, v nadaljevanju pa bomo raje konstruirali nov tip
- seznamov.
+ We wish to use lists that keep integers as well as booleans. This can be
+ solved by introducing a type of integer or boolean values, however we will
+ instead introduce a new type for lists.
 
- Spomnimo se, da lahko tip [list] predstavimo s konstruktorjem za prazen seznam
- [Nil] (oz. [] v Ocamlu) in pa konstruktorjem za člen [Cons(x, xs)] (oz.
- x :: xs v Ocamlu).
+ Recall that the type [list] uses a constructor for the empty list [Nil]
+ (or [] in Ocaml) and a constructor for an element [Cons(x, xs)] (or x :: xs in
+ Ocaml).
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
- Definirajte tip [intbool_list] z konstruktorji za:
-  1.) prazen seznam,
-  2.) člen z celoštevilsko vrednostjo,
-  3.) člen z logično vrednostjo.
+ Define the type [intbool_list] with constructors for:
+  1.) the empty list,
+  2.) an integer element,
+  3.) a boolean element.
 
- Nato napišite testni primer, ki bi predstavljal "[5; true; false; 7]".
+ Define an example, which represents "[5; true; false; 7]".
 [*----------------------------------------------------------------------------*)
 
 type intbool_list =
@@ -74,9 +72,9 @@ type intbool_list =
 let test = Int(5, Bool(true, Bool(false, Int(7, Nil))))
 
 (*----------------------------------------------------------------------------*]
- Funkcija [intbool_map f_int f_bool ib_list] preslika vrednosti [ib_list] v nov
- [intbool_list] seznam, kjer na elementih uporabi primerno od funkcij [f_int]
- oz. [f_bool].
+ The function [intbool_map f_int f_bool ib_list] maps the values of [ib_list]
+ into a new [intbool_list] using the appropriate function out of [f_int] and
+ [f_bool].
 [*----------------------------------------------------------------------------*)
 
 let rec intbool_map f_int f_bool = function
@@ -85,8 +83,8 @@ let rec intbool_map f_int f_bool = function
   | Nil -> Nil
 
 (*----------------------------------------------------------------------------*]
- Funkcija [intbool_reverse] obrne vrstni red elementov [intbool_list] seznama.
- Funkcija je repno rekurzivna.
+ The function [intbool_reverse] reverses the order of elements of an
+ [intbool_list]. The function is tail-recursive.
 [*----------------------------------------------------------------------------*)
 
 let rec intbool_reverse ib_list =
@@ -98,9 +96,10 @@ let rec intbool_reverse ib_list =
   ib_reverse Nil ib_list
 
 (*----------------------------------------------------------------------------*]
- Funkcija [intbool_separate ib_list] loči vrednosti [ib_list] v par [list]
- seznamov, kjer prvi vsebuje vse celoštevilske vrednosti, drugi pa vse logične
- vrednosti. Funkcija je repno rekurzivna in ohranja vrstni red elementov.
+ The function [intbool_separate ib_list] separates the values of [ib_list] into
+ a pair of regular [list] lists, where the first one includes all integers and
+ the second one all boolean values. The function is tail-recursive and does not
+ change the order of elements.
 [*----------------------------------------------------------------------------*)
 
 let rec intbool_separate ib_list =
@@ -112,19 +111,17 @@ let rec intbool_separate ib_list =
   ib_separate [] [] (intbool_reverse ib_list)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- Določeni ste bili za vzdrževalca baze podatkov za svetovno priznano čarodejsko
- akademijo "Effemef". Vaša naloga je konstruirati sistem, ki bo omogočil
- pregledno hranjenje podatkov.
+ You were chosen to be the database administrator for a world renowned wizard
+ university "Effemef". Your task is to construct a simple system for data
+ management.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
- Čarodeje razvrščamo glede na vrsto magije, ki se ji posvečajo. Definirajte tip
- [magic], ki loči med magijo ognja, magijo ledu in magijo arkane oz. fire,
- frost in arcane.
+ Wizards are classified according to their chosen school of magic. Define a
+ type [magic] which includes the magic of fire, frost and arcane.
 
- Ko se čarodej zaposli na akademiji, se usmeri v zgodovino, poučevanje ali
- raziskovanje oz. historian, teacher in researcher. Definirajte tip
- [specialisation], ki loči med temi zaposlitvami.
+ After being employed, a wizard can decide to be a historian, a teacher or
+ a researcher. Define the type [specialisation] that represents those choices.
 [*----------------------------------------------------------------------------*)
 
 type magic = Fire | Frost | Arcane
@@ -132,15 +129,15 @@ type magic = Fire | Frost | Arcane
 type specialisation = Historian | Teacher | Researcher
 
 (*----------------------------------------------------------------------------*]
- Vsak od čarodejev začne kot začetnik, nato na neki točki postane študent,
- na koncu pa SE lahko tudi zaposli.
- Definirajte tip [status], ki določa ali je čarodej:
-  a.) začetnik [Newbie],
-  b.) študent [Student] (in kateri vrsti magije pripada in koliko časa študira),
-  c.) zaposlen [Employed] (in vrsto magije in specializacijo).
+ Every wizard starts out as a newbie. Afterwards they become a student and in
+ the end, they may get employed. Define the type [status] which determines if a
+ wizard is:
+  a.) a newbie,
+  b.) a student (also what school of magic they study and for how long),
+  c.) an employee (also their school of magic and specialisation).
 
- Nato definirajte zapisni tip [wizard] z poljem za ime in poljem za trenuten
- status.
+ Then define a record type [wizard] which has a field for the wizards name and
+ a field for their status.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # professor;;
  - : wizard = {name = "Matija"; status = Employed (Fire, Teacher)}
@@ -156,11 +153,12 @@ type wizard = {name : string; status : status}
 let professor = {name = "Matija"; status = Employed(Fire, Teacher)}
 
 (*----------------------------------------------------------------------------*]
- Želimo prešteti koliko uporabnikov posamezne od vrst magije imamo na akademiji.
- Definirajte zapisni tip [magic_counter], ki v posameznem polju hrani število
- uporabnikov magije.
- Nato definirajte funkcijo [update counter magic], ki vrne nov števec s
- posodobljenim poljem glede na vrednost [magic].
+ We want to count how many users of a certain school of magic are currently in
+ the group.
+ Define a record type [magic_counter] which has an integer field for every
+ school of magic.
+ Then define the function [update counter magic] that returns a new counter
+ with an updated field depending on the value of [magic].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # update {fire = 1; frost = 1; arcane = 1} Arcane;;
  - : magic_counter = {fire = 1; frost = 1; arcane = 2}
@@ -174,8 +172,8 @@ let update counter = function
   | Arcane -> {counter with arcane = counter.arcane + 1}
 
 (*----------------------------------------------------------------------------*]
- Funkcija [count_magic] sprejme seznam čarodejev in vrne števec uporabnikov
- različnih vrst magij.
+ The function [count_magic] accepts a list of wizards and counts the users of
+ different schools of magic.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # count_magic [professor; professor; professor];;
  - : magic_counter = {fire = 3; frost = 0; arcane = 0}
@@ -189,16 +187,16 @@ let count_magic wizard_list =
         | Newbie -> count counter wizards
         | Student (magic, _) -> count (update counter magic) wizards
         | Employed (magic, _) -> count (update counter magic) wizards)
-  in aux_count {fire = 0; frost = 0; arcane = 0} wizard_list
+  in count {fire = 0; frost = 0; arcane = 0} wizard_list
 
 (*----------------------------------------------------------------------------*]
- Želimo poiskati primernega kandidata za delovni razpis. Študent lahko postane
- zgodovinar po vsaj treh letih študija, raziskovalec po vsaj štirih letih
- študija in učitelj po vsaj petih letih študija.
- Funkcija [find_candidate magic specialisation wizard_list] poišče prvega
- primernega kandidata na seznamu čarodejev in vrne njegovo ime, čim ustreza
- zahtevam za [specialisation] in študira vrsto [magic]. V primeru, da ni
- primernega kandidata, funkcija vrne [None].
+ We wish to find a possible candidate for a job offer. A student can become a
+ historian after studying for at least 3 years, a researcher after 4 years and
+ a teacher after 5 years.
+ The function [find_candidate magic specialisation wizard_list] searches
+ through the list of wizards and returns the name of a suitable candidate for
+ the [specialisation] if they are studying [magic]. If there is no candidate,
+ it should return [None].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let jaina = {name = "Jaina"; status = Student (Frost, 4)};;
  # find_candidate Frost Researcher [professor; jaina];;
