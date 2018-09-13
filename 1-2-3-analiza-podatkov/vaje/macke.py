@@ -3,9 +3,9 @@ import re
 import os
 import csv
 
-################################################################################
+###############################################################################
 # Najprej definirajmo nekaj pomožnih orodij za pridobivanje podatkov s spleta.
-################################################################################
+###############################################################################
 
 # definiratje URL glavne strani bolhe za oglase z mačkami
 cats_frontpage_url = 'http://www.bolha.com/zivali/male-zivali/macke/'
@@ -15,6 +15,7 @@ cat_directory = 'my_cats'
 frontpage_filename = "cats_fp.html"
 # ime CSV datoteke v katero bomo shranili podatke
 csv_filename = "cats.csv"
+
 
 def download_url_to_string(url):
     '''This function takes a URL as argument and tries to download it
@@ -34,17 +35,19 @@ def download_url_to_string(url):
         print("failed to download url " + url)
         return
 
+
 def save_string_to_file(text, directory, filename):
     '''Write "text" to the file "filename" located in directory "directory",
     creating "directory" if necessary. If "directory" is the empty string, use
     the current directory.'''
     os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
-    with open(path, 'w', encoding = 'utf-8') as file_out:
+    with open(path, 'w', encoding='utf-8') as file_out:
         file_out.write(text)
     return None
 
 # Definirajte funkcijo, ki prenese glavno stran in jo shrani v datoteko.
+
 
 def save_frontpage():
     '''Save "cats_frontpage_url" to the file
@@ -53,9 +56,10 @@ def save_frontpage():
     save_string_to_file(text, cat_directory, frontpage_filename)
     return None
 
-################################################################################
+###############################################################################
 # Po pridobitvi podatkov jih želimo obdelati.
-################################################################################
+###############################################################################
+
 
 def read_file_to_string(directory, filename):
     '''Return the contents of the file "directory"/"filename" as a string.'''
@@ -65,8 +69,9 @@ def read_file_to_string(directory, filename):
 
 # Definirajte funkcijo, ki sprejme niz, ki predstavlja vsebino spletne strani,
 # in ga razdeli na dele, kjer vsak del predstavlja en oglas. To storite s
-# pomočjo regularnih izrazov, ki označujejo začetek in konec posameznega oglasa.
-# Funkcija naj vrne seznam nizov.
+# pomočjo regularnih izrazov, ki označujejo začetek in konec posameznega
+# oglasa. Funkcija naj vrne seznam nizov.
+
 
 def page_to_ads(page):
     '''Split "page" to a list of advertisement blocks.'''
@@ -75,8 +80,9 @@ def page_to_ads(page):
     ads = re.findall(rx, page)
     return ads
 
-# Definirajte funkcijo, ki sprejme niz, ki predstavlja oglas, in izlušči podatke
-# o imenu, ceni in opisu v oglasu.
+# Definirajte funkcijo, ki sprejme niz, ki predstavlja oglas, in izlušči
+# podatke o imenu, ceni in opisu v oglasu.
+
 
 def get_dict_from_ad_block(block):
     '''Build a dictionary containing the name, description and price
@@ -89,9 +95,10 @@ def get_dict_from_ad_block(block):
     ad_dict = data.groupdict()
     return ad_dict
 
-# Definirajte funkcijo, ki sprejme ime in lokacijo datoteke, ki vsebuje besedilo
-# spletne strani, in vrne seznam slovarjev, ki vsebujejo podatke o vseh oglasih
-# strani.
+# Definirajte funkcijo, ki sprejme ime in lokacijo datoteke, ki vsebuje
+# besedilo spletne strani, in vrne seznam slovarjev, ki vsebujejo podatke o
+# vseh oglasih strani.
+
 
 def ads_from_file(filename, directory):
     '''Parse the ads in filename/directory into a dictionary list.'''
@@ -100,12 +107,14 @@ def ads_from_file(filename, directory):
     ads = [get_dict_from_ad_block(block) for block in blocks]
     return ads
 
+
 def ads_frontpage():
     return ads_from_file(cat_directory, frontpage_filename)
 
-################################################################################
+###############################################################################
 # Obdelane podatke želimo sedaj shraniti.
-################################################################################
+###############################################################################
+
 
 def write_csv(fieldnames, rows, directory, filename):
     '''Write a CSV file to directory/filename. The fieldnames must be a list of
@@ -124,9 +133,11 @@ def write_csv(fieldnames, rows, directory, filename):
 # podatke iz oglasa mačke, in zapiše vse podatke v csv datoteko. Imena za
 # stolpce [fieldnames] pridobite iz slovarjev.
 
+
 def write_cat_ads_to_csv(ads, directory, filename):
     '''Write a CSV file containing one ad from "ads" on each row.'''
     write_csv(ads[0].keys(), ads, directory, filename)
+
 
 def write_cat_csv(ads):
     '''Save "ads" to "cat_directory"/"csv_filename"'''
