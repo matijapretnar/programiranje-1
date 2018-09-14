@@ -121,7 +121,7 @@ let zip_enum_tlrec list1 list2 =
     match list1, list2 with
     | [], [] -> reverse acc
     | _, [] | [], _ -> failwith "Different lengths of input lists."
-    | x :: xs, y :: ys) ->
+    | x :: xs, y :: ys ->
       let element = (i, x, y) in
       zipe_aux xs ys (i + 1) (element :: acc)
    in
