@@ -1,18 +1,18 @@
-(* ========== Vaja 4: Iskalna Drevesa  ========== *)
+(* ========== Exercise 4: Search trees  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- Ocaml omogoča enostavno delo z drevesi. Konstruiramo nov tip dreves, ki so
- bodisi prazna, bodisi pa vsebujejo podatek in imajo dve (morda prazni)
- poddrevesi. Na tej točki ne predpostavljamo ničesar drugega o obliki dreves.
+ In Ocaml working with trees is fairly simple. We construct a new type for
+ trees, which are either empty or they contain some data and two (possibly
+ empty) subtrees. We assume no further structure of the trees.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 type 'a tree =
   | Empty
   | Node of 'a tree * 'a * 'a tree
 
 (*----------------------------------------------------------------------------*]
- Definirajmo si testni primer za preizkušanje funkcij v nadaljevanju. Testni
- primer predstavlja spodaj narisano drevo, pomagamo pa si s pomožno funkcijo
- [leaf], ki iz podatka zgradi list.
+ We define a test case for simpler testing of functions. The test case
+ represents the tree below. The function [leaf] which constructs a leaf from a
+ given data is used for simpler notation.
           5
          / \
         2   7
@@ -25,7 +25,8 @@ let leaf x = Node(Empty, x, Empty)
 let test_tree = Node( Node(leaf 0, 2, Empty), 5, Node(leaf 6, 7, leaf 11))
 
 (*----------------------------------------------------------------------------*]
- Funkcija [mirror] vrne prezrcaljeno drevo. Na primeru [test_tree] torej vrne
+ The function [mirror] returns a mirrored tree. When applied to our test tree
+ it returns
           5
          / \
         7   2
@@ -43,8 +44,8 @@ let rec mirror = function
   | Node(l, x, r) -> Node(mirror r, x, mirror l)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [height] vrne višino oz. globino drevesa, funkcija [size] pa število
- vseh vozlišč drevesa.
+ The function [height] returns the height (or depth) of the tree and the
+ function [size] returns the number of nodes in the tree.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # height test_tree;;
  - : int = 3
@@ -61,10 +62,10 @@ let rec size = function
   | Node(l, _, r) -> 1 + (size l) + (size r)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [follow directions tree] tipa [direction list -> 'a tree -> 'a option]
- sprejme seznam navodil za premikanje po drevesu in vrne vozlišče do katerega 
- vodi podana pot. Ker navodila morda ne vodijo do nobenega vozlišča v drevesu
- vrne rezultat kot [option] tip.
+ The function [follow directions tree] of type [direction list -> 'a tree -> 
+ 'a option] accepts a list of directions for traversing the tree and returns the
+ data in the node at the end of the traversal. Because the directions might not
+ lead to an actual node in the tree, the result is returned as an [option] type.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # follow [Right; Left] test_tree;;
  - : int option = Some 6
@@ -83,12 +84,11 @@ let rec follow directions = function
      | Right :: tl -> follow tl r)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [prune directions tree] poišče vozlišče v drevesu [t] glede na 
- navodila, ter izbriše poddrevo, ki se začne v izbranem vozlišču.
+ The function [prune directions tree] finds the node given by [directions] and
+ removes the subtree that starts in the node.
 
- Opozorilo: Pri uporabi [Some Node(l, x, r)] se OCaml pritoži, saj to razume
-            kot [(Some Node)(l, x, r)], zato pravilno postavite potrebne 
-            oklepaje.
+ Warning: When using [Some Node(l, x, r)] Ocaml complains because it reads it 
+          as [(Some Node)(l, x, r)] so use paranthesis when necessary.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # prune [Right] test_tree;;
  - : int tree option =
@@ -109,8 +109,8 @@ let rec prune directions tree =
      | Some new_l -> Some (Node(new_l, x, r)))
 
 (*----------------------------------------------------------------------------*]
- Funkcija [map_tree f tree] preslika drevo [tree] v novo drevo, ki vsebuje
- podatke drevesa [tree] preslikane s funkcijo [f].
+ The function [map_tree f tree] maps [tree] into a new tree with nodes that
+ contain data from [tree] mapped with the function [f].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # map_tree ((<)3) test_tree;;
  - : bool tree =
@@ -123,8 +123,8 @@ let rec map_tree f = function
   | Node(l, x, r) -> Node(map_tree f l, f x, map_tree f r)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [list_of_tree] pretvori drevo v seznam. Vrstni red podatkov v seznamu
- naj bo takšen, da v primeru binarnega iskalnega drevesa vrne urejen seznam.
+ The function [list_of_tree] returns the list of all elements in the tree. If
+ the tree is a binary search tree the returned list should be ordered.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # list_of_tree test_tree;;
  - : int list = [0; 2; 5; 6; 7; 11]
@@ -135,9 +135,9 @@ let rec list_of_tree = function
   | Node(l, x, r) -> (list_of_tree l) @ [x] @ (list_of_tree r)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [is_bst] preveri ali je drevo binarno iskalno drevo (Binary Search 
- Tree, na kratko BST). Predpostavite, da v drevesu ni ponovitev elementov, 
- torej drevo npr. ni oblike Node( leaf 1, 1, leaf 2)). Prazno drevo je BST.
+ The function [is_bst] checks wheter a tree is a binary search tree (BST). 
+ Assume that the input tree has no repetitions of elements. An empty tree is a
+ BST.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # is_bst test_tree;;
  - : bool = true
@@ -152,12 +152,12 @@ let rec is_bst t =
   in t |> list_of_tree |> list_is_ordered
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- V nadaljevanju predpostavljamo, da imajo dvojiška drevesa strukturo BST.
+ In the remaining exercises we assume that all trees are binary search trees.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [insert] v iskalno drevo pravilno vstavi dani element. Funkcija 
- [member] preveri ali je dani element v iskalnem drevesu.
+ The function [insert] correctly inserts an element into the bst. The function
+ [member] checks wheter an element is present in the bst.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # insert 2 (leaf 4);;
  - : int tree = Node (Node (Empty, 2, Empty), 4, Empty)
@@ -178,10 +178,10 @@ let rec member x = function
   | Node(l, y, r) when x > y -> member x r
 
 (*----------------------------------------------------------------------------*]
- Funkcija [member2] ne privzame, da je drevo bst.
+ The function [member2] does not assume that the tree is a bst.
  
- Opomba: Premislte kolikšna je časovna zahtevnost funkcije [member] in kolikšna
-         funkcije [member2] na drevesu z n vozlišči, ki ima globino log(n). 
+ Note: Think about the differences of time complexity for [member] and 
+       [member2] assuming an input tree with n nodes and depth of log(n). 
 [*----------------------------------------------------------------------------*)
 
 let rec member2 x = function
@@ -189,19 +189,18 @@ let rec member2 x = function
   | Node(l, y, r) -> x = y || (member2 x l) || (member2 x r)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [bst_of_list] iz seznama naredi dvojiško iskalno drevo.
+ The function [bst_of_list] constructs a bst out of the elements of a list.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # [11; 6; 7; 0; 2; 5] |> bst_of_list |> is_bst;;
  - : bool = true
 [*----------------------------------------------------------------------------*)
 
-
 let bst_of_list list = List.fold_right insert list Empty
 
 (*----------------------------------------------------------------------------*]
- Funkcija [tree_sort] uredi seznam s pomočjo pretvorbe v bst.
+ The function [tree_sort] sorts a list by transforming it to a tree and back.
 
- Opomba: Prosim ne uporabljajte te funkcije v praksi.
+ Note: Please do not actually use this in your code.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # tree_sort ["a"; "c"; "f"; "b"; "e"; "d"];;
  - : string list = ["a"; "b"; "c"; "d"; "e"; "f"]
@@ -210,11 +209,11 @@ let bst_of_list list = List.fold_right insert list Empty
 let tree_sort list = list |> bst_of_list |> list_of_tree
 
 (*----------------------------------------------------------------------------*]
- Funkcija [succ] vrne naslednjika korena danega drevesa, če obstaja. Za drevo
- oblike [bst = Node(l, x, r)] vrne najmanjši element drevesa [bst], ki je večji
- od korena [x].
- Funkcija [pred] simetrično vrne največji element drevesa, ki je manjši od
- korena, če obstaja.
+ The function [succ] returns the successor of the root of the given tree, if
+ it exists. For the tree [bst = Node(l, x, r)] it returns the least element of
+ [bst] that is larger than [x].
+ The function [pred] symetrically returns the largest element smaller than the
+ root, if it exists.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # succ test_tree;;
  - : int option = Some 6
@@ -243,10 +242,10 @@ let pred bst =
   | Node(l, _, _) -> maximal l
 
 (*----------------------------------------------------------------------------*]
- Na predavanjih ste omenili dva načina brisanja elementov iz drevesa. Prvi 
- uporablja [succ], drugi pa [pred]. Funkcija [delete x bst] iz drevesa [bst] 
- izbriše element [x], če ta v drevesu obstaja. Za vajo lahko implementirate
- oba načina brisanja elementov.
+ In lectures you two different approaches to deletion, using either [succ] or
+ [pred]. The function [delete x bst] deletes the element [x] from the tree. If
+ it does not exist, it does not change the tree. For practice you can implement
+ both versions of the algorithm.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    # (*<< Za [delete] definiran s funkcijo [succ]. >>*)
    # delete 7 test_tree;;
@@ -260,20 +259,19 @@ let rec delete x = function
   | Node(l, y, r) when x > y -> Node(l, y, delete x r)
   | Node(l, y, r) when x < y -> Node(delete x l, y, r)
   | Node(l, y, r) as bst -> (
-      (*Potrebno je izbrisati vozlišče.*)
+      (*We need to delete the root.*)
       match succ bst with
-      | None -> l (*To se zgodi le kadar je [r] enak [Empty].*)
+      | None -> l (*Only happens when [r] is [Empty].*)
       | Some s ->
         let clean_r = delete s r in
         Node(l, s, clean_r))
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- Druga možnost pri brisanju podatkov je, da spremenimo tip s katerim
- predstavljamo drevo. Definirate nov tip fantomskega drevesa, ki poleg podatka,
- levega in desnega poddrevesa hrani še dodatno informacijo o stanju [state], ki 
- je bodisi [Exists] če je vozlišče še prisotno in pa [Ghost] če je vozlišče v 
- drevesu izbrisano in ga upoštevamo le še kot delitveno vozlišče.
- Še vedno predpostavljamo, da imajo drevesa obliko BST.
+ An additional approach to deletion is to modify the type of the tree. Define 
+ a new type of tree where nodes additionaly contain information about its state,
+ which can either [Exist] or be a [Ghost] if the node is only used for
+ searching but is not considered present.
+ We assume that all trees are BST.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 type state = Exists | Ghost
@@ -283,11 +281,11 @@ type 'a phantom_tree =
   | P_Node of 'a phantom_tree * 'a * 'a phantom_tree * state
 
 (*----------------------------------------------------------------------------*]
- Funkcija [phantomize] tipa ['a tree -> 'a phantom_tree] navadnemu drevesu
- priredi ekvivalentno fantomsko drevo.
- Funkcija [kill x ptree] izbriše element [x] v fantomskem drevesu tako, da 
- njegovo stanje nastavi na [Ghost].
- Predpostavite lahko, da v drevesu ni ponovitev elementov.
+ The function [phantomize] of type ['a tree -> 'a phantom_tree] maps a regular
+ tree into a phantom tree.
+ The function [kill x ptree] removes the element [x] from the tree by setting
+ it's state to [Ghost].
+ Assume that there are no repeated elements in input trees.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # phantomize test_tree;;
  - : int phantom_tree =
@@ -317,11 +315,11 @@ let rec kill x = function
       
 
 (*----------------------------------------------------------------------------*]
- Funkcija [unphantomize] tipa ['a phantom_tree -> 'a tree] fantomskemu drevesu 
- priredi navadno drevo, ki vsebuje zgolj vozlišča, ki še obstajajo. Vrstni red
- vozlišč v končnem drevesu ni pomemben.
+ The function [unphantomize] of type ['a phantom_tree -> 'a tree] maps a
+ phantom tree into a regular one, keeping only nodes that exist (no ghosts
+ allowed). The order of nodes in the output tree is not important.
 
- Namig: Lahko uporabite vmesni prehodom na drugo podatkovno strukturo.
+ Hint: You may use a transformation to another data structure.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # test_tree |> phantomize |> kill 7 |> kill 0 |> kill 5 |> unphantomize;;
  - : int tree = Node (Node (Node (Empty, 2, Empty), 6, Empty), 11, Empty)
