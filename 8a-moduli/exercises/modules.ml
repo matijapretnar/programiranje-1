@@ -1,4 +1,4 @@
-(* ========== Vaje 8: Moduli  ========== *)
+(* ========== Exercise 8: Modules  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  "Once upon a time, there was a university with a peculiar tenure policy. All

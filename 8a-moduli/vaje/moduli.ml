@@ -1,7 +1,7 @@
-(* ========== Exercise 8: Modules  ========== *)
+(* ========== Vaje 8: Moduli  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
-"Once upon a time, there was a university with a peculiar tenure policy. All
+ "Once upon a time, there was a university with a peculiar tenure policy. All
  faculty were tenured, and could only be dismissed for moral turpitude. What
  was peculiar was the definition of moral turpitude: making a false statement
  in class. Needless to say, the university did not teach computer science.
