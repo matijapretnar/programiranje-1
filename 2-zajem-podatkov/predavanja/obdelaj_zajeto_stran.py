@@ -2,7 +2,7 @@ import csv
 import json
 import re
 
-with open('../../1-regularni-izrazi/predavanja/zajeti-podatki/50-najbolj-znanih-filmov.html') as datoteka:
+with open('zajeti-podatki/50-najbolj-znanih-filmov.html') as datoteka:
     vsebina = datoteka.read()
 
 vzorec = re.compile(
