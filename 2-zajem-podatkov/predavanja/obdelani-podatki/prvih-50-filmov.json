@@ -1,0 +1,402 @@
+[
+    {
+        "id": "0111161",
+        "naslov": "Kaznilnica odrešitve",
+        "leto": 1994,
+        "dolzina": 142,
+        "ocena": 9.3,
+        "opis": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
+    },
+    {
+        "id": "0468569",
+        "naslov": "Vitez teme",
+        "leto": 2008,
+        "dolzina": 152,
+        "ocena": 9.0,
+        "opis": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice."
+    },
+    {
+        "id": "1375666",
+        "naslov": "Izvor",
+        "leto": 2010,
+        "dolzina": 148,
+        "ocena": 8.8,
+        "opis": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
+    },
+    {
+        "id": "0137523",
+        "naslov": "Klub golih pesti",
+        "leto": 1999,
+        "dolzina": 139,
+        "ocena": 8.8,
+        "opis": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more."
+    },
+    {
+        "id": "0110912",
+        "naslov": "Šund",
+        "leto": 1994,
+        "dolzina": 154,
+        "ocena": 8.9,
+        "opis": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+    },
+    {
+        "id": "0109830",
+        "naslov": "Forrest Gump",
+        "leto": 1994,
+        "dolzina": 142,
+        "ocena": 8.8,
+        "opis": "The presidencies of Kennedy and Johnson, Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75."
+    },
+    {
+        "id": "0120737",
+        "naslov": "Gospodar prstanov: Bratovscina prstana",
+        "leto": 2001,
+        "dolzina": 178,
+        "ocena": 8.8,
+        "opis": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron."
+    },
+    {
+        "id": "0133093",
+        "naslov": "Matrica",
+        "leto": 1999,
+        "dolzina": 136,
+        "ocena": 8.7,
+        "opis": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers."
+    },
+    {
+        "id": "0167260",
+        "naslov": "Gospodar prstanov: Kraljeva vrnitev",
+        "leto": 2003,
+        "dolzina": 201,
+        "ocena": 8.9,
+        "opis": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring."
+    },
+    {
+        "id": "0068646",
+        "naslov": "Boter",
+        "leto": 1972,
+        "dolzina": 175,
+        "ocena": 9.2,
+        "opis": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+    },
+    {
+        "id": "1345836",
+        "naslov": "Vzpon Viteza teme",
+        "leto": 2012,
+        "dolzina": 164,
+        "ocena": 8.4,
+        "opis": "Eight years after the Joker's reign of anarchy, Batman, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City, now on the edge of total annihilation, from the brutal guerrilla terrorist Bane."
+    },
+    {
+        "id": "0167261",
+        "naslov": "Gospodar prstanov: stolpa",
+        "leto": 2002,
+        "dolzina": 179,
+        "ocena": 8.7,
+        "opis": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard."
+    },
+    {
+        "id": "0114369",
+        "naslov": "Sedem",
+        "leto": 1995,
+        "dolzina": 127,
+        "ocena": 8.6,
+        "opis": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives."
+    },
+    {
+        "id": "0816692",
+        "naslov": "Medzvezdje",
+        "leto": 2014,
+        "dolzina": 169,
+        "ocena": 8.6,
+        "opis": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
+    },
+    {
+        "id": "0172495",
+        "naslov": "Gladiator",
+        "leto": 2000,
+        "dolzina": 155,
+        "ocena": 8.5,
+        "opis": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery."
+    },
+    {
+        "id": "1853728",
+        "naslov": "Django brez okovov",
+        "leto": 2012,
+        "dolzina": 165,
+        "ocena": 8.4,
+        "opis": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner."
+    },
+    {
+        "id": "0372784",
+        "naslov": "Batman: na začetku",
+        "leto": 2005,
+        "dolzina": 140,
+        "ocena": 8.3,
+        "opis": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption."
+    },
+    {
+        "id": "0848228",
+        "naslov": "Maščevalci",
+        "leto": 2012,
+        "dolzina": 143,
+        "ocena": 8.1,
+        "opis": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity."
+    },
+    {
+        "id": "0076759",
+        "naslov": "Vojna zvezd: Epizoda IV - Novo upanje",
+        "leto": 1977,
+        "dolzina": 121,
+        "ocena": 8.6,
+        "opis": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the evil Darth Vader."
+    },
+    {
+        "id": "0102926",
+        "naslov": "Ko jagenjčki obmolknejo",
+        "leto": 1991,
+        "dolzina": 118,
+        "ocena": 8.6,
+        "opis": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims."
+    },
+    {
+        "id": "0361748",
+        "naslov": "Neslavne barabe",
+        "leto": 2009,
+        "dolzina": 153,
+        "ocena": 8.3,
+        "opis": "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same."
+    },
+    {
+        "id": "0120815",
+        "naslov": "Reševanje vojaka Ryana",
+        "leto": 1998,
+        "dolzina": 169,
+        "ocena": 8.6,
+        "opis": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action."
+    },
+    {
+        "id": "0108052",
+        "naslov": "Schindlerjev seznam",
+        "leto": 1993,
+        "dolzina": 195,
+        "ocena": 8.9,
+        "opis": "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazi Germans."
+    },
+    {
+        "id": "0407887",
+        "naslov": "Dvojna igra",
+        "leto": 2006,
+        "dolzina": 151,
+        "ocena": 8.5,
+        "opis": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston."
+    },
+    {
+        "id": "0482571",
+        "naslov": "Skrivnostna sled",
+        "leto": 2006,
+        "dolzina": 130,
+        "ocena": 8.5,
+        "opis": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other."
+    },
+    {
+        "id": "0080684",
+        "naslov": "Vojna zvezd: epizoda V - Imperij vrača udarec",
+        "leto": 1980,
+        "dolzina": 124,
+        "ocena": 8.8,
+        "opis": "After the rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader."
+    },
+    {
+        "id": "0499549",
+        "naslov": "Avatar",
+        "leto": 2009,
+        "dolzina": 162,
+        "ocena": 7.8,
+        "opis": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home."
+    },
+    {
+        "id": "0209144",
+        "naslov": "Memento",
+        "leto": 2000,
+        "dolzina": 113,
+        "ocena": 8.5,
+        "opis": "A man with short-term memory loss attempts to track down his wife's murderer."
+    },
+    {
+        "id": "0993846",
+        "naslov": "Volk z Wall Streeta",
+        "leto": 2013,
+        "dolzina": 180,
+        "ocena": 8.2,
+        "opis": "Based on the true story of"
+    },
+    {
+        "id": "1130884",
+        "naslov": "Zlovešči otok",
+        "leto": 2010,
+        "dolzina": 138,
+        "ocena": 8.1,
+        "opis": "In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane."
+    },
+    {
+        "id": "0120689",
+        "naslov": "Zelena milja",
+        "leto": 1999,
+        "dolzina": 189,
+        "ocena": 8.5,
+        "opis": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift."
+    },
+    {
+        "id": "0169547",
+        "naslov": "Lepota po ameriško",
+        "leto": 1999,
+        "dolzina": 122,
+        "ocena": 8.4,
+        "opis": "A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend."
+    },
+    {
+        "id": "0071562",
+        "naslov": "Boter, II. del",
+        "leto": 1974,
+        "dolzina": 202,
+        "ocena": 9.0,
+        "opis": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate."
+    },
+    {
+        "id": "0325980",
+        "naslov": "Pirati s Karibov: prekletstvo črnega bisera",
+        "leto": 2003,
+        "dolzina": 143,
+        "ocena": 8.0,
+        "opis": "Blacksmith Will Turner teams up with eccentric pirate \"Captain\" Jack Sparrow to save his love, the governor's daughter, from Jack's former pirate allies, who are now undead."
+    },
+    {
+        "id": "0434409",
+        "naslov": "V kot vroče maščevanje",
+        "leto": 2005,
+        "dolzina": 132,
+        "ocena": 8.2,
+        "opis": "In a future British tyranny, a shadowy freedom fighter, known only by the alias of \"V\", plots to overthrow it with the help of a young woman."
+    },
+    {
+        "id": "0120586",
+        "naslov": "Generacija X",
+        "leto": 1998,
+        "dolzina": 119,
+        "ocena": 8.5,
+        "opis": "A former neo-nazi skinhead tries to prevent his younger brother from going down the same wrong path that he did."
+    },
+    {
+        "id": "0120338",
+        "naslov": "Titanik",
+        "leto": 1997,
+        "dolzina": 194,
+        "ocena": 7.8,
+        "opis": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic."
+    },
+    {
+        "id": "0088763",
+        "naslov": "Vrnitev v prihodnost",
+        "leto": 1985,
+        "dolzina": 116,
+        "ocena": 8.5,
+        "opis": "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown."
+    },
+    {
+        "id": "0110413",
+        "naslov": "Léon",
+        "leto": 1994,
+        "dolzina": 110,
+        "ocena": 8.6,
+        "opis": "Mathilda, a 12-year-old girl, is reluctantly taken in by Léon, a professional assassin, after her family is murdered. Léon and Mathilda form an unusual relationship, as she becomes his protégée and learns the assassin's trade."
+    },
+    {
+        "id": "2015381",
+        "naslov": "Varuhi galaksije",
+        "leto": 2014,
+        "dolzina": 121,
+        "ocena": 8.1,
+        "opis": "A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe."
+    },
+    {
+        "id": "0114814",
+        "naslov": "Osumljenih pet",
+        "leto": 1995,
+        "dolzina": 106,
+        "ocena": 8.6,
+        "opis": "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup."
+    },
+    {
+        "id": "0103064",
+        "naslov": "Terminator 2 - Sodni dan",
+        "leto": 1991,
+        "dolzina": 137,
+        "ocena": 8.5,
+        "opis": "A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son, John Connor, from a more advanced and powerful cyborg."
+    },
+    {
+        "id": "0266697",
+        "naslov": "Ubila bom Billa 1",
+        "leto": 2003,
+        "dolzina": 111,
+        "ocena": 8.1,
+        "opis": "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her."
+    },
+    {
+        "id": "0910970",
+        "naslov": "Wall-E",
+        "leto": 2008,
+        "dolzina": 98,
+        "ocena": 8.4,
+        "opis": "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind."
+    },
+    {
+        "id": "0099685",
+        "naslov": "Dobri fantje",
+        "leto": 1990,
+        "dolzina": 146,
+        "ocena": 8.7,
+        "opis": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate."
+    },
+    {
+        "id": "0112573",
+        "naslov": "Pogumno srce",
+        "leto": 1995,
+        "dolzina": 178,
+        "ocena": 8.4,
+        "opis": "When his secret bride is executed for assaulting an English soldier who tried to rape her, Sir William Wallace begins a revolt against King Edward I of England."
+    },
+    {
+        "id": "0266543",
+        "naslov": "Reševanje malega Nema",
+        "leto": 2003,
+        "dolzina": 100,
+        "ocena": 8.1,
+        "opis": "After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home."
+    },
+    {
+        "id": "0086190",
+        "naslov": "Vojna zvezd: Epizoda VI - Vrnitev jedija",
+        "leto": 1983,
+        "dolzina": 131,
+        "ocena": 8.3,
+        "opis": "After a daring mission to rescue Han Solo from Jabba the Hutt, the rebels dispatch to Endor to destroy a more powerful Death Star. Meanwhile, Luke struggles to help Vader back from the dark side without falling into the Emperor's trap."
+    },
+    {
+        "id": "0167404",
+        "naslov": "Šesti čut",
+        "leto": 1999,
+        "dolzina": 107,
+        "ocena": 8.1,
+        "opis": "A boy who communicates with spirits seeks the help of a disheartened child psychologist."
+    },
+    {
+        "id": "0371746",
+        "naslov": "Iron Man",
+        "leto": 2008,
+        "dolzina": 126,
+        "ocena": 7.9,
+        "opis": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."
+    }
+]

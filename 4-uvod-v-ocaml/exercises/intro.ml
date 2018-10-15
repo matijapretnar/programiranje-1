@@ -3,9 +3,8 @@
 
 
 (*----------------------------------------------------------------------------*]
- The function [penultimate_element list] returns the second-to-last element of
- the list [list].
- If the list is too short it raises an error.
+ The function [penultimate_element] returns the second-to-last element of a
+ list. If the list is too short it raises an error.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # penultimate_element [1; 2; 3; 4];;
  - : int = 3
