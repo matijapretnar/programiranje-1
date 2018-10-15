@@ -1,3 +1,5 @@
+import re
+
 ###############################################################################
 # Grateful Bear
 #
@@ -27,6 +29,11 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 ###############################################################################
 
 
+def find_words(text, substring):
+    rx = r'\b\w*' + substring + r'\w*\b'
+    matches = re.findall(rx, text)
+    return set(matches)
+
 ###############################################################################
 # 2) Write a function [find_prefix] which returns the set of all words in a
 #    string starting with the given prefix.
@@ -35,6 +42,11 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # {'zibala', 'zibel', 'zibelko'}
 ###############################################################################
 
+
+def find_prefix(text, prefix):
+    r'^'
+    rx = r'\b' + prefix + r'\w*\b'
+    return set(re.findall(rx, text))
 
 ###############################################################################
 # 3) Write a function [find_suffix] which returns the set of all words in a
@@ -45,6 +57,10 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 ###############################################################################
 
 
+def find_suffix(text, suffix):
+    r = r'\b\w*' + suffix + r'\b'
+    return set(re.findall(r, text))
+
 ###############################################################################
 # 4) Write a function [double_letters] that returns the set of words in a
 #    string that contain the same letter twice consecutively.
@@ -52,3 +68,9 @@ medved. Zvrhano zibelko sladkih hrušk mi je prinesel za en sam izdrt trn"."""
 # >>> double_letters('A volunteer is worth twenty pressed men.')
 # {'volunteer', 'pressed'}
 ###############################################################################
+
+
+def double_letters(text):
+    rx = r'(\b\w*(\w)\2\w*\b)'
+    matches = re.findall(rx, text)
+    return set([match[0] for match in matches])
