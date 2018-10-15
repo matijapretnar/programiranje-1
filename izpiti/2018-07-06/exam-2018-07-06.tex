@@ -1,0 +1,119 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\VerbatimFootnotes{}
+
+\begin{document}
+
+\izpit{Programiranje I: 2.\ izpit}{6.\ julij 2018}{
+  Čas reševanja je 150 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[]
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    uporabi : ('a -> 'b) -> 'a -> 'b
+\end{verbatim}
+ki uporabi podano funkcijo na podanem argumentu.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    ibaropu : 'a -> ('a -> 'b) -> 'b
+\end{verbatim}
+ki izvede obrnjeno uporabo. Naprimer, \verb|ibaropu (ibaropu x f) g| je enakovredno $g (f (x))$.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    zacetnih : int -> 'a list -> ('a list) option
+\end{verbatim}
+za katero \verb|zacetnih n xs| vrne začetnih \verb|n| elementov seznama \verb|xs|, oziroma \verb|None| v primeru, ko ima seznam \verb|xs| manj kot \verb|n| elementov. Za vse točke naj bo funkcija \emph{repno-rekurzivna}.
+
+\naloga[]
+Neprazne sezname lahko v OCamlu predstavimo s tipom
+\begin{verbatim}
+    type 'a neprazen_sez = Konec of 'a | Sestavljen of 'a * 'a neprazen_sez
+\end{verbatim}
+
+\podnaloga
+Napišite funkciji \verb|prvi : 'a neprazen_sez -> 'a| in \verb|zadnji : 'a neprazen_sez -> 'a| , ki vrneta prvi in zadnji element nepraznega seznama.
+
+\podnaloga
+Napišite funkcijo \verb|dolzina : 'a neprazen_sez -> int|, ki izračuna dolžino nepraznega seznama.
+
+\podnaloga
+Napišite funkcijo \verb|pretvori_v_seznam : 'a neprazen_sez -> 'a list|, ki pretvori neprazen seznam tipa \verb|'a neprazen_sez| v navaden seznam tipa \verb|'a list|.
+
+\podnaloga
+Napišite funkcijo \verb|zlozi : ('b -> 'a -> 'b) -> 'b -> 'a neprazen_sez -> 'b|, ki zloži podano funkcijo preko nepraznega seznama. Delovanje funkcije naj bo
+podobno delovanju funkcije \verb|List.fold_left|.
+
+\naloga[]
+Dr.~Ana Kek je matematičarka, ki se navdušuje nad simetrijo. Po vrnitvi z izleta v Hajjah v Jemnu je začela iskati simetrije v črtastih črno-belih zapestnicah, ki jih je kupila na potovanju.
+
+Zato si želi razdeliti zaporedje črnih in belih črt na zapestnicah na simetrične dele. Njen cilj je poiskati delitev z najmanjšim številom delov.
+Da si delo olajša, se je odločila zaporedje črt predstaviti z nizom ničel in enic.
+
+\podnaloga
+Napišite funkcijo \verb|simetricen|, ki preveri ali je nek del simetričen, torej palindrom.
+\begin{verbatim}
+    # Primer:
+    >>> simetricen("01010")
+    True
+\end{verbatim}
+
+\podnaloga
+Napišite funkcijo \verb|stevilo_delov|, ki izračuna na najmanj koliko delov moramo razdeliti zaporedje, da so vsi deli simetrični.
+
+\begin{verbatim}
+    # Primer:
+    >>> stevilo_delov("00101011")
+    3
+\end{verbatim}
+
+\podnaloga
+Napišite funkcijo \verb|razdeli|, ki vrne delitev, kjer zaporedje razdelimo na najmanjše možno število simetričnih delov. Če je takšnih delitev več, naj funkcija vrne poljubno izmed njih.
+
+\begin{verbatim}
+    # Primer:
+    >>> razdeli("00101011")
+    ["0", "01010", "11"]
+\end{verbatim}
+
+\podnaloga
+Poleg simetričnih pa se dr.~Ana~Kek zanima tudi za \emph{vsotno-simetrične} dele. To so tisti deli $D$ dolžine $n$, pri katerih je vsota prvih $\lfloor n / 2 \rfloor$ števk enaka vsoti preostalih števk. Napišite funkcijo \verb|vsotno_simetricen|, ki preveri ali je del vsotno-simetričen.
+
+\begin{verbatim}
+    # Primer:
+    >>> vsotno_simetricen("01001000")
+    True
+    >>> vsotno_simetricen("1011")
+    False
+\end{verbatim}
+
+Namig: iz niza števk \verb|b| lahko v Pythonu naredite seznam števil \verb|[int(c) for c in b]|, v OCamlu isto dosežete tako, da naložite modul ``Str'' z ukazom \verb|#load "str.cma" ;;| in uporabite
+\begin{verbatim}
+    List.map int_of_string (Str.split (Str.regexp "") b)
+\end{verbatim}
+
+\podnaloga
+Za primer, da se bo dr.~Ana~Kek kdaj začela zanimati tudi za druge vrste simetrij, funkciji \verb|stevilo_delov| in \verb|razdeli| napišite tako, da za drugi argument spremejo funkcijo, ki preverja ali je nek del simetričen.
+
+\begin{verbatim}
+    # Primer:
+    >>> razdeli("00101011", simetricen)
+    ["0", "01010", "11"]
+    >>> razdeli("00101011", vsotno_simetricen)
+    ["00", "101011"]
+    >>> razdeli("00101011", simetricen)
+    ["0", "01010", "11"]
+\end{verbatim}
+
+\end{document}

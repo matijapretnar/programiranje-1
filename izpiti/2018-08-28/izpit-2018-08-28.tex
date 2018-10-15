@@ -1,0 +1,144 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\VerbatimFootnotes{}
+
+\begin{document}
+
+\izpit{Programiranje I: 3.\ izpit}{28.\ avgust 2018}{
+  Čas reševanja je 150 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[]
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    razlika_kvadratov : int -> int -> int,
+\end{verbatim}
+ki za dani števili izračuna razliko med kvadratom vsote in vsoto kvadratov.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    uporabi_na_paru : ('a -> 'b) -> 'a * 'a -> 'b * 'b,
+\end{verbatim}
+ki podano funkcijo uporabi na vsakem elementu para.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    ponovi_seznam : int -> 'a list -> 'a list,
+\end{verbatim}
+za katero \verb|ponovi_seznam n sez| vrne seznam sestavljen iz \verb|n| ponovitev podanega seznama.
+Če je \verb|n| manjši ali enak $0$, naj funkcija vrne prazen seznam.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    razdeli : int list -> int list * int list,
+\end{verbatim}
+za katero \verb|razdeli sez| vrne par seznamov, kjer levi seznam v paru vsebuje vse negativne elemente \verb|sez|, desni pa preostale.
+Za vse točke naj bo funkcija \emph{repno-rekurzivna}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga
+Napišite funkcijo
+\begin{verbatim}
+    monotona_pot : int drevo -> int list,
+\end{verbatim}
+ki v danem dvojiškem drevesu poišče najdaljšo pot, v kateri vrednosti v vozliščih bodisi naraščajo bodisi padajo. Na primer, v spodnjem levem drevesu je to pot $3 - 10 - 13 - 14$, v desnem pa $20 - 10 - 7 - 4 - 1$:
+
+\[
+  \begin{tikzpicture}[level distance=0.9cm,
+    level 1/.style={sibling distance=4cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=2cm}
+    ]
+    \node {11}
+      child {node {\textbf{10}}
+        child {node {\textbf{3}}}
+        child {node {\textbf{13}}
+          child {node {\textbf{14}}}
+          child {node {6}}
+        }
+      }
+      child {node {8}
+        child {node {2}}
+        child {node {10}}
+      };
+  \end{tikzpicture}
+  \qquad\qquad
+  \begin{tikzpicture}[level distance=0.9cm,
+    level 1/.style={sibling distance=4cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=2cm}
+    ]
+    \node {\textbf{7}}
+      child {node {\textbf{10}}
+        child {node {\textbf{20}}}
+        child {node {9}
+          child {node {15}}
+          child {node {6}}
+        }
+      }
+      child {node {\textbf{4}}
+        child {node {\textbf{1}}}
+        child {node {10}}
+      };
+  \end{tikzpicture}
+\]
+\prostor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[]
+\newcommand{\ostalo}[1]{\big[ #1 \big]}
+\newcommand{\filter}[2]{\ostalo{ #2 }_{#1}}
+\newcommand{\nic}{\;{\cdot}\;}
+Konstruiramo podatkovni tip verige filtrov:
+\begin{verbatim}
+  type 'a veriga = | Filter of ('a -> bool) * 'a list * 'a veriga
+                   | Ostalo of 'a list,
+\end{verbatim}
+kjer \verb|Filter(f, sez, rep)| predstavlja člen v verigi, ki v seznamu \verb|sez| hrani elemente,
+za katere funkcija \verb|f| vrne \verb|true|, parameter \verb|rep| pa hrani preostanek verige.
+
+\podnaloga
+Napišite prazen filter (torej takšen, ki še ne hrani nobenega elementa) \verb|test : int veriga|,
+ki v prvem členu hrani negativna števila, v drugem členu hrani števila manjša od 10 in
+v tretjem členu preostala števila.
+\[
+  \filter{< 0}{\nic} \sim \filter{< 10}{\nic} \sim \ostalo{\nic}
+\]
+
+\podnaloga
+Napišite funkcijo \verb|vstavi : 'a -> 'a veriga -> 'a veriga|,
+ki vrne verigo, v kateri je dani element vstavljen na začetek seznama tistega člena verige, ki prvi zadošča filtracijski funkciji.
+Pri vstavljanju števil $-5$, $7$, $100$, $-7$ in $2$ v zgornjo verigo bi dobili:
+\[
+  \filter{< 0}{{-5}, -7} \sim \filter{< 10}{7, 2} \sim \ostalo{100}
+\]
+
+\podnaloga
+Napišite funkcijo \verb|poisci : 'a -> 'a veriga -> bool|,
+ki preveri, ali je element vsebovan v katerem od seznamov v verigi filtrov. Pri tem naj preveri zgolj en seznam.
+
+\podnaloga
+Napišite funkcijo \verb|izprazni_filtre : 'a veriga -> 'a veriga * 'a list|,
+ki kot par vrne verigo filtrov, kjer imajo vsi členi prazne sezname, in seznam vseh
+elementov, ki so bili hranjeni v filtrih. Na primer, za zgornjo verigo bi poleg prazne verige funkcija vrnila še seznam $[{-5}, -7, 7, 2, 100]$.
+
+\podnaloga
+Napišite funkcijo \verb|dodaj_filter : ('a -> bool) -> 'a veriga -> 'a veriga|,
+ki na začetek podane verige filtrov doda nov filter s filtracijsko funkcijo \verb|f|.
+Elementi v vrnjeni verigi filtrov naj bodo pravilno razporejeni tudi glede na novo dodani člen. Na primer, če bi zgornji verigi dodali še filtracijsko funkcijo, ki preverja sodost, bi dobili:
+\[
+  \filter{\text{je sod}}{2, 100} \sim \filter{< 0}{{-5}, -7} \sim \filter{< 10}{7} \sim \ostalo{\nic}
+\]
+
+
+\end{document}

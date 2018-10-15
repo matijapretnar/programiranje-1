@@ -160,8 +160,8 @@ struct
       | _ -> assert false
 
     let zavrti_desno = function
-      | Sestavljeno (_, Sestavljeno (_, ll, y, dl), x, d) ->
-          sestavljeno (ll, y, sestavljeno (dl, x, d))
+      | Sestavljeno (_, Sestavljeno (_, ll, y, ld), x, d) ->
+          sestavljeno (ll, y, sestavljeno (ld, x, d))
       | _ -> assert false
 
     let razlika = function

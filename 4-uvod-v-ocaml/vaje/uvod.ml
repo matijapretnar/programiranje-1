@@ -1,121 +1,132 @@
 
-(* ===== Vaja 1: Uvod v OCaml  ===== *)
+(* ========== Vaja 1: Uvod v OCaml  ========== *)
 
-
-(* Funkcija "predzadnji_element l" vrne predzadnji element seznama l. 
- V primeru prekratkega seznama vrne napako.
- ----------
- # predzadnji_element [1; 2; 3; 4];;
+(*----------------------------------------------------------------------------*]
+ Funkcija [penultimate_element] vrne predzadnji element danega seznama. V
+ primeru prekratkega seznama vrne napako.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # penultimate_element [1; 2; 3; 4];;
  - : int = 3
- ---------- *)
+[*----------------------------------------------------------------------------*)
 
-let predzadnji_element l = ()
+let rec penultimate_element = ()
 
-(* Funkcija "poisci k l" poišče k-ti element v seznamu l.
- Številčenje elementov seznama (kot ponavadi) pričnemo z 0.
- Privzamemo, da je k nenegativno število.
- V primeru prekratkega seznama funkcija vrne napako.
- ----------
- # poisci 2 [0; 0; 1; 0; 0; 0];;
+(*----------------------------------------------------------------------------*]
+ Funkcija [get k list] poišče [k]-ti element v seznamu [list]. Številčenje
+ elementov seznama (kot ponavadi) pričnemo z 0. Če je k negativen, funkcija
+ vrne ničti element. V primeru prekratkega seznama funkcija vrne napako.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # get 2 [0; 0; 1; 0; 0; 0];;
  - : int = 1
- ---------- *)
+[*----------------------------------------------------------------------------*)
 
-let poisci k l = ()
+let rec get = ()
 
-(* Funkcija "podvoji l" podvoji pojavitve elementov v seznamu l.
- ----------
+(*----------------------------------------------------------------------------*]
+ Funkcija [double] podvoji pojavitve elementov v seznamu.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # podvoji [1; 2; 3];;
  - : int list = [1; 1; 2; 2; 3; 3]
- ---------- *)
+[*----------------------------------------------------------------------------*)
 
-let podvoji l = ()
+let rec double = ()
 
-(* Funkcija "razdeli k l" seznam l razdeli na dva seznama. Prvi vsebuje prvih k elementov
- seznama l, v drugem pa vsi ostali. Funkcija vrne par teh dveh seznamov.
- V primeru, ko je k izven mej seznama, je bo primeren od seznamov enak [])
- ----------
- # razdeli 2 [1; 2; 3; 4; 5];;
+(*----------------------------------------------------------------------------*]
+ Funkcija [divide k list] seznam razdeli na dva seznama. Prvi vsebuje prvih [k]
+ elementov, drugi pa vse ostale. Funkcija vrne par teh seznamov. V primeru, ko
+ je [k] izven mej seznama, je primeren od seznamov prazen.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # divide 2 [1; 2; 3; 4; 5];;
  - : int list * int list = ([1; 2], [3; 4; 5])
- # razdeli 7 [1; 2; 3; 4; 5];;
+ # divide 7 [1; 2; 3; 4; 5];;
  - : int list * int list = ([1; 2; 3; 4; 5], [])
- ---------- *)
- 
-let razdeli k l = ()
+[*----------------------------------------------------------------------------*)
 
-(* Funkcija "zbrisi k l" iz seznama l pobriše k-ti element.
- V primeru prekratkega seznama funkcija vrne napako.
- ----------
- # zbrisi 3 [0; 0; 0; 1; 0; 0];;
+let rec divide = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [delete k list] iz seznama izbriše [k]-ti element. V primeru
+ prekratkega seznama funkcija vrne napako.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # delete 3 [0; 0; 0; 1; 0; 0];;
  - : int list = [0; 0; 0; 0; 0]
- ---------- *)
- 
-let zbrisi k l = ()
+[*----------------------------------------------------------------------------*)
 
-(* Funkcija "rezina i k l" sestavi novi seznam, ki vsebuje elemente seznama l od vključno
- i-tega do k-tega (brez k-tega).
- Predpostavimo, da sta i in k primerna.
- ----------
- # rezina 3 6 [0; 0; 0; 1; 2; 3; 0; 0];;
+let rec delete = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [slice i k list] sestavi nov seznam, ki vsebuje elemente seznama
+ [list] od vključno [i]-tega do izključno [k]-tega. Predpostavimo, da sta [i] in
+ [k] primerna.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # slice 3 6 [0; 0; 0; 1; 2; 3; 0; 0];;
  - : int list = [1; 2; 3]
- ---------- *)
- 
-let rezina i k l = ()
+[*----------------------------------------------------------------------------*)
 
-(* Funkcija "vstavi x k l" na k-to mesto seznama l vrine element x.
- Če je k izven mej seznama, ga doda na začetek oz. konec.
- ----------
- # vstavi 1 3 [0; 0; 0; 0; 0];;
+let rec slice = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
+ Če je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # insert 1 3 [0; 0; 0; 0; 0];;
  - : int list = [0; 0; 0; 1; 0; 0]
- # vstavi 1 (-2) [0; 0; 0; 0; 0];;
+ # insert 1 (-2) [0; 0; 0; 0; 0];;
  - : int list = [1; 0; 0; 0; 0; 0]
- ---------- *)
+[*----------------------------------------------------------------------------*)
 
-let vstavi x k l = ()
+let rec insert = ()
 
-(* Funkcija "zavrti n l" seznam l zavrti za n mest v levo.
- Predpostavimo, da je n v mejah seznama.
- ----------
- # zavrti 2 [1; 2; 3; 4; 5];;
+(*----------------------------------------------------------------------------*]
+ Funkcija [rotate n list] seznam zavrti za [n] mest v levo. Predpostavimo, da
+ je [n] v mejah seznama.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # rotate 2 [1; 2; 3; 4; 5];;
  - : int list = [3; 4; 5; 1; 2]
- ---------- *)
+[*----------------------------------------------------------------------------*)
 
-let zavrti n l = ()
- 
-(* Funkcija "pobrisi x l" iz seznam l izbriše vse pojavitve elementa x.
- ----------
- # pobrisi 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
+let rec rotate = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [remove x list] iz seznama izbriše vse pojavitve elementa [x].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # remove 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
  - : int list = [2; 3; 2; 3]
- ---------- *)
+[*----------------------------------------------------------------------------*)
 
-let pobrisi x l = ()
+let rec remove = ()
 
-(* Funkcija "je_palindrom l" ugotovi ali seznam l predstavlja palindrom.
- Namig: Pomagaj si s pomožno funkcijo, ki obrne vrstni red elementov seznama. 
- ----------
- # je_palindrom [1; 2; 3; 2; 1];;
+(*----------------------------------------------------------------------------*]
+ Funkcija [is_palindrome] za dani seznam ugotovi ali predstavlja palindrom.
+ Namig: Pomagaj si s pomožno funkcijo, ki obrne vrstni red elementov seznama.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # is_palindrome [1; 2; 3; 2; 1];;
  - : bool = true
- # je_palindrom [0; 0; 1; 0];;
+ # is_palindrome [0; 0; 1; 0];;
  - : bool = false
- ---------- *)
- 
-let je_palindrom l = ()
-  
-(* Funkcija "max_po_komponentah l1 l2" vrne seznam, ki ima za elemente
- večjega od elementov na ustreznih mestih v seznamih l1 in l2.
- Skupni seznam ima dolžino krajšega od seznamov l1 in l2. 
- ----------
- # max_po_komponentah [5; 4; 3; 2; 1] [0; 1; 2; 3; 4; 5; 6];;
+[*----------------------------------------------------------------------------*)
+
+let rec is_palindrome = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [max_on_components] sprejme dva seznama in vrne nov seznam, katerega
+ elementi so večji od istoležnih elementov na danih seznamih. Skupni seznam ima
+ dolžino krajšega od danih seznamov.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # max_on_components [5; 4; 3; 2; 1] [0; 1; 2; 3; 4; 5; 6];;
  - : int list = [5; 4; 3; 3; 4]
- ---------- *)
-let max_po_komponentah l1 l2 = ()
-  
-(* Funkcija "drugi_najvecji l" vrne drugo največjo vrednost v seznamu l.
- Ponovitve elementa se štejejo kot ena vrednost.
- Predpostavimo, da ima seznam vsaj dva različna elementa.
- Namig: Pomagaj si s pomožno funkcijo, ki poišče največjo vrednost v seznamu. 
- ----------
- # drugi_najvecji [1; 10; 11; 11; 5; 4; 10];;
+[*----------------------------------------------------------------------------*)
+
+let rec max_on_components = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [second_largest] vrne drugo največjo vrednost v seznamu. Pri tem se
+ ponovitve elementa štejejo kot ena vrednost. Predpostavimo, da ima seznam vsaj
+ dve različni vrednosti.
+ Namig: Pomagaj si s pomožno funkcijo, ki poišče največjo vrednost v seznamu.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # second_largest [1; 10; 11; 11; 5; 4; 10];;
  - : int = 10
- ---------- *)
- 
-let drugi_najvecji l = ()
+[*----------------------------------------------------------------------------*)
+
+let rec second_largest = ()

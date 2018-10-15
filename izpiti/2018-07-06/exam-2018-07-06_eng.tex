@@ -1,0 +1,147 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\VerbatimFootnotes{}
+
+\begin{document}
+
+\izpit{Programiranje I: 2.\ izpit}{06.\ July 2018}{
+  Čas reševanja je 150 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[]
+
+\podnaloga
+Write a function
+\begin{verbatim}
+    apply : ('a -> 'b) -> 'a -> 'b
+\end{verbatim}
+that applies a function to its argument.
+
+\podnaloga
+Write a function
+\begin{verbatim}
+    revapply : 'a -> ('a -> 'b) -> 'b
+\end{verbatim}
+that performs reverse application. For instance, \verb|revapply (revapply x f) g| should be equivalent to $g (f (x))$.
+
+\podnaloga
+Write a function
+\begin{verbatim}
+    take : int -> 'a list -> ('a list) option
+\end{verbatim}
+such that \verb|take n xs| returns the first \verb|n| elements of \verb|xs|, or \verb|None| if \verb|xs| has fewer than \verb|n| elements.
+
+For full credit, the function should be \emph{tail-recursive}.
+
+\naloga[]
+The type \verb|'a list| is the collection of 0 or more elements of type \verb|'a|. We can modify this idea to model collections of 1 or more elements of type \verb|'a| by introducing a new type of non-empty lists.
+
+\podnaloga
+Define a new type \verb|'a nelist| of non-empty lists.
+
+\podnaloga
+Define a function \verb|head : 'a nelist -> 'a|.
+
+\podnaloga
+Define a function \verb|length : 'a nelist -> int| that computes the length of a non-empty list.
+
+\podnaloga
+Define a function \verb|list_of_nelist : 'a nelist -> 'a list|.
+
+\podnaloga
+Define a function \verb|fold : ('a -> 'b -> 'b) -> 'b -> 'a nelist -> 'b|.
+
+\naloga[]
+Dr Hannah Habibah is a mathematician with a great love for symmetries. After returning from her recent trip to Hajjah, Yemen, she is looking for symmetries in her holiday photos.
+
+The photos are represented as lists of bit-strings. Here's a sample 8x8 picture:
+\begin{verbatim}
+["00101011",
+ "01001100",
+ "11000111",
+ "01100111",
+ "01110110",
+ "00100111",
+ "01010001",
+ "01001000"]
+\end{verbatim}
+
+You can generate random photos with the following line of code:
+\begin{verbatim}
+Python:
+import random
+m = ["".join( [ str(random.randint(0, 1)) for i in range(0, 8) ] )
+          for j in range(0, 8)]
+\end{verbatim}
+
+\begin{verbatim}
+OCaml:
+let m = List.init 8 (fun _ -> List.fold_left (^) ""
+               (List.init 8 (fun _ -> string_of_int (Random.int 2)))) ;;
+\end{verbatim}
+
+
+Dr Habibah wants to divide each row into blocks such that each block is symmetric, in a suitable way. Her goal is to find the least number of blocks for each row.
+
+There are different kinds of symmetries she is considering:
+\begin{itemize}
+\item a block is \emph{p-symmetric} if it is a palindrome
+\item a block $B$ of length \verb|n| is \emph{sum-symmetric} if the sum of the first
+\verb|int(n/2)|\footnote{OCaml: \verb|int_of_float ((float_of_int n) /. 2.)|} bits of $B$
+  and the last \verb|int(n/2)| bits of $B$ are equal
+\end{itemize}
+
+\podnaloga
+Define a boolean predicate \verb|is_palindrome| that checks if a block is p-symmetric.
+\begin{verbatim}
+# Example:
+>>> is_palindrome("01010")
+True
+\end{verbatim}
+
+\podnaloga
+Write a function \verb|number_of_blocks| that computes the least number of blocks that a row has to be split into so that each block is symmetric.
+
+\begin{verbatim}
+# Example:
+>>> number_of_blocks(m[0])
+3
+\end{verbatim}
+
+\podnaloga
+Write a function \verb|blocks| that not only returns the minimum number of blocks for a row, but also indicates how to split the row into those blocks. There may be several ways to split a row into $k$ blocks; it suffices to indicate one way of obtaining $k$ blocks.
+
+\begin{verbatim}
+# Example:
+>>> [blocks(l) for l in m][0]
+(3, ['0', '01010', '11'])
+\end{verbatim}
+
+\podnaloga
+Write a boolean predicate \verb|sum_symmetric|.
+
+Hint: to convert a bit-string $b$ to a list of integers, write \verb|l = [int(c) for c in b]|\footnote{OCaml: Load the ``Str'' module with \verb| #load "str.cma" ;; |\\ then use \verb|l = List.map int_of_string (Str.split (Str.regexp "") b)|}
+
+\begin{verbatim}
+# Example:
+>>> sum_symmetric(m[-1])
+True
+>>> sum_symmetric('1011')
+False
+\end{verbatim}
+
+\podnaloga
+Generalise your functions \verb|number_of_blocks| and \verb|blocks| to take a boolean predicate \verb|is_symmetric| as additional argument.
+
+\begin{verbatim}
+# Example:
+>>> [blocks(l, sum_symmetric) for l in m][0]
+(2, ['00', '101011'])
+\end{verbatim}
+
+\end{document}
