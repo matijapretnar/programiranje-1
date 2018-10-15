@@ -6,41 +6,31 @@ Can be used to test sorting functions as in
 let l = (randlist 100 100) in selection_imperative_list l = List.sort compare l;;
 
  *)
-let rec randlist len max = if len <= 0 then [] else (Random.int max) :: randlist (len-1) max
+let rec randlist len max = failwith "todo"
 
 (* The function insert y xs inserts y into the already sorted list xs and
    returns a sorted list.
 
    For example:
 
-utop[75]> 
+utop[75]> insert 9 [0; 2];;
 - : int list = [0; 2; 9]
 utop[76]> insert 1 [0; 2];;
 - : int list = [0; 1; 2]
 utop[79]> insert 1 [];;
 - : int list = [1]
  *)
-let rec insert y xs =
-	match xs with
-	| [] -> [y]
-	| x::xs -> if y < x then y :: x :: xs else x :: (insert y xs)
+let rec insert y = failwith "todo"
 
 (* The empty list is sorted. We can sort a list by consecutively inserting all
    of its elements into the empty list. Use this idea to write insertion_sort
    using List.fold_left and insert. *)
-let rec ins_sort l = List.fold_left (fun acc x -> insert x acc) [] l
+let rec ins_sort l = failwith "todo"
 
 (* Write a recursive function that takes a list l and if l is non-empty,
    returns a pair Some (z, l_without_z) such that z is the smallest element in
    l and l_without_z is l with the first occurance of z removed. *)
-let rec min_and_rest l =
-	let rec del_once y l = failwith "todo" in
-	let rec min_list min_so_far xs = 
-		match xs with
-		| [] -> min_so_far
-		| x::xs -> min_list (min min_so_far x) xs
-	let min_list_fold base xs = List.fold_left (fun acc x -> ...) 
-	in
+let rec min_and_rest l = failwith "todo"
 
 
 (* Selection sort works by keeping a list l partitioned into a sublist that is
