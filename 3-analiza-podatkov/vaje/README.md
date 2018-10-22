@@ -12,6 +12,7 @@ This should automatically open a new tab in your browser.
 
 ### Tasks:
 
+* add a "task" to VSCode to load a file in python, as described on [ucilnica ► Vzpostavitev programskega okolja](https://ucilnica.fmf.uni-lj.si/mod/page/view.php?id=27353)
 
 * create a new jupyter notebook
   * import the cat library, and
