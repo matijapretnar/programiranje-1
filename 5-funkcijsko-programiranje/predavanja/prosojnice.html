@@ -10,9 +10,9 @@
 
 class: center, middle
 
-# Programiranje 1
+# Funkcijsko programiranje
 
-## Funkcijsko programiranje
+## Programiranje 1
 
 ---
 
@@ -24,9 +24,9 @@ let je_majhen x =
 ```]
 
 .terminal[```
-  Characters 45-50:
-    if x < 10 then "Da" else false
-                             ^^^^^
+Characters 45-50:
+  if x < 10 then "Da" else false
+                           ^^^^^
 Error: This expression has type bool but an
   expression was expected of type string
 ```]
@@ -97,73 +97,100 @@ TypeError: unsupported operand type(s)
 
 ---
 
-### OCaml optimizira **repno rekurzijo**
+### Klic funkcije je **repen**, če se izvede zadnji
 
-.source[```
-let rec f x y =
-    if y = 0 then x else f (x + 1) (y - 1)
-```]
-
-.terminal[```
-# f 0 1000;;
-- : int = 1000
-
-# f 0 100000;;
-- : int = 100000
-
-# f 0 10000000;;
-- : int = 10000000
-```]
-
----
-
-### Klic je repen, če se izvede zadnji
-
-.source[```
-let rec vsota = function
-  | [] -> 0
-  | x :: xs -> x + vsota xs
+.bad-example[```
+let f x = 4 * x
+let g x = 6 + f x
+let h x = 3 * g x
 ```]
 
 ```
-  vsota [1; 2; 3]
-= 1 + vsota [2; 3]
-= 1 + (2 + vsota [3])
-= 1 + (2 + (3 + vsota []))
-= 1 + (2 + (3 + 0))
-= 1 + (2 + 3)
-= 1 + 5
-= 6
+  h 2                (* h dela *)
+= 3 * g 2            (* g dela, h čaka *)
+= 3 * (6 + f 2)      (* f dela, g in h čakata *)
+= 3 * (6 + (4 * 2))  (* f dela, g in h čakata *)
+= 3 * (6 + 8)        (* g dela, h čaka *)
+= 3 * 14             (* h dela *)
+= 42
 ```
 
 Računalnik mora najprej izračunati rezultat funkcije, zato si delo odloži na sklad.
 
 ---
 
-### Klic je repen, če se izvede zadnji
+### Klic funkcije je **repen**, če se izvede zadnji
 
-.source[```
-let rec vsota' acc = function
-  | [] -> acc
-  | x :: xs -> vsota' (acc + x) xs
+.good-example[```
+let f x = 3 * x
+let g x = f (6 + x)
+let h x = g (4 * x)
 ```]
 
 ```
-  vsota' 0 [1; 2; 3]
-= vsota' (1 + 0) [2; 3]
-= vsota' 1 [2; 3]
-= vsota' (1 + 2) [3]
-= vsota' 3 [3]
-= vsota' (3 + 3) []
-= vsota' 6 []
-= 6
+  h 2                (* h dela *)
+= g (4 * 2)          (* h dela *)
+= g 8                (* g dela *)
+= f (6 + 8)          (* g dela *)
+= f 14               (* f dela *)
+= 3 * 14             (* f dela *)
+= 42
 ```
 
 Računalnik pri repnem klicu lahko delo opravi sproti in mu ga ni treba shranjevati.
 
 ---
 
-### OCaml optimizira repno rekurzijo
+### Funkciji, kjer so vsi rekurzivni klici repni, pravimo **repno rekurzivna**
+
+.bad-example[```
+let rec dolzina = function
+  | [] -> 0
+  | _ :: xs -> 1 + dolzina xs
+```]
+
+```
+  dolzina [1; 2; 3]
+= 1 + dolzina [2; 3]
+= 1 + (1 + dolzina [3])
+= 1 + (1 + (1 + dolzina []))
+= 1 + (1 + (1 + 0))
+= 1 + (1 + 1)
+= 1 + 2
+= 3
+```
+
+---
+
+### Funkciji, kjer so vsi rekurzivni klici repni, pravimo **repno rekurzivna**
+
+.good-example[```
+let rec dolzina' acc = function
+  | [] -> acc
+  | _ :: xs -> dolzina' (acc + 1) xs
+```]
+
+```
+  dolzina' 0 [1; 2; 3]
+= dolzina' (1 + 0) [2; 3]
+= dolzina' 1 [2; 3]
+= dolzina' (1 + 1) [3]
+= dolzina' 2 [3]
+= dolzina' (2 + 1) []
+= dolzina' 3 []
+= 3
+```
+
+---
+
+class: center, middle, question
+
+## `vsota` in `preslikaj`
+### pretvori v repno rekurzijo
+
+---
+
+### OCaml **optimizira repne klice**
 
 .source[```
 let rec f x y =
@@ -183,7 +210,7 @@ let rec f x y =
 
 ---
 
-### Python (nalašč) ne optimizira repne rekurzije
+### Python **(nalašč) ne optimizira** repnih klicev
 
 .source[```python
 def f(x, y):
@@ -284,7 +311,7 @@ val moja_funkcija' : int -> int = <fun>
 
 ---
 
-### Funkciji dveh argumentov je podal le enega. Ne boste verjeli, kaj se zgodi potem!
+### Ne boste verjeli, kaj se zgodilo, ko so<br>funkciji dveh argumentov podali le enega!
 
 .source[```
 let zmnozi x y = x * y
@@ -485,9 +512,9 @@ let rec preslikaj f = function
 ### Splošni vzorec zajame funkcija `zlozi_desno`
 
 .source[```
-let rec zlozi_desno f z = function
+let rec zlozi_desno f xs z = match xs with
   | [] -> z
-  | x :: xs -> f x (zlozi_desno f z xs)
+  | x :: xs -> f x (zlozi_desno f xs z)
 ```]
 
 ```
