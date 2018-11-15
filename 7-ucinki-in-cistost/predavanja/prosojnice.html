@@ -363,27 +363,25 @@ class: center, middle
 
 class: center, middle, question
 
-## Kakšna so načela indukcije za sledeče tipe?
+## Kakšni sta načeli indukcije za sledeča tipa?
 
 .source.left[```
 type nat = Zero | Succ of nat
 
-type bool = True | False
-
-type 'a option = None | Some of 'a
+type bool = False | True
 ```]
 
 ---
 
 class: center, middle, question
 
-.source.left[```
+.bad-example.left[```
 let rec obrni = function
   | [] -> []
   | x :: xs -> obrni xs @ [x]
 ```]
 
-.source.left[```
+.good-example.left[```
 let obrni' =
   let rec aux acc = function
     | [] -> aux
