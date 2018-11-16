@@ -17,7 +17,7 @@ class: center, middle
 ---
 
 class: center, middle
-## računalniški programi <br>~<br> matematične funkcije<br>+<br>stranski učinki
+## računalniške funkcije<br>~<br> matematične funkcije<br>+<br>stranski učinki
 
 ---
 
@@ -27,14 +27,14 @@ class: center, middle
 * branje s tipkovnice
 * naključne izbire
 * izjeme pri izvajanju
-* spreminjanje pomnilnika (_naslednji teden_)
+* spreminjanje pomnilnika
 * delo z datotekami
 * povezovanje z drugimi računalniki
 * …
 
 ---
 
-### V OCamlu učinki v tipih **niso vidni**
+### V OCamlu učinki v tipih funkcij **niso vidni**
 
 .terminal[```
 # print_endline;;
@@ -57,8 +57,6 @@ class: center, middle
 
 class: center, middle
 
-# ugani število
-
 .terminal.left[```markdown
 Do koliko znaš šteti? 100
 Izmislil sem si število med 1 in 100.
@@ -76,15 +74,15 @@ BRAVO!
 
 ---
 
-### Program je **čist**, če nima stranskih učinkov
+### Funkcija je **čista**,<br>če ne sproža stranskih učinkov
 
-1. Čist program lahko vedno **zamenjamo** z njihovimi **definicijami**.
+1. Čiste funkcije lahko vedno **zamenjamo** z njihovimi **definicijami**.
 
 2. Čiste funkcije ob **enakih argumentih** vedno vrnejo **enake rezultate**.
 
 ---
 
-### Vsi programi v Pythonu **niso čisti**
+### Funkcije v Pythonu običajno **niso čiste**
 
 .source[```python
 seznam = [1, 2, 3]
@@ -106,7 +104,7 @@ def g(x):
 
 ---
 
-### Vsi **dosedanji<sup>\*</sup>** programi v OCamlu so bili čisti
+### Funkcije v OCamlu **običajno** so čiste
 
 .source[```
 let seznam = [1; 2; 3]
@@ -311,14 +309,6 @@ class: center, middle
 
 .consecutive[```
   globina (zrcali P)
-```]
---
-.consecutive[```
-= globina P
-```]
---
-.consecutive[```
-= 0
 ```]
 --
 .consecutive[```
