@@ -10,9 +10,9 @@
 
 class: center, middle
 
-# Programiranje 1
+# Iskalna drevesa
 
-## Iskalna drevesa
+## Programiranje 1
 
 ---
 
@@ -69,7 +69,7 @@ let stevilo_razlicnih xs =
 
 ---
 
-.center[![](iskalno-drevo.png)]
+.center[![](slike/iskalno-drevo.png)]
 
 ### Dvojiško drevo je iskalno, če:
 
@@ -81,7 +81,7 @@ let stevilo_razlicnih xs =
 
 ### Elemente iščemo rekurzivno
 
-.center[![](iskalno-drevo-najdi.png)]
+.center[![](slike/iskalno-drevo-najdi.png)]
 
 ### Število 15 je v drevesu
 
@@ -89,7 +89,7 @@ let stevilo_razlicnih xs =
 
 ### Elemente iščemo rekurzivno
 
-.center[![](iskalno-drevo-ne-najdi.png)]
+.center[![](slike/iskalno-drevo-ne-najdi.png)]
 
 ### Števila 41 ni v drevesu
 
@@ -97,32 +97,32 @@ let stevilo_razlicnih xs =
 
 ### Elemente rekurzivno vstavimo na mesto, kjer bi jih sicer našli
 
-.center[![](iskalno-drevo-vstavi.png)]
+.center[![](slike/iskalno-drevo-vstavi.png)]
 
 ---
 
 ### Elemente v listih odstranimo enostavno
 
-.center[![](iskalno-drevo-brisi-list.png)]
+.center[![](slike/iskalno-drevo-brisi-list.png)]
 
 
 ---
 
 ### Korena zaradi otrok ne moremo odstraniti
 
-.center[![](iskalno-drevo-brisi-koren.png)]
+.center[![](slike/iskalno-drevo-brisi-koren.png)]
 
 ---
 
 ### Koren lahko odstranimo,<br>če ga nadomestimo s predhodnikom
 
-.center[![](iskalno-drevo-zamenjaj-koren-s-predhodnikom.png)]
+.center[![](slike/iskalno-drevo-zamenjaj-koren-s-predhodnikom.png)]
 
 ---
 
 ### Koren lahko odstranimo,<br>če ga nadomestimo z naslednikom
 
-.center[![](iskalno-drevo-zamenjaj-koren-z-naslednikom.png)]
+.center[![](slike/iskalno-drevo-zamenjaj-koren-z-naslednikom.png)]
 
 ---
 
@@ -136,7 +136,7 @@ class: center, middle, question
 
 # implementacija <br>iskalnih dreves v Pythonu
 
-## 1. grda varianta
+## (grda varianta)
 
 ---
 
@@ -144,8 +144,74 @@ class: center, middle, question
 
 # implementacija <br>iskalnih dreves v Pythonu
 
-## 2. grda varianta
+## (še ena grda varianta)
 
+---
+
+### Iskanje/dodajanje/brisanje v iskalnem drevesu<br>ima časovno zahtevnost \\(O(h)\\)
+
+.center[![](slike/avl-drevo.png)]
+
+### \\(n \approx 2^h\\) in posledično \\(O(h) \approx O(\log n)\\)<br>velja le, če je drevo **uravnoteženo**
+
+---
+
+.center[![](slike/avl-drevo.png)]
+
+### Iskalno drevo je AVL drevo, če:
+
+* je razlika globin levega in desnega otroka največ 1
+* sta levi in desni otrok tudi AVL drevesi
+
+---
+
+class: center, middle, question
+
+# Vsaj koliko vozlišč ima<br>AVL drevo globine \\(h\\)?
+
+---
+
+### Dodajanje lahko **pokvari** uravnoteženost
+
+.center[![](slike/dodajanje-pokvari-avl-drevo.png)]
+
+### Brisanje lahko pokvari uravnoteženost
+
+.center[![](slike/brisanje-pokvari-avl-drevo.png)]
+
+---
+
+### V splošnem obstajata **dve** neuravnoteženosti
+
+.center[![](slike/mozni-neuravnotezenosti.png)]
+
+### Brez škode za splošnost poglejmo **desno**
+
+---
+
+### Desna neuravnoteženost ima dve različici 
+
+.center[![](slike/mozni-desni-neuravnotezenosti.png)]
+
+### Zakaj ni drugih?
+
+---
+
+### Pri prvi različici uporabimo **levo rotacijo**
+
+.center[![](slike/leva-rotacija.png)]
+
+---
+
+### Pri drugi uporabimo **desno-levo rotacijo**
+
+.center[![](slike/desna-rotacija.png)]
+
+---
+
+class: center, middle, question
+
+# implementacija <br>AVL dreves v OCamlu
 
 </textarea>
 <script src="../../pomozno/prosojnice.js"></script>

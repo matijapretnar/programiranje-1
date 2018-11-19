@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Modularnost</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Modularnost
+
+## Programiranje 1
+
+---
+
+class: center, middle, question
+
+.bad-example.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+# Zakaj ta funkcija ni dobra?
+
+---
+
+### Spomnimo se ideje **notacije velikega O**
+
+## .center[$$f \in O(g)$$]
+
+### $$\exists \color{purple}{M}, \color{red}{x_0}. \forall x > \color{red}{x_0}. |f(x)| \leq \color{purple}{M} \cdot |\color{blue}{g}(x)|$$
+
+### .center[![](slike/O-graf.png)]
+
+### Rast funkcije \\(f\\) je omejena s funkcijo \\(g\\)
+
+---
+
+### Lastnosti notacije velikega O
+
+### $$f \in O(g), a \in \mathbb{R} \implies a \cdot f \in O(g)$$
+
+### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 + f_2 \in O(|g_1| + |g_2|)$$
+
+### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 \cdot f_2 \in O(g_1 \cdot g_2)$$
+
+
+---
+
+### Pythonovi seznami so implementirani s tabelami
+
+.left-column[.terminal[```python
+x = 10
+s = [6, 2, 4]
+```]]
+
+.right-column[.right[![](slike/seznam-python.png)]]
+
+--
+
+```python
+ 0   0   0   0   0   0      x : 8
+ 0 123  10   0   0   0      s : 19
+ 0   0   0   0   0   0
+246  3   6   2   4   0
+ 0   0   0   0   0   0
+```
+
+Na mestih `123` in `246` je shranjena še definicija
+razredov `int` in `list`.
+
+---
+
+### OCamlovi seznami so implementirani z verižnimi seznami
+
+.left-column[.terminal[```ocaml
+let x = 10
+let s = [6; 2; 4]
+```]]
+
+.right-column[.right[![](slike/seznam-ocaml.png)]]
+
+--
+
+```ocaml
+ 0   0   0   0   0   0      x : 8
+ 0  10   0   0   0   0      s : 19
+ 0   0   1   2  22   0
+ 1   6  15   1   4  30
+ 0   0   0   0   0   0
+```
+
+Pomen konstruktorjev `[]` in `::` je določen že ob prevajanju.
+
+---
+
+### Primerjava seznamov v Pythonu in OCamlu
+
+| tip                                | predstavitev         | spremenljivost
+| ------------------------------: |:-------------: | :--------------:
+| Python `list`                   | tabele | spremenljivi
+| OCaml `list`                    | verižni seznami | nespremenljivi
+| OCaml `array`                    | tabele | spremenljivi
+| če v Pythonu napišemo svoj razred `MojSeznam`        | verižni seznami | spremenljivi
+
+---
+
+class: question
+
+## Kakšna je časovna zahtevnost sledečih operacij?
+
+|                                 | Python         | OCaml
+| ------------------------------: |:-------------: | :--------------:
+| indeksiranje                    | .spoiler[O(1)] | .spoiler[O(n)]
+| dodajanje na začetek            | .spoiler[O(n)] | .spoiler[O(1)]
+| dodajanje na konec              | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun dolžine seznama         | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun repa seznama            | .spoiler[O(n)] | .spoiler[O(1)]
+| ugotavljanje prisotnosti        | .spoiler[O(n)] | .spoiler[O(n)]
+
+---
+
+class: question
+
+## Kakšna je prostorska zahtevnost sledečih operacij?
+
+|                                 | Python         | OCaml
+| ------------------------------: |:-------------: | :--------------:
+| indeksiranje                    | .spoiler[O(1)] | .spoiler[O(1)]
+| dodajanje na začetek            | .spoiler[O(n)] | .spoiler[O(1)]
+| dodajanje na konec              | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun dolžine seznama         | .spoiler[O(1)] | .spoiler[O(1)]
+| izračun repa seznama            | .spoiler[O(n)] | .spoiler[O(1)]
+| ugotavljanje prisotnosti        | .spoiler[O(1)] | .spoiler[O(1)]
+
+---
+
+class: center, middle, question
+
+# Ali med prostorsko in časovno zahtevnostjo obstaja povezava?
+
+---
+
+class: center, middle, question
+
+# razbitje programov<br>na datoteke
+
+---
+
+### **Modul** je zbirka tipov in vrednosti
+
+.source[```
+module RGB = struct
+  type t = {r : float; g : float; b : float}
+
+  let po_imenu = function
+  | "rdeca" -> {r = 1.; g = 0.; b = 0.}
+  | ...
+
+  let zmesaj barva1 barva2 = ...
+  let potemni = zmesaj {r = 0.; g = 0.; b = 0.}
+end
+```]
+
+.terminal[```
+# RGB.potemni (RGB.po_imenu "zelena");;
+- : RGB.t = {r = 0.; g = 0.5; b = 0.}
+```]
+
+---
+
+### Tipom modulov pravimo **signature**
+
+.terminal[```
+# #use "barve.ml";;
+module RGB : sig
+  type t = {r : float; g : float; b : float}
+  val po_imenu : string -> t
+  val zmesaj : t -> t -> t
+  val potemni : t -> t
+end
+```]
+
+---
+
+### Če želimo, lahko signaturo tudi napišemo
+
+.source[```
+module type Barva = sig
+  type t = {r : float; g : float; b : float}
+  val po_imenu : string -> t
+  val zmesaj : t -> t -> t
+  val potemni : t -> t
+end
+
+module RGB : Barva = struct
+  ...
+end
+```]
+
+.terminal[```
+# #use "barve.ml";;
+module RGB : Barva
+```]
+
+---
+
+### Signature lahko skrijejo pomožne vrednosti
+
+.source[```
+module type Barva = sig
+  type t = {r : float; g : float; b : float}
+  val po_imenu : string -> t
+end
+
+module RGB : Barva = struct
+  ...
+end
+```]
+
+.terminal[```
+# RGB.po_imenu "zelena";;
+- : RGB.t = {r = 0.; g = 1.; b = 0.}
+# RGB.potemni (RGB.po_imenu "zelena");;
+Error: Unbound value RGB.potemni
+```]
+
+---
+
+### Signature lahko skrijejo definicijo tipov
+
+.source[```
+module type Barva = sig
+  type t
+  val po_imenu : string -> t
+end
+
+module RGB : Barva = struct
+  ...
+end
+```]
+
+.terminal[```
+# RGB.po_imenu "zelena";;
+- : RGB.t = <abstr>
+```]
+
+---
+
+### Vsaka datoteka v OCamlu je svoj modul
+
+`prva.ml`
+.source[```
+let pomozni_racun = 3 + 3
+let odgovor = pomozni_racun * succ pomozni_racun
+```]
+
+`druga.ml`
+.source[```
+let najboljsi_odgovor = succ Prva.odgovor
+```]
+
+### Signaturo zapišemo v datoteke `.mli`
+
+`prva.mli`
+.source[```
+val odgovor : int
+```]
+
+---
+
+class: center, middle, question
+
+### `mnozice.ml`
+
+.source.left[```
+module type Mnozica = sig
+  type 'a t
+  val prazna : 'a t
+  val dodaj : 'a -> 'a t -> 'a t
+  val vsebuje : 'a -> 'a t -> bool
+  val velikost : 'a t -> int
+end
+```]
+
+.source.left[```
+module Mnozica_s_seznami : Mnozica = ...
+```]
+
+.source.left[```
+module Mnozica_z_drevesi : Mnozica = ...
+```]
+
+---
+
+### **Funktor** je modul, odvisen od drugih modulov
+
+.source[```
+module Primer (M : Mnozica) = struct
+  let stevilo_razlicnih xs =
+    let rec aux ze_videni = function
+      | [] -> M.velikost ze_videni
+      | x :: xs when M.vsebuje x ze_videni ->
+          aux ze_videni xs
+      | x :: xs -> aux (M.dodaj x ze_videni) xs
+    in
+    aux M.prazna xs
+end
+```]
+
+---
+
+### Če uporabimo funktor, dobimo nov modul
+
+.terminal[```
+# use "mnozice.ml";;
+module type Mnozica = ...
+module Mnozice_s_seznami : Mnozica
+module Mnozice_s_drevesi : Mnozica
+module Primer : functor (M : Mnozica) ->
+  sig
+    val stevilo_razlicnih : 'a list -> int
+  end
+# module PS = Primer(Mnozice_s_seznami);;
+module PS : sig
+  val stevilo_razlicnih : 'a list -> int
+end
+# PS.stevilo_razlicnih [1; 2; 1; 5];;
+- : int = 3
+```]
+
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>

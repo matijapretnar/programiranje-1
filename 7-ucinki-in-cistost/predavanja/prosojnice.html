@@ -10,14 +10,14 @@
 
 class: center, middle
 
-# Programiranje 1
+# Učinki in čistost
 
-## Učinki in čistost
+## Programiranje 1
 
 ---
 
 class: center, middle
-## računalniški programi <br>~<br> matematične funkcije<br>+<br>stranski učinki
+## računalniške funkcije<br>~<br> matematične funkcije<br>+<br>stranski učinki
 
 ---
 
@@ -27,14 +27,14 @@ class: center, middle
 * branje s tipkovnice
 * naključne izbire
 * izjeme pri izvajanju
-* spreminjanje pomnilnika (_naslednji teden_)
+* spreminjanje pomnilnika
 * delo z datotekami
 * povezovanje z drugimi računalniki
 * …
 
 ---
 
-### V OCamlu učinki v tipih **niso vidni**
+### V OCamlu učinki v tipih funkcij **niso vidni**
 
 .terminal[```
 # print_endline;;
@@ -57,8 +57,6 @@ class: center, middle
 
 class: center, middle
 
-# ugani število
-
 .terminal.left[```markdown
 Do koliko znaš šteti? 100
 Izmislil sem si število med 1 in 100.
@@ -76,70 +74,15 @@ BRAVO!
 
 ---
 
-### OCaml nudi **dva prevajalnika** izvorne kode
+### Funkcija je **čista**,<br>če ne sproža stranskih učinkov
 
-1. `ocamlc` prevaja v **bitno** kodo (*bytecode*)<br>
-  – počasno izvajanje<br>– hitro prevajanje<br>– prenosljiva med različnimi procesorji
-
-2. `ocamlopt` prevaja v **strojno** kodo (*native code*)<br>
-  – hitro izvajanje<br>– počasno prevajanje<br>– neprenosljiva
-
----
-
-class: center, question
-
-## hitrost bitne in strojne kode
-
-  <iframe width='80%' height='40%' src='https://www.youtube.com/embed/D68Lck4Y5Ig?rel=0&amp;controls=0&amp;showinfo=0&amp;start=20'></iframe>
-  <iframe width='80%' height='40%' src='https://www.youtube.com/embed/FN4PF4ulNpk?rel=0&amp;controls=0&amp;iv_load_policy=3&amp;showinfo=0&amp;start=10'></iframe>
-
----
-
-### Za prevajanje raje uporabljamo `ocamlbuild`,<br>saj poskrbi za pomožne datoteke
-
-1. `ocamlbuild moj_program.byte` iz `moj_program.ml` naredi program `moj_program.byte`, ki uporablja **bitno** kodo
-
-2. `ocamlbuild moj_program.native` izvorno kodo `moj_program.ml` prevede v program `moj_program.native`, ki uporablja **strojno** kodo
-
----
-
-### Vsaka datoteka v OCamlu je svoj modul
-
-`prva.ml`
-.source[```
-let pomozni_racun = 3 + 3
-let odgovor = pomozni_racun * succ pomozni_racun
-```]
-
-`druga.ml`
-.source[```
-let najboljsi_odgovor = succ Prva.odgovor
-```]
-
-### Signaturo zapišemo v datoteke `.mli`
-
-`prva.mli`
-.source[```
-val odgovor : int
-```]
-
----
-
-class: center, middle, question
-
-# razbitje programov<br>na datoteke
-
----
-
-### Program je **čist**, če nima stranskih učinkov
-
-1. Čist program lahko vedno **zamenjamo** z njihovimi **definicijami**.
+1. Čiste funkcije lahko vedno **zamenjamo** z njihovimi **definicijami**.
 
 2. Čiste funkcije ob **enakih argumentih** vedno vrnejo **enake rezultate**.
 
 ---
 
-### Vsi programi v Pythonu **niso čisti**
+### Funkcije v Pythonu običajno **niso čiste**
 
 .source[```python
 seznam = [1, 2, 3]
@@ -161,7 +104,7 @@ def g(x):
 
 ---
 
-### Vsi **dosedanji<sup>\*</sup>** programi v OCamlu so bili čisti
+### Funkcije v OCamlu **običajno** so čiste
 
 .source[```
 let seznam = [1; 2; 3]
@@ -371,14 +314,6 @@ class: center, middle
 .consecutive[```
 = globina P
 ```]
---
-.consecutive[```
-= 0
-```]
---
-.consecutive[```
-= globina P
-```]
 
 ---
 
@@ -418,27 +353,25 @@ class: center, middle
 
 class: center, middle, question
 
-## Kakšna so načela indukcije za sledeče tipe?
+## Kakšni sta načeli indukcije za sledeča tipa?
 
 .source.left[```
 type nat = Zero | Succ of nat
 
-type bool = True | False
-
-type 'a option = None | Some of 'a
+type bool = False | True
 ```]
 
 ---
 
 class: center, middle, question
 
-.source.left[```
+.bad-example.left[```
 let rec obrni = function
   | [] -> []
   | x :: xs -> obrni xs @ [x]
 ```]
 
-.source.left[```
+.good-example.left[```
 let obrni' =
   let rec aux acc = function
     | [] -> aux

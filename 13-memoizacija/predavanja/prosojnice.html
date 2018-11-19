@@ -10,9 +10,9 @@
 
 class: center, middle
 
-# Programiranje 1
+# Memoizacija
 
-## Memoizacija
+## Programiranje 1
 
 ---
 
@@ -21,7 +21,7 @@ class: center, middle
 1. ima naloga **lastnost optimalne podstrukture** in
 2. se podnaloge **prekrivajo**,
 
-.center[![](dinamicno-programiranje.png)]
+.center[![](slike/dinamicno-programiranje.png)]
 
 ### govorimo o **dinamičnem programiranju**
 
@@ -39,18 +39,145 @@ class: center, middle
 
 ---
 
-class: center, middle
+### Ponavljanju se izognemo na **dva načina**
+
+1. rešitve pripravimo v ustreznem vrstnem redu
+.center[![](slike/izracun-vnaprej.png)]
+2. rešitve shranimo ob prvem izračunu
+.center[![](slike/memoizacija.png)]
+
+---
+
+### Memoizacija v Pythonu s slovarjem
+
+.source[```python
+kvadrati = {}
+def mem_kvadrat(x):
+    if x not in kvadrati:
+        print('Računam', x)
+        y = x ** 2
+        kvadrati[x] = y
+    return kvadrati[x]
+```]
+
+.terminal[```python
+>>> mem_kvadrat(10)
+Računam 10
+100
+>>> mem_kvadrat(10)
+100
+```]
+
+---
+
+### V Pythonu lahko funkcijo ob definiciji **dekoriramo**
+
+.bad-example[```python
+def pomozna(x):
+    ...
+
+f = deko(pomozna)
+```]
+
+.good-example[```python
+@deko
+def f(x):
+    ...
+```]
+
+---
+
+class: question, middle, center
+
+## `povej_kaj_racunas`
+
+.left.source[```python
+@povej_kaj_racunas
+def kvadriraj(x):
+    return x ** 2
+```]
+
+.left.terminal[```python
+>>> kvadriraj(4)
+Računam 4
+16
+>>> kvadriraj(5)
+Računam 5
+25
+```]
+
+---
+
+### Za memoizacijo v splošnem v Pythonu uporabimo **dekoratorje**
+
+.source[```python
+def memoiziraj(f):
+    rezultati = {}
+    def mem_f(x):
+        if x not in rezultati:
+            rezultati[x] = f(x)
+        return rezultati[x]
+    return mem_f
+```]
+
+---
+
+### Memoizacija v splošnem v Pythonu
+
+.source[```python
+@memoiziraj
+def fib(n):
+    print(n, end='-')
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+```]
+
+.terminal[```
+>>> fib(10)
+10-9-8-7-6-5-4-3-2-1-0-55
+>>> fib(10)
+55
+```]
+
+---
+
+### Lahko uporabimo tudi dekorator `lru_cache`
+
+.source[```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+    print(n, end='-')
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+```]
+
+.terminal[```
+>>> fib(10)
+10-9-8-7-6-5-4-3-2-1-0-55
+>>> fib(10)
+55
+```]
+
+---
+
+class: question, middle, center
 
 ## Najdaljše skupno podzaporedje
 
 
-### **4**, 5, 2, 1, 9, 0, **4**, **0**, 1, **0**, 7, 5, **9**, 8, **5**, 2, **1**, 6, 8, 9
+### **4**, 5, 2, 1, 9, 0, **4**, **0**, 1, **0**, 7, 5, **9**, 8, **5**, 2, **1**, 6, 8
 
-### 9, 3, **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3, 3
+### 9, 3, **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3
 
 ---
 
-class: center, middle
+class: center, middle, question
 
 ## ↓/→ pot z najmanjšo vsoto
 
@@ -64,38 +191,7 @@ class: center, middle
 
 ---
 
-class: center, middle
-
-## Najdaljši podpalindrom
-
-### .large[**o**t**o**ri**n**olar**in**g**o**l**o**g]
-
-### .large[ven**t**r**i**lok**vi**s**t**]
-
-### .large[**neradodaren**]
-
----
-
-class: center, middle
-
-## Število stolpov izmenjujočih barv
-
-.center[![](stolpi-kocke.png)]
-
-.center[![](stolpi-4.png)]
-
----
-
-### Ponavljanju se izognemo na **dva načina**
-
-1. rešitve pripravimo v ustreznem vrstnem redu
-.center[![](izracun-vnaprej.png)]
-2. rešitve shranimo ob prvem izračunu
-.center[![](memoizacija.png)]
-
----
-
-### Memoizacija enostavne funkcije
+### Memoizacija v OCamlu
 
 .source[```
 let kvadrati = Hashtbl.create 512
@@ -111,7 +207,7 @@ let mem_kvadrat x =
 
 ---
 
-### Memoizacija enostavne rekurzivne funkcije
+### Memoizacija rekurzivne funkcije
 
 .source[```
 let fibonaccijeva_st = Hashtbl.create 512
@@ -187,13 +283,15 @@ let mem_fib = memoiziraj fib
 ```]
 
 .terminal[```
-# mem_fib 6;;
-6420131201531201420131201- : int = 8
-# mem_fib 6;;
-- : int = 8
 # mem_fib 5;;
 531201420131201- : int = 5
+# mem_fib 5;;
+- : int = 5
+# mem_fib 6;;
+6420131201531201420131201- : int = 8
 ```]
+
+#### OCaml za razliko od Pythona ni dinamičen jezik
 
 ---
 
@@ -231,54 +329,20 @@ let fib = zavezi_vozel (fun fib n ->
 
 ---
 
-### Očitna rekurzivna memoizacija je neuporabna
+### Sedaj v kodo vrinemo še memoizacijo
 
-.bad-example[```
+.source[```
 let memoiziraj_rec odviti_f =
+  let rezultati = Hashtbl.create 512 in
   let rec mem_f x =
-    memoiziraj (fun x -> odviti_f mem_f x) x
+    match Hashtbl.find_opt rezultati x with
+    | None ->
+        let y = odviti_f mem_f x in
+        Hashtbl.add rezultati x y;
+        y
+    | Some y ->
+        y
   in
-  mem_f
-
-let mem_fib = memoiziraj_rec odviti_fib
-```]
-
-.terminal[```
-# mem_fib 5;;
-531201420131201- : int = 5
-# mem_fib 5;;
-531201420131201- : int = 5
-```]
----
-
-### OCaml ne dovoli izboljšave
-
-.bad-example[```
-let memoiziraj_rec odviti_f =
-  let rec mem_f =
-    memoiziraj (fun x -> odviti_f mem_f x)
-  in
-  mem_f
-```]
-
-.bad-example[```
-    memoiziraj (fun x -> odviti_f mem_f x)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Error: This kind of expression is not allowed
-as right-hand side of `let rec'
-```]
-
----
-
-### Vozel lahko zavežemo z referencami
-
-.good-example[```
-let memoiziraj_rec odviti_f =
-  let fref = ref (fun _ -> assert false) in
-  let mem_f =
-    memoiziraj (fun x -> odviti_f !fref x)
-  in
-  fref := mem_f;
   mem_f
 ```]
 
@@ -289,114 +353,19 @@ class: question, middle, center
 ## Najdaljše skupno podzaporedje
 
 
-### **4**, 5, 2, 1, 9, 0, **4**, **0**, 1, **0**, 7, 5, **9**, 8, **5**, 2, **1**, 6, 8, 9
+### **4**, 5, 2, 1, 9, 0, **4**, **0**, 1, **0**, 7, 5, **9**, 8, **5**, 2, **1**, 6, 8
 
-### 9, 3, **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3, 3
+### 9, 3, **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3
 
----
-
-### Memoizacija deluje tudi v Pythonu
-
-.source[```python
-kvadrati = {}
-def mem_kvadrat(x):
-    if x not in kvadrati:
-        print('Računam', x)
-        y = x ** 2
-        kvadrati[x] = y
-    return kvadrati[x]
-```]
-
-.terminal[```python
->>> mem_kvadrat(10)
-Računam 10
-100
->>> mem_kvadrat(10)
-100
-```]
----
-
-### V Pythonu lahko funkcijo ob definiciji **dekoriramo**
-
-.bad-example[```python
-def pomozna(x):
-    ...
-
-f = deko(pomozna)
-```]
-
-.good-example[```python
-@deko
-def f(x):
-    ...
-```]
-
----
-
-class: question, middle, center
-
-## `povej_kaj_racunas`
-
-.left.source[```python
-@povej_kaj_racunas
-def kvadriraj(x):
-    return x ** 2
-```]
-
-.left.terminal[```python
->>> kvadriraj(4)
-Računam 4
-16
->>> kvadriraj(5)
-Računam 5
-25
-```]
-
----
-
-### Memoizacija v splošnem v Pythonu
-
-.source[```python
-def memoiziraj(f):
-    rezultati = {}
-    def mem_f(x):
-        if x not in rezultati:
-            rezultati[x] = f(x)
-        return rezultati[x]
-    return mem_f
-```]
-
----
-
-### Memoizacija v splošnem v Pythonu
-
-.source[```python
-@memoiziraj
-def fib(n):
-    print(n, end='')
-    if n == 0 or n == 1:
-        return n
-    else:
-        return fib(n - 1) + fib(n - 2)
-```]
-
-.terminal[```
->>> fib(10)
-10987654321055
->>> fib(10)
-55
-```]
 ---
 
 class: center, middle, question
 
-## Najdaljši podpalindrom
+## Število stolpov izmenjujočih barv
 
-### .large[**o**t**o**ri**n**olar**in**g**o**l**o**g]
+.center[![](slike/stolpi-kocke.png)]
 
-### .large[ven**t**r**i**lok**vi**s**t**]
-
-### .large[**neradodaren**]
+.center[![](slike/stolpi-4.png)]
 
 </textarea>
 <script src="../../pomozno/prosojnice.js"></script>
