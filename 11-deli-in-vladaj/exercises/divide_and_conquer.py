@@ -90,7 +90,8 @@ def quicksort(a):
 # at 0, so the 0-th element is 2.
 #
 # Define the function [kth_element(a, k)] that finds the [k]-th smallest
-# element of [a]. The array is allowed to change.
+# element of [a]. The array is allowed to change. The goal of the exercise is
+# to solve the problem without fully sorting [a].
 ##############################################################################
 
 
