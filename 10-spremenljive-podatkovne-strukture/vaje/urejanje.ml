@@ -108,7 +108,6 @@ let selection_sort list =
  Urejanje z Izbiranjem na Tabelah
 [*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*)
 
-
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Pri delu z tabelami (array) namesto seznami, lahko urejanje z izbiranjem 
  naredimo "na mestu", t.j. brez uporabe vmesnih kopij (delov) vhoda. Kot prej

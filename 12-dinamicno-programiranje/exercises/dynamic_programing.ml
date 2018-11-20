@@ -1,5 +1,3 @@
-
-
 (* ========== Exercises 6: Dynamic programing  ========== *)
 
 
