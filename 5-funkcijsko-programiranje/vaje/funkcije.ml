@@ -8,7 +8,7 @@ let reverse list =
   let rec reverse_aux acc = function
     | [] -> acc
     | x :: xs -> reverse_aux (x :: acc) xs
-  in reverse_aux list []
+  in reverse_aux [] list
 
 (*----------------------------------------------------------------------------*]
  Funkcija [repeat x n] vrne seznam [n] ponovitev vrednosti [x]. Za neprimerne
@@ -72,7 +72,7 @@ let map_tlrec f list =
     | [] -> reverse acc
     | x :: xs -> map_aux xs (f x :: acc)
   in
-  map_aux f list []
+  map_aux list []
 
 (*----------------------------------------------------------------------------*]
  Funkcija [mapi] sprejme seznam in funkcijo dveh argumentov ter vrne seznam
