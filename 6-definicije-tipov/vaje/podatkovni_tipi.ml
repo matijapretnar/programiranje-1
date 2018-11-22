@@ -189,7 +189,7 @@ let count_magic wizard_list =
         | Newbie -> count counter wizards
         | Student (magic, _) -> count (update counter magic) wizards
         | Employed (magic, _) -> count (update counter magic) wizards)
-  in aux_count {fire = 0; frost = 0; arcane = 0} wizard_list
+  in count {fire = 0; frost = 0; arcane = 0} wizard_list
 
 (*----------------------------------------------------------------------------*]
  Želimo poiskati primernega kandidata za delovni razpis. Študent lahko postane
