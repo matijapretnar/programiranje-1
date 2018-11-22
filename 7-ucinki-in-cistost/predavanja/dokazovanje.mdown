@@ -226,8 +226,7 @@ let rec zrcali = function
 
 let rec globina = function
   | Prazno -> 0
-  | Sest (l, _, d) ->
-      1 + max (globina l) (globina d)
+  | Sest (l, _, d) -> 1 + max (globina l) (globina d)
 ```
 
 Iz definicij sledijo enačbe
