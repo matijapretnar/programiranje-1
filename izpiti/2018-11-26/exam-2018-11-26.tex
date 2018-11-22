@@ -51,11 +51,11 @@ where status can be either staff or passenger. If the status is passenger, it fu
 
 A list of flyers could look like this:
 \begin{verbatim}
-let flyers = [{status = Staff; name = "Matija"}; {status = Staff; name = "Irene"};
-              {status = Passenger Top; name = "Jane"};
-              {status = Passenger (Group 1000); name = "Anja"};
-              {status = Passenger (Group 1000); name = "Xavier"};
-              {status = Passenger (Group 0); name = "Christine"}]
+let flyers = [{status = Staff; name = "Alan"}; {status = Staff; name = "Quinn"};
+              {status = Passenger Top; name = "Jaina"};
+              {status = Passenger (Group 1000); name = "Aleks"};
+              {status = Passenger (Group 1000); name = "Robin"};
+              {status = Passenger (Group 0); name = "Xiao"}]
 \end{verbatim}
 
 Define a type \verb|priority| to represent the possible priorities, and a type \verb|status|.
@@ -65,12 +65,12 @@ Define a type \verb|priority| to represent the possible priorities, and a type \
 Write a function that sorts a list of flyers into a boarding sequence such that first the staff boards, then the top priority flyers, then groups ordered by decreasing integers. For example, a valid boarding sequence for the above flyers would be given by
 
 \begin{verbatim}
-[{status = Staff; name = "Irene"};
- {status = Staff; name = "Matija"};
- {status = Passenger Top; name = "Jane"};
- {status = Passenger (Group 1000); name = "Xavier"};
- {status = Passenger (Group 1000); name = "Anja"};
- {status = Passenger (Group 0); name = "Christine"}]
+[{status = Staff; name = "Quinn"};
+ {status = Staff; name = "Alan"};
+ {status = Passenger Top; name = "Jaina"};
+ {status = Passenger (Group 1000); name = "Robin"};
+ {status = Passenger (Group 1000); name = "Aleks"};
+ {status = Passenger (Group 0); name = "Xiao"}]
 \end{verbatim}
 
 \naloga
@@ -79,11 +79,11 @@ Write a function that takes a list of flyers and cuts it into blocks, ordered as
 
 For the above example, you might obtain four blocks as in
 \begin{verbatim}
-[[{status = Staff; name = "Matija"}; {status = Staff; name = "Irene"}];
- [{status = Passenger Top; name = "Jane"}];
- [{status = Passenger (Group 1000); name = "Anja"};
-  {status = Passenger (Group 1000); name = "Xavier"}];
- [{status = Passenger (Group 0); name = "Christine"}]]
+[[{status = Staff; name = "Alan"}; {status = Staff; name = "Quinn"}];
+ [{status = Passenger Top; name = "Jaina"}];
+ [{status = Passenger (Group 1000); name = "Aleks"};
+  {status = Passenger (Group 1000); name = "Robin"}];
+ [{status = Passenger (Group 0); name = "Xiao"}]]
 \end{verbatim}
 
 \end{document}
