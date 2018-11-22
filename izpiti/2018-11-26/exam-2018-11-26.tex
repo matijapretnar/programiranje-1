@@ -7,12 +7,15 @@
 
 \begin{document}
 
-\izpit{Programiranje I: 3.\ izpit}{22.\ november 2018}{
+\izpit{Programiranje I: mini izpit}{26.\ november 2018}{
   Čas reševanja je 60 minut.
   Veliko uspeha!
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+All exercises may use definitions from the previous exercises. Not all exercises will need to.
+
 \naloga
 
 Write a \emph{tail recursive} function that takes a list of integers and
@@ -59,7 +62,7 @@ let flyers = [ {status = Staff; name = "Quinn"}
              ; {status = Staff; name = "Alan"}
              ]
 \end{verbatim}
-
+%
 Define a type \verb|priority| to represent the possible priorities, and a type \verb|status|.
 
 \naloga
@@ -79,7 +82,10 @@ Write a function that sorts a list of flyers into a boarding sequence such that 
 
 Write a function that takes a list of flyers and cuts it into blocks, ordered as specified by the boarding sequence, such that within each block all flyers have the same status and priority.
 
+To determine whether two statuses \verb|stat1| and \verb|stat2| are equal, you can use OCaml's built-in equality as in \verb|stat1 = stat1|. Should you feel the need to reverse a list, you may use the function \verb|List.rev|.
+
 For the above example, you might obtain four blocks as in
+%
 \begin{verbatim}
 [[{status = Staff; name = "Alan"}; {status = Staff; name = "Quinn"}];
  [{status = Passenger Top; name = "Jaina"}];
