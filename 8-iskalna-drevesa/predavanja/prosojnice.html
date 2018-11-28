@@ -16,6 +16,76 @@ class: center, middle
 
 ---
 
+class: question
+
+.bad-example.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+### Zakaj ta funkcija ni dobra?
+
+--
+
+### Njena časovna zahtevnost je \\(O(n^2)\\). Zakaj?
+
+---
+
+### Spomnimo se ideje **notacije velikega O**
+
+## .center[$$f \in O(g)$$]
+
+### $$\exists \color{purple}{M}, \color{red}{x_0}. \forall x > \color{red}{x_0}. |f(x)| \leq \color{purple}{M} \cdot |\color{blue}{g}(x)|$$
+
+### .center[![](slike/O-graf.png)]
+
+### Rast funkcije \\(f\\) je omejena s funkcijo \\(g\\)
+
+---
+
+### Lastnosti notacije velikega O
+
+### $$f \in O(g), a \in \mathbb{R} \implies a \cdot f \in O(g)$$
+
+### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 + f_2 \in O(|g_1| + |g_2|)$$
+
+### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 \cdot f_2 \in O(g_1 \cdot g_2)$$
+
+---
+
+.bad-example.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+### Če želimo vedeti časovno zahtevnost,<br>moramo vedeti, kako so predstavljeni seznami.
+
+---
+
+### OCamlovi seznami so implementirani z verižnimi seznami
+
+.left-column[.terminal[```ocaml
+let s = [6; 2; 4]
+```]]
+
+.right-column[.right[![](slike/seznam-ocaml.png)]]
+
+--
+
+```ocaml
+ 0   0   0   0   0   0      s : 19
+ 0   0   0   0   0   0
+ 0   0   1   2  22   0
+ 1   6  15   1   4  30
+ 0   0   0   0   0   0
+```
+
+Pomen konstruktorjev `[]` in `::` je določen že ob prevajanju.
+
+---
+
 ### Izračunajmo število različnih elementov seznama
 
 .source[```
