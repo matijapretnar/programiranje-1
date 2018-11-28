@@ -89,3 +89,17 @@ let s = [|6; 2; 4|]
 | OCaml `list`                    | verižni seznami | nespremenljivi
 | OCaml `array`                    | tabele | spremenljivi
 | če v Pythonu napišemo svoj razred `MojSeznam`        | verižni seznami | spremenljivi
+
+
+---
+
+### Radi bi **učinkovito** predstavili množice
+
+|                                 | iskanje        | dodajanje
+| ------------------------------: |:-------------: | :--------------:
+| tabela                          | .spoiler[O(n)] | .spoiler[O(1)]
+| verižni seznam                  | .spoiler[O(n)] | .spoiler[O(1)]
+| urejena tabela                  | .spoiler[O(log n)] | .spoiler[O(n)]
+| urejen verižni seznam           | .spoiler[O(n)] | .spoiler[O(n)]
+| .spoiler[zgoščevalne tabele?!]    | .spoiler[O(1)] | .spoiler[O(1)]
+| .spoiler[iskalna drevesa]       | .spoiler[O(log n)] | .spoiler[O(log n)]
