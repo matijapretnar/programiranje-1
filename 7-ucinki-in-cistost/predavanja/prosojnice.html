@@ -326,7 +326,7 @@ class: center, middle
 ```]
 --
 .consecutive[```
-= glbn (S (zrcl d) x (zrcl l))
+= glbn (S (zrcl d, x, zrcl l))
 ```]
 --
 .consecutive[```
@@ -374,7 +374,7 @@ let rec obrni = function
 .good-example.left[```
 let obrni' =
   let rec aux acc = function
-    | [] -> aux
+    | [] -> acc
     | x :: xs -> aux (x :: acc) xs
   in
   aux []
