@@ -5,14 +5,12 @@
  trees, which are either empty or they contain some data and two (possibly
  empty) subtrees. We assume no further structure of the trees.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
-type 'a tree =
-  | Empty
-  | Node of 'a tree * 'a * 'a tree
+
 
 (*----------------------------------------------------------------------------*]
  We define a test case for simpler testing of functions. The test case
- represents the tree below. The function [leaf] which constructs a leaf from a
- given data is used for simpler notation.
+ represents the tree below. The function [leaf], which constructs a leaf from a
+ given data, is used for simpler notation.
           5
          / \
         2   7
@@ -20,9 +18,6 @@ type 'a tree =
       0   6   11
 [*----------------------------------------------------------------------------*)
 
-let leaf x = Node(Empty, x, Empty) 
-
-let test_tree = ()
 
 (*----------------------------------------------------------------------------*]
  The function [mirror] returns a mirrored tree. When applied to our test tree
@@ -39,7 +34,6 @@ let test_tree = ()
  Node (Empty, 2, Node (Empty, 0, Empty)))
 [*----------------------------------------------------------------------------*)
 
-let rec mirror = ()
 
 (*----------------------------------------------------------------------------*]
  The function [height] returns the height (or depth) of the tree and the
@@ -51,42 +45,9 @@ let rec mirror = ()
  - : int = 6
 [*----------------------------------------------------------------------------*)
 
-let rec height = ()
-
-let rec size = ()
 
 (*----------------------------------------------------------------------------*]
- The function [follow directions tree] of type [direction list -> 'a tree -> 
- 'a option] accepts a list of directions for traversing the tree and returns the
- data in the node at the end of the traversal. Because the directions might not
- lead to an actual node in the tree, the result is returned as an [option] type.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # follow [Right; Left] test_tree;;
- - : int option = Some 6
- # follow [Right; Left; Right; Right] test_tree;;
- - : int option = None
-[*----------------------------------------------------------------------------*)
-
-type direction = Left | Right
-
-let rec follow = ()
-
-(*----------------------------------------------------------------------------*]
- The function [prune directions tree] finds the node given by [directions] and
- removes the subtree that starts in the node.
-
- Warning: When using [Some Node(l, x, r)] Ocaml complains because it reads it 
-          as [(Some Node)(l, x, r)] so use paranthesis when necessary.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # prune [Right] test_tree;;
- - : int tree option =
- Some (Node (Node (Node (Empty, 0, Empty), 2, Empty), 5, Empty))
-[*----------------------------------------------------------------------------*)
-
-let rec prune = ()
-
-(*----------------------------------------------------------------------------*]
- The function [map_tree f tree] maps [tree] into a new tree with nodes that
+ The function [map_tree f tree] maps the tree into a new tree with nodes that
  contain data from [tree] mapped with the function [f].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # map_tree ((<)3) test_tree;;
@@ -95,7 +56,6 @@ let rec prune = ()
  Node (Node (Empty, true, Empty), true, Node (Empty, true, Empty)))
 [*----------------------------------------------------------------------------*)
 
-let rec map_tree = ()
 
 (*----------------------------------------------------------------------------*]
  The function [list_of_tree] returns the list of all elements in the tree. If
@@ -105,7 +65,6 @@ let rec map_tree = ()
  - : int list = [0; 2; 5; 6; 7; 11]
 [*----------------------------------------------------------------------------*)
 
-let rec list_of_tree = ()
 
 (*----------------------------------------------------------------------------*]
  The function [is_bst] checks wheter a tree is a binary search tree (BST). 
@@ -118,7 +77,6 @@ let rec list_of_tree = ()
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
-let rec is_bst = ()
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  In the remaining exercises we assume that all trees are binary search trees.
@@ -134,38 +92,14 @@ let rec is_bst = ()
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
-let rec insert = ()
-
-let rec member = ()
 
 (*----------------------------------------------------------------------------*]
  The function [member2] does not assume that the tree is a bst.
  
  Note: Think about the differences of time complexity for [member] and 
-       [member2] assuming an input tree with n nodes and depth of log(n). 
+ [member2] assuming an input tree with n nodes and depth of log(n). 
 [*----------------------------------------------------------------------------*)
 
-let rec member2 = ()
-
-(*----------------------------------------------------------------------------*]
- The function [bst_of_list] constructs a bst out of the elements of a list.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # [11; 6; 7; 0; 2; 5] |> bst_of_list |> is_bst;;
- - : bool = true
-[*----------------------------------------------------------------------------*)
-
-let rec bst_of_list = ()
-
-(*----------------------------------------------------------------------------*]
- The function [tree_sort] sorts a list by transforming it to a tree and back.
-
- Note: Please do not actually use this in your code.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # tree_sort ["a"; "c"; "f"; "b"; "e"; "d"];;
- - : string list = ["a"; "b"; "c"; "d"; "e"; "f"]
-[*----------------------------------------------------------------------------*)
-
-let rec tree_sort = ()
 
 (*----------------------------------------------------------------------------*]
  The function [succ] returns the successor of the root of the given tree, if
@@ -180,9 +114,6 @@ let rec tree_sort = ()
  - : int option = None
 [*----------------------------------------------------------------------------*)
 
-let rec succ = ()
-
-let rec pred = ()
 
 (*----------------------------------------------------------------------------*]
  In lectures you two different approaches to deletion, using either [succ] or
@@ -190,60 +121,79 @@ let rec pred = ()
  it does not exist, it does not change the tree. For practice you can implement
  both versions of the algorithm.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   # (*<< Za [delete] definiran s funkcijo [succ]. >>*)
-   # delete 7 test_tree;;
-   - : int tree =
-   Node (Node (Node (Empty, 0, Empty), 2, Empty), 5,
-   Node (Node (Empty, 6, Empty), 11, Empty))
+ # (*<< For [delete] defined with [succ]. >>*)
+ # delete 7 test_tree;;
+ - : int tree =
+ Node (Node (Node (Empty, 0, Empty), 2, Empty), 5,
+ Node (Node (Empty, 6, Empty), 11, Empty))
 [*----------------------------------------------------------------------------*)
 
-let rec delete = ()
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- An additional approach to deletion is to modify the type of the tree. Define 
- a new type of tree where nodes additionaly contain information about its state,
- which can either [Exist] or be a [Ghost] if the node is only used for
- searching but is not considered present.
- We assume that all trees are BST.
+ DICTIONARIES
+
+ Using BST we can (sufficiently) implement dictionaries. While in practice we
+ use the even more efficient hash tables, we assume that our dictionaries [dict]
+ are implemented using BST. Every node includes a key and a value and the three
+ has the BST structure according to the value of node keys. Because the
+ dictionary requires a type for keys and a type for values, we parametrize the
+ type as [('key, 'value) dict].
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
-type state = Exists | Ghost
-
-type 'a phantom_tree = unit
 
 (*----------------------------------------------------------------------------*]
- The function [phantomize] of type ['a tree -> 'a phantom_tree] maps a regular
- tree into a phantom tree.
- The function [kill x ptree] removes the element [x] from the tree by setting
- it's state to [Ghost].
- Assume that there are no repeated elements in input trees.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # phantomize test_tree;;
- - : int phantom_tree =
- P_Node (P_Node (P_Node (P_Empty, 0, P_Empty, Exists), 2, P_Empty, Exists), 5,
- P_Node (P_Node (P_Empty, 6, P_Empty, Exists), 7,
- P_Node (P_Empty, 11, P_Empty, Exists), Exists),
- Exists)
-
- # bst_of_list [3; 4; 2] |> phantomize |> kill 3 |> kill 6;;
- - : int phantom_tree =
- P_Node (P_Empty, 2,
- P_Node (P_Node (P_Empty, 3, P_Empty, Ghost), 4, P_Empty, Exists), Exists)
+ Write the test case [test_dict]:
+      "b":1
+      /    \
+  "a":0  "d":2
+         /
+     "c":-2
 [*----------------------------------------------------------------------------*)
-
-let rec phantomize = ()
-
-let rec kill = ()
 
 (*----------------------------------------------------------------------------*]
- The function [unphantomize] of type ['a phantom_tree -> 'a tree] maps a
- phantom tree into a regular one, keeping only nodes that exist (no ghosts
- allowed). The order of nodes in the output tree is not important.
-
- Hint: You may use a transformation to another data structure.
+ The function [dict_get key dict] returns the value with the given key. Because
+ the  dictionary might not include the given key, we return an [option].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # test_tree |> phantomize |> kill 7 |> kill 0 |> kill 5 |> unphantomize;;
- - : int tree = Node (Node (Node (Empty, 2, Empty), 6, Empty), 11, Empty)
+ # dict_get "banana" test_dict;;
+ - : 'a option = None
+ # dict_get "c" test_dict;;
+ - : int option = Some (-2)
 [*----------------------------------------------------------------------------*)
 
-let rec unphantomize = ()
+      
+(*----------------------------------------------------------------------------*]
+ The function [print_dict] accepts a dictionary with key of type [string] and
+ values of type [int] and prints (in the correct order) lines containing 
+ "key : value" for all nodes of the dictionary. Hint: Use functions
+ [print_string] and [print_int]. Strings are concatenated with the operator [^].
+ Observe how using those functions fixes the type parameters of our function, as
+ opposed to [dict_get]. 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # print_dict test_dict;;
+ a : 1
+ b : 1
+ c : -2
+ d : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+
+(*----------------------------------------------------------------------------*]
+ The function [dict_insert key value dict] inserts [value] into [dict] under the
+ given [key]. If a key already exists, it replaces the value.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # dict_insert "1" 14 test_dict |> print_dict;;
+ 1 : 14
+ a : 1
+ b : 1
+ c : -2
+ d : 2
+ - : unit = ()
+ # dict_insert "c" 14 test_dict |> print_dict;;
+ a : 1
+ b : 1
+ c : 14
+ d : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
