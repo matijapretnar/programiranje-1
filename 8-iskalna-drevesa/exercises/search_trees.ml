@@ -11,8 +11,8 @@ type 'a tree =
 
 (*----------------------------------------------------------------------------*]
  We define a test case for simpler testing of functions. The test case
- represents the tree below. The function [leaf] which constructs a leaf from a
- given data is used for simpler notation.
+ represents the tree below. The function [leaf], which constructs a leaf from a
+ given data, is used for simpler notation.
           5
          / \
         2   7
@@ -62,54 +62,7 @@ let rec size = function
   | Node(l, _, r) -> 1 + (size l) + (size r)
 
 (*----------------------------------------------------------------------------*]
- The function [follow directions tree] of type [direction list -> 'a tree -> 
- 'a option] accepts a list of directions for traversing the tree and returns the
- data in the node at the end of the traversal. Because the directions might not
- lead to an actual node in the tree, the result is returned as an [option] type.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # follow [Right; Left] test_tree;;
- - : int option = Some 6
- # follow [Right; Left; Right; Right] test_tree;;
- - : int option = None
-[*----------------------------------------------------------------------------*)
-
-type direction = Left | Right
-
-let rec follow directions = function
-  | Empty -> None
-  | Node(l, x, r) ->
-    (match directions with
-     | [] -> Some x
-     | Left :: tl -> follow tl l
-     | Right :: tl -> follow tl r)
-
-(*----------------------------------------------------------------------------*]
- The function [prune directions tree] finds the node given by [directions] and
- removes the subtree that starts in the node.
-
- Warning: When using [Some Node(l, x, r)] Ocaml complains because it reads it 
-          as [(Some Node)(l, x, r)] so use paranthesis when necessary.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # prune [Right] test_tree;;
- - : int tree option =
- Some (Node (Node (Node (Empty, 0, Empty), 2, Empty), 5, Empty))
-[*----------------------------------------------------------------------------*)
-
-let rec prune directions tree = 
-  match directions, tree with
-  | [], _ -> Some Empty
-  | _, Empty -> None
-  | Left :: tl, Node(l, x, r) ->
-    (match prune tl l with
-     | None -> None
-     | Some new_l -> Some (Node(new_l, x, r)))
-  | Right :: tl, Node(l, x, r) ->
-    (match prune tl r with
-     |None -> None
-     | Some new_l -> Some (Node(new_l, x, r)))
-
-(*----------------------------------------------------------------------------*]
- The function [map_tree f tree] maps [tree] into a new tree with nodes that
+ The function [map_tree f tree] maps the tree into a new tree with nodes that
  contain data from [tree] mapped with the function [f].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # map_tree ((<)3) test_tree;;
@@ -181,32 +134,12 @@ let rec member x = function
  The function [member2] does not assume that the tree is a bst.
  
  Note: Think about the differences of time complexity for [member] and 
-       [member2] assuming an input tree with n nodes and depth of log(n). 
+ [member2] assuming an input tree with n nodes and depth of log(n). 
 [*----------------------------------------------------------------------------*)
 
 let rec member2 x = function
   | Empty -> false
   | Node(l, y, r) -> x = y || (member2 x l) || (member2 x r)
-
-(*----------------------------------------------------------------------------*]
- The function [bst_of_list] constructs a bst out of the elements of a list.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # [11; 6; 7; 0; 2; 5] |> bst_of_list |> is_bst;;
- - : bool = true
-[*----------------------------------------------------------------------------*)
-
-let bst_of_list list = List.fold_right insert list Empty
-
-(*----------------------------------------------------------------------------*]
- The function [tree_sort] sorts a list by transforming it to a tree and back.
-
- Note: Please do not actually use this in your code.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # tree_sort ["a"; "c"; "f"; "b"; "e"; "d"];;
- - : string list = ["a"; "b"; "c"; "d"; "e"; "f"]
-[*----------------------------------------------------------------------------*)
-
-let tree_sort list = list |> bst_of_list |> list_of_tree
 
 (*----------------------------------------------------------------------------*]
  The function [succ] returns the successor of the root of the given tree, if
@@ -247,11 +180,11 @@ let pred bst =
  it does not exist, it does not change the tree. For practice you can implement
  both versions of the algorithm.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   # (*<< Za [delete] definiran s funkcijo [succ]. >>*)
-   # delete 7 test_tree;;
-   - : int tree =
-   Node (Node (Node (Empty, 0, Empty), 2, Empty), 5,
-   Node (Node (Empty, 6, Empty), 11, Empty))
+ # (*<< For [delete] defined with [succ]. >>*)
+ # delete 7 test_tree;;
+ - : int tree =
+ Node (Node (Node (Empty, 0, Empty), 2, Empty), 5,
+ Node (Node (Empty, 6, Empty), 11, Empty))
 [*----------------------------------------------------------------------------*)
 
 let rec delete x = function
@@ -267,11 +200,185 @@ let rec delete x = function
         Node(l, s, clean_r))
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- An additional approach to deletion is to modify the type of the tree. Define 
- a new type of tree where nodes additionaly contain information about its state,
- which can either [Exist] or be a [Ghost] if the node is only used for
- searching but is not considered present.
- We assume that all trees are BST.
+ DICTIONARIES
+
+ Using BST we can (sufficiently) implement dictionaries. While in practice we
+ use the even more efficient hash tables, we assume that our dictionaries [dict]
+ are implemented using BST. Every node includes a key and a value and the three
+ has the BST structure according to the value of node keys. Because the
+ dictionary requires a type for keys and a type for values, we parametrize the
+ type as [('key, 'value) dict].
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+type ('key, 'value) dict = 
+  | D_Empty
+  | D_Node of ('key, 'value) dict * 'key * 'value * ('key, 'value) dict
+
+let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
+
+(*----------------------------------------------------------------------------*]
+ Write the test case [test_dict]:
+      "b":1
+      /    \
+  "a":0  "d":2
+         /
+     "c":-2
+[*----------------------------------------------------------------------------*)
+
+let test_dict = 
+  D_Node(d_leaf "a" 1, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
+
+(*----------------------------------------------------------------------------*]
+ The function [dict_get key dict] returns the value with the given key. Because
+ the  dictionary might not include the given key, we return an [option].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # dict_get "banana" test_dict;;
+ - : 'a option = None
+ # dict_get "c" test_dict;;
+ - : int option = Some (-2)
+[*----------------------------------------------------------------------------*)
+
+let rec dict_get key = function
+  | D_Empty -> None
+  | D_Node (d_l, k, value, d_r) ->
+      if k = key then
+        Some value
+      else if key < k then
+        dict_get key d_l
+      else
+      dict_get key d_r
+      
+(*----------------------------------------------------------------------------*]
+ The function [print_dict] accepts a dictionary with key of type [string] and
+ values of type [int] and prints (in the correct order) lines containing 
+ "key : value" for all nodes of the dictionary. Hint: Use functions
+ [print_string] and [print_int]. Strings are concatenated with the operator [^].
+ Observe how using those functions fixes the type parameters of our function, as
+ opposed to [dict_get]. 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # print_dict test_dict;;
+ a : 1
+ b : 1
+ c : -2
+ d : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+let rec print_dict = function
+  | D_Empty -> ()
+  | D_Node (d_l, k, v, d_r) -> (
+      print_dict d_l;
+      print_string (k ^ " : "); print_int v; print_string "\n";
+      print_dict d_r)
+
+(*----------------------------------------------------------------------------*]
+ The function [dict_insert key value dict] inserts [value] into [dict] under the
+ given [key]. If a key already exists, it replaces the value.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # dict_insert "1" 14 test_dict |> print_dict;;
+ 1 : 14
+ a : 1
+ b : 1
+ c : -2
+ d : 2
+ - : unit = ()
+ # dict_insert "c" 14 test_dict |> print_dict;;
+ a : 1
+ b : 1
+ c : 14
+ d : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+let rec dict_insert key value = function
+  | D_Empty -> d_leaf key value
+  | D_Node (d_l, k, v, d_r) ->
+      if k = key then
+        D_Node (d_l, k, value, d_r)
+      else if key < k then
+        D_Node (dict_insert key value d_l, k, v, d_r)
+      else
+        D_Node (d_l, k, v, dict_insert key value d_r)
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ ADDITIONAL EXERCISES 
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+(*----------------------------------------------------------------------------*]
+ The function [bst_of_list] constructs a bst out of the elements of a list.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # [11; 6; 7; 0; 2; 5] |> bst_of_list |> is_bst;;
+ - : bool = true
+[*----------------------------------------------------------------------------*)
+
+let bst_of_list list = List.fold_right insert list Empty
+
+(*----------------------------------------------------------------------------*]
+ The function [tree_sort] sorts a list by transforming it to a tree and back.
+
+ Note: Please do not actually use this in your code.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # tree_sort ["a"; "c"; "f"; "b"; "e"; "d"];;
+ - : string list = ["a"; "b"; "c"; "d"; "e"; "f"]
+[*----------------------------------------------------------------------------*)
+
+let tree_sort list = list |> bst_of_list |> list_of_tree
+
+(*----------------------------------------------------------------------------*]
+ The function [follow directions tree] of type [direction list -> 'a tree -> 
+ 'a option] accepts a list of directions for traversing the tree and returns the
+ data in the node at the end of the traversal. Because the directions might not
+ lead to an actual node in the tree, the result is returned as an [option] type.
+ Don't forget to define the type [directions].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # follow [Right; Left] test_tree;;
+ - : int option = Some 6
+ # follow [Right; Left; Right; Right] test_tree;;
+ - : int option = None
+[*----------------------------------------------------------------------------*)
+
+type direction = Left | Right
+
+let rec follow directions = function
+  | Empty -> None
+  | Node(l, x, r) ->
+    (match directions with
+     | [] -> Some x
+     | Left :: tl -> follow tl l
+     | Right :: tl -> follow tl r)
+
+(*----------------------------------------------------------------------------*]
+ The function [prune directions tree] finds the node given by [directions] and
+ removes the subtree that starts in the node.
+
+ Warning: When using [Some Node(l, x, r)] Ocaml complains because it reads it 
+ as [(Some Node)(l, x, r)] so use paranthesis when necessary.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # prune [Right] test_tree;;
+ - : int tree option =
+ Some (Node (Node (Node (Empty, 0, Empty), 2, Empty), 5, Empty))
+[*----------------------------------------------------------------------------*)
+
+let rec prune directions tree = 
+  match directions, tree with
+  | [], _ -> Some Empty
+  | _, Empty -> None
+  | Left :: tl, Node(l, x, r) ->
+    (match prune tl l with
+     | None -> None
+     | Some new_l -> Some (Node(new_l, x, r)))
+  | Right :: tl, Node(l, x, r) ->
+    (match prune tl r with
+     |None -> None
+     | Some new_l -> Some (Node(new_l, x, r)))
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ PHANTOM TREES
+
+ An additional approach to deletion is to modify the type of the tree. Define a
+ new type of tree where nodes additionaly contain information about its state,
+ which can either [Exist] or be a [Ghost] if the node is only used for searching
+ but is not considered present. We assume that all trees are BST.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 type state = Exists | Ghost
@@ -312,7 +419,6 @@ let rec kill x = function
   | P_Node(p_l, y, p_r, s) when x = y -> P_Node(p_l, y, p_r, Ghost)
   | P_Node(p_l, y, p_r, s) when x < y -> P_Node(kill x p_l, y, p_r, s)
   | P_Node(p_l, y, p_r, s) -> P_Node(p_l, y, kill x p_r, s)
-      
 
 (*----------------------------------------------------------------------------*]
  The function [unphantomize] of type ['a phantom_tree -> 'a tree] maps a
