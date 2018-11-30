@@ -50,17 +50,16 @@
 [*----------------------------------------------------------------------------*)
 
 module type NAT = sig
-
   type t
-    val eq   : t -> t -> bool
-    val zero : t
-    val one  : t
-    val add  : t -> t -> t
-    val sub  : t -> t -> t
-    val mul  : t -> t -> t
-    val from_int : int -> t
-    val to_int   : t -> int
 
+  val eq   : t -> t -> bool
+  val zero : t
+  val one  : t
+  val add  : t -> t -> t
+  val sub  : t -> t -> t
+  val mul  : t -> t -> t
+  val from_int : int -> t
+  val to_int   : t -> int
 end
 
 (*----------------------------------------------------------------------------*]
@@ -137,6 +136,37 @@ module Nat_peano : NAT = struct
 
 end
 
+(*----------------------------------------------------------------------------*]
+ OCaml modules are first class and can be passed to functions as arguments by
+ using the keyword [module]. The function definition is then
+
+ # let f (module M : M_sig) = ...
+
+ and passing a module as an argument is done by
+
+ # f (module M_implementation);;
+
+ The function [sum_nat_100] accepts a module of type [NAT] and using the module
+ sums the first 100 natural numbers. Because the function cant return something
+ of the type [NAT.t] (because we don't know what module it belongs to, it could
+ be an [int] or a variant type) it returns an [int] that we get with the method
+ [to_int].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # sum_nat_100 (module Nat_int);;
+ - : int = 4950
+ # sum_nat_100 (module Nat_peano);;
+ - : int = 4950
+[*----------------------------------------------------------------------------*)
+
+let sum_nat_100 (module Nat : NAT) =
+  let hundred = Nat.from_int 100 in
+  let rec sum current acc =
+    if Nat.eq current hundred then
+      acc
+    else
+      sum (Nat.add current Nat.one) (Nat.add acc current)
+  in
+  sum Nat.zero Nat.zero |> Nat.to_int
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Now we follow the fable told by John Reynolds in the introduction.
@@ -149,17 +179,16 @@ end
 [*----------------------------------------------------------------------------*)
 
 module type COMPLEX = sig
-  
   type t
-    val eq : t -> t -> bool
-    val zero : t
-    val one : t
-    val i : t
-    val neg : t -> t
-    val conj : t -> t
-    val add : t -> t -> t
-    val mul : t -> t -> t
 
+  val eq : t -> t -> bool
+  val zero : t
+  val one : t
+  val i : t
+  val neg : t -> t
+  val conj : t -> t
+  val add : t -> t -> t
+  val mul : t -> t -> t
 end
 
 (*----------------------------------------------------------------------------*]
@@ -194,7 +223,8 @@ end
  will be a polar representation, with a magnitude and an argument for each
  complex number.
 
- Recommendation: Implement addition at the end, as it gets very messy.
+ Recommendation: Implement addition at the end, as it gets very messy (might
+ as well be the end of the century).
 [*----------------------------------------------------------------------------*)
 
 module Polar : COMPLEX = struct
@@ -251,3 +281,90 @@ module Polar : COMPLEX = struct
     in {arg; magn}
 
 end
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ DICTIONARIES
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+(*----------------------------------------------------------------------------*]
+ In the tree exercises we defined a type of dictionaries [('key, 'value) dict],
+ that also had functions [dict_get], [dict_insert] and [print_dict]. Write a
+ fitting signature for dictionaries [DICT] and construct it's implementation
+ in the same way as in the tree exercises.
+
+ The module should include an [empty] dictionary and functions [get], [insert]
+ and [print] (where print should again work only on [(string, int) t)].
+[*----------------------------------------------------------------------------*)
+
+module type DICT = sig
+  type ('key, 'value) t
+
+  val empty : ('key, 'value) t
+
+  val get : 'key -> ('key, 'value) t -> 'value option
+  val insert : 'key -> 'value -> ('key, 'value) t -> ('key, 'value) t
+  val print : (string, int) t -> unit
+end
+
+module Tree_dict : DICT = struct
+  type ('key, 'value) t =
+    | D_Empty
+    | D_Node of ('key, 'value) t * 'key * 'value * ('key, 'value) t
+
+  let empty = D_Empty
+
+  let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
+
+  let rec get key = function
+    | D_Empty -> None
+    | D_Node (d_l, k, value, d_r) ->
+      if k = key then
+        Some value
+      else if key < k then
+        get key d_l
+      else
+      get key d_r
+
+  let rec insert key value = function
+    | D_Empty -> d_leaf key value
+    | D_Node (d_l, k, v, d_r) ->
+      if k = key then
+        D_Node (d_l, k, value, d_r)
+      else if key < k then
+        D_Node (insert key value d_l, k, v, d_r)
+      else
+        D_Node (d_l, k, v, insert key value d_r)
+
+  let rec print = function
+    | D_Empty -> ()
+    | D_Node (d_l, k, v, d_r) -> (
+      print d_l;
+      print_string (k ^ " : "); print_int v; print_string "\n";
+      print d_r)
+
+end
+
+(*----------------------------------------------------------------------------*]
+ The function [count (module Dict) list] counts how often certain elements
+ appear in [list] using the chosen dictionary module and prints it.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # count (module Tree_dict) ["b"; "a"; "n"; "a"; "n"; "a"];;
+ a : 3
+ b : 1
+ n : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+let count (module Dict : DICT) list =
+  let rec counter dict = function
+    | [] -> Dict.print dict
+    | x :: xs -> 
+      let new_count = 
+        match Dict.get x dict with
+        | Some x -> x + 1 
+        | None -> 1
+      in
+      let new_dict = Dict.insert x new_count dict in
+      counter new_dict xs
+  in
+  counter Dict.empty list
