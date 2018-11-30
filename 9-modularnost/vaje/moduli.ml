@@ -1,7 +1,7 @@
-(* ========== Vaje 8: Moduli  ========== *)
+(* ========== Vaja 8: Moduli  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- "Once upon a time, there was a university with a peculiar tenure policy. All
+"Once upon a time, there was a university with a peculiar tenure policy. All
  faculty were tenured, and could only be dismissed for moral turpitude. What
  was peculiar was the definition of moral turpitude: making a false statement
  in class. Needless to say, the university did not teach computer science.
@@ -49,14 +49,13 @@
 [*----------------------------------------------------------------------------*)
 
 module type NAT = sig
-
   type t
-  val eq : t -> t -> bool
+
+  val eq   : t -> t -> bool
   val zero : t
-  (* Add what's missing here! *)
+  (* Dodajte manjkajoče! *)
   (* val to_int : t -> int *)
   (* val of_int : int -> t *)
-
 end
 
 (*----------------------------------------------------------------------------*]
@@ -73,7 +72,7 @@ module Nat_int : NAT = struct
   type t = int
   let eq x y = failwith "later"
   let zero = 0
-  (* Add what's missing here! *)
+  (* Dodajte manjkajoče! *)
 
 end
 
@@ -91,13 +90,35 @@ end
 
 module Nat_peano : NAT = struct
 
-  type t = unit (* This needs to be changed! *)
+  type t = unit (* To morate spremeniti! *)
   let eq x y = failwith "later"
-  let zero = () (* This needs to be changed! *)
-  (* Add what's missing here! *)
+  let zero = () (* To morate spremeniti! *)
+  (* Dodajte manjkajoče! *)
 
 end
 
+(*----------------------------------------------------------------------------*]
+ V OCamlu lahko module podajamo kot argumente funkcij, z uporabo besede
+ [module]. Funkcijo, ki sprejme modul torej definiramo kot
+
+ # let f (module M : M_sig) = ...
+
+ in ji podajamo argumente kot 
+
+ # f (module M_implementation);;
+
+ Funkcija [sum_nat_100] sprejme modul tipa [NAT] in z uporabo modula sešteje
+ prvih 100 naravnih števil. Ker funkcija ne more vrniti rezultata tipa [NAT.t]
+ (saj ne vemo, kateremu od modulov bo pripadal, torej je lahko [int] ali pa
+  variantni tip) na koncu vrnemo rezultat tipa [int] z uporabo metode [to_int].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # sum_nat_100 (module Nat_int);;
+ - : int = 4950
+ # sum_nat_100 (module Nat_peano);;
+ - : int = 4950
+[*----------------------------------------------------------------------------*)
+
+let sum_nat_100 (module Nat : NAT) = ()
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Now we follow the fable told by John Reynolds in the introduction.
@@ -112,7 +133,7 @@ end
 module type COMPLEX = sig
   type t
   val eq : t -> t -> bool
-  (* Add what's missing here! *)
+  (* Dodajte manjkajoče! *)
 end
 
 (*----------------------------------------------------------------------------*]
@@ -125,29 +146,56 @@ module Cartesian : COMPLEX = struct
   type t = {re : float; im : float}
 
   let eq x y = failwith "later"
-  (* Add what's missing here! *)
+  (* Dodajte manjkajoče! *)
 
 end
-
 
 (*----------------------------------------------------------------------------*]
  Sedaj napišite še polarno implementacijo kompleksnih števil, kjer ima vsako
  kompleksno število radij in kot (angl. magnitude in argument).
    
  Priporočilo: Seštevanje je v polarnih koordinatah zahtevnejše, zato si ga 
- pustite za konec.
+ pustite za konec (lahko tudi za konec stoletja).
 [*----------------------------------------------------------------------------*)
 
 module Polar : COMPLEX = struct
 
   type t = {magn : float; arg : float}
 
-  (* You can use these if it makes your life easier. *)
+  (* Pomožne funkcije za lažje življenje. *)
   let pi = 2. *. acos 0.
   let rad_of_deg deg = (deg /. 180.) *. pi
   let deg_of_rad rad = (rad /. pi) *. 180.
 
   let eq x y = failwith "later"
-  (* Add what's missing here! *)
+  (* Dodajte manjkajoče! *)
 
 end
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ SLOVARJI
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+(*----------------------------------------------------------------------------*]
+ Na vajah z iskalnimi drevesi smo definirali tip slovarjev 
+ [('key, 'value) dict], ki je implementiral [dict_get], [dict_insert] in
+ [print_dict]. Napišite primerno signaturo za slovarje [DICT] in naredite
+ implementacijo modula z drevesi (kot na prejšnjih vajah). 
+ 
+ Modul naj vsebuje prazen slovar [empty] in pa funkcije [get], [insert] in
+ [print] (print naj ponovno deluje zgolj na [(string, int) t].
+[*----------------------------------------------------------------------------*)
+
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [count (module Dict) list] prešteje in izpiše pojavitve posameznih
+ elementov v seznamu [list] s pomočjo izbranega modula slovarjev.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # count (module Tree_dict) ["b"; "a"; "n"; "a"; "n"; "a"];;
+ a : 3
+ b : 1
+ n : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+let count (module Dict : DICT) list = ()

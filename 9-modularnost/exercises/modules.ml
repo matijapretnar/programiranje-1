@@ -50,14 +50,13 @@
 [*----------------------------------------------------------------------------*)
 
 module type NAT = sig
-
   type t
-  val eq : t -> t -> bool
+
+  val eq   : t -> t -> bool
   val zero : t
   (* Add what's missing here! *)
   (* val to_int : t -> int *)
   (* val of_int : int -> t *)
-
 end
 
 (*----------------------------------------------------------------------------*]
@@ -98,6 +97,29 @@ module Nat_peano : NAT = struct
 
 end
 
+(*----------------------------------------------------------------------------*]
+ OCaml modules are first class and can be passed to functions as arguments by
+ using the keyword [module]. The function definition is then
+
+ # let f (module M : M_sig) = ...
+
+ and passing a module as an argument is done by
+
+ # f (module M_implementation);;
+
+ The function [sum_nat_100] accepts a module of type [NAT] and using the module
+ sums the first 100 natural numbers. Because the function cant return something
+ of the type [NAT.t] (because we don't know what module it belongs to, it could
+ be an [int] or a variant type) it returns an [int] that we get with the method
+ [to_int].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # sum_nat_100 (module Nat_int);;
+ - : int = 4950
+ # sum_nat_100 (module Nat_peano);;
+ - : int = 4950
+[*----------------------------------------------------------------------------*)
+
+let sum_nat_100 (module Nat : NAT) = ()
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Now we follow the fable told by John Reynolds in the introduction.
@@ -129,20 +151,21 @@ module Cartesian : COMPLEX = struct
 
 end
 
-
 (*----------------------------------------------------------------------------*]
  Now implement Professor Bessel's complex numbers. The carrier this time
  will be a polar representation, with a magnitude and an argument for each
  complex number.
 
- Recommendation: Implement addition at the end, as it gets very messy.
+ Recommendation: Implement addition at the end, as it gets very messy (might
+ as well be the end of the century).
 [*----------------------------------------------------------------------------*)
+
 
 module Polar : COMPLEX = struct
 
   type t = {magn : float; arg : float}
 
-  (* You can use these if it makes your life easier. *)
+  (* Auxiliary functions to make life easier. *)
   let pi = 2. *. acos 0.
   let rad_of_deg deg = (deg /. 180.) *. pi
   let deg_of_rad rad = (rad /. pi) *. 180.
@@ -151,3 +174,32 @@ module Polar : COMPLEX = struct
   (* Add what's missing here! *)
 
 end
+
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ DICTIONARIES
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+(*----------------------------------------------------------------------------*]
+ In the tree exercises we defined a type of dictionaries [('key, 'value) dict],
+ that also had functions [dict_get], [dict_insert] and [print_dict]. Write a
+ fitting signature for dictionaries [DICT] and construct it's implementation
+ in the same way as in the tree exercises.
+
+ The module should include an [empty] dictionary and functions [get], [insert]
+ and [print] (where print should again work only on [(string, int) t)].
+[*----------------------------------------------------------------------------*)
+
+
+(*----------------------------------------------------------------------------*]
+ The function [count (module Dict) list] counts how often certain elements
+ appear in [list] using the chosen dictionary module and prints it.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # count (module Tree_dict) ["b"; "a"; "n"; "a"; "n"; "a"];;
+ a : 3
+ b : 1
+ n : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+let count (module Dict : DICT) list = ()
