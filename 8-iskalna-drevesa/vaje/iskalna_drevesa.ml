@@ -226,7 +226,7 @@ let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
 [*----------------------------------------------------------------------------*)
 
 let test_dict = 
-  D_Node(d_leaf "a" 1, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
+  D_Node(d_leaf "a" 0, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
 
 (*----------------------------------------------------------------------------*]
  Funkcija [dict_get key dict] v slovarju poišče vrednost z ključem [key]. Ker
@@ -257,7 +257,7 @@ let rec dict_get key = function
  parametra za tip ključev in vrednosti v primerjavi s tipom [dict_get].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # print_dict test_dict;;
- a : 1
+ a : 0
  b : 1
  c : -2
  d : 2
@@ -277,7 +277,7 @@ let rec print_dict = function
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # dict_insert "1" 14 test_dict |> print_dict;;
  1 : 14
- a : 1
+ a : 0
  b : 1
  c : -2
  d : 2

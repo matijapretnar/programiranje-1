@@ -226,7 +226,7 @@ let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
 [*----------------------------------------------------------------------------*)
 
 let test_dict = 
-  D_Node(d_leaf "a" 1, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
+  D_Node(d_leaf "a" 0, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
 
 (*----------------------------------------------------------------------------*]
  The function [dict_get key dict] returns the value with the given key. Because
@@ -257,7 +257,7 @@ let rec dict_get key = function
  opposed to [dict_get]. 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # print_dict test_dict;;
- a : 1
+ a : 0
  b : 1
  c : -2
  d : 2
@@ -277,13 +277,13 @@ let rec print_dict = function
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # dict_insert "1" 14 test_dict |> print_dict;;
  1 : 14
- a : 1
+ a : 0
  b : 1
  c : -2
  d : 2
  - : unit = ()
  # dict_insert "c" 14 test_dict |> print_dict;;
- a : 1
+ a : 0
  b : 1
  c : 14
  d : 2
