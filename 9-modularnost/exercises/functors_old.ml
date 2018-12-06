@@ -68,6 +68,24 @@ let _ = Cmp_Int.compare (-9000) 42;;
 let _ = Cmp_Int_inv.compare (-9000) 42;;
  *)
 
+
+(* Given two modules A and B that implement the [Comparable] signature, we can
+   form the order that corresponds to taking their product. Mathematically, the
+   product order is defined as follows. Given two pairs (a1,b1) and (a2,b2) in
+   A × B, one sets (a1,b1) < (a2,b2) when a1 < a2 and b1 < b2. This only
+   induces a *partial* order however. For example, the pairs (0,1) and (1,0) ∈
+   ℕ × ℕ are not comparable.
+
+   A different order we can impose on A × B is the lexicographical order:
+   Define (a1,b1) < (a2,b2) when a1 < a2, or a1 = a2 and b1 < b2. This order
+   is total if the orders on A and B are and is thus suitable for implementing
+   a Comparable module. *)
+
+(* Define a functor that takes two modules A, B : Comparable and produces a
+   module Cmp_lex : Comparable with type t = A.t * B.t . *)
+
+
+
 (* Finally, here is the signature of a priority queue. We have a type of priority queues h, a type
    of elements el, an empty priority queue, and operations to push onto and safely pop
    elements off the priority queue. Pop returns the new priority queue and the highest-priority
