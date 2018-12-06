@@ -16,12 +16,6 @@ class: center, middle
 
 ---
 
-class: center, middle, question
-
-# razbitje programov<br>na datoteke
-
----
-
 ### **Modul** je zbirka tipov in vrednosti
 
 .source[```
@@ -58,7 +52,7 @@ end
 
 ---
 
-### Če želimo, lahko signaturo tudi napišemo
+### Signaturo lahko **določimo sami**
 
 .source[```
 module type Barva = sig
@@ -80,7 +74,7 @@ module RGB : Barva
 
 ---
 
-### Signature lahko skrijejo pomožne vrednosti
+### Signature lahko **skrijejo pomožne vrednosti**
 
 .source[```
 module type Barva = sig
@@ -102,7 +96,7 @@ Error: Unbound value RGB.potemni
 
 ---
 
-### Signature lahko skrijejo definicijo tipov
+### Signature lahko **skrijejo definicijo tipov**
 
 .source[```
 module type Barva = sig
@@ -122,31 +116,7 @@ end
 
 ---
 
-### Vsaka datoteka v OCamlu je svoj modul
-
-`prva.ml`
-.source[```
-let pomozni_racun = 3 + 3
-let odgovor = pomozni_racun * succ pomozni_racun
-```]
-
-`druga.ml`
-.source[```
-let najboljsi_odgovor = succ Prva.odgovor
-```]
-
-### Signaturo zapišemo v datoteke `.mli`
-
-`prva.mli`
-.source[```
-val odgovor : int
-```]
-
----
-
 class: center, middle, question
-
-### `mnozice.ml`
 
 .source.left[```
 module type Mnozica = sig
@@ -159,11 +129,113 @@ end
 ```]
 
 .source.left[```
-module Mnozica_s_seznami : Mnozica = ...
+module MnozicaSeznami : Mnozica = ...
+
+module MnozicaDrevesa : Mnozica = ...
 ```]
 
-.source.left[```
-module Mnozica_z_drevesi : Mnozica = ...
+---
+
+### Datoteke `.ml` so moduli, `.mli` pa signature
+
+`prva.ml`
+.source[```
+let pomozni_racun = 3 + 3
+let odgovor = pomozni_racun * succ pomozni_racun
+```]
+
+`prva.mli`
+.source[```
+val odgovor : int
+```]
+
+`druga.ml`
+.source[```
+let boljsi_odgovor = succ Prva.odgovor in
+let vzklik = string_of_int boljsi_odgovor ^ "!!!" in
+print_endline vzklik
+```]
+
+---
+
+class: center, middle, question
+
+# razbitje programov<br>na datoteke
+
+---
+
+class: question
+
+### Kaj je **narobe** s to signaturo?
+
+.bad-example.left[```
+module type Mnozica = sig
+  type 'a t
+  val prazna : 'a t
+  val dodaj : 'a -> 'a t -> 'a t
+  val vsebuje : 'a -> 'a t -> bool
+  val velikost : 'a t -> int
+end
+```]
+
+--
+
+### Ali znamo narediti implementacijo množice,<br>ki bi delala pri **vsakem** tipu `'a`?
+
+---
+
+### **Strožja signatura** za množice naredi abstrakten tudi tip elementov
+
+```
+module type Mnozica =
+sig
+    type t
+    type elt
+
+    val prazna : t
+    val dodaj : elt -> t -> t
+    val vsebuje : elt -> t -> bool
+    val velikost : t -> int
+end
+```
+
+---
+
+### Iskalna drevesa lahko delamo **samo za** tipe,<br>ki podpirajo **urejenost**
+
+.source[```
+type primerjava = Manjsi | Enak | Vecji
+
+module type Urejenost =
+sig
+    type t
+    val primerjaj : t -> t -> primerjava
+end
+```]
+
+---
+
+class: question
+
+### Urejenost na celih številih
+
+.source[```
+module CelaStevila : Urejenost = ...
+```]
+
+--
+
+.bad-example[```
+let oceni_kakovost x =
+  CelaStevila.primerjaj x 42
+```]
+
+--
+
+.good-example[```
+module CelaStevila :
+  Urejenost with type t = int
+  = ...
 ```]
 
 ---
@@ -171,39 +243,41 @@ module Mnozica_z_drevesi : Mnozica = ...
 ### **Funktor** je modul, odvisen od drugih modulov
 
 .source[```
-module Primer (M : Mnozica) = struct
-  let stevilo_razlicnih xs =
-    let rec aux ze_videni = function
-      | [] -> M.velikost ze_videni
-      | x :: xs when M.vsebuje x ze_videni ->
-          aux ze_videni xs
-      | x :: xs -> aux (M.dodaj x ze_videni) xs
-    in
-    aux M.prazna xs
-end
+module MnozicaDrevesa (U : Urejenost) = struct
+  type elt = U.t
+
+  type t =
+    | Prazno
+    | Sestavljeno of int * t * elt * t
+
+  let rec vsebuje x = function
+    | Prazno -> false
+    | Sestavljeno (_, l, y, d) ->
+        match U.primerjaj x y with
+        ...
 ```]
 
 ---
 
 ### Če uporabimo funktor, dobimo nov modul
 
-.terminal[```
-# use "mnozice.ml";;
-module type Mnozica = ...
-module Mnozice_s_seznami : Mnozica
-module Mnozice_s_drevesi : Mnozica
-module Primer : functor (M : Mnozica) ->
-  sig
-    val stevilo_razlicnih : 'a list -> int
-  end
-# module PS = Primer(Mnozice_s_seznami);;
-module PS : sig
-  val stevilo_razlicnih : 'a list -> int
-end
-# PS.stevilo_razlicnih [1; 2; 1; 5];;
-- : int = 3
+.source[```
+module MnozicaCelihStevil =
+  MnozicaDrevesa(CelaStevila)
 ```]
 
+---
+
+class: question
+
+### Konstrukcija urejenosti na produktu
+
+.source[```
+module
+  Produkt (U1 : Urejenost) (U2 : Urejenost)
+  : Urejenost =
+  ...
+```]
 
 </textarea>
 <script src="../../pomozno/prosojnice.js"></script>

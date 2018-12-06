@@ -1,4 +1,3 @@
-
 (* zlozi_desno : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b *)
 let rec zlozi_desno f xs z = match xs with
   | [] -> z
