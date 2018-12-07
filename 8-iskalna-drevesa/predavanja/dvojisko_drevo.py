@@ -1,11 +1,13 @@
 class NepraznoDrevo:
 
     def __init__(self, koren, levo=None, desno=None):
-        '''Ustvari neprazno dvojiško drevo z danim korenom in otrokoma.
-           - NepraznoDrevo(koren, levo=None, desno=None) ustvari dvojiško drevo z
-             danim podatkom v korenu ter levim in desnim otrokom.
-             Če kakšen od otrok manjka, se privzame, da je prazen.
-        '''
+        """Ustvari neprazno dvojiško drevo z danim korenom in otrokoma.
+
+        - NepraznoDrevo(koren, levo=None, desno=None)
+          ustvari dvojiško drevo z danim podatkom v korenu
+          ter levim in desnim otrokom. Če kakšen od otrok manjka,
+          se privzame, da je prazen.
+        """
         self.koren = koren
         self.levo = levo
         self.desno = desno
@@ -25,17 +27,36 @@ class NepraznoDrevo:
         if self.desno:
             v += self.desno.velikost()
         return v
+    
+    def poisci(self, x):
+        if self.koren == x:
+            return True
+        elif self.koren > x and self.levo:
+            return self.levo.poisci(x)
+        elif self.koren < x and self.desno:
+            return self.desno.poisci(x)
+        else:
+            return False
+
+
+primer_nepraznega_drevesa = NepraznoDrevo(
+    4,
+    levo=NepraznoDrevo(2),
+    desno=NepraznoDrevo(6, levo=NepraznoDrevo(5))
+)
 
 
 class Drevo:
 
     def __init__(self, *args, levo=None, desno=None):
-        '''Ustvari dvojiško drevo z danim korenom in otrokoma.
-           - Drevo() ustvari prazno dvojiško drevo
-           - Drevo(koren, levo=..., desno=...) ustvari dvojiško drevo z
-             danim podatkom v korenu ter levim in desnim otrokom.
-             Če kakšen od otrok manjka, se privzame, da je prazen.
-        '''
+        """Ustvari dvojiško drevo z danim korenom in otrokoma.
+
+        - Drevo()
+          ustvari prazno dvojiško drevo
+        - Drevo(koren, levo=..., desno=...) ustvari dvojiško drevo z
+          danim podatkom v korenu ter levim in desnim otrokom.
+          Če kakšen od otrok manjka, se privzame, da je prazen.
+        """
 
         if args:
             assert len(args) == 1
@@ -64,11 +85,15 @@ class Drevo:
         else:
             return 1 + self.levo.velikost() + self.desno.velikost()
 
-primer_nepraznega_drevesa = NepraznoDrevo(
-    4,
-    levo=NepraznoDrevo(2),
-    desno=NepraznoDrevo(6, levo=NepraznoDrevo(5))
-)
+    def poisci(self, x):
+        if self.prazno:
+            return False
+        elif self.koren > x:
+            return self.levo.poisci(x)
+        elif self.koren < x:
+            return self.desno.poisci(x)
+        else:
+            return True
 
 
 primer_drevesa = Drevo(

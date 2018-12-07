@@ -1,4 +1,4 @@
-(* ========== Vaje 8: Moduli  ========== *)
+(* ========== Exercise 8: Modules  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  "Once upon a time, there was a university with a peculiar tenure policy. All
@@ -39,33 +39,33 @@
 
 
 (*----------------------------------------------------------------------------*]
- Definirajte signaturo [NAT], ki določa strukturo naravnih števil. Ima osnovni 
- tip, funkcijo enakosti, ničlo in enko, seštevanje, odštevanje in množenje.
- Hkrati naj vsebuje pretvorbe iz in v OCamlov [int] tip.
+ Define a module type [NAT] that specifies the structure of a "natural numbers 
+ structure". It should have a carrier type, a function that tests for equality, 
+ a zero and a one element, addition, subtraction, and multiplication operations 
+ and conversion functions from and to OCaml's [int] type.
 
- Opomba: Funkcije za pretvarjanje ponavadi poimenujemo [to_int] and [of_int],
- tako da skupaj z imenom modula dobimo ime [NAT.of_int], ki nam pove, da 
- pridobivamo naravno število iz celega števila.
+ Note: Conversion functions are usually named [to_int] and [of_int], so that
+ when used, the function name [NAT.of_int] tells you that you a natural number
+ from an integer.
 [*----------------------------------------------------------------------------*)
 
 module type NAT = sig
-
   type t
-  val eq : t -> t -> bool
+
+  val eq   : t -> t -> bool
   val zero : t
   (* Add what's missing here! *)
   (* val to_int : t -> int *)
   (* val of_int : int -> t *)
-
 end
 
 (*----------------------------------------------------------------------------*]
- Napišite implementacijo modula [Nat_int], ki zgradi modul s signaturo [NAT],
- kjer kot osnovni tip uporablja OCamlov tip [int].
+ Write a module that implements the [NAT] signature, using OCaml's [int] type 
+ as the carrier.
 
- Namig: Dokler ne implementirate vse funkcij v [Nat_int] se bo OCaml pritoževal.
- Temu se lahko izognete tako, da funkcije, ki še niso napisane nadomestite z 
- [failwith "later"], vendar to ne deluje za konstante.
+ Trick: until you're done implementing [Nat_int], it won't have the required
+ signature. You can add stubs with [failwith "later"] to make the compiler 
+ happy and leave a note for yourself, however it does not work with constants. 
 [*----------------------------------------------------------------------------*)
 
 module Nat_int : NAT = struct
@@ -78,15 +78,14 @@ module Nat_int : NAT = struct
 end
 
 (*----------------------------------------------------------------------------*]
- Napišite implementacijo [NAT], ki temelji na Peanovih aksiomih:
- https://en.wikipedia.org/wiki/Peano_axioms
-   
- Osnovni tip modula definirajte kot vsotni tip, ki vsebuje konstruktor za ničlo
- in konstruktor za naslednika nekega naravnega števila.
- Večino funkcij lahko implementirate s pomočjo rekurzije. Naprimer, enakost
- števil [k] in [l] določimo s hkratno rekurzijo na [k] in [l], kjer je osnoven
- primer [Zero = Zero].
+ Write another implementation of [NAT], taking inspiration from the Peano
+ axioms: https://en.wikipedia.org/wiki/Peano_axioms
 
+ First define the carrier type with two constructors, one for zero and one for
+ the successor of another natural number.
+ Most of the functions are defined using recursion, for instance the equality 
+ of [k] and [l] is decided by recursion on both [k] and [l] where the base case
+ is that [Zero = Zero].
 [*----------------------------------------------------------------------------*)
 
 module Nat_peano : NAT = struct
@@ -98,15 +97,38 @@ module Nat_peano : NAT = struct
 
 end
 
+(*----------------------------------------------------------------------------*]
+ OCaml modules are first class and can be passed to functions as arguments by
+ using the keyword [module]. The function definition is then
+
+ # let f (module M : M_sig) = ...
+
+ and passing a module as an argument is done by
+
+ # f (module M_implementation);;
+
+ The function [sum_nat_100] accepts a module of type [NAT] and using the module
+ sums the first 100 natural numbers. Because the function cant return something
+ of the type [NAT.t] (because we don't know what module it belongs to, it could
+ be an [int] or a variant type) it returns an [int] that we get with the method
+ [to_int].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # sum_nat_100 (module Nat_int);;
+ - : int = 4950
+ # sum_nat_100 (module Nat_peano);;
+ - : int = 4950
+[*----------------------------------------------------------------------------*)
+
+let sum_nat_100 (module Nat : NAT) = ()
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Now we follow the fable told by John Reynolds in the introduction.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
- Definirajte signaturo modula kompleksnih števil.
- Potrebujemo osnovni tip, test enakosti, ničlo, enko, imaginarno konstanto i,
- negacijo, konjugacijo, seštevanje in množenje. 
+ Define the signature of a module of complex numbers.
+ We will need a carrier type, a test for equality, zero, one, i, negation and
+ conjugation, addition, and multiplication.
 [*----------------------------------------------------------------------------*)
 
 module type COMPLEX = sig
@@ -116,8 +138,8 @@ module type COMPLEX = sig
 end
 
 (*----------------------------------------------------------------------------*]
- Napišite kartezično implementacijo kompleksnih števil, kjer ima vsako
- kompleksno število realno in imaginarno komponento.
+ Write an implementation of Professor Descartes's complex numbers. This should 
+ be the cartesian representation.
 [*----------------------------------------------------------------------------*)
 
 module Cartesian : COMPLEX = struct
@@ -129,20 +151,21 @@ module Cartesian : COMPLEX = struct
 
 end
 
-
 (*----------------------------------------------------------------------------*]
- Sedaj napišite še polarno implementacijo kompleksnih števil, kjer ima vsako
- kompleksno število radij in kot (angl. magnitude in argument).
-   
- Priporočilo: Seštevanje je v polarnih koordinatah zahtevnejše, zato si ga 
- pustite za konec.
+ Now implement Professor Bessel's complex numbers. The carrier this time
+ will be a polar representation, with a magnitude and an argument for each
+ complex number.
+
+ Recommendation: Implement addition at the end, as it gets very messy (might
+ as well be the end of the century).
 [*----------------------------------------------------------------------------*)
+
 
 module Polar : COMPLEX = struct
 
   type t = {magn : float; arg : float}
 
-  (* You can use these if it makes your life easier. *)
+  (* Auxiliary functions to make life easier. *)
   let pi = 2. *. acos 0.
   let rad_of_deg deg = (deg /. 180.) *. pi
   let deg_of_rad rad = (rad /. pi) *. 180.
@@ -151,3 +174,32 @@ module Polar : COMPLEX = struct
   (* Add what's missing here! *)
 
 end
+
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ DICTIONARIES
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
+(*----------------------------------------------------------------------------*]
+ In the tree exercises we defined a type of dictionaries [('key, 'value) dict],
+ that also had functions [dict_get], [dict_insert] and [print_dict]. Write a
+ fitting signature for dictionaries [DICT] and construct it's implementation
+ in the same way as in the tree exercises.
+
+ The module should include an [empty] dictionary and functions [get], [insert]
+ and [print] (where print should again work only on [(string, int) t)].
+[*----------------------------------------------------------------------------*)
+
+
+(*----------------------------------------------------------------------------*]
+ The function [count (module Dict) list] counts how often certain elements
+ appear in [list] using the chosen dictionary module and prints it.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # count (module Tree_dict) ["b"; "a"; "n"; "a"; "n"; "a"];;
+ a : 3
+ b : 1
+ n : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
+
+let count (module Dict : DICT) list = ()

@@ -1,0 +1,15 @@
+# Število vozlišč v AVL drevesu
+
+Pokažimo, da število vozlišč v AVL drevesu eksponentno narašča z višino drevesa. V tem primeru bo časovna zahtevnost operacij iskanja, vstavljanja in odstranjevanja enaka $O(h) = O(\log n)$.
+
+Naj bo $N(h)$ najmanjše število vozlišč v kakršnemkoli AVL drevesu višine vsaj $h$. Nekaj hitrih opazk:
+
+- $N(0) = 0$, saj je prazno drevo najmanjše AVL drevo višine vsaj $0$;
+- $N(1) = 1$, saj mora drevo višine vsaj $1$ vsebovati vsaj en element, drevo s samo enim elementom pa je AVL drevo;
+- če je $h \ge h'$, je $N(h) \ge N(h')$, saj ima vsako drevo z višino vsaj $h$ tudi višino vsaj $h'$.
+
+Vzemimo poljubno AVL drevo $T$ višine $h$ s poddrevesoma $L$ in $D$. Vsaj eden od njegovih otrok ima višino $h - 1$. Brez škode za splošnost privzemimo, da je to $L$. Ker je $T$ AVL drevo, se morata višini $L$ in $D$ razlikovati za največ $1$, torej ima drevo $D$ lahko le višini $h - 1$ ali $h - 2$. Po definiciji funkcije $N$ ima drevo $L$ vsaj $N(h - 1)$, drevo $D$ pa vsaj $N(h - 2)$ elementov. Tedaj ima drevo $T$ vsaj $1 + N(h - 1) + N(h - 2)$ elementov. Torej velja
+
+$$N(h - 1) \ge 1 + N(h - 1) + N(h - 2)$$
+
+Hitro lahko preverimo, da velja $N(h) \ge F_h$, kjer smo s $F_h$ označili $h$-to Fibonaccijevo število. Torej ima vsako drevo višine vsaj $h$ vsaj $\left(\frac{1 + \sqrt{5}}{2}\right)^h$ vozlišč.

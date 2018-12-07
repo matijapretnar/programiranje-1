@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Iskalna drevesa</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Iskalna drevesa
+
+## Programiranje 1
+
+---
+
+class: question
+
+### Zakaj ima `obrni'` boljšo implementacijo?
+
+.bad-example.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+.good-example.left[```
+let obrni' =
+  let rec aux acc = function
+    | [] -> acc
+    | x :: xs -> aux (x :: acc) xs
+  in
+  aux []
+```]
+
+---
+
+### Spomnimo se ideje **notacije velikega O**
+
+## .center[$$f \in O(g)$$]
+
+### $$\exists \color{purple}{M}, \color{red}{x_0}. \forall x > \color{red}{x_0}. |f(x)| \leq \color{purple}{M} \cdot |\color{blue}{g}(x)|$$
+
+### .center[![](slike/O-graf.png)]
+
+### Rast funkcije \\(f\\) je omejena s funkcijo \\(g\\)
+
+---
+
+### **Lastnosti** notacije velikega O
+
+### $$f \in O(g), a \in \mathbb{R} \implies a \cdot f \in O(g)$$
+
+### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 + f_2 \in O(|g_1| + |g_2|)$$
+
+### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 \cdot f_2 \in O(g_1 \cdot g_2)$$
+
+---
+
+class: question
+
+### Kakšna je **časovna zahtevnost**<br>spodnjih dveh funkcij?
+
+.bad-example.left[```
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+```]
+
+.good-example.left[```
+let obrni' =
+  let rec aux acc = function
+    | [] -> acc
+    | x :: xs -> aux (x :: acc) xs
+  in
+  aux []
+```]
+
+--
+
+#### Za pravilen odgovor moramo vedeti, kako so **predstavljeni seznami**.
+
+---
+
+### OCamlovi seznami so implementirani z **verižnimi seznami**
+
+.left-column[.terminal[```ocaml
+let s = [6; 2; 4]
+```]]
+
+--
+
+.right-column[.right[![](slike/verizni-seznam-pomnilnik.png)]]
+
+--
+
+```ocaml
+s : 19         0   0   0   0   0   0
+               0   0   0   0   0   0
+               0   0   1   2  22   0
+               1   6  15   1   4  30
+               0   0   0   0   0   0
+```
+
+---
+
+class: question, middle, center
+
+### Predstavitev seznama
+
+## `[[1; 2]; [3]; []]`
+
+---
+
+class: question
+
+### Zahtevnost operacij na verižnih seznamih
+
+|                                 | čas            | prostor
+| ------------------------------: |:-------------: | :--------------:
+| indeksiranje                    | .spoiler[O(n)] |  .spoiler[O(1)]
+| dodajanje na začetek            | .spoiler[O(1)] |  .spoiler[O(1)]
+| dodajanje na konec              | .spoiler[O(n)] |  .spoiler[O(n)]
+| izračun dolžine seznama         | .spoiler[O(n)] |  .spoiler[O(1)]
+| izračun repa seznama            | .spoiler[O(1)] |  .spoiler[O(1)]
+| iskanje                         | .spoiler[O(n)] |  .spoiler[O(1)]
+| iskanje v urejenem seznamu      | .spoiler[O(n)] |  .spoiler[O(1)]
+
+---
+
+
+class: question
+
+### Zahtevnost operacij na verižnih seznamih
+
+|                                 | čas            | prostor
+| ------------------------------: |:-------------: | :--------------:
+| indeksiranje                    | O(n)           |  O(1)
+| dodajanje na začetek            | O(1)           |  O(1)
+| dodajanje na konec              | O(n)           |  O(n)
+| izračun dolžine seznama         | O(n)           |  O(1)
+| izračun repa seznama            | O(1)           |  O(1)
+| iskanje                         | O(n)           |  O(1)
+| iskanje v urejenem seznamu      | O(n)           |  O(1)
+
+#### Ali med prostorsko in časovno zahtevnostjo obstaja povezava?
+
+---
+
+### Ali znamo spodnjo funkcijo pohitriti?
+
+.source[```
+let stevilo_razlicnih xs =
+  let rec aux ze_videni = function
+    | [] -> List.length ze_videni
+    | x :: xs ->
+        if List.mem x ze_videni
+        then aux ze_videni xs
+        else aux (x :: ze_videni) xs
+  in
+  aux [] xs
+```]
+
+--
+
+### V resnici **ni treba**, da videne elemente shranjujemo v **seznam**
+
+---
+
+### Želimo si **učinkovito predstavitev množic**
+
+.bad-example[```
+let velikost m = List.length m        (* O(n) *)
+let vsebuje x m = List.mem x m        (* O(n) *)
+let dodaj x m = x :: m                (* O(1) *)
+```]
+
+.source[```
+let stevilo_razlicnih xs =           (* O(n²) *)
+  let rec aux ze_videni = function
+    | [] -> velikost ze_videni
+    | x :: xs ->
+        if vsebuje x ze_videni
+        then aux ze_videni xs
+        else aux (dodaj x ze_videni) xs
+  in
+  aux [] xs
+```]
+
+---
+
+### Želimo si **učinkovito predstavitev množic**
+
+.good-example[```
+let velikost m = ???         (* O(n) ali O(1) *)
+let vsebuje x m = ???             (* O(log n) *)
+let dodaj x m = ???               (* O(log n) *)
+```]
+
+.source[```
+let stevilo_razlicnih xs =      (* O(n log n) *)
+  let rec aux ze_videni = function
+    | [] -> velikost ze_videni
+    | x :: xs ->
+        if vsebuje x ze_videni
+        then aux ze_videni xs
+        else aux (dodaj x ze_videni) xs
+  in
+  aux [] xs
+```]
+
+---
+
+### Dvojiško drevo je **iskalno**, če:
+
+* so vsi elementi **levega** otroka **manjši** od korena
+* so vsi elementi **desnega** otroka **večji** od korena
+* sta **oba** otroka tudi **iskalni** drevesi
+
+.center[![](slike/iskalno-drevo.png)]
+
+---
+
+### Elemente **iščemo** s spustom v ustrezno vejo
+
+.center[![](slike/iskalno-drevo-najdi.png)]
+
+### Število 15 je v drevesu
+
+---
+
+### Elemente **iščemo** s spustom v ustrezno vejo
+
+.center[![](slike/iskalno-drevo-ne-najdi.png)]
+
+### Števila 41 ni v drevesu
+
+---
+
+### Elemente **vstavimo** tja, kjer bi jih sicer našli
+
+.center[![](slike/iskalno-drevo-vstavi.png)]
+
+---
+
+### Elemente v listih **odstranimo** enostavno
+
+.center[![](slike/iskalno-drevo-brisi-list.png)]
+
+
+---
+
+### **Korena** zaradi otrok **ne moremo** odstraniti
+
+.center[![](slike/iskalno-drevo-brisi-koren.png)]
+
+---
+
+### Koren lahko odstranimo,<br>če ga **nadomestimo s predhodnikom**
+
+.center[![](slike/iskalno-drevo-zamenjaj-koren-s-predhodnikom.png)]
+
+---
+
+### Koren lahko odstranimo,<br>če ga **nadomestimo z naslednikom**
+
+.center[![](slike/iskalno-drevo-zamenjaj-koren-z-naslednikom.png)]
+
+---
+
+class: center, middle, question
+
+# implementacija <br>iskalnih dreves v OCamlu
+
+---
+
+### Operacije v iskalnem drevesu<br>imajo **časovno zahtevnost** \\(O(h)\\)
+
+.center[![](slike/neuravnotezeno-drevo.png)]
+
+### \\(n \approx 2^h\\) in posledično \\(O(h) \approx O(\log n)\\)<br>velja le, če je drevo **uravnoteženo**
+
+---
+
+### Iskalno drevo je **AVL drevo**, če:
+
+* je **razlika višin** otrok **največ 1**
+* sta **oba** otroka tudi **AVL** drevesi
+
+.center[![](slike/avl-drevo.png)]
+
+---
+
+class: center, middle, question
+
+# Vsaj koliko vozlišč ima<br>AVL drevo višine \\(h\\)?
+
+---
+
+### Dodajanje lahko **pokvari** uravnoteženost
+
+.center[![](slike/dodajanje-pokvari-avl-drevo.png)]
+
+### Brisanje lahko pokvari uravnoteženost
+
+.center[![](slike/brisanje-pokvari-avl-drevo.png)]
+
+---
+
+### V splošnem obstajata **dve** neuravnoteženosti
+
+.center[![](slike/mozni-neuravnotezenosti.png)]
+
+### Brez škode za splošnost poglejmo **desno**
+
+---
+
+### Desna neuravnoteženost ima **dve različici**
+
+.center[![](slike/mozni-desni-neuravnotezenosti.png)]
+
+### Zakaj ni drugih?
+
+---
+
+### Pri prvi različici uporabimo **levo rotacijo**
+
+.center[![](slike/leva-rotacija.png)]
+
+---
+
+### Pri drugi uporabimo **desno-levo rotacijo**
+
+.center[![](slike/desna-rotacija.png)]
+
+---
+
+class: center, middle, question
+
+# implementacija <br>iskalnih dreves v Pythonu
+
+## (grda varianta)
+
+---
+
+class: center, middle, question
+
+# implementacija <br>iskalnih dreves v Pythonu
+
+## (še ena grda varianta)
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>

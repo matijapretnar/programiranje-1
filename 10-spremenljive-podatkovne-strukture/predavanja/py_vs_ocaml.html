@@ -1,0 +1,105 @@
+
+---
+
+class: center, middle, question
+
+# Ali med prostorsko in časovno zahtevnostjo obstaja povezava?
+
+---
+
+class: question
+
+## Kakšna je časovna zahtevnost sledečih operacij?
+
+|                                 | tabela         | verižni seznam
+| ------------------------------: |:-------------: | :--------------:
+| indeksiranje                    | .spoiler[O(1)] | .spoiler[O(n)]
+| dodajanje na začetek            | .spoiler[O(n)] | .spoiler[O(1)]
+| dodajanje na konec              | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun dolžine seznama         | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun repa seznama            | .spoiler[O(n)] | .spoiler[O(1)]
+| ugotavljanje prisotnosti        | .spoiler[O(n)] | .spoiler[O(n)]
+
+---
+
+class: question
+
+## Kakšna je prostorska zahtevnost sledečih operacij?
+
+|                                 | tabela         | verižni seznam
+| ------------------------------: |:-------------: | :--------------:
+| indeksiranje                    | .spoiler[O(1)] | .spoiler[O(1)]
+| dodajanje na začetek            | .spoiler[O(n)] | .spoiler[O(1)]
+| dodajanje na konec              | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun dolžine seznama         | .spoiler[O(1)] | .spoiler[O(1)]
+| izračun repa seznama            | .spoiler[O(n)] | .spoiler[O(1)]
+| ugotavljanje prisotnosti        | .spoiler[O(1)] | .spoiler[O(1)]
+
+---
+
+### Pythonovi seznami so implementirani s tabelami
+
+.left-column[.terminal[```python
+s = [6, 2, 4]
+```]]
+
+.right-column[.right[![](slike/seznam-python.png)]]
+
+--
+
+```python
+ 0   0   0   0   0   0      x : 8
+ 0  123  6   0   0   0      s : 19
+ 0   0   0  123  0   0
+246  3   6   2   4   0
+ 0   0   0   0   0   0
+```
+
+Na mestih `123` in `246` je shranjena še definicija
+razredov `int` in `list`.
+
+---
+
+### Tudi OCaml ima tip tabel `array`
+
+.left-column[.terminal[```ocaml
+let x = 10
+let s = [|6; 2; 4|]
+```]]
+
+.right-column[.right[![](slike/tabela-ocaml.png)]]
+
+--
+
+```ocaml
+ 0   0   0   0   0   0      x : 8
+ 0   10  0   0   0   0      s : 19
+ 0   0   0   0   0   0
+ 3   6   2   4   0   0
+ 0   0   0   0   0   0
+```
+
+---
+
+### Primerjava seznamov v Pythonu in OCamlu
+
+| tip                                | predstavitev         | spremenljivost
+| ------------------------------: |:-------------: | :--------------:
+| Python `list`                   | tabele | spremenljivi
+| OCaml `list`                    | verižni seznami | nespremenljivi
+| OCaml `array`                    | tabele | spremenljivi
+| če v Pythonu napišemo svoj razred `MojSeznam`        | verižni seznami | spremenljivi
+
+
+---
+
+### Radi bi **učinkovito** predstavili množice
+
+|                                 | iskanje        | dodajanje
+| ------------------------------: |:-------------: | :--------------:
+| tabela                          | .spoiler[O(n)] | .spoiler[O(1)]
+| verižni seznam                  | .spoiler[O(n)] | .spoiler[O(1)]
+| urejena tabela                  | .spoiler[O(log n)] | .spoiler[O(n)]
+| urejen verižni seznam           | .spoiler[O(n)] | .spoiler[O(n)]
+| .spoiler[zgoščevalne tabele?!]    | .spoiler[O(1)] | .spoiler[O(1)]
+| .spoiler[iskalna drevesa]       | .spoiler[O(log n)] | .spoiler[O(log n)]
