@@ -5,9 +5,8 @@
  trees, which are either empty or they contain some data and two (possibly
  empty) subtrees. We assume no further structure of the trees.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
-type 'a tree =
-  | Empty
-  | Node of 'a tree * 'a * 'a tree
+
+type 'a tree = Empty | Node of 'a tree * 'a * 'a tree
 
 (*----------------------------------------------------------------------------*]
  We define a test case for simpler testing of functions. The test case
@@ -20,9 +19,9 @@ type 'a tree =
       0   6   11
 [*----------------------------------------------------------------------------*)
 
-let leaf x = Node(Empty, x, Empty) 
+let leaf x = Node (Empty, x, Empty)
 
-let test_tree = Node( Node(leaf 0, 2, Empty), 5, Node(leaf 6, 7, leaf 11))
+let test_tree = Node (Node (leaf 0, 2, Empty), 5, Node (leaf 6, 7, leaf 11))
 
 (*----------------------------------------------------------------------------*]
  The function [mirror] returns a mirrored tree. When applied to our test tree
@@ -41,7 +40,7 @@ let test_tree = Node( Node(leaf 0, 2, Empty), 5, Node(leaf 6, 7, leaf 11))
 
 let rec mirror = function
   | Empty -> Empty
-  | Node(l, x, r) -> Node(mirror r, x, mirror l)
+  | Node (l, x, r) -> Node (mirror r, x, mirror l)
 
 (*----------------------------------------------------------------------------*]
  The function [height] returns the height (or depth) of the tree and the
@@ -55,11 +54,11 @@ let rec mirror = function
 
 let rec height = function
   | Empty -> 0
-  | Node(l, _, r) -> 1 + max (height l) (height r)
+  | Node (l, _, r) -> 1 + max (height l) (height r)
 
 let rec size = function
   | Empty -> 0
-  | Node(l, _, r) -> 1 + (size l) + (size r)
+  | Node (l, _, r) -> 1 + (size l) + (size r)
 
 (*----------------------------------------------------------------------------*]
  The function [map_tree f tree] maps the tree into a new tree with nodes that
@@ -120,21 +119,21 @@ let rec is_bst t =
 
 let rec insert x = function
   | Empty -> leaf x
-  | Node(l, y, r) when x = y -> Node(l, y, r)
-  | Node(l, y, r) when x < y -> Node(insert x l, y, r)
-  | Node(l, y, r) when x > y -> Node(l, y, insert x r)
+  | Node (l, y, r) when x = y -> Node (l, y, r)
+  | Node (l, y, r) when x < y -> Node (insert x l, y, r)
+  | Node (l, y, r) (* when x > y *) -> Node (l, y, insert x r)
 
 let rec member x = function
   | Empty -> false
-  | Node(l, y, r) when x = y -> true
-  | Node(l, y, r) when x < y -> member x l
-  | Node(l, y, r) when x > y -> member x r
+  | Node (l, y, r) when x = y -> true
+  | Node (l, y, r) when x < y -> member x l
+  | Node (l, y, r) (* when x > y *) -> member x r
 
 (*----------------------------------------------------------------------------*]
  The function [member2] does not assume that the tree is a bst.
- 
- Note: Think about the differences of time complexity for [member] and 
- [member2] assuming an input tree with n nodes and depth of log(n). 
+
+ Note: Think about the differences of time complexity for [member] and
+ [member2] assuming an input tree with n nodes and depth of log(n).
 [*----------------------------------------------------------------------------*)
 
 let rec member2 x = function
@@ -157,22 +156,22 @@ let rec member2 x = function
 let succ bst =
   let rec minimal = function
     | Empty -> None
-    | Node(Empty, x, _) -> Some x
-    | Node(l, _, _) -> minimal l
+    | Node (Empty, x, _) -> Some x
+    | Node (l, _, _) -> minimal l
   in
   match bst with
   | Empty -> None
-  | Node(_, _, r) -> minimal r
+  | Node (_, _, r) -> minimal r
 
 let pred bst =
   let rec maximal = function
     | Empty -> None
-    | Node(_, x, Empty) -> Some x
-    | Node(_, _, r) -> maximal r
+    | Node (_, x, Empty) -> Some x
+    | Node (_, _, r) -> maximal r
   in
   match bst with
   | Empty -> None
-  | Node(l, _, _) -> maximal l
+  | Node (l, _, _) -> maximal l
 
 (*----------------------------------------------------------------------------*]
  In lectures you two different approaches to deletion, using either [succ] or
@@ -189,15 +188,15 @@ let pred bst =
 
 let rec delete x = function
   | Empty -> Empty
-  | Node(l, y, r) when x > y -> Node(l, y, delete x r)
-  | Node(l, y, r) when x < y -> Node(delete x l, y, r)
-  | Node(l, y, r) as bst -> (
+  | Node (l, y, r) when x > y -> Node (l, y, delete x r)
+  | Node (l, y, r) when x < y -> Node (delete x l, y, r)
+  | Node (l, y, r) as bst -> (
       (*We need to delete the root.*)
       match succ bst with
       | None -> l (*Only happens when [r] is [Empty].*)
       | Some s ->
         let clean_r = delete s r in
-        Node(l, s, clean_r))
+        Node (l, s, clean_r))
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  DICTIONARIES
@@ -210,11 +209,7 @@ let rec delete x = function
  type as [('key, 'value) dict].
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
-type ('key, 'value) dict = 
-  | D_Empty
-  | D_Node of ('key, 'value) dict * 'key * 'value * ('key, 'value) dict
-
-let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
+type ('key, 'value) dict = ('key * 'value) tree
 
 (*----------------------------------------------------------------------------*]
  Write the test case [test_dict]:
@@ -225,8 +220,9 @@ let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
      "c":-2
 [*----------------------------------------------------------------------------*)
 
-let test_dict = 
-  D_Node(d_leaf "a" 0, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
+let test_dict
+  : (string, int) dict
+  = Node (leaf ("a", 0), ("b", 1), Node (leaf ("c", -2), ("d", 2), Empty))
 
 (*----------------------------------------------------------------------------*]
  The function [dict_get key dict] returns the value with the given key. Because
@@ -238,16 +234,16 @@ let test_dict =
  - : int option = Some (-2)
 [*----------------------------------------------------------------------------*)
 
-let rec dict_get key = function
-  | D_Empty -> None
-  | D_Node (d_l, k, value, d_r) ->
-      if k = key then
-        Some value
-      else if key < k then
-        dict_get key d_l
-      else
-      dict_get key d_r
-      
+let rec dict_get k = function
+  | Empty -> None
+  | Node (l, (k', v), r) ->
+    if k = k' then
+      Some v
+    else if k < k' then
+      dict_get k l
+    else
+      dict_get k r
+
 (*----------------------------------------------------------------------------*]
  The function [print_dict] accepts a dictionary with key of type [string] and
  values of type [int] and prints (in the correct order) lines containing 
@@ -265,10 +261,10 @@ let rec dict_get key = function
 [*----------------------------------------------------------------------------*)
 
 let rec print_dict = function
-  | D_Empty -> ()
-  | D_Node (d_l, k, v, d_r) -> (
+  | Empty -> ()
+  | Node (d_l, (k, v), d_r) -> (
       print_dict d_l;
-      print_string (k ^ " : "); print_int v; print_string "\n";
+      print_string (k ^ " : "); print_int v; print_newline ();
       print_dict d_r)
 
 (*----------------------------------------------------------------------------*]
@@ -290,12 +286,9 @@ let rec print_dict = function
  - : unit = ()
 [*----------------------------------------------------------------------------*)
 
-let rec dict_insert key value = function
-  | D_Empty -> d_leaf key value
-  | D_Node (d_l, k, v, d_r) ->
-      if k = key then
-        D_Node (d_l, k, value, d_r)
-      else if key < k then
-        D_Node (dict_insert key value d_l, k, v, d_r)
-      else
-        D_Node (d_l, k, v, dict_insert key value d_r)
+
+let rec dict_insert k v = function
+  | Empty -> leaf (k, v)
+  | Node (l, (k', _), r) when k = k' -> Node (l, (k, v), r)
+  | Node (l, (k', v'), r) when k < k' -> Node (dict_insert k v l, (k', v'), r)
+  | Node (l, (k', v'), r) (* when k > k' *) -> Node (l, (k', v'), dict_insert k v r)

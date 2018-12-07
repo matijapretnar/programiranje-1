@@ -1,5 +1,5 @@
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- ADDITIONAL EXERCISES 
+ ADDITIONAL EXERCISES
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
@@ -23,7 +23,7 @@ let bst_of_list list = List.fold_right insert list Empty
 let tree_sort list = list |> bst_of_list |> list_of_tree
 
 (*----------------------------------------------------------------------------*]
- The function [follow directions tree] of type [direction list -> 'a tree -> 
+ The function [follow directions tree] of type [direction list -> 'a tree ->
  'a option] accepts a list of directions for traversing the tree and returns the
  data in the node at the end of the traversal. Because the directions might not
  lead to an actual node in the tree, the result is returned as an [option] type.
@@ -49,7 +49,7 @@ let rec follow directions = function
  The function [prune directions tree] finds the node given by [directions] and
  removes the subtree that starts in the node.
 
- Warning: When using [Some Node(l, x, r)] Ocaml complains because it reads it 
+ Warning: When using [Some Node(l, x, r)] Ocaml complains because it reads it
  as [(Some Node)(l, x, r)] so use paranthesis when necessary.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # prune [Right] test_tree;;
@@ -57,7 +57,7 @@ let rec follow directions = function
  Some (Node (Node (Node (Empty, 0, Empty), 2, Empty), 5, Empty))
 [*----------------------------------------------------------------------------*)
 
-let rec prune directions tree = 
+let rec prune directions tree =
   match directions, tree with
   | [], _ -> Some Empty
   | _, Empty -> None

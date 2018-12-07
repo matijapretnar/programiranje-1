@@ -122,13 +122,13 @@ let rec insert x = function
   | Empty -> leaf x
   | Node(l, y, r) when x = y -> Node(l, y, r)
   | Node(l, y, r) when x < y -> Node(insert x l, y, r)
-  | Node(l, y, r) when x > y -> Node(l, y, insert x r)
+  | Node(l, y, r) (* when x > y *) -> Node(l, y, insert x r)
 
 let rec member x = function
   | Empty -> false
   | Node(l, y, r) when x = y -> true
   | Node(l, y, r) when x < y -> member x l
-  | Node(l, y, r) when x > y -> member x r
+  | Node(l, y, r) (* when x > y *) -> member x r
 
 (*----------------------------------------------------------------------------*]
  Funkcija [member2] ne privzame, da je drevo bst.
@@ -210,11 +210,7 @@ let rec delete x = function
  vrednosti, ga parametriziramo kot [('key, 'value) dict].
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
-type ('key, 'value) dict = 
-  | D_Empty
-  | D_Node of ('key, 'value) dict * 'key * 'value * ('key, 'value) dict
-
-let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
+type ('key, 'value) dict = ('key * 'value) tree
 
 (*----------------------------------------------------------------------------*]
  Napišite testni primer [test_dict]:
@@ -225,8 +221,9 @@ let d_leaf key value = D_Node (D_Empty, key, value, D_Empty)
      "c":-2
 [*----------------------------------------------------------------------------*)
 
-let test_dict = 
-  D_Node(d_leaf "a" 0, "b", 1, D_Node(d_leaf "c" (-2), "d", 2, D_Empty))
+let test_dict
+  : (string, int) dict
+  = Node (leaf ("a", 0), ("b", 1), Node (leaf ("c", -2), ("d", 2), Empty))
 
 (*----------------------------------------------------------------------------*]
  Funkcija [dict_get key dict] v slovarju poišče vrednost z ključem [key]. Ker
@@ -238,16 +235,16 @@ let test_dict =
  - : int option = Some (-2)
 [*----------------------------------------------------------------------------*)
 
-let rec dict_get key = function
-  | D_Empty -> None
-  | D_Node (d_l, k, value, d_r) ->
-      if k = key then
-        Some value
-      else if key < k then
-        dict_get key d_l
-      else
-      dict_get key d_r
-      
+let rec dict_get k = function
+  | Empty -> None
+  | Node (l, (k', v), r) ->
+    if k = k' then
+      Some v
+    else if k < k' then
+      dict_get k l
+    else
+      dict_get k r
+
 (*----------------------------------------------------------------------------*]
  Funkcija [print_dict] sprejme slovar s ključi tipa [string] in vrednostmi tipa
  [int] in v pravilnem vrstnem redu izpiše vrstice "ključ : vrednost" za vsa
@@ -265,10 +262,10 @@ let rec dict_get key = function
 [*----------------------------------------------------------------------------*)
 
 let rec print_dict = function
-  | D_Empty -> ()
-  | D_Node (d_l, k, v, d_r) -> (
+  | Empty -> ()
+  | Node (d_l, (k, v), d_r) -> (
       print_dict d_l;
-      print_string (k ^ " : "); print_int v; print_string "\n";
+      print_string (k ^ " : "); print_int v; print_newline ();
       print_dict d_r)
 
 (*----------------------------------------------------------------------------*]
@@ -283,19 +280,15 @@ let rec print_dict = function
  d : 2
  - : unit = ()
  # dict_insert "c" 14 test_dict |> print_dict;;
- a : 1
+ a : 0
  b : 1
  c : 14
  d : 2
  - : unit = ()
 [*----------------------------------------------------------------------------*)
 
-let rec dict_insert key value = function
-  | D_Empty -> d_leaf key value
-  | D_Node (d_l, k, v, d_r) ->
-      if k = key then
-        D_Node (d_l, k, value, d_r)
-      else if key < k then
-        D_Node (dict_insert key value d_l, k, v, d_r)
-      else
-        D_Node (d_l, k, v, dict_insert key value d_r)
+let rec dict_insert k v = function
+  | Empty -> leaf (k, v)
+  | Node (l, (k', _), r) when k = k' -> Node (l, (k, v), r)
+  | Node (l, (k', v'), r) when k < k' -> Node (dict_insert k v l, (k', v'), r)
+  | Node (l, (k', v'), r) (* when k > k' *) -> Node (l, (k', v'), dict_insert k v r)

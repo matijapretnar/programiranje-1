@@ -1,5 +1,5 @@
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- DODATNE VAJE 
+ DODATNE VAJE
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 (*----------------------------------------------------------------------------*]
@@ -25,7 +25,7 @@ let tree_sort list = list |> bst_of_list |> list_of_tree
 
 (*----------------------------------------------------------------------------*]
  Funkcija [follow directions tree] tipa [direction list -> 'a tree -> 'a option]
- sprejme seznam navodil za premikanje po drevesu in vrne vozlišče do katerega 
+ sprejme seznam navodil za premikanje po drevesu in vrne vozlišče do katerega
  vodi podana pot. Ker navodila morda ne vodijo do nobenega vozlišča v drevesu
  vrne rezultat kot [option] tip. Ne pozabite definirati tipa [directions].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,7 +49,7 @@ let rec follow directions = function
  Funkcija [prune directions tree] poišče vozlišče v drevesu glede na navodila,
  ter izbriše poddrevo, ki se začne v izbranem vozlišču.
 
- Opozorilo: Pri uporabi [Some Node(l, x, r)] se OCaml pritoži, saj to razume 
+ Opozorilo: Pri uporabi [Some Node(l, x, r)] se OCaml pritoži, saj to razume
  kot [(Some Node)(l, x, r)], zato pravilno postavite potrebne oklepaje.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # prune [Right] test_tree;;
@@ -57,7 +57,7 @@ let rec follow directions = function
  Some (Node (Node (Node (Empty, 0, Empty), 2, Empty), 5, Empty))
 [*----------------------------------------------------------------------------*)
 
-let rec prune directions tree = 
+let rec prune directions tree =
   match directions, tree with
   | [], _ -> Some Empty
   | _, Empty -> None
@@ -90,7 +90,7 @@ type 'a phantom_tree =
 (*----------------------------------------------------------------------------*]
  Funkcija [phantomize] tipa ['a tree -> 'a phantom_tree] navadnemu drevesu
  priredi ekvivalentno fantomsko drevo.
- Funkcija [kill x ptree] izbriše element [x] v fantomskem drevesu tako, da 
+ Funkcija [kill x ptree] izbriše element [x] v fantomskem drevesu tako, da
  njegovo stanje nastavi na [Ghost].
  Predpostavite lahko, da v drevesu ni ponovitev elementov.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -119,10 +119,10 @@ let rec kill x = function
   | P_Node(p_l, y, p_r, s) when x = y -> P_Node(p_l, y, p_r, Ghost)
   | P_Node(p_l, y, p_r, s) when x < y -> P_Node(kill x p_l, y, p_r, s)
   | P_Node(p_l, y, p_r, s) -> P_Node(p_l, y, kill x p_r, s)
-      
+
 
 (*----------------------------------------------------------------------------*]
- Funkcija [unphantomize] tipa ['a phantom_tree -> 'a tree] fantomskemu drevesu 
+ Funkcija [unphantomize] tipa ['a phantom_tree -> 'a tree] fantomskemu drevesu
  priredi navadno drevo, ki vsebuje zgolj vozlišča, ki še obstajajo. Vrstni red
  vozlišč v končnem drevesu ni pomemben.
 
