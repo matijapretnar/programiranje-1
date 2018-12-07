@@ -1,14 +1,14 @@
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Prioritetna vrsta je podatkovna struktura, ki hrani elemente glede na njihovo
  prioriteto. Elementi z višjo prioriteto so na voljo pred elementi z nižjo
- prioriteto. 
+ prioriteto.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 type comparison = LT | EQ | GT
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Prioriteto definiramo s pomočjo modula primerjav. Želimo, da je implementacija
- tipa [t] vidna, saj potrebujemo tip za uporabo funktorjev. Ker pa ne vemo 
+ tipa [t] vidna, saj potrebujemo tip za uporabo funktorjev. Ker pa ne vemo
  katere tipe bomo primerjali, jo za ta trenutek pustimo abstraktno.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
@@ -59,7 +59,7 @@ end
  istem osnovnem tipu, vendar z obrnjeno funkcijo primerjanja.
 
  Spodnja definicija uporabla oznake za tipe. Brez oznak bi bila zgolj
- [module Cmp_inv (Cmp)] vendar z oznako tipov povemo, da se tip končnega 
+ [module Cmp_inv (Cmp)] vendar z oznako tipov povemo, da se tip končnega
  modula ujema s tipom modula, ki ga podamo kot argument
 [*----------------------------------------------------------------------------*)
 
@@ -86,13 +86,23 @@ let _ = Cmp_Int_inv.compare (-9000) 42;;
  za ureditev produkta. Za para (a1,b1) in (a2,b2) iz A × B lahko definiramo
  urejenost (a1,b1) < (a2,b2) čim a1 < a2 in b1 < b2, vendar s tem dobimo zgolj
  delno urejenost (v ℕ × ℕ ne moremo npr. primerjati (0,1) in (1,0)).
- Druga možnost pa je leksikografska ureditev, kjer je (a1,b1) < (a2,b2) 
- kadar a1 < a2, ali pa a1 = a2 in b1 < b2. Ta urejenost je primerna za 
- [Comparable] modul. 
+ Druga možnost pa je leksikografska ureditev, kjer je (a1,b1) < (a2,b2)
+ kadar a1 < a2, ali pa a1 = a2 in b1 < b2. Ta urejenost je primerna za
+ [Comparable] modul.
 
  Definiraj funktor, ki sprejme dva modula A, B : Comparable in vrne modul
  [Cmp_lex : Comparable with type t = A.t * B.t]
 [*----------------------------------------------------------------------------*)
+
+module Cmp_lex (A : Comparable) (B : Comparable)
+  : Comparable with type t = A.t * B.t
+  = struct
+    type t = A.t * B.t
+    let compare (a1, b1) (a2, b2) =
+      match A.compare a1 a2 with
+      | (LT | GT) as x -> x
+      | EQ -> B.compare b1 b2
+end
 
 
 (*----------------------------------------------------------------------------*]
@@ -141,8 +151,16 @@ module Sorted_List_Priority_Queue (Cmp : Comparable) : Priority_Queue with type 
 end
 
 (*----------------------------------------------------------------------------*]
+ Apply your functor to build a priority queue of integers, and a priority queue
+ of strings. Write some examples using push and pop!
+[*----------------------------------------------------------------------------*)
+
+module IntH = Sorted_List_Priority_Queue (Cmp_Int)
+module StringH = Sorted_List_Priority_Queue (Cmp_String)
+
+(*----------------------------------------------------------------------------*]
  Za lažjo uporabo, napiši funktor [To_List], ki sprejme implementacijo kopice in
- vrne modul z operacijo [to_list] s katero elemente v kopici shrani v seznam. 
+ vrne modul z operacijo [to_list] s katero elemente v kopici shrani v seznam.
 [*----------------------------------------------------------------------------*)
 
 module To_List (H : Priority_Queue) = struct
@@ -154,11 +172,11 @@ end
 
 (*----------------------------------------------------------------------------*]
  Sedaj lahko lažje testiramo implementacijo modulov.
- Module lahko uporabljamo lokalno, le da pri tem v [let ... in] dodatno dodamo 
+ Module lahko uporabljamo lokalno, le da pri tem v [let ... in] dodatno dodamo
  še besedo [module]. Imena globalnih modulov so praviloma daljša in bolj opisna,
  ko pa uporabljamo module lokalno si lahko privoščimo krajša imena
 [*----------------------------------------------------------------------------*)
-   
+
 let _ =
   let h = List.fold_left IntH.push IntH.empty [1; 0; 9; 2] in
   let module TL = To_List(IntH) in
