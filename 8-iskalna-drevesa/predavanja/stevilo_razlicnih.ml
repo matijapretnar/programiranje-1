@@ -2,17 +2,17 @@ Random.self_init ()
 
 ;;
 
-let nakljucni_seznam m n = List.init n (fun _ -> Random.int m)
+let velikost m = List.length m
+let dodaj x m = if List.mem x m then m else x :: m
 
 let stevilo_razlicnih xs =
   let rec aux ze_videni = function
-    | [] -> List.length ze_videni
-    | x :: xs ->
-        if List.mem x ze_videni
-        then aux ze_videni xs
-        else aux (x :: ze_videni) xs
+    | [] -> velikost ze_videni
+    | x :: xs -> aux (dodaj x ze_videni) xs
   in
   aux [] xs
+
+let nakljucni_seznam m n = List.init n (fun _ -> Random.int m)
 
 let stopaj f x =
   let zacetek = Sys.time () in

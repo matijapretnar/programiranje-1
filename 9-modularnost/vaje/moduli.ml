@@ -217,7 +217,6 @@ module Cartesian : COMPLEX = struct
 
   end
 
-
 (*----------------------------------------------------------------------------*]
  Sedaj napišite še polarno implementacijo kompleksnih števil, kjer ima vsako
  kompleksno število radij in kot (angl. magnitude in argument).

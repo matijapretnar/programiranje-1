@@ -217,7 +217,6 @@ module Cartesian : COMPLEX = struct
 
 end
 
-
 (*----------------------------------------------------------------------------*]
  Now implement Professor Bessel's complex numbers. The carrier this time
  will be a polar representation, with a magnitude and an argument for each
@@ -226,6 +225,7 @@ end
  Recommendation: Implement addition at the end, as it gets very messy (might
  as well be the end of the century).
 [*----------------------------------------------------------------------------*)
+
 
 module Polar : COMPLEX = struct
 

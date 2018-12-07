@@ -172,19 +172,17 @@ let stevilo_razlicnih xs =
 ### Želimo si **učinkovito predstavitev množic**
 
 .bad-example[```
-let velikost m = List.length m        (* O(n) *)
-let vsebuje x m = List.mem x m        (* O(n) *)
-let dodaj x m = x :: m                (* O(1) *)
+let velikost m =                      (* O(n) *)
+  List.length m
+let dodaj x m =                       (* O(n) *)
+  if List.mem x m then m else x :: m
 ```]
 
 .source[```
 let stevilo_razlicnih xs =           (* O(n²) *)
   let rec aux ze_videni = function
     | [] -> velikost ze_videni
-    | x :: xs ->
-        if vsebuje x ze_videni
-        then aux ze_videni xs
-        else aux (dodaj x ze_videni) xs
+    | x :: xs -> aux (dodaj x ze_videni) xs
   in
   aux [] xs
 ```]
@@ -194,22 +192,21 @@ let stevilo_razlicnih xs =           (* O(n²) *)
 ### Želimo si **učinkovito predstavitev množic**
 
 .good-example[```
-let velikost m = ???         (* O(n) ali O(1) *)
-let vsebuje x m = ???             (* O(log n) *)
-let dodaj x m = ???               (* O(log n) *)
+let velikost m =                      (* O(n) *)
+  List.length m
+let dodaj x m =                   (* O(log n) *)
+  ???
 ```]
 
 .source[```
-let stevilo_razlicnih xs =      (* O(n log n) *)
+let stevilo_razlicnih xs       (* O(n log n) *)
   let rec aux ze_videni = function
     | [] -> velikost ze_videni
-    | x :: xs ->
-        if vsebuje x ze_videni
-        then aux ze_videni xs
-        else aux (dodaj x ze_videni) xs
+    | x :: xs -> aux (dodaj x ze_videni) xs
   in
   aux [] xs
 ```]
+
 
 ---
 
