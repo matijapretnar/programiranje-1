@@ -6,6 +6,7 @@
  empty) subtrees. We assume no further structure of the trees.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
+type 'a tree = Empty | Node of 'a tree * 'a * 'a tree
 
 (*----------------------------------------------------------------------------*]
  We define a test case for simpler testing of functions. The test case
@@ -18,6 +19,9 @@
       0   6   11
 [*----------------------------------------------------------------------------*)
 
+let leaf x = Node (Empty, x, Empty)
+
+let test_tree = Node (Node (leaf 0, 2, Empty), 5, Node (leaf 6, 7, leaf 11))
 
 (*----------------------------------------------------------------------------*]
  The function [mirror] returns a mirrored tree. When applied to our test tree
@@ -34,6 +38,9 @@
  Node (Empty, 2, Node (Empty, 0, Empty)))
 [*----------------------------------------------------------------------------*)
 
+let rec mirror = function
+  | Empty -> Empty
+  | Node (l, x, r) -> Node (mirror r, x, mirror l)
 
 (*----------------------------------------------------------------------------*]
  The function [height] returns the height (or depth) of the tree and the
@@ -45,6 +52,13 @@
  - : int = 6
 [*----------------------------------------------------------------------------*)
 
+let rec height = function
+  | Empty -> 0
+  | Node (l, _, r) -> 1 + max (height l) (height r)
+
+let rec size = function
+  | Empty -> 0
+  | Node (l, _, r) -> 1 + (size l) + (size r)
 
 (*----------------------------------------------------------------------------*]
  The function [map_tree f tree] maps the tree into a new tree with nodes that
@@ -56,6 +70,9 @@
  Node (Node (Empty, true, Empty), true, Node (Empty, true, Empty)))
 [*----------------------------------------------------------------------------*)
 
+let rec map_tree f = function
+  | Empty -> Empty
+  | Node(l, x, r) -> Node(map_tree f l, f x, map_tree f r)
 
 (*----------------------------------------------------------------------------*]
  The function [list_of_tree] returns the list of all elements in the tree. If
@@ -65,9 +82,87 @@
  - : int list = [0; 2; 5; 6; 7; 11]
 [*----------------------------------------------------------------------------*)
 
+let rec list_of_tree = function
+  | Empty -> []
+  | Node (l, x, r) -> let lr = list_of_tree r
+                      and ll = list_of_tree l in
+                      ll @ [x] @ lr
+
+(* An example of a tail recursive function on trees. If [verbose] is [true],
+   print a trace of the algorithm as it traverses the tree. *)
+let list_of_tree_tailrec verbose tree =
+  let printer = if verbose then print_endline else ignore
+  and string_of_int_list lst =
+    (List.fold_left (fun acc x -> acc ^ (string_of_int x) ^ "; ") "[" lst) ^ "]"
+  in
+  (* The final result goes into the list [acc]. The recursion will descend
+     into the right subtree because lists allow us naturally to add things in
+     front, where the left subtree will go. We represent the work that still
+     needs to be done once the right subtree is taken care of by [k], which we
+     call the "continuation". If we see an empty tree, no further work is to be
+     done and [k] can do what it needs to do with [acc]. If we see a node, the
+     continuation needs to be updated, that is to say we build a new
+     continuation [k'], which adds [x] in front of the accumulator list, and
+     then collects the left sub-tree. *)
+  let rec collect acc k = function
+    | Empty -> printer "Empty"; k acc
+    | Node (l, x, r) ->
+        let k' acc =
+          printer ("Resuming the continuation of " ^ (string_of_int x) ^ ", adding it to acc") ;
+          collect (x :: acc) k l
+        in
+        printer ("Visiting node " ^ (string_of_int x) ^ "\n\tacc: " ^ (string_of_int_list acc)) ;
+        collect acc k' r
+  in
+  collect [] (fun x -> x) tree
+
+(* A similar way to write the same function is by explicitly keeping a list [k]
+   of the work that's still to be done, that is to say the further left
+   subtrees to visit, and elements we found on their nodes. [continue] then
+   chews through that list. *)
+let list_of_tree_explicit tree =
+  let rec aux acc k = function
+    | Empty -> continue acc k
+    | Node (l, x, r) -> aux acc ((x, l) :: k) r
+  and continue acc k = match k with
+    | [] -> acc
+    | (x, l) :: k -> aux (x :: acc) k l
+  in aux [] [] tree
+
+(* To test, we can watch [list_of_tree] die with a stack overflow on a big tree, while
+   the tail-recursive version does fine. *)
+let big_tree =
+    let rec tree_of_list lst =
+      let rec aux acc = function [] -> acc | h :: t -> aux (Node (Empty, h, acc)) t
+      in aux Empty lst
+    in
+    tree_of_list (List.init 1_000_000 (fun x -> x))
+
+let print_tree tree =
+  let rec str = function
+    | Empty -> "Empty"
+    | Node (l, x, r) -> Format.sprintf "Node (%s, %d, %s)" (str l) x (str r)
+  in print_endline (str tree)
+
+(* Finally, here's a tail recursive implementation of [mirror]. It works
+   similarly to [list_of_tree_tailrec], by wrapping the work that the naive
+   version of [mirror] has left to do after a recursive call in a continuation
+   which gets the result of this recursion as an argument. *)
+let mirror_tailrec tree =
+  let rec aux k = function
+    | Empty -> k Empty
+    | Node (l, x, r) ->
+      let k_l l_mirrored =
+        let k_r r_mirrored =
+          k (Node (r_mirrored, x, l_mirrored))
+        in
+        aux k_r r
+      in aux k_l l
+  in aux (fun x -> x) tree
+
 
 (*----------------------------------------------------------------------------*]
- The function [is_bst] checks wheter a tree is a binary search tree (BST). 
+ The function [is_bst] checks whether a tree is a binary search tree (BST).
  Assume that the input tree has no repetitions of elements. An empty tree is a
  BST.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,6 +172,11 @@
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
+let rec is_bst t =
+  let rec list_is_ordered = function
+    | [] | _ :: [] -> true
+    | x :: y :: tl -> if x <= y then list_is_ordered (y :: tl) else false
+  in t |> list_of_tree |> list_is_ordered
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  In the remaining exercises we assume that all trees are binary search trees.
@@ -92,14 +192,28 @@
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
+let rec insert x = function
+  | Empty -> leaf x
+  | Node (l, y, r) when x = y -> Node (l, y, r)
+  | Node (l, y, r) when x < y -> Node (insert x l, y, r)
+  | Node (l, y, r) (* when x > y *) -> Node (l, y, insert x r)
+
+let rec member x = function
+  | Empty -> false
+  | Node (l, y, r) when x = y -> true
+  | Node (l, y, r) when x < y -> member x l
+  | Node (l, y, r) (* when x > y *) -> member x r
 
 (*----------------------------------------------------------------------------*]
  The function [member2] does not assume that the tree is a bst.
- 
- Note: Think about the differences of time complexity for [member] and 
- [member2] assuming an input tree with n nodes and depth of log(n). 
+
+ Note: Think about the differences of time complexity for [member] and
+ [member2] assuming an input tree with n nodes and depth of log(n).
 [*----------------------------------------------------------------------------*)
 
+let rec member2 x = function
+  | Empty -> false
+  | Node(l, y, r) -> x = y || (member2 x l) || (member2 x r)
 
 (*----------------------------------------------------------------------------*]
  The function [succ] returns the successor of the root of the given tree, if
@@ -114,6 +228,25 @@
  - : int option = None
 [*----------------------------------------------------------------------------*)
 
+let succ bst =
+  let rec minimal = function
+    | Empty -> None
+    | Node (Empty, x, _) -> Some x
+    | Node (l, _, _) -> minimal l
+  in
+  match bst with
+  | Empty -> None
+  | Node (_, _, r) -> minimal r
+
+let pred bst =
+  let rec maximal = function
+    | Empty -> None
+    | Node (_, x, Empty) -> Some x
+    | Node (_, _, r) -> maximal r
+  in
+  match bst with
+  | Empty -> None
+  | Node (l, _, _) -> maximal l
 
 (*----------------------------------------------------------------------------*]
  In lectures you two different approaches to deletion, using either [succ] or
@@ -128,6 +261,17 @@
  Node (Node (Empty, 6, Empty), 11, Empty))
 [*----------------------------------------------------------------------------*)
 
+let rec delete x = function
+  | Empty -> Empty
+  | Node (l, y, r) when x > y -> Node (l, y, delete x r)
+  | Node (l, y, r) when x < y -> Node (delete x l, y, r)
+  | Node (l, y, r) as bst -> (
+      (*We need to delete the root.*)
+      match succ bst with
+      | None -> l (*Only happens when [r] is [Empty].*)
+      | Some s ->
+        let clean_r = delete s r in
+        Node (l, s, clean_r))
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  DICTIONARIES
@@ -140,6 +284,7 @@
  type as [('key, 'value) dict].
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
+type ('key, 'value) dict = ('key * 'value) tree
 
 (*----------------------------------------------------------------------------*]
  Write the test case [test_dict]:
@@ -149,6 +294,10 @@
          /
      "c":-2
 [*----------------------------------------------------------------------------*)
+
+let test_dict
+  : (string, int) dict
+  = Node (leaf ("a", 0), ("b", 1), Node (leaf ("c", -2), ("d", 2), Empty))
 
 (*----------------------------------------------------------------------------*]
  The function [dict_get key dict] returns the value with the given key. Because
@@ -160,14 +309,23 @@
  - : int option = Some (-2)
 [*----------------------------------------------------------------------------*)
 
-      
+let rec dict_get k = function
+  | Empty -> None
+  | Node (l, (k', v), r) ->
+    if k = k' then
+      Some v
+    else if k < k' then
+      dict_get k l
+    else
+      dict_get k r
+
 (*----------------------------------------------------------------------------*]
  The function [print_dict] accepts a dictionary with key of type [string] and
- values of type [int] and prints (in the correct order) lines containing 
+ values of type [int] and prints (in the correct order) lines containing
  "key : value" for all nodes of the dictionary. Hint: Use functions
  [print_string] and [print_int]. Strings are concatenated with the operator [^].
  Observe how using those functions fixes the type parameters of our function, as
- opposed to [dict_get]. 
+ opposed to [dict_get].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # print_dict test_dict;;
  a : 0
@@ -177,6 +335,12 @@
  - : unit = ()
 [*----------------------------------------------------------------------------*)
 
+let rec print_dict = function
+  | Empty -> ()
+  | Node (d_l, (k, v), d_r) -> (
+      print_dict d_l;
+      print_string (k ^ " : "); print_int v; print_newline ();
+      print_dict d_r)
 
 (*----------------------------------------------------------------------------*]
  The function [dict_insert key value dict] inserts [value] into [dict] under the
@@ -197,3 +361,9 @@
  - : unit = ()
 [*----------------------------------------------------------------------------*)
 
+
+let rec dict_insert k v = function
+  | Empty -> leaf (k, v)
+  | Node (l, (k', _), r) when k = k' -> Node (l, (k, v), r)
+  | Node (l, (k', v'), r) when k < k' -> Node (dict_insert k v l, (k', v'), r)
+  | Node (l, (k', v'), r) (* when k > k' *) -> Node (l, (k', v'), dict_insert k v r)
