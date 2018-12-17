@@ -10,9 +10,9 @@
 [*----------------------------------------------------------------------------*)
 
 let rec randlist len max =
-  if len <= 0 then 
+  if len <= 0 then
     []
-  else 
+  else
     Random.int max :: (randlist (len-1) max)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
@@ -109,7 +109,7 @@ let selection_sort list =
 [*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- When working with arrays instead of lists, selection sort can work "in-place", 
+ When working with arrays instead of lists, selection sort can work "in-place",
  i.e. without creating intermediate copies of (parts of) the input. The
  algorithm still works in the same way, however now the sorted part is always
  the beginning segment of the input array. We keep track on how far the arrays
@@ -133,7 +133,7 @@ let selection_sort list =
 
 let swap a i j =
   let v = a.(i) in
-  a.(i) <- a.(j); 
+  a.(i) <- a.(j);
   a.(j) <- v
 
 (*----------------------------------------------------------------------------*]
