@@ -66,7 +66,7 @@ let ins_sort list = List.fold_left (fun acc x -> insert x acc) [] list
 let min_and_rest list =
   let rec remove_one z = function
     | [] -> failwith "not found"
-    | x :: xs -> if x = z then xs else z :: remove_one z xs 
+    | x :: xs -> if x = z then xs else x :: remove_one z xs
   in
   let rec find_min current_min = function
     | [] -> current_min
@@ -140,7 +140,7 @@ let swap a i j =
  The function [index_min a lower upper] computes the index of the smallest
  element in [a] between indices [lower] and [upper] (both included).
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- index_min [|0; 2; 9; 3; 6|] 2 4 = 4
+ index_min [|0; 2; 9; 3; 6|] 2 4 = 3
 [*----------------------------------------------------------------------------*)
 
 let index_min a lower upper =
