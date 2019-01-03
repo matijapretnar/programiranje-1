@@ -23,7 +23,7 @@ class: center, middle
 
 ### **4**, 5, 2, 1, 9, 0, **4**, **0**, 1, **0**, 7, 5, **9**, 8, **5**, 2, **1**, 6, 8
 
-### 9, 3, **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3
+### **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3
 
 ---
 
@@ -64,7 +64,7 @@ class: question, center, middle
 ### Kadar:
 
 1. rešitve podnalog **sestavljajo** rešitev celote in
-2. so podnaloge **neodvisne**,
+2. so podnaloge **za faktor** manjše,
 
 .center[![](slike/deli-in-vladaj.png)]
 
@@ -81,6 +81,18 @@ class: question, center, middle
 
 ### govorimo o **dinamičnem programiranju**
 
+
+---
+
+### Kadar:
+
+1. podnaloge **niso za faktor manjše** in
+2. se podnaloge **ne prekrivajo**,
+
+.center[![](slike/preiskovanje.png)]
+
+### nas čaka **veliko dela**
+
 ---
 
 class: center, middle
@@ -93,47 +105,151 @@ class: center, middle
 
 ---
 
-### Če naloga nima lastnosti optimalne podstrukture, običajno ostane le **gola sila**
+### Vse naloge nimajo lastnosti optimalne podstrukture
 
 .center[![](slike/8-kraljic.png)]
 
 ---
 
-class: center, middle
+### Ponavljanju se izognemo na **dva načina**
 
-### danes
-
-## primeri optimalnih podstruktur
-
-### naslednjič
-
-## učinkovito reševanje prekrivajočih podnalog
+1. rešitve pripravimo v ustreznem vrstnem redu
+.center[![](slike/izracun-vnaprej.png)]
+2. rešitve shranimo ob prvem izračunu
+.center[![](slike/memoizacija.png)]
 
 ---
 
-class: center, middle
+### Memoizacija v Pythonu s slovarjem
 
-## Najdaljši podpalindrom
+.source[```python
+kvadrati = {}
+def mem_kvadrat(x):
+    if x not in kvadrati:
+        print('Računam', x)
+        y = x ** 2
+        kvadrati[x] = y
+    return kvadrati[x]
+```]
 
-### .large[**o**t**o**ri**n**olar**in**g**o**l**o**g]
-
-### .large[ven**t**r**i**lok**vi**s**t**]
-
-### .large[**neradodaren**]
+.terminal[```python
+>>> mem_kvadrat(10)
+Računam 10
+100
+>>> mem_kvadrat(10)
+100
+```]
 
 ---
 
-class: center, middle
+### V Pythonu lahko funkcijo ob definiciji **dekoriramo**
 
-## Število stolpov izmenjujočih barv
+.bad-example[```python
+def pomozna(x):
+    ...
 
-.center[![](slike/stolpi-kocke.png)]
+f = deko(pomozna)
+```]
 
-.center[![](slike/stolpi-4.png)]
+.good-example[```python
+@deko
+def f(x):
+    ...
+```]
 
 ---
 
-class: center, middle
+class: question, middle, center
+
+## `povej_kaj_racunas`
+
+.left.source[```python
+@povej_kaj_racunas
+def kvadriraj(x):
+    return x ** 2
+```]
+
+.left.terminal[```python
+>>> kvadriraj(4)
+Računam 4
+16
+>>> kvadriraj(5)
+Računam 5
+25
+```]
+
+---
+
+### Za memoizacijo v splošnem v Pythonu uporabimo **dekoratorje**
+
+.source[```python
+def memoiziraj(f):
+    rezultati = {}
+    def mem_f(x):
+        if x not in rezultati:
+            rezultati[x] = f(x)
+        return rezultati[x]
+    return mem_f
+```]
+
+---
+
+### Memoizacija v splošnem v Pythonu
+
+.source[```python
+@memoiziraj
+def fib(n):
+    print(n, end='-')
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+```]
+
+.terminal[```
+>>> fib(10)
+10-9-8-7-6-5-4-3-2-1-0-55
+>>> fib(10)
+55
+```]
+
+---
+
+### Lahko uporabimo tudi dekorator `lru_cache`
+
+.source[```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+    print(n, end='-')
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+```]
+
+.terminal[```
+>>> fib(10)
+10-9-8-7-6-5-4-3-2-1-0-55
+>>> fib(10)
+55
+```]
+
+---
+
+class: question, middle, center
+
+## Najdaljše skupno podzaporedje
+
+
+### **4**, 5, 2, 1, 9, 0, **4**, **0**, 1, **0**, 7, 5, **9**, 8, **5**, 2, **1**, 6, 8
+
+### 9, 3, **4**, 3, 3, **4**, 6, 3, **0**, **0**, **9**, 2, **5**, **1**, 7, 7, 7, 0, 3
+
+---
+
+class: center, middle, question
 
 ## ↓/→ pot z najmanjšo vsoto
 
