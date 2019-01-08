@@ -102,7 +102,7 @@ let g x =
 
 class: question, center
 
-## Kakšno vrednost vrne program
+### Kakšno vrednost vrne program
 
 .left.source[```
 let a = 1 in
@@ -122,7 +122,7 @@ d := 2;
 
 ---
 
-### Reference so izvedene s spremenljivimi zapisi
+### Reference so izvedene s **spremenljivimi zapisi**
 
 .source[```
 type 'a ref = {mutable contents : 'a}
@@ -136,20 +136,95 @@ let (:=) r x = r.contents <- x
 
 ---
 
-### Tabele v OCamlu imajo tip `array`
+### OCamlov tip `list` je predstavljen z<br>**verižnimi seznami**
+
+.left-column[.terminal[```ocaml
+let s = [6; 2; 4]
+```]]
+
+.right-column[.right[![](slike/seznam-ocaml.png)]]
+
+```ocaml
+s : 19         0   0   0   0   0   0
+               0   0   0   0   0   0
+               0   0   1   2  22   0
+               1   6  15   1   4  30
+               0   0   0   0   0   0
+```
+
+---
+
+### OCaml pozna tudi tip `array`, ki je<br>predstavljen s **tabelami**
+
+.left-column[.terminal[```ocaml
+let s = [|6; 2; 4|]
+```]]
+
+.right-column[.right[![](slike/tabela-ocaml.png)]]
+
+```ocaml
+s : 19         0   0   0   0   0   0
+               0   0   0   0   0   0
+               0   0   0   0   0   0
+               3   6   2   4   0   0
+               0   0   0   0   0   0
+```
+
+
+---
+
+### Pythonov tip `list` je prav tako<br>predstavljen s tabelami
+
+.left-column[.terminal[```python
+s = [6, 2, 4]
+```]]
+
+.right-column[.right[![](slike/tabela-python.png)]]
+
+```python
+s : 19         0   0 123   6   0   0
+               0   0   0   0 123   4
+               0   0   0   0   0   0
+             246   3   6   3  11  29
+               0   0   0   0 123   2
+```
+
+Na mestih `123` in `246` je shranjena še definicija
+razredov `int` in `list`.
+
+---
+
+class: question
+
+### Kakšna je časovna zahtevnost teh operacij?
+
+|                                 | OCaml `array`  | Python `list`  | OCaml `list`
+| ------------------------------: |:-------------: | :------------: | :--------------:
+| indeksiranje                    | .spoiler[O(1)] | .spoiler[O(1)] | .spoiler[O(n)]
+| dodaj na začetek                | .spoiler[O(n)] | .spoiler[O(n)] | .spoiler[O(1)]
+| dodaj na konec                  | .spoiler[O(n)] | .spoiler[O(1)] | .spoiler[O(n)]
+| dolžina                         | .spoiler[O(1)] | .spoiler[O(1)] | .spoiler[O(n)]
+| izračun repa                    | .spoiler[O(n)] | .spoiler[O(n)] | .spoiler[O(1)]
+
+---
+
+### Funkcije za delo s tabelami so v modulu [`Array`](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html)
 
 .terminal[```
-# let t = [|1; 2; 3|];;
-val t : int array = [|1; 2; 3|]
+# Array.length [|10; 20; 30|];;
+- : int = 3
 
-# t.(0);;
-- : int = 1
+# Array.make 3 'a';;
+- : char array = [|'a'; 'a'; 'a'|]
 
-# let m = [|[|1; 2|]; [|3; 4|]|];;
-val m : int array array = [|[|1; 2|]; [|3; 4|]|]
+# Array.of_list [5; 2; 1; 4; 3; 6; 8; 7];;
+- : int array = [|5; 2; 1; 4; 3; 6; 8; 7|]
 
-# m.(0).(1);;
-- : int = 2
+# Array.make_matrix 2 2 0;;
+- : int array array = [|[|0; 0|]; [|0; 0|]|]
+
+# Array.map succ [|10; 20; 30|];;
+- : int array = [|11; 21; 31|]
 ```]
 
 ---
@@ -171,27 +246,6 @@ val t' : int array = [|1; 2; 3|]
 
 # t';;
 - : int array = [|1; 2; 5|]
-```]
-
----
-
-### Funkcije za delo s tabelami so v modulu [`Array`](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html)
-
-.terminal[```
-# Array.length [|10; 20; 30|];;
-- : int = 3
-
-# Array.make 3 'a';;
-- : char array = [|'a'; 'a'; 'a'|]
-
-# Array.of_list [5; 2; 1; 4; 3; 6; 8; 7];;
-- : int array = [|5; 2; 1; 4; 3; 6; 8; 7|]
-
-# Array.make_matrix 2 2 0;;
-- : int array array = [|[|0; 0|]; [|0; 0|]|]
-
-# Array.map succ [|10; 20; 30|];;
-- : int array = [|11; 21; 31|]
 ```]
 
 ---
