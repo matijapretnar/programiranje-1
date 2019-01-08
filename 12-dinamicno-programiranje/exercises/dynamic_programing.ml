@@ -97,3 +97,38 @@ let articles = [|
   ("Nutella", 4.99, 0.75);
   ("juice", 1.15, 2.0)
 |]
+
+let best_value articles max_w =
+  (* Choose the item if you can and recursively search further. *)
+  let rec get_item acc_w acc_p (_, p, w) =
+    if acc_w +. w > max_w then
+      (* Item is not suitable, return what we got so far.*)
+      acc_p
+    else
+      (* Find best value after choosing the item. *)
+      shopper (acc_w +. w) (acc_p +. p)
+  (* Choose every item in the list and return the value of the best choice. *)
+  and shopper w p =
+    let choices = Array.map (get_item w p) articles in
+    Array.fold_left max 0. choices
+  in
+  shopper 0. 0.
+
+let best_value_unique articles max_w =
+  (* Store which items have already been chose in the array [taken]. *)
+  (* Choose the item if you can and recursively search further. *)
+  let rec get_item taken acc_w acc_p i (_, p, w) =
+    if acc_w +. w > max_w || taken.(i) then
+      (* Item is not suitable, return what we got so far.*)
+      acc_p
+    else
+      (* Find best value after choosing the item, mark choice in [taken]. *)
+      let new_taken = Array.copy taken in
+      (new_taken.(i) <- true; shopper new_taken (acc_w +. w) (acc_p +. p))
+  (* Choose every item in the list and return the value of the best choice. *)  
+  and shopper taken w p =
+    let choices = Array.mapi (get_item taken w p) articles in
+    Array.fold_left max 0. choices
+  in
+  let taken = Array.map (fun _ -> false) articles in
+  shopper taken 0. 0.
