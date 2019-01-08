@@ -11,7 +11,7 @@ type comparison = LT | EQ | GT
  types with comparison. Note that we do not want to hide the implementation of
  the type [t] here because we want to use the compare function on values of type
  [t] *outside the module*. The reason that we leave it abstract here is because
- it is simply unknown at this time. 
+ it is simply unknown at this time.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
 
 module type Comparable = sig
@@ -43,7 +43,7 @@ end
 (*----------------------------------------------------------------------------*]
 Now let's implement a module that compares strings. To write your compare
 function, use the [compare] function from the [Pervasives] module of built-in
-OCaml functions. It compares strings [s] and [t] lexicographically, yielding 
+OCaml functions. It compares strings [s] and [t] lexicographically, yielding
 -1 if s < t, 0 if s = t and 1 otherwise.
 [*----------------------------------------------------------------------------*)
 
@@ -90,11 +90,21 @@ let _ = Cmp_Int_inv.compare (-9000) 42;;
  A different order we can impose on A × B is the lexicographical order:
  Define (a1,b1) < (a2,b2) when a1 < a2, or a1 = a2 and b1 < b2. This order
  is total if the orders on A and B are and is thus suitable for implementing
- a [Comparable] module. 
+ a [Comparable] module.
 
  Define a functor that takes two modules A, B : Comparable and produces a
  module [Cmp_lex : Comparable with type t = A.t * B.t]
 [*----------------------------------------------------------------------------*)
+
+module Cmp_lex (A : Comparable) (B : Comparable)
+  : Comparable with type t = A.t * B.t
+  = struct
+    type t = A.t * B.t
+    let compare (a1, b1) (a2, b2) =
+      match A.compare a1 a2 with
+      | (LT | GT) as x -> x
+      | EQ -> B.compare b1 b2
+end
 
 
 (*----------------------------------------------------------------------------*]

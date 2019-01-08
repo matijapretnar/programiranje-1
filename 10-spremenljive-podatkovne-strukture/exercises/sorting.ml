@@ -10,9 +10,9 @@
 [*----------------------------------------------------------------------------*)
 
 let rec randlist len max =
-  if len <= 0 then 
+  if len <= 0 then
     []
-  else 
+  else
     Random.int max :: (randlist (len-1) max)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
@@ -66,7 +66,7 @@ let ins_sort list = List.fold_left (fun acc x -> insert x acc) [] list
 let min_and_rest list =
   let rec remove_one z = function
     | [] -> failwith "not found"
-    | x :: xs -> if x = z then xs else z :: remove_one z xs 
+    | x :: xs -> if x = z then xs else x :: remove_one z xs
   in
   let rec find_min current_min = function
     | [] -> current_min
@@ -109,7 +109,7 @@ let selection_sort list =
 [*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- When working with arrays instead of lists, selection sort can work "in-place", 
+ When working with arrays instead of lists, selection sort can work "in-place",
  i.e. without creating intermediate copies of (parts of) the input. The
  algorithm still works in the same way, however now the sorted part is always
  the beginning segment of the input array. We keep track on how far the arrays
@@ -133,14 +133,14 @@ let selection_sort list =
 
 let swap a i j =
   let v = a.(i) in
-  a.(i) <- a.(j); 
+  a.(i) <- a.(j);
   a.(j) <- v
 
 (*----------------------------------------------------------------------------*]
  The function [index_min a lower upper] computes the index of the smallest
  element in [a] between indices [lower] and [upper] (both included).
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- index_min [|0; 2; 9; 3; 6|] 2 4 = 4
+ index_min [|0; 2; 9; 3; 6|] 2 4 = 3
 [*----------------------------------------------------------------------------*)
 
 let index_min a lower upper =
