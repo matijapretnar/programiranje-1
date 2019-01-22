@@ -18,9 +18,9 @@ class: center, middle
 
 ### Strategija **deli in vladaj** ima tri korake
 
-1. nalogo razdelimo na manjše podnaloge
-2. podnaloge rekurzivno rešimo
-3. dobljene rešitve združimo v rešitev prvotne naloge
+1. nalogo **razdelimo** na manjše podnaloge
+2. podnaloge **rekurzivno rešimo**
+3. dobljene rešitve **združimo** v rešitev prvotne naloge
 
 ---
 
@@ -69,9 +69,44 @@ class: center
 
 ---
 
-class: center, middle
+class: question
 
-## Rešitev enačbe \\(T(n) = O(n) + 2 T(n / 2)\\)
+### **Časovna zahtevnost** urejanja z zlivanjem
+
+![](slike/urejanje-z-zlivanjem.png)
+
+--
+
+### \\(T(n) = O(n) + 2 T(n / 2) + O(n) \\)
+
+
+---
+
+### Kako rešimo enačbo \\(T(n) = O(n) + 2 T(n / 2)\\)?
+
+--
+
+### \\(T(n) = O(n) + 2 T(n / 2)\\)
+
+--
+
+### \\(\\hphantom{T(n)} = O(n) + 2 O(n / 2) + 4 T(n / 4)\\)
+
+--
+
+### \\(\\hphantom{T(n)} = O(n) + 2 O(n / 2) + 4 O(n / 4) + 8 T(n / 8)\\)
+
+--
+
+### \\(\\hphantom{T(n)} = \cdots = k O(n) + 2^k T(n / 2^k) \\)
+
+--
+
+### \\(\\hphantom{T(n)} = \lceil \log_2 n \rceil O(n) + 2^{\lceil \log_2 n \rceil} O(1) \\)
+
+--
+
+### \\(\\hphantom{T(n)} = O(n \log n) \\)
 
 ---
 
@@ -98,9 +133,9 @@ class: center
 
 ---
 
-class: center, middle
+### Urejanje **s primerjavo** je \\(\Omega(n \log n)\\)
 
-## Urejanje **s primerjavo** je \\(\Omega(n \log n)\\)
+![](slike/odlocitveno-drevo.png)
 
 ---
 

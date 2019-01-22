@@ -1,3 +1,5 @@
+import time
+
 def povej_kaj_racunas(f):
     def glasni_f(x):
         print('Računam', x)
@@ -8,21 +10,27 @@ def povej_kaj_racunas(f):
 def kvadriraj(x):
     return x ** 2
 
-def memoiziraj(f):
-    rezultati = {}
-    def mem_f(*args):
-        if args not in rezultati:
-            rezultati[args] = f(*args)
-        return rezultati[args]
-    return mem_f
+kvadriraj(10)
+kvadriraj(20)
+kvadriraj(30)
 
-from functools import lru_cache
-memoiziraj_najboljsi = lru_cache(max_size=None)
+def izpisi_se_porabljen_cas(f):
+    def f_ki_izpise_se_porabljen_cas(x):
+        zacetek = time.time()
+        y = f(x)
+        konec = time.time()
+        print('Porabila sem {} ms'.format(1000 * (konec - zacetek)))
+        return y
+    return f_ki_izpise_se_porabljen_cas
 
-@memoiziraj
-def fib(n):
-    print(n)
-    if n == 0 or n == 1:
-        return n
-    else:
-        return fib(n - 1) + fib(n - 2)
+@izpisi_se_porabljen_cas
+def vsota(n):
+    v = 0
+    for i in range(n):
+        v += i
+    return v
+
+print(vsota(10000))
+print(vsota(10000))
+print(vsota(100000))
+

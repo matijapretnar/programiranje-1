@@ -1,0 +1,79 @@
+```ocaml
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+
+let obrni' xs =
+  let rec aux acc = function
+    | [] -> acc
+    | x :: xs -> aux (x :: acc) xs
+  in
+  aux [] xs
+```
+
+obrni xs = obrni' xs
+
+indukcija na xs
+===============
+
+osnovni korak
+-------------
+
+obrni [] = []
+obrni' [] = aux [] [] = []
+
+indukcijski korak
+-----------------
+
+obrni xs = obrni' xs     =>     obrni (x :: xs) = obrni' (x :: xs)
+
+obrni (x :: xs) = obrni xs @ [x] = obrni' xs @ [x]
+obrni' (x :: xs) = aux [] (x :: xs) = aux [x] xs
+=?= obrni' xs samo da akumulator ni [] ampak [x] 
+in to je očitno enako kot obrni' xs @ [x]
+
+TA DOKAZ JE ZA STRAN
+
+obrni xs = aux [] xs
+====================
+
+osnovni korak
+-------------
+
+obrni [] = [] = aux [] []
+
+indukcijski korak
+-----------------
+
+obrni xs = aux [] xs    =>    obrni (x :: xs) = aux [] (x :: xs)
+
+obrni (x :: xs) = obrni xs @ [x]
+aux [] (x :: xs) = aux [x] xs = aux (x :: []) xs
+                 = aux [x] [] = ...
+                 = aux [x] (y :: ys) = aux [y; x] ys
+
+TUDI TA DOKAZ JE ZA STRAN
+
+∀ xs. ∀ acc. obrni xs @ acc = aux acc xs
+========================================
+
+osnovni korak (∀ acc. obrni [] @ acc = aux acc [])
+-------------
+
+
+obrni [] @ acc = [] @ acc = acc
+aux acc [] = acc
+
+indukcijski korak
+-----------------
+
+(∀ acc. obrni xs @ acc = aux acc xs)    =>    (∀ acc. obrni (x :: xs) @ acc = aux acc (x :: xs))
+
+obrni (x :: xs) @ acc
+= (obrni xs @ [x]) @ acc
+= obrni xs @ ([x] @ acc)
+= obrni xs @ (x :: acc)
+
+aux acc (x :: xs)
+= aux (x :: acc) xs
+
