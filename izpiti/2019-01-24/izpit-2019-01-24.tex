@@ -32,7 +32,7 @@ ki sprejme dve trojici, in preveri, ali ima prva trojica na vseh komponentah ve�
 \podnaloga
 Napišite funkcijo
 \begin{verbatim}
-    uporabi_ce_lahko : ('a -> 'b) -> 'a option -> 'a option,
+    uporabi_ce_lahko : ('a -> 'b) -> 'a option -> 'b option,
 \end{verbatim}
 ki sprejme funkcijo in element tipa \verb|option| ter v primeru, da element vsebuje vrednost, uporabi funkcijo na vrednosti, sicer vrne \verb|None|.
 
@@ -53,13 +53,13 @@ ki sprejme točko in seznam funkcij ter vrne seznam rezultatov, ki jih dobimo, k
 \podnaloga
 Napišite funkcijo
 \begin{verbatim}
-    eksponent : 'int -> 'int -> int,
+    eksponent : int -> int -> int,
 \end{verbatim}
 kjer \verb|eksponent x p| izračuna vrednost $x^p$. Funkcija naj bo repno rekurzivna, kar lahko preverite z izračunom števila $1^{1.000.000}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga
-Podatkovno strukturo dvojiških iskalnih dreves pogosto uporabljamo za predstavitev množic. V tej nalogi bomo drevesa uporabljali za predstavitev multi-množic, kjer se lahko isti element pojavi večkrat, npr. $\{ 1, 1, 2 \}$ sedaj ni več enaka kot $\{ 1, 2 \}$. Da bi se izognili podvajanju vozlišč, sedaj vsako vozlišče dodatno nosi še števec za pojavitve elementa, ohranjamo pa strukturo dvojiških iskalnih dreves. Na primer multi-množico $\{5, 2, 1, 4, 1, 1, 2, 8, 8\}$ bi lahko predstavili z:
+Podatkovno strukturo dvojiških iskalnih dreves pogosto uporabljamo za predstavitev množic. V tej nalogi bomo drevesa uporabljali za predstavitev multi-množic, kjer se lahko isti element pojavi večkrat, npr. $\{ 1, 1, 2 \}$ sedaj ni več enaka kot $\{ 1, 2 \}$. Da bi se izognili podvajanju vozlišč, sedaj vsako vozlišče dodatno nosi še števec za pojavitve elementa, ohranjamo pa strukturo dvojiških iskalnih dreves. Na primer multi-množico $\{2, 5, 1, 4, 1, 1, 2, 8, 8\}$ bi lahko predstavili z:
 
 \[
   \begin{tikzpicture}[level distance=0.9cm,
@@ -80,7 +80,7 @@ Podatkovno strukturo dvojiških iskalnih dreves pogosto uporabljamo za predstavi
 Napišite tip \verb|'a mm_drevo|, ki vsebuje prazno drevo, in pa drevesa zgrajena iz vozlišč, ki vsebujejo element tipa \verb|'a|, števec tipa \verb|int| in pa levo in desno poddrevo.
 
 \podnaloga
-Napišite funkcijo \verb|vstavi : 'a mm_drevo -> 'a -> 'a mm_drevo|, ki dani element vstavi v drevo. Pri tem naj doda novo vozlišče, če elementa še ni v drevesu, sicer pa poveča primeren števec. Drevo naj ohrani strukturo dvojiškega iskalnega drevesa.
+Napišite funkcijo \verb|vstavi : 'a mm_drevo -> 'a -> 'a mm_drevo|, ki dani element vstavi v multi-množico. Pri tem naj doda novo vozlišče, če elementa še ni v drevesu, sicer pa poveča primeren števec. Drevo naj ohrani strukturo dvojiškega iskalnega drevesa.
 
 \podnaloga
 Napišite funkcijo \verb|multimnozica_iz_seznama : 'a list -> 'a mm_drevo|, ki sestavi drevo, ki predstavlja multi-množico, ki vsebuje elemente danega seznama.
@@ -91,9 +91,9 @@ Napišite funkcijo \verb|multimnozica_iz_seznama : 'a list -> 'a mm_drevo|, ki s
 Napišite funkcijo \verb|velikost_multimnozice : 'a mm_drevo -> int|, ki vrne velikost multi-množice, ki jo drevo predstavlja.
 
 \podnaloga
-Napišite funkcijo \verb|seznam_iz_multimnozice : 'a mm_drevo -> 'a list|, ki vrne seznam, ki vsebuje vse elemente multi-množice. Za vse točke, naj bo vrnjen seznam urejen, pri tem pa ni dovoljeno uporabiti urejevalnih funkcij.
+Napišite funkcijo \verb|seznam_iz_multimnozice : 'a mm_drevo -> 'a list|, ki vrne seznam, ki vsebuje vse elemente multi-množice. Za vse točke naj bo vrnjen seznam urejen, pri tem pa ni dovoljeno uporabiti urejevalnih funkcij.
 
-\noindent\textbf{DODATNA NALOGA:} Za dosego dodatnih točk, naj bo funkcija v celoti repno rekurzivna (ne pozabite preveriti katere vgrajene funkcije na seznamih so repno rekuzrivne).
+\noindent\textbf{DODATNA NALOGA:} Za dosego dodatnih točk naj bo funkcija v celoti repno rekurzivna (ne pozabite preveriti katere vgrajene funkcije na seznamih so repno rekurzivne).
 
 \prostor
 
@@ -106,7 +106,7 @@ Napišite funkcijo \verb|seznam_iz_multimnozice : 'a mm_drevo -> 'a list|, ki vr
 
 Želimo ugotoviti, kako hitro lahko žabica odskaklja iz močvare. Močvaro predstavimo z tabelo, kjer žabica prične na ničtem polju. Če je močvara dolžine $k$, je cilj žabice priskakljati vsaj na $k$-to polje ali dlje (torej prvo polje, ki ni več vsebovano v tabeli).
 
-Energičnost žabice predstavimo z dolžino najdaljšega skoka. Torej lahko žabica z $e$ energije skoči naprej za katerokoli razdaljo med $1$ in $e$, in če skoči naprej za $k$ mest ima sedaj zgolj $e - k$ energije. Na vsakem polju močvare prav tako označimo, koliko energije si žabica povrne, ko pristane na polju. Tako se včasih žabici splača skočiti manj daleč, da pristane na polju z več muhami. Predpostavimo, da ima vsako polje vrednost vsaj $1$, da lahko žabica v vsakem primeru skoči naprej.
+Energičnost žabice predstavimo z dolžino najdaljšega možnega skoka. Torej lahko žabica z količino energije $e$ skoči naprej za katerokoli razdaljo med $1$ in $e$, in če skoči naprej za $k$ mest ima sedaj zgolj $e - k$ energije. Na vsakem polju močvare prav tako označimo, koliko energije si žabica povrne, ko pristane na polju. Tako se včasih žabici splača skočiti manj daleč, da pristane na polju z več muhami. Predpostavimo, da ima vsako polje vrednost vsaj $1$, da lahko žabica v vsakem primeru skoči naprej.
 
 V primeru \verb|[2, 4, 1, 2, 1, 3, 1, 1, 5]| lahko žabica odskaklja iz močvare v treh skokih, v močvari \verb|[4, 1, 8, 2, 11, 1, 1, 1, 1, 1]| pa potrebuje zgolj dva.
 

@@ -25,26 +25,32 @@ let seznam_iz_multimnozice mmtree =
   in
   v_seznam mmtree
 
-(* Repno rekurzivna različica. *)
+(* Repno rekurzivna različica, kjer si definiramo pomožen tip za postopke,
+   ki jih še moramo izvesti. *)
 type 'a action = DoTree of 'a mm_drevo | Generate of 'a * int 
 
 let rec tlrec_seznam_iz_multimnozice mmtree =
+  (* Define a tl-rec function that adds [n] repetitions of [x] to [lst]. *)
   let rec add_to_list x n lst =
     if n <= 0 then
       lst
     else
       add_to_list x (n - 1) (x :: lst)
   in
+  (* Define the function with a queue of actions that need to be performed. *)
   let rec to_list queue acc =
     match queue with
-    | [] -> acc
+    | [] -> acc (* Done *)
     | (Generate (x, n)) :: queue -> 
+        (* Add [n] repetitions of [x] to list. *)
         let new_acc = add_to_list x n acc in
         to_list queue new_acc
-    | (DoTree Empty) :: queue -> to_list queue acc
+    | (DoTree Empty) :: queue -> to_list queue acc (* Nothing to do. *)
     | (DoTree (Node (lt, x, c, rt))) :: queue ->
+        (* Create actions and add them to queue in the right order. *)
         let do_left, do_right = DoTree lt, DoTree rt in
         let gen_x = Generate (x, c) in
         to_list (do_right :: gen_x :: do_left :: queue) acc
   in
+  (* Run! *)
   to_list [DoTree mmtree] []
