@@ -1,5 +1,41 @@
 from functools import lru_cache
 
+
+# Jajca
+# =====
+#
+# Živimo v visoki stolpnici, ki ima n nadstropij. Imamo škatlo k jajc, ki so menda zelo trpežna,
+# saj naj bi prenesla padce z višjih nadstropij stoplnice. Radi bi ugotovili, katero je najvišje
+# nadstopje, pri katerem jajca še preživijo padec. Ker nimamo veliko časa, bi radi poiskali
+# strategijo, pri kateri bomo minimizirali število metov.
+#
+# Razmislite:
+#  * Kako moramo ravnati v primeru, ko imamo samo eno jajce?
+#  * Kako lahko ravnamo v primeru, ko imamo na voljo zelo veliko jajc (več kot je število
+#    nadstropij)?
+#
+# Napišite funkcij, ki bo izračunala maksimalno število metov (v najslabšem primeru), da ugotovimo
+# številko kritičnega nadstropja, če imamo na voljo točko k jajc.
+
+@lru_cache(None)
+def eggdrops(eggs, floor):
+    if floor == 0 or floor == 1 :
+        return floor
+    if eggs == 1 :
+        return floor
+
+    tests_min = sys.maxsize
+
+    for j in range(1, floor + 1):
+
+        res = max(eggdrops(eggs - 1, j - 1),
+                  eggdrops(eggs, floor - j))
+        if (res < tests_min):
+            tests_min = res
+
+    return tests_min + 1
+
+
 ###############################################################################
 # Napisite funkcijo [najdaljse_narascajoce_podazporedje], ki sprejme seznam in
 # poisce najdaljse (ne strogo) narascajoce podzaporedje stevil v seznamu.
