@@ -159,4 +159,4 @@ let bills_iter n =
             sols.(i) <- Some s'
       ) denominations
   done;
-  sols
+  sols . (n)
