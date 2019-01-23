@@ -54,3 +54,12 @@ let rec tlrec_seznam_iz_multimnozice mmtree =
   in
   (* Run! *)
   to_list [DoTree mmtree] []
+
+let list_of_tree_tailrec t =
+  let rec cons_n x n l = if n <= 0 then l else cons_n x (n - 1) (x :: l) in
+  let rec aux acc_r k = function
+    | Empty -> k acc_r
+    | Node (l, x, n, r) ->
+      let k l_r = aux (cons_n x n l_r) k l in
+      aux acc_r k r in
+  aux [] (fun x -> x) t
