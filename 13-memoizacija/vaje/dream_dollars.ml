@@ -5,10 +5,10 @@
    and valuable resource in Antarctica, cashiers were required by law to use the fewest bills
    possible whenever they gave change. Thanks to the numerological predilections of one of
    its founders, the currency of Nadira, called Dream Dollars, was available in the following
-   denominations: $1, $4, $7, $13, $28, $52, $91, $365.
+   denominations: $1, $7, $10, $28.
 *)
 
-let denominations = [1; 4; 7; 13; 28; 52; 91; 365]
+let denominations = [ 1; 7; 10; 28 ]
 
 
 (* 0.i) Formulate the problem precisely in natural language. *)
