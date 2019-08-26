@@ -46,7 +46,7 @@ Kot primer: \verb|[5; 2; 4; 1; 6]| je pravilno urejen, medtem ko \verb|[3; 2; 4;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \naloga
 
-Vsi elementi seznama morajo imeti enak tip, zaradi česar nam jeziki s tipi ne dovolijo izrazov kot je \verb|[1; 2; [3; [4]; []]; [5]]|. Ker želimo uporabljati gnezdene sezname, konstruiramo nov tip elementov, ki predstavlja element ali pa vgnezden podseznam (ki lahko ponovno vsebuje elemente ali gnezdenja):
+Vsi elementi seznama morajo imeti enak tip, zaradi česar nam jeziki s tipi ne dovolijo izrazov kot je \verb|[1; 2; [3; [4]; []]; [5]]|. Ker želimo uporabljati gnezdene sezname, konstruiramo nov tip elementov, ki predstavlja element ali pa ugnezden podseznam (ki lahko ponovno vsebuje elemente ali gnezdenja):
 
 \begin{verbatim}
     type 'a gnezdenje =
@@ -83,7 +83,7 @@ Napišite funkcijo
 \begin{verbatim}
     alternirajoci_konstruktorji : 'a gnezdenje list -> bool
 \end{verbatim}
-ki preveri, ali v zunanjem seznamu (in zgolj v zunanjem seznamu!) konstruktorja \verb|Element| in \verb|Podseznam| nastopata izmenično. V zgornjem primeru vrne \verb|false|, saj ima na začetku dva zaporedna elementa (ne zanima pa nas ail imajo podseznami tudi takšno strukturo).
+ki preveri, ali v zunanjem seznamu (in zgolj v zunanjem seznamu!) konstruktorja \verb|Element| in \verb|Podseznam| nastopata izmenično. V zgornjem primeru vrne \verb|false|, saj ima na začetku dva zaporedna elementa (ne zanima pa nas ali imajo podseznami tudi takšno strukturo).
 
 \podnaloga
 Napišite funkcijo
@@ -91,7 +91,7 @@ Napišite funkcijo
     zlozi_preko_gnezdenja :
         ('acc -> 'a -> 'acc) -> 'acc -> 'a gnezdenje list -> 'acc
 \end{verbatim}
-ki na gnezdenih seznamih deluje tako kot \verb|List.fold_left|. Za vse točke naj bo funkcija repno rekurzivna, vendar bodite pazljivi, saj operator \verb|@| v standardnem OCamlu ni repno rekurziven.
+ki na gnezdenih seznamih deluje tako kot \verb|List.fold_left|. Za vse točke naj bo funkcija repno rekurzivna, vendar bodite pazljivi, saj operator \verb|@| v standardnem OCamlu ni repno rekurziven (ali so vgrajene funkcije repno rekurzivne lahko preverite na spletu).
 
 \prostor
 
@@ -101,7 +101,7 @@ ki na gnezdenih seznamih deluje tako kot \verb|List.fold_left|. Za vse točke na
 
 Vaš sošolec Mortimer se je med potovanjem po Finski spravil v krepko godljo. Po divjem poskušanju lokalne vodke se je namreč stepel s kravo, zaradi česar ga sedaj lovi finska govedorejska mafija. Na srečo so za njegovo hrabro bitko slišale vse rokovske in metalske skupine, ki so mu pripravljene ponuditi prevoz.
 
-Ker je Mortimer pridno poslušal pri predavanjih iz finančne matematike, med potjo uspe prislužiti nekaj denarja, s katerim bo lahko plačal prevoz. Finci, navdušeni nad pogumom Mortimerja, mu dovolijo, da se med potjo zadolži, dokler na koncu pobega vse stroške povrne.
+Ker je Mortimer pridno poslušal predavanja iz finančne matematike, med potjo uspe prislužiti nekaj denarja, s katerim bo lahko plačal prevoz. Finci, navdušeni nad Mortimerjevim pogumom, mu dovolijo, da se med potjo zadolži, dokler na koncu pobega vse stroške povrne.
 
 Mesta na poti predstavimo kot seznam, katerega elementi so seznami vseh možnih nadaljnjih poti. Pot je par \verb|(indeks_cilja, denar)|. Kot primer,
 \begin{verbatim}
@@ -111,11 +111,11 @@ Mesta na poti predstavimo kot seznam, katerega elementi so seznami vseh možnih 
     [(4, 15)],              # 3
     [(5, 0)]]               # 4
 \end{verbatim}
-pomeni, da lahko v mestu 1 Mortimer izbere med prevozom v mesto 2, kjer dodatno zasluži 10 evrov, ali pa prevoz v mesto 5, ki ga stane 20 evrov.
+pomeni, da lahko v mestu 1 Mortimer izbere med prevozom v mesto 2, kjer dodatno zasluži 10 evrov, ali pa prevoz v mesto 5, ki ga stane 20 evrov. Ker beži pred mafijo, lahko predpostavite, da bodo možne zgolj poti na mesta z višji indeksom (torej ni ciklov).
 
-Pobeg je uspešen, čim lahko odpotuje v mesto, ki ni več na seznamu (torej skok na indeks, ki preseže seznam) in ima po koncu zadnjega skoka 0 ali več evrov. Napišite pogram, ki nam vrne pot z najmanjšim številom skokov, predstavljeno kot seznam indeksov mest na poti. Ker pobeg morda ni možen, naj v tem primeru funkcija vrne \verb|None|.
+Pobeg je uspešen, čim lahko odpotuje v mesto, ki ni več na seznamu (torej skok na indeks, ki preseže seznam) in ima po koncu zadnjega skoka 0 ali več evrov. Napišite program, ki nam vrne pot z najmanjšim številom skokov, predstavljeno kot seznam indeksov mest na poti. Ker pobeg morda ni možen, naj v tem primeru funkcija vrne \verb|None|.
 
-Na primeru je optimalna pot \verb|[3, 4, 5]|, kjer se Mortimer sicer zadolži, vendar v skoku iz 3 v 4 zasluži dovolj, da konča z 5 evri. Hitrejša pot bi bila \verb|[1, 5]|, vendar v tem primeru Mortimer na koncu dolguje še 10 evrov.
+Na primeru je optimalna pot \verb|[0, 3, 4, 5]|, kjer se Mortimer sicer zadolži, vendar v skoku iz 3 v 4 zasluži dovolj, da konča z 5 evri. Hitrejša pot bi bila \verb|[0, 1, 5]|, vendar v tem primeru Mortimer na koncu dolguje še 10 evrov.
 
 Mortimer pot vedno začne v mestu z indeksom 0 in ima 0 evrov (saj je vse zapil). Funkcija (oz. program) sprejme seznam, ki predstavlja finska mesta in vrne seznam indeksov mest, v katerih se Mortimer ustavil. Funkcija naj bo memoizirana.
 
