@@ -31,8 +31,8 @@ let rec splosci = function
 
 let rec alternirajoci_konstruktorji = function
   | [] | _ :: [] -> true
-  | Element _ :: Podseznam _ :: xs
-  | Podseznam _ :: Element _ :: xs -> alternirajoci_konstruktorji xs
+  | Element _ :: (Podseznam _ :: xs as ys)
+  | Podseznam _ :: (Element _ :: xs as ys) -> alternirajoci_konstruktorji ys
   | Element _ :: Element _ :: _
   | Podseznam _ :: Podseznam _ :: _ -> false
 
