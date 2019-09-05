@@ -185,11 +185,11 @@ Za indukcijski korak moramo pokazati, da velja `dolzina (obrni (x :: xs)) = dolz
 Velja:
 
     dolzina (obrni (x :: xs))
-    = dolzina (obrni xs @ [y])
+    = dolzina (obrni xs @ [x])
         (po definiciji (4))
-    = dolzina (obrni xs) + dolzina [y]
+    = dolzina (obrni xs) + dolzina [x]
         (po zgornji lemi)
-    = dolzina xs + dolzina [y]
+    = dolzina xs + dolzina [x]
         (po indukcijski predpostavki)
     = dolzina xs + 1
         (po definicijah (5) in (6))
