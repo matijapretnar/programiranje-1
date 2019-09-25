@@ -1,0 +1,153 @@
+\documentclass[arhiv]{../izpit}
+%\usepackage{fouriernc}
+%\usepackage{xcolor}
+%\usepackage{tikz}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\VerbatimFootnotes{}
+
+\begin{document}
+
+\izpit{Programiranje I: 1.\ izpit}{27.\ junij 2019}{
+  Čas reševanja je 150 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[]
+
+Definirajte tip, ki predstavlja kompleksna števila izražena v kartezičnih koordinatah:
+\begin{verbatim}
+    type complex = { re : float ; im : float }
+\end{verbatim}
+
+
+\podnaloga
+Napišite funkcijo, ki sešteje dve kompleksni števili.
+\begin{verbatim}
+    complex_add : complex -> complex -> complex
+\end{verbatim}
+
+\podnaloga
+Napišite funkcijo, ki izračuna konjugacijo kompleksnega števila.
+\begin{verbatim}
+    complex_conjugate : complex -> complex
+\end{verbatim}
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+list_apply_either : ('a -> bool) -> ('a -> 'b) -> ('a -> 'b) -> 'a list -> 'b list
+\end{verbatim}
+ki sprejme logični predikat \verb|pred|, funkciji \verb|f| in \verb|g|, in seznam \verb|xs|. Za vsak element \verb|x| seznama \verb|xs| izračuna vrednost \verb|f|, če \verb|x| zadošča predikatu \verb|pred|, sicer pa izračuna vrednost \verb|g|. Na koncu vrne seznam vseh tako dobljenih rezultatov.
+
+\podnaloga
+Želimo izračunati vrednost polinoma v neki točki. Za poenostavitev se bomo omejili zgolj na cela števila. Polinome bomo predstavili kot seznam koeficientov (razvrščene naraščajoče glede na pripadajočo potenco), na primer $x^3 - 2x + 3$ predstavimo z \verb|p = [3; -2; 0; 1]|.
+Napišite funkcijo
+\begin{verbatim}
+    eval_poly : int list -> int -> int
+\end{verbatim}
+ki sprejme seznam koeficientov in točko, v kateri naj izračuna vrednost polinoma. Če uporabimo \verb|p| iz zgornjega primera, \verb|eval_poly p 0 = 3|, and \verb|eval_poly p 3 = 24|. \textbf{Funkcija naj bo repno rekurzivna.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga
+
+Društvo slovenskih vrtičkarjev nas je najelo, da jim pomagamo voditi evidenco. Vrt je razdeljen v več vrtičkov, ki so bodisi dodeljeni določenemu najemniku ali pa prosti. Vsak najemnik se lahko odloči, ali svoj del vrta obdeluje ali pa svoj del vrta razdeli na manjše kose, ki jih nato oddaja drugim vrtičkarjem.
+
+Društvo zahteva, da v primeru oddajanja v najem, vrta ne razdelimo na 0 delov.
+Temu primerno bomo za modeliranje uporabili tip \verb|vrt * vrt list|, torej par oblike
+\[(\text{obvezni del}, \text{preostali deli})\]
+Če je vrt oddan zgolj enemu lastniku, je desna komponenta para prazen seznam in vrstni red delov ni pomemben.
+
+Za modeliranje vrtičkov uporabimo tip
+\begin{verbatim}
+    type najemnik = string
+
+    type vrt = Obdelovan of lastnik
+              | Oddan of lastnik * (vrt * vrt list)
+              | Prost
+\end{verbatim}
+
+\podnaloga
+Definirajte \verb|vrt_primer|, ki modelira \verb|vrt| z lastnostmi:
+
+Najemnica Kovalevskaya je razdelila svoj vrt na tri dele, kjer
+\begin{itemize}[noitemsep]
+\item najemnik Galois svoj del obdeluje
+\item najemnik Lagrange svoj del obdeluje
+\item preostali del je prost
+\end{itemize}
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    obdelovalec_vrta : vrt -> najemnik option
+\end{verbatim}
+ki vrne ime najemnika, ki \emph{direktno} obdeluje vrt (torej ga ne oddaja v najem), če obstaja. Na primer, \verb|obdelovalec_vrta vrt_primer = None|.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    globina_oddajanja : vrt -> int
+\end{verbatim}
+ki izračuna maksimalno verigo deljenja in oddajanja delov vrta. Na zgornjem primeru torej vrne 1, saj vrt oddaja zgolj Kovalevskaya.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    v_uporabi : vrt -> bool
+\end{verbatim}
+ki preveri, ali obstaja del vrta, ki ga kdo obdeluje. V nasprotnem primeru je vrt morda deljen na več delov, vendar so vsi deli neobdelani.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    vsi_najemniki : vrt -> najemnik list
+\end{verbatim}
+ki vrne seznam vseh najemnikov, ki so na katerikoli način vključeni v vrt. Vrstni red ni pomemben.
+
+\podnaloga
+Napišite funkcijo
+\begin{verbatim}
+    vsi_obdelovalci : plot -> najemnik list
+\end{verbatim}
+ki vrne seznam vseh najemnikov, ki obdelujejo kakšen del vrt. Na zgornjem primeru torej vrne \verb|["Galois"; "Lagrange"]|. Vrstni red ponovno ni pomemben.
+
+\prostor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga[]
+\emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+\vspace{5mm} Tovorne ladje natovarjamo z različno velikimi zabojniki.
+%
+Vsak zabojnik ima natanko določeno težo, na primer 1, 3, 4, 7 ali 10 ton.
+%
+Prav tako ima vsaka ladja določeno nosilnost, na primer 5, 40 ali 300 ton.
+%
+Vaša naloga je, da izračunate število različnih načinov kako natovorimo ladjo do natanko polne nosilnosti.
+
+Vsak tip zabojnika lahko izberemo poljubno mnogokrat in vrstni red natovarjanja ne igra nobene vloge. Zato predpostavimo, da zabojnike vedno natovorimo v točno določenem vrstnem redu, kjer vedno najprej natovorimo lažje zabojnike, in se nato pomaknemo proti težjim.
+%
+
+Kot primer, če ima naša ladja nosilnost 5 ton in imamo zabojnike s težo 1, 3, 4, 7 in 10 ton, potem imamo natanko tri možna natovarjanja.
+\begin{itemize}
+    \item 5 zabojnikov s težo 1 tona
+    \item 2 zabojnika teže 1 in en zabojnik teže 3
+    \item 1 zabojnik teže 1 in en zabojnik teže 4
+\end{itemize}
+
+
+Za lažje reševanje si definirajte nabor tež kot konstanto
+\begin{verbatim}
+    zabojniki = [1, 3, 4, 7, 10]
+\end{verbatim}
+
+%
+Napišite funkcijo, ki kot vhod sprejme nosilnost ladje in izračuna število različnih načinov, kako ladjo natovorimo z prej podanimi zabojniki.
+
+Funkcija naj bo dovolj učinkovita, da lahko izračuna rezultat za ladjo z nosilnostjo 300 ton.
+
+Za dodatne točke napišite funkcijo, ki rešitve ne zgolj prešteje, temveč tudi vrne. (Te raje ne testirajte na ogromnih primerih.)
+
+\end{document}
