@@ -1,43 +1,5 @@
 (* ========== Vaja 8: Moduli  ========== *)
 
-(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
-"Once upon a time, there was a university with a peculiar tenure policy. All
- faculty were tenured, and could only be dismissed for moral turpitude. What
- was peculiar was the definition of moral turpitude: making a false statement
- in class. Needless to say, the university did not teach computer science.
- However, it had a renowned department of mathematics.
-
- One Semester, there was such a large enrollment in complex variables that two
- sections were scheduled. In one section, Professor Descartes announced that a
- complex number was an ordered pair of reals, and that two complex numbers were
- equal when their corresponding components were equal. He went on to explain
- how to convert reals into complex numbers, what "i" was, how to add, multiply,
- and conjugate complex numbers, and how to find their magnitude.
-
- In the other section, Professor Bessel announced that a complex number was an
- ordered pair of reals the first of which was nonnegative, and that two complex
- numbers were equal if their first components were equal and either the first
- components were zero or the second components differed by a multiple of 2π. He
- then told an entirely different story about converting reals, "i", addition,
- multiplication, conjugation, and magnitude.
-
- Then, after their first classes, an unfortunate mistake in the registrar's
- office caused the two sections to be interchanged. Despite this, neither
- Descartes nor Bessel ever committed moral turpitude, even though each was
- judged by the other's definitions. The reason was that they both had an
- intuitive understanding of type. Having defined complex numbers and the
- primitive operations upon them, thereafter they spoke at a level of
- abstraction that encompassed both of their definitions.
-
- The moral of this fable is that:
-   Type structure is a syntactic discipline for enforcing levels of
-   abstraction."
-
- from:
- John C. Reynolds, "Types, Abstraction, and Parametric Polymorphism", IFIP83
-[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
-
-
 (*----------------------------------------------------------------------------*]
  Definirajte signaturo [NAT], ki določa strukturo naravnih števil. Ima osnovni 
  tip, funkcijo enakosti, ničlo in enko, seštevanje, odštevanje in množenje.

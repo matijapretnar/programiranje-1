@@ -69,7 +69,7 @@ def quicksort_part(a, start, end):
     if start >= end:
         return
     else:
-        pivot_i = pivot_list(a, start, end)
+        pivot_i = pivot(a, start, end)
         quicksort_part(a, start, pivot_i - 1)
         quicksort_part(a, pivot_i + 1, end)
         return
@@ -99,7 +99,7 @@ def kth_el_part(a, k, start, end):
     if start > end:
         return None
     else:
-        pivot_i = pivot_list(a, start, end)
+        pivot_i = pivot(a, start, end)
         if pivot_i == k:
             return a[pivot_i]
         elif pivot_i > k:
