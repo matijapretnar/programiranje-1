@@ -51,35 +51,6 @@ def pivot(a, start, end):
     return front_i
 
 ##############################################################################
-# Tabelo a želimo urediti z algoritmom hitrega urejanja (quicksort).
-#
-# Napišite funkcijo [quicksort(a)], ki uredi tabelo [a] s pomočjo pivotiranja.
-# Poskrbi, da algoritem deluje 'na mestu', torej ne uporablja novih tabel.
-#
-# Namig: Definirajte pomožno funkcijo [quicksort_part(a, start, end)], ki
-#        uredi zgolj del tabele [a].
-#
-#   >>> a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
-#   >>> quicksort(a)
-#   [2, 3, 4, 5, 10, 11, 15, 17, 18]
-##############################################################################
-
-
-def quicksort_part(a, start, end):
-    if start >= end:
-        return
-    else:
-        pivot_i = pivot(a, start, end)
-        quicksort_part(a, start, pivot_i - 1)
-        quicksort_part(a, pivot_i + 1, end)
-        return
-
-
-def quicksort(a):
-    quicksort_part(a, 0, len(a) - 1)
-    return
-
-##############################################################################
 # V tabeli želimo poiskati vrednost k-tega elementa po velikosti.
 #
 # Primer: Če je
@@ -113,3 +84,32 @@ def kth_element(a, k):
         return None
     else:
         return kth_el_part(a, k, 0, len(a)-1)
+
+##############################################################################
+# Tabelo a želimo urediti z algoritmom hitrega urejanja (quicksort).
+#
+# Napišite funkcijo [quicksort(a)], ki uredi tabelo [a] s pomočjo pivotiranja.
+# Poskrbi, da algoritem deluje 'na mestu', torej ne uporablja novih tabel.
+#
+# Namig: Definirajte pomožno funkcijo [quicksort_part(a, start, end)], ki
+#        uredi zgolj del tabele [a].
+#
+#   >>> a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
+#   >>> quicksort(a)
+#   [2, 3, 4, 5, 10, 11, 15, 17, 18]
+##############################################################################
+
+
+def quicksort_part(a, start, end):
+    if start >= end:
+        return
+    else:
+        pivot_i = pivot(a, start, end)
+        quicksort_part(a, start, pivot_i - 1)
+        quicksort_part(a, pivot_i + 1, end)
+        return
+
+
+def quicksort(a):
+    quicksort_part(a, 0, len(a) - 1)
+    return
