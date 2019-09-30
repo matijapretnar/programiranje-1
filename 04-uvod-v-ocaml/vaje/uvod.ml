@@ -30,13 +30,14 @@ let rec middle_of_triple = ()
 let rec starting_element = ()
 
 (*----------------------------------------------------------------------------*]
- Funkcija [multiply] zmnoži vse elemente seznama.
+ Funkcija [multiply] zmnoži vse elemente seznama. V primeru praznega seznama
+ vrne vrednost, ki je smiselna za rekurzijo.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # remove 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
- - : int list = [2; 3; 2; 3]
+ # multiply [2; 4; 6];;
+ - : int = 48
 [*----------------------------------------------------------------------------*)
 
-let rec remove = ()
+let rec multiply = ()
 
 (*----------------------------------------------------------------------------*]
  Napišite funkcijo ekvivalentno python kodi:
@@ -76,6 +77,18 @@ let rec get = ()
 let rec double = ()
 
 (*----------------------------------------------------------------------------*]
+ Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
+ Če je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # insert 1 3 [0; 0; 0; 0; 0];;
+ - : int list = [0; 0; 0; 1; 0; 0]
+ # insert 1 (-2) [0; 0; 0; 0; 0];;
+ - : int list = [1; 0; 0; 0; 0; 0]
+[*----------------------------------------------------------------------------*)
+
+let rec insert = ()
+
+(*----------------------------------------------------------------------------*]
  Funkcija [divide k list] seznam razdeli na dva seznama. Prvi vsebuje prvih [k]
  elementov, drugi pa vse ostale. Funkcija vrne par teh seznamov. V primeru, ko
  je [k] izven mej seznama, je primeren od seznamov prazen.
@@ -87,18 +100,6 @@ let rec double = ()
 [*----------------------------------------------------------------------------*)
 
 let rec divide = ()
-
-(*----------------------------------------------------------------------------*]
- Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
- Če je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # insert 1 3 [0; 0; 0; 0; 0];;
- - : int list = [0; 0; 0; 1; 0; 0]
- # insert 1 (-2) [0; 0; 0; 0; 0];;
- - : int list = [1; 0; 0; 0; 0; 0]
-[*----------------------------------------------------------------------------*)
-
-let rec insert = ()
 
 (*----------------------------------------------------------------------------*]
  Funkcija [rotate n list] seznam zavrti za [n] mest v levo. Predpostavimo, da
