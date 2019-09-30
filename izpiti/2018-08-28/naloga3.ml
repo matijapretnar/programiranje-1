@@ -1,7 +1,10 @@
 type 'a veriga = Filter of ('a -> bool) * 'a list * 'a veriga | Ostalo of 'a list
 
 
-let test = Filter((fun x -> x < 0), [], Filter((fun x -> x < 10), [], Ostalo []))
+let test =
+  Filter((fun x -> x < 0), [],
+  Filter((fun x -> x < 10), [],
+  Ostalo []))
 
 
 let rec vstavi x = function

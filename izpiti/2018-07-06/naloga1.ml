@@ -1,28 +1,20 @@
-let apply f x = f x
+let uporabi f x = f x
 
-let revapply x f = f x
+let ibaropu x f = f x
 
-let rec drop n xs =
-  if n <= 0 then
-    Some xs
-  else
-    match xs with
-    | [] -> None
-    | _ :: xs -> drop (n-1) xs
-
-let rec take n xs =
+let rec zacetnih n xs =
   if n <= 0 then
     Some []
   else
     match xs with
     | [] -> None
     | x::xs ->
-      begin match take (n-1) xs with
+      begin match zacetnih (n-1) xs with
        | None -> None
        | Some t -> Some (x :: t)
       end
 
-let take_tailrec n xs =
+let zacetnih_tailrec n xs =
   let rec aux n acc xs =
     if n <= 0 then
       Some (List.rev acc)

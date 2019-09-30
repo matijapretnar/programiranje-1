@@ -16,7 +16,6 @@ let rec velikost_multimnozice = function
   | Node (lt, _, count, rt) -> 
       velikost_multimnozice lt + count + velikost_multimnozice rt
 
-
 let seznam_iz_multimnozice mmtree = 
   let rec ponovi x n = if n <= 0 then [] else x :: ponovi x (n-1) in
   let rec v_seznam = function
@@ -25,6 +24,7 @@ let seznam_iz_multimnozice mmtree =
   in
   v_seznam mmtree
 
+
 (* Repno rekurzivna različica, kjer si definiramo pomožen tip za postopke,
    ki jih še moramo izvesti. *)
 type 'a action = DoTree of 'a mm_drevo | Generate of 'a * int 
@@ -32,10 +32,7 @@ type 'a action = DoTree of 'a mm_drevo | Generate of 'a * int
 let rec tlrec_seznam_iz_multimnozice mmtree =
   (* Define a tl-rec function that adds [n] repetitions of [x] to [lst]. *)
   let rec add_to_list x n lst =
-    if n <= 0 then
-      lst
-    else
-      add_to_list x (n - 1) (x :: lst)
+    if n <= 0 then lst else add_to_list x (n - 1) (x :: lst)
   in
   (* Define the function with a queue of actions that need to be performed. *)
   let rec to_list queue acc =
@@ -56,6 +53,7 @@ let rec tlrec_seznam_iz_multimnozice mmtree =
   to_list [DoTree mmtree] []
 
 let list_of_tree_tailrec t =
+  (* Using continuation passing style. *)
   let rec cons_n x n l = if n <= 0 then l else cons_n x (n - 1) (x :: l) in
   let rec aux acc_r k = function
     | Empty -> k acc_r

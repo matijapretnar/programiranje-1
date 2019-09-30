@@ -37,6 +37,7 @@ let rec alternirajoci_konstruktorji = function
   | Podseznam _ :: Podseznam _ :: _ -> false
 
 let rec zlozi_preko_gnezdenja f acc gnezdenje =
+  (* Napišemo lastno repno rekurzivno funkcijo za združevanje. *)
   let zdruzi xs ys =
     let rec prelozi ys = function
       | [] -> ys

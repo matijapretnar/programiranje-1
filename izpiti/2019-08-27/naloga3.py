@@ -9,7 +9,7 @@ test = [
 
 
 def pobeg(pot):
- 
+
     @lru_cache(maxsize=None)
     def pobeg(i, denar):
         if i >= len(pot) and denar >= 0:
