@@ -2,14 +2,58 @@
 (* ========== Vaja 1: Uvod v OCaml  ========== *)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [penultimate_element] vrne predzadnji element danega seznama. V
- primeru prekratkega seznama vrne napako.
+ Funkcija [square] vrne kvadrat podanega celega števila.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # penultimate_element [1; 2; 3; 4];;
- - : int = 3
+ # square 2;;
+ - : int = 4
 [*----------------------------------------------------------------------------*)
 
-let rec penultimate_element = ()
+let rec square = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [middle_of_triple] vrne srednji element trojice.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # middle_of_triple (true, false, true);;
+ - : bool = false
+[*----------------------------------------------------------------------------*)
+
+let rec middle_of_triple = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [starting_element] vrne prvi element danega seznama. V primeru
+ prekratkega seznama vrne napako.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # starting_element [1; 2; 3; 4];;
+ - : int = 1
+[*----------------------------------------------------------------------------*)
+
+let rec starting_element = ()
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [multiply] zmnoži vse elemente seznama.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # remove 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
+ - : int list = [2; 3; 2; 3]
+[*----------------------------------------------------------------------------*)
+
+let rec remove = ()
+
+(*----------------------------------------------------------------------------*]
+ Napišite funkcijo ekvivalentno python kodi:
+
+  def sum_int_pairs(pair_list):
+      if len(pair_list) == 0:
+        return []
+      else:
+        x, y = pair_list[0]
+        return [x + y] + sum_int_pairs(pair_list[1:])
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # sum_int_pairs [(1, -2); (3, 4); (0, -0)];;
+ - : int list = [-1; 7; 0]
+[*----------------------------------------------------------------------------*)
+
+let rec sum_int_pairs = ()
 
 (*----------------------------------------------------------------------------*]
  Funkcija [get k list] poišče [k]-ti element v seznamu [list]. Številčenje
@@ -43,27 +87,6 @@ let rec double = ()
 [*----------------------------------------------------------------------------*)
 
 let rec divide = ()
-
-(*----------------------------------------------------------------------------*]
- Funkcija [delete k list] iz seznama izbriše [k]-ti element. V primeru
- prekratkega seznama funkcija vrne napako.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # delete 3 [0; 0; 0; 1; 0; 0];;
- - : int list = [0; 0; 0; 0; 0]
-[*----------------------------------------------------------------------------*)
-
-let rec delete = ()
-
-(*----------------------------------------------------------------------------*]
- Funkcija [slice i k list] sestavi nov seznam, ki vsebuje elemente seznama
- [list] od vključno [i]-tega do izključno [k]-tega. Predpostavimo, da sta [i] in
- [k] primerna.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # slice 3 6 [0; 0; 0; 1; 2; 3; 0; 0];;
- - : int list = [1; 2; 3]
-[*----------------------------------------------------------------------------*)
-
-let rec slice = ()
 
 (*----------------------------------------------------------------------------*]
  Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
