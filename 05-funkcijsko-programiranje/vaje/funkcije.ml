@@ -154,10 +154,18 @@ let unzip_tlrec list =
  - : int = 12
 [*----------------------------------------------------------------------------*)
 
+let rec loop condition f x = if condition x then loop condition f (f x) else x
+
+(* Da se podobnost vidi bolje lahko zapišemo kot: *)
+
 let rec loop condition f x =
-  if condition x then 
-    loop condition f (f x)
+  if condition x then
+    (* Izvedemo telo zanke. *)
+    let x = f x in
+    (* Ponovno izvedemo zanko. *)
+    loop condition f x
   else
+    (* Pogoj zanke ni izpolnjen, zato vrnemo vrednost. *)
     x
 
 (*----------------------------------------------------------------------------*]

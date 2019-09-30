@@ -34,10 +34,11 @@ let rec starting_element = function
   | x :: xs -> x
 
 (*----------------------------------------------------------------------------*]
- Funkcija [multiply] zmnoži vse elemente seznama.
+ Funkcija [multiply] zmnoži vse elemente seznama. V primeru praznega seznama
+ vrne vrednost, ki je smiselna za rekurzijo.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # remove 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
- - : int list = [2; 3; 2; 3]
+ # multiply [2; 4; 6];;
+ - : int = 48
 [*----------------------------------------------------------------------------*)
 
 let rec multiply = function
@@ -88,6 +89,20 @@ let rec double = function
   | [] -> []
 
 (*----------------------------------------------------------------------------*]
+ Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
+ Če je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # insert 1 3 [0; 0; 0; 0; 0];;
+ - : int list = [0; 0; 0; 1; 0; 0]
+ # insert 1 (-2) [0; 0; 0; 0; 0];;
+ - : int list = [1; 0; 0; 0; 0; 0]
+[*----------------------------------------------------------------------------*)
+
+let rec insert x k = function
+  | [] -> [x]
+  | y :: ys -> if k <= 0 then x :: y :: ys else y :: insert x k ys
+
+(*----------------------------------------------------------------------------*]
  Funkcija [divide k list] seznam razdeli na dva seznama. Prvi vsebuje prvih [k]
  elementov, drugi pa vse ostale. Funkcija vrne par teh seznamov. V primeru, ko
  je [k] izven mej seznama, je primeren od seznamov prazen.
@@ -105,20 +120,6 @@ let rec divide k list =
   | (k, x :: xs) ->
       let (list1, list2) = divide (k - 1) xs in
 	    (x :: list1, list2)
-
-(*----------------------------------------------------------------------------*]
- Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].
- Če je [k] izven mej seznama, ga funkcija doda na začetek oziroma na konec.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # insert 1 3 [0; 0; 0; 0; 0];;
- - : int list = [0; 0; 0; 1; 0; 0]
- # insert 1 (-2) [0; 0; 0; 0; 0];;
- - : int list = [1; 0; 0; 0; 0; 0]
-[*----------------------------------------------------------------------------*)
-
-let rec insert x k = function
-  | [] -> [x]
-  | y :: ys -> if k <= 0 then x :: y :: ys else y :: insert x k ys
 
 (*----------------------------------------------------------------------------*]
  Funkcija [rotate n list] seznam zavrti za [n] mest v levo. Predpostavimo, da
