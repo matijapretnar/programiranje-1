@@ -2,17 +2,66 @@
 (* ========== Vaja 1: Uvod v OCaml  ========== *)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [penultimate_element] vrne predzadnji element danega seznama. V
- primeru prekratkega seznama vrne napako.
+ Funkcija [square] vrne kvadrat podanega celega števila.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # penultimate_element [1; 2; 3; 4];;
- - : int = 3
+ # square 2;;
+ - : int = 4
 [*----------------------------------------------------------------------------*)
 
-let rec penultimate_element = function
-  | x :: _ :: [] -> x
-  | _ :: xs -> penultimate_element xs
-  | [] -> failwith "List is too short."
+let rec square x = x * x
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [middle_of_triple] vrne srednji element trojice.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # middle_of_triple (true, false, true);;
+ - : bool = false
+[*----------------------------------------------------------------------------*)
+
+let rec middle_of_triple triple =
+  let (x, y, z) = triple in
+  y
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [starting_element] vrne prvi element danega seznama. V primeru
+ prekratkega seznama vrne napako.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # starting_element [1; 2; 3; 4];;
+ - : int = 1
+[*----------------------------------------------------------------------------*)
+
+let rec starting_element = function
+  | [] -> failwith "List too short."
+  | x :: xs -> x
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [multiply] zmnoži vse elemente seznama.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # remove 1 [1; 1; 2; 3; 1; 2; 3; 1; 1];;
+ - : int list = [2; 3; 2; 3]
+[*----------------------------------------------------------------------------*)
+
+let rec multiply = function
+  | [] -> 1
+  | x :: xs -> x * multiply xs
+
+(*----------------------------------------------------------------------------*]
+ Napišite funkcijo ekvivalentno python kodi:
+
+  def sum_int_pairs(pair_list):
+      if len(pair_list) == 0:
+        return []
+      else:
+        x, y = pair_list[0]
+        return [x + y] + sum_int_pairs(pair_list[1:])
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # sum_int_pairs [(1, -2); (3, 4); (0, -0)];;
+ - : int list = [-1; 7; 0]
+[*----------------------------------------------------------------------------*)
+
+let rec sum_int_pairs = function
+  | [] -> []
+  | (x, y) :: pairs -> (x + y) :: sum_int_pairs pairs
 
 (*----------------------------------------------------------------------------*]
  Funkcija [get k list] poišče [k]-ti element v seznamu [list]. Številčenje
@@ -56,32 +105,6 @@ let rec divide k list =
   | (k, x :: xs) ->
       let (list1, list2) = divide (k - 1) xs in
 	    (x :: list1, list2)
-
-(*----------------------------------------------------------------------------*]
- Funkcija [delete k list] iz seznama izbriše [k]-ti element. V primeru
- prekratkega seznama funkcija vrne napako.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # delete 3 [0; 0; 0; 1; 0; 0];;
- - : int list = [0; 0; 0; 0; 0]
-[*----------------------------------------------------------------------------*)
-
-let rec delete k = function
-  | [] -> failwith "List is too short."
-  | x :: xs -> if k = 0 then xs else x :: delete (k-1) xs
-
-(*----------------------------------------------------------------------------*]
- Funkcija [slice i k list] sestavi nov seznam, ki vsebuje elemente seznama
- [list] od vključno [i]-tega do izključno [k]-tega. Predpostavimo, da sta [i]
- in [k] primerna.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # slice 3 6 [0; 0; 0; 1; 2; 3; 0; 0];;
- - : int list = [1; 2; 3]
-[*----------------------------------------------------------------------------*)
-
-let slice i k list =
-  let (_, slice1) = divide i list in
-  let (slice2, _) = divide (k - i) slice1 in
-  slice2
 
 (*----------------------------------------------------------------------------*]
  Funkcija [insert x k list] na [k]-to mesto seznama [list] vrine element [x].

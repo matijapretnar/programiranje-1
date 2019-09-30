@@ -1,0 +1,13 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "OCaml",
+      "type": "shell",
+      "command": "C:\\OCaml64\\usr\\local\\bin\\ocaml-env.exe exec -- C:\\OCaml64\\home\\Ziga\\.opam\\4.06.1+mingw64c\\bin\\ocaml.exe -init \\\"${file}\\\"",
+      "problemMatcher": []
+    }
+  ]
+}

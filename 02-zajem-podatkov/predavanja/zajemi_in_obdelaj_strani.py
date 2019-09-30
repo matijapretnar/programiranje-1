@@ -25,6 +25,11 @@ vzorec_osebe = re.compile(
     flags=re.DOTALL
 )
 
+vzorec_povezave = re.compile(
+    r'<a.*?>(.+?)</a>',
+    flags=re.DOTALL
+)
+
 vzorec_zasluzka = re.compile(
     r'Gross:.*?data-value="(?P<zasluzek>(\d|,)+)"',
     flags=re.DOTALL
@@ -69,8 +74,8 @@ def izloci_podatke_filma(blok):
     film['leto'] = int(film['leto'])
     # odstranimo morebitno povezavo na daljši posnetek
     film['opis'] = vzorec_daljsi_povzetek.sub('', film['opis'])
-    # odstranimo morebitne povezave na osebe
-    film['opis'] = vzorec_osebe.sub(r'\2', film['opis'])
+    # odstranimo morebitne povezave v opisu
+    film['opis'] = vzorec_povezave.sub(r'\1', film['opis'])
     film['opis'] = film['opis'].strip()
     film['ocena'] = float(film['ocena'])
     film['glasovi'] = int(film['glasovi'])

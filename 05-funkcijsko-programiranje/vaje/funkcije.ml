@@ -47,9 +47,9 @@ let range n =
 (*----------------------------------------------------------------------------*]
  Funkcija [map f list] sprejme seznam [list] oblike [x0; x1; x2; ...] in
  funkcijo [f] ter vrne seznam preslikanih vrednosti, torej
- [f(x0); f(x1); f(x2); ...].
+ [f x0; f x1; f x2; ...].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # let plus_two = (+)2 in
+ # let plus_two = (+) 2 in
    map plus_two [0; 1; 2; 3; 4];;
  - : int list = [2; 3; 4; 5; 6]
 [*----------------------------------------------------------------------------*)
@@ -61,7 +61,7 @@ let rec map f = function
 (*----------------------------------------------------------------------------*]
  Funkcija [map_tlrec] je repno rekurzivna različica funkcije [map].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # let plus_two = (fun x -> x+2) in
+ # let plus_two = (fun x -> x + 2) in
    map_tlrec plus_two [0; 1; 2; 3; 4];;
  - : int list = [2; 3; 4; 5; 6]
 [*----------------------------------------------------------------------------*)
@@ -75,9 +75,16 @@ let map_tlrec f list =
   map_aux list []
 
 (*----------------------------------------------------------------------------*]
- Funkcija [mapi] sprejme seznam in funkcijo dveh argumentov ter vrne seznam
- preslikanih vrednosti seznama, kjer kot drugi argument funkcije podamo indeks
- elementa v seznamu.
+ Funkcija [mapi] je ekvivalentna python kodi:
+
+  def mapi(f, list):
+      mapi_list = []
+      index = 0
+      for x in list:
+          mapi_list += [f(x, index)]
+          index += 1
+      return mapi_list
+
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # mapi (+) [0; 0; 0; 2; 2; 2];;
  - : int list = [0; 1; 2; 5; 6; 7]
@@ -108,26 +115,6 @@ let rec zip list1 list2 =
   | x :: xs, y :: ys -> (x, y) :: (zip xs ys)
 
 (*----------------------------------------------------------------------------*]
- Funkcija [zip_enum_tlrec] sprejme seznama [x_0; x_1; ...] in [y_0; y_1; ...]
- ter vrne seznam [(0, x_0, y_0); (1, x_1, y_1); ...]. Funkcija je repno
- rekurzivna. Če seznama nista enake dolžine vrne napako.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # zip_enum_tlrec ["a"; "b"; "c"] [7; 3; 4];;
- - : (int * string * int) list = [(0, "a", 7); (1, "b", 3); (2, "c", 4)]
-[*----------------------------------------------------------------------------*)
-
-let zip_enum_tlrec list1 list2 =
-  let rec zipe_aux list1 list2 i acc =
-    match list1, list2 with
-    | [], [] -> reverse acc
-    | _, [] | [], _ -> failwith "Different lengths of input lists."
-    | x :: xs, y :: ys ->
-      let element = (i, x, y) in
-      zipe_aux xs ys (i + 1) (element :: acc)
-   in
-   zipe_aux list1 list2 0 []
-
-(*----------------------------------------------------------------------------*]
  Funkcija [unzip] je inverz funkcije [zip], torej sprejme seznam parov
  [(x0, y0); (x1, y1); ...] in vrne par seznamov ([x0; x1; ...], [y0; y1; ...]).
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -153,6 +140,25 @@ let unzip_tlrec list =
     | (x, y) :: tl -> unzip_aux tl (x :: acc1) (y :: acc2)
   in
   unzip_aux list [] []
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [loop condition f x] naj se izvede kot python koda:
+
+  def loop(condition, f, x):
+      while condition(x):
+          x = f(x)
+      return x
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # loop (fun x -> x < 10) ((+) 4) 4;;
+ - : int = 12
+[*----------------------------------------------------------------------------*)
+
+let rec loop condition f x =
+  if condition x then 
+    loop condition f (f x)
+  else
+    x
 
 (*----------------------------------------------------------------------------*]
  Funkcija [fold_left_no_acc f list] sprejme seznam [x0; x1; ...; xn] in
@@ -207,9 +213,9 @@ let rec filter f = function
  obstaja element seznama, za katerega funkcija vrne [true] in [false] sicer.
  Funkcija je repno rekurzivna.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # exists ((<)3) [0; 1; 2; 3; 4; 5];;
+ # exists ((<) 3) [0; 1; 2; 3; 4; 5];;
  - : bool = true
- # exists ((<)8) [0; 1; 2; 3; 4; 5];;
+ # exists ((<) 8) [0; 1; 2; 3; 4; 5];;
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
@@ -222,9 +228,9 @@ let rec exists f = function
  funkcija [f] vrne [true]. Če takšnega elementa ni, vrne [default].
  Funkcija je repno rekurzivna.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # first ((<)3) 0 [1; 1; 2; 3; 5; 8];;
+ # first ((<) 3) 0 [1; 1; 2; 3; 5; 8];;
  - : int = 5
- # first ((<)8) 0 [1; 1; 2; 3; 5; 8];;
+ # first ((<) 8) 0 [1; 1; 2; 3; 5; 8];;
  - : int = 0
 [*----------------------------------------------------------------------------*)
 
