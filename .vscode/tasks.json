@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Python",
+            "type": "shell",
+            "command": "python -i \\\"${file}\\\""
+        },
+        {
+            "label": "OCaml",
+            "type": "shell",
+            "command": "ocaml -init \\\"${file}\\\""
+        }
+    ]
+}
