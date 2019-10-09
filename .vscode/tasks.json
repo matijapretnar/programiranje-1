@@ -4,12 +4,36 @@
         {
             "label": "Python",
             "type": "shell",
-            "command": "python -i \\\"${file}\\\""
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "windows": {
+                "command": "python -i \\\"${file}\\\""
+                },
+            "linux": {
+                "command": "python -i \"${file}\""
+            },
+            "osx": {
+                "command": "python -i \"${file}\""
+            }
         },
         {
             "label": "OCaml",
             "type": "shell",
-            "command": "ocaml -init \\\"${file}\\\""
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "windows": {
+                "command": "ocaml -init \\\"${file}\\\""
+                },
+            "linux": {
+                "command": "ocaml -init \"${file}\""
+            },
+            "osx": {
+                "command": "ocaml -init \"${file}\""
+            }
         }
     ]
 }
