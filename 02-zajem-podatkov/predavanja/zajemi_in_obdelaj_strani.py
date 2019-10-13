@@ -113,8 +113,7 @@ def filmi_na_strani(st_strani, na_stran=250):
         f'?sort=num_votes,desc&title_type=feature&count={na_stran}'
         f'&start={(st_strani - 1) * na_stran + 1}'
     )
-    ime_datoteke = 'zajeti-podatki/najbolj-znani-filmi-{}.html'.format(
-        st_strani)
+    ime_datoteke = 'zajeti-podatki/najbolj-znani-filmi-{}.html'.format(st_strani)
     orodja.shrani_spletno_stran(url, ime_datoteke)
     vsebina = orodja.vsebina_datoteke(ime_datoteke)
     for blok in vzorec_bloka.finditer(vsebina):
@@ -122,28 +121,32 @@ def filmi_na_strani(st_strani, na_stran=250):
 
 
 def izloci_gnezdene_podatke(filmi):
+    REZISER, IGRALEC = 'R', 'I'
     osebe, vloge, zanri = [], [], []
     videne_osebe = set()
+
+    def dodaj_vlogo(film, oseba, vloga, mesto):
+        if oseba['id'] not in videne_osebe:
+            videne_osebe.add(oseba['id'])
+            osebe.append(oseba)
+        vloge.append({
+            'film': film['id'],
+            'oseba': oseba['id'],
+            'vloga': vloga,
+            'mesto': mesto,
+        })
+
 
     for film in filmi:
         for zanr in film.pop('zanri'):
             zanri.append({'film': film['id'], 'zanr': zanr})
-        for reziser in film.pop('reziserji'):
-            if reziser['id'] not in videne_osebe:
-                videne_osebe.add(reziser['id'])
-                osebe.append(reziser)
-            vloge.append(
-                {'film': film['id'], 'oseba': reziser['id'], 'vloga': 'reziser'})
-        for igralec in film.pop('igralci'):
-            if igralec['id'] not in videne_osebe:
-                videne_osebe.add(igralec['id'])
-                osebe.append(igralec)
-            vloge.append(
-                {'film': film['id'], 'oseba': igralec['id'], 'vloga': 'igralec'})
+        for mesto, oseba in enumerate(film.pop('reziserji'), 1):
+            dodaj_vlogo(film, oseba, REZISER, mesto)
+        for mesto, oseba in enumerate(film.pop('igralci'), 1):
+            dodaj_vlogo(film, oseba, IGRALEC, mesto)
 
     osebe.sort(key=lambda oseba: oseba['id'])
-    vloge.sort(key=lambda vloga: (
-        vloga['film'], vloga['oseba'], vloga['vloga']))
+    vloge.sort(key=lambda vloga: (vloga['film'], vloga['vloga'], vloga['mesto']))
     zanri.sort(key=lambda zanr: (zanr['film'], zanr['zanr']))
 
     return osebe, vloge, zanri
@@ -161,5 +164,5 @@ orodja.zapisi_csv(
     ['id', 'naslov', 'dolzina', 'leto', 'ocena', 'metascore', 'glasovi', 'zasluzek', 'oznaka', 'opis'], 'obdelani-podatki/filmi.csv'
 )
 orodja.zapisi_csv(osebe, ['id', 'ime'], 'obdelani-podatki/osebe.csv')
-orodja.zapisi_csv(vloge, ['film', 'oseba', 'vloga'], 'obdelani-podatki/vloge.csv')
+orodja.zapisi_csv(vloge, ['film', 'oseba', 'vloga', 'mesto'], 'obdelani-podatki/vloge.csv')
 orodja.zapisi_csv(zanri, ['film', 'zanr'], 'obdelani-podatki/zanri.csv')
