@@ -226,7 +226,7 @@ val dvakrat_na_nic : (int -> int) -> int = <fun>
 let pozdravi ime =
   if ime = "Matija" then
     "Dober dan, gospod predavatelj!"
-  else if ime = "Phillip" || ime = "Žiga" then
+  else if ime = "Filip" || ime = "Žiga" then
     "Oj!"
   else
     "Dober dan, " ^ ime ^ "!"
@@ -236,7 +236,7 @@ let pozdravi ime =
 let pozdravi ime =
   match ime with
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Phillip" | "Žiga" -> "Oj!"
+  | "Filip" | "Žiga" -> "Oj!"
   | _ -> "Dober dan, " ^ ime ^ "!"
 ```]
 
@@ -249,14 +249,14 @@ let pozdravi ime =
 let pozdravi ime =
   match ime with
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Phillip" | "Žiga" -> "Oj!"
+  | "Filip" | "Žiga" -> "Oj!"
   | _ -> "Dober dan, " ^ ime ^ "!"
 ```]
 
 .good-example[```
 let pozdravi = function
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Phillip" | "Žiga" -> "Oj!"
+  | "Filip" | "Žiga" -> "Oj!"
   | ime -> "Dober dan, " ^ ime ^ "!"
 ```]
 
@@ -285,7 +285,7 @@ Warning 11: this match case is unused.
 .bad-example[```
 let pozdravi = function
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Phillip" | "Žiga" -> "Oj!"
+  | "Filip" | "Žiga" -> "Oj!"
 
 Warning 8: this pattern-matching is not
 exhaustive. Here is an example of a value that

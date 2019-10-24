@@ -13,8 +13,6 @@ jQuerySrc.onload = function() {
         $(this).next().fadeIn(100);
         $(this).hide();
       });
-
-      $('.terminal').addClass('hljs-hybrid');
     }); 
 };
 document.head.appendChild(jQuerySrc);
