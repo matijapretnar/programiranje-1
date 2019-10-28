@@ -100,7 +100,7 @@ let rec double = function
 
 let rec insert x k = function
   | [] -> [x]
-  | y :: ys -> if k <= 0 then x :: y :: ys else y :: insert x k ys
+  | y :: ys -> if k <= 0 then x :: y :: ys else y :: insert x (k-1) ys
 
 (*----------------------------------------------------------------------------*]
  Funkcija [divide k list] seznam razdeli na dva seznama. Prvi vsebuje prvih [k]
