@@ -18,6 +18,8 @@ type vrsta_srecanja = DopolniMe
 
 type srecanje = DopolniMe'
 
+type urnik = DopolniMe''
+
 let vaje () = failwith "dopolni me"
 let predavanje () = failwith "dopolni me"
 
