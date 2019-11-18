@@ -1,27 +1,36 @@
-
 type izdelek = ..
 type naslov = ..
 type papir = ..
+type dnk = ..
 
-type hitrost_dostave =
-    | Obicajna
-    | Hitra
-    | Ekspresna
+type pakiranje =
+  | Obicajno
+  | BrezRacuna
+  | KotDarilo of papir
 
 type dostava =
-    | Poslji of {
-        naslov: naslov;
-        hitrost: hitrost_dostave
-      }
-    | PoPovzetju
-
-type zavijanje =
-    | BrezZavijanja
-    | NezavitoDarilo
-    | ZavitoDarilo of papir
+  | EkspresnoHitraDostava of dnk
+  | PrevzemVTrgovini
+  | HitraDostava of naslov
+  | ObicajnaDostava of naslov
 
 type narocilo = {
   naroceni_izdelki : izdelek list;
-  vrsta_dostave : dostava;
-  vrsta_zavijanja : zavijanje;
+  dostava : dostava;
+  pakiranje : pakiranje;
 }
+
+let ali_naj_zavijem narocilo =
+  match narocilo.pakiranje with
+  | Obicajno -> false
+  | BrezRacuna -> false
+  | KotDarilo _ -> true
+
+let ali_naj_dodam_racun narocilo =
+  match narocilo.pakiranje with
+  | Obicajno -> true
+  | BrezRacuna -> false
+  | KotDarilo _ -> false
+
+let vmesnik ... : string -> narocilo =
+  narocilo
