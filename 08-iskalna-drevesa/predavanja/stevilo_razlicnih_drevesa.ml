@@ -1,29 +1,23 @@
-type 'a drevo = Prazno | Sestavljeno of 'a drevo * 'a * 'a drevo
+type 'a drevo =
+  | Prazno
+  | Sestavljeno of 'a drevo * 'a * 'a drevo
+
 
 let rec velikost = function
   | Prazno -> 0
   | Sestavljeno (l, _, d) -> 1 + velikost l + velikost d
 
+let rec dodaj x = function
+  | Prazno -> Sestavljeno (Prazno, x, Prazno)
+  | Sestavljeno (l, y, d) when x < y -> Sestavljeno (dodaj x l, y, d)
+  | Sestavljeno (l, y, d) when x > y -> Sestavljeno (l, y, dodaj x d)
+  | drevo -> drevo
+
 let rec vsebuje x = function
   | Prazno -> false
-  | Sestavljeno (l, y, d) ->
-      if x = y then
-        true
-      else if x < y then
-        vsebuje x l
-      else
-        vsebuje x d
-
-let rec dodaj x drevo =
-  match drevo with
-  | Prazno -> Sestavljeno (Prazno, x, Prazno)
-  | Sestavljeno (l, y, d) ->
-      if x = y then
-        drevo
-      else if x < y then
-        Sestavljeno (dodaj x l, y, d)
-      else
-        Sestavljeno (l, y, dodaj x d)
+  | Sestavljeno (l, y, d) when x < y -> vsebuje x l
+  | Sestavljeno (l, y, d) when x > y -> vsebuje x d
+  | drevo -> true
 
 let stevilo_razlicnih xs =
   let rec aux ze_videni = function

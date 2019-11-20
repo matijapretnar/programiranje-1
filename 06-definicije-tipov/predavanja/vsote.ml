@@ -3,7 +3,7 @@
 type barva =
   | Rdeca
   | Zelena
-  | Mod_AOOra
+  | Modra
 
 let moje_barve = [Rdeca; Zelena]
 
