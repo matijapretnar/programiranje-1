@@ -71,8 +71,8 @@ let articles = [|
 
 
 (*----------------------------------------------------------------------------*]
- Poiščite in vrnite vrednost najdražjega sprehoda od korena do listov drevesa, 
- kjer je cena sprehoda vsota vrednosti v vseh obiskanih vozliščih.
+ Cena sprehoda po drevesu je vsota vrednosti v vseh obiskanih vozliščih.
+ Poiščite vrednost najdražjega sprehoda od korena do listov drevesa.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # max_path Empty ;;
  - : 'a option = None
@@ -89,11 +89,11 @@ let leaf x = Node (Empty, x, Empty)
 let test_tree = Node( Node(leaf 0, 2, leaf 13), 5, Node(leaf 9, 7, leaf 4))
 
 (*----------------------------------------------------------------------------*]
- Poiščite najdražji sprehod od korena da listov drevesa, kjer je cena sprehoda 
- vsota vrednosti v vseh obiskanih vozliščih. Funkcija naj pot v obliki seznama
- smeri, katere je potrebno izbrati najdražji sprehod.
+ Cena sprehoda po drevesu je vsota vrednosti v vseh obiskanih vozliščih.
+ Poiščite najdražji sprehod od korena do listov drevesa: Funkcija pot vrne v 
+ obliki seznama smeri, katere je potrebno izbrati za najdražji sprehod.
 
- Pripravite tudi funkcijo, ki sprehod pretvori v elemente sprehoda
+ Napišite tudi funkcijo, ki sprehod pretvori v elemente sprehoda
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # max_path_trace Empty ;;
  - : 'a list = []
