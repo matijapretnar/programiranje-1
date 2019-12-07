@@ -99,7 +99,7 @@ let test_tree = Node( Node(leaf 0, 2, leaf 13), 5, Node(leaf 9, 7, leaf 4))
  - : 'a list = []
  # max_path_trace test_tree;;
 - : direction list = [Right, Left]
- # reconstruct (max_path_trace test_tree);;
+ # reconstruct test_tree (max_path_trace test_tree);;
 - : int list = [5; 7; 9]
 [*----------------------------------------------------------------------------*)
 
