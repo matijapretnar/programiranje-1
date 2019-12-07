@@ -70,16 +70,16 @@
 # 
 # Funkcija naj deluje v času O(n), kjer je n dolžina tarčne tabele.
 # 
-# Sestavite funkcijo [zlij(target, list_1, list_2)], ki v tabelo [target] zlije
-# tabeli [list_1] in [list_2]. V primeru, da sta elementa v obeh tabelah enaka,
-# naj bo prvi element iz prve tabele.
+# Sestavite funkcijo [zlij(target, begin, end, list_1, list_2)], ki v del 
+# tabele [target] med start in end zlije tabeli [list_1] in [list_2]. V primeru, 
+# da sta elementa v obeh tabelah enaka, naj bo prvi element iz prve tabele.
 # 
 # Primer:
 #  
 #     >>> list_1 = [1,3,5,7,10]
 #     >>> list_2 = [1,2,3,4,5,6,7]
 #     >>> target = [-1 for _ in range(len(list_1) + len(list_2))]
-#     >>> zlij(target, list_1, list_2)
+#     >>> zlij(target, 0, len(target), list_1, list_2)
 #     >>> target
 #     [1,1,2,3,3,4,5,5,6,7,7,10]
 #
