@@ -133,3 +133,69 @@ let best_value_unique articles max_w =
   in
   let taken = Array.map (fun _ -> false) articles in
   shopper taken 0. 0.
+
+(*----------------------------------------------------------------------------*]
+ Cena sprehoda po drevesu je vsota vrednosti v vseh obiskanih vozliščih.
+ Poiščite vrednost najdražjega sprehoda od korena do listov drevesa.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # max_path Empty ;;
+ - : 'a option = None
+ # max_path test_tree;;
+- : int option = Some 21
+[*----------------------------------------------------------------------------*)
+
+type 'a tree
+ = Empty
+ | Node of ('a tree) * 'a * ('a tree)
+
+let leaf x = Node (Empty, x, Empty)
+
+let test_tree = Node( Node(leaf 0, 2, leaf 13), 5, Node(leaf 9, 7, leaf 4))
+
+let max_aux a b = match (a,b) with 
+  | (Some a', None) -> a'
+  | (None, Some b') -> b'
+  | (Some a', Some b') -> max a' b'
+  | _ -> failwith "Error"
+
+let rec max_path = function
+  | Empty -> None
+  | Node (Empty, x, Empty) -> Some x
+  | Node (left, x, right) -> Some (x + max_aux (max_path left) (max_path right))
+
+(*----------------------------------------------------------------------------*]
+ Cena sprehoda po drevesu je vsota vrednosti v vseh obiskanih vozliščih.
+ Poiščite najdražji sprehod od korena do listov drevesa: Funkcija pot vrne v 
+ obliki seznama smeri, katere je potrebno izbrati za najdražji sprehod.
+
+ Napišite tudi funkcijo, ki sprehod pretvori v elemente sprehoda
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # max_path_trace Empty ;;
+ - : 'a list = []
+ # max_path_trace test_tree;;
+- : direction list = [Right, Left]
+ # reconstruct test_tree (max_path_trace test_tree);;
+- : int list = [5; 7; 9]
+[*----------------------------------------------------------------------------*)
+
+type direcion 
+  = Left
+  | Right
+
+let rec max_path_trace = function
+  | Empty -> []
+  | Node (Empty, x, Empty) -> []
+  | Node (left, _, right) -> 
+    match (max_path left, max_path right) with
+    | (Some a', None) -> Left :: (max_path_trace left)
+    | (None, Some b') -> Right :: (max_path_trace right)
+    | (Some a', Some b') -> if a' > b' then (Left :: (max_path_trace left)) else (Right ::(max_path_trace right))
+    | _ -> failwith "Error"
+
+
+let rec reconstruct tree path =
+  match (tree, path) with
+  | (Node (_, x, _), []) -> [x]
+  | (Node (left, x, _), Left::dirs) -> x :: (reconstruct left dirs)
+  | (Node (_, x, right), Right::dirs) -> x :: (reconstruct right dirs) 
+  | _ -> failwith "Invalid path length"

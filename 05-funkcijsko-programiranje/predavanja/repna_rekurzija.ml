@@ -1,42 +1,45 @@
-let rec vsota sez =
-    match sez with
-    | [] -> 0
-    | glava :: rep -> glava + vsota rep
+let rec vsota xs =
+  match xs with
+  | [] -> 0
+  | x :: xs' -> x + vsota xs'
 
-let rec dolzina = function
-    | [] -> 0
-    | _ :: rep -> 1 + dolzina rep
+let repno_rekurzivna_vsota xs =
+  let rec pomozna acc xs =
+  match xs with
+  | [] -> acc
+  | x :: xs' -> pomozna (acc + x) xs'
+  in
+  pomozna 0 xs
 
-let rec preslikaj f sez =
-    match sez with
-    | [] -> []
-    | glava :: rep -> f glava :: preslikaj f rep
+let rec repno_rekurzivna_vsota_z_neobveznim_argumentom ?(acc=0) xs =
+  match xs with
+  | [] -> acc
+  | x :: xs' -> repno_rekurzivna_vsota_z_neobveznim_argumentom ~acc:(acc + x) xs'
 
-let repno_rekurzivna_dolzina sez =
-    let rec dolzina' acc = function
-        | [] -> acc
-        | _ :: rep -> dolzina' (acc + 1) rep
-    in
-    dolzina' 0 sez
+(* ('a -> 'b) -> 'a list -> 'b list *)
+let rec preslikaj f xs =
+  match xs with
+  | [] -> []
+  | x :: xs' -> f x :: preslikaj f xs'
 
-let repno_rekurzivna_vsota sez =
-    let rec vsota' acc = function
-        | [] -> acc
-        | glava :: rep -> vsota' (acc + glava) rep
-    in
-    vsota' 0 sez
-
-let obrni sez =
-    let rec obrni' acc = function
+let obrni xs =
+  let rec pomozna acc xs =
+    match xs with
     | [] -> acc
-    | glava :: rep -> obrni' (glava :: acc) rep
-    in
-    obrni' [] sez
+    | x :: xs' -> pomozna (x :: acc) xs'
+  in
+  pomozna [] xs
 
+let repno_rekurzivni_preslikaj f xs =
+  let rec pomozna acc xs =
+    match xs with
+    | [] -> obrni acc
+    | x :: xs' -> pomozna (f x :: acc) xs'
+  in
+  pomozna [] xs
 
-let repno_rekurzivni_preslikaj f sez =
-    let rec preslikaj' acc = function
-        | [] -> obrni acc
-        | glava :: rep -> preslikaj' (f glava :: acc) rep
-    in
-    preslikaj' [] sez
+let rec f x y =
+    if y = 0 then x else f (x + 1) (y - 1)
+
+let rec f' x y =
+    if y = 0 then x else 1 + f' x (y - 1)

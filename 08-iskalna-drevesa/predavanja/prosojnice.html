@@ -199,7 +199,7 @@ let dodaj x m =                   (* O(log n) *)
 ```]
 
 .source[```
-let stevilo_razlicnih xs       (* O(n log n) *)
+let stevilo_razlicnih xs =      (* O(n log n) *)
   let rec aux ze_videni = function
     | [] -> velikost ze_videni
     | x :: xs -> aux (dodaj x ze_videni) xs

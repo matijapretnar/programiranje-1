@@ -10,6 +10,10 @@ Naj bo $N(h)$ najmanjše število vozlišč v kakršnemkoli AVL drevesu višine 
 
 Vzemimo poljubno AVL drevo $T$ višine $h$ s poddrevesoma $L$ in $D$. Vsaj eden od njegovih otrok ima višino $h - 1$. Brez škode za splošnost privzemimo, da je to $L$. Ker je $T$ AVL drevo, se morata višini $L$ in $D$ razlikovati za največ $1$, torej ima drevo $D$ lahko le višini $h - 1$ ali $h - 2$. Po definiciji funkcije $N$ ima drevo $L$ vsaj $N(h - 1)$, drevo $D$ pa vsaj $N(h - 2)$ elementov. Tedaj ima drevo $T$ vsaj $1 + N(h - 1) + N(h - 2)$ elementov. Torej velja
 
-$$N(h - 1) \ge 1 + N(h - 1) + N(h - 2)$$
+$$N(h) \ge 1 + N(h - 1) + N(h - 2)$$
 
-Hitro lahko preverimo, da velja $N(h) \ge F_h$, kjer smo s $F_h$ označili $h$-to Fibonaccijevo število. Torej ima vsako drevo višine vsaj $h$ vsaj $\left(\frac{1 + \sqrt{5}}{2}\right)^h$ vozlišč.
+oziroma
+
+$$N(h) + 1 \ge (N(h - 1) + 1) + (N(h - 2) + 1)$$
+
+iz česar hitro sledi, da velja $N(h) + 1 \ge F_h$, kjer smo s $F_h$ označili $h$-to Fibonaccijevo število. Torej ima vsako drevo višine vsaj $h$ vsaj $O(\left(\frac{1 + \sqrt{5}}{2}\right)^h)$ vozlišč.
