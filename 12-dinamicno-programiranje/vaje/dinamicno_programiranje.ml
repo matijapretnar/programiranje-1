@@ -32,6 +32,23 @@ let max_cheese cheese_matrix =
   in
   best_path 0 0
 
+let max_cheese_bottom cheese_matrix = 
+  let bottom = List.init (Array.length cheese_matrix.(0)) (fun _ -> 0) in
+  let lst = List.rev (List.map Array.to_list (Array.to_list cheese_matrix)) in
+  let rec best_path bottom current = 
+    match (bottom, current) with 
+      | ([b], [c]) -> [b + c]
+      | (b::bs, c::cs) -> (let right = best_path bs cs in
+        match right with 
+          |(r::rest) -> (c + (max b r)) :: right
+          | _ -> assert false
+      )
+      | _ -> assert false
+  in
+  match List.fold_left best_path bottom lst with
+    | result::_ -> result
+    | _ -> assert false
+
 (*----------------------------------------------------------------------------*]
  Rešujemo problem sestavljanja alternirajoče obarvanih stolpov. Imamo štiri
  različne tipe gradnikov, dva modra in dva rdeča. Modri gradniki so višin 2 in
@@ -67,6 +84,15 @@ let alternating_towers height =
       redtop (height-2) + redtop (height-3)
   in
   redtop height + bluetop height
+
+(* Optimal general implementation seems to be circular buffer *)
+let alternating_towers_bottom level =
+  let rec alternate (r,b) (r1, b1) (r2, b2) level =
+    if level == 0 then (r + b) else 
+      alternate (r1 + b, b1) (r2 + b, b2 + r) (0, r) (level - 1)
+  in
+  if level == 0 then 1 else 
+  alternate (1,1) (0,0) (0,0) level
 
 (*----------------------------------------------------------------------------*]
  Na nagradni igri ste zadeli kupon, ki vam omogoča, da v Mercatorju kupite
