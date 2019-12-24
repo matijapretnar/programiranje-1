@@ -32,20 +32,52 @@ def energije_vrstice(vrstica):
         r = razdalja(vrstica[i], vrstica[i + 1])
         energije[i] += r
         energije[i + 1] += r
+    energije[0] *= 2
+    energije[-1] *= 2
     return energije
 
 
 def energije_slike(slika):
     return [energije_vrstice(vrstica) for vrstica in slika]
 
+def dimenzije(slika):
+    return len(slika), len(slika[0])
 
-def poisci_siv(slika):
+def siv_po_tockah(slika):
     energije = energije_slike(slika)
     siv = []
     for vrstica in energije:
         siv.append(vrstica.index(min(vrstica)))
     return siv
 
+def navpicni_siv(slika):
+    visina, sirina = dimenzije(slika)
+    energije = energije_slike(slika)
+    energije_stolpcev = [
+        sum(energije[i][j] for i in range(visina))
+        for j in range(sirina)
+    ]
+    min_stolpec = energije_stolpcev.index(min(energije_stolpcev))
+    siv = [min_stolpec for _ in range(visina)]
+    return siv
+
+def zavijajoci_siv(slika):
+    visina, sirina = dimenzije(slika)
+    energije = energije_slike(slika)
+    sivi = [[(energije[0][x], [x]) for x in range(sirina)]]
+    for y in range(1, visina):
+        sivi_vrstice = []
+        for x in range(sirina):
+            zacetki = []
+            if x > 0:
+                zacetki.append(sivi[-1][x - 1])
+            zacetki.append(sivi[-1][x])
+            if x < sirina - 1:
+                zacetki.append(sivi[-1][x + 1])
+            energija_zacetka, siv_zacetka = min(zacetki)
+            sivi_vrstice.append((energije[y][x] + energija_zacetka, siv_zacetka + [x]))
+        sivi.append(sivi_vrstice)
+    return min(sivi[-1])[1]
 
 def pokazi_siv(slika, siv):
     nova_slika = []
@@ -63,9 +95,9 @@ def odstrani_siv(slika, siv):
     return nova_slika
 
 
-slika = nalozi_sliko('slike/8-kraljic.png')
-for i in range(len(slika)):
-    siv = poisci_siv(slika)
-    if i % 10 == 0:
-        shrani_sliko(pokazi_siv(slika, siv), f'korak-{i}.png')
+slika = nalozi_sliko('/workspaces/programiranje-1/12-dinamicno-programiranje/predavanja/kuza.png')
+for i in range(len(slika[0])):
+    print(i)
+    siv = zavijajoci_siv(slika)
+    shrani_sliko(pokazi_siv(slika, siv), f'korak-{i}.png')
     slika = odstrani_siv(slika, siv)
