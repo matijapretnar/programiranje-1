@@ -1,0 +1,85 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\VerbatimFootnotes{}
+
+\begin{document}
+	
+	\izpit{Programiranje I: kolokvij}{18.\ november 2019}{
+		Čas reševanja je 60 minut.
+		Veliko uspeha!
+	}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\naloga
+	
+	\podnaloga Definirajte funkcijo \verb|is_root|, ki sprejme dve celi števili in preveri, ali je prvo število kvadratni koren drugega. 
+	
+	\begin{verbatim}
+	# is_root 10 100;;
+	- : bool = true
+	# is_root (-2) 4;;
+	- : bool = false
+	\end{verbatim}
+	
+	\podnaloga Definirajte funkcijo \verb|pack3|, ki sprejme tri argumente in vrne njihovo trojico.
+	\begin{verbatim}
+	# pack3 1 false [];;
+	- : int * bool * 'a list = (1, false, [])
+	\end{verbatim}
+	
+	\podnaloga Definirajte funkcijo \verb|sum_if_not : (int -> bool) -> int list -> int|, ki vrne vsoto vseh elementov, ki ne ustrezajo danemu predikatu. Za vse točke mora biti funkcija repno rekurzivna.
+	
+	\begin{verbatim}
+	# sum_if_not ((=) 3) [1;2;3;4;5;-3];;
+	- : int = 9
+	\end{verbatim}
+	
+	\podnaloga Definirajte funkcijo \verb|apply : ('a -> 'b) list -> 'a list -> 'b list list|, ki vrne seznam seznamov, ki ga dobimo tako, da vse funkcije iz prvega seznama uporabimo na vseh elementih drugega seznama. Za vse točke mora biti funkcija repno rekurzivna.
+	
+	\begin{verbatim}
+	# apply [(+) 1; (-) 2; ( * ) 3] [1; 2; 3];;
+	- : int list list = [[2; 1; 3]; [3; 0; 6]; [4; -1; 9]]
+	# apply [(<) 1; (=) 2; (>) 3] [1; 2; 3; -1];;
+	- : bool list list =
+	[[false; false; true]; 
+	 [true;  true;  true];
+	 [true;  false; false]; 
+	 [false; false; true]]
+	\end{verbatim}
+
+	
+	\naloga
+	Delavnik zaposlenega na fakulteti lahko predstavimo s seznamom srečanj, od katerih je vsako predstavljeno z imenom predmeta, vrsto (predavanja/vaje) ter številom šolskih ur. Urnik predstavimo kot seznam seznamov srečanj (pri čemer privzamemo, da ima teden na FMF-ju poljubno število dni).
+	
+	\podnaloga 
+	Definirajte:
+	\begin{itemize}
+		\item variantni tip \verb|vrsta_srecanja| s konstruktorjema \verb|Predavanja| in \verb|Vaje|,
+		\item zapisni tip \verb|srecanje| s polji \verb|predmet|, \verb|vrsta| ter \verb|trajanje|,
+		\item tip \verb|urnik| kot okrajšavo za \verb|srecanje list list|.
+	\end{itemize}
+
+	\podnaloga Definirajte primera srečanj \verb|vaje|, ki predstavlja tri ure vaj pri Analizi 2a, ter \verb|predavanja|, ki predstavlja dve uri predavanj pri Programiranju 1.
+	
+	\podnaloga Definirajte primer \verb|urnik_profesor : urnik|, ki ima prvi dan dve uri vaj, tretji dan eno uro predavanj, šesti dan ponovno eno uro vaj, preostanek tedna pa ima prosto. Imena predmetov lahko izberete poljubno.
+	
+	\podnaloga Defnirajte funkcijo \verb|je_preobremenjen : urnik -> bool|, ki za podani urnik preveri, da so v vsakem dnevu kvečjemu štiri ure predavanj in štiri ure vaj.
+	
+	\begin{verbatim}
+	# je_preobremenjen urnik_profesor;;
+	- : bool = false
+	\end{verbatim}
+	
+	\podnaloga Za vsako uro vaj profesor dobi 1 evro, za vsako uro predavanj pa 2 evra. Definirajte funkcijo \verb|bogastvo : urnik -> int|, ki sprejme urnik in izračuna plačilo za profesorja. Funkcija naj bo repno rekurzivna.
+	
+	\begin{verbatim}
+	# bogastvo urnik_profesor;;
+	- : int = 5
+	\end{verbatim}
+	
+	
+\end{document}
