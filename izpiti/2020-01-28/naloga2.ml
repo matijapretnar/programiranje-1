@@ -61,3 +61,50 @@ let rec update_mutable i_list ind x =
       else
         arr.(ind) <- x
         
+(* Better solutions *)
+
+let beq_op bound x =
+  match bound with
+  | None -> true
+  | Some b -> b <= x
+let is_a_sorted bound arr =
+  let l = Array.length arr in
+  if l = 0 then 
+    (bound, true) 
+  else
+    let rec checker bound i =
+      if i >= l - 1 then true 
+      else beq_op bound arr.(i) && checker (Some arr.(i)) (i + 1)
+    in 
+    (Some arr.(l-1), checker bound 0)
+let is_sorted cmp = 
+  let rec checker bound = function
+    | Empty -> true
+    | Node (a, rest) -> 
+        let (bound', this_sorted) = is_a_sorted bound a in
+        this_sorted && checker bound' rest
+  in 
+  checker None
+  
+let beq_op bound x =
+  match bound with
+  | None -> true
+  | Some b -> b <= x
+let is_a_sorted arr l =
+  let rec aux i =
+    if i + 2 >= l then true 
+    else arr.(i) <= arr.(i + 1) && aux (i + 1)
+  in
+  aux 0
+let is_sorted cmp = 
+  let rec checker bound = function
+    | Empty -> true
+    | Node (a, rest) ->
+        let l = Array.length a in
+        if l = 0 then 
+          checker bound rest
+        else
+          let first, last = a.(0), a.(l-1) in
+          beq_op bound first && is_a_sorted a l && checker (Some last) rest 
+  in
+  checker None
