@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+# a
 @lru_cache(maxsize=None)
 def blocky(n, m, l):
     if m <= 0:
@@ -9,6 +10,8 @@ def blocky(n, m, l):
     else:
         return blocky(n-1, m, l) + blocky(n-l-1, m-1, l)
 
+
+# b
 def blocko(n, blocks):
     @lru_cache(maxsize=None)
     def blocker(n, i):

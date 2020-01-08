@@ -1,23 +1,27 @@
-let opt_sum o1 o2 =
-  match o1, o2 with
+(* a *)
+let opt_sum opt1 opt2 =
+  match opt1, opt2 with
   | Some a, Some b -> Some (a + b)
   | _ -> None
 
-let strange_map f l r x = let (a, b) = f x in (l a, r b)
+(* b *)
+let strange_map f l r x = 
+  let (a, b) = f x in 
+  (l a, r b)
 
+(* c *)
 let rec function_repeat f list =
-  let rec repeater x acc n = 
-    if n > 0 then repeater x (x::acc) (n-1) else acc 
+  let rec extender x acc n = 
+    if n > 0 then extender x (x::acc) (n-1) else acc 
   in
-  let rec extender acc = function
+  let rec repeater acc = function
     | [] -> List.rev acc
-    | x :: xs -> extender (repeater x acc (f x)) xs
+    | x :: xs -> repeater (extender x acc (f x)) xs
   in
-  extender [] list
+  repeater [] list
 
+(* d *)
 let rec iterate f cond x =
-  print_float x;
-  print_newline ();
   if cond x then 
     x
   else
