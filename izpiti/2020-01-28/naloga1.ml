@@ -1,11 +1,11 @@
 (* a *)
-let opt_sum opt1 opt2 =
+let option_sum opt1 opt2 =
   match opt1, opt2 with
   | Some a, Some b -> Some (a + b)
   | _ -> None
 
 (* b *)
-let strange_map f l r x = 
+let twostep_map f l r x = 
   let (a, b) = f x in 
   (l a, r b)
 
