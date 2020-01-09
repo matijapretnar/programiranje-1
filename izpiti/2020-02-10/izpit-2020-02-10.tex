@@ -1,0 +1,70 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows,fit,shapes}
+\VerbatimFootnotes{}
+
+
+\begin{document}
+	
+	\izpit{Programiranje I: 2. Izpit}{10.\ februar 2020}{
+		Čas reševanja je 150 minut.
+		Veliko uspeha!
+	}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\naloga 
+  
+	\podnaloga Napišite funkcijo \verb|dot_prod: float * float * float -> float * float * float -> float |, ki sprejme dva vektorja iz $\mathbb{R}^3$ in vrne njun skalarni produkt.
+  
+    \podnaloga Napišite funkcijo \verb|curry_second : ('a -> 'b -> 'c) -> 'b -> 'a -> 'c|. Ki sprejme funkcijo dveh argumentov in vrednost drugega argumenta ter vrne prvotno funkcijo, kjer 
+  \begin{verbatim}
+  # twostep_map (fun x -> (x, x)) ((+)1) ((-)2) 3;;
+  - : int * int = (4, -1)
+  \end{verbatim}
+  
+	\podnaloga Napišite funkcijo \verb|combine_and_filter : ('a -> 'b -> 'c option) -> 'a list -> 'b list -> 'c list|, ki podano funkcijo aplicira na posameznih elementih podanih seznamov in iz rezultatov zgradi nov seznam, pri čemer zavrže vse rezultate, ki so \verb|None| in konča, ko se izteče prvi katerikoli od podanih seznamov.  Za vse točke mora biti repno rekurzivna in imeti linearno časovno zahtevnost.
+	\begin{verbatim}
+	# Primer
+	\end{verbatim}
+	
+	\podnaloga Napišite funkcijo \verb|conditional_print : (string -> bool) -> string list -> unit|, ki sprejme predikat in seznam nizov. Funkcija naj izpiše z vejico ločene elemente, za katere predikat velja. Funkcija naj bo repno rekurzivna in ima linearno časovno zahtevnost. Pazite, da bo tip funkcije pravilen.
+	\begin{verbatim}
+  	# Primer
+	\end{verbatim}
+  
+  	\naloga
+  
+  	\textit{AB drevesa} definiramo s tipom
+  	\begin{verbatim}
+  	type ('a, 'b) tree = 
+  		| Empty
+  		| ANode of ('a, 'b) tree * 'a * ('a, 'b) tree
+  		| BNode of ('a, 'b) tree * 'b * ('a, 'b) tree
+  	\end{verbatim}
+	\podnaloga Definirajte AB drevo \verb|test : (int, bool) tree|, ki predstavlja spodnje drevo.
+	
+	TODO SLIKICA PROSIM :)
+	
+	\podnaloga Definirajte funkciji \verb|adepth: ('a, 'b) tree -> int|, ki vrne globino najglobljega A vozlišča in funkcijo \verb|bdepth|, ki vrne globino najglobljega B vozlišča.
+	
+	\podnaloga Definirajte funkcijo \verb|count: ('a, 'b) tree -> result|, ki prešteje število posameznih vozlišč v AB drevesu.
+	\begin{verbatim}
+	# count test;;	
+	- : result = {aNode= 2; bNode = 2}
+	\end{verbatim}
+	
+	\podnaloga Definirajte funkcijo \verb|is_typemirror : ('a, 'b) tree -> ('b, 'a) tree -> bool|, ki preveri, ali je prvo drevo enako drugemu, kjer v drugem drevesu A in B vozlišča med seboj zamenjamo.
+	
+	\podnaloga Definirajte funkcijo \verb|foldmap fa fb acc tr|, kjer imajo argumenti tipe: \verb|fa: 'a -> 'b -> 'a * 'c|, \verb|fb: 'a -> 'd -> 'a * 'e|, \verb|acc: 'a| in \verb|tr: ('b,'d) tree|, ki vrne rezultat tipa \verb|'a * ('c * 'e) tree|. Funkcija se sprehodi po podanem drevesu in vsako vozlišče pretvori z ustrezno funkcijo, hkrati pa pridobljene rezultate zlaga kot običajna funkcija fold. Vrstni red sprehoda po drevesu je poljuben, v komentarju pa argumentirajte, zakaj doseže vsa vozlišča.
+	
+	
+  \naloga
+  
+  Napišite funkcijo \verb|f(k, n)|, ki vrne število vseh zaporedij naravnih števil (naravna števila vsebujejo 0) dolžine $n$, ki se začnejo z 0 in je razlika med zaporednima členoma manjša ali enaka $k$.
+  
+	
+\end{document}
