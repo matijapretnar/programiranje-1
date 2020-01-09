@@ -8,7 +8,7 @@ type ('a, 'b) tree =
 let aleaf a = ANode (Empty, a, Empty) 
 let bleaf b = BNode (Empty, b, Empty)
 
-let test = ANode (bleaf true, 12, ANode (Empty, 1, bleaf false))
+let test = ANode (bleaf true, 12, ANode (aleaf 0, 5, bleaf false))
 
 (* b *)
 
@@ -48,15 +48,16 @@ let rec is_typemirror abtree batree =
  
 (* d *)
 
-let rec foldmap fa fb acc = function
+let rec foldmap tr fa fb acc =
+  match tr with
   | Empty -> (acc, Empty)
   | ANode (lt, a, rt) ->
-      let (acc', lt') = foldmap fa fb acc lt in
+      let (acc', lt') = foldmap lt fa fb acc in
       let (acc'', a') = fa acc' a in
-      let (acc''', rt') = foldmap fa fb acc'' rt in
+      let (acc''', rt') = foldmap rt fa fb acc'' in
       (acc''', ANode (lt', a', rt'))
   | BNode (lt, b, rt) ->
-      let (acc', lt') = foldmap fa fb acc lt in
+      let (acc', lt') = foldmap lt fa fb acc in
       let (acc'', b') = fb acc' b in
-      let (acc''', rt') = foldmap fa fb acc'' rt in
+      let (acc''', rt') = foldmap rt fa fb acc'' in
       (acc''', BNode (lt', b', rt'))
