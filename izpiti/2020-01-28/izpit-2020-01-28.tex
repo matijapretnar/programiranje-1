@@ -1,10 +1,13 @@
 \documentclass[arhiv]{../izpit}
 \usepackage{fouriernc}
+\usepackage{bbding}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{fancyvrb}
 \usetikzlibrary{calc,shapes.multipart,chains,arrows,fit,shapes}
 \VerbatimFootnotes{}
+
+\newcommand{\flower}{\textcolor{white}{\FiveFlowerOpen}}
 
 \begin{document}
 	
@@ -94,52 +97,52 @@
   \vspace{5mm}
   \begin{tikzpicture}
   \tikzstyle{every path}=[very thick]
-  \edef\sizetape{0.7cm}
+  \edef\sizetape{0.8cm}
   \tikzstyle{empty}=[draw,minimum size=\sizetape]
   \tikzstyle{filled}=[draw,fill=gray,minimum size=\sizetape]
   \begin{scope}[start chain=1 going right,node distance=-0.15mm]
-      \node [on chain=1,filled] {};
-      \node [on chain=1,filled] {};
+      \node [on chain=1,filled] {\flower};
+      \node [on chain=1,filled] {\flower};
       \node [on chain=1,empty] {};
-      \node [on chain=1,filled] {};
-      \node [on chain=1,filled] {};
+      \node [on chain=1,filled] {\flower};
+      \node [on chain=1,filled] {\flower};
       \node [on chain=1,empty] {};
-      \node [on chain=1,filled] {};
-      \node [on chain=1,filled] {};
+      \node [on chain=1,filled] {\flower};
+      \node [on chain=1,filled] {\flower};
       \node [on chain=1,empty] {};
   \end{scope}
-  \begin{scope}[shift={(7.5cm, 0cm)},start chain=2 going right,node distance=-0.15mm]
-      \node [on chain=2,filled] {};
-      \node [on chain=2,filled] {};
+  \begin{scope}[shift={(8cm, 0cm)},start chain=2 going right,node distance=-0.15mm]
+      \node [on chain=2,filled] {\flower};
+      \node [on chain=2,filled] {\flower};
       \node [on chain=2,empty] {};
-      \node [on chain=2,filled] {};
-      \node [on chain=2,filled] {};
+      \node [on chain=2,filled] {\flower};
+      \node [on chain=2,filled] {\flower};
       \node [on chain=2,empty] {};
       \node [on chain=2,empty] {};
-      \node [on chain=2,filled] {};
-      \node [on chain=2,filled] {};
+      \node [on chain=2,filled] {\flower};
+      \node [on chain=2,filled] {\flower};
   \end{scope}
   \begin{scope}[shift={(0cm,-1cm)}, start chain=3 going right,node distance=-0.15mm]
-      \node [on chain=3,filled] {};
-      \node [on chain=3,filled] {};
+      \node [on chain=3,filled] {\flower};
+      \node [on chain=3,filled] {\flower};
       \node [on chain=3,empty] {};
       \node [on chain=3,empty] {};
-      \node [on chain=3,filled] {};
-      \node [on chain=3,filled] {};
+      \node [on chain=3,filled] {\flower};
+      \node [on chain=3,filled] {\flower};
       \node [on chain=3,empty] {};
-      \node [on chain=3,filled] {};
-      \node [on chain=3,filled] {};
+      \node [on chain=3,filled] {\flower};
+      \node [on chain=3,filled] {\flower};
   \end{scope}
-  \begin{scope}[shift={(7.5cm,-1cm)}, start chain=4 going right,node distance=-0.15mm]
+  \begin{scope}[shift={(8cm,-1cm)}, start chain=4 going right,node distance=-0.15mm]
       \node [on chain=4,empty] {};
-      \node [on chain=4,filled] {};
-      \node [on chain=4,filled] {};
+      \node [on chain=4,filled] {\flower};
+      \node [on chain=4,filled] {\flower};
       \node [on chain=4,empty] {};
-      \node [on chain=4,filled] {};
-      \node [on chain=4,filled] {};
+      \node [on chain=4,filled] {\flower};
+      \node [on chain=4,filled] {\flower};
       \node [on chain=4,empty] {};
-      \node [on chain=4,filled] {};
-      \node [on chain=4,filled] {};
+      \node [on chain=4,filled] {\flower};
+      \node [on chain=4,filled] {\flower};
   \end{scope}
   \end{tikzpicture}
 	
