@@ -49,7 +49,7 @@ class: center, middle
 
 ---
 
-### Memoizacija v Pythonu s slovarjem
+### Za memoizacijo v Pythonu uporabimo **slovar**
 
 .source[```python
 kvadrati = {}
@@ -71,45 +71,7 @@ Računam 10
 
 ---
 
-### V Pythonu lahko funkcijo ob definiciji **dekoriramo**
-
-.bad-example[```python
-def pomozna(x):
-    ...
-
-f = deko(pomozna)
-```]
-
-.good-example[```python
-@deko
-def f(x):
-    ...
-```]
-
----
-
-class: question, middle, center
-
-## `povej_kaj_racunas`
-
-.left.source[```python
-@povej_kaj_racunas
-def kvadriraj(x):
-    return x ** 2
-```]
-
-.left.terminal[```python
->>> kvadriraj(4)
-Računam 4
-16
->>> kvadriraj(5)
-Računam 5
-25
-```]
-
----
-
-### Za memoizacijo v splošnem v Pythonu uporabimo **dekoratorje**
+### Memoizacijo lahko naredimo tudi **v splošnem**
 
 .source[```python
 def memoiziraj(f):
@@ -121,9 +83,24 @@ def memoiziraj(f):
     return mem_f
 ```]
 
+--
+
+.bad-example[```python
+def pomozna(x): ...
+f = dekorator(pomozna)
+```]
+
+--
+
+.good-example[```python
+@dekorator
+def f(x): ...
+```
+]
+
 ---
 
-### Memoizacija v splošnem v Pythonu
+### Memoizacijo lahko naredimo tudi **v splošnem**
 
 .source[```python
 @memoiziraj
@@ -181,7 +158,7 @@ class: center, middle, question
 
 ---
 
-### Memoizacija v OCamlu
+### Za memoizacijo v OCamlu uporabimo **zgoščevalne tabele**
 
 .source[```
 let kvadrati = Hashtbl.create 512
@@ -197,27 +174,7 @@ let mem_kvadrat x =
 
 ---
 
-### Memoizacija rekurzivne funkcije
-
-.source[```
-let fibonaccijeva_st = Hashtbl.create 512
-let rec mem_fib n =
-  match Hashtbl.find_opt fibonaccijeva_st n with
-  | Some fn -> fn
-  | None ->
-      print_endline (string_of_int n);
-      let fn =
-        match n with
-        | 0 | 1 -> n
-        | n -> mem_fib (n - 1) + mem_fib (n - 2)
-      in
-      Hashtbl.add fibonaccijeva_st n fn;
-      fn
-```]
-
----
-
-### Memoizacija **poljubne** funkcije
+### Memoizacijo lahko naredimo tudi **v splošnem**
 
 .source[```
 let memoiziraj f =
@@ -236,7 +193,7 @@ let memoiziraj f =
 
 ---
 
-### Memoizacija **poljubne** funkcije
+### Memoizacijo lahko naredimo tudi **v splošnem**
 
 .source[```
 let kvadrat x =
@@ -290,11 +247,13 @@ let odviti_fib f n =
   match n with
   | 0 | 1 -> n
   | n -> f (n - 1) + f (n - 2)
-
+  ```]
+  
+.source[```
 let rec fib n = odviti_fib fib n
 ```]
-
-### Funkcija `fib` je **fiksna točka** funkcije `odviti_fib`
+  
+#### Funkcija `fib` je **fiksna točka** funkcije `odviti_fib`
 
 ---
 
@@ -316,7 +275,7 @@ let fib = zavezi_vozel (fun fib n ->
 
 ---
 
-### Sedaj v kodo vrinemo še memoizacijo
+### Sedaj lahko pred klic **vrinemo memoizacijo**
 
 .source[```
 let memoiziraj_rec odviti_f =
