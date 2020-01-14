@@ -20,28 +20,26 @@
 
 	\naloga 
   
-	\podnaloga Napišite funkcijo \verb|option_sum: int option -> int option -> int option|. Funkcija vrne vsoto argumentov, če oba argumenta vsebujeta število, in \verb|None| sicer.
+	\podnaloga Napišite funkcijo, ki sešteje \verb|int option| argumenta. Funkcija vrne vsoto argumentov, če oba argumenta vsebujeta število, in \verb|None| sicer.
 	\begin{verbatim}
-	# option_sum (Some 1) None;;
-	- : int option : None
+    option_sum: int option -> int option -> int option
 	\end{verbatim}  
-  
+
   \podnaloga Napišite funkcijo \verb|twostep_map f l r x|, kjer imajo argumenti tipe \verb|f: ('a -> 'b * 'c)|, \verb|l: ('b -> 'd)|, \verb|r: ('c -> 'e)| in \verb|x : 'a|, rezultat funkcije pa je tipa \verb|'d * 'e|. Funkcija element \verb|x| s funkcijo \verb|f| preslika v par in na komponentah ustrezno uporabi funkciji \verb|l| in \verb|r|.
   \begin{verbatim}
   # twostep_map (fun x -> (x, x)) ((+)1) ((-)2) 3;;
   - : int * int = (4, -1)
   \end{verbatim}
   
-	\podnaloga Funkcija \verb|function_repeat: ('a -> int) -> 'a list -> 'a list|, sprejme funkcijo \verb|f| in seznam \verb|list| ter vrne nov seznam, kjer se vsak element \verb|x| seznama \verb|list| ponovi \verb|f x| krat. Nepozitivno število ponovitev pomeni, da elementa ne vključimo v končni seznam. Za vse točke naj bo funkcija repno rekurzivna, kar tudi argumentirajte v komentarju.
-	\begin{verbatim}
-	# function_repeat (fun x -> x) [0;1;2;1;(-2)];;
-	- : int list = [1;2;2;1]
-	\end{verbatim}
+  \podnaloga Definirajte funkcijo, ki sprejme funkcijo \verb|f| in seznam \verb|list| ter vrne nov seznam, kjer se vsak element \verb|x| seznama \verb|list| ponovi \verb|f x| krat. Nepozitivno število ponovitev pomeni, da elementa ne vključimo v končni seznam. Za vse točke naj bo funkcija repno rekurzivna, kar tudi argumentirajte v komentarju.
+  \begin{verbatim}
+    function_repeat: ('a -> int) -> 'a list -> 'a list
+  \end{verbatim}
+  
 	
-	\podnaloga Definirajte funkcijo \verb|iterate: ('a -> 'a) -> ('a -> bool) -> 'a -> 'a|, ki sprejme funkcijo \verb|f|, zaustavitveni pogoj in začetno vrednost. Nato funkcijo \verb|f| zaporedoma uporablja, dokler za rezultat ne velja zaustavitveni pogoj. Funkcija naj vrne prvi rezultat, pri katerem zaustavitveni pogoj vrne \verb|true|.
+	\podnaloga Definirajte funkcijo \verb||, ki sprejme funkcijo \verb|f|, zaustavitveni pogoj in začetno vrednost. Nato funkcijo \verb|f| zaporedoma uporablja, dokler za rezultat ne velja zaustavitveni pogoj, in vrne prvi rezultat, ki zadošča zaustavitvenemu pogoju.
 	\begin{verbatim}
-  # iterate (fun x -> x *. x) (fun x -> x > 12345.) 2.;; 
-  - : float = 65536.
+    iterate: ('a -> 'a) -> ('a -> bool) -> 'a -> 'a
 	\end{verbatim}
   
   \naloga
@@ -68,16 +66,14 @@
 	
 	\podnaloga Definirajte funkcijo \verb|ilist_len: 'a improved_list -> int|, ki vrne dolžino podanega seznama.
 		
-	\podnaloga Definirajte funkcijo \verb|get_el: int -> 'a improved_list -> 'a option|, ki vrne i-ti element če ga seznam vsebuje. Za vse točke mora biti funkcija repno rekurzivna.
+	\podnaloga Definirajte funkcijo, ki vrne i-ti element če ga seznam vsebuje.
 	\begin{verbatim}
-	# index test 5;;
-	- : int option = Some 20
+    get_el: int -> 'a improved_list -> 'a option
 	\end{verbatim}
 	
-	\podnaloga Definirajte funkcijo \verb|is_sorted: 'a improved_list -> bool|, ki ugotovi ali je napreden seznam urejen (predpostavimo, da vsebuje elemente, ki jih lahko primerjamo z \verb|<|). Za vse točke mora biti funkcija repno rekurzivna in imeti linearno časovno zahtevnost.
+	\podnaloga Definirajte funkcijo, ki preveri ali je napreden seznam urejen (predpostavimo, da vsebuje elemente, ki jih lahko primerjamo z \verb|<|). Za vse točke mora biti funkcija repno rekurzivna in imeti linearno časovno zahtevnost.
 	\begin{verbatim}
-	# is_sorted test;;
-	- : bool = false
+    is_sorted: 'a improved_list -> bool
 	\end{verbatim}
 	
 	\podnaloga Napišite funkcijo \verb|update: 'a improved_list -> int -> 'a -> 'a improved_list|, ki vrne nov napreden seznam, kjer vrednost na indeksu (drugi argument) nadomesti s podano vrednostjo (tretji argument). Pazite, da pri tem začetni seznam ostane nespremenjen. Za vse točke mora biti funkcija repno rekurzivna, kar v komentarju tudi argumentirajte.

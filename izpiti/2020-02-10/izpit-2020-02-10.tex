@@ -18,23 +18,27 @@
 
 	\naloga 
   
-	\podnaloga Funkcija \verb|dot_prod: float * float * float -> float * float * float -> float| izračuna skalarni produkt dveh vektorjev iz $\mathbb{R}^3$.
+	\podnaloga Napišite funkcijo za izračun skalarnega produkta dveh vektorjev iz $\mathbb{R}^3$.
   \begin{verbatim}
-  # dot_prod (1., 0., 2.) (3., 5., 1.);;
-  - : float = 5.
+    dot_prod: float * float * float -> float * float * float -> float
   \end{verbatim}
 
-  \podnaloga Napišite \verb|curry_second : ('a -> 'b -> 'c) -> 'b -> 'a -> 'c|, ki sprejme funkcijo dveh argumentov in drugi argument fiksira na podano vrednost. 
-  
-	\podnaloga Napišite funkcijo \verb|combine_and_filter f xs ys|, kjer imajo argumenti tipe \verb|xs : 'a list|, \verb|ys : 'b list| in \verb|f : ('a -> 'b -> 'c option)| ter vrne vrednost tipa \verb|'c list|. Funkcija istoležne elemente seznamov preslika z \verb|f| in vrne seznam vseh smiselnih rezultatov. Če seznama nista iste dolžine, se izvaja zgolj do konca krajšega od seznamov.
+  \podnaloga Napišite funkcijo višjega, ki sprejme funkcijo dveh argumentov in drugi argument fiksira na podano vrednost. 
+  \begin{verbatim}
+    curry_second : ('a -> 'b -> 'c) -> 'b -> 'a -> 'c
+  \end{verbatim}
+
+	\podnaloga Napišite funkcijo \verb|combine_and_filter f xs ys|, kjer imajo argumenti tipe \verb|xs : 'a list|, \verb|ys : 'b list| in \verb|f : ('a -> 'b -> 'c option)| ter vrne vrednost tipa \verb|'c list|. Funkcija istoležne elemente seznamov preslika z \verb|f| in vrne seznam vseh smiselnih rezultatov. Če seznama nista iste dolžine, se izvaja zgolj do konca krajšega od seznamov. Za vse točke naj bo repno rekurzivna.
 	\begin{verbatim}
   # let safe_minus x y = if x > y then Some (x-y) else None
     combine_and_filter safe_minus [1;0;4;3] [2;1;0;2;5];;
   - : int list = [4; 1]
 	\end{verbatim}
 	
-	\podnaloga Napišite funkcijo \verb|conditional_print : (string -> bool) -> string list -> unit|, ki sprejme predikat in seznam nizov. Funkcija naj izpiše z vejico ločene elemente seznama, za katere predikat velja. Za vse točke naj bo repno rekurzivna in ima linearno časovno zahtevnost. Pazite, da bo tip funkcije pravilen.
-	\begin{verbatim}
+	\podnaloga Napišite funkcijo, ki sprejme predikat in seznam nizov in izpiše z vejico ločene elemente seznama, za katere predikat velja. Pazite, da bo tip funkcije pravilen.
+  \begin{verbatim}
+  # conditional_print;;
+  - : (string -> bool) -> string list -> unit = <fun>
   # let long_enough s = String.length s > 3 in
     conditional_print long_enough ["Ta"; "izpit"; "je"; "neumen!"];;
   izpit, neumen!- : unit = ()
@@ -71,7 +75,7 @@
 	
 	\podnaloga Definirajte zapisni tip \verb|result| in funkcijo \verb|count: ('a, 'b) tree -> result|, ki prešteje število posameznih vozlišč v AB drevesu kot je prikazano v primeru.
 	\begin{verbatim}
-	# count test;;	
+	# count test;;
 	- : result = {aNodes = 3; bNodes = 2}
 	\end{verbatim}
 	
@@ -81,7 +85,7 @@
   - : bool = true
   \end{verbatim}
     
-  \podnaloga Napišite funkcijo \verb|foldmap fa fb acc tr| za hkratno zlaganje in preslikaje AB dreves. Funkciji \verb|fa: 'c -> 'a -> 'c * 'd| in \verb|fb: 'c -> 'b -> 'c * 'e| sprejmeta akumulator tipa \verb|'c| in vrednost vozlišča, ter vrneta posodobljen akumulator in novo vrednost vozlišča. Funkcija \verb|foldmap| zloži ti dve funkciji preko AB drevesa \verb|tr : ('a,'b) tree| z začetnim akumulatorjem \verb|acc : 'c|. Kot rezultat vrne par, končno stanje akumulatorja in novo drevo tipa \verb|('d * 'e) tree|, ki vsebuje posodobljene vrednosti vozlišč. Za poenostavitev problema predpostavite, da vrstni red sprehoda po drevesu ni pomemben.
+  \podnaloga Napišite funkcijo \verb|foldmap fa fb acc tr| za hkratno zlaganje in preslikanje AB dreves. Funkciji \verb|fa: 'c -> 'a -> 'c * 'd| in \verb|fb: 'c -> 'b -> 'c * 'e| sprejmeta akumulator tipa \verb|'c| in vrednost vozlišča, ter vrneta posodobljen akumulator in novo vrednost vozlišča. Funkcija \verb|foldmap| zloži ti dve funkciji preko AB drevesa \verb|tr : ('a,'b) tree| z začetnim akumulatorjem \verb|acc : 'c|. Kot rezultat vrne par, končno stanje akumulatorja in novo drevo tipa \verb|('d * 'e) tree|, ki vsebuje posodobljene vrednosti vozlišč. Za poenostavitev problema predpostavite, da vrstni red sprehoda po drevesu ni pomemben.
   \begin{verbatim}
   # foldmap test (fun acc x -> (acc+x, 0)) (fun acc b -> (acc-1, ())) 0;;  
   - : int * (int, unit) tree =
