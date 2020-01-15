@@ -9,7 +9,7 @@
 
 \begin{document}
 	
-	\izpit{Programiranje I: 2. Izpit}{10.\ februar 2020}{
+	\izpit{Programiranje I: 2. izpit}{10.\ februar 2020}{
 		Čas reševanja je 150 minut.
 		Veliko uspeha!
 	}
@@ -23,9 +23,9 @@
     dot_prod: float * float * float -> float * float * float -> float
   \end{verbatim}
 
-  \podnaloga Napišite funkcijo višjega, ki sprejme funkcijo dveh argumentov in drugi argument fiksira na podano vrednost. 
+  \podnaloga Napišite funkcijo višjega reda, ki sprejme funkcijo dveh argumentov in drugi argument fiksira na podano vrednost. 
   \begin{verbatim}
-    curry_second : ('a -> 'b -> 'c) -> 'b -> 'a -> 'c
+    fix_second : ('a -> 'b -> 'c) -> 'b -> 'a -> 'c
   \end{verbatim}
 
 	\podnaloga Napišite funkcijo \verb|combine_and_filter f xs ys|, kjer imajo argumenti tipe \verb|xs : 'a list|, \verb|ys : 'b list| in \verb|f : ('a -> 'b -> 'c option)| ter vrne vrednost tipa \verb|'c list|. Funkcija istoležne elemente seznamov preslika z \verb|f| in vrne seznam vseh smiselnih rezultatov. Če seznama nista iste dolžine, se izvaja zgolj do konca krajšega od seznamov. Za vse točke naj bo repno rekurzivna.
