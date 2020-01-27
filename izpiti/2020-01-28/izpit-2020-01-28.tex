@@ -85,9 +85,9 @@ ki argument tipa \verb|'a| najprej preslika s prvo funkcijo, nato pa na komponen
 	
  \podnaloga Napišite funkcijo \verb|update: 'a improved_list -> int -> 'a -> 'a improved_list|, ki vrne nov napreden seznam, kjer vrednost na indeksu (drugi argument) nadomesti s podano vrednostjo (tretji argument). Pazite, da pri tem začetni seznam ostane nespremenjen.
 	\begin{verbatim}
-	# index (update test 5 (-3)) 5;;
+	# nth (update test 5 (-3)) 5;;
 	- : int option = Some (-3)
-	# index test 5;;
+	# nth test 5;;
 	- : int option = Some 20
 	\end{verbatim}
 	
@@ -95,7 +95,7 @@ ki argument tipa \verb|'a| najprej preslika s prvo funkcijo, nato pa na komponen
 
   \emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
   
-  \podnaloga Mama Franca želijo na balkon širine $n$ postaviti $m$ korit z nageljni širine $l$ (korit, ne nageljnov). Zaradi lažjega zalivanja mora biti med dvema koritoma vsaj za 1 enoto prostora. Mama Franca želijo postaviti vsa korita, jih pa zaradi slabega vida med seboj ne razlikujejo. Primer za vse 4 možne postavitve pri balkonu širine 9 s tremi koriti širine 2:
+  \podnaloga Mama Franca želijo na balkon širine $n$ postaviti $m$ korit z nageljni širine $l$ (korit, ne nageljnov). Zaradi lažjega zalivanja mora biti med dvema koritoma vsaj za 1 enoto prostora. Mama Franca želijo postaviti vsa korita, jih pa zaradi slabega vida med seboj ne razlikujejo. Primer vseh štirih možnih postavitev pri balkonu širine 9 s tremi koriti širine 2:
   
   \vspace{5mm}
   \begin{tikzpicture}
