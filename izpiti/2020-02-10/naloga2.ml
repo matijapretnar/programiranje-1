@@ -14,13 +14,19 @@ let test = ANode (bleaf true, 12, ANode (aleaf 0, 5, bleaf false))
 
 let rec adepth = function
     | Empty -> 0
-    | ANode _ -> 1
-    | BNode (lt, _ ,rt) -> max (adepth lt) (adepth rt)
+    | ANode (lt, _ ,rt) -> 
+        1 + max (adepth lt) (adepth rt)
+    | BNode (lt, _ ,rt) -> 
+        let ad = max (adepth lt) (adepth rt) in
+        if ad = 0 then 0 else 1 + ad
 
 let rec bdepth = function
     | Empty -> 0
-    | ANode (lt, _ ,rt) -> max (bdepth lt) (bdepth rt)
-    | BNode _ -> 1
+    | ANode (lt, _ ,rt) -> 
+        let bd = max (bdepth lt) (bdepth rt) in
+        if bd = 0 then 0 else 1 + bd
+    | BNode (lt, _ ,rt) -> 
+        1 + max (bdepth lt) (bdepth rt)
 
 (* c *)
 
