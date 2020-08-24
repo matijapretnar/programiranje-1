@@ -97,11 +97,19 @@
 
   \naloga
   
-  % \emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+  \emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
 
-  % \vspace{3mm}
-  % \noindent
-  % Napišite funkcijo \verb|f(k, n)|, ki vrne število vseh zaporedij naravnih števil (naravna števila vsebujejo 0) dolžine $n$, ki se začnejo z 0 in v katerih je absolutna razlika med zaporednima členoma manjša ali enaka $k$.
-  
-	
+  \emph{Parnost} permutacije~$\pi$ definiramo kot parnost števila njenih \emph{inverzij}, torej takih parov števil $i < j$, da velja $\pi_i > \pi_j$. Na primer, identična permutacija je soda, ker nima inverzij, permutacija
+  \[
+    \rho = \begin{pmatrix}1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 1 \end{pmatrix}
+  \]
+  pa je liha, saj ima tri inverzije: $\rho_1 > \rho_4$, $\rho_2 > \rho_4$ in $\rho_3 > \rho_4$. Enostavno lahko preverimo (pa tudi pri \emph{Algebri 1} ste se učili), da:
+  \begin{itemize}
+    \item je kompozitum dveh sodih ali dveh lihih permutacij soda permutacija,
+    \item je kompozitum sode in lihe permutacije liha permutacija,
+    \item je cikel $(1 2 3 \dots n)$ liha permutacija natanko tedaj, kadar je $n$ sod.
+  \end{itemize}
+
+  Napišite funkcijo \verb|soda|, ki sprejme naravno število $n$ in ob vsakem klicu vrne naključno izbrano \emph{sodo} permutacijo prvih $n$ naravnih števil. Funkcija naj deluje v času $O(n)$, porabi naj največ $O(n)$ dodatnega prostora, vsaka permutacija pa naj se pojavi z enako verjetnostjo (ki je za $n < 2$ enaka $1$, sicer pa $\frac{2}{n!}$). Pravilnost rešitve utemeljite v komentarjih.
+
 \end{document}
