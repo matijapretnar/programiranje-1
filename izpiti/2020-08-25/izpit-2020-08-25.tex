@@ -1,0 +1,107 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows,fit,shapes}
+\VerbatimFootnotes{}
+
+
+\begin{document}
+	
+	\izpit{Programiranje I: 2. izpit}{25.\ avgust 2020}{
+		Čas reševanja je 150 minut.
+		Veliko uspeha!
+	}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\naloga 
+  
+	\podnaloga Napišite funkcijo za izračun kota med dvema ravninskima vektorjema.
+  \begin{verbatim}
+    angle_between: float * float -> float * float -> float
+  \end{verbatim}
+
+  \podnaloga Napišite funkcijo, ki pretvarja sezname primerne dolžine v trojice. 
+  \begin{verbatim}
+    list_to_triple : 'a list -> ('a * 'a * 'a) option
+  \end{verbatim}
+
+  \podnaloga Definirajte zapisni tip \verb|counter| s celoštevilskimi polji \verb|lt|, \verb|eq| in \verb|gt|. Funkcija \verb|compare_with| sprejme seznam in vrednost in vrne koliko elementov seznama je manjših, enakih oziroma večjih kot podana vrednost. Rezultat naj bo tipa \verb|counter|, za vse točke pa naj se funkcija po seznamu sprehodi zgolj enkrat.
+  \begin{verbatim}
+    compare_with : 'a list -> 'a -> counter
+	\end{verbatim}
+	
+  \podnaloga Napišite funkcijo, ki sestavi kompozitum seznama funkcij. 
+  \begin{verbatim}
+    apply_all : ('a -> 'a) list -> 'a -> 'a
+	\end{verbatim}
+  Kot primer, \verb|apply_all [f1; f2; f3]| vrne funkcijo, ki \verb|x| preslika v \verb|f1(f2(f3(x)))|. Za vse točke naj bo kompozitum sestavljen tako, da med izvajanjem ne pride do stack overflow napake. Kot test lahko uporabite:
+  \begin{verbatim}
+    let long_test = List.init 1000000 (fun _ -> (+) 1) in
+    apply_all long_test 0
+  \end{verbatim}
+
+  \naloga
+  
+  % \textit{AB drevesa} (ki hranijo dva različna tipa podatkov) definiramo s tipom
+  % 	\begin{verbatim}
+  % 	type ('a, 'b) tree = 
+  % 		| Empty
+  % 		| ANode of ('a, 'b) tree * 'a * ('a, 'b) tree
+  % 		| BNode of ('a, 'b) tree * 'b * ('a, 'b) tree
+  % 	\end{verbatim}
+  
+  % \podnaloga Definirajte AB drevo \verb|test : (int, bool) tree|, ki predstavlja spodnje drevo.
+	
+	% \[
+  % \begin{tikzpicture}[level distance=0.9cm,
+  %   level 1/.style={sibling distance=4cm},
+  %   level 2/.style={sibling distance=2cm},
+  %   level 3/.style={sibling distance=2cm}
+  %   ]
+  %   \node[minimum size=0.8cm, draw] {12}
+  %     child {node[circle, draw] {true}}
+  %     child {node[minimum size=0.8cm, draw] {5}
+  %       child {node[minimum size=0.8cm, draw] {0}}
+  %       child {node[circle, draw] {false}}
+  %     };
+  % \end{tikzpicture}
+  % \]
+	
+	% \podnaloga Definirajte funkciji \verb|adepth| in \verb|bdepth| tipa \verb|('a, 'b) tree -> int|, ki vrneta globino najglobljega A oz.\ B vozlišča. Na zgornjem primeru sta torej obe globini enaki 3, če pa vozlišče, ki vsebuje \verb|0|, nadomestimo z novim vozliščem \verb|false|, bi funkcija \verb|adepth| sedaj vrnila 2.
+	
+	% \podnaloga Definirajte zapisni tip \verb|result| in funkcijo \verb|count: ('a, 'b) tree -> result|, ki prešteje število posameznih vozlišč v AB drevesu kot je prikazano v primeru.
+	% \begin{verbatim}
+	% # count test;;
+	% - : result = {aNodes = 3; bNodes = 2}
+	% \end{verbatim}
+	
+	% \podnaloga Definirajte funkcijo \verb|is_typemirror : ('a, 'b) tree -> ('b, 'a) tree -> bool|, ki preveri, ali sta si drevesi zrcalni v uporabi A in B vozlišč (torej sta matematično gledano enaki, le da prvo drevo uporablja A vozlišča na mestih, kjer drugo drevo uporablja B vozlišča in obratno).
+  % \begin{verbatim}
+  % # is_typemirror (ANode (Empty, 1, Empty)) (BNode (Empty, 1, Empty));;	
+  % - : bool = true
+  % \end{verbatim}
+    
+  % \podnaloga Napišite funkcijo \verb|foldmap fa fb acc tr| za hkratno zlaganje in preslikanje AB dreves. Funkciji \verb|fa: 'c -> 'a -> 'c * 'd| in \verb|fb: 'c -> 'b -> 'c * 'e| sprejmeta akumulator tipa \verb|'c| in vrednost vozlišča, ter vrneta posodobljen akumulator in novo vrednost vozlišča. Funkcija \verb|foldmap| zloži ti dve funkciji preko AB drevesa \verb|tr : ('a,'b) tree| z začetnim akumulatorjem \verb|acc : 'c|. Kot rezultat vrne par, končno stanje akumulatorja in novo drevo tipa \verb|('d * 'e) tree|, ki vsebuje posodobljene vrednosti vozlišč. Za poenostavitev problema predpostavite, da vrstni red sprehoda po drevesu ni pomemben.
+  % \begin{verbatim}
+  % # foldmap test (fun acc x -> (acc+x, 0)) (fun acc b -> (acc-1, ())) 0;;  
+  % - : int * (int, unit) tree =
+  % (15, 
+  %  ANode (BNode (Empty, (), Empty), 0,
+  %   ANode (ANode (Empty, 0, Empty), 0, BNode (Empty, (), Empty))))
+  % \end{verbatim}
+
+  % \podnaloga[za čast in slavo] Napišite funkcijo \verb|min_nodes:(float, int) tree -> (float, int) tree|, ki vrne drevo z isto obliko kot prvotno, le da so vsa vozlišča nadomeščena z najmanjšim vozliščem ustreznega tipa. Funkcijo \verb|min_nodes| napišite tako, da drevo obhodi samo enkrat.
+
+  \naloga
+  
+  % \emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+  % \vspace{3mm}
+  % \noindent
+  % Napišite funkcijo \verb|f(k, n)|, ki vrne število vseh zaporedij naravnih števil (naravna števila vsebujejo 0) dolžine $n$, ki se začnejo z 0 in v katerih je absolutna razlika med zaporednima členoma manjša ali enaka $k$.
+  
+	
+\end{document}
