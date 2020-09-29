@@ -15,3 +15,5 @@ _build
 *.fls
 *.log
 *.synctex.gz
+
+.DS_Store
