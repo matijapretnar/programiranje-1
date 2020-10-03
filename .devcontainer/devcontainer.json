@@ -1,11 +1,16 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 {
 	"name": "Programiranje 1",
+	"image": "j00sko/programiranje1:latest",
+	
+	// Build the image locally 
+	/*
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update to use different versions
 		"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.10" }
 	},
+	*/
 	
 	// Set *default* container specific settings.json values on container create. 
 	"settings": {

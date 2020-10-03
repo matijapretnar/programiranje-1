@@ -6,6 +6,9 @@ FROM python:${PYTHON_VERSION}-buster as base-python
 # https://pythonspeed.com/articles/multi-stage-docker-python/
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
+RUN python -m pip install --upgrade pip
+# For faster instalation
+RUN pip install wheel
 RUN pip install --no-cache-dir --no-warn-script-location pandas numpy jupyter requests matplotlib dash
 
 
@@ -40,5 +43,7 @@ ENV MANPATH="$MANPATH"':/home/opam/.opam/'${OCAML_VERSION}'/man'
 ENV OCAML_DOCKER_PATH='/home/opam/.opam/'${OCAML_VERSION}'/bin'
 ENV PATH="$OCAML_DOCKER_PATH:$PATH"
 
+# This enables us to install additional python libraries
+USER root
 # Expose jupyter port
 EXPOSE 8888
