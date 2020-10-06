@@ -43,7 +43,7 @@ def vse_pojavitve(besedilo: str, iskani_niz: str):
 ```
 
 ```{code-cell}
-list(vse_pojavitve('Ena sama je, mama!', 'ma')
+list(vse_pojavitve('Ena sama je, mama!', 'ma'))
 ```
 
 Če želimo, lahko vsako pojavitev prikažemo v njenem kontekstu:
@@ -134,20 +134,62 @@ pokazi_vse_pojavitve('Ena sama je, mama!', '.a')
 pokazi_vse_pojavitve('Ena sama je, mama!', '.m')
 ```
 
-Če se želimo omejiti na posamezne znake ali posamezen razpon zaporednih znakov, jih naštejemo med oglatimi oklepaji:
+Piko samo predstavimo z vzorcem `\.`. Pri tem je potrebno upoštevati, da je vzorec sestavljen iz dveh znakov: poševnice in pike, zato je treba v Pythonu za poševnico uporabiti ubežni znak:
 
 ```{code-cell}
-pokazi_vse_pojavitve('ata, mama, teta, stric', '.[aeiou].')
+pokazi_vse_pojavitve('akad. prof. dr. Jana Obvlada', '\\.')
+```
+
+Ker veliko vzorcev uporablja poševnice, dvojne poševnice pa je nadležno pisati, bomo raje uporabili _surove_ nize, v katerih Python ne uporablja ubežnih znakov in `\` pomeni preprosto `\`. Dobimo tako, da pred narekovaj napišemo `r`.
+
+```{code-cell}
+pokazi_vse_pojavitve('akad. prof. dr. Jana Obvlada', r'\.')
+```
+
+Običajno surove nize uporabljamo za zapis regularnih izrazov (tudi Visual Studio Code v surovih nizih obarva regularne izraze), vendar `r` ne pomeni _regex_ temveč _raw_.
+
+Vse števke predstavimo z vzorcem `\d`, vse črke z vzorcem `\w`, vse bele znake (presledke, tabulatorje, znake za novo vrstico) pa z vzorcem `\s`:
+
+```{code-cell}
+pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\d+')
 ```
 
 ```{code-cell}
-pokazi_vse_pojavitve('ata, mama, teta, stric', '.[aeiou][a-z]')
+pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\w+')
+```
+
+```{code-cell}
+pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\s+')
+```
+
+Če uporabimo veliko tiskano črko, dobimo komplement. Tako vzorcu `\D` ustrezajo vsi znaki razen števk, vzorcu `\W` vsi znaki razen črk, vzorcu `\S` pa vsi znaki razen belih.
+
+```{code-cell}
+pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\D+')
+```
+
+```{code-cell}
+pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\W+')
+```
+
+```{code-cell}
+pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\S+')
+```
+
+Če se želimo omejiti na posamezne znake ali posamezen razpon zaporednih znakov, jih naštejemo med oglatimi oklepaji:
+
+```{code-cell}
+pokazi_vse_pojavitve('ata, mama, teta, stric', r'.[aeiou].')
+```
+
+```{code-cell}
+pokazi_vse_pojavitve('ata, mama, teta, stric', r'.[aeiou][a-z]')
 ```
 
 Če kot prvi znak v oglatih oklepajih damo `^`, dobimo komplement:
 
 ```{code-cell}
-pokazi_vse_pojavitve('ata, mama, teta, stric', '.[^aeiou].')
+pokazi_vse_pojavitve('ata, mama, teta, stric', r'.[^aeiou].')
 ```
 
 ### Kvantifikatorji
@@ -155,59 +197,196 @@ pokazi_vse_pojavitve('ata, mama, teta, stric', '.[^aeiou].')
 Z `*` označimo poljubno mnogo ponovitev danega vzorca:
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'd*a')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'd*a')
 ```
 
 Če želimo, da se vzorec pojavi vsaj enkrat, uporabimo `+`:
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'd+a')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'd+a')
 ```
 
 Kvantifikatorja `*` in `+` sta požrešna, kar pomeni, da poskusita zajeti kolikor znakov lahko:
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'd.*a')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'd.*a')
 ```
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'd.+a')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'd.+a')
 ```
 
 Če želimo najti najkrajše možne pojavitve, moramo na koncu dodati še `?`:
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'd.*?a')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'd.*?a')
 ```
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'd.+?a')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'd.+?a')
 ```
 
 Če uporabimo samo `?`, to pomeni morebitno pojavitev vzorca:
 
 ```{code-cell}
-pokazi_vse_pojavitve('Oddal sem davčno napoved', 'da?')
+pokazi_vse_pojavitve('Oddal sem davčno napoved', r'da?')
 ```
+
+Če želimo dobiti znake `*`, `+` in `?` uporabimo `\*`, `\+` in `\?`.
 
 Kvantifikatorji `*`, `+` in `?` so posebni primeri kvantifikatorja `{m,n}`, ki predstavlja katerokoli število ponovitev med `m` in `n`, pri čemer lahko kakšno izmed meja tudi izpustimo. Tako je kvantifikator `*` okrajšava za `{0,}`, kvantifikator `+` okrajšava za `{1,}`, kvantifikator `?` pa okrajšava za `{0,1}`.
 
 ```{code-cell}
-pokazi_vse_pojavitve('"Brrrr, brrrrrr, brrr, brrrrrrr," je drgetal od mraza.', '[Bb]r{4,5}')
+pokazi_vse_pojavitve('"Brrrr, brrrrrr, brrr, brrrrrrr," je drgetal od mraza.', r'[Bb]r{4,5}')
 ```
 
 ```{code-cell}
-pokazi_vse_pojavitve('"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal od mraza.', '[Bb]r{4,}')
+pokazi_vse_pojavitve('"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal od mraza.', r'[Bb]r{4,}')
 ```
 
 ```{code-cell}
-pokazi_vse_pojavitve('"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal od mraza.', '[Bb]r{,5}')
+pokazi_vse_pojavitve('"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal od mraza.', r'[Bb]r{,5}')
 ```
-
-### Posebni znaki
 
 ### Skupine
 
+Vzorce lahko z oklepaji združujemo v skupine:
+
+```{code-cell}
+pokazi_vse_pojavitve('tralala hopsasa', r'([^aeiou][aeiou])+')
+```
+
+V pojavitvi lahko do posameznih skupin dostopamo prek metode `group`. Celotna pojavitev ima indeks `0`, nato pa so oštevilčene glede na uklepaje:
+
+```{code-cell}
+recept = 'Potrebujem 500 g moke in 250 ml vode.'
+vzorec = r'(\d+) (\w+)'
+for pojavitev in re.finditer(vzorec, recept):
+    print(f'enota: {pojavitev.group(2)}, vrednost: {pojavitev.group(1)}')
+```
+
+Dostikrat je koristno, da skupine poimenujemo, kar storimo tako, da skupino pišemo kot `(?P<ime_skupine>...)`. Do vseh skupin potem dostopamo prek metode `groupdict`:
+
+```{code-cell}
+vzorec = r'(?P<kolicina>\d+) (?P<enota>\w+)'
+[pojavitev.groupdict() for pojavitev in re.finditer(vzorec, recept)]
+```
+
+Zgornjo funkcijo bi tako lepše napisali kot:
+```{code-cell}
+def izlusci_sifro_in_naslov(niz):
+    vzorec = r'<a href="/title/tt(?P<sifra>\d+)/\?ref_=adv_li_tt">(?P<naslov>.*?)</a>'
+    pojavitev = re.search(vzorec, niz)
+    sifra = int(pojavitev.group('sifra'))
+    naslov = pojavitev.group('naslov')
+    return sifra, naslov
+```
+
+```{code-cell}
+izlusci_sifro_in_naslov('<a href="/title/tt0076759/?ref_=adv_li_tt">Star Wars: Episode IV - A New Hope</a>')
+```
+
+```{code-cell}
+izlusci_sifro_in_naslov('<a href="/title/tt0086190/?ref_=adv_li_tt">Star Wars: Episode VI - Return of the Jedi</a>')
+```
+
 ## Metode za delo z regularnimi izrazi
+
+V knjižnici `re` je na voljo več funkcij za delo z regularnimi izrazi:
+
+- `search`, ki vrne prvo pojavitev danega vzorca v nizu oziroma `None`, če je ni:
+
+  ```{code-cell}
+  re.search(r'\d', '3, 4, zdaj!')
+  ```
+
+  ```{code-cell}
+  re.search(r'\d', 'tri, štiri, zdaj!')
+  ```
+
+- `match`, ki vrne pojavitev, če ta ustreza začetku niza oziroma `None`, če ne:
+
+  ```{code-cell}
+  re.match(r'\d+', '500 g moke')
+  ```
+
+  ```{code-cell}
+  re.match(r'\d+', 'Potrebujem 500 g moke.')
+  ```
+
+- `fullmatch`, ki vrne pojavitev, če ta ustreza celotnemu nizu oziroma `None`, če ne:
+
+  ```{code-cell}
+  re.fullmatch(r'\w+', 'Proseminar')
+  ```
+
+  ```{code-cell}
+  re.fullmatch(r'\w+', 'Uvod v programiranje')
+  ```
+
+- `finditer`, ki vrne iterator čez vse pojavitve vzorca v nizu:
+
+  ```{code-cell}
+  list(re.finditer(r'\d', '3, 4, zdaj!'))
+  ```
+
+- `findall`, ki vrne seznam vsebin vseh pojavitev vzorca v nizu:
+
+  ```{code-cell}
+  re.findall(r'\d', '3, 4, zdaj!')
+  ```
+
+- `findall`, ki vrne seznam vsebin vseh pojavitev vzorca v nizu:
+
+  ```{code-cell}
+  re.findall(r'\d', '3, 4, zdaj!')
+  ```
+
+- `split`, ki dani niz razdeli po pojavitvah:
+
+  ```{code-cell}
+  re.split(r'[aeiou]', 'otorinolaringolog')
+  ```
+
+- `sub`, ki v danem nizu pojavitve zamenja z drugimi nizi, v katerih lahko do posameznih skupin dostopamo prek `\1`, `\2`, ...
+
+  ```{code-cell}
+  def daj_en_presledek_za_vsako_stevilko(niz):
+      stevilka_in_morebitni_presledki = r'(\d+)\s*'
+      return re.sub(stevilka_in_morebitni_presledki, r'\1 ', niz)
+  ```
+
+  ```{code-cell}
+  daj_en_presledek_za_vsako_stevilko('500g moke in 250    ml vode')
+  ```
+
+Vse zgoraj omenjene funkcije poleg običajnih argumentov sprejmejo še dodatne parametre, ki jih imenujemo zastavice in malenkostno spreminjajo iskanje. Na primer, z `re.IGNORECASE` pri iskanju ne razlikujemo med malimi in velikimi črkami:
+
+```{code-cell}
+re.findall(r'a', 'Abraham')
+```
+
+```{code-cell}
+re.findall(r'a', 'Abraham', flags=re.IGNORECASE)
+```
+
+Druga pogosto uporabljana zastavica je `re.DOTALL`. Vzorec `.` običajno pomeni vse znake razen znaka za novo vrstico. Če uporabimo `re.DOTALL`, pa vključuje tudi tega:
+
+
+```{code-cell}
+re.findall(r'X.*?Y', 'XyzzY X    Y X\nY')
+```
+
+```{code-cell}
+re.findall(r'X.*?Y', 'XyzzY X    Y X\nY', flags=re.DOTALL)
+```
+
+Če želimo uporabiti več zastavic, jih v eno sestavimo z `|`:
+
+```{code-cell}
+re.findall(r'X.*?Y', 'XyzzY x    y X\nY', flags=(re.DOTALL|re.IGNORECASE))
+```
+
+Vse zgoraj omenjene funkcije sprejmejo niz z vzorcem, ki ga iščemo. Še bolj Pythonovsko in tudi bolj učinkovito, če vzorec uporabljamo večkrat, pa je, da vzorec s funkcijo `compile` pretvorimo v objekt `re.Pattern`. Na takem objektu lahko potem kličemo metode z istimi imeni kot zgoraj omenjene funkcije.
 
 ## Knjižnica Beautiful Soup
