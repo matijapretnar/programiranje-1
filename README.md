@@ -13,7 +13,7 @@ Ker vam GitHub ob kliku na HTML datoteko namesto strani prikaže izvorno HTML ko
 - [Učinki in čistost](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/07-ucinki-in-cistost/prosojnice.html)
 - [Iskalna drevesa](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/08-iskalna-drevesa/prosojnice.html)
 - [Modularnost](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/09-modularnost/prosojnice.html)
--[](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/10-spremenljive-podatkovne-strukture/prosojnice.html)
+- [Spremenljive podatkovne strukture](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/10-spremenljive-podatkovne-strukture/prosojnice.html)
 - [Deli in vladaj](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/11-deli-in-vladaj/prosojnice.html)
 - [Dinamično programiranje](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/12-dinamicno-programiranje/prosojnice.html)
 - [Memoizacija](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/13-memoizacija/prosojnice.html)
