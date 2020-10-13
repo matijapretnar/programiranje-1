@@ -176,6 +176,19 @@ pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\W+')
 pokazi_vse_pojavitve('Potrebujem 500g moke.', r'\S+')
 ```
 
+Omenimo tudi vzorca `\b` ter `\B` _(boundary)_. Oba sta ničelne širine, torej sama ne označujeta nobenega znaka.
+`\b` označuje pozicijo med besednim znakom (karkoli ujemajoče z \w) ter nebesednim znakom (karkoli ujemajoče z \W).
+
+```{code-cell}
+pokazi_vse_pojavitve('Je pravo vprašanje kaj ali zakaj?', r'\bkaj\b')
+```
+
+Vzorec `\B` pa predstavlja ravno obratno. Uporabimo ga, kadar iskani del ni na začetku ali koncu besede.
+
+```{code-cell}
+pokazi_vse_pojavitve('Svet ni niti bel, niti črnobel.', r'\Bbel\b')
+```
+
 Če se želimo omejiti na posamezne znake ali posamezen razpon zaporednih znakov, jih naštejemo med oglatimi oklepaji:
 
 ```{code-cell}
@@ -328,12 +341,6 @@ V knjižnici `re` je na voljo več funkcij za delo z regularnimi izrazi:
 
   ```{code-cell}
   list(re.finditer(r'\d', '3, 4, zdaj!'))
-  ```
-
-- `findall`, ki vrne seznam vsebin vseh pojavitev vzorca v nizu:
-
-  ```{code-cell}
-  re.findall(r'\d', '3, 4, zdaj!')
   ```
 
 - `findall`, ki vrne seznam vsebin vseh pojavitev vzorca v nizu:
