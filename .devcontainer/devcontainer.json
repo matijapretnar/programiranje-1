@@ -29,7 +29,8 @@
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	"runArgs": [ "--net=host", ], // To publish jupyter
-
+	//"workspaceMount": "", // https://github.com/microsoft/vscode-remote-release/issues/509
+	// Network folders on windows do not work yet: https://stackoverflow.com/questions/50239386/docker-add-network-drive-as-volume-on-windows
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 }
