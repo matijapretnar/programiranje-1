@@ -8,7 +8,7 @@ zupa = bs4.BeautifulSoup(vsebina, 'html.parser')
 count = 0
 for povezava in zupa.find_all('a'):
     link = povezava.get('href')
-    if link.endswith('?ref_=adv_li_tt'):
+    if link and link.endswith('?ref_=adv_li_tt'):
         naslov = povezava.string
         id = int(re.search('\d{7}', link).group(0))
         znacka_z_letom = povezava.find_next_sibling()
@@ -18,4 +18,3 @@ for povezava in zupa.find_all('a'):
         print(id, naslov, leto)
         count += 1
 print(count)
-
