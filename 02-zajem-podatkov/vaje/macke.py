@@ -77,7 +77,8 @@ def read_file_to_string(directory, filename):
 def page_to_ads(page_content):
     """Funkcija poišče posamezne oglase, ki se nahajajo v spletni strani in
     vrne njih seznam"""
-    rx = re.compile(r'<div class="ad">(.*?)<div class="clear">',
+    rx = re.compile(r'<li class="EntityList-item EntityList-item--Regular'
+                    r'(.*?)</article>',
                     re.DOTALL)
     ads = re.findall(rx, page_content)
     return ads
@@ -88,15 +89,23 @@ def page_to_ads(page_content):
 
 def get_dict_from_ad_block(block):
     """Funkcija iz niza za posamezen oglasni blok izlušči podatke o imenu,
-    lokaciji, datumu objave in ceni ter vrne slovar, ki vsebuje ustrezne podatke
-    """
-    rx = re.compile(r'title="(?P<name>.*?)"'
-                    r'.*?</h3>\s*(?P<description>.*?)\s*</?div'
-                    r'.*?class="price">(<span>)?(?P<price>.*?)'
-                    r'( €</span>)?</div',
+    lokaciji, datumu objave in ceni ter vrne slovar, ki vsebuje ustrezne
+    podatke"""
+    rx = re.compile(r'<h3.*>(?P<name>.*?)</a></h3>'
+                    r'.*?"pubdate">(?P<time>.*?)</time>'
+                    r'.*?<strong class="price price--hrk">\s*?(?P<price>\d*)&',
                     re.DOTALL)
     data = re.search(rx, block)
     ad_dict = data.groupdict()
+
+    # Ker nimajo vsi oglasi podatka o lokaciji, to rešimo z dodatnim vzorcem
+    rloc = re.compile(r'Lokacija: </span>(?P<location>.*?)<br />')
+    locdata = re.search(rloc, block)
+    if locdata is not None:
+        ad_dict['location'] = locdata.group('location')
+    else:
+        ad_dict['location'] = 'Unknown'
+
     return ad_dict
 
 # Definirajte funkcijo, ki sprejme ime in lokacijo datoteke, ki vsebuje
