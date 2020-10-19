@@ -3,6 +3,7 @@ module type Barva = sig
   val po_imenu : string -> t
   val zmesaj : t -> t -> t
   val potemni : t -> t
+  val izpisi : t -> string
 end
 
 module RGB : Barva = struct
@@ -26,9 +27,14 @@ module RGB : Barva = struct
   }
 
   let potemni = zmesaj {r = 0.; g = 0.; b = 0.}
+
+  let izpisi barva =
+    "Rdeča: " ^ string_of_float barva.r ^
+    " Zelena: " ^ string_of_float barva.g ^
+    " Modra: " ^ string_of_float barva.b
 end
 
-(* module BarveZBesedami : Barva = struct
+module BarveZBesedami : Barva = struct
   type t = string
 
   let po_imenu ime = ime
@@ -36,4 +42,6 @@ end
   let potemni barva = "temno " ^ barva
 
   let zmesaj barva1 barva2 = barva1 ^ "-" ^ barva2
-end *)
+
+  let izpisi barva = barva
+end

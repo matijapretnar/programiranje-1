@@ -10,9 +10,9 @@ vzorec = (
     r'(?P<naslov>.*?)'  # zajamemo naslov
     r'</a>'
     r'\s+'
-    r'<span class="lister-item-year text-muted unbold">\('
-    r'(?P<leto>\d{4})'
-    r'\)'
+    r'<span class="lister-item-year text-muted unbold">'
+    r'(\([IVXLCDM]+\) )?'
+    r'\((?P<leto>.*?)\)'
 )
 
 count = 0

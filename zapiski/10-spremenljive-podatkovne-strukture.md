@@ -1,0 +1,1 @@
+# Spremenljive podatkovne strukture

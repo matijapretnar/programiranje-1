@@ -1,0 +1,1 @@
+# Zajem podatkov

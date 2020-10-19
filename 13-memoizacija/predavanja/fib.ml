@@ -1,7 +1,19 @@
+let rec fib n =
+  Format.printf "%d-" n;
+  match n with
+  | 0 | 1 -> n
+  | n -> fib (n - 1) + fib (n - 2)
+
+let find_opt hashtbl x =
+    try
+        Some (Hashtbl.find hashtbl x)
+    with
+        Not_found -> None
+
 let memoiziraj f =
   let rezultati = Hashtbl.create 512 in
   let mem_f x =
-    match Hashtbl.find_opt rezultati x with
+    match find_opt rezultati x with
     | None ->
         let y = f x in
         Hashtbl.add rezultati x y;
@@ -11,12 +23,7 @@ let memoiziraj f =
   in
   mem_f
 
-let rec fib n =
-  print_int n; print_char '-';
-  match n with
-  | 0 | 1 -> n
-  | n -> fib (n - 1) + fib (n - 2)
-
+(* Ta ne dela v redu, ker kliče fib, ki ne memoizira *)
 let mem_fib = memoiziraj fib
 
 let odviti_fib f n =
@@ -25,29 +32,27 @@ let odviti_fib f n =
   | 0 | 1 -> n
   | n -> f (n - 1) + f (n - 2)
 
-let rezultati = Hashtbl.create 512
+let rec rec_fib n = odviti_fib rec_fib n
 
-let rec mem_fib x =
-    match Hashtbl.find_opt rezultati x with
-    | None ->
-        let y = odviti_fib mem_fib x in
-        Hashtbl.add rezultati x y;
-        y
-    | Some y ->
-        y
+let zavezi_vozel odviti_f =
+  let rec f x =
+    odviti_f f x
+  in
+  f
 
-let rec fib n = odviti_fib fib n
+let rec_fib' = zavezi_vozel odviti_fib
 
-(* fib = (odviti_fib fib) *)
-
-(* obicajna rekurzivna funkcija : A -> B *)
-(* odvita funkcija : (A -> B) -> (A -> B) *)
-(* zavezi vozel : ((A -> B) -> (A -> B)) -> (A -> B) *)
+let rec_fib'' = zavezi_vozel (fun fib n ->
+  print_int n;
+  match n with
+  | 0 | 1 -> n
+  | n -> fib (n - 1) + fib (n - 2)
+)
 
 let memoiziraj_rec odviti_f =
   let rezultati = Hashtbl.create 512 in
   let rec mem_f x =
-    match Hashtbl.find_opt rezultati x with
+    match find_opt rezultati x with
     | None ->
         let y = odviti_f mem_f x in
         Hashtbl.add rezultati x y;
@@ -56,3 +61,12 @@ let memoiziraj_rec odviti_f =
         y
   in
   mem_f
+
+let memo_fib = memoiziraj_rec odviti_fib
+
+let memo_fib' = memoiziraj_rec (fun fib n ->
+  Format.printf "%d-" n;
+  match n with
+  | 0 | 1 -> n
+  | n -> fib (n - 1) + fib (n - 2)
+)

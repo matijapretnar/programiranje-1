@@ -2,16 +2,11 @@ type 'a drevo =
   | Prazno
   | Sestavljeno of 'a drevo * 'a * 'a drevo
 
+let prazna = Prazno
 
 let rec velikost = function
   | Prazno -> 0
   | Sestavljeno (l, _, d) -> 1 + velikost l + velikost d
-
-let rec dodaj x = function
-  | Prazno -> Sestavljeno (Prazno, x, Prazno)
-  | Sestavljeno (l, y, d) when x < y -> Sestavljeno (dodaj x l, y, d)
-  | Sestavljeno (l, y, d) when x > y -> Sestavljeno (l, y, dodaj x d)
-  | drevo -> drevo
 
 let rec vsebuje x = function
   | Prazno -> false
@@ -19,12 +14,20 @@ let rec vsebuje x = function
   | Sestavljeno (l, y, d) when x > y -> vsebuje x d
   | drevo -> true
 
+let rec dodaj x = function
+  | Prazno -> Sestavljeno (Prazno, x, Prazno)
+  | Sestavljeno (l, y, d) when x < y -> Sestavljeno (dodaj x l, y, d)
+  | Sestavljeno (l, y, d) when x > y -> Sestavljeno (l, y, dodaj x d)
+  | drevo -> drevo
+
+(* ------------------------------------------------------------------------- *)
+
 let stevilo_razlicnih xs =
   let rec aux ze_videni = function
     | [] -> velikost ze_videni
     | x :: xs -> aux (dodaj x ze_videni) xs
   in
-  aux Prazno xs
+  aux prazna xs
 
 let nakljucni_seznam m n = List.init n (fun _ -> Random.int m)
 let seznam_zaporednih n = List.init n (fun i -> i)
