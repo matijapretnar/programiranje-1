@@ -4,7 +4,7 @@
   chapters:
   - file: 01-regularni-izrazi.md
   - file: 02-zajem-podatkov.md
-  - file: 03-analiza-podatkov.md
+  - file: 03-knjiznica-pandas.md
   - file: 04-naivni-bayesov-klasifikator.md
   
 

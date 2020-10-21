@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Analiza podatkov
+# Knjižnica Pandas
 
 Spodaj je pregled najosnovnejših metod, ki jih ponuja knjižnica Pandas. Vsaka od naštetih metod ponuja še cel kup dodatnih možnosti, ki so natančno opisane v [uradni dokumentaciji](http://pandas.pydata.org/pandas-docs/stable/). Z branjem dokumentacije se vam seveda najbolj splača začeti pri [uvodih](http://pandas.pydata.org/pandas-docs/stable/tutorials.html).
 
