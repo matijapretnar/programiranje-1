@@ -15,6 +15,6 @@ for povezava in zupa.find_all('a'):
         niz_z_letom = znacka_z_letom.string
         vzorec_leta = r'(\([IVXLCDM]+\) )?\((?P<leto>.*?)\)'
         leto = int(re.fullmatch(vzorec_leta, niz_z_letom).group('leto'))
-        print(id, naslov, leto)
+        print({'id': id, 'naslov': naslov, 'leto': leto})
         count += 1
 print(count)

@@ -1,5 +1,4 @@
 import re
-import orodja
 
 vzorec_bloka = re.compile(
     r'<div class="lister-item mode-advanced">.*?'
@@ -8,7 +7,7 @@ vzorec_bloka = re.compile(
 )
 
 vzorec_filma = re.compile(
-    r'<a href="/title/tt(?P<id>\d+)/".*?'
+    r'<a href="/title/tt(?P<id>\d+)/.*?".*?'
     r'img alt="(?P<naslov>.+?)".*?'
     r'lister-item-year text-muted unbold">.*?\((?P<leto>\d{4})\)</span>.*?'
     r'runtime">(?P<dolzina>\d+?) min</.*?'
@@ -106,63 +105,11 @@ def izloci_podatke_filma(blok):
         film['metascore'] = None
     return film
 
+with open('250-najbolj-znanih-filmov.html') as f:
+    vsebina = f.read()
 
-def filmi_na_strani(st_strani, na_stran=250):
-    url = (
-        f'https://www.imdb.com/search/title'
-        f'?sort=num_votes,desc&title_type=feature&count={na_stran}'
-        f'&start={(st_strani - 1) * na_stran + 1}'
-    )
-    ime_datoteke = 'zajeti-podatki/najbolj-znani-filmi-{}.html'.format(st_strani)
-    orodja.shrani_spletno_stran(url, ime_datoteke)
-    vsebina = orodja.vsebina_datoteke(ime_datoteke)
-    for blok in vzorec_bloka.finditer(vsebina):
-        yield izloci_podatke_filma(blok.group(0))
-
-
-def izloci_gnezdene_podatke(filmi):
-    REZISER, IGRALEC = 'R', 'I'
-    osebe, vloge, zanri = [], [], []
-    videne_osebe = set()
-
-    def dodaj_vlogo(film, oseba, vloga, mesto):
-        if oseba['id'] not in videne_osebe:
-            videne_osebe.add(oseba['id'])
-            osebe.append(oseba)
-        vloge.append({
-            'film': film['id'],
-            'oseba': oseba['id'],
-            'vloga': vloga,
-            'mesto': mesto,
-        })
-
-
-    for film in filmi:
-        for zanr in film.pop('zanri'):
-            zanri.append({'film': film['id'], 'zanr': zanr})
-        for mesto, oseba in enumerate(film.pop('reziserji'), 1):
-            dodaj_vlogo(film, oseba, REZISER, mesto)
-        for mesto, oseba in enumerate(film.pop('igralci'), 1):
-            dodaj_vlogo(film, oseba, IGRALEC, mesto)
-
-    osebe.sort(key=lambda oseba: oseba['id'])
-    vloge.sort(key=lambda vloga: (vloga['film'], vloga['vloga'], vloga['mesto']))
-    zanri.sort(key=lambda zanr: (zanr['film'], zanr['zanr']))
-
-    return osebe, vloge, zanri
-
-
-filmi = []
-for st_strani in range(1, 41):
-    for film in filmi_na_strani(st_strani, 250):
-        filmi.append(film)
-filmi.sort(key=lambda film: film['id'])
-orodja.zapisi_json(filmi, 'obdelani-podatki/filmi.json')
-osebe, vloge, zanri = izloci_gnezdene_podatke(filmi)
-orodja.zapisi_csv(
-    filmi,
-    ['id', 'naslov', 'dolzina', 'leto', 'ocena', 'metascore', 'glasovi', 'zasluzek', 'oznaka', 'opis'], 'obdelani-podatki/filmi.csv'
-)
-orodja.zapisi_csv(osebe, ['id', 'ime'], 'obdelani-podatki/osebe.csv')
-orodja.zapisi_csv(vloge, ['film', 'oseba', 'vloga', 'mesto'], 'obdelani-podatki/vloge.csv')
-orodja.zapisi_csv(zanri, ['film', 'zanr'], 'obdelani-podatki/zanri.csv')
+count = 0
+for blok in vzorec_bloka.finditer(vsebina):
+    print(izloci_podatke_filma(blok.group(0)))
+    count += 1
+print(count)
