@@ -1,37 +1,57 @@
-let pozdravi = function
-  | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Filip" | "Žiga" -> "Oj!"
-  | "" -> "Živjo!"
-  | "*" -> "Dober dan!"
+let podvoji x = 2 * x
 
-let rec fakulteta = function
-  | 0 -> 1
-  | n -> n * fakulteta (n - 1)
+(* let pomnozi_s_pi x = 3.14 * x *)
 
-(* 0, 1, 1, 2, 3, 5, 8,  *)
+let ali_je_tri_vecje_od_stiri = 3 > 4
 
-let hitri_fib n =
-  let rec aux n a b =
-    if n = 0 then a else aux (n - 1) b (a + b)
-  in aux n 0 1
+let najboljse_stevilo = 42 + 1
 
-let moj_nabor velikost =
-  if velikost = 2 then (2, true) else (1, false)
+let pomnozi_med_sabo x y = x * y
 
-let razdalja (x1, y1) (x2, y2) =
-  sqrt ((x1 -. x2) ** 2. +. (y1 -. y2) ** 2.)
+let uporabi_dvakrat_na_nic f = f "niz" ^ f "niz"
 
-let rec dolzina xs =
-  match xs with
-  | [] -> 0
-  | x :: xs' -> 1 + dolzina xs'
+let pozdravi ime =
+    match ime with
+    | "Matija" -> "Pozdravljeni, gospod profesor!" 
+    | "Filip" | "Ziga" -> "Pozdravljeni, gospod asistent!"
+    | "" -> "Pozdravljen, človek brez imena!"
+    | "*" -> "Zdravo zvezdica!"
+    | _ -> "Živjo, " ^ ime
 
-let rec vsota xs =
-  match xs with
-  | [] -> 0
-  | x :: xs' -> x + vsota xs'
+let moja_logicna_operacija x y z =
+    match (x, y, z) with
+    | (true, false, true) -> true
+    | (false, drugi, _) -> drugi
+    | (true, true, _) -> true
+    | (true, false, false) -> false
 
-let rec skalarni_produkt xs ys =
-  match (xs, ys) with
-  | ([], []) -> 0.
-  | (x :: xs', y :: ys') -> x *. y +. skalarni_produkt xs' ys'
+let gnezdeni_match x y z =
+    match ((x, y), z) with
+    | (_, true) -> true
+    | ((true, _), tretji) -> tretji
+    | (_, false) -> false
+
+let je_seznam_prazen sez =
+    match sez with
+    | [] -> true
+    | _ :: _ -> false
+
+let rec vsota sez =
+    match sez with
+    | [] -> 0
+    | glava :: rep -> glava + vsota rep
+
+let rec dolzina sez =
+    match sez with
+    | [] -> 0
+    | glava :: rep -> 1 + dolzina rep
+
+let rec stakni sez1 sez2 =
+    match sez1 with
+    | [] -> sez2
+    | glava1 :: rep1 -> glava1 :: stakni rep1 sez2
+
+let rec preslikaj f sez =
+    match sez with
+    | [] -> []
+    | glava :: rep -> f glava :: preslikaj f rep
