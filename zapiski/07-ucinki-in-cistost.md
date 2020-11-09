@@ -1,1 +1,0 @@
-# Učinki in čistost

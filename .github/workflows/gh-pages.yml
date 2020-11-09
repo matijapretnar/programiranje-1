@@ -21,7 +21,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install jupyter-book jupytext
+        pip install jupyter-book jupytext pandas matplotlib
 
     # Build the book
     - name: Build the book

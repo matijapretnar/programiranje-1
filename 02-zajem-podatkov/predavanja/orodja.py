@@ -15,7 +15,7 @@ def pripravi_imenik(ime_datoteke):
 def shrani_spletno_stran(url, ime_datoteke, vsili_prenos=False):
     '''Vsebino strani na danem naslovu shrani v datoteko z danim imenom.'''
     try:
-        print('Shranjujem {} ...'.format(url), end='')
+        print(f'Shranjujem {url} ...', end='')
         sys.stdout.flush()
         if os.path.isfile(ime_datoteke) and not vsili_prenos:
             print('shranjeno že od prej!')

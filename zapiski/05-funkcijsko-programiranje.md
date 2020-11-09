@@ -1,1 +1,0 @@
-# Funkcijsko programiranje
