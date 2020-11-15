@@ -17,3 +17,7 @@ _build
 *.synctex.gz
 
 .DS_Store
+
+venv
+env
+node_modules
