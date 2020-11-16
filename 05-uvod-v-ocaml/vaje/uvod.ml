@@ -191,4 +191,4 @@ let second_largest list =
 	  | x :: [] -> x
 	  | x :: xs -> max x (largest xs)
   in
-  largest (delete (largest list) list)
+  largest (remove (largest list) list)
