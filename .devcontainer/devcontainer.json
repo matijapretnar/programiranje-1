@@ -8,18 +8,23 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update to use different versions
-		"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.10" }
+		"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.11" }
 	},
 	*/
 	
 	// Set *default* container specific settings.json values on container create. 
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		// Preselect switch, otherwise the extension keeps asking for to select it manually
+		"ocaml.sandbox": {
+			"kind": "opam",
+			"switch": "4.11"
+		}
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
 	// Note that some extensions may not work in Alpine Linux. See https://aka.ms/vscode-remote/linux.
-	"extensions": ["jaredly.reason-vscode", "ms-python.vscode-pylance"], // Merlin is still not working
+	"extensions": ["ocamllabs.ocaml-platform", "ms-python.vscode-pylance"], // Merlin is still not working
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8888], // For jupyter
