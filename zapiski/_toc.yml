@@ -11,7 +11,7 @@
 - part: Funkcijsko programiranje
   chapters:
   - file: 05-uvod-v-ocaml.md
-  - file: 06-funkcijsko-programiranje.md
+  - file: 06-funkcije.md
   - file: 07-definicije-tipov.md
   - file: 08-ucinki-in-cistost.md
   

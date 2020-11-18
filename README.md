@@ -8,7 +8,7 @@ V tem repozitoriju se zbirajo gradiva za predmet Programiranje 1 v 2. letniku ma
 Ker vam GitHub ob kliku na HTML datoteko namesto strani prikaže izvorno HTML kodo, je treba prosojnice pogledati s pomočjo strani http://htmlpreview.github.io. Tu so direktne povezave na prosojnice:
 
 - [Uvod v OCaml](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/05-uvod-v-ocaml/predavanja/prosojnice.html)
-- [Funkcijsko programiranje](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/06-funkcije/predavanja/prosojnice.html)
+- [Funkcije](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/06-funkcije/predavanja/prosojnice.html)
 - [Definicije tipov](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/07-definicije-tipov/predavanja/prosojnice.html)
 - [Učinki in čistost](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/08-ucinki-in-cistost/predavanja/prosojnice.html)
 - [Iskalna drevesa](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/09-iskalna-drevesa/predavanja/prosojnice.html)
