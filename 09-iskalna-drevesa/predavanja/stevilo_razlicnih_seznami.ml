@@ -1,4 +1,4 @@
-let prazna = []
+let prazna_vreca = []
 
 let velikost m = List.length m
 
@@ -13,8 +13,9 @@ let stevilo_razlicnih xs =
     | [] -> velikost ze_videni
     | x :: xs -> aux (dodaj x ze_videni) xs
   in
-  aux prazna xs
+  aux prazna_vreca xs
 
+let seznam_zaporednih n = List.init n (fun i -> i)
 let nakljucni_seznam m n = List.init n (fun _ -> Random.int m)
 
 let stopaj f x =
@@ -24,11 +25,11 @@ let stopaj f x =
   print_endline ("Porabljen čas: " ^ string_of_float (1000. *. (konec -. zacetek)) ^ "ms");
   y
 
-let primer = nakljucni_seznam 10000 10000
+let _ = Random.self_init ()
+
+let primer = nakljucni_seznam 1000 1000
+(* let primer = seznam_zaporednih 10000 *)
 
 let n = stopaj stevilo_razlicnih primer
 
-;;
-
-Random.self_init ();
-print_endline ("Število različnih: " ^ string_of_int n)
+let _ = print_endline ("Število različnih: " ^ string_of_int n)
