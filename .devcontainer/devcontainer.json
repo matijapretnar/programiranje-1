@@ -3,12 +3,13 @@
 	"name": "Programiranje 1",
 	"image": "j00sko/programiranje1:latest",
 	
-	// Build the image locally 
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update to use different versions
-		"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.11" }
-	},
+	// Za izgradnjo Docker navideznega računalnika odkomentiraj naslednje vrstice.
+	// S tem boš lahko v Docker-ju dobil tudi predloge znotraj VSCode-a.
+	// "build": {
+	// 	"dockerfile": "Dockerfile",
+	// 	// Update to use different versions
+	// 	"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.11" }
+	// },
 	
 	// Set *default* container specific settings.json values on container create. 
 	"settings": {

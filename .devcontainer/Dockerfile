@@ -24,11 +24,8 @@ ARG OCAML_VERSION
 USER root
 RUN apt-get install -y m4
 USER opam
-RUN opam update && opam install ocaml-lsp-server ocamlformat
+RUN opam update && opam install ocaml-lsp-server ocamlformat utop
 RUN opam user-setup install
-
-# Install utop
-RUN sudo apt-get install -y utop
 
 # Copy installed python
 COPY --from=base-python /opt/venv /opt/venv
