@@ -3,8 +3,8 @@
 	"name": "Programiranje 1",
 	"image": "j00sko/programiranje1:latest",
 	
-	// Za izgradnjo Docker navideznega računalnika odkomentiraj naslednje vrstice.
-	// S tem boš lahko v Docker-ju dobil tudi predloge znotraj VSCode-a.
+	// Uncomment the following lines to build a Docker virtual machine.
+	// This way, you'll get code suggestions in your editor. 
 	// "build": {
 	// 	"dockerfile": "Dockerfile",
 	// 	// Update to use different versions
