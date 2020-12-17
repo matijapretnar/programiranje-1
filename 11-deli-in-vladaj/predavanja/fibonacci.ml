@@ -49,6 +49,6 @@ for i = 0 to 10 do
   print_int (fib'' i); print_newline ();
   print_int (fib' i); print_newline ();
   print_int (fib i); print_newline ();
-done
+done;;
 
-(* print_int (fib'' 112233445566778899) *)
+print_int (fib'' 112233445566778899)
