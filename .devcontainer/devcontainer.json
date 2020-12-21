@@ -3,14 +3,13 @@
 	"name": "Programiranje 1",
 	"image": "j00sko/programiranje1:latest",
 	
-	// Build the image locally 
-	/*
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update to use different versions
-		"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.11" }
-	},
-	*/
+	// Uncomment the following lines to build a Docker virtual machine.
+	// This way, you'll get code suggestions in your editor. 
+	// "build": {
+	// 	"dockerfile": "Dockerfile",
+	// 	// Update to use different versions
+	// 	"args": { "PYTHON_VERSION": "3.8", "OCAML_VERSION": "4.11" }
+	// },
 	
 	// Set *default* container specific settings.json values on container create. 
 	"settings": {

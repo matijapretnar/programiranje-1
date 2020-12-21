@@ -21,10 +21,7 @@ FROM ocurrent/opam:debian-10-ocaml-${OCAML_VERSION}
 ARG OCAML_VERSION
 
 # Needed for merlin
-USER root
-RUN apt-get install -y m4
-USER opam
-RUN opam update && opam install ocaml-lsp-server
+RUN opam update && opam depext --yes --install ocaml-lsp-server ocamlformat utop
 RUN opam user-setup install
 
 # Copy installed python
