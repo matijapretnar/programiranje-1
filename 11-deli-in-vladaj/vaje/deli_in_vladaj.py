@@ -3,9 +3,9 @@ import random
 ###############################################################################
 # Želimo definirati pivotiranje na mestu za tabelo [a]. Ker bi želeli
 # pivotirati zgolj dele tabele, se omejimo na del tabele, ki se nahaja med
-# indeksoma [start] in [end].
+# indeksoma [start] in [end] (vključujoč oba robova).
 #
-# Primer: za [start = 0] in [end = 8] tabelo
+# Primer: za [start = 1] in [end = 7] tabelo
 #
 #     [10, 4, 5, 15, 11, 2, 17, 0, 18]
 #
@@ -13,7 +13,7 @@ import random
 #
 #     [10, 0, 2, 4, 11, 5, 17, 15, 18]
 #
-# (Možnih je več različnih rešitev, pomembno je, da je element 10 pivot.)
+# (Možnih je več različnih rešitev, pomembno je, da je element 4 pivot.)
 #
 # Sestavi funkcijo [pivot(a, start, end)], ki preuredi tabelo [a] tako, da bo
 # element [ a[start] ] postal pivot za del tabele med indeksoma [start] in
