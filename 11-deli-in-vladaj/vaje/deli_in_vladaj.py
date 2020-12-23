@@ -47,6 +47,41 @@ def pivot(a, start, end):
     a[start], a[first_bigger-1] = a[first_bigger-1], a[start]
     return first_bigger-1
 
+
+def pivot_alternative(a, start, end):
+    p = a[start]
+    left = start
+    right = end
+    
+    while left < right:
+        if a[left+1] <= p: # Move left inside
+            left += 1
+        elif p < a[right]: # Move right inside
+            right -= 1
+        else: # Swap
+            a[left+1], a[right] = a[right], a[left+1]
+
+    # Put pivot in the correct place
+    a[start], a[left] = a[left], a[start]
+    return left
+
+
+def test_pivot(n, max_l, max_k):
+    """ Performs a series of randomised tests on the pivot algorithm. """
+    for _ in range(n):
+        l = random.randint(0, max_l)
+        a_orig = [random.randint(-max_k, max_k) for _ in range(l)]
+        for j in range(l):
+            a = a_orig[:]
+            left = random.randint(0, j)
+            right = random.randint(j, l-1)
+            p = a[left]
+            print(a, left, right)
+            ind = pivot(a, left, right)
+            if (a[ind] != p or any([j > p for j in a[left:ind]]) or any([j < p for j in a[ind:right+1]]) 
+                or any(a[j] != a_orig[j] for j in range(0, left)) or any(a[j] != a_orig[j] for j in range(right+1, len(a)))) :
+                return a_orig, a, left, right, ind
+
 ###############################################################################
 # V tabeli želimo poiskati vrednost k-tega elementa po velikosti.
 #
@@ -81,6 +116,20 @@ def kth_element(a, k):
         return None
     else:
         return kth_el_part(a, k, 0, len(a)-1)
+
+
+def test_quickselect(n, max_l, max_k):
+    """ Performs a series of randomised tests on the pivot algorithm. """
+    for _ in range(n):
+        l = random.randint(0, max_l)
+        a_orig = [random.randint(-max_k, max_k) for _ in range(l)]
+        sor = sorted(a_orig)
+        for j in range(l):
+            a = a_orig[:]
+            val = kth_element(a, j)
+            if val != sor[j]:
+                return a_orig, j, val, sor[j]
+
 
 ###############################################################################
 # Tabelo a želimo urediti z algoritmom hitrega urejanja (quicksort).
