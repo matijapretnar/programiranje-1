@@ -21,7 +21,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install jupyter-book jupytext pandas matplotlib "sphinxcontrib-bibtex<2.0.0"
+        pip install jupyter-book "jupytext==1.7.1" pandas matplotlib "sphinxcontrib-bibtex<2.0.0"
 
     # Build the book
     - name: Build the book

@@ -9,7 +9,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN python -m pip install --upgrade pip
 # For faster instalation
 RUN pip install wheel
-RUN pip install --no-cache-dir --no-warn-script-location pandas numpy jupyter requests matplotlib dash
+RUN pip install --no-cache-dir --no-warn-script-location pandas numpy jupyter requests matplotlib dash jupyter-book
 
 
 # Once this gets fixed: https://discuss.ocaml.org/t/psa-ocaml-opam2-docker-images-updated-to-4-08-0-release/3948
@@ -21,10 +21,11 @@ FROM ocurrent/opam:debian-10-ocaml-${OCAML_VERSION}
 ARG OCAML_VERSION
 
 # Needed for merlin
-RUN opam update && opam depext --yes --install ocaml-lsp-server ocamlformat utop
+RUN opam update && opam depext --yes --install jupyter ocaml-lsp-server ocamlformat utop
 RUN opam user-setup install
+RUN /home/opam/.opam/${OCAML_VERSION}/bin/ocaml-jupyter-opam-genspec
 
-# Copy installed python
+# Copy installed Python
 COPY --from=base-python /opt/venv /opt/venv
 COPY --from=base-python /usr/local/bin /usr/local/bin
 COPY --from=base-python /usr/local/lib /usr/local/lib
@@ -33,7 +34,7 @@ ENV LD_LIBRARY_PATH='/lib:/usr/lib:/usr/local/lib'
 # Make sure we use the virtualenv:
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Get the correct ocaml
+# Get the correct OCaml
 # This is a manual version of: RUN eval $(opam env)
 ENV OPAM_SWITCH_PREFIX='/home/opam/.opam/'${OCAML_VERSION}
 ENV CAML_LD_LIBRARY_PATH='/home/opam/.opam/'${OCAML_VERSION}'/lib/stublibs:Updated by package ocaml'
@@ -42,7 +43,10 @@ ENV MANPATH="$MANPATH"':/home/opam/.opam/'${OCAML_VERSION}'/man'
 ENV OCAML_DOCKER_PATH='/home/opam/.opam/'${OCAML_VERSION}'/bin'
 ENV PATH="$OCAML_DOCKER_PATH:$PATH"
 
-# This enables us to install additional python libraries
+# Install Jupyter kernel for OCaml
+RUN jupyter kernelspec install --name ocaml-jupyter "$(opam var share)/jupyter" --user
+
+# This enables us to install additional Python libraries
 USER root
-# Expose jupyter port
+# Expose Jupyter port
 EXPOSE 8888
