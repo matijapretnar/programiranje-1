@@ -49,13 +49,13 @@ let max_cheese_bottom cheese_matrix =
   | _ -> assert false
 
 (*----------------------------------------------------------------------------*]
- Poleg količine sira, ki jo miška lahko poje, jo zanima tudi točna pot, ki naj 
+ Poleg količine sira, ki jo miška lahko poje, jo zanima tudi točna pot, ki naj
  jo ubere, da bo prišla do ustrezne pojedine.
 
  Funkcija [optimal_path] naj vrne optimalno pot, ki jo mora miška ubrati, da se
- čim bolj nažre. Ker je takih poti lahko več, lahko funkcija vrne poljubno. 
- Pripravite tudi funkcijo [extract_path], ki pot pretvori v seznam tež
- sirčkov na poti.
+ čim bolj nažre. Ker je takih poti lahko več, lahko funkcija vrne poljubno.
+ Pripravite tudi funkcijo [convert_path], ki pot pretvori v seznam tež sirčkov
+ na poti.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # optimal_path_bottom test_matrix;;
  - : mouse_direction list = [Right; Down; Down; Right; Down]
@@ -153,25 +153,24 @@ let alternating_towers_bottom level =
   if level == 0 then 1 else alternate (1, 1) (0, 0) (0, 0) level
 
 (*----------------------------------------------------------------------------*]
- Izračunali smo število stolpov, a naše vrle gradbince sedaj zanima točna 
+ Izračunali smo število stolpov, a naše vrle gradbince sedaj zanima točna
  konfiguracija. Da ne pride do napak pri sestavljanju, bomo stolpe predstavili
  kar kot vsotne tipe. 
 
- Stolp posamezne barve so temelji (Bottom), ali pa kot glava bloka pripadajoče 
+ Stolp posamezne barve so temelji (Bottom), ali pa kot glava bloka pripadajoče
  barve in preostanek, ki je stolp nasprotne barve.
 
- Definirajte funkcijo [enumerate_towers], ki vrne seznam vseh stolpov podane 
- dolžine. Stolpe lahko vrne v poljubnem vrstnem redu. Funkcija naj hitro 
- (in brez) prekoračitve sklada deluje vsaj do višine 20.
-
+ Definirajte funkcijo [enumerate_towers], ki vrne seznam vseh stolpov podane
+ dolžine. Stolpe lahko vrne v poljubnem vrstnem redu. Funkcija naj hitro (in
+ brez) prekoračitve sklada deluje vsaj do višine 20.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # enumerate_towers 4;;
  - : tower list = 
-[Red (TopRed (Red2, TopBlue (Blue2, RedBottom)));
- Red (TopRed (Red1, TopBlue (Blue3, RedBottom)));
- Red (TopRed (Red1, TopBlue (Blue2, TopRed (Red1, BlueBottom))));
- Blue (TopBlue (Blue3, TopRed (Red1, BlueBottom)));
- Blue (TopBlue (Blue2, TopRed (Red2, BlueBottom)))]
+    [Red (TopRed (Red2, TopBlue (Blue2, RedBottom)));
+     Red (TopRed (Red1, TopBlue (Blue3, RedBottom)));
+     Red (TopRed (Red1, TopBlue (Blue2, TopRed (Red1, BlueBottom))));
+     Blue (TopBlue (Blue3, TopRed (Red1, BlueBottom)));
+     Blue (TopBlue (Blue2, TopRed (Red2, BlueBottom)))]
 [*----------------------------------------------------------------------------*)
 
 type blue_block = Blue3 | Blue2
@@ -210,17 +209,17 @@ let test_towers x =
   |> List.map fst
 
 (*----------------------------------------------------------------------------*]
- Vdrli ste v tovarno čokolade in sedaj stojite pred stalažo kjer so ena ob 
- drugi naložene najboljše slaščice. Želite si pojesti čim več 
- sladkorja, a hkrati poskrbeti, da vas ob pregledu tovarne ne odkrijejo. Da vas 
- pri rednem pregledu ne odkrijejo, mora biti razdalija med dvema zaporednima 
- slaščicama, ki ju pojeste vsaj `k`.
+ Vdrli ste v tovarno čokolade in sedaj stojite pred stalažo kjer so ena ob
+ drugi naložene najboljše slaščice. Želite si pojesti čim več sladkorja, a
+ hkrati poskrbeti, da vas ob pregledu tovarne ne odkrijejo. Da vas pri rednem
+ pregledu ne odkrijejo, mora biti razdalija med dvema zaporednima slaščicama,
+ ki ju pojeste vsaj `k`.
 
- Napišite funkcijo [ham_ham], ki sprejme seznam naravnih števil dolžine `n`, ki 
- predstavljajo količino sladkorja v slaščicah v stalaži in parameter `k`, najmanjšo
- razdalijo med dvema slaščicama, ki ju še lahko varno pojeste. Funkcija naj vrne 
- seznam zastavic `bool`, kjer je `i`-ti prižgan natanko tedaj ko v optimalni požrtiji 
- pojemo `i`-to slaščico.
+ Napišite funkcijo [ham_ham], ki sprejme seznam naravnih števil dolžine `n`, ki
+ predstavljajo količino sladkorja v slaščicah v stalaži in parameter `k`,
+ najmanjšo razdalijo med dvema slaščicama, ki ju še lahko varno pojeste.
+ Funkcija naj vrne seznam zastavic `bool`, kjer je `i`-ti prižgan natanko tedaj
+ ko v optimalni požrtiji pojemo `i`-to slaščico.
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # ham_ham test_shelf 1;;
