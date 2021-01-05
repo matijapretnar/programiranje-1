@@ -17,7 +17,7 @@ kernelspec:
 
 Običajno moramo podatke, ki jih želimo analizirati, najprej prečistiti. Na primer, svetovni splet je bogat vir podatkov, vendar so ti dostikrat dostopni le v formatu HTML, ki poleg koristne vsebine vsebuje še marsikaj. Recimo, da nas zanimajo podatki o [250 filmih z največ glasovi na strani IMDB](https://www.imdb.com/search/title/?sort=num_votes,desc&title_type=feature&count=250). Vidimo, da stran ponuja veliko koristnih podatkov: naslov, leto izida, dolžno, žanre, ocene, igralce, opise, ...
 
-![250 najbolj znanih filmov](datoteke/250-najbolj-znanih-filmov.png)
+![250 najbolj znanih filmov](slike/250-najbolj-znanih-filmov.png)
 
 Če pa v brskalniku shranimo izvorno kodo in HTML datoteko odpremo, pa je podatke težko najti.
 
@@ -309,63 +309,63 @@ V knjižnici `re` je na voljo več funkcij za delo z regularnimi izrazi:
 
 - `search`, ki vrne prvo pojavitev danega vzorca v nizu oziroma `None`, če je ni:
 
-  ```{code-cell}
-  re.search(r'\d', '3, 4, zdaj!')
-  ```
+```{code-cell}
+re.search(r'\d', '3, 4, zdaj!')
+```
 
-  ```{code-cell}
-  re.search(r'\d', 'tri, štiri, zdaj!')
-  ```
+```{code-cell}
+re.search(r'\d', 'tri, štiri, zdaj!')
+```
 
 - `match`, ki vrne pojavitev, če ta ustreza začetku niza oziroma `None`, če ne:
 
-  ```{code-cell}
-  re.match(r'\d+', '500 g moke')
-  ```
+```{code-cell}
+re.match(r'\d+', '500 g moke')
+```
 
-  ```{code-cell}
-  re.match(r'\d+', 'Potrebujem 500 g moke.')
-  ```
+```{code-cell}
+re.match(r'\d+', 'Potrebujem 500 g moke.')
+```
 
 - `fullmatch`, ki vrne pojavitev, če ta ustreza celotnemu nizu oziroma `None`, če ne:
 
-  ```{code-cell}
-  re.fullmatch(r'\w+', 'Proseminar')
-  ```
+```{code-cell}
+re.fullmatch(r'\w+', 'Proseminar')
+```
 
-  ```{code-cell}
-  re.fullmatch(r'\w+', 'Uvod v programiranje')
-  ```
+```{code-cell}
+re.fullmatch(r'\w+', 'Uvod v programiranje')
+```
 
 - `finditer`, ki vrne iterator čez vse pojavitve vzorca v nizu:
 
-  ```{code-cell}
-  list(re.finditer(r'\d', '3, 4, zdaj!'))
-  ```
+```{code-cell}
+list(re.finditer(r'\d', '3, 4, zdaj!'))
+```
 
 - `findall`, ki vrne seznam vsebin vseh pojavitev vzorca v nizu:
 
-  ```{code-cell}
-  re.findall(r'\d', '3, 4, zdaj!')
-  ```
+```{code-cell}
+re.findall(r'\d', '3, 4, zdaj!')
+```
 
 - `split`, ki dani niz razdeli po pojavitvah:
 
-  ```{code-cell}
-  re.split(r'[aeiou]', 'otorinolaringolog')
-  ```
+```{code-cell}
+re.split(r'[aeiou]', 'otorinolaringolog')
+```
 
 - `sub`, ki v danem nizu pojavitve zamenja z drugimi nizi, v katerih lahko do posameznih skupin dostopamo prek `\1`, `\2`, ...
 
-  ```{code-cell}
-  def daj_en_presledek_za_vsako_stevilko(niz):
-      stevilka_in_morebitni_presledki = r'(\d+)\s*'
-      return re.sub(stevilka_in_morebitni_presledki, r'\1 ', niz)
-  ```
+```{code-cell}
+def daj_en_presledek_za_vsako_stevilko(niz):
+    stevilka_in_morebitni_presledki = r'(\d+)\s*'
+    return re.sub(stevilka_in_morebitni_presledki, r'\1 ', niz)
+```
 
-  ```{code-cell}
-  daj_en_presledek_za_vsako_stevilko('500g moke in 250    ml vode')
-  ```
+```{code-cell}
+daj_en_presledek_za_vsako_stevilko('500g moke in 250    ml vode')
+```
 
 Vse zgoraj omenjene funkcije poleg običajnih argumentov sprejmejo še dodatne parametre, ki jih imenujemo zastavice in malenkostno spreminjajo iskanje. Na primer, z `re.IGNORECASE` pri iskanju ne razlikujemo med malimi in velikimi črkami:
 
