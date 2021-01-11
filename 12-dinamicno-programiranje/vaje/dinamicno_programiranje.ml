@@ -22,12 +22,12 @@ let test_matrix =
 
 
 let max_cheese cheese_matrix =
-  let dimx = Array.length cheese_matrix in
-  let dimy = Array.length cheese_matrix.(0) in
-  let rec best_path x y =
-    let current_cheese = cheese_matrix.(x).(y) in
-    let best_right = if x + 1 = dimx then 0 else best_path (x + 1) y in
-    let best_down = if y + 1 = dimy then 0 else best_path x (y + 1) in
+  let dimy = Array.length cheese_matrix in
+  let dimx = Array.length cheese_matrix.(0) in
+  let rec best_path y x =
+    let current_cheese = cheese_matrix.(y).(x) in
+    let best_right = if x + 1 = dimx then 0 else best_path y (x + 1) in
+    let best_down = if y + 1 = dimy then 0 else best_path (y + 1) x in
     current_cheese + max best_right best_down
   in
   best_path 0 0
@@ -52,13 +52,13 @@ type mouse_direction = Down | Right
 let optimal_path cheese_matrix =
   let dimx = Array.length cheese_matrix in
   let dimy = Array.length cheese_matrix.(0) in
-  let rec best_path x y =
-    let current_cheese = cheese_matrix.(x).(y) in
+  let rec best_path y x =
+    let current_cheese = cheese_matrix.(y).(x) in
     let best_right, path_right =
-      if x + 1 = dimx then (0, []) else best_path (x + 1) y
+      if x + 1 = dimx then (0, []) else best_path y (x + 1)
     in
     let best_down, path_down =
-      if y + 1 = dimy then (0, []) else best_path x (y + 1)
+      if y + 1 = dimy then (0, []) else best_path (y + 1) x
     in
     let best, step =
       if best_right >= best_down
@@ -71,13 +71,13 @@ let optimal_path cheese_matrix =
 
 
 let convert_path cheese_matrix path =
-  let rec walk x y = function
+  let rec walk y x = function
     | [] -> []
     | dir :: xs ->
         let r, d = 
-          match dir with Right -> (1, 0) | Down -> (0, 1) 
+          match dir with Right -> (0, 1) | Down -> (1, 0) 
         in
-        cheese_matrix.(x).(y) :: walk (x + r) (y + d) xs
+        cheese_matrix.(y).(x) :: walk (y + d) (x + r) xs
   in
   walk 0 0 path
 
