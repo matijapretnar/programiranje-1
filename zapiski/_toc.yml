@@ -21,4 +21,5 @@
   - file: 10-spremenljive-podatkovne-strukture.md
   - file: 11-deli-in-vladaj.md
   - file: 12-dinamicno-programiranje.md
-  - file: 13-memoizacija.md
+  - file: 13-1-memoizacija-v-pythonu.md
+  - file: 13-2-memoizacija-v-ocamlu.md
