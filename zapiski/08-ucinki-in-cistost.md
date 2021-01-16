@@ -413,14 +413,14 @@ let rec obrni = function
   | x :: xs -> obrni xs @ [x]
 ```
 
-časovno zahtevnost `O(n²)`, saj se mora zapeljati čez ves seznam, da mu na konec doda `x`.
+časovno zahtevnost $O(n^2)$, saj se mora zapeljati čez ves seznam, da mu na konec doda `x`.
 
 Bolje je, če uporabimo funkcijo `obrni'`, ki uporablja akumulator in je definirana kot:
 
 ```ocaml
 let obrni' =
   let rec aux acc = function
-    | [] -> aux
+    | [] -> acc
     | x :: xs -> aux (x :: acc) xs
   in
   aux []
