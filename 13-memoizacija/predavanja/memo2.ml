@@ -1,3 +1,8 @@
+(*
+  Imamo rdeče kocke velikosti 1 in 2 ter modre kocke velikosti 2 in 3.
+  Koliko različnih stolpov, v katerih se izmenjujejo modre in rdeče kocke lahko sestavimo?
+*)
+
 let rec rdeci = function
   | 0 -> 1
   | n when n < 0 -> 0
