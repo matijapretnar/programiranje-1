@@ -13,6 +13,14 @@ kernelspec:
 
 # Funkcije
 
+```{code-cell}
+:tags: [remove-cell, remove-stdout]
+
+(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
+   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
+   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
+```
+
 Pri konstruktih OCamla, ki smo jih spoznali do sedaj, morda presenetljivo ni bilo nobene omembe zank, ki so eno osnovnih orodij v Pythonu. V resnici OCaml podpira tudi zanke, vendar jih bomo spoznali kasneje. Namesto njih običajno uporabljamo rekurzivne funkcije, zato se moramo naučiti, kako take funkcije napišemo učinkovito. Pravimo, da je klic funkcije _repen_, če se izvede kot zadnji korak v definiciji funkcije. Najprej si oglejmo nasproten primer: funkcije, ki drugo funkcijo uporabijo v pomožnem izračunu:
 
 ```ocaml
@@ -285,6 +293,7 @@ zmnozi' (2, 10)
 V tem primeru jih seveda ne moremo uporabiti samo na enem argumentu:
 
 ```{code-cell}
+:tags: [raises-exception]
 zmnozi' 2
 ```
 

@@ -480,5 +480,4 @@ film['zanri'] = film['zanri'].strip().split(', ')
 
 Pri igralcih in režiserjih je zadeva še bolj zapletena, ker ima vsak izmed njih še svojo šifro osebe, pa tudi zanima nas, na katerem mestu je kdo napisan (glavne vloge so na začetku, stranske pa kasneje). Tudi tu najprej zajamemo del vsebine, kjer so podatki o igralcih, nato pa znotraj tega dela z manjšim vzorcem izluščimo podatke. Celoten program lahko najdemo [tu](../01-regularni-izrazi/predavanja/preberi_podatke.py).
 
-
 ## Knjižnica Beautiful Soup

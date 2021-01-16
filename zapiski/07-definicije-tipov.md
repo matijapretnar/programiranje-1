@@ -13,6 +13,14 @@ kernelspec:
 
 # Definicije tipov
 
+```{code-cell}
+:tags: [remove-cell, remove-stdout]
+
+(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
+   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
+   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
+```
+
 Poleg bogatega nabora vgrajenih tipov si tipe v OCamlu lahko definiramo tudi sami.
 
 ## Okrajšave tipov
@@ -93,6 +101,7 @@ Tedaj bo tip imel natanko pet možnih vrednosti in OCaml nas bo opozoril, če po
 ```
 
 ```{code-cell}
+:tags: [raises-exception]
 [XS; XS; L; M; M; XM]
 ```
 
@@ -140,6 +149,7 @@ slaba_glava [1; 2; 3]
 ```
 
 ```{code-cell}
+:tags: [raises-exception]
 slaba_glava []
 ```
 
@@ -174,6 +184,7 @@ let ali_je_slaba_glava_velika xs = slaba_glava xs > 100
 Če uporabimo varnejši način, pa rezultata ne moremo neposredno primerjati s `100`:
 
 ```{code-cell}
+:tags: [raises-exception]
 let ali_je_glava_velika xs = glava xs > 100
 ```
 

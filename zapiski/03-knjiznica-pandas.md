@@ -17,7 +17,6 @@ kernelspec:
 
 Spodaj je pregled najosnovnejših metod, ki jih ponuja knjižnica Pandas. Vsaka od naštetih metod ponuja še cel kup dodatnih možnosti, ki so natančno opisane v [uradni dokumentaciji](http://pandas.pydata.org/pandas-docs/stable/). Z branjem dokumentacije se vam seveda najbolj splača začeti pri [uvodih](http://pandas.pydata.org/pandas-docs/stable/tutorials.html).
 
-
 ## Predpriprava
 
 ```{code-cell}
@@ -32,7 +31,6 @@ pd.options.display.max_rows = 20
 ```
 
 ## Osnovni izbori elementov razpredelnic
-
 
 Z metodo `.head(n=5)` pogledamo prvih `n`, z metodo `.tail(n=5)` pa zadnjih `n` vrstic razpredelnice.
 
@@ -80,7 +78,6 @@ filmi.loc[97576]
 
 ## Filtriranje
 
-
 Izbor določenih vrstic razpredelnice naredimo tako, da za indeks podamo stolpec logičnih vrednosti, ki ga dobimo z običajnimi operacijami. V vrnjeni razpredelnici bodo ostale vrstice, pri katerih je v stolpcu vrednost `True`.
 
 ```{code-cell}
@@ -105,7 +102,6 @@ filmi[(filmi.dolzina > 120) & (filmi.ocena < 4) & (filmi.glasovi > 50000)]
 
 ## Urejanje
 
-
 Razpredelnico urejamo z metodo `.sort_values`, ki ji podamo ime ali seznam imen stolpcev, po katerih želimo urejati. Po želji lahko tudi povemo, kateri stolpci naj bodo urejeni naraščajoče in kateri padajoče.
 
 ```{code-cell}
@@ -118,7 +114,6 @@ filmi.sort_values(['ocena', 'leto'], ascending=[False, True])
 ```
 
 ## Združevanje
-
 
 Z metodo `.groupby` ustvarimo razpredelnico posebne vrste, v katerem so vrstice združene glede na skupno lastnost.
 
@@ -171,7 +166,6 @@ filmi_po_desetletjih.mean()
 
 Izračunajte število filmov posamezne dolžine, zaokrožene na 5 minut.
 
-
 ## Risanje grafov
 
 Običajen graf dobimo z metodo `plot`. Uporabljamo ga, kadar želimo prikazati spreminjanje vrednosti v odvisnosti od zvezne spremenljivke. Naša hipoteza je, da so zlata leta filma mimo. Graf to zanika.
@@ -199,9 +193,9 @@ filmi.sort_values('zasluzek', ascending=False).head(20).plot.bar(x='naslov', y='
 ### Naloga
 
 Narišite grafe, ki ustrezno kažejo:
+
 - Povezavo med IMDB in metascore oceno
 - Spreminjanje povprečne dolžine filmov skozi leta
-
 
 ## Stikanje
 
@@ -226,7 +220,6 @@ pd.merge(vloge, zanri).head(20)
 ```
 
 V osnovi vsebuje staknjena razpredelnica le tiste vnose, ki se pojavijo v obeh tabelah. Temu principu pravimo notranji stik (_inner join_). Lahko pa se odločimo, da izberemo tudi tiste vnose, ki imajo podatke le v levi tabeli (_left join_), le v desni tabeli (_right join_) ali v vsaj eni tabeli (_outer join_). Če v eni tabeli ni vnosov, bodo v staknjeni tabeli označene manjkajoče vrednosti. Ker smo v našem primeru podatke jemali iz IMDBja, kjer so za vsak film določeni tako žanri kot vloge, do razlik ne pride.
-
 
 Včasih želimo stikati tudi po stolpcih z različnimi imeni. V tem primeru funkciji `merge` podamo argumenta `left_on` in `right_on`.
 

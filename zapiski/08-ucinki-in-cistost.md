@@ -27,49 +27,49 @@ Računalniške funkcije so podobne matematičnim v tem, da iz vhodnih vrednosti 
 
 Poglejmo si nekaj primerov takih funkcij v OCamlu. Prva (in zelo pogosto uporabljana) je `print_endline`, ki sprejme niz ter ga izpiše na zaslon in vrne prazen nabor. V splošnem nam prisotnost tipa `unit` v OCamlu sporoča, da se bodo sprožili stranski učinki, saj sicer funkcija, ki bi vrnila `unit`, ne bi storila ničesar koristnega.
 
-```{code-cell} OCaml
+```{code-cell}
 print_endline
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 print_endline "Hello, world!"
 ```
 
 Pri klicu funkcij z učinki je včasih uporabna tudi funkcija `List.iter`, ki dano funkcijo pokliče na vseh elementih seznama. Podobna je funkciji `List.map`, le da seznam vrnjenih praznih naborov zavrže, saj ga redkokdaj uporabljamo.
 
-```{code-cell} OCaml
+```{code-cell}
 List.map print_endline ["am"; "bam"; "pet"; "podgan"]
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 List.iter print_endline ["am"; "bam"; "pet"; "podgan"]
 ```
 
 Za delo z psevdonaključnimi vrednostmi je na voljo knjižnica `Random`. Pogosto uporabljani funkciji tam sta `Random.bool`, ki ob vsakem klicu vrne naključno logično vrednost, in `Random.int`, ki za neko število $m$ vrne naključno celo število med 0 in $m - 1$. Pri uporabi psevdonaključnih števil moramo paziti, da na začetku nastavimo ustrezno seme, saj sicer OCaml vedno začne z enakim. Na primer, spodnji klic bo ob prvem klicu vedno vrnil število 9344.
 
-```{code-cell} OCaml
+```{code-cell}
 Random.int 100000
 ```
 
 Seme lahko najbolj enostavno nastavimo z `Random.self_init`, ki ga nastavi glede na trenuten čas, stanje procesov, …, skratka dovolj naključno.
 
-```{code-cell} OCaml
+```{code-cell}
 Random.self_init ()
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 Random.int 100000 (* tu je nemogoče napovedati, kaj bo klic vrnil *)
 ```
 
 Za branje s konzole uporabimo funkcijo `read_line`.
 
-```{code-cell} OCaml
+```{code-cell}
 read_line
 ```
 
 Tudi tu nam prisotnost tipa `unit` nakazuje, da se bodo najverjetneje zgodili učinki, saj bi funkcija samo iz praznega nabora težko izračunala kakšno zanimivo vrednost. Žal v učbeniku te funkcije ne moremo smiselno poklicati.
 
-```{code-cell} OCaml
+```{code-cell}
 raise
 ```
 
@@ -115,7 +115,7 @@ in če še enkrat pokličemo `g(3)`, dobimo:
 
 Ker funkcija `f` ob klicu spreminja seznam, bomo vsakič dobili drugačen odgovor. O tem, kaj vračata funkciji `f` in `g` tako zelo težko sklepamo. Če pa imamo čiste funkcije (na primer spodnjo, ki ne spreminja obstoječega seznama, temveč vrača novega), potem ob vsakem klicu dobimo enak odgovor.
 
-```{code-cell} OCaml
+```{code-cell}
 let seznam = [1; 2; 3]
 let f x =
     let seznam = x :: seznam in
@@ -124,34 +124,34 @@ let g x =
     f x + f x
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 g 3
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 f 3 + f 3
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 g 3
 ```
 
 Zaradi tega je v splošnem dobro, da v naših programih napišemo čimveč čistih funkcij, funkcije z učinki pa omejimo kolikor se da. Tako bodo naši programi jasnejši in z manj napakami. Poleg tega pa si lahko ob čistih funkcijah privoščimo čisto prave matematične dokaze. Da bomo imeli kaj, s čimer bomo lahko delali, si definirajmo sledeče tri funkcije:
 
-```{code-cell} OCaml
+```{code-cell}
 let rec (@) xs ys =
   match xs with
   | [] -> ys
   | x :: xs' -> x :: (xs' @ ys)
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 let rec obrni = function
   | [] -> []
   | x :: xs -> obrni xs @ [x]
 ```
 
-```{code-cell} OCaml
+```{code-cell}
 let rec dolzina = function
   | [] -> 0
   | _ :: xs -> 1 + dolzina xs
