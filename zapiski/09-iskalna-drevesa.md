@@ -122,7 +122,7 @@ Prej je desno podddrevo imelo višino 2, po dodatnem elementu pa je višina post
 
 ![](slike/09-iskalna-drevesa/mozni-neuravnotezenosti.png)
 
-Brez škode za splošnost poglejmo možnost, kjer se drevo nagiba v desno. Tudi ta ima dve različici. Lahko se nagiba v desno zaradi skrajno desnega ali zaradi srednjega poddrevesa. Ostalih možnosti ni - če bi bili obe drevesi višine $h$, ni težav, če pa bi bili obe višine $h + 1$, pa smo imeli težave že pred spremembo elementa.
+Brez škode za splošnost poglejmo možnost, kjer se drevo nagiba v desno. Ta ima štiri različice. Lahko se nagiba v desno zaradi skrajno desnega ali zaradi srednjega poddrevesa. V obeh primerih ima lahko manjše drevo višino $h$ ali $h - 1$. Ostalih možnosti ni - vsaj eno mora biti višine $h + 1$, če pa bi bili obe, pa smo imeli težave že pred spremembo elementa. Od tu naprej lahko predpostavimo, da ima manjše višino $h$ in ne $h - 1$. Postopek je enak.
 
 ![](slike/09-iskalna-drevesa/mozni-desni-neuravnotezenosti.png)
 
