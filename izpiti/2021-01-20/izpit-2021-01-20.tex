@@ -1,0 +1,112 @@
+\documentclass[arhiv]{../izpit}
+%\usepackage{fouriernc}
+%\usepackage{xcolor}
+%\usepackage{tikz}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\VerbatimFootnotes{}
+
+\begin{document}
+
+\izpit{Programiranje I: 1.\ izpit}{20.\ januar 2021}{
+  Čas reševanja je 120 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\naloga
+
+\podnaloga
+Napišite funkcijo, ki vrne razliko med produktom in vsoto dveh celih števil.
+\begin{verbatim}
+    razlika_produkta_in_vsote : int -> int -> int
+\end{verbatim}
+
+\podnaloga
+Napišite funkcijo, ki združi dva para v četverico.
+\begin{verbatim}
+    zlimaj_para : 'a * 'b -> 'c * 'd -> 'a * 'b * 'c * 'd
+\end{verbatim}
+
+\podnaloga
+Imamo podatke tipa \verb|int option * int option * int option|, ki jih želimo grafično predstaviti. Napišite funkcijo \verb|trojica_graficno|, ki sprejme takšno trojico in vrne niz, kjer so ``manjkajoči'' elementi nadomeščeni z znakom \verb|-|. Primer vrnjenega niza je \verb|"(1, 2, -)"|.
+\begin{verbatim}
+    trojica_graficno : int option * int option * int option -> string
+\end{verbatim}
+
+\podnaloga
+Klic funkcije \verb|nedeljivo_do x n| preveri, da število \verb|x| \textbf{ni} deljivo z nobenim naravnim številom od 2 do vključno \verb|n|. Število 73859 je praštevilo, torej mora \verb|nedeljivo_do 73859 73858| vrniti \verb|true|.
+\begin{verbatim}
+    nedeljivo_do : int -> int -> bool
+\end{verbatim}
+
+\podnaloga
+Seznam elementov tipa \verb|'a option| želimo razcepiti na podsezname tako, da se ob vsaki pojavitvi vrednosti \verb|None| začne nov podseznam.
+\begin{verbatim}
+    razcepi_pri_None : 'a option list -> 'a list list
+\end{verbatim}
+Kot primer, funkcija seznam
+\begin{verbatim}
+    [Some 1; None; Some 2; Some 3; None; None; Some 4; None]
+\end{verbatim}
+razcepi v seznam \verb|[[1]; [2;3]; []; [4]; []]|. \textbf{Funkcija naj bo repno rekurzivna.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+Filip potrebuje pomoč pri organiziranju kuhinje. Posode in omare mu je uspelo popisati in ustrezno označiti, sedaj pa mora nad tem izvajati kopico arhivskih nalog, kjer nastopite vi.
+
+Elemente v kuhinji predstavimo s tipom
+\begin{verbatim}
+    type 'a kuhinjski_element =
+        | Ponev of 'a
+        | Lonec of 'a * 'a
+        | Omara of 'a list
+\end{verbatim}
+
+\podnaloga 
+Definirajte primer seznama kuhinjskih elementov \verb|kuhinja|, kjer ponev vsebuje niz \verb|"tuna"|, lonec vsebuje \verb|"brokoli"| in \verb|"mango"|, omara pa vsebuje \verb|"sir"|, \verb|"toast"|, \verb|"sok"| in \verb|"ragu"|.
+
+\podnaloga 
+Napišite funkcijo \verb|prestej|, ki za podani seznam kuhinjskih elementov vrne skupno število vsebinskih elementov. Za zgornji primer \verb|kuhinja| bi tako vrnila 7.
+
+\podnaloga 
+Definirajte funkcijo, ki sprejme funkcijo \verb|f| in kuhinjski element ter funkcijo \verb|f| uporabi na celotni vsebini elementa.
+\begin{verbatim}
+    pretvori : ('a -> 'b) -> 'a kuhinjski_element -> 'b kuhinjski_element
+\end{verbatim}
+
+\podnaloga 
+Definirajte funkcijo \verb|pospravi|, ki sprejme seznam kuhinjskih elementov in vsebino vseh elementov pospravi v eno samo \verb|Omaro|. Vrstni red elementov v končni omari je nepomemben. Za vse točke naj bo funkcija repno rekurzivna. 
+\begin{verbatim}
+    pospravi : 'a kuhinjski_element list -> 'a kuhinjski_element
+\end{verbatim}
+
+\podnaloga 
+Napišite funkcijo \verb|oceni|, ki sprejme seznam tipa \verb|'a kuhinjski_element list| in cenilko vsebine tipa \verb|'a -> int|. Funkcija izračuna skupno ceno celotnega seznama, kjer je cena vsebine v loncih množena s 3, v omarah pa s 5.
+
+Ocena testne kuhinje za cenilko \verb|String.length| je 115.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+\emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+Po koncu karantene načrtuje Rožle planinski pohod po svojem najljubšem gorovju. Zamislil si je že pot, ki ima veliko priložnosti za fotografiranje. Ker pa uporablja zastarel telefon, ima na pomnilniku prostora za zgolj dve fotografiji. Da bi ti dve sliki čim bolj izkoristil, želi da je med lokacijo prve fotografije in lokacijo druge fotografije kar se da velik vzpon (pri čemer so vmes lahko tudi manjši spusti).
+
+Kot vhod dobimo seznam nadmorskih višin za vse razgledne točke v takšnem vrstnem redu, kot si sledijo po poti. Na primer:
+\begin{verbatim}
+    [350; 230; 370; 920; 620; 80; 520; 410; 780; 630]
+\end{verbatim}
+V zgornjem primeru se Rožletu najbolj splača slikati na točki 5 (višina 80 m) in nato na točki 8 (višina 780 m), saj se je med njima vzpel za 700 metrov. Čeprav je med točko 3 (višina 920 m) in točko 5 (višina 80 m) večja višinska razlika, se je med točkama spuščal in ne vzpenjal, zato ne prideta v poštev.
+
+
+\podnaloga
+Napišite funkcijo, ki v času $O(n \log n)$ ali hitreje izračuna največjo višinsko razliko med optimalno izbranima točkama. Časovno zahtevnost utemeljite v komentarju.
+
+\podnaloga
+Prejšnjo rešitev prilagodite tako, da vrne zgolj indeksa teh dveh točk. Pri tem poskrbite, da ne pokvarite časovne zahtevnosti v $O$ notaciji.
+
+\end{document}
