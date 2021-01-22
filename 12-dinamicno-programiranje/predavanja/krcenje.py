@@ -1,5 +1,5 @@
 import itertools
-import png
+import png  # pip install pypng
 
 
 def nalozi_sliko(ime_datoteke):
@@ -22,7 +22,7 @@ def shrani_sliko(slika, ime_datoteke):
 def razdalja(piksel1, piksel2):
     r1, g1, b1 = piksel1
     r2, g2, b2 = piksel2
-    return ((r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2) ** 0.5
+    return abs(r1 - r2) + abs(g1 - g2) + abs(b1 - b2)
 
 
 def energije_vrstice(vrstica):
@@ -61,23 +61,6 @@ def navpicni_siv(slika):
     siv = [min_stolpec for _ in range(visina)]
     return siv
 
-def zavijajoci_siv(slika):
-    visina, sirina = dimenzije(slika)
-    energije = energije_slike(slika)
-    sivi = [[(energije[0][x], [x]) for x in range(sirina)]]
-    for y in range(1, visina):
-        sivi_vrstice = []
-        for x in range(sirina):
-            zacetki = []
-            if x > 0:
-                zacetki.append(sivi[-1][x - 1])
-            zacetki.append(sivi[-1][x])
-            if x < sirina - 1:
-                zacetki.append(sivi[-1][x + 1])
-            energija_zacetka, siv_zacetka = min(zacetki)
-            sivi_vrstice.append((energije[y][x] + energija_zacetka, siv_zacetka + [x]))
-        sivi.append(sivi_vrstice)
-    return min(sivi[-1])[1]
 
 def pokazi_siv(slika, siv):
     nova_slika = []
@@ -94,10 +77,33 @@ def odstrani_siv(slika, siv):
         nova_slika.append(vrstica[:i] + vrstica[i + 1:])
     return nova_slika
 
+def zavijajoci_siv(slika):
+    visina, sirina = dimenzije(slika)
+    energije = energije_slike(slika)
+    # šivi iz spodnje vrstice
+    sivi = [[(energije[0][x], [x]) for x in range(sirina)]]
+    for y in range(1, visina):
+        sivi_vrstice = []
+        for x in range(sirina):
+            zacetki = []
+            if x > 0:
+                zacetki.append(sivi[-1][x - 1])
+            zacetki.append(sivi[-1][x])
+            if x < sirina - 1:
+                zacetki.append(sivi[-1][x + 1])
+            energija_zacetka, siv_zacetka = min(zacetki)
+            sivi_vrstice.append((energije[y][x] + energija_zacetka, siv_zacetka + [x]))
+        sivi.append(sivi_vrstice)
+    return min(sivi[-1])[1]
 
-slika = nalozi_sliko('/workspaces/programiranje-1/12-dinamicno-programiranje/predavanja/kuza.png')
+
+slika = nalozi_sliko('/workspaces/programiranje-1/12-dinamicno-programiranje/predavanja/smrekica.png')
 for i in range(len(slika[0])):
     print(i)
+    # siv = siv_po_tockah(slika)
+    # shrani_sliko(pokazi_siv(slika, siv), f'po_tockah/smreka-{i}.png')
+    # siv = navpicni_siv(slika)
+    # shrani_sliko(pokazi_siv(slika, siv), f'navpicni/smreka-{i}.png')
     siv = zavijajoci_siv(slika)
-    shrani_sliko(pokazi_siv(slika, siv), f'korak-{i}.png')
+    shrani_sliko(pokazi_siv(slika, siv), f'zavijajoci/smreka-{i}.png')
     slika = odstrani_siv(slika, siv)

@@ -1,0 +1,82 @@
+let rec obrni =
+    function
+    | [] -> []
+    | glava :: rep -> obrni rep @ [glava]
+
+let rec (@) sez1 sez2 =
+  match sez1 with
+  | [] -> sez2
+  | glava1 :: rep1 -> glava1 :: rep1 @ sez2
+
+let rec dolzina sez =
+  match sez with
+  | [] -> 0
+  | _ :: rep -> 1 + dolzina rep
+
+(* 
+obrni [x]
+= obrni (x :: [])
+= obrni [] @ [x]
+= [] @ [x]
+= [x]
+*)
+
+(* 
+  dolzina (sez1 @ sez2) = dolzina sez1 + dolzina sez2
+  - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  dolzina ([] @ sez2)
+  = dolzina sez2
+
+  dolzina [] + dolzina sez2
+  = 0 + dolzina sez2
+  = dolzina sez2
+
+  dolzina ((glava1 :: rep1) @ sez2)
+  = dolzina (glava1 :: (rep1 @ sez2))
+  = 1 + dolzina (rep1 @ sez2)
+
+  dolzina (glava1 :: rep1) + dolzina sez2
+  = (1 + dolzina rep1) + dolzina sez2
+  = 1 + (dolzina rep1 + dolzina sez2)
+
+  KAKO POKAŽEMO, DA STA TI DVE STVARI ENAKI?
+
+  INDUKCIJA!!!
+  *)
+
+(* 
+  dolzina (sez1 @ sez2) = dolzina sez1 + dolzina sez2
+  - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  Dokaz z indukcijo na sez1:
+  P(_) ... dolzina (_ @ sez2) = dolzina _ + dolzina sez2
+
+  - Osnovni korak: sez1 = []
+
+      dolzina ([] @ sez2)
+      = dolzina sez2
+
+      dolzina [] + dolzina sez2
+      = 0 + dolzina sez2
+      = dolzina sez2
+
+    QED
+  
+  - Indukcijski korak:
+      IP: velja za rep, torej
+            dolzina (rep1 @ se
+            z2) = dolzina rep1 + dolzina sez2
+      Dokazujemo pa:
+            dolzina ((gl1 :: rep1) @ sez2) = dolzina (gl1 :: rep1) + dolzina sez2
+
+
+    dolzina ((glava1 :: rep1) @ sez2)
+    = dolzina (glava1 :: (rep1 @ sez2))
+    = 1 + dolzina (rep1 @ sez2)
+    = 1 + (dolzina rep1 + dolzina sez2)
+    = (1 + dolzina rep1) + dolzina sez2
+    = dolzina (glava1 :: rep1) + dolzina sez2
+
+    QED
+  *)

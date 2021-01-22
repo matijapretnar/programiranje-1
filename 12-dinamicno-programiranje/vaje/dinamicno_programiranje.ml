@@ -22,6 +22,24 @@ let test_matrix =
      [| 7 ; 0 ; 1 |] |]
 
 (*----------------------------------------------------------------------------*]
+ Poleg količine sira, ki jo miška lahko poje, jo zanima tudi točna pot, ki naj
+ jo ubere, da bo prišla do ustrezne pojedine.
+
+ Funkcija [optimal_path] naj vrne optimalno pot, ki jo mora miška ubrati, da se
+ čim bolj nažre. Ker je takih poti lahko več, lahko funkcija vrne poljubno.
+ Pripravite tudi funkcijo [convert_path], ki pot pretvori v seznam tež sirčkov
+ na poti.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # optimal_path_bottom test_matrix;;
+ - : mouse_direction list = [Right; Down; Down; Right; Down]
+ # optimal_path test_matrix |> convert_path test_matrix;;
+ - : int list = [1; 2; 4; 5; 1]
+[*----------------------------------------------------------------------------*)
+
+type mouse_direction = Down | Right
+
+
+(*----------------------------------------------------------------------------*]
  Rešujemo problem sestavljanja alternirajoče obarvanih stolpov. Imamo štiri
  različne tipe gradnikov, dva modra in dva rdeča. Modri gradniki so višin 2 in
  3, rdeči pa višin 1 in 2.
@@ -38,71 +56,55 @@ let test_matrix =
 [*----------------------------------------------------------------------------*)
 
 
-(*----------------------------------------------------------------------------*]
- Na nagradni igri ste zadeli kupon, ki vam omogoča, da v Mercatorju kupite
- poljubne izdelke, katerih skupna masa ne presega [max_w] kilogramov. Napišite
- funkcijo [best_value articles max_w], ki poišče največjo skupno ceno, ki jo
- lahko odnesemo iz trgovine, kjer lahko vsak izdelek vzamemo večkrat, nato pa
- še funkcijo [best_value_uniques articles max_w], kjer lahko vsak izdelek
- vzamemo kvečjemu enkrat.
-
- Namig: Modul [Array] ponuja funkcije kot so [map], [fold_left], [copy] in
- podobno, kot alternativa uporabi zank.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # best_value articles 1.;;
- - : float = 10.95
- # best_value_unique articles 1.;;
-- : float = 7.66
-[*----------------------------------------------------------------------------*)
-
-(* Articles are of form (name, price, weight) *)
-let articles = [|
-	("yoghurt", 0.39, 0.18);
-	("milk", 0.89, 1.03);
-  ("coffee", 2.19, 0.2);
-  ("butter", 1.49, 0.25);
-  ("yeast", 0.22, 0.042);
-  ("eggs", 2.39, 0.69);
-  ("sausage", 3.76, 0.50);
-  ("bread", 2.99, 1.0);
-  ("Nutella", 4.99, 0.75);
-  ("juice", 1.15, 2.0)
-|]
-
 
 (*----------------------------------------------------------------------------*]
- Cena sprehoda po drevesu je vsota vrednosti v vseh obiskanih vozliščih.
- Poiščite vrednost najdražjega sprehoda od korena do listov drevesa.
+ Izračunali smo število stolpov, a naše vrle gradbince sedaj zanima točna
+ konfiguracija. Da ne pride do napak pri sestavljanju, bomo stolpe predstavili
+ kar kot vsotne tipe. 
+
+ Stolp posamezne barve so temelji (Bottom), ali pa kot glava bloka pripadajoče
+ barve in preostanek, ki je stolp nasprotne barve.
+
+ Definirajte funkcijo [enumerate_towers], ki vrne seznam vseh stolpov podane
+ dolžine. Stolpe lahko vrne v poljubnem vrstnem redu. Funkcija naj hitro (in
+ brez) prekoračitve sklada deluje vsaj do višine 20.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # max_path Empty ;;
- - : 'a option = None
- # max_path test_tree;;
-- : int option = Some 21
+ # enumerate_towers 4;;
+ - : tower list = 
+    [Red (TopRed (Red2, TopBlue (Blue2, RedBottom)));
+     Red (TopRed (Red1, TopBlue (Blue3, RedBottom)));
+     Red (TopRed (Red1, TopBlue (Blue2, TopRed (Red1, BlueBottom))));
+     Blue (TopBlue (Blue3, TopRed (Red1, BlueBottom)));
+     Blue (TopBlue (Blue2, TopRed (Red2, BlueBottom)))]
 [*----------------------------------------------------------------------------*)
 
-type 'a tree
- = Empty
- | Node of ('a tree) * 'a * ('a tree)
 
-let leaf x = Node (Empty, x, Empty)
+type blue_block = Blue3 | Blue2
+type red_block = Red2 | Red1
 
-let test_tree = Node( Node(leaf 0, 2, leaf 13), 5, Node(leaf 9, 7, leaf 4))
+type red_tower = TopRed of red_block * blue_tower | RedBottom
+and blue_tower = TopBlue of blue_block * red_tower | BlueBottom
+
+type tower = Red of red_tower | Blue of blue_tower
 
 (*----------------------------------------------------------------------------*]
- Cena sprehoda po drevesu je vsota vrednosti v vseh obiskanih vozliščih.
- Poiščite najdražji sprehod od korena do listov drevesa: Funkcija pot vrne v 
- obliki seznama smeri, katere je potrebno izbrati za najdražji sprehod.
+ Vdrli ste v tovarno čokolade in sedaj stojite pred stalažo kjer so ena ob
+ drugi naložene najboljše slaščice. Želite si pojesti čim več sladkorja, a
+ hkrati poskrbeti, da vas ob pregledu tovarne ne odkrijejo. Da vas pri rednem
+ pregledu ne odkrijejo, mora biti razdalija med dvema zaporednima slaščicama,
+ ki ju pojeste vsaj `k`.
 
- Napišite tudi funkcijo, ki sprehod pretvori v elemente sprehoda
+ Napišite funkcijo [ham_ham], ki sprejme seznam naravnih števil dolžine `n`, ki
+ predstavljajo količino sladkorja v slaščicah v stalaži in parameter `k`,
+ najmanjšo razdalijo med dvema slaščicama, ki ju še lahko varno pojeste.
+ Funkcija naj vrne seznam zastavic `bool`, kjer je `i`-ti prižgan natanko tedaj
+ ko v optimalni požrtiji pojemo `i`-to slaščico.
+
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # max_path_trace Empty ;;
- - : 'a list = []
- # max_path_trace test_tree;;
-- : direction list = [Right, Left]
- # reconstruct test_tree (max_path_trace test_tree);;
-- : int list = [5; 7; 9]
+ # ham_ham test_shelf 1;;
+ - : bool list = [false; true; false; true; false; true; false; true; false]
+ # ham_ham test_shelf 2;;
+ - : bool list = [false; true; false; false; false; true; false; false; false]
 [*----------------------------------------------------------------------------*)
 
-type direcion 
-  = Left
-  | Right
+let test_shelf = [1;2;-5;3;7;19;-30;1;0]

@@ -41,7 +41,7 @@ Klic funkcije \verb|nedeljivo_do x n| preveri, da število \verb|x| \textbf{ni} 
 \end{verbatim}
 
 \podnaloga
-Seznam elementov tipa \verb|'a option| želimo razdeliti na podsezname glede na pojavitve vrednosti \verb|None|.
+Seznam elementov tipa \verb|'a option| želimo razcepiti na podsezname tako, da se ob vsaki pojavitvi vrednosti \verb|None| začne nov podseznam.
 \begin{verbatim}
     razcepi_pri_None : 'a option list -> 'a list list
 \end{verbatim}
@@ -94,13 +94,13 @@ Ocena testne kuhinje za cenilko \verb|String.length| je 115.
 \naloga
 \emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
 
-Po koncu karantene načrtuje Rožle planinski pohod po svojem najljubšem gorovju. Zamislil si je že pot, ki ima veliko priložnosti za fotografiranje. Ker pa uporablja zastarel telefon, ima na pomnilniku prostora za zgolj dve fotografiji. Da bi ti dve sliki čim bolj izkoristil, želi da je med lokacijo prve fotografije in lokacijo druge fotografije kar se da velik vzpon.
+Po koncu karantene načrtuje Rožle planinski pohod po svojem najljubšem gorovju. Zamislil si je že pot, ki ima veliko priložnosti za fotografiranje. Ker pa uporablja zastarel telefon, ima na pomnilniku prostora za zgolj dve fotografiji. Da bi ti dve sliki čim bolj izkoristil, želi da je med lokacijo prve fotografije in lokacijo druge fotografije kar se da velik vzpon (pri čemer so vmes lahko tudi manjši spusti).
 
 Kot vhod dobimo seznam nadmorskih višin za vse razgledne točke v takšnem vrstnem redu, kot si sledijo po poti. Na primer:
 \begin{verbatim}
-    [350; 230; 370; 920; 620; 80; 520; 780; 630]
+    [350; 230; 370; 920; 620; 80; 520; 410; 780; 630]
 \end{verbatim}
-V zgornjem primeru se Rožletu najbolj splača slikati na točki 5 (višina 80 m) in nato na točki 7 (višina 780 m), saj se je med njima vzpel za 700 metrov. Čeprav je med točko 3 (višina 920 m) in točko 5 (višina 80 m) večja višinska razlika, se je med točkama spuščal in ne vzpenjal, zato ne prideta v poštev.
+V zgornjem primeru se Rožletu najbolj splača slikati na točki 5 (višina 80 m) in nato na točki 8 (višina 780 m), saj se je med njima vzpel za 700 metrov. Čeprav je med točko 3 (višina 920 m) in točko 5 (višina 80 m) večja višinska razlika, se je med točkama spuščal in ne vzpenjal, zato ne prideta v poštev.
 
 
 \podnaloga
