@@ -142,18 +142,6 @@ Traceback (most recent call last):
 RecursionError: maximum recursion depth exceeded
 ```
 
-```{code-cell}
-f 1000
-```
-
-```{code-cell}
-f 100000
-```
-
-```{code-cell}
-f 10000000
-```
-
 ## Funkcije višjega reda
 
 Kadar funkcija za argument sprejme drugo funkcijo, govorimo o funkcijah višjega reda. Na primer funkcija `trikrat` sprejme funkcijo `f` in argument `x` ter `f` trikrat zaporedoma uporabi na njem:
@@ -179,7 +167,7 @@ Spoznali smo že funkcijo `preslikaj`, ki vzame funkcijo in jo uporabi na vseh e
 - osnovni modul [`Stdlib`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html), ki je vedno naložen in ga ni treba posebej navajati,
 - modul [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html) za delo z nizi,
 - modul [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html) za delo s seznami ali
-- modul [`Random`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html) za delo z naključnimi vrednostmi.
+- modul [`Random`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html) za delo s psevdonaključnimi vrednostmi.
 
 Do funkcij v modulih dostopamo s klici oblike `Modul.funkcija`. Na primer, funkcija `preslikaj` je dostopna kot:
 

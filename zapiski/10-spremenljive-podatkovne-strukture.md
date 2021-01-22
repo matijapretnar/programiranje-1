@@ -217,13 +217,13 @@ s : 19         0   0 123   6   0   0
 
 kjer si lahko predstavljamo, da sta na mestih `123` in `246` shranjeni še definiciji razredov `int` in `list`. Različne predstavitve v pomnilniku vodijo v različne računske zahtevnosti operacij. Za seznam dolžine $n$ so časovne zahtevnosti osnovnih operacij sledeče:
 
-       operacija | OCaml `array` | Python `list` | OCaml `list`
----------------: | :-----------: | :-----------: | :----------:
-    indeksiranje |     O(1)      |     O(1)      |     O(n)
-dodaj na začetek |     O(n)      |     O(n)      |     O(1)
-  dodaj na konec |     O(n)      |     O(1)      |     O(n)
-         dolžina |     O(1)      |     O(1)      |     O(n)
-    izračun repa |     O(n)      |     O(n)      |     O(1)
+|        operacija | OCaml `array` | Python `list` | OCaml `list`
+| ---------------: | :-----------: | :-----------: | :----------:
+|     indeksiranje |     O(1)      |     O(1)      |     O(n)
+| dodaj na začetek |     O(n)      |     O(n)      |     O(1)
+|   dodaj na konec |     O(n)      |     O(1)      |     O(n)
+|          dolžina |     O(1)      |     O(1)      |     O(n)
+|     izračun repa |     O(n)      |     O(n)      |     O(1)
 
 ## Tip `array`
 

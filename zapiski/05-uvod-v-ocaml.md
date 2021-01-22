@@ -251,7 +251,7 @@ Sezname sestavljamo z dvema operacijama. Z `::` sestavimo nov seznam z dano glav
 1 :: [2; 3; 4]
 ```
 
-Kasneje bomo videli, da ima `::` prav posebno vlogo, saj je tako imenovani _konstruktor_ seznamov. Vsak neprazen seznam je namreč prek `::` sestavljen iz glave in repa. Tudi `[1; 2; 3; 4]` je v resnici samo okrajšava za `1 :: (2 :: (3 :: 4)))`.
+Kasneje bomo videli, da ima `::` prav posebno vlogo, saj je tako imenovani _konstruktor_ seznamov. Vsak neprazen seznam je namreč prek `::` sestavljen iz glave in repa. Tudi `[1; 2; 3; 4]` je v resnici samo okrajšava za `1 :: (2 :: (3 :: (4 :: []))))`.
 
 Če želimo stakniti dva seznama, pa uporabimo funkcijo `@`:
 
@@ -296,7 +296,7 @@ Za vajo lahko preverite, kateri izmed spodnjih seznamov so veljavni:
 
 ### Tipi funkcij
 
-Vsaka vrednost v OCamlu ima svoj tip, tudi funkcije. Tip funkcije je oblike <code>tip<sub>arg</sub> -> tip<sub>rez</sub></code>, kjer je <code>tip<sub>arg</sub></code> tip argumenta funkcije, tip<sub>rez</sub></code> pa tip njenega rezultata. Na primer `string_of_int` vzame `int` in vrne `string`:
+Vsaka vrednost v OCamlu ima svoj tip, tudi funkcije. Tip funkcije je oblike <code>tip<sub>arg</sub> -> tip<sub>rez</sub></code>, kjer je <code>tip<sub>arg</sub></code> tip argumenta funkcije, <code>tip<sub>rez</sub></code> pa tip njenega rezultata. Na primer `string_of_int` vzame `int` in vrne `string`:
 
 ```{code-cell}
 string_of_int
@@ -332,7 +332,7 @@ let zmnozi x y = x * y
 zmnozi 6 7
 ```
 
-Funkcije so lahko tudi argumenti drugih funkcij. Na primer, spodnja funkcija vzame funkcijo `f` ter jo dvakrat zaporedoma uporabi na `0`. Iz tega sledi, da mora `f` sprejeti argument tipa `0`. Ker rezultat `f 0` znova podamo `f`, mora tudi ta biti `int`, zato je tip funkcije `f` enak `int -> int`, kar OCaml sam izračuna:
+Funkcije so lahko tudi argumenti drugih funkcij. Na primer, spodnja funkcija vzame funkcijo `f` ter jo dvakrat zaporedoma uporabi na `0`. Iz tega sledi, da mora `f` sprejeti argument tipa `int`. Ker rezultat `f 0` znova podamo `f`, mora tudi ta biti `int`, zato je tip funkcije `f` enak `int -> int`, kar OCaml sam izračuna:
 
 ```{code-cell}
 let dvakrat_na_nic f = f (f 0)

@@ -64,7 +64,7 @@ let abs (r, _fi) = r
 Zmešnjavi se lahko izognemo, če obe komponenti poimenujemo. V OCamlu to storimo z zapisnimi tipi, ki jih podamo tako, da naštejemo imena polj ter njihove tipe:
 
 ```{code-cell}
-type kompleksno = {re : float; im : float}
+type kartezicno = {re : float; im : float}
 type polarno = {radij : float; kot : float}
 ```
 
@@ -84,7 +84,7 @@ let abs z = sqrt (z.re ** 2. +. z.im ** 2.)
 let abs' z = z.radij
 ```
 
-Kljub temu, da zapise pišemo podobno kot OCamlovi slovarji, gre za popolnoma različni strukturi. Zapisi so v resnici kartezični produkti, le da so komponente poimenovane, imena polj pa niso vrednosti, ki bi si jih lahko podajali naokoli.
+Kljub temu, da zapise pišemo podobno kot Pythonove slovarje, gre za popolnoma različni strukturi. Zapisi so v resnici kartezični produkti, le da so komponente poimenovane, imena polj pa niso vrednosti, ki bi si jih lahko podajali naokoli.
 
 ## Vsote
 

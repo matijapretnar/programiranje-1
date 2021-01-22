@@ -60,7 +60,7 @@ $$\begin{aligned}
   a^0 &= 1 \\
   a^n &= \begin{cases}
     (a^{n / 2})^2 & \text{$n$ je sod} \\
-    a \cdot (a^{n / 2})^2 & \text{$n$ je lih}
+    a \cdot (a^{(n - 1) / 2})^2 & \text{$n$ je lih}
   \end{cases}
 \end{aligned}$$
 
