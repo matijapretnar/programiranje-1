@@ -7,6 +7,11 @@
 
     pitagorejska_trojica : int * int * int -> bool
 
+    # pitagorejska_trojica (3, 4, 5);;
+    - : bool = true
+    # pitagorejska_trojica (5, 4, 3);;
+    - : bool = false
+
 [*----------------------------------------------------------------------------*)
 
 let pitagorejska_trojica (a, b, c) = (a*a + b*b) = c*c
@@ -18,6 +23,11 @@ let pitagorejska_trojica (a, b, c) = (a*a + b*b) = c*c
 
     priblizek_korena : int -> int
 
+      # priblizek_korena 9;;
+    - : int = 3
+    # priblizek_korena 17;;
+    - : int = 4
+
 [*----------------------------------------------------------------------------*)
 
 let priblizek_korena x =
@@ -28,8 +38,14 @@ let priblizek_korena x =
 (*----------------------------------------------------------------------------*]
   Definirajte funkcijo, ki sprejme seznam celih števil in najprej IZPIŠE vsa
   soda števila v seznamu, nato pa IZPIŠE še vsa liha števila v seznamu.
+  Števila naj bodo izpisana v isti vrstici in med njimi ne želimo presledkov.
 
     izpisi_soda_liha : int list -> unit
+
+    # izpisi_soda_liha [3; 1; 4; 1; 5; 9; 2];;
+    4231159- : unit = ()
+    # izpisi_soda_liha [2; 7; 1; 8; 2; 8; 1];;
+    2828711- : unit = ()
 
 [*----------------------------------------------------------------------------*)
 
@@ -43,6 +59,13 @@ let izpisi_soda_liha list =
   si v seznamu izmenično sledijo konstruktorji [None] in [Some].
 
     alternirajoci_konstruktorji : 'a option list -> bool
+
+    # alternirajoci_konstruktorji [None; Some 1; None; Some 100; None];;
+    - : bool = true
+    # alternirajoci_konstruktorji [None; Some 1; Some 10];;
+    - : bool = false
+    # alternirajoci_konstruktorji [Some 1; None; Some 10; None];;
+    - : bool = true
 
 [*----------------------------------------------------------------------------*)
 
@@ -62,6 +85,13 @@ let rec alternirajoci_konstruktorji = function
   Za vse točke naj bo funkcija repno rekurzivna.
 
     najmanjsi_rezultat : 'a -> ('a -> 'b) list -> int option
+
+    # najmanjsi_rezultat (-10) [(fun x -> 10 * x); succ; (fun y -> -10 * y)];;  
+    - : int option = Some 0
+    # najmanjsi_rezultat 10 [(fun x -> 10 * x); succ; (fun y -> -10 * y)];;    
+    - : int option = Some 2
+    # najmanjsi_rezultat 30 [];;
+    - : int option = None
 
 [*----------------------------------------------------------------------------*)
 

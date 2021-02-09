@@ -1,10 +1,10 @@
 (*============================================================================*]
   Za učinkovitejše iskanje po leksikografsko urejenih parih bomo uporabili
-  leksikografska drevesa, ki jih ustvarimo s pomočjo binarnih dreves.
+  leksikografska drevesa, ki jih ustvarimo s pomočjo dvojiških dreves.
 
     type 'a tree = Empty | Node of 'a tree * 'a * 'a tree
 
-  Leksikografsko drevo za pare tipa ['a * 'b] je binarno drevo, ki ima v
+  Leksikografsko drevo za pare tipa ['a * 'b] je dvojiško drevo, ki ima v
   vozlišču element tipa ['a] (da lahko primerjamo po prvi komponenti) in pa
   drevo tipa ['b tree] (za primerjanje po drugi komponenti).
 
