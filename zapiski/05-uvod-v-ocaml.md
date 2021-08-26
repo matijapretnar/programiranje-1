@@ -227,6 +227,16 @@ Kot vidimo, imajo nabori tip označen s kartezičnim produktom <code>τ<sub>1</s
 
 Ker kartezičnega produkta nič tipov ne moremo zapisati, tip praznega nabora označujemo z `unit`.
 
+Na parih (torej naborih velikosti 2) imamo na voljo funkciji `fst` in `snd`, ki projecirata na prvo in drugo komponento.
+
+```{code-cell}
+fst (5, true)
+```
+
+```{code-cell}
+snd (5, true)
+```
+
 ### Tip seznamov
 
 Sezname v OCamlu pišemo med oglate oklepaje, vrednosti pa ločimo s podpičji. Vse vrednosti v seznamih morajo biti enakega tipa, seznam pa ima potem tip oblike <code>tip<sub>el</sub> list</code>, kjer je <code>tip<sub>el</sub></code> tip komponent.
@@ -356,6 +366,12 @@ Včasih majhnih funkcij kot je zgornja ni smiselno poimenovati. V tem primeru la
 dvakrat_na_nic (fun x -> 2 * x + 1)
 ```
 
+Anonimne funkcije lahko sprejmejo tudi več argumentov:
+
+```{code-cell}
+(fun x y -> x * y) 2 3
+```
+
 ### Vzorci
 
 V lokalnih definicijah in argumentih funkcij lahko argumente razstavimo s pomočjo vzorcev. Na primer, namesto:
@@ -368,7 +384,7 @@ let razdalja koord1 koord2 =
   sqrt (dx ** 2. +. dy ** 2.)
 ```
 
-kjer sta `fst` in `snd` projekciji na prvo in drugo komponento para, lahko pišemo:
+lahko pišemo:
 
 ```{code-cell}
 let razdalja koord1 koord2 =

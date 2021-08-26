@@ -74,7 +74,7 @@ Vrednosti tipov pišemo podobno, le da jih podamo z `=`:
 let i = {re = 0.0; im = 1.0}
 ```
 
-Do komponent dostopamo z `zapis.ime_polja`:
+Do komponent dostopamo z `zapis.polje`:
 
 ```{code-cell}
 let abs z = sqrt (z.re ** 2. +. z.im ** 2.)
@@ -82,6 +82,16 @@ let abs z = sqrt (z.re ** 2. +. z.im ** 2.)
 
 ```{code-cell}
 let abs' z = z.radij
+```
+
+Z zapisom `{zapis with polje1 = vrednost1, ...}` ustvarimo nov zapis, ki ima z izjemo naštetih vrednosti polja enaka prvotnemu:
+
+```{code-cell}
+let konjugiraj z = {z with im = -. z.im}
+```
+
+```{code-cell}
+konjugiraj i
 ```
 
 Kljub temu, da zapise pišemo podobno kot Pythonove slovarje, gre za popolnoma različni strukturi. Zapisi so v resnici kartezični produkti, le da so komponente poimenovane, imena polj pa niso vrednosti, ki bi si jih lahko podajali naokoli.
