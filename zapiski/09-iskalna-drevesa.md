@@ -106,7 +106,11 @@ oziroma
 
 $$N(h) + 1 \ge (N(h - 1) + 1) + (N(h - 2) + 1)$$
 
-iz česar hitro sledi, da velja $N(h) + 1 \ge F_h$, kjer smo s $F_h$ označili $h$-to Fibonaccijevo število. Torej ima vsako drevo višine vsaj $h$ vsaj $O(\left(\frac{1 + \sqrt{5}}{2}\right)^h)$ vozlišč.
+iz česar hitro sledi, da velja $N(h) + 1 \ge f_h$, kjer smo s $f_h$ označili $h$-to Fibonaccijevo število. Torej ima vsako drevo višine vsaj $h$ vsaj $O(\left(\frac{1 + \sqrt{5}}{2}\right)^h)$ vozlišč.
+
+Primer, kjer je spodnja meja dosežena, je Fibonaccijevo drevo. Drevo $F_0$ je prazno drevo, drevo $F_1$ vsebuje eno samo vozlišče, drevo $F_n$ pa definiramo kot sestavljeno drevo, v katerem je levi otrok $F_{n - 1}$, desni pa $F_{n - 2}$ (same vrednosti v drevesu niso tako pomembne, kot njegova oblika). Slika Fibonaccijevega drevesa nam tudi kaže, da lahko AVL drevesa vsebujejo precej praznega prostora.
+
+![](slike/09-iskalna-drevesa/fibonaccijevo-drevo.png)
 
 ## Rotacije
 
