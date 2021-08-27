@@ -79,17 +79,17 @@ let rec potenciraj a =
 potenciraj 2 10
 ```
 
-Na podoben način lahko z $O(\log n)$ računskimi operacijami izračunamo tudi $n$-to Fibonaccijevo število. Tu seveda predpostavka o konstantnem času odpade, saj števila zelo hitro naraščajo. Definicijo $F_n = F_{n - 1} + F_{n - 2}$ lahko razširimo v (na prvi pogled nesmiselen) sistem enačb:
+Na podoben način lahko z $O(\log n)$ računskimi operacijami izračunamo tudi $n$-to Fibonaccijevo število. Tu seveda predpostavka o konstantnem času odpade, saj števila zelo hitro naraščajo. Definicijo $f_n = f_{n - 1} + f_{n - 2}$ lahko razširimo v (na prvi pogled nesmiselen) sistem enačb:
 
 $$\begin{aligned}
-  F_n &= F_{n - 1} + F_{n - 2} \\
-  F_{n - 1} &= F_{n - 1}
+  f_n &= f_{n - 1} + f_{n - 2} \\
+  f_{n - 1} &= f_{n - 1}
 \end{aligned}$$
 
 ki pa ga lahko pretvorimo v matrično enačbo
 
 $$\begin{pmatrix}
-    F_n \\ F_{n - 1}
+    f_n \\ f_{n - 1}
   \end{pmatrix}
   =
   \begin{pmatrix}
@@ -98,13 +98,13 @@ $$\begin{pmatrix}
   \end{pmatrix}
   \cdot
   \begin{pmatrix}
-    F_{n - 1} \\ F_{n - 2}
+    f_{n - 1} \\ f_{n - 2}
   \end{pmatrix}$$
 
 kar lahko razpišemo v
 
 $$\begin{pmatrix}
-    F_n \\ F_{n - 1}
+    f_n \\ f_{n - 1}
   \end{pmatrix}
   =
   \begin{pmatrix}
@@ -113,7 +113,7 @@ $$\begin{pmatrix}
   \end{pmatrix}^{n - 1}
   \cdot
   \begin{pmatrix}
-    F_1 \\ F_0
+    f_1 \\ f_0
   \end{pmatrix}
   =
   \begin{pmatrix}
@@ -125,7 +125,7 @@ $$\begin{pmatrix}
     1 \\ 0
   \end{pmatrix}$$
 
-Torej je $F_n$ enak prvi komponenti matrike $\begin{pmatrix} 1 & 1 \\ 1 & 0\end{pmatrix}^{n - 1}$, ki pa jo lahko izračunamo s pomočjo hitrega potenciranja. Če bi matriko diagonalizirali, pa iz te potence dobimo znano Binetovo formulo.
+Torej je $f_n$ enak prvi komponenti matrike $\begin{pmatrix} 1 & 1 \\ 1 & 0\end{pmatrix}^{n - 1}$, ki pa jo lahko izračunamo s pomočjo hitrega potenciranja. Če bi matriko diagonalizirali, pa iz te potence dobimo znano Binetovo formulo.
 
 ## Urejanje z zlivanjem
 
