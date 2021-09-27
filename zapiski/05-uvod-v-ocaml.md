@@ -634,7 +634,7 @@ Je `@` torej tipa `bool list -> bool list -> bool list` ali `int list -> int lis
 (@)
 ```
 
-Vrednostim, ki imajo v tipih spremenljivke, pravimo _parametrično polimorfne_. Polimorfne zaradi tega, ker lahko delujejo pri več tipih, parametrično pa zato, ker pri vseh tipih delujejo na enak način. Poznamo tudi tako imenovani _ad hoc_ polimorfizem, kjer pri nekaterih tipih funkcije delujejo na en način, pri nekaterih na drugačen, pri tretjih pa sploh ne. Primer takega polimorfizma je na primer `+` v Pythonu: števila množi, sezname in nize stika, na funkcijah pa ne deluje. OCaml ad hoc polimorfizma nima, ker povzroča težave pri določanju tipov.
+Vrednostim, ki imajo v tipih spremenljivke, pravimo _parametrično polimorfne_. Polimorfne zaradi tega, ker lahko delujejo pri več tipih, parametrično pa zato, ker pri vseh tipih delujejo na enak način. Poznamo tudi tako imenovani _ad hoc_ polimorfizem, kjer pri nekaterih tipih funkcije delujejo na en način, pri nekaterih na drugačen, pri tretjih pa sploh ne. Primer takega polimorfizma je na primer `+` v Pythonu: števila sešteva, sezname in nize stika, na funkcijah pa ne deluje. OCaml ad hoc polimorfizma nima, ker povzroča težave pri določanju tipov.
 
 V parametrično polimorfnih funkcijah lahko nastopa več parametrov. Na primer, projekcija na prvo komponento vzame par iz kartezičnega produkta poljubnih dveh tipov in slika v prvega:
 
