@@ -6,7 +6,7 @@ with open('250-najbolj-znanih-filmov.html') as f:
 vzorec = (
     r'<a href="/title/tt'
     r'(?P<id>\d{7})'  # ID ima sedem števk
-    r'/\?ref_=adv_li_tt"\n>'  # neka šara vmes med id-jem in naslovom
+    r'/\?ref_=adv_li_tt">'  # neka šara vmes med id-jem in naslovom
     r'(?P<naslov>.*?)'  # zajamemo naslov
     r'</a>'
     r'\s+'
