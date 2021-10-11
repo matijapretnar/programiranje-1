@@ -44,7 +44,6 @@ def find_words(text, substring):
 
 
 def find_prefix(text, prefix):
-    r'^'
     rx = r'\b' + prefix + r'\w*\b'
     return set(re.findall(rx, text))
 
