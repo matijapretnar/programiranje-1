@@ -8,7 +8,7 @@ import csv
 ###############################################################################
 
 # definirajte URL glavne strani bolhe za oglase z mačkami
-cats_frontpage_url = 'http://www.bolha.com/zivali/male-zivali/macke/'
+cats_frontpage_url = 'https://www.bolha.com/macke/'
 # mapa, v katero bomo shranili podatke
 cat_directory = 'macki'
 # ime datoteke v katero bomo shranili glavno stran
@@ -93,7 +93,7 @@ def get_dict_from_ad_block(block):
     podatke"""
     rx = re.compile(r'<h3.*>(?P<name>.*?)</a></h3>'
                     r'.*?"pubdate">(?P<time>.*?)</time>'
-                    r'.*?<strong class="price price--hrk">\s*?(?P<price>\d*)&',
+                    r'.*?<strong class="price price--hrk">\s*(?P<price>.*?)(&|\s</strong>)',
                     re.DOTALL)
     data = re.search(rx, block)
     ad_dict = data.groupdict()
