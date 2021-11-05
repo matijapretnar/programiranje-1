@@ -8,7 +8,7 @@
  - : int = 4
 [*----------------------------------------------------------------------------*)
 
-let rec square x = x * x
+let square x = x * x
 
 (*----------------------------------------------------------------------------*]
  Funkcija [middle_of_triple] vrne srednji element trojice.
@@ -17,7 +17,7 @@ let rec square x = x * x
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
-let rec middle_of_triple triple =
+let middle_of_triple triple =
   let (x, y, z) = triple in
   y
 
@@ -29,7 +29,7 @@ let rec middle_of_triple triple =
  - : int = 1
 [*----------------------------------------------------------------------------*)
 
-let rec starting_element = function
+let starting_element = function
   | [] -> failwith "List too short."
   | x :: xs -> x
 
@@ -129,7 +129,7 @@ let rec divide k list =
  - : int list = [3; 4; 5; 1; 2]
 [*----------------------------------------------------------------------------*)
 
-let rec rotate n list =
+let rotate n list =
   let (list1, list2) = divide n list in
   list2 @ list1
 
