@@ -77,7 +77,7 @@ let rec filter p =
         let rep' = filter p rep in
         if p glava then glava :: rep' else rep'
 
-let rec stakni xs ys =
+let rec (@) xs ys =
     match xs with
     | [] -> ys
-    | x :: xs' -> x :: stakni xs' ys
+    | x :: xs' -> x :: (xs' @ ys)
