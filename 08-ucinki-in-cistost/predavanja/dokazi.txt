@@ -1,0 +1,172 @@
+let rec (@) xs ys =
+  match xs with
+  | [] -> ys
+  | x :: xs' -> x :: (xs' @ ys)
+
+
+∀ sez. [] @ sez = sez
+. . . . . . . . . .
+
+Vzamemo poljuben sez in dokazujemo:
+[] @ sez
+= (po definiciji @)
+(fun xs ys -> match xs with | [] -> ys | ...) [] sez
+= (po tem, kako delujejo funkcije v OCamlu)
+match [] with | [] -> sez | ...
+= (po tem, kako deluje match v OCamlu)
+sez
+
+∀ sez. sez @ [] = sez
+. . . . . . . . . .
+
+Vzamemo poljuben sez in dokazujemo:
+sez @ []
+= (po definiciji @)
+(fun xs ys -> match xs with | [] -> ys | ...) sez []
+= (po tem, kako delujejo funkcije v OCamlu)
+match sez with | [] -> [] | ...
+
+Ločimo primere:
+1) sez = []
+= match [] with | [] -> [] | ...
+= (po definiciji)
+[]
+
+2) sez = glava :: rep
+match glava :: rep with | [] -> [] | ...
+= (po definiciji)
+glava :: (rep @ [])
+
+Pridemo do problema iste oblike in manjše velikosti
+
+Uporabili bomo indukcijo na seznamih.
+
+-----------------------------------
+
+Indukcija na naravnih številih:
+
+P ... predikat na naravnih številih N
+P(0) /\ (∀(n : N). P(n) => P(n+)) => ∀(m : N). P(m)
+
+Dokaz: Ga ni, ker je aksiom.
+
+-----------------------------------
+Indukcija na seznamih
+
+P ... predikat na seznamih (A list)
+P([]) /\ (∀(x : A)(xs : A list) P(xs) => P(x :: xs))
+  => ∀(ys : list A). P(ys)
+
+Dokaz: Prevedemo na indukcijo na naravnih številih.
+Q(n) := P(xs) velja za vse sezname dolžine n
+
+-----------------------------------------
+
+∀ sez. sez @ [] = sez
+. . . . . . . . . .
+
+Uporabimo načelo indukcije na seznamih na sez.
+P(sez) := sez @ [] = sez
+
+Osnovni primer:
+P([])
+[] @ []
+= (po definiciji @)
+[]
+
+Indukcijski korak:
+P(xs) => P(x :: xs)
+Predpostavimo:
+  xs @ [] = xs
+in dokazujemo
+  (x :: xs) @ [] = x :: xs
+
+  (x :: xs) @ []
+  = (po definiciji @)
+  x :: (xs @ [])
+  = (po indukcijski predpostavki)
+  x :: xs
+  QED.
+
+-------------------------------------------
+-------------------------------------------
+-------------------------------------------
+
+let rec obrni = function
+  | [] -> []
+  | x :: xs -> obrni xs @ [x]
+
+let obrni' sez =
+  let rec aux acc =
+    function
+    | [] -> acc
+    | x :: xs -> aux (x :: acc) xs
+  in
+  aux [] sez
+
+
+∀ xs. obrni xs = obrni' xs
+. . . . . . . . . . . . . .
+
+1. POSKUS: z indukcijo
+
+Osnovni primer (obrni [] = obrni' []):
+obrni [] = []
+obrni' [] = aux [] [] = []
+
+Indukcijski korak
+(obrni xs = obrni' xs  => obrni (x :: xs) = obrni' (x :: xs)):
+obrni (x :: xs)
+= obrni xs @ [x]
+= obrni' xs @ [x]
+= aux [] xs @ [x]
+obrni' (x :: xs)
+= aux [] (x :: xs)
+= aux [x] xs
+
+2. POSKUS: z indukcijo, ampak govorimo o aux
+obrni xs = aux [] xs
+
+Ne bo šlo čez, ker v predpostavki nastopa prazen akumulator
+
+3. in zadnji POSKUS:
+(obrni xs) @ acc = aux acc xs
+
+Osnovni korak:
+- (obrni []) @ acc = [] @ acc = acc
+- aux acc [] = acc
+
+Indukcijski korak:
+- (obrni (x :: xs)) @ acc
+  = (obrni xs @ [x]) @ acc
+  (dokažemo z indukcijo - na vajah)
+  = (obrni xs) @ ([x] @ acc)
+  = (obrni xs) @ (x :: acc)
+  = aux (x :: acc) xs
+  = aux acc (x :: xs)
+
+-------------------------------------
+
+Indukcija na drevesih
+
+P ... predikat na drevesih (A drevo)
+P(Prazno) /\
+(∀(x : A)(l d : A drevo) P(l) /\ P(d) => P(Sestavljeno(l, x, d)))
+  => ∀(t : drevo A). P(t)
+
+
+    type moj_tip =
+    | Konstruktor1 of ...
+    | Konstruktor2 of ...
+    | Konstruktor3 of moj_tip
+    | Konstruktor4 of moj_tip * moj_tip * moj_tip
+    | Konstruktor5 of moj_tip * (int -> moj_tip) * moj_tip
+    | Konstruktor6 of moj_tip * (moj_tip -> moj_tip) * moj_tip
+
+    type moj_tip = Kons1 | Kons2 of (moj_tip -> moj_tip)
+
+P(Kons1) /\
+(vsak (f : moj_tip -> moj_tip). vsak (x : moj_tip). P(x) => P (f x) => P (Kons2 f))
+=>
+vsak y : P(y)
+
