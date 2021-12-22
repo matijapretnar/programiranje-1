@@ -107,6 +107,25 @@ Z domačo nalogo je možno doseči do 20 točk. Pri točkovanju velja sledeči k
 - 5 točk : Učinkovitost programa za reševanje.
 - 5 točk : Razširitve programa na nestandardne sudokuje (kletke, puščice, termometri) - NATANČNA NAVODILA SLEDIJO V KRATKEM
 
+### Razširitve
+
+Zadnji del točk pridobite z razširitvijo programa na nestandardne sudokuje. 
+Nekaj primerov nestandardnih je na voljo v mapi `sudokuji`, vendar se za višjo oceno pričakuje, da boste samo poskrbeli za testne primere, ki res preverijo učinkovitost implementacije.
+
+Možne razširitve so:
+
+- Termometri: Poleg običajnih pravil sudokuja, so na mreži tudi "termometri". 
+Števila v celicah termometra morajo v istem termometru strogo naraščati od začetka termometra do konca.
+- Puščice: Poleg običajnih pravil sudokuja, so na mreži tudi "puščice".
+Puščica se začne na podani celici in kaže ne eno ali več različnih celic, katerih vsota mora biti enaka številu, ki je na začetni celici.
+- Kletke: Poleg običajnih pravil sudokuja, so na mreži tudi "kletke".
+Kletke so so skupek povezanih celic, za katere zahtevamo, da imajo podano vsoto.
+
+Vhodni podatki razšrjenih testnih primerov so v datotekah `sudokuji/puscice*.sdk`, `sudokuji/termometri*.sdk`, `sudokuji/kletke*.sdk`.
+Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve. 
+Te vrstice se začnejo s črkami `T, A, K` (za termometre, puščice in kletke), čemur sledijo koordinate celic na pripadajočih omejitvah (pri kletki je na prvem mestu ciljna vsota).
+Pri branju vse vrstice, ki se začnejo z `#` ignorirajte kot komentarje.
+
 ## Oddaja domače naloge
 
 Domačo nalogo rešujete na svojem klonu repozitorija predmeta. Priporočamo, da nalogo rešujete v posebni veji. Povezavo do repozitorija in veje, kjer ste reševali nalogo, oddate na spletni učilnici.
