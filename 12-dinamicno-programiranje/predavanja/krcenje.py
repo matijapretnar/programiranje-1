@@ -24,7 +24,6 @@ def razdalja(piksel1, piksel2):
     r2, g2, b2 = piksel2
     return abs(r1 - r2) + abs(g1 - g2) + abs(b1 - b2)
 
-
 def energije_vrstice(vrstica):
     sirina = len(vrstica)
     energije = [0] * sirina
@@ -36,6 +35,16 @@ def energije_vrstice(vrstica):
     energije[-1] *= 2
     return energije
 
+def odstrani_piksel(vrstica, energije, i):
+    nova_vrstica = vrstica[:i] + vrstica[i + 1:]
+    nove_energije = energije[:i] + energije[i + 1:]
+    if 0 < i < len(vrstica) - 1: 
+        nove_energije[i - 1] += razdalja(vrstica[i - 1], vrstica[i + 1]) - razdalja(vrstica[i - 1], vrstica[i])
+        nove_energije[i] += razdalja(vrstica[i - 1], vrstica[i + 1]) - razdalja(vrstica[i], vrstica[i + 1])
+    else:
+        nove_energije[0] = 2 * razdalja(nova_vrstica[0], nova_vrstica[1])
+        nove_energije[-1] = 2 * razdalja(nova_vrstica[-2], nova_vrstica[-1])
+    return nova_vrstica, nove_energije
 
 def energije_slike(slika):
     return [energije_vrstice(vrstica) for vrstica in slika]
@@ -43,16 +52,14 @@ def energije_slike(slika):
 def dimenzije(slika):
     return len(slika), len(slika[0])
 
-def siv_po_tockah(slika):
-    energije = energije_slike(slika)
+def siv_po_tockah(_slika, energije):
     siv = []
     for vrstica in energije:
         siv.append(vrstica.index(min(vrstica)))
     return siv
 
-def navpicni_siv(slika):
+def navpicni_siv(slika, energije):
     visina, sirina = dimenzije(slika)
-    energije = energije_slike(slika)
     energije_stolpcev = [
         sum(energije[i][j] for i in range(visina))
         for j in range(sirina)
@@ -71,15 +78,17 @@ def pokazi_siv(slika, siv):
     return nova_slika
 
 
-def odstrani_siv(slika, siv):
+def odstrani_siv(slika, energije_slike, siv):
     nova_slika = []
-    for vrstica, i in zip(slika, siv):
-        nova_slika.append(vrstica[:i] + vrstica[i + 1:])
-    return nova_slika
+    energije_nove_slike = []
+    for vrstica, energije, i in zip(slika, energije_slike, siv):
+        nova_vrstica, nove_energije = odstrani_piksel(vrstica, energije, i)
+        nova_slika.append(nova_vrstica)
+        energije_nove_slike.append(nove_energije)
+    return nova_slika, energije_nove_slike
 
-def zavijajoci_siv(slika):
+def zavijajoci_siv(slika, energije):
     visina, sirina = dimenzije(slika)
-    energije = energije_slike(slika)
     # šivi iz spodnje vrstice
     sivi = [[(energije[0][x], [x]) for x in range(sirina)]]
     for y in range(1, visina):
@@ -97,13 +106,14 @@ def zavijajoci_siv(slika):
     return min(sivi[-1])[1]
 
 
-slika = nalozi_sliko('/workspaces/programiranje-1/12-dinamicno-programiranje/predavanja/smrekica.png')
+slika = nalozi_sliko('smrekica.png')
+energije = energije_slike(slika)
 for i in range(len(slika[0])):
     print(i)
-    # siv = siv_po_tockah(slika)
+    # siv = siv_po_tockah(slika, energije)
     # shrani_sliko(pokazi_siv(slika, siv), f'po_tockah/smreka-{i}.png')
-    # siv = navpicni_siv(slika)
+    # siv = navpicni_siv(slika, energije)
     # shrani_sliko(pokazi_siv(slika, siv), f'navpicni/smreka-{i}.png')
-    siv = zavijajoci_siv(slika)
+    siv = zavijajoci_siv(slika, energije)
     shrani_sliko(pokazi_siv(slika, siv), f'zavijajoci/smreka-{i}.png')
-    slika = odstrani_siv(slika, siv)
+    slika, energije = odstrani_siv(slika, energije, siv)
