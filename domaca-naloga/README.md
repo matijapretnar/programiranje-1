@@ -109,27 +109,27 @@ Z domačo nalogo je možno doseči do 20 točk. Pri točkovanju velja sledeči k
 
 ### Razširitve
 
-Zadnji del točk pridobite z razširitvijo programa na nestandardne sudokuje. 
-Nekaj primerov nestandardnih je na voljo v mapi `sudokuji`, vendar se za višjo oceno pričakuje, da boste samo poskrbeli za testne primere, ki res preverijo učinkovitost implementacije.
+Zadnji del točk pridobite z razširitvijo programa na nestandardne sudokuje.
+Nekaj primerov nestandardnih sudokujev je na voljo v mapi `sudokuji`, vendar se za višjo oceno pričakuje, da boste samo poskrbeli za testne primere, ki res preverijo učinkovitost implementacije.
 
 Možne razširitve so:
 
-- Termometri: Poleg običajnih pravil sudokuja, so na mreži tudi "termometri". 
+- Termometri: Poleg običajnih pravil sudokuja, so na mreži tudi "termometri".
 Števila v celicah termometra morajo v istem termometru strogo naraščati od začetka termometra do konca.
 Vrstica pogoja, ki predstavlja termometer se začne z `T: `, čemur sledijo s podpičjem ločene koordinate celic na tem termometru.
 Številka v prvi celici mora biti najmanjša, v drugi večja od tiste v prvi, ..., in v zadnji največja.  
 - Puščice: Poleg običajnih pravil sudokuja, so na mreži tudi "puščice".
 Puščica se začne na podani celici in kaže ne eno ali več različnih celic, katerih vsota mora biti enaka številu, ki je na začetni celici.
-Vrstica pogoja, ki predstavlja puščico se začne z `A: `, čemur sledi opis za puščico v obliki `glava -> rep`. 
+Vrstica pogoja, ki predstavlja puščico se začne z `A: `, čemur sledi opis za puščico v obliki `glava -> rep`.
 Glava je celica, ki se nahaja na začetku puščice, rep pa je s podpičjem ločen seznam celic, na katere kaže glava.
 Vsota števil v celicah repa more biti enaka kot število v glavi.
 - Kletke: Poleg običajnih pravil sudokuja, so na mreži tudi "kletke".
-Kletke so so skupek povezanih celic, za katere zahtevamo, da imajo podano vsoto.
-Vrstica pogoja, ki predstavlja kletko se začne z `K: X `, čemur sledijo s podpičjem ločene celice, katerih vsota  mora biti enaka `X`.
+Kletke so so skupek povezanih celic, za katere zahtevamo, da vsebujejo sama različna števila, ki imajo podano vsoto.
+Vrstica pogoja, ki predstavlja kletko se začne z `K: X `, čemur sledijo s podpičjem ločene celice, katerih vsota mora biti enaka `X`.
 
 Vhodni podatki razšrjenih testnih primerov so v datotekah `sudokuji/puscice*.sdk`, `sudokuji/termometri*.sdk`, `sudokuji/kletke*.sdk`.
-Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve. 
-Pri branju vse vrstice, ki se začnejo z `#` ignorirajte kot komentarje.
+Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve.
+Pri branju vse vrstice, ki se začnejo z `#`, ignorirajte kot komentarje.
 
 ## Oddaja domače naloge
 
