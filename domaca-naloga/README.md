@@ -124,10 +124,10 @@ Vrstica pogoja, ki predstavlja puščico se začne z `A: `, čemur sledi opis za
 Glava je celica, ki se nahaja na začetku puščice, rep pa je s podpičjem ločen seznam celic, na katere kaže glava.
 Vsota števil v celicah repa more biti enaka kot število v glavi.
 - Kletke: Poleg običajnih pravil sudokuja, so na mreži tudi "kletke".
-Kletke so so skupek povezanih celic, za katere zahtevamo, da vsebujejo sama različna števila, ki imajo podano vsoto.
+Kletke so skupek povezanih celic, za katere zahtevamo, da vsebujejo sama različna števila, ki imajo podano vsoto.
 Vrstica pogoja, ki predstavlja kletko se začne z `K: X `, čemur sledijo s podpičjem ločene celice, katerih vsota mora biti enaka `X`.
 
-Vhodni podatki razšrjenih testnih primerov so v datotekah `sudokuji/puscice*.sdk`, `sudokuji/termometri*.sdk`, `sudokuji/kletke*.sdk`.
+Vhodni podatki razširjenih testnih primerov so v datotekah `sudokuji/puscice*.sdk`, `sudokuji/termometri*.sdk`, `sudokuji/kletke*.sdk`.
 Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve.
 Pri branju vse vrstice, ki se začnejo z `#`, ignorirajte kot komentarje.
 
