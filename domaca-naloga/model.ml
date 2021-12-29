@@ -18,9 +18,17 @@ let chunkify size lst =
 
 let string_of_list string_of_element sep lst =
   lst |> List.map string_of_element |> String.concat sep
+(*vrne nek string v katerem so med elementi lista vrinjeni stringi, npr, "1a2a3a4"*)
+
+(*za razumevanje, f lahko vstavim namesto string_of_element*)  
+let f n =
+  n |> string_of_int
 
 let string_of_nested_list string_of_element inner_sep outer_sep =
   string_of_list (string_of_list string_of_element inner_sep) outer_sep
+(*najprej potlači med inner_sep elemente nek string, potem pa vsak dobljen string potlaci med outer_sep*)
+
+(*Array is like a list of fixed length, and every element must be the same type.*)
 
 let string_of_row string_of_cell row =
   let string_of_cells =
@@ -29,6 +37,10 @@ let string_of_row string_of_cell row =
   in
   "┃" ^ string_of_cells ^ "┃\n"
 
+(*string_of_row f [|1;2;3;4;5;6;7;8;9|];;
+- : string = "┃123│456│789┃\n"*)
+
+(*funkcija bo iz teh zgornjih vrstic(več teh vrstic pospravljenih v array array) iz vsakega arraya naredila stolpec*)
 let print_grid string_of_cell grid =
   let ln = "───" in
   let big = "━━━" in
@@ -43,18 +55,22 @@ let print_grid string_of_cell grid =
 
 (* Funkcije za dostopanje do elementov mreže *)
 
-let get_row (grid : 'a grid) (row_ind : int) = failwith "TODO"
 
-let rows grid = failwith "TODO"
+(*[|[|1;2;3;4;5;6;7;8;9|]; [|3;4;5;6;7;8;9;1;2|];[|9;1;2;3;4;5;6;7;8|];[|4;5;6;7;8;9;1;2;3|];[|5;6;7;8;9;1;2;3;4|];[|8;9;1;2;3;4;5;6;7|];[|7;8;9;1;2;3;4;5;6|];[|3;4;5;6;7;8;9;1;2|];[|3;4;5;6;7;8;9;1;2|]|];;*)
+let get_row (grid : 'a grid) (row_ind : int) = 
+  grid.(row_ind)
+
+let rows grid = List.init 9 (get_row grid)
 
 let get_column (grid : 'a grid) (col_ind : int) =
   Array.init 9 (fun row_ind -> grid.(row_ind).(col_ind))
 
 let columns grid = List.init 9 (get_column grid)
 
-let get_box (grid : 'a grid) (box_ind : int) = failwith "TODO"
-
-let boxes grid = failwith "TODO"
+let get_box (grid : 'a grid) (box_ind : int) = 
+  Array.init 9 (fun some_ind -> grid.((box_ind - (box_ind mod 3)) + (some_ind mod 3)).((box_ind mod 3)*3 + (some_ind mod 3)))
+  
+let boxes grid = List.init 9 (get_box grid)
 
 (* Funkcije za ustvarjanje novih mrež *)
 
