@@ -68,13 +68,16 @@ let get_column (grid : 'a grid) (col_ind : int) =
 let columns grid = List.init 9 (get_column grid)
 
 let get_box (grid : 'a grid) (box_ind : int) = 
-  Array.init 9 (fun some_ind -> grid.((box_ind - (box_ind mod 3)) + (some_ind mod 3)).((box_ind mod 3)*3 + (some_ind mod 3)))
+  Array.init 9 (fun some_ind -> grid.((box_ind - (box_ind mod 3)) + (some_ind/3)).((box_ind mod 3)*3 + (some_ind mod 3)))
   
 let boxes grid = List.init 9 (get_box grid)
 
 (* Funkcije za ustvarjanje novih mrež *)
 
-let map_grid (f : 'a -> 'b) (grid : 'a grid) : 'b grid = failwith "TODO"
+
+(*cilj: ustavriti iz že danega grida, takega da bo na vsak element delovala funkcija*)
+let map_grid (f : 'a -> 'b) (grid : 'a grid) : 'b grid = 
+  Array.init 9 (fun row_ind -> Array.map f (get_row grid row_ind))
 
 let copy_grid (grid : 'a grid) : 'a grid = map_grid (fun x -> x) grid
 
