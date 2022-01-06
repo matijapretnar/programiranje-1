@@ -1,4 +1,4 @@
-from functools import lru_cache
+from functools import cache
 # =============================================================================
 # Najdaljše naraščajoče podzaporedje
 # =============================================================================
@@ -65,15 +65,6 @@ from functools import lru_cache
 #     [1, 1, 0, 0, 1, 1, 0, 1, 1]
 #     [0, 1, 1, 0, 1, 1, 0, 1, 1]
 # =============================================================================
-
-@lru_cache(maxsize=None) 
-def nageljni_stevilo(n, m, l): 
-    if m <= 0: 
-        return 1
-    elif n < l: 
-        return 0 
-    else: 
-        return nageljni_stevilo(n-1, m, l) + nageljni_stevilo(n-l-1, m-1, l)
 
 
 
@@ -157,27 +148,3 @@ def nageljni_stevilo(n, m, l):
 # 
 # medtem ko iz vrste 5 in stolpca 0 ne more pobegniti.
 # =============================================================================
-
-def pobeg(soba, vrsta, stolpec, koraki):
-    max_vrsta = len(soba)
-    max_stolpec = len(soba[0])
-
-    @lru_cache(maxsize=None)
-    def pobegni(vrsta, stolpec, koraki):
-        # Padli smo iz sobe
-        if not (0 <= vrsta < max_vrsta) or not (0 <= stolpec < max_stolpec):
-            return False
-        # Pobeg uspesen! All hail our robot overlords!!!
-        elif soba[vrsta][stolpec] == 1:
-            return True
-        # Lahko bezimo naprej
-        elif soba[vrsta][stolpec] == 0 and koraki > 0:
-            return any(
-                [pobegni(vrsta + 1, stolpec, koraki-1),
-                 pobegni(vrsta - 1, stolpec, koraki-1),
-                 pobegni(vrsta, stolpec + 1, koraki-1),
-                 pobegni(vrsta, stolpec - 1, koraki-1)])
-        # Pristali smo na oviri ali pa nam je zmanjkalo korakov
-        else:
-            return False
-    return pobegni(vrsta, stolpec, koraki)
