@@ -8,8 +8,8 @@ let cache f =
     | None ->
         print_endline "Odgovor še ne obstaja";
         let y = f x in
-          Hashtbl.add rezultati x y;
-          y
+        Hashtbl.add rezultati x y;
+        y
   in
   mem_f
 
@@ -18,38 +18,39 @@ let kvadrat x =
   let y = x * x in
   Printf.printf "Odgovor je %d\n" y;
   y
-;;
 
 let rec fib n =
   Printf.printf "%d\n" n;
-  match n with
-  | 0 -> 0
-  | 1 -> 1
-  | n -> fib (n - 1) + fib (n - 2)
+  match n with 0 -> 0 | 1 -> 1 | n -> fib (n - 1) + fib (n - 2)
 
+let kvadrat = cache kvadrat
 
-let kvadrat = cache kvadrat ;;
-
+;;
 kvadrat 5;
 kvadrat 5;
 kvadrat 5
 
 ;;
-
 print_endline "--------------------";
-fib 10;;
-print_endline "--------------------";
-fib 10;;
-print_endline "--------------------"
+fib 10
 
 ;;
-
-let mem_fib = cache fib ;;
-
-
 print_endline "--------------------";
-mem_fib 10;;
+fib 10
+
+;;
+print_endline "--------------------"
+
+let mem_fib = cache fib
+
+;;
 print_endline "--------------------";
-mem_fib 10;;
+mem_fib 10
+
+;;
 print_endline "--------------------";
-mem_fib 9;;
+mem_fib 10
+
+;;
+print_endline "--------------------";
+mem_fib 9
