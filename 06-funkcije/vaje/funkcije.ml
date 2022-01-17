@@ -1,7 +1,7 @@
 (* ========== Vaja 2: Funkcijsko Programiranje  ========== *)
 
 (*----------------------------------------------------------------------------*]
-Namig: Definirajte pomožno funkcijo za obračanje seznamov.
+ Definirajte pomožno funkcijo za obračanje seznamov.
 [*----------------------------------------------------------------------------*)
 
 let reverse list =
@@ -26,6 +26,7 @@ let rec repeat x n = if n <= 0 then [] else x :: (repeat x (n-1))
  Funkcija [range] sprejme število in vrne seznam vseh celih števil od 0 do
  vključno danega števila. Za neprimerne argumente funkcija vrne prazen seznam.
  Funkcija je repno rekurzivna.
+Pri tem ne smete uporabbiti vgrajene funkcije [List.init].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # range 10;;
  - : int list = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
@@ -48,6 +49,7 @@ let range n =
  Funkcija [map f list] sprejme seznam [list] oblike [x0; x1; x2; ...] in
  funkcijo [f] ter vrne seznam preslikanih vrednosti, torej
  [f x0; f x1; f x2; ...].
+ Pri tem ne smete uporabiti vgrajene funkcije [List.map].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # let plus_two = (+) 2 in
    map plus_two [0; 1; 2; 3; 4];;
@@ -57,6 +59,14 @@ let range n =
 let rec map f = function
   | [] -> []
   | x :: xs -> f x :: (map f xs)
+
+(*----------------------------------------------------------------------------*]
+ Časovna zahtevnost operatorja [@] je linearna v prvem argumentu, poskušajte 
+ napisati reverse tako, da bo bolj učinkovit in hkrati repno rekurziven.
+ Pri tem ne smete uporabiti vgrajene funkcije [List.rev] ali [List.rev_append].
+[*----------------------------------------------------------------------------*)
+
+let rec reverse = ()
 
 (*----------------------------------------------------------------------------*]
  Funkcija [map_tlrec] je repno rekurzivna različica funkcije [map].
@@ -85,6 +95,7 @@ let map_tlrec f list =
           index += 1
       return mapi_list
 
+ Pri tem ne smete uporabiti vgrajene funkcije [List.mapi].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # mapi (+) [0; 0; 0; 2; 2; 2];;
  - : int list = [0; 1; 2; 5; 6; 7]
@@ -101,6 +112,7 @@ let mapi f list =
 (*----------------------------------------------------------------------------*]
  Funkcija [zip] sprejme dva seznama in vrne seznam parov istoležnih
  elementov podanih seznamov. Če seznama nista enake dolžine vrne napako.
+ Pri tem ne smete uporabiti vgrajene funkcije [List.combine].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # zip [1; 1; 1; 1] [0; 1; 2; 3];;
  - : (int * int) list = [(1, 0); (1, 1); (1, 2); (1, 3)]
@@ -117,6 +129,7 @@ let rec zip list1 list2 =
 (*----------------------------------------------------------------------------*]
  Funkcija [unzip] je inverz funkcije [zip], torej sprejme seznam parov
  [(x0, y0); (x1, y1); ...] in vrne par seznamov ([x0; x1; ...], [y0; y1; ...]).
+ Pri tem ne smete uporabiti vgrajene funkcije [List.split].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # unzip [(0,"a"); (1,"b"); (2,"c")];;
  - : int list * string list = ([0; 1; 2], ["a"; "b"; "c"])
@@ -207,6 +220,7 @@ let apply_sequence f x n =
 (*----------------------------------------------------------------------------*]
  Funkcija [filter f list] vrne seznam elementov [list], pri katerih funkcija [f]
  vrne vrednost [true].
+ Pri tem ne smete uporabiti vgrajene funkcije [List.filter].
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # filter ((<)3) [0; 1; 2; 3; 4; 5];;
  - : int list = [4; 5]
@@ -220,6 +234,7 @@ let rec filter f = function
  Funkcija [exists] sprejme seznam in funkcijo, ter vrne vrednost [true] čim
  obstaja element seznama, za katerega funkcija vrne [true] in [false] sicer.
  Funkcija je repno rekurzivna.
+ Pri tem ne smete uporabiti vgrajene funkcije [List.find] ali podobnih.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # exists ((<) 3) [0; 1; 2; 3; 4; 5];;
  - : bool = true
@@ -235,6 +250,7 @@ let rec exists f = function
  Funkcija [first f default list] vrne prvi element seznama, za katerega
  funkcija [f] vrne [true]. Če takšnega elementa ni, vrne [default].
  Funkcija je repno rekurzivna.
+ Pri tem ne smete uporabiti vgrajene funkcije [List.find] ali podobnih. 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  # first ((<) 3) 0 [1; 1; 2; 3; 5; 8];;
  - : int = 5

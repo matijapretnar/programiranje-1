@@ -2,7 +2,6 @@
 (*----------------------------------------------------------------------------*]
   Napišite predikat `je_urejena : int * int * int -> bool`, ki pove, ali je 
   podana trojica celih števil urejena strogo naraščajoče.
-
 [*----------------------------------------------------------------------------*)
 
 let je_urejena (a, b, c) = a < b && b < c
@@ -20,7 +19,6 @@ let je_urejena (a, b, c) = a < b && b < c
     - : float option = None
     # poskusi_deljenje None (Some 2.0);;
     - : float option = None
-
 [*----------------------------------------------------------------------------*)
 
 let poskusi_deljenje a b =
@@ -37,7 +35,6 @@ let poskusi_deljenje a b =
   
     # zavrti [1; 2; 3; 4; 5] 2;;
     - : int list = [3; 4; 5; 1; 2]
-
 [*----------------------------------------------------------------------------*)
 
 let rec zavrti l n =
@@ -55,7 +52,6 @@ let rec zavrti l n =
   
     # razdeli ((-) 3) [1; 2; 3; 4; 5; 6];;
     - : int list * int list * int list = ([4; 5; 6], [3], [1; 2])
-
 [*----------------------------------------------------------------------------*)
 
 let razdeli fn l =

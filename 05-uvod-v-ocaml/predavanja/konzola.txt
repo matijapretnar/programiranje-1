@@ -1,0 +1,77 @@
+        OCaml version 4.08.1
+
+# 1 + 1
+  ;;
+- : int = 2
+# 1 + true;;
+Error: This expression has type bool but an expression was expected of type
+         int
+# let x = 2 * 3;;
+val x : int = 6
+# x = 2 * 3;;
+- : bool = true
+# x = 4 * 5;;
+- : bool = false
+# y = 2 * 3;;
+Error: Unbound value y
+# 3.14;;
+- : float = 3.14
+# 2 * 3.14;;
+Error: This expression has type float but an expression was expected of type
+         int
+# 2 *. 3.14;;
+Error: This expression has type int but an expression was expected of type
+         float
+# 2.0 *. 3.14;;
+- : float = 6.28
+# x *. 3.14;;
+Error: This expression has type int but an expression was expected of type
+         float
+# float_of_int x;;
+- : float = 6.
+# float_of_int x *. 3.14;;
+- : float = 18.84
+#          
+  
+  
+  
+  
+  
+  
+  x;;
+- : int = 6
+# "tra la la";;
+- : string = "tra la la"
+# ("Matija", "Pretnar", 27004498);;
+- : string * string * int = ("Matija", "Pretnar", 27004498)
+# (1 + 1, float_of_int 6, "tra" ^ "la la");;
+- : int * float * string = (2, 6., "trala la")
+# ();;
+- : unit = ()
+# 1, true;;
+- : int * bool = (1, true)
+# [1; 2; 3; 4];;
+- : int list = [1; 2; 3; 4]
+# [1; true];;    
+Error: This expression has type bool but an expression was expected of type
+         int
+# 1 :: [2; 3; 4];;
+- : int list = [1; 2; 3; 4]
+# 1 :: 2 :: 3 :: 4 :: [];;
+- : int list = [1; 2; 3; 4]
+# List.nth [1; 2; 3; 4] 2;;
+- : int = 3
+# float_of_int;;
+- : int -> float = <fun>
+# 1 + 1;;
+- : int = 2
+# let kvadriraj x = x * x;;
+val kvadriraj : int -> int = <fun>
+# kvadriraj 5;;
+- : int = 25
+# let zmnozi x y = x * y;;
+val zmnozi : int -> int -> int = <fun>
+# zmnozi 25 42;;
+- : int = 1050
+# zmnozi (3 + 3) (8 - 1);;
+- : int = 42

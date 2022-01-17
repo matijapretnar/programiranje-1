@@ -1,39 +1,42 @@
+let x = 1 + 1
+
 let podvoji x = 2 * x
 
-(* let pomnozi_s_pi x = 3.14 * x *)
+let zmnozi x y = x *. y
 
-let ali_je_tri_vecje_od_stiri = 3 > 4
+let razdalja (x1, y1) (x2, y2) =
+    let dx = x1 -. x2
+    and dy = y1 -. y2 in
+    (dx ** 2.0 +. dy ** 2.0) ** 0.5
 
-let najboljse_stevilo = 42 + 1
+let pozdrav ime =
+    if ime = "Matija" then
+        "Pozdravljeni, gospod profesor!"
+    else if ime = "Katja" || ime = "Filip" then
+        "Dober dan, asistent!"
+    else
+        "Živjo, " ^ ime ^ "!"
 
-let pomnozi_med_sabo x y = x * y
-
-let uporabi_dvakrat_na_nic f = f "niz" ^ f "niz"
-
-let pozdravi ime =
+let pozdrav' ime =
     match ime with
-    | "Matija" -> "Pozdravljeni, gospod profesor!" 
-    | "Filip" | "Ziga" -> "Pozdravljeni, gospod asistent!"
-    | "" -> "Pozdravljen, človek brez imena!"
-    | "*" -> "Zdravo zvezdica!"
-    | _ -> "Živjo, " ^ ime
+    | "Matija" -> "Pozdravljeni, gospod profesor!"
+    | "Katja" | "Filip" -> "Dober dan!"
+    | _ -> "Živjo, " ^ ime ^ "!"
+   
+let pozdrav'' =
+    function
+    | "Matija" -> "Pozdravljeni, gospod profesor!"
+    | "Katja" | "Filip" -> "Dober dan!"
+    | "" -> "Oj!"
+    | "*" -> "Živjo zvezdica!"
+    | ime -> "Živjo, " ^ ime ^ "!"
 
-let moja_logicna_operacija x y z =
-    match (x, y, z) with
-    | (true, false, true) -> true
-    | (false, drugi, _) -> drugi
-    | (true, true, _) -> true
-    | (true, false, false) -> false
-
-let gnezdeni_match x y z =
-    match ((x, y), z) with
-    | (_, true) -> true
-    | ((true, _), tretji) -> tretji
-    | (_, false) -> false
-
-let je_seznam_prazen sez =
+let je_seznam_skoraj_prazen sez =
     match sez with
     | [] -> true
+    | 0 :: [] -> true
+    | 0 :: 0 :: [] -> true
+    | x :: [] -> true
     | _ :: _ -> false
 
 let rec vsota sez =
@@ -41,17 +44,40 @@ let rec vsota sez =
     | [] -> 0
     | glava :: rep -> glava + vsota rep
 
+(* 
+dolzina : int list -> int
+dolzina : bool list -> int
+dolzina : string list -> int
+dolzina : (string list) list -> int
+...
+dolzina : ∀α. α list -> int
+dolzina : 'a list -> int
+
+*)
+
 let rec dolzina sez =
     match sez with
     | [] -> 0
-    | glava :: rep -> 1 + dolzina rep
+    | _ :: rep -> 1 + dolzina rep
 
-let rec stakni sez1 sez2 =
-    match sez1 with
-    | [] -> sez2
-    | glava1 :: rep1 -> glava1 :: stakni rep1 sez2
+(* 
+    map : ('a -> 'b) -> 'a list -> 'b list
+*)
 
-let rec preslikaj f sez =
+let rec map f sez =
     match sez with
     | [] -> []
-    | glava :: rep -> f glava :: preslikaj f rep
+    | glava :: rep -> f glava :: map f rep
+
+
+let rec filter p =
+    function
+    | [] -> []
+    | glava :: rep ->
+        let rep' = filter p rep in
+        if p glava then glava :: rep' else rep'
+
+let rec (@) xs ys =
+    match xs with
+    | [] -> ys
+    | x :: xs' -> x :: (xs' @ ys)

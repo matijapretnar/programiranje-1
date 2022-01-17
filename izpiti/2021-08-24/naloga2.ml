@@ -4,7 +4,6 @@
   S spodaj definiranimi funkcijami si lahko pomagate pri vseh podnalogah.
 [*============================================================================*)
 
-
 type ('a, 'b) slovar = ('a * 'b) list
 
 let prazen_slovar : ('a, 'b) slovar = []
@@ -18,7 +17,6 @@ let najdi x (m : ('a, 'b) slovar) = List.assoc_opt x m
 
 (* Doda vrednost v slovar in povozi prejšnjo, če obstaja *)
 let dodaj (k, v) (m : ('a, 'b) slovar) = (k, v) :: List.remove_assoc k m
-
 
 (*============================================================================*]
   Matematične izraze predstavimo z dvojiškimi drevesi, v katerih vozlišča predstavljajo 
@@ -66,7 +64,6 @@ let prestej izraz =
 Napišite funkcijo `izlusci : 'a izraz -> (string * int) slovar`, ki sprejme izraz 
 in vrne slovar, ki pove, kolikokrat se posamezna spremenljivka pojavi v izrazu. 
 Vrstni red v slovarju ni pomemben.
-
 [*----------------------------------------------------------------------------*)
 
 let povecaj x m =
@@ -91,7 +88,6 @@ let izlusci izraz =
 
     # izracunaj [("x",3); ("y", 4); ("z",5)] primer;;
     - : int option = Some (-4)
-
 [*----------------------------------------------------------------------------*)
 
 let izvedi l r = function

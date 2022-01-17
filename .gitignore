@@ -9,6 +9,7 @@
 *.cmx
 _build
 *.o
+*.exe
 
 *.aux
 *.fdb_latexmk

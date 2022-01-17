@@ -1,3 +1,6 @@
+(*---------------------------------------------------------------------------
+UREJANJE Z VSTAVLJANJEM
+---------------------------------------------------------------------------*)
 let rec vstavi y = function
   | [] -> [ y ]
   | x :: xs when y > x -> x :: vstavi y xs
@@ -6,47 +9,57 @@ let rec vstavi y = function
 let uredi_z_vstavljanjem sez =
   List.fold_left (fun ze_urejen x -> vstavi x ze_urejen) [] sez
 
-(*---------------------------------------------------------------------------*)
+(*---------------------------------------------------------------------------
+UREJANJE Z ZLIVANJEM
+---------------------------------------------------------------------------*)
 
-let rec razdeli_na_pol = function
-  | [] -> [], []
+(* let razdeli xs =
+  let rec aux na_sodih na_lihih = function
+    | [] -> (na_sodih, na_lihih)
+    | x :: xs' -> aux na_lihih (x :: na_sodih) xs'
+  in
+  aux [] [] xs *)
+
+let rec razdeli = function
+  | [] -> ([], [])
   | x :: xs ->
-      let xs1, xs2 = razdeli_na_pol xs in
-      x :: xs2, xs1
+      let xs1, xs2 = razdeli xs in
+      (x :: xs2, xs1)
 
 let rec zlij xs ys =
-  match xs, ys with
+  match (xs, ys) with
   | [], _ -> ys
   | _, [] -> xs
-  | x :: xs', y :: ys' ->
-      if x <= y then
-        x :: zlij xs' ys
-      else
-        y :: zlij xs ys'
+  | x :: xs', y :: ys' -> if x <= y then x :: zlij xs' ys else y :: zlij xs ys'
 
-let rec uredi_z_zlivanjem sez =
-  match sez with
-  | [] | [_] -> sez
-  | _ ->
-    let sez1, sez2 = razdeli_na_pol sez in
-    let sez1' = uredi_z_zlivanjem sez1
-    and sez2' = uredi_z_zlivanjem sez2 in
-    zlij sez1' sez2'
-(*---------------------------------------------------------------------------*)
+let rec uredi_z_zlivanjem = function
+  | [] -> []
+  | [ x ] -> [ x ]
+  | xs ->
+      let xs1, xs2 = razdeli xs in
+      let xs1' = uredi_z_zlivanjem xs1 and xs2' = uredi_z_zlivanjem xs2 in
+      zlij xs1' xs2'
 
-let rec pivotiraj p xs =
-  List.partition (fun x -> x <= p) xs
+(*---------------------------------------------------------------------------
+HITRO UREJANJE
+---------------------------------------------------------------------------*)
 
-let rec hitro_uredi sez =
-  match sez with
-  | [] | [_] -> sez
-  | p :: xs ->
-    let sez1, sez2 = pivotiraj p xs in
-    let sez1' = hitro_uredi sez1
-    and sez2' = hitro_uredi sez2 in
-    sez1' @ p :: sez2'
+let pivotiraj pivot xs = List.partition (fun x -> x <= pivot) xs
 
-(*---------------------------------------------------------------------------*)
+(* TO ISTO BI ZNAL NAPISATI TUDI KOT:
+   let pivotiraj pivot = List.partition ((>=) pivot)
+*)
+
+let rec hitro_uredi = function
+  | [] -> []
+  | x :: xs ->
+      let xs1, xs2 = pivotiraj x xs in
+      let xs1' = hitro_uredi xs1 and xs2' = hitro_uredi xs2 in
+      xs1' @ (x :: xs2')
+
+(*---------------------------------------------------------------------------
+ŠTOPANJE
+---------------------------------------------------------------------------*)
 
 let nakljucni_seznam n =
   let rec aux acc = function
@@ -89,4 +102,4 @@ let _ =
   preveri_urejanje "Urejanje z zlivanjem" uredi_z_zlivanjem 100000;
   preveri_urejanje "Hitro urejanje" hitro_uredi 1000;
   preveri_urejanje "Hitro urejanje" hitro_uredi 10000;
-  preveri_urejanje "Hitro urejanje" hitro_uredi 100000;
+  preveri_urejanje "Hitro urejanje" hitro_uredi 100000
