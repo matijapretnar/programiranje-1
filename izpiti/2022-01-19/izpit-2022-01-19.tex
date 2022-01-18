@@ -21,9 +21,10 @@
 \podnaloga
   Napišite funkcijo \verb|postkompozicija : ('a -> 'b) -> ('b -> 'c) -> 'a -> 'c|, ki sprejme dve funkciji in vrne njun kompozitum.
   \begin{verbatim}
-    # postkompozicija ((+) 82) ((/) 82) 3362;;
+    # let deli_z m n = n / m;;
+    # postkompozicija ((+) 82) (deli_z 82) 3362;;
     - : int = 42
-    # postkompozicija ((/) 82) ((+) 82) 3362;;
+    # postkompozicija (deli_z 82) ((+) 82) 3362;;
     - : int = 123
   \end{verbatim}
 
@@ -35,7 +36,9 @@
   \end{verbatim}
 
 \podnaloga
-  Naravno število v drugačni bazi predstavimo s seznamom celih števil, kjer so na zadnjem mestu enice, na predzadnjem ``desetice'' in tako naprej. Napišite funkcijo \verb|pretvori : int -> int list -> int|, ki sprejme seznam pozitivnih celih števil in bazo ter vrne podano število v desetiškem sistemu kot celo število.
+  Naravno število v drugačni bazi predstavimo s seznamom celih števil, kjer so na zadnjem mestu enice, na predzadnjem ``desetice'' in tako naprej.
+  
+  Napišite funkcijo \verb|pretvori : int -> int list -> int|, ki sprejme seznam pozitivnih celih števil in bazo ter vrne podano število v desetiškem sistemu kot celo število.
   \begin{verbatim}
     # pretvori 8 [6; 4; 4; 2];; (* 6*8^3 + 4*8^2 + 4*8 + 2 *)
     - : int = 3362
@@ -63,7 +66,7 @@ Zgostitev drevesa izračunamo z zgostitvenimi funkcijami, ki sprejmejo zgostitev
 \end{verbatim}
 Za zgostitev praznega drevesa izberemo število 0.
 
-Na primer, za zgostitveno funkcijo
+Na primer, za zgostitveno funkcijo:
 \begin{verbatim}
   let primer_h l p d = ((l * 3) + (p * 5) + (d * 7)) mod 11
 \end{verbatim}
