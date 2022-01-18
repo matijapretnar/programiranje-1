@@ -15,6 +15,8 @@
 
 \naloga
 
+\emph{Nalogo rešujte v OCamlu.}
+
 \podnaloga
   Napišite predikat \verb|sta_pravokotna : int * int * int -> int * int * int -> bool|, ki pove, ali sta dva vektorja pravokotna. Vektorje predstavimo s trojicami celih števil.
 
@@ -48,6 +50,9 @@
 
 \naloga
 
+\emph{Nalogo rešujte v OCamlu.}
+
+\noindent
 V datotečnih sistemih, sistemih za nadzor različic in kriptovalutah za učinkovito zagotavljanje pristnosti podatkov uporabljamo \emph{Merkleova drevesa}. To so običajna dvojiška drevesa, le da vsako vozlišče poleg podatka in otrok hrani še svojo \emph{zgostitev} (angleško \emph{hash}), ki je celo število, ki tvori nekakšen podpis celotne vsebine drevesa.
 
 \begin{verbatim}
@@ -97,12 +102,15 @@ je spodnje drevo veljavno Merkleovo drevo:
   Napišite funkcijo \verb|prestej_napacne : 'a zgostitev -> 'a merkle -> int|, ki vzame zgostitveno funkcijo in drevo ter vrne število napačno poračunanih zgostitev v drevesu. Zgostitev vozliča je napačna, če ne ustreza definiciji računanja zgostitve za vozlišče, ne glede na to, ali sta zgostitvi otrok pravilni ali ne.
 
 \podnaloga
-  Napišite funkcijo \verb|popravi : 'a zgostitev -> 'a merkle -> 'a merkle|, ki sprejme (potencialno napačno) Merklovo drevo in vrne drevo iste oblike z istimi podatki, le da so vse zgostitve v njem pravilno izračunane.
+  Napišite funkcijo \verb|popravi : 'a zgostitev -> 'a merkle -> 'a merkle|, ki sprejme (potencialno napačno) drevo in vrne drevo iste oblike z istimi podatki, le da so vse zgostitve v njem pravilno izračunane.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \naloga
 
+\emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+\noindent
 Radko Razkurnik je poklicni internetni trol, ki ljudi s pogostim menjanjem stališč zapenja v nekonstruktivne debate. Glede aktualnega družbenega dogajanja zna zagovarjati $n$ različnih stališč in vsakič, ko preklopi iz stališča $i$ v $j$, s svojo nedoslednostjo spodbudi $k_{ij}$ komentarjev. (Seveda nekaj komentarjev sproži tudi z vztrajanjem pri stališču $i$). Dan je kratek, zato lahko Radko napiše največ $m$ komentarjev, pri čemer je $m$ precej večji od $n$, saj Radko hitreje piše kot misli. Kako naj izbere svoja stališča $s_1, s_2, \dots, s_m$, da bo skupaj sprožil največ komentarjev, kar jih lahko?
 
 Na primer pri matriki
@@ -116,12 +124,12 @@ Na primer pri matriki
 \]
 so optimalne vsote pri $m = 1, 2, 4, 6, 9$ enake:
 \begin{align*}
-  k_{43} &= 4 \\
+  k_{43} &= 40 \\
   k_{12} + k_{23} &= 50 \\
   k_{12} + k_{23} + k_{34} + k_{43} &= 92 \\
   k_{12} + k_{23} + k_{34} + k_{43} + k_{34} + k_{43} &= 134 \\
   k_{43} + k_{34} + k_{43} + k_{34} + k_{43} + k_{34} + k_{43} + k_{34} + k_{43} &= 208
 \end{align*}
-Napišite \emph{čim bolj učinkovito} funkcijo \verb|trololo|, ki sprejme matriko $(k_{ij})_{1 \le i, j \le n} \in \mathbb{N}^{n \times n}$ ter $m \in \mathbb{N}$ in izračuna zgornji seznam. \emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+Napišite \emph{čim bolj učinkovito} funkcijo \verb|trololo|, ki sprejme matriko $(k_{ij})_{1 \le i, j \le n} \in \mathbb{N}^{n \times n}$ ter $m \in \mathbb{N}$ in izračuna zgornji seznam.
 
 \end{document}
