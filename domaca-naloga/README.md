@@ -80,17 +80,19 @@ V ukazni vrstici poženite:
 
 To ustvari datoteko `sudoku.exe`, ki ob klicu
 
-    ./sudoku.exe primer1.sdk primer2.sdk ...
+    ./sudoku.exe primer-1.sdk primer-2.sdk ...
 
-reši sudokuje v datotekah `primer1.sdk`, `primer2.sdk`, ...
+reši sudokuje v datotekah `primer-1.sdk`, `primer-2.sdk`, ...
 
-V mapi `sudokuji` najdete testne datoteke, ki vsebujejo primere standardnih sudokujev. Program lahko na vseh sudokujih poženete kot
+V mapi `sudokuji` najdete testne datoteke, ki vsebujejo primere običajnih sudokujev. Program lahko na vseh sudokujih poženete kot
 
     ./sudoku.exe sudokuji/*.sdk
 
 ali
 
-    ./sudoku.exe sudokuji/obicajni*.sdk sudokuji/puscice*.sdk
+    ./sudoku.exe sudokuji/obicajni-*.sdk sudokuji/puscice-*.sdk
+
+Vsaka datoteka `.sdk` ima tudi pripadajočo datoteko `.out`, v kateri je pravilna rešitev.
 
 Če boste med reševanjem naloge naleteli na težavo z lokalno namestitvijo OCamla, to čim prej sporočite asistentu Filipu, da vam lahko pomagamo usposobiti vse potrebno.
 
@@ -122,7 +124,7 @@ Vsota števil v celicah repa more biti enaka kot število v glavi.
 - _Kletke_: Kletke so skupek povezanih celic, za katere zahtevamo, da vsebujejo sama različna števila s podano vsoto.
 Vrstica pogoja je oblike `K: X (x1,y1);...;(xn;yn)`, kjer je vsota (medsebojno različnih) števk na mestih `(x1,y1)`, ..., `(xn;yn)` enaka `X`.
 
-Vhodni podatki razširjenih testnih primerov so v datotekah `sudokuji/puscice*.sdk`, `sudokuji/termometri*.sdk`, `sudokuji/kletke*.sdk`.
+Vhodni podatki razširjenih testnih primerov so v datotekah `sudokuji/puscice-*.sdk`, `sudokuji/termometri-*.sdk`, `sudokuji/kletke-*.sdk`.
 Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve.
 Pri branju vse vrstice, ki se začnejo z `#`, ignorirajte kot komentarje.
 
