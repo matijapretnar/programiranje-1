@@ -80,17 +80,19 @@ V ukazni vrstici poženite:
 
 To ustvari datoteko `sudoku.exe`, ki ob klicu
 
-    ./sudoku.exe primer1.sdk primer2.sdk ...
+    ./sudoku.exe primer-1.sdk primer-2.sdk ...
 
-reši sudokuje v datotekah `primer1.sdk`, `primer2.sdk`, ...
+reši sudokuje v datotekah `primer-1.sdk`, `primer-2.sdk`, ...
 
-V mapi `sudokuji` najdete testne datoteke, ki vsebujejo primere standardnih sudokujev. Program lahko na vseh sudokujih poženete kot
+V mapi `sudokuji` najdete testne datoteke, ki vsebujejo primere običajnih sudokujev. Program lahko na vseh sudokujih poženete kot
 
     ./sudoku.exe sudokuji/*.sdk
 
 ali
 
-    ./sudoku.exe sudokuji/obicajni*.sdk sudokuji/puscice*.sdk
+    ./sudoku.exe sudokuji/obicajni-*.sdk sudokuji/puscice-*.sdk
+
+Vsaka datoteka `.sdk` ima tudi pripadajočo datoteko `.out`, v kateri je pravilna rešitev.
 
 Če boste med reševanjem naloge naleteli na težavo z lokalno namestitvijo OCamla, to čim prej sporočite asistentu Filipu, da vam lahko pomagamo usposobiti vse potrebno.
 
@@ -105,34 +107,29 @@ Z domačo nalogo je možno doseči do 20 točk. Pri točkovanju velja sledeči k
 - 5 točk : Program, ki pravilno reši vsakega od priloženih običajnih sudokujev.
 - 5 točk : Berljivost in eleganca kode.
 - 5 točk : Učinkovitost programa za reševanje.
-- 5 točk : Razširitve programa na nestandardne sudokuje (kletke, puščice, termometri) - NATANČNA NAVODILA SLEDIJO V KRATKEM
+- 5 točk : Razširitve programa na nestandardne sudokuje.
 
 ### Razširitve
 
 Zadnji del točk pridobite z razširitvijo programa na nestandardne sudokuje.
 Nekaj primerov nestandardnih sudokujev je na voljo v mapi `sudokuji`, vendar se za višjo oceno pričakuje, da boste samo poskrbeli za testne primere, ki res preverijo učinkovitost implementacije.
 
-Možne razširitve so:
+Možne razširitve vse predpostavljajo običajna pravila sudokuja, poleg tega pa se na mreži lahko nahajajo še:
 
-- Termometri: Poleg običajnih pravil sudokuja, so na mreži tudi "termometri".
-Števila v celicah termometra morajo v istem termometru strogo naraščati od začetka termometra do konca.
-Vrstica pogoja, ki predstavlja termometer se začne z `T: `, čemur sledijo s podpičjem ločene koordinate celic na tem termometru.
-Številka v prvi celici mora biti najmanjša, v drugi večja od tiste v prvi, ..., in v zadnji največja.  
-- Puščice: Poleg običajnih pravil sudokuja, so na mreži tudi "puščice".
-Puščica se začne na podani celici in kaže ne eno ali več različnih celic, katerih vsota mora biti enaka številu, ki je na začetni celici.
-Vrstica pogoja, ki predstavlja puščico se začne z `A: `, čemur sledi opis za puščico v obliki `glava -> rep`.
-Glava je celica, ki se nahaja na začetku puščice, rep pa je s podpičjem ločen seznam celic, na katere kaže glava.
+- _Termometri_: Števke v celicah termometra morajo strogo naraščati od začetka do konca termometra.
+Vrstica pogoja je oblike `T: (x1,y1);...;(xn;yn)`, kjer je števka na mestu `(x1,y1)` najmanjša, tista na mestu `(xn;yn)` pa največja.  
+- _Puščice_: Puščica se začne na podani celici in kaže ne eno ali več različnih celic, katerih vsota mora biti enaka števki v začetni celici.
+Vrstica pogoja je oblike `A: (x1,y1) -> (x2,y2);...;(xn;yn)`, kjer je števka na mestu `(x1,y1)` enaka vsoti števk na mestih `(x2,y2)`, ..., `(xn;yn)`.
 Vsota števil v celicah repa more biti enaka kot število v glavi.
-- Kletke: Poleg običajnih pravil sudokuja, so na mreži tudi "kletke".
-Kletke so skupek povezanih celic, za katere zahtevamo, da vsebujejo sama različna števila, ki imajo podano vsoto.
-Vrstica pogoja, ki predstavlja kletko se začne z `K: X `, čemur sledijo s podpičjem ločene celice, katerih vsota mora biti enaka `X`.
+- _Kletke_: Kletke so skupek povezanih celic, za katere zahtevamo, da vsebujejo sama različna števila s podano vsoto.
+Vrstica pogoja je oblike `K: X (x1,y1);...;(xn;yn)`, kjer je vsota (medsebojno različnih) števk na mestih `(x1,y1)`, ..., `(xn;yn)` enaka `X`.
 
-Vhodni podatki razširjenih testnih primerov so v datotekah `sudokuji/puscice*.sdk`, `sudokuji/termometri*.sdk`, `sudokuji/kletke*.sdk`.
+Vhodni podatki razširjenih testnih primerov so v datotekah `sudokuji/puscice-*.sdk`, `sudokuji/termometri-*.sdk`, `sudokuji/kletke-*.sdk`.
 Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve.
 Pri branju vse vrstice, ki se začnejo z `#`, ignorirajte kot komentarje.
 
 ## Oddaja domače naloge
 
-Domačo nalogo rešujete na svojem klonu repozitorija predmeta. Priporočamo, da nalogo rešujete v posebni veji. Povezavo do repozitorija in veje, kjer ste reševali nalogo, oddate na spletni učilnici.
+Datoteke domače naloge boste oddali prek spletne učilnice. Priporočamo, da nalogo vseeno pišete prek Gita, vendar v ločenem in zasebnem repozitoriju, da je ne bi kdo prepisal brez vaše vednosti.
 
 **NALOGO MORATE REŠEVATI SAMOSTOJNO. ČE NE VESTE, ALI DOLOČENA STVAR POMENI SODELOVANJE, RAJE VPRAŠAJTE!**
