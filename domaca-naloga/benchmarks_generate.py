@@ -38,8 +38,8 @@ def run(sudoku, timeout):
     return result, time
 
 
-def add_benchmarks(name, sudokus, csv_name, timeout=60, relative_to_baseline=True):
-    if relative_to_baseline:
+def add_benchmarks(name, sudokus, csv_name, timeout=60, baseline=None):
+    if baseline is None:
         print("Ocenjujem hitrost računalnika... ", end="", flush=True)
         baseline = measure_baseline()
         print("Končano.")
@@ -57,7 +57,7 @@ def add_benchmarks(name, sudokus, csv_name, timeout=60, relative_to_baseline=Tru
                 time = None
             except subprocess.TimeoutExpired:
                 result = "TIMEOUT"
-                time = timeout / baseline
+                time = None
             print(result)
             writer.writerow([name, sudoku, result, time])
 
@@ -68,4 +68,4 @@ sudokus = [
     if filename.endswith(".sdk")
 ]
 
-# add_benchmarks("ocamlc", sudokus, "benchmarks.csv", timeout=1, relative_to_baseline=True)
+# add_benchmarks("ImePriimek", sudokus, "benchmarks.csv", timeout=1, relative_to_baseline=True)
