@@ -16,29 +16,29 @@
 \naloga
 
 \podnaloga
-Napišite predikat \verb|je_idempotent : ((a, b); (c; d)) -> bool|,
+Napišite predikat \verb|je_idempotent : (int * int) * (int * int) -> bool|,
    ki za dano dvodimenzionalno matriko pove, ali je idempotentna.
    Matrika $P$ je idempotentna, kadar velja $P^2 = P$.
 
   %  let je_idempotent ((a, b), (c, d)) =
   %   a*a + b*c = a && a*b + b*d = b && a*c + c*d = c && b*c + d*d = d
   
-  Primera dveh idempotentnih matrik:
-  \begin{verbatim}
-    # let identiteta = ((1, 0), (0, 1));;
-    # let test1 = ((3, -6), (1, -2));;
-    # je_idempotent identiteta;;
-    - : bool = true
-    # je_idempotent test1;;
-    - : bool = true
-  \end{verbatim}
+Primera dveh idempotentnih matrik:
+\begin{verbatim}
+  # let identiteta = ((1, 0), (0, 1));;
+  # let test1 = ((3, -6), (1, -2));;
+  # je_idempotent identiteta;;
+  - : bool = true
+  # je_idempotent test1;;
+  - : bool = true
+\end{verbatim}
 
-  Primer matrike, ki ni idempotentna:
-  \begin{verbatim}
-    let test2 = ((1, -6), (1, -2));;
-    # je_idempotent test2;;
-    - : bool = true
-  \end{verbatim}
+Primer matrike, ki ni idempotentna:
+\begin{verbatim}
+  let test2 = ((1, -6), (1, -2));;
+  # je_idempotent test2;;
+  - : bool = true
+ \end{verbatim}
   
 \podnaloga
 Napišite funkcijo, ki izračuna produkt neničelnih elementov v seznamu.
@@ -83,21 +83,22 @@ Primer:
 
   % let splosni_collatz f g pogoj z k n =
   %   let rec aux x n = 
-  %     print_int x; print_string " ";
-  %     if n <= 0 || x = k then x
+  %     (* print_int x; print_string " "; *)
+  %     x :: (if n <= 0 || x = k then []
   %     else
   %       if pogoj x then aux (f x) (n-1)
   %       else aux (g x) (n-1)
+  %     )
   %     in aux z n
   
   Primer: originalno Collatzovo zaporedje
-  \begin{verbatim}
-    # let pogoj x = (x mod 2) = 0;;
-    # let f x = x / 2;;
-    # let g x = 3 * x + 1;;
-    # splosni_collatz f g pogoj 12 1 1000;;
-    12 6 3 10 5 16 8 4 2 1 - : int = 1 *
-  \end{verbatim}
+\begin{verbatim}
+  # let pogoj x = (x mod 2) = 0;;
+  # let f x = x / 2;;
+  # let g x = 3 * x + 1;;
+  # splosni_collatz f g pogoj 12 1 1000;;
+  - : int list = [12; 6; 3; 10; 5; 16; 8; 4; 2; 1]
+\end{verbatim}
 
   V primeru začnemo s številom $12$, ki je deljivo z $2$ (pogoj), zato uporabimo funkcijo \verb|f|.
   Dobimo število $6$, ki je spet deljivo z $2$, zato spet uporabimo \verb|f|.
@@ -135,10 +136,7 @@ V kolikor med izvajanjem na vrhu sklada ni pravilnih oblik elementov, ali na kon
   let primer : int term = [ Value 3; Value 4; plus; Value 5; deljeno ]    
 \end{verbatim}
 
-\podnaloga
-\textbf{TODO:} popravila prvi stavek, je tako ok?
-
-Definirajte izraza, ki ju predstavljata sledeča niza: \verb|"1 2 + 4 - 5 *"|, \verb|"5.3 4.6 /. 1.7 *."|. 
+\podnaloga Definirajte izraza, ki ju predstavljata sledeča niza: \verb|"1 2 + 4 - 5 *"|, \verb|"5.3 4.6 /. 1.7 *."|. 
    Definirajte tudi poljuben izraz, ki predstavlja neveljaven izraz (kjer bi med izvajanjem prišlo do napake)
 
 % let a = [ Value 1; Value 2; plus; Value 4; Operator ( - ); Value 5; krat ]
@@ -150,8 +148,6 @@ Definiraje funkcijo \verb|korak 'a term -> 'a result|, ki sprejme izraz (sklad) 
 Če podan izraz predstavlja končni rezultat naj vrne obliko \verb|Finished|, 
 če je mogoče narediti en korak naj naredi en korak in vrne stanje po opravljenem koraku v obliki \verb|Term|, 
 v nasprotnem primeru pa naj vrne obliko \verb|Error|.
-
-\textbf{TODO:} primer.
 
 \begin{verbatim}
   # korak primer;;
@@ -192,7 +188,7 @@ Za vse točke naj bo funkcija repno rekurzivna in ne gre v celoti izvesti izraza
 
 \podnaloga
 Očitno lahko iz seznama operatorjev in vrednosti pripravimo izraz. 
-Pripravite funkcijo \verb|combine : 'a list -> 'a operator list -> 'a term option|, 
+Vaša naloga je pripraviti funkcijo \verb|combine : 'a list -> 'a operator list -> 'a term option|, 
 ki sprejme seznam vrednosti in seznam operatorjev ter vrne končen izraz, če je to mogoče, ali \verb|None|.
 
 % let combine values operators : 'a term option =
@@ -219,5 +215,7 @@ Napišite funkcijo \verb|pospravi|, ki sprejme seznam parov celih števil. Prva 
 
 Na spodnji mizi je najbolje, da najboljša pot, ki začne na indeksu 0 (si natoči dve enoti pijače), od koder se premakne na indeks 2 (kjer ima prazen kozarec) in se vrne nazaj na začetek, kjer ima sedaj 3 enote pijače. V drugo se spet premakne na indeks 2, in vrne nazaj na začetek s 4 enotami pijače. V tretje pa se premakne na indeks 1, in se vrne nazaj na začetek s 5 enotami pijače, s čimer ima dovolj zaloge da lahko s četrtim premikom doseže konec mize. (Alternativno bi lahko v tretjem premiku šel na indeks 2 in še vedno v enakem številu premikov dosegel konec mize).
 
+
+\verb|[(1, 2), (1, 3), (3, 5), (5, 0), (5, 1)]|
 
 \end{document}
