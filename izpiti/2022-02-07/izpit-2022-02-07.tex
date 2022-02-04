@@ -16,88 +16,196 @@
 \naloga
 
 \podnaloga
-  Napišite predikat \verb|sta_pravokotna : int * int * int -> int * int * int -> bool|, ki pove, ali sta dva vektorja pravokotna. Vektorje predstavimo s trojicami celih števil.
+Napišite predikat \verb|je_idempotent : ((a, b); (c; d)) -> bool|,
+   ki za dano dvodimenzionalno matriko pove, ali je idempotentna.
+   Matrika $P$ je idempotentna, kadar velja $P^2 = P$.
 
-\podnaloga
-  Napišite funkcijo \verb|postkompozicija : ('a -> 'b) -> ('b -> 'c) -> 'a -> 'c|, ki sprejme dve funkciji in vrne njun kompozitum.
-  \begin{verbatim}
-    # let deli_z m n = n / m;;
-    # postkompozicija ((+) 82) (deli_z 82) 3362;;
-    - : int = 42
-    # postkompozicija (deli_z 82) ((+) 82) 3362;;
-    - : int = 123
-  \end{verbatim}
-
-\podnaloga
-  Napišite funkcijo \verb|dopolni : 'a -> 'a option list -> 'a list|, ki sprejme privzeto vrednost in seznam morebitnih vrednosti ter vrne seznam, v katerem namesto manjkajočih vrednosti nastopa privzeta, obstoječe vrednosti pa ostanejo nespremenjene. Za vse točke naj bo funkcija repno rekurzivna.
-  \begin{verbatim}
-    # dopolni 3 [Some 1; None; Some 2];;
-    - : int list = [1; 3; 2]
-  \end{verbatim}
-
-\podnaloga
-  Naravno število v drugačni bazi predstavimo s seznamom celih števil, kjer so na zadnjem mestu enice, na predzadnjem ``desetice'' in tako naprej.
+  %  let je_idempotent ((a, b), (c, d)) =
+  %   a*a + b*c = a && a*b + b*d = b && a*c + c*d = c && b*c + d*d = d
   
-  Napišite funkcijo \verb|pretvori : int -> int list -> int|, ki sprejme seznam pozitivnih celih števil in bazo ter vrne podano število v desetiškem sistemu kot celo število.
+  Primera dveh idempotentnih matrik:
   \begin{verbatim}
-    # pretvori 8 [6; 4; 4; 2];; (* 6*8^3 + 4*8^2 + 4*8 + 2 *)
-    - : int = 3362
+    # let identiteta = ((1, 0), (0, 1));;
+    # let test1 = ((3, -6), (1, -2));;
+    # je_idempotent identiteta;;
+    - : bool = true
+    # je_idempotent test1;;
+    - : bool = true
   \end{verbatim}
+
+  Primer matrike, ki ni idempotentna:
+  \begin{verbatim}
+    let test2 = ((1, -6), (1, -2));;
+    # je_idempotent test2;;
+    - : bool = true
+  \end{verbatim}
+  
+\podnaloga
+Napišite funkcijo, ki izračuna produkt neničelnih elementov v seznamu.
+Produkt praznega seznama naj bo enak $1$. Funkcija naj bo repno rekurzivna.
+  
+  % let produkt lst =
+  %   let rec aux acc = function
+  %     | [] -> acc
+  %     | 0 :: t -> aux acc t
+  %     | x :: t -> aux (acc * x) t
+  %   in
+  %   aux 1 lst
+
+\podnaloga
+Napišite funkcijo \verb|stalin|, ki iz danega seznama odstrani vse elemente, 
+ki niso v strogo naraščajočem vrstnem redu, po požrešni metodi.
+
+Primer:
+\begin{verbatim}
+  # stalin [6; 3; 10; 5; 16];;
+  - : int list = [6; 10; 16]
+\end{verbatim}
+
+% let stalin lst = 
+%   let rec aux acc max = function
+%     | [] -> acc
+%     | x :: xs -> 
+%       if x > max then aux (x :: acc) x xs
+%       else aux acc max xs
+%   in
+%   match lst with
+%     | [] -> []
+%     | x :: xs -> List.rev (aux [x] x xs)
+
+  \podnaloga
+  Napišite funkcijo \verb|splosni_collatz| ki za dani funkciji \verb|f| in \verb|g|, \verb|pogoj : int -> bool|, 
+  začetno število \verb|z|, končno število \verb|k| in maksimalno število ponovitev \verb|n|, 
+  računa člene splošne verzije Collatzovega zaporedja, dokler ne pride do števila \verb|k| 
+  ali do maksimalnega števila ponovitev.
+  Člen zaporedja je določen s prejšnjim členom tako, da se uporabi funkcija \verb|f| na prejšnjem členu,
+  če zanj velja pogoj, sicer pa se uporabi funkcija \verb|g|.  
+
+  % let splosni_collatz f g pogoj z k n =
+  %   let rec aux x n = 
+  %     print_int x; print_string " ";
+  %     if n <= 0 || x = k then x
+  %     else
+  %       if pogoj x then aux (f x) (n-1)
+  %       else aux (g x) (n-1)
+  %     in aux z n
+  
+  Primer: originalno Collatzovo zaporedje
+  \begin{verbatim}
+    # let pogoj x = (x mod 2) = 0;;
+    # let f x = x / 2;;
+    # let g x = 3 * x + 1;;
+    # splosni_collatz f g pogoj 12 1 1000;;
+    12 6 3 10 5 16 8 4 2 1 - : int = 1 *
+  \end{verbatim}
+
+  V primeru začnemo s številom $12$, ki je deljivo z $2$ (pogoj), zato uporabimo funkcijo \verb|f|.
+  Dobimo število $6$, ki je spet deljivo z $2$, zato spet uporabimo \verb|f|.
+  Naslednje število je $3$, ki pa ni deljivo z $2$, zato uporabimo funkcijo \verb|g|, in dobimo število $10$.
+  Postopek ponavljamo, dokler ne pridemo do končnega števila $1$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \naloga
 
-V datotečnih sistemih, sistemih za nadzor različic in kriptovalutah za učinkovito zagotavljanje pristnosti podatkov uporabljamo \emph{Merkleova drevesa}. To so običajna dvojiška drevesa, le da vsako vozlišče poleg podatka in otrok hrani še svojo \emph{zgostitev} (angleško \emph{hash}), ki je celo število, ki tvori nekakšen podpis celotne vsebine drevesa.
+Računanje aritmetičnih izrazov lahko predstavimo s skladom, kjer aritmetični izraz predstavimo kot 
+zaporedje števil in operatorjev na skladu (seznamu). 
+Izraz \verb|(3 + 4) / 5| predstavimo kot: \verb|"3 4 + 5 /"|. 
+Aritmetične izraze v taki obliki evalviramo od leve proti desni tako, da najprej s sklada vzamemo 
+oba argumenta in operator, operator apliciramo na operanda in na sklad vrnemo rezultat. 
+To počnemo toliko časa, dokler ni na skladu zgolj en element, ki je končni rezultat. 
+V kolikor med izvajanjem na vrhu sklada ni pravilnih oblik elementov, ali na koncu ostane nepravilno 
+število elementov je tekom izvajanja prišlo do napake.  
 
 \begin{verbatim}
-  type 'a merkle = List | Vozlisce of 'a vozlisce
-  and 'a vozlisce = {
-    levo : 'a merkle;
-    podatek : 'a;
-    desno : 'a merkle;
-    zgostitev : int;
-  }
-\end{verbatim}
+  type 'a operator = 'a -> 'a -> 'a
 
-Zgostitev drevesa izračunamo z zgostitvenimi funkcijami, ki sprejmejo zgostitev levega otroka, podatek v vozlišču in zgostitev desnega otroka:
-\begin{verbatim}
-  type 'a zgostitev = int -> 'a -> int -> int
-\end{verbatim}
-Za zgostitev praznega drevesa izberemo število 0.
-
-Na primer, za zgostitveno funkcijo:
-\begin{verbatim}
-  let primer_h l p d = ((l * 3) + (p * 5) + (d * 7)) mod 11
-\end{verbatim}
-je spodnje drevo veljavno Merkleovo drevo:
-\begin{verbatim}
-  let drevo : int merkle = Vozlisce {
-    levo = Vozlisce {
-      levo = Vozlisce { levo = List; podatek = 10; desno = List; zgostitev = 6 };
-      podatek = 14;
-      desno = Vozlisce { levo = List; podatek = 474; desno = List; zgostitev = 5 };
-      zgostitev = 2;
-    };
-    podatek = 57;
-    desno = Vozlisce {
-      levo = List;
-      podatek = 12;
-      desno = Vozlisce { levo = List; podatek = 513; desno = List; zgostitev = 2 };
-      zgostitev = 8;
-    };
-    zgostitev = 6;
-  }
+  type 'a atom = Value of 'a | Operator of 'a operator
+  
+  type 'a term = 'a atom list
+  
+  type 'a result = Finished of 'a | Term of 'a term | Error
+  
+  let plus = Operator ( + )
+  
+  let krat = Operator ( * )
+  
+  let deljeno = Operator ( / )
+  
+  let primer : int term = [ Value 3; Value 4; plus; Value 5; deljeno ]    
 \end{verbatim}
 
 \podnaloga
-  Napišite predikat \verb|preveri : 'a zgostitev -> 'a merkle -> bool|, ki sprejme zgostitveno funkcijo in drevo ter preveri, ali so vse zgostitve v drevesu pravilno izračunane.
+\textbf{TODO:} popravila prvi stavek, je tako ok?
+
+Definirajte izraza, ki ju predstavljata sledeča niza: \verb|"1 2 + 4 - 5 *"|, \verb|"5.3 4.6 /. 1.7 *."|. 
+   Definirajte tudi poljuben izraz, ki predstavlja neveljaven izraz (kjer bi med izvajanjem prišlo do napake)
+
+% let a = [ Value 1; Value 2; plus; Value 4; Operator ( - ); Value 5; krat ]
+% let b = [ Value 5.3; Value 4.6; Operator ( /. ); Value 1.7; Operator ( *. ) ]
+% let prevec_vrednosti = [ Value 3; Value 4 ]
 
 \podnaloga
-  Napišite funkcijo \verb|prestej_napacne : 'a zgostitev -> 'a merkle -> int|, ki vzame zgostitveno funkcijo in drevo ter vrne število napačno poračunanih zgostitev v drevesu. Zgostitev vozliča je napačna, če ne ustreza definiciji računanja zgostitve za vozlišče, ne glede na to, ali sta zgostitvi otrok pravilni ali ne.
+Definiraje funkcijo \verb|korak 'a term -> 'a result|, ki sprejme izraz (sklad) in poskuša narediti en korak evalvacije.
+Če podan izraz predstavlja končni rezultat naj vrne obliko \verb|Finished|, 
+če je mogoče narediti en korak naj naredi en korak in vrne stanje po opravljenem koraku v obliki \verb|Term|, 
+v nasprotnem primeru pa naj vrne obliko \verb|Error|.
+
+\textbf{TODO:} primer.
+
+\begin{verbatim}
+  # korak primer;;
+  - : int result = Term [Value 7; Value 5; Operator <fun>]
+  # korak [Value 7; Value 5; deljeno];;
+  - : int result = Term [Value 1]
+
+\end{verbatim}
+
+% let korak = function
+%   | [ Value x ] -> Finished x
+%   | Value x :: Value y :: Operator o :: xs -> Term (Value (o x y) :: xs)
+%   | _ -> Error
 
 \podnaloga
-  Napišite funkcijo \verb|popravi : 'a zgostitev -> 'a merkle -> 'a merkle|, ki sprejme (potencialno napačno) Merklovo drevo in vrne drevo iste oblike z istimi podatki, le da so vse zgostitve v njem pravilno izračunane.
+Definirajte funkcijo \verb|izvedi : 'a term -> 'a option|, ki sprejme izraz in ga evalvira. 
+Če kjerkoli med izvajanje pride do napake naj funkcija vrne \verb|None|.
+
+% let rec izvedi term =
+%   match korak term with
+%   | Finished r -> Some r
+%   | Term t -> izvedi t
+%   | Error -> None
+
+\podnaloga
+Definirajte predikat \verb|valid : 'a term -> bool|, ki sprejme izraz in preveri, 
+ali je podan izraz veljaven (ali bi izvedba izraza v celoti pripeljala do rezultata, 
+ali bi vmes prišlo do napake). 
+Za vse točke naj bo funkcija repno rekurzivna in ne gre v celoti izvesti izraza (ne aplicira funkcij).
+
+% let valid term =
+%   let rec aux = function
+%     | [] -> true
+%     | Value _ :: Operator _ :: xs -> aux xs
+%     | _ -> false
+%   in
+%   match term with Value _ :: xs -> aux xs | _ -> false
+
+\podnaloga
+Očitno lahko iz seznama operatorjev in vrednosti pripravimo izraz. 
+Pripravite funkcijo \verb|combine : 'a list -> 'a operator list -> 'a term option|, 
+ki sprejme seznam vrednosti in seznam operatorjev ter vrne končen izraz, če je to mogoče, ali \verb|None|.
+
+% let combine values operators : 'a term option =
+%   let rec aux values operators =
+%     match (values, operators) with
+%     | [], [] -> Some []
+%     | v :: vs, o :: os ->
+%         Option.map (fun l -> Value v :: Operator o :: l) (aux vs os)
+%     | _ -> None
+%   in
+%   match values with
+%   | [] -> None
+%   | v :: values -> Option.map (fun l -> Value v :: l) (aux values operators)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
