@@ -208,13 +208,38 @@ ki sprejme seznam vrednosti in seznam operatorjev ter vrne končen izraz, če je
 
 \naloga
 
-France 9.~februarja zjutraj prazni dolgo mizo, za katero je prejšnji večer praznovalo $N$ gostov (vsi v eni sami vrsti). Vsak izmed njih je za sabo pustil nekaj (nenegativnih) enot hrane in pijače. Ker je Francetu med pospravljanjem dolgčas, se je odločil, da se bo namesto pospravljanja raje igral igrico.
+France 9.~februarja zjutraj prazni dolgo mizo, za katero je prejšnji večer praznovalo $N$ gostov (vsi v eni sami vrsti). Vsak izmed njih je za sabo pustil nekaj (nenegativnih) enot hrane in pijače. Ker je Francetu med pospravljanjem dolgčas, se je odločil, da se bo namesto pospravljanja raje igral igrico po naslednjih pravilih.
 
-Pospravljanje začne skrajno levo s praznim vrčem in se premika v desno. Ko pride na posamezno mesto, si vso pijačo, ki je ostala tam, pretoči v svoj kozarec in se vrne nazaj (v levo) za toliko mest, kot je gost pustil hrane. Ob vrnitvi na desno si ne natoči dodatne pijače, niti ne ponovi vračanja. Če bi se slučajno moral premaknit preko levega roba mize, potem se bo ob levem robu mize tudi ustavil. Ker je od prejšnjega dne še hudo utrujen, ob vsakem premiku (tako naprej kot nazaj) polije toliko enot pijače kot je le-ta dolg. Pri tem mora paziti, da ima v kozarcu vedno vsaj nekaj pijače. Dovoljeno je na primer, da s 3 enotami v kozarcu naredi premik dolg 3 enote, 4 pa je že preveč. Pri tem mora upoštevati tudi možne premike zaradi hrane in dodajanje pijače na posameznem mestu. S štirimi enotami se lahko premakne na mesto ki ima dve enoti hrane in je oddaljeno tri mesta, le, če ima to mest vsaj eno enoto pijače (drugače bi ob premiku nazaj ostal s praznim kozarcem). Zanima ga najmanj koliko mest bo obiskal, preden mu bo uspelo priti čez desni konec mize (z nenegativno količino pijače)? Pri tem ga budno opazuje celotna zbrana družba in skrbi, da se stanje na mizi ne spremeni (če bi dvakrat obiskal isto mesto, se je pijača tam vrnila na enako stanje, kot je bila na začetku).
+\begin{enumerate}
+  \item Pospravljanje začne skrajno levo s praznim vrčem.
+  France hoče priti do desnega konca mize.
+  \item Na vsakem koraku se odloči, za koliko mest se bo premaknil v desno. 
+  \item\label{i:obisk} Ko pride na posamezno mesto, si pretoči pijačo v vrč,
+  nato pa se vrne na levo za toliko mest, kolikor je na trenutnem mestu gost pustil enot hrane.
+  \item Ker je od prejšnjega dne še hudo utrujen, ob vsakem premiku (tako naprej kot nazaj) polije toliko enot pijače kot je premik dolg.
+  \item Ob vrnitvi na levo po pravilu~\ref{i:obisk} si ne natoči dodatne pijače, niti se ne vrača še bolj na levo.
+  Nikoli se ne vrne preko levega roba mize.
+  \item Pijače v vrču ne sme zmanjkati, pri čemer je treba upoštevati spremembe med obiski.
+  \item Celotna zbrana družba Franceta budno opazuje in skrbi, da se po obisku količina pijače
+  na obiskanem mestu vrne v prvotno stanje.
+\end{enumerate}
 
-Napišite funkcijo \verb|pospravi|, ki sprejme seznam parov celih števil. Prva komponenta para pove količino hrane, druga pa pijače na posameznem mestu in vrne celo število, najmanjše število premikov, ki jih mora France opraviti, da se prebije do konca mize. Vaša rešitev lahko predpostavi, da bo to vedno mogoče v končno mnogo korakih.
+France lahko s tremi enotami v kozarcu obišče mesto, ki je oddaljeno $3$ mesta, 
+štiri mesta proti desni pa bi bilo že preveč. 
+S štirimi enotami lahko obišče mesto, ki ima dve enoti hrane in je oddaljeno tri mesta, ampak le, če ima to mesto vsaj eno enoto pijače (drugače bi ob premiku nazaj ostal s praznim kozarcem).
 
-Na spodnji mizi je najbolje, da najboljša pot, ki začne na indeksu 0 (si natoči dve enoti pijače), od koder se premakne na indeks 2 (kjer ima prazen kozarec) in se vrne nazaj na začetek, kjer ima sedaj 3 enote pijače. V drugo se spet premakne na indeks 2, in vrne nazaj na začetek s 4 enotami pijače. V tretje pa se premakne na indeks 1, in se vrne nazaj na začetek s 5 enotami pijače, s čimer ima dovolj zaloge da lahko s četrtim premikom doseže konec mize. (Alternativno bi lahko v tretjem premiku šel na indeks 2 in še vedno v enakem številu premikov dosegel konec mize).
+Napišite funkcijo \verb|pospravi|, ki sprejme seznam parov celih števil. 
+Prva komponenta para pove količino hrane, druga pa količino pijače na posameznem mestu. Funkcija naj vrne celo število: najmanjše število mest, ki jih mora France obiskati, 
+da se prebije do konca mize. 
+Vaša rešitev lahko predpostavi, da bo to vedno mogoče v končno mnogo korakih.
+
+Na spodnji mizi si na indeksu \verb|0| natoči dve enoti pijače.
+Naprej se po poti z najmanjšim številom obiskanih mest najprej premakne na indeks \verb|2|.
+Na to mesto pride s praznim vrčem, v katerega natoči pet enot in se vrne na začetek s tremi enotami pijače. 
+V drugo se spet premakne na indeks \verb|2|, ter se vrne na začetek s štirimi enotami pijače.
+V tretje se premakne na indeks \verb|1|, odkoder se vrne na začetek s petimi enotami pijače.
+Zdaj ima dovolj zaloge, da lahko s četrtim premikom doseže konec mize.
+Alternativno bi lahko v tretjem premiku šel na indeks \verb|2| in še vedno v enakem številu premikov dosegel konec mize.
 
 
 \verb|[(1, 2), (1, 3), (3, 5), (5, 0), (5, 1)]|
