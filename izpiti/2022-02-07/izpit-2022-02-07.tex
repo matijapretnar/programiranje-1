@@ -17,48 +17,40 @@
 
 \podnaloga
 Napišite predikat \verb|je_idempotent : (int * int) * (int * int) -> bool|,
-   ki za dano dvodimenzionalno matriko pove, ali je idempotentna.
-   Matrika $P$ je idempotentna, kadar velja $P^2 = P$.
+ki za dano dvodimenzionalno matriko $P$ pove, ali je idempotentna, torej
+da velja $P^2 = P$.
 
-  %  let je_idempotent ((a, b), (c, d)) =
-  %   a*a + b*c = a && a*b + b*d = b && a*c + c*d = c && b*c + d*d = d
+%  let je_idempotent ((a, b), (c, d)) =
+%   a*a + b*c = a && a*b + b*d = b && a*c + c*d = c && b*c + d*d = d
   
-Primera dveh idempotentnih matrik:
 \begin{verbatim}
-  # let identiteta = ((1, 0), (0, 1));;
-  # let test1 = ((3, -6), (1, -2));;
-  # je_idempotent identiteta;;
+  # je_idempotent ((1, 0), (0, 1));;
   - : bool = true
-  # je_idempotent test1;;
+  # je_idempotent ((3, -6), (1, -2));;
   - : bool = true
+  # je_idempotent ((1, -6), (1, -2));;
+  - : bool = false
 \end{verbatim}
-
-Primer matrike, ki ni idempotentna:
-\begin{verbatim}
-  let test2 = ((1, -6), (1, -2));;
-  # je_idempotent test2;;
-  - : bool = true
- \end{verbatim}
   
 \podnaloga
-Napišite funkcijo, ki izračuna produkt neničelnih elementov v seznamu.
-Produkt praznega seznama naj bo enak $1$. Funkcija naj bo repno rekurzivna.
+Napišite funkcijo \verb|produkt : int list -> int|, ki izračuna produkt neničelnih
+elementov v seznamu. Če v seznamu ni neničelnih elementov, naj bo produkt enak $1$.
+Funkcija naj bo repno rekurzivna.
   
-  % let produkt lst =
-  %   let rec aux acc = function
-  %     | [] -> acc
-  %     | 0 :: t -> aux acc t
-  %     | x :: t -> aux (acc * x) t
-  %   in
-  %   aux 1 lst
+% let produkt lst =
+%   let rec aux acc = function
+%     | [] -> acc
+%     | 0 :: t -> aux acc t
+%     | x :: t -> aux (acc * x) t
+%   in
+%   aux 1 lst
 
 \podnaloga
-Napišite funkcijo \verb|stalin|, ki iz danega seznama odstrani vse elemente, 
-ki niso v strogo naraščajočem vrstnem redu, po požrešni metodi.
+Napišite funkcijo \verb|stalin_sort : int list -> int list|, ki dani seznam ``uredi'' tako,
+da iz njega zaporedoma odstrani vsak element, ki ni večji od vseh svojih predhodnikov.
 
-Primer:
 \begin{verbatim}
-  # stalin [6; 3; 10; 5; 16];;
+  # stalin_sort [6; 3; 10; 5; 16];;
   - : int list = [6; 10; 16]
 \end{verbatim}
 
@@ -73,37 +65,33 @@ Primer:
 %     | [] -> []
 %     | x :: xs -> List.rev (aux [x] x xs)
 
-  \podnaloga
-  Napišite funkcijo \verb|splosni_collatz| ki za dani funkciji \verb|f| in \verb|g|, \verb|pogoj : int -> bool|, 
-  začetno število \verb|z|, končno število \verb|k| in maksimalno število ponovitev \verb|n|, 
-  računa člene splošne verzije Collatzovega zaporedja, dokler ne pride do števila \verb|k| 
-  ali do maksimalnega števila ponovitev.
-  Člen zaporedja je določen s prejšnjim členom tako, da se uporabi funkcija \verb|f| na prejšnjem členu,
-  če zanj velja pogoj, sicer pa se uporabi funkcija \verb|g|.  
+\podnaloga
+Collatzovo zaporedje dobimo $a_1, a_2, \dots$ dobimo na sledeči način. Če je $a_n$ sodo, potem je naslednji člen $a_{n + 1} = a_n / 2$, sicer pa je $a_{n + 1} = 3 n + 1$. Ko pridemo do števila $1$, se ustavimo, saj bi se na tisti točki zaporedje sicer začelo ponavljati. Na primer, Collatzovo zaporedje števila $12$ je enako $12, 6, 3, 10, 5, 16, 8, 4, 2, 1$. 
 
-  % let splosni_collatz f g pogoj z k n =
-  %   let rec aux x n = 
-  %     (* print_int x; print_string " "; *)
-  %     x :: (if n <= 0 || x = k then []
-  %     else
-  %       if pogoj x then aux (f x) (n-1)
-  %       else aux (g x) (n-1)
-  %     )
-  %     in aux z n
-  
-  Primer: originalno Collatzovo zaporedje
+Zaporedje lahko posplošimo tako, da si izberemo poljubni dve funkciji $f$ in $g$ ter predikat $p$, s katerim odločimo, ali bo $a_{n + 1}$ enak $f(a_n)$ ali $g(a_n)$. Napišite funkcijo \verb|splosni_collatz| ki za dani funkciji \verb|f, g : int -> int|, pogoj \verb|p : int -> bool|, začetno število \verb|z| ter končno število \verb|k|. Funkcija naj vrne zaporedje členov splošnega Collatzovega zaporedja, dokler ne doseže iskanega končnega števila. Na primer, originalno Collatzovo zaporedje dobimo kot:
+
 \begin{verbatim}
   # let pogoj x = (x mod 2) = 0;;
   # let f x = x / 2;;
   # let g x = 3 * x + 1;;
-  # splosni_collatz f g pogoj 12 1 1000;;
+  # splosni_collatz f g pogoj 12 1;;
   - : int list = [12; 6; 3; 10; 5; 16; 8; 4; 2; 1]
 \end{verbatim}
 
-  V primeru začnemo s številom $12$, ki je deljivo z $2$ (pogoj), zato uporabimo funkcijo \verb|f|.
-  Dobimo število $6$, ki je spet deljivo z $2$, zato spet uporabimo \verb|f|.
-  Naslednje število je $3$, ki pa ni deljivo z $2$, zato uporabimo funkcijo \verb|g|, in dobimo število $10$.
-  Postopek ponavljamo, dokler ne pridemo do končnega števila $1$.
+\begin{verbatim}
+  # let pogoj x = (x mod 2) = 1;;
+  # let f x = x - 1;;
+  # let g x = x / 2;;
+  # splosni_collatz f g pogoj 42 1;;
+  - : int list = [42; 21; 20; 10; 5; 4; 2; 1]
+\end{verbatim}
+
+\emph{Pozor: ko preverjate delovanje funkcije, upoštevajte, da se pri nekaterih vhodnih podatkih ne bo nujno ustavila}.
+
+% let rec splosni_collatz f g p z k =
+%   if z = k then [z] else
+%   let z' = if p z then f z else g z in
+%   z :: splosni_collatz f g p z' k
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
