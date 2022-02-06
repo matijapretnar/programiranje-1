@@ -196,40 +196,30 @@ ki sprejme seznam vrednosti in seznam operatorjev ter vrne končen izraz, če je
 
 \naloga
 
-France 9.~februarja zjutraj prazni dolgo mizo, za katero je prejšnji večer praznovalo $N$ gostov (vsi v eni sami vrsti). Vsak izmed njih je za sabo pustil nekaj (nenegativnih) enot hrane in pijače. Ker je Francetu med pospravljanjem dolgčas, se je odločil, da se bo namesto pospravljanja raje igral igrico po naslednjih pravilih.
+Na predvečer Prešernovega dne utrujeni natakar na večerji streže $N$ gostom, ki v eni sami vrsti sedijo za dolgo mizo, vsak pa ima pred sabo $h_i$ hrane in $p_i$ pijače. Začne skrajno levo in bi rad čimprej prišel do izhoda na drugem koncu mize, vendar imajo gostje seveda svoje muhe, zato mora upoštevati sledeča pravila:
 
 \begin{enumerate}
-  \item Pospravljanje začne skrajno levo s praznim vrčem.
-  France hoče priti do desnega konca mize.
   \item Na vsakem koraku se odloči, za koliko mest se bo premaknil v desno. 
-  \item\label{i:obisk} Ko pride na posamezno mesto, si pretoči pijačo v vrč,
-  nato pa se vrne na levo za toliko mest, kolikor je na trenutnem mestu gost pustil enot hrane.
-  \item Ker je od prejšnjega dne še hudo utrujen, ob vsakem premiku (tako naprej kot nazaj) polije toliko enot pijače kot je premik dolg.
-  \item Ob vrnitvi na levo po pravilu~\ref{i:obisk} si ne natoči dodatne pijače, niti se ne vrača še bolj na levo.
-  Nikoli se ne vrne preko levega roba mize.
-  \item Pijače v vrču ne sme zmanjkati, pri čemer je treba upoštevati spremembe med obiski.
-  \item Celotna zbrana družba Franceta budno opazuje in skrbi, da se po obisku količina pijače
-  na obiskanem mestu vrne v prvotno stanje.
+  \item\label{i:obisk} Ko pride na mesto $i$, vso pijačo (torej $p_i$ enot) pretoči v vrč, a ga gost takoj pošlje za $h_i$ mest v levo, saj mora ``še v miru pojesti''. Ko odide, gost seveda ne poje ničesar, si pa takoj nazaj natoči pijačo, da je ima zopet $p_i$ enot.
+  \item Ob taki vrnitvi na levo ne pretoči nič dodatne pijače niti se ne vrača še bolj na levo, ne glede na to, kaj ima pred sabo gost na mestu $i - h_i$.
+  \item Nikoli se ne vrne preko levega roba mize.
+  \item Ob vsakem koraku (tako naprej kot nazaj) mu iz vrča iz neznanega razloga izgine ena enota pijače.
+  \item Če bi se slučajno zgodilo, da bi naredil korak s praznim vrčem, bi ga lahko kdo od razburjenja razbil in s tem uničil še zadnjo možnost za pobeg. Zaradi tega se z vrčem, v katerem je $p$ pijače, za vsak slučaj premakne za največ $p$ mest (v levo ali v desno).
 \end{enumerate}
 
-France lahko s tremi enotami v kozarcu obišče mesto, ki je oddaljeno $3$ mesta, 
-štiri mesta proti desni pa bi bilo že preveč. 
-S štirimi enotami lahko obišče mesto, ki ima dve enoti hrane in je oddaljeno tri mesta, ampak le, če ima to mesto vsaj eno enoto pijače (drugače bi ob premiku nazaj ostal s praznim kozarcem).
+Napišite funkcijo \verb|pobegni|, ki sprejme seznam parov celih števil. Prva komponenta para pove količino hrane, druga pa količino pijače na posameznem mestu. Funkcija naj vrne najmanjše število \emph{mest}, ki jih mora natakar obiskati, da se prebije do konca mize. Vaša rešitev lahko predpostavi, da bo to vedno mogoče v končno mnogo korakih.
 
-Napišite funkcijo \verb|pospravi|, ki sprejme seznam parov celih števil. 
-Prva komponenta para pove količino hrane, druga pa količino pijače na posameznem mestu. Funkcija naj vrne celo število: najmanjše število mest, ki jih mora France obiskati, 
-da se prebije do konca mize. 
-Vaša rešitev lahko predpostavi, da bo to vedno mogoče v končno mnogo korakih.
+Na primer, za omizjem \verb|[(1, 2), (1, 3), (3, 5), (5, 0), (5, 1)]| je najboljša rešitev sledeča:
+\begin{enumerate}
+  \item Na indeksu \verb|0| v vrč natoči 2 enoti ter se premakne na indeks \verb|2|, kamor pride s praznim vrčem.
+  \item Na indeksu \verb|2| hitro natoči 5 enot, vendar ga gost pošlje nazaj na začetek \verb|0|, kamor pride s 3 enotami.
+  \item Na indeksu \verb|0| zopet natoči 2 enoti ter se ponovno premakne na indeks \verb|2|, kamor pride z 1 enoto.
+  \item Na indeksu \verb|2| si spet natoči 5 enot, gost pa ga zopet pošlje nazaj na mesto \verb|0|, kamor pride s 4 enotami.
+  \item Na indeksu \verb|0| si še v tretje natoči 5 enot ter se premakne na indeks \verb|1|, kamor pride s 5 enotami.
+  \item Na indeksu \verb|1| si natoči 3 enote in se vrne nazaj na začetek, kamor pride s 7 enotami.
+  \item Zdaj ima na indeksu \verb|0| v vrču dovolj zaloge, da lahko doseže konec mize.
+  \item Alternativno bi lahko v prejšnjem koraku namesto na \verb|1| šel na indeks \verb|2| in še vedno v enakem številu premikov dosegel konec mize.
+\end{enumerate}  
 
-Na spodnji mizi si na indeksu \verb|0| natoči dve enoti pijače.
-Naprej se po poti z najmanjšim številom obiskanih mest najprej premakne na indeks \verb|2|.
-Na to mesto pride s praznim vrčem, v katerega natoči pet enot in se vrne na začetek s tremi enotami pijače. 
-V drugo se spet premakne na indeks \verb|2|, ter se vrne na začetek s štirimi enotami pijače.
-V tretje se premakne na indeks \verb|1|, odkoder se vrne na začetek s petimi enotami pijače.
-Zdaj ima dovolj zaloge, da lahko s četrtim premikom doseže konec mize.
-Alternativno bi lahko v tretjem premiku šel na indeks \verb|2| in še vedno v enakem številu premikov dosegel konec mize.
-
-
-\verb|[(1, 2), (1, 3), (3, 5), (5, 0), (5, 1)]|
 
 \end{document}
