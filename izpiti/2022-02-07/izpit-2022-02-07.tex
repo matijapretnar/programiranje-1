@@ -199,15 +199,15 @@ ki sprejme seznam vrednosti in seznam operatorjev ter vrne končen izraz, če je
 Na predvečer Prešernovega dne utrujeni natakar na večerji streže $N$ gostom, ki v eni sami vrsti sedijo za dolgo mizo, vsak pa ima pred sabo $h_i$ hrane in $p_i$ pijače. Začne skrajno levo in bi rad čimprej prišel do izhoda na drugem koncu mize, vendar imajo gostje seveda svoje muhe, zato mora upoštevati sledeča pravila:
 
 \begin{enumerate}
-  \item Na vsakem koraku se odloči, za koliko mest se bo premaknil v desno. 
+  \item Ob vsakem premiku se odloči, koliko korakov na desno bo naredil. 
   \item\label{i:obisk} Ko pride na mesto $i$, vso pijačo (torej $p_i$ enot) pretoči v vrč, a ga gost takoj pošlje za $h_i$ mest v levo, saj mora ``še v miru pojesti''. Ko odide, gost seveda ne poje ničesar, si pa takoj nazaj natoči pijačo, da je ima zopet $p_i$ enot.
-  \item Ob taki vrnitvi na levo ne pretoči nič dodatne pijače niti se ne vrača še bolj na levo, ne glede na to, kaj ima pred sabo gost na mestu $i - h_i$.
+  \item Ob taki vrnitvi na levo natakar ne pretoči nič dodatne pijače niti se ne vrača še bolj na levo, ne glede na to, kaj ima pred sabo gost na mestu $i - h_i$.
   \item Nikoli se ne vrne preko levega roba mize.
   \item Ob vsakem koraku (tako naprej kot nazaj) mu iz vrča iz neznanega razloga izgine ena enota pijače.
-  \item Če bi se slučajno zgodilo, da bi naredil korak s praznim vrčem, bi ga lahko kdo od razburjenja razbil in s tem uničil še zadnjo možnost za pobeg. Zaradi tega se z vrčem, v katerem je $p$ pijače, za vsak slučaj premakne za največ $p$ mest (v levo ali v desno).
+  \item Če bi se slučajno zgodilo, da bi naredil korak s praznim vrčem, bi ga lahko kdo od razburjenja razbil in s tem uničil še zadnjo možnost za pobeg. Zaradi tega se z vrčem, v katerem je $p$ pijače, za vsak slučaj premakne za največ $p$ mest (v levo ali v desno). Na primer, s štirimi enotami lahko obišče mesto, ki ima dve enoti hrane in je oddaljeno tri mesta, ampak le, če ima to mesto vsaj eno enoto pijače (drugače bi ob premiku nazaj ostal s praznim vrčem).
 \end{enumerate}
 
-Napišite funkcijo \verb|pobegni|, ki sprejme seznam parov celih števil. Prva komponenta para pove količino hrane, druga pa količino pijače na posameznem mestu. Funkcija naj vrne najmanjše število \emph{mest}, ki jih mora natakar obiskati, da se prebije do konca mize. Vaša rešitev lahko predpostavi, da bo to vedno mogoče v končno mnogo korakih.
+Napišite funkcijo \verb|pobegni|, ki sprejme seznam parov celih števil. Prva komponenta para pove količino hrane, druga pa količino pijače na posameznem mestu. Funkcija naj vrne vsa mesta, na katerih bi se moral natakar ustaviti, da bi se v čimmanj premikih prebil do konca mize. Vaša rešitev lahko predpostavi, da bo to vedno mogoče.
 
 Na primer, za omizjem \verb|[(1, 2), (1, 3), (3, 5), (5, 0), (5, 1)]| je najboljša rešitev sledeča:
 \begin{enumerate}
@@ -218,8 +218,7 @@ Na primer, za omizjem \verb|[(1, 2), (1, 3), (3, 5), (5, 0), (5, 1)]| je najbolj
   \item Na indeksu \verb|0| si še v tretje natoči 5 enot ter se premakne na indeks \verb|1|, kamor pride s 5 enotami.
   \item Na indeksu \verb|1| si natoči 3 enote in se vrne nazaj na začetek, kamor pride s 7 enotami.
   \item Zdaj ima na indeksu \verb|0| v vrču dovolj zaloge, da lahko doseže konec mize.
-  \item Alternativno bi lahko v prejšnjem koraku namesto na \verb|1| šel na indeks \verb|2| in še vedno v enakem številu premikov dosegel konec mize.
-\end{enumerate}  
-
+\end{enumerate}
+Alternativno bi lahko v prejšnjem koraku namesto na \verb|1| šel na indeks \verb|2| in še vedno v enakem številu premikov dosegel konec mize. Vaša funkcija bi torej vrnila \verb|[0, 2, 0, 2, 0, 1, 0]| ali \verb|[0, 2, 0, 2, 0, 2, 0]|.
 
 \end{document}
