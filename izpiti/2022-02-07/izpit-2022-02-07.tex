@@ -139,7 +139,7 @@ Na predvečer Prešernovega dne utrujeni natakar na večerji streže $N$ gostom,
 \begin{enumerate}
   \item Ob vsakem premiku se odloči, koliko korakov na desno bo naredil. 
   \item\label{i:obisk} Ko pride na mesto $i$, vso pijačo (torej $p_i$ enot) pretoči v vrč, a ga gost takoj pošlje za $h_i$ mest v levo, saj mora ``še v miru pojesti''. Ko odide, gost seveda ne poje ničesar, si pa takoj nazaj natoči pijačo, da je ima zopet $p_i$ enot.
-  \item Ob taki vrnitvi na levo natakar ne pretoči nič dodatne pijače niti se ne vrača še bolj na levo, ne glede na to, kaj ima pred sabo gost na mestu $i - h_i$.
+  \item Ob taki vrnitvi na levo na mesto $j = i - h_i$ si natakar zopet pretoči $p_j$ enot pijače, vendar se ne vrača še bolj na levo, ne glede na to, koliko hrane $h_j$ ima pred sabo gost.
   \item Nikoli se ne vrne preko levega roba mize.
   \item Ob vsakem koraku (tako naprej kot nazaj) mu iz vrča iz neznanega razloga izgine ena enota pijače.
   \item Če bi se slučajno zgodilo, da bi naredil korak s praznim vrčem, bi ga lahko kdo od razburjenja razbil in s tem uničil še zadnjo možnost za pobeg. Zaradi tega se z vrčem, v katerem je $p$ pijače, za vsak slučaj premakne za največ $p$ mest (v levo ali v desno). Na primer, s štirimi enotami lahko obišče mesto, ki ima dve enoti hrane in je oddaljeno tri mesta, ampak le, če ima to mesto vsaj eno enoto pijače (drugače bi ob premiku nazaj ostal s praznim vrčem).
