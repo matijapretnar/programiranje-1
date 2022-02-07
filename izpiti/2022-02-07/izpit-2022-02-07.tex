@@ -20,9 +20,6 @@ Napišite predikat \verb|je_idempotent : (int * int) * (int * int) -> bool|,
 ki za dano dvodimenzionalno matriko $P$ pove, ali je idempotentna, torej
 da velja $P^2 = P$.
 
-%  let je_idempotent ((a, b), (c, d)) =
-%   a*a + b*c = a && a*b + b*d = b && a*c + c*d = c && b*c + d*d = d
-  
 \begin{verbatim}
   # je_idempotent ((1, 0), (0, 1));;
   - : bool = true
@@ -37,14 +34,6 @@ Napišite funkcijo \verb|produkt : int list -> int|, ki izračuna produkt nenič
 elementov v seznamu. Če v seznamu ni neničelnih elementov, naj bo produkt enak $1$.
 Funkcija naj bo repno rekurzivna.
   
-% let produkt lst =
-%   let rec aux acc = function
-%     | [] -> acc
-%     | 0 :: t -> aux acc t
-%     | x :: t -> aux (acc * x) t
-%   in
-%   aux 1 lst
-
 \podnaloga
 Napišite funkcijo \verb|stalin_sort : int list -> int list|, ki dani seznam ``uredi'' tako,
 da iz njega zaporedoma odstrani vsak element, ki ni večji od vseh svojih predhodnikov.
@@ -53,17 +42,6 @@ da iz njega zaporedoma odstrani vsak element, ki ni večji od vseh svojih predho
   # stalin_sort [6; 3; 10; 5; 16];;
   - : int list = [6; 10; 16]
 \end{verbatim}
-
-% let stalin lst = 
-%   let rec aux acc max = function
-%     | [] -> acc
-%     | x :: xs -> 
-%       if x > max then aux (x :: acc) x xs
-%       else aux acc max xs
-%   in
-%   match lst with
-%     | [] -> []
-%     | x :: xs -> List.rev (aux [x] x xs)
 
 \podnaloga
 Collatzovo zaporedje dobimo $a_1, a_2, \dots$ dobimo na sledeči način. Če je $a_n$ sodo, potem je naslednji člen $a_{n + 1} = a_n / 2$, sicer pa je $a_{n + 1} = 3 n + 1$. Ko pridemo do števila $1$, se ustavimo, saj bi se na tisti točki zaporedje sicer začelo ponavljati. Na primer, Collatzovo zaporedje števila $12$ je enako $12, 6, 3, 10, 5, 16, 8, 4, 2, 1$. 
@@ -87,11 +65,6 @@ Zaporedje lahko posplošimo tako, da si izberemo poljubni dve funkciji $f$ in $g
 \end{verbatim}
 
 \emph{Pozor: ko preverjate delovanje funkcije, upoštevajte, da se pri nekaterih vhodnih podatkih ne bo nujno ustavila}.
-
-% let rec splosni_collatz f g p z k =
-%   if z = k then [z] else
-%   let z' = if p z then f z else g z in
-%   z :: splosni_collatz f g p z' k
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -127,10 +100,6 @@ V kolikor med izvajanjem na vrhu sklada ni pravilnih oblik elementov, ali na kon
 \podnaloga Definirajte izraza, ki ju predstavljata sledeča niza: \verb|"1 2 + 4 - 5 *"|, \verb|"5.3 4.6 /. 1.7 *."|. 
    Definirajte tudi poljuben izraz, ki predstavlja neveljaven izraz (kjer bi med izvajanjem prišlo do napake)
 
-% let a = [ Value 1; Value 2; plus; Value 4; Operator ( - ); Value 5; krat ]
-% let b = [ Value 5.3; Value 4.6; Operator ( /. ); Value 1.7; Operator ( *. ) ]
-% let prevec_vrednosti = [ Value 3; Value 4 ]
-
 \podnaloga
 Definiraje funkcijo \verb|korak 'a term -> 'a result|, ki sprejme izraz (sklad) in poskuša narediti en korak evalvacije.
 Če podan izraz predstavlja končni rezultat naj vrne obliko \verb|Finished|, 
@@ -146,20 +115,9 @@ v nasprotnem primeru pa naj vrne obliko \verb|Error|.
   - : int result = Finished 1
 \end{verbatim}
 
-% let korak = function
-%   | [ Value x ] -> Finished x
-%   | Value x :: Value y :: Operator o :: xs -> Term (Value (o x y) :: xs)
-%   | _ -> Error
-
 \podnaloga
 Definirajte funkcijo \verb|izvedi : 'a term -> 'a option|, ki sprejme izraz in ga evalvira. 
 Če kjerkoli med izvajanje pride do napake naj funkcija vrne \verb|None|.
-
-% let rec izvedi term =
-%   match korak term with
-%   | Finished r -> Some r
-%   | Term t -> izvedi t
-%   | Error -> None
 
 \podnaloga
 Definirajte predikat \verb|valid : 'a term -> bool|, ki sprejme izraz in preveri, 
@@ -167,30 +125,10 @@ ali je podan izraz veljaven (ali bi izvedba izraza v celoti pripeljala do rezult
 ali bi vmes prišlo do napake). 
 Za vse točke naj bo funkcija repno rekurzivna in ne gre v celoti izvesti izraza (ne aplicira funkcij).
 
-% let valid term =
-%   let rec aux = function
-%     | [] -> true
-%     | Value _ :: Operator _ :: xs -> aux xs
-%     | _ -> false
-%   in
-%   match term with Value _ :: xs -> aux xs | _ -> false
-
 \podnaloga
 Očitno lahko iz seznama operatorjev in vrednosti pripravimo izraz. 
 Vaša naloga je pripraviti funkcijo \verb|combine : 'a list -> 'a operator list -> 'a term option|, 
 ki sprejme seznam vrednosti in seznam operatorjev ter vrne končen izraz, če je to mogoče, ali \verb|None|.
-
-% let combine values operators : 'a term option =
-%   let rec aux values operators =
-%     match (values, operators) with
-%     | [], [] -> Some []
-%     | v :: vs, o :: os ->
-%         Option.map (fun l -> Value v :: Operator o :: l) (aux vs os)
-%     | _ -> None
-%   in
-%   match values with
-%   | [] -> None
-%   | v :: values -> Option.map (fun l -> Value v :: l) (aux values operators)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
