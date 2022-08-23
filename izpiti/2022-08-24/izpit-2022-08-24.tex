@@ -67,7 +67,7 @@ Spremenljivka \verb|example| predstavlja spodnjo konfiguracijo
   1 2 3  4  5 6
 \end{verbatim}
 
-kjer je glava nad poljem z vrednostjo 4 (in indeksom 3), levo od glave so elementi \verb|3, 2, 1| in desno elementi \verb|5, 6|.
+kjer je glava nad poljem z vrednostjo 4 (in indeksom 3), levo od glave so elementi \verb|3, 2, 1| in desno elementa \verb|5, 6|.
 
 
 \podnaloga
@@ -76,7 +76,7 @@ Napišite funkcijo \verb|map : 'a tape -> ('a -> 'b) -> 'b tape|, ki sprejme tra
 \podnaloga
 Napišite funkcijo \verb|izvedi : 'a tape -> 'a command -> 'a tape option|, ki sprejme trak in ukaz ter vrne nov trak, kjer je glava ustrezno premaknjena glede na ukaz.
 Če je ukaz premik \verb|Left| ali \verb|Right|, se glava ustrezno premakne levo ali desno.
-Če je ukaz \verb|D|`, potem aplicira funkcijo na element pod glavo, glava pa ostane na enakem mestu. Če je premik neveljaven (npr.~premik prek roba traku), potem funkcija vrne \verb|None|.
+Če je ukaz \verb|Do|`, potem aplicira funkcijo na element pod glavo, glava pa ostane na enakem mestu. Če je premik neveljaven (npr.~premik prek roba traku), potem funkcija vrne \verb|None|.
 
 \begin{verbatim}
 # izvedi example Left
@@ -85,11 +85,9 @@ Some (Tape { left = [ 2; 1 ]; head = 3; right = [ 4; 5; 6 ] })
 \end{verbatim}
 
 \podnaloga
-Napišite funkcijo \verb|izvedi : 'a term -> 'a option|, ki sprejme izraz in ga evalvira. 
-Če kjerkoli med izvajanje pride do napake naj funkcija vrne \verb|None|.
-
-\podnaloga
-Napišite funkcijo \verb|izvedi_ukaze : 'a tape -> 'a command list -> 'a tape|, ki sprejme trak in seznam ukazov in vrne nov posodobljen trak. Posodabljanje traku premika glavo glede na ukaze (levo ali desno) ali pa aplicira funkcijo podano v \verb|Do| ukazu
+Napišite funkcijo \verb|izvedi_ukaze : 'a tape -> 'a command list -> 'a tape|, ki sprejme trak in seznam ukazov in vrne nov posodobljen trak.
+Posodabljanje traku premika glavo glede na ukaze (levo ali desno) ali pa aplicira funkcijo podano v \verb|Do| ukazu.
+Če je kak ukaz neveljaven naj funkcija preneha z izvajanjem in vrne kar je bilo spremenjeno do sedaj.
 
 \begin{verbatim}
 # izvedi_ukaze example [Do ((+) 1); Left; Do ((+) 4); Right; Do ((+) 1); Right]
@@ -98,8 +96,8 @@ Tape {left = [6; 7; 2; 1]; head = 5; right = [6]}
 \end{verbatim}
 
 \podnaloga
-Napišite funkcijo \verb|naberi_in_pretvori : 'a tape -> 'a command list -> ('a * 'a) list * 'a tape|, ki sprejme trak in seznam ukazov. 
-Funkcija ukaze izvaja enega za drugim, kjer najprej izvede ukaz, in nato v seznam parov nabira vrednosti, ki so se pojavile pod ukazom \verb|Do|.
+Napišite funkcijo \\\verb|naberi_in_pretvori : 'a tape -> 'a command list -> ('a * 'a) list * 'a tape|, ki sprejme trak in seznam ukazov. 
+Funkcija ukaze izvaja enega za drugim, kjer najprej izvede ukaz, in nato v seznam parov nabira vrednosti, \textbf{ki so se pojavile pod ukazom} \verb|Do|.
 Poleg seznama nabranih parov naj funkcija vrne tudi končno stanje traku.
 Če tekom izvajanja pride do napake, naj funkcije vrne vrednosti nabrane do sedaj in zadnje veljavno stanje traku. 
 
