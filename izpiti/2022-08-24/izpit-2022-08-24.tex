@@ -50,7 +50,7 @@ Funkcija mora biti repno rekurzivna in ne sme uporabljati funkcij iz standardne 
 
 \naloga
 
-Neprazen označen trak predstavimo s tipom \verb|tape|, ukaze glavi, ki je nad označenim delom traku, pa s tipom \verb|command|.
+Neprazen označen trak stroja, ki upravlja z vrednostmi tipa \verb|'a|, predstavimo s tipom \verb|'a tape|, ukaze glavi, ki je nad označenim delom traku, pa s tipom \verb|'a command|.
 
 \begin{verbatim}
 type 'a tape = Tape of { left : 'a list; head : 'a; right : 'a list }
@@ -76,7 +76,7 @@ Napišite funkcijo \verb|map : 'a tape -> ('a -> 'b) -> 'b tape|, ki sprejme tra
 \podnaloga
 Napišite funkcijo \verb|izvedi : 'a tape -> 'a command -> 'a tape option|, ki sprejme trak in ukaz ter vrne nov trak, kjer je glava ustrezno premaknjena glede na ukaz.
 Če je ukaz premik \verb|Left| ali \verb|Right|, se glava ustrezno premakne levo ali desno.
-Če je ukaz \verb|Do|`, potem aplicira funkcijo na element pod glavo, glava pa ostane na enakem mestu. Če je premik neveljaven (npr.~premik prek roba traku), potem funkcija vrne \verb|None|.
+Če je ukaz \verb|Do|, potem aplicira funkcijo na element pod glavo, glava pa ostane na enakem mestu. Če je premik neveljaven (npr.~premik prek roba traku), potem funkcija vrne \verb|None|.
 
 \begin{verbatim}
 # izvedi example Left
@@ -97,9 +97,9 @@ Tape {left = [6; 7; 2; 1]; head = 5; right = [6]}
 
 \podnaloga
 Napišite funkcijo \\\verb|naberi_in_pretvori : 'a tape -> 'a command list -> ('a * 'a) list * 'a tape|, ki sprejme trak in seznam ukazov. 
-Funkcija ukaze izvaja enega za drugim, kjer najprej izvede ukaz, in nato v seznam parov nabira vrednosti, \textbf{ki so se pojavile pod ukazom} \verb|Do|.
+Funkcija ukaze izvaja enega za drugim, kjer najprej izvede ukaz, in nato za vsak ukaz \verb|Do| v seznam parov shrani vrednost pod glavo \textbf{pred in po izvedbi ukaza}.
 Poleg seznama nabranih parov naj funkcija vrne tudi končno stanje traku.
-Če tekom izvajanja pride do napake, naj funkcije vrne vrednosti nabrane do sedaj in zadnje veljavno stanje traku. 
+Če med izvajanjem pride do napake, naj funkcije vrne do sedaj nabrane vrednosti in zadnje veljavno stanje traku. 
 
 \begin{verbatim}
 # naberi example [Do ((+) 1); Left; Do (( * ) 2); Right; Right; Right; Do ((-) 1); 
@@ -127,7 +127,7 @@ Miha lahko na ta pas drugega za drugim riše vzorce celoštevilske dolžine vsaj
   Ker mu programiranje ne gre, ga zanima, koliko različnih NZŽ-jev lahko naredi za podano dolžino pasu $N$ ter parametra $k$ in $l$.
   Napišite funkcijo \verb|stevilo_nzz : int -> int -> int -> int| ali \verb|def nzz(n: int, k: int, l: int) -> int|, ki sprejme dolžino pasu $N$ in parametra $k$ in $l$ ter vrne število različnih slik, ki jih Miha lahko naredi.
 
-  Spodaj je narisanih vseh $11$ možnih slik dolžine $4$ in parametroma $k = 3$ in $l = 2$.
+Spodaj je narisanih\footnote{Slik ne prerisujte, saj so njihove vrednosti ocenjene na med 250.000 in 470.000 evrov.} vseh $11$ možnih slik dolžine $4$ in parametroma $k = 3$ in $l = 2$.
 \begin{verbatim}
     _ _ _ _
     
