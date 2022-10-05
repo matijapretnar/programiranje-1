@@ -13,9 +13,11 @@ def measure_baseline():
         let after = Sys.time () in
         print_float (after -. before);;
     """
+    print("Ocenjujem hitrost računalnika... ", end="", flush=True)
     proc = subprocess.run(
         ["ocaml", "-stdin"], input=input.encode("utf-8"), capture_output=True
     )
+    print("končano.")
     return float(proc.stdout)
 
 
@@ -38,17 +40,14 @@ def run(sudoku, timeout):
     return result, time
 
 
-def add_benchmarks(name, sudokus, csv_name, timeout=60, relative_to_baseline=True):
-    if relative_to_baseline:
-        print("Ocenjujem hitrost računalnika... ", end="", flush=True)
+def add_benchmarks(name, sudokus, csv_name, timeout=60, baseline=None):
+    if baseline is None:
         baseline = measure_baseline()
-        print("Končano.")
-    else:
-        baseline = 1
     with open(csv_name, "a") as f:
         writer = csv.writer(f)
         for sudoku in sudokus:
-            print(f"Rešujem {sudoku}... ", end="", flush=True)
+            sudoku_shortname, _ = os.path.splitext(os.path.basename(sudoku))
+            print(f"{name} {sudoku_shortname}... ", end="", flush=True)
             try:
                 result, time = run(sudoku, timeout)
                 time /= baseline
@@ -57,9 +56,9 @@ def add_benchmarks(name, sudokus, csv_name, timeout=60, relative_to_baseline=Tru
                 time = None
             except subprocess.TimeoutExpired:
                 result = "TIMEOUT"
-                time = timeout / baseline
+                time = None
             print(result)
-            writer.writerow([name, sudoku, result, time])
+            writer.writerow([name, sudoku_shortname, result, time])
 
 
 sudokus = [
@@ -68,4 +67,4 @@ sudokus = [
     if filename.endswith(".sdk")
 ]
 
-# add_benchmarks("ocamlc", sudokus, "benchmarks.csv", timeout=1, relative_to_baseline=True)
+# add_benchmarks("ImePriimek", sudokus, "benchmarks.csv")
