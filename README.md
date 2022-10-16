@@ -8,6 +8,7 @@ V tem repozitoriju se zbirajo gradiva za predmet Programiranje 1 v 2. letniku ma
 Ker vam GitHub ob kliku na HTML datoteko namesto strani prikaže izvorno HTML kodo, je treba prosojnice pogledati s pomočjo strani http://htmlpreview.github.io. Tu so direktne povezave na prosojnice:
 
 - [Regularni izrazi](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/01-regularni-izrazi/predavanja/prosojnice.html)
+- [Zajem podatkov](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/02-zajem-podatkov/predavanja/prosojnice.html)
 - [Uvod v OCaml](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/05-uvod-v-ocaml/predavanja/prosojnice.html)
 - [Funkcije](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/06-funkcije/predavanja/prosojnice.html)
 - [Definicije tipov](http://htmlpreview.github.io/?https://github.com/matijapretnar/programiranje-1/blob/master/07-definicije-tipov/predavanja/prosojnice.html)
