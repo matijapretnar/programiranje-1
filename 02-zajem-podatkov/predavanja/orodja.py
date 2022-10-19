@@ -12,7 +12,7 @@ def pripravi_imenik(ime_datoteke):
         os.makedirs(imenik, exist_ok=True)
 
 
-def shrani_spletno_stran(url, ime_datoteke, vsili_prenos=False):
+def shrani_spletno_stran(url, ime_datoteke, vsili_prenos=False, headers=None):
     '''Vsebino strani na danem naslovu shrani v datoteko z danim imenom.'''
     try:
         print(f'Shranjujem {url} ...', end='')
@@ -20,7 +20,7 @@ def shrani_spletno_stran(url, ime_datoteke, vsili_prenos=False):
         if os.path.isfile(ime_datoteke) and not vsili_prenos:
             print('shranjeno že od prej!')
             return
-        r = requests.get(url)
+        r = requests.get(url, headers=headers)
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
     else:
