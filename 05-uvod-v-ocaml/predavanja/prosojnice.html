@@ -23,7 +23,7 @@ background-size: auto 90%
 ---
 
 
-### Naš prvi program v OCamlu
+### Naš **prvi program** v OCamlu
 
 .terminal[```
 # let odgovor = min 8 7 * 6;;
@@ -63,7 +63,7 @@ Error: Unbound value prvi_delni_izracun
 
 ---
 
-### Z `and` podamo več lokalnih definicij hkrati
+### Z `and` podamo več lokalnih definicij **hkrati**
 
 .terminal[```
 # let odgovor =
@@ -76,7 +76,7 @@ val odgovor : int = 42
 
 ---
 
-### Programe običajno shranjujemo v datoteke
+### Programe običajno shranjujemo v **datoteke**
 
 odgovor.ml
 
@@ -99,7 +99,7 @@ val najboljsi_odgovor : int = 44
 
 ---
 
-### Cela števila imajo tip `int`
+### **Cela števila** imajo tip `int`
 
 .terminal[```
 # 12 * (34 + 67) - 89;;
@@ -117,7 +117,7 @@ val najboljsi_odgovor : int = 44
 
 ---
 
-### Števila s plavajočo vejico imajo tip `float`
+### Števila s **plavajočo vejico** imajo tip `float`
 
 .terminal[```
 # 12.0 *. (34.0 +. 67.0) -. 89.0;;
@@ -162,7 +162,7 @@ Error: This expression has type float but an
 
 ---
 
-### Logične vrednosti imajo tip `bool`
+### **Logične vrednosti** imajo tip `bool`
 
 .terminal[```
 # false && not (false || true);;
@@ -180,7 +180,7 @@ Error: This expression has type float but an
 
 ---
 
-### Nizi imajo tip `string`
+### **Nizi** imajo tip `string`
 
 .terminal[```
 # "Programiranje " ^ string_of_int 1;;
@@ -190,7 +190,7 @@ Error: This expression has type float but an
 - : string = "efg"
 ```]
 
-### Znaki imajo tip `char`
+### **Znaki** imajo tip `char`
 
 .terminal[```
 # 'a';;
@@ -199,7 +199,7 @@ Error: This expression has type float but an
 
 ---
 
-### Funkcije imajo tip oblike <code>tip<sub>arg</sub> -> tip<sub>rez</sub></code>
+### **Funkcije** imajo tip oblike <code>tip<sub>arg</sub> -> tip<sub>rez</sub></code>
 
 .terminal[```
 # truncate;;
@@ -220,13 +220,13 @@ val dvakrat_na_nic : (int -> int) -> int = <fun>
 
 ---
 
-### Funkcijo po kosih definiramo z `match`
+### Funkcijo **po kosih** definiramo z `match`
 
 .bad-example[```
 let pozdravi ime =
   if ime = "Matija" then
     "Dober dan, gospod predavatelj!"
-  else if ime = "Filip" || ime = "Žiga" then
+  else if ime = "Filip" || ime = "Katja" then
     "Oj!"
   else
     "Dober dan, " ^ ime ^ "!"
@@ -236,33 +236,33 @@ let pozdravi ime =
 let pozdravi ime =
   match ime with
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Filip" | "Žiga" -> "Oj!"
+  | "Filip" | "Katja" -> "Oj!"
   | _ -> "Dober dan, " ^ ime ^ "!"
 ```]
 
 ---
 
-### Za funkcije, ki takoj izvedejo `match`, raje uporabimo `function`
+### Za funkcije, ki **takoj** izvedejo `match`, raje uporabimo `function`
 
 
 .bad-example[```
 let pozdravi ime =
   match ime with
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Filip" | "Žiga" -> "Oj!"
+  | "Filip" | "Katja" -> "Oj!"
   | _ -> "Dober dan, " ^ ime ^ "!"
 ```]
 
 .good-example[```
 let pozdravi = function
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Filip" | "Žiga" -> "Oj!"
+  | "Filip" | "Katja" -> "Oj!"
   | ime -> "Dober dan, " ^ ime ^ "!"
 ```]
 
 ---
 
-### Vrstni red vzorcev je pomemben
+### **Vrstni red** vzorcev je pomemben
 
 
 .bad-example[```
@@ -280,12 +280,12 @@ Warning 11: this match case is unused.
 
 ---
 
-### Zajeti moramo vse vzorce
+### Zajeti moramo **vse** vzorce
 
 .bad-example[```
 let pozdravi = function
   | "Matija" -> "Dober dan, gospod predavatelj!"
-  | "Filip" | "Žiga" -> "Oj!"
+  | "Filip" | "Katja" -> "Oj!"
 
 Warning 8: this pattern-matching is not
 exhaustive. Here is an example of a value that
@@ -299,7 +299,7 @@ Exception: Match_failure ("//toplevel//", 1, 15).
 
 ---
 
-### Rekurzivne funkcije definiramo z `let rec`
+### **Rekurzivne funkcije** definiramo z `let rec`
 
 .source[```
 let rec fakulteta = function
@@ -323,7 +323,7 @@ let hitri_fib n =
 
 ---
 
-### Hkrati lahko definiramo več rekurzivnih funkcij 
+### Hkrati lahko definiramo **več rekurzivnih funkcij**
 
 .source[```
 let rec je_sodo = function
@@ -337,7 +337,7 @@ and je_liho = function
 
 ---
 
-### Nabori imajo tip <code>tip<sub>1</sub> \* tip<sub>2</sub> \* … \* tip<sub>n</sub></code>
+### **Nabori** imajo tip <code>tip<sub>1</sub> \* tip<sub>2</sub> \* … \* tip<sub>n</sub></code>
 
 .terminal[```
 # (1, 2 < 3, cos pi);;
@@ -347,7 +347,7 @@ and je_liho = function
 - : int * (int * int) = (1, (2, 3))
 ```]
 
-### Prazen nabor ima tip `unit`
+### **Prazen nabor** ima tip `unit`
 
 .terminal[```
 # ();;
@@ -356,7 +356,7 @@ and je_liho = function
 
 ---
 
-### Nabore lahko razstavljamo z vzorci
+### Nabore lahko **razstavljamo** z vzorci
 
 .terminal[```
 # let (x, y) = (1, "bla");;
@@ -385,7 +385,7 @@ class: question, center, middle
 
 ---
 
-### Seznami imajo tip <code>tip<sub>el</sub> list</code>
+### **Seznami** imajo tip <code>tip<sub>el</sub> list</code>
 
 .terminal[```
 # [1; 2; 3; 4];;
@@ -424,7 +424,7 @@ class: question, center
 
 ---
 
-### Tudi sezname razstavljamo z vzorci
+### Tudi **sezname razstavljamo** z vzorci
 
 .source[```
 let citiraj_knjigo avtorji naslov =
@@ -445,22 +445,15 @@ let citiraj_knjigo avtorji naslov =
 
 ---
 
-### Vzorce lahko tudi gnezdimo
+### Vzorce lahko tudi **gnezdimo**
 
 .source[```
-let za_lase_privlecena_funkcija = function
-  | [] -> 0
-  | [(x, _); (y, z)] -> x + y + z
-  | ((_, x) :: _) -> 3 * x
-```]
-
-.terminal[```
-# za_lase_privlecena_funkcija [];;
-- : int = 0
-# za_lase_privlecena_funkcija [(1, 2)];;
-- : int = 6
-# za_lase_privlecena_funkcija [(1, 2); (3, 4)];;
-- : int = 8
+let je_seznam_skoraj_prazen sez =
+    match sez with
+    | [] -> true
+    | (0, _) :: [] | (_, 0) :: [] -> true
+    | (0, 0) :: (0, 0) :: [] -> true
+    | _ :: _ :: _ -> false
 ```]
 
 ---
