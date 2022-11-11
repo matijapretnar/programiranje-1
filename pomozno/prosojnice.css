@@ -76,6 +76,12 @@ table {
 
 .terminal code {
     border-radius: 10px;
+    background-color: #222 !important;
+}
+
+.terminal code * {
+    color: white !important;
+    font-weight: normal;
 }
 
 .handwritten h1 {
