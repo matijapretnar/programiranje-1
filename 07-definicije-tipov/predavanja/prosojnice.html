@@ -63,7 +63,7 @@ let abs' {re; im} = sqrt (re ** 2. +. im ** 2.)
 ### Zapise lahko **posodabljamo** z `with`
 
 .source[```
-let konj z = {z with im = ~-. (z.im)}
+let konj z = {z with im = -. z.im}
 ```]
 
 ---
@@ -147,7 +147,7 @@ type stevilo = Stevilo of int
 ```]
 
 .terminal[```
-# let koliko_let_je_minilo (Leto l) = 2018 - l;;
+# let koliko_let_je_minilo (Leto l) = 2022 - l;;
 val koliko_let_je_minilo : leto -> int = <fun>
 
 # koliko_let_je_minilo (Stevilo 200);;
