@@ -43,8 +43,8 @@ type currency = Yen of float | Pound of float | Krona of float
 
 let to_pound = function
   | Pound x -> Pound x
-  | Yen x -> Pound 0.007
-  | Krona x -> Pound 0.085
+  | Yen x -> Pound (x *. 0.007)
+  | Krona x -> Pound (x *. 0.085)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Želimo uporabljati sezname, ki hranijo tako cela števila kot tudi logične
