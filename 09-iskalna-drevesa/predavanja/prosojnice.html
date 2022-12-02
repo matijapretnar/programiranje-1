@@ -18,49 +18,6 @@ class: center, middle
 
 class: question
 
-### Zakaj ima `obrni'` boljšo implementacijo?
-
-.bad-example.left[```
-let rec obrni = function
-  | [] -> []
-  | x :: xs -> obrni xs @ [x]
-```]
-
-.good-example.left[```
-let obrni' =
-  let rec aux acc = function
-    | [] -> acc
-    | x :: xs -> aux (x :: acc) xs
-  in
-  aux []
-```]
-
----
-
-### Spomnimo se ideje **notacije velikega O**
-
-## .center[$$f \in O(g)$$]
-
-### $$\exists \color{purple}{M}, \color{red}{x_0}. \forall x > \color{red}{x_0}. |f(x)| \leq \color{purple}{M} \cdot |\color{blue}{g}(x)|$$
-
-### .center[![](../../zapiski/slike/O-graf.png)]
-
-### Rast funkcije \\(f\\) je omejena s funkcijo \\(g\\)
-
----
-
-### **Lastnosti** notacije velikega O
-
-### $$f \in O(g), a \in \mathbb{R} \implies a \cdot f \in O(g)$$
-
-### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 + f_2 \in O(|g_1| + |g_2|)$$
-
-### $$f_1 \in O(g_1), f_2 \in O(g_2) \implies f_1 \cdot f_2 \in O(g_1 \cdot g_2)$$
-
----
-
-class: question
-
 ### Kakšna je **časovna zahtevnost**<br>spodnjih dveh funkcij?
 
 .bad-example.left[```
