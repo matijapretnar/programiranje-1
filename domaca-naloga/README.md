@@ -74,15 +74,19 @@ V ukazni vrstici poženite:
 
     ocamlc -g model.ml solver.ml main.ml -o sudoku.exe
 
-Če ste si OCaml namestili na sistemu Windows s pomočjo `fdopen` namesto `ocamlc` uporabite:
+Če ste si OCaml namestili na sistemu Windows s pomočjo `fdopen` namesto `ocamlc` uporabite (kjer poti ustrezno popravite tako, kot ste to storili v pripravi okolja za vaje).:
 
     C:\OCaml64\usr\local\bin\ocaml-env.exe exec -- C:\OCaml64\home\???\.opam\4.12.0+mingw64c\bin\ocamlc.exe
+
+*Če ob zagonu v naslednji vrstici dobite napako `cannot exec`, potem `ocamlc.exe` v zgornjem ukazu zamenjajte z `ocamlopt.exe`*
 
 To ustvari datoteko `sudoku.exe`, ki ob klicu
 
     ./sudoku.exe primer-1.sdk primer-2.sdk ...
 
 reši sudokuje v datotekah `primer-1.sdk`, `primer-2.sdk`, ...
+
+*Če ob zagonu dobite napako `End of file`, sledite navodilom na https://ucilnica2021.fmf.uni-lj.si/mod/forum/discuss.php?d=18334*
 
 V mapi `sudokuji` najdete testne datoteke, ki vsebujejo primere običajnih sudokujev. Program lahko na vseh sudokujih poženete kot
 
