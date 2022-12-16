@@ -8,41 +8,18 @@ let iz_na_mestu_v_ne_na_mestu f_na_mestu tab =
   let () = f_na_mestu tab' in
   tab'
 
-let obrni_na_mestu tabela =
+let fisher_yates tabela =
   let n = Array.length tabela in
-  for i = 0 to (n / 2) - 1 do
-    zamenjaj tabela i (n - i - 1)
-  done
-
-let obrni tabela =
-  let n = Array.length tabela in
-  Array.init n (fun i -> tabela.(n - i - 1))
-
-let obrni' tabela = iz_na_mestu_v_ne_na_mestu obrni_na_mestu tabela
-
-let premesaj_na_mestu tab =
-  let n = Array.length tab in
-  for _ = 1 to n do
-    let i = Random.int n and j = Random.int n in
-    zamenjaj tab i j
-  done
-
-let premesan tab = (iz_na_mestu_v_ne_na_mestu premesaj_na_mestu) tab
-
-let fisher_yates_na_mestu tabela =
-  let n = Array.length tabela in
-  for i = n - 1 downto 1 do
-    let j = Random.int (i + 1) in
+  for i = 0 to n - 2 do
+    let j = i + Random.int (n - i) in
     zamenjaj tabela i j
   done
-
-let fisher_yates tabela = iz_na_mestu_v_ne_na_mestu fisher_yates_na_mestu tabela
 
 let urejena_tabela n = Array.init n (fun i -> i + 1)
 
 let prikazi_verjetnosti verjetnosti =
   let urejene_verjetnosti =
-    List.sort (fun (_, p1) (_, p2) -> -compare p1 p2) verjetnosti
+    List.sort (fun (x1, p1) (x2, p2) -> compare x1 x2) verjetnosti
   in
   match urejene_verjetnosti with
   | [] -> ()
@@ -81,4 +58,4 @@ let verjetnost_permutacij premesaj stevilo_poskusov velikost_permutacije =
 
 ;;
 Random.self_init ();
-verjetnost_permutacij premesan 2000000 4
+verjetnost_permutacij (iz_na_mestu_v_ne_na_mestu fisher_yates) 2000000 4
