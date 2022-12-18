@@ -1,24 +1,5 @@
 (* ========== Vaje 5: Urejanje  ========== *)
 
-
-(*----------------------------------------------------------------------------*]
- Funkcija [randlist len max] generira seznam dolžine [len] z naključnimi
- celimi števili med 0 in [max].
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # let l = randlist 10 10 ;;
- val l : int list = [0; 1; 0; 4; 0; 9; 1; 2; 5; 4]
-[*----------------------------------------------------------------------------*)
-
-
-(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
- Sedaj lahko s pomočjo [randlist] primerjamo našo urejevalno funkcijo (imenovana
- [our_sort] v spodnjem primeru) z urejevalno funkcijo modula [List]. Prav tako
- lahko na manjšem seznamu preverimo v čem je problem.
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- let test = (randlist 100 100) in (our_sort test = List.sort compare test);;
-[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
-
-
 (*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*]
  Urejanje z Vstavljanjem
 [*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*)
@@ -47,12 +28,6 @@
  Urejanje z Izbiranjem
 [*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*)
 
-(*----------------------------------------------------------------------------*]
- Funkcija [min_and_rest list] vrne par [Some (z, list')] tako da je [z]
- najmanjši element v [list] in seznam [list'] enak [list] z odstranjeno prvo
- pojavitvijo elementa [z]. V primeru praznega seznama vrne [None]. 
-[*----------------------------------------------------------------------------*)
-
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Pri urejanju z izbiranjem na vsakem koraku ločimo dva podseznama, kjer je prvi
@@ -66,12 +41,6 @@
  dodati na konec urejenega podseznama.
  (Hitreje je obrniti vrstni red seznama kot na vsakem koraku uporabiti [@].)
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
-
-(*----------------------------------------------------------------------------*]
- Funkcija [selection_sort] je implementacija zgoraj opisanega algoritma.
- Namig: Uporabi [min_and_rest] iz prejšnje naloge.
-[*----------------------------------------------------------------------------*)
-
 
 
 (*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*]
@@ -112,8 +81,34 @@
 
 (*----------------------------------------------------------------------------*]
  Funkcija [selection_sort_array] implementira urejanje z izbiranjem na mestu. 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Namig: Za testiranje uporabi funkciji [Array.of_list] in [Array.to_list]
- skupaj z [randlist].
 [*----------------------------------------------------------------------------*)
 
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [min_and_rest list] vrne par [Some (z, list')] tako da je [z]
+ najmanjši element v [list] in seznam [list'] enak [list] z odstranjeno prvo
+ pojavitvijo elementa [z]. V primeru praznega seznama vrne [None]. 
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [selection_sort] je implementacija zgoraj opisanega algoritma.
+ Namig: Uporabi [min_and_rest] iz prejšnje naloge.
+[*----------------------------------------------------------------------------*)
+
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [randlist len max] generira seznam dolžine [len] z naključnimi
+ celimi števili med 0 in [max].
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # let l = randlist 10 10 ;;
+ val l : int list = [0; 1; 0; 4; 0; 9; 1; 2; 5; 4]
+[*----------------------------------------------------------------------------*)
+
+
+(*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
+ Sedaj lahko s pomočjo [randlist] primerjamo našo urejevalno funkcijo (imenovana
+ [our_sort] v spodnjem primeru) z urejevalno funkcijo modula [List]. Prav tako
+ lahko na manjšem seznamu preverimo v čem je problem.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ let test = (randlist 100 100) in (our_sort test = List.sort compare test);;
+[*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
