@@ -27,9 +27,9 @@ kernelspec:
 2. podnaloge **rekurzivno rešimo**
 3. dobljene rešitve **združimo** v rešitev prvotne naloge
 
-Vse naloge niso take, na primer problem osmih kraljic, v katerem moramo na šahovsko desko postaviti osem kraljic, tako da se med seboj ne napadajo. Tudi če znamo postaviti štiri kraljice na manjšo ploščo, nam to pri postavljanju osmih kraljic nič ne pomaga.
+Vse naloge niso take, na primer problem trgovskega potnika, pri katerem moramo najti najcenejši cikel, ki obišče vsa vozlišča na grafu. Tudi če znamo najti najcenejši cikel na manjšem grafu, nam to pri iskanju cikla v večjem grafu nič ne pomaga.
 
-![8 kraljic](slike/8-kraljic.png)
+![Problem trgovskega potnika](slike/trgovski-potnik.png)
 
 Ampak precej nalog pa lastnost optimalne strukture ima in pri tem predmetu bomo pogledali dve splošni strategiji za njihovo reševanje. Prva strategija, ki jo bomo spoznali v tem poglavju, je strategija _deli in vladaj_, v katerem nam uspe nalogo razdeliti na _za konstantni faktor_ manjše podnaloge (na primer iz velikosti $n$ na velikost $n / 2$):
 

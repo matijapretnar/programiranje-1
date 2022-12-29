@@ -51,7 +51,7 @@
 (*----------------------------------------------------------------------------*]
  Definirajte tip [intbool_list] z konstruktorji za:
   1.) prazen seznam,
-  2.) člen z celoštevilsko vrednostjo,
+  2.) člen s celoštevilsko vrednostjo,
   3.) člen z logično vrednostjo.
 
  Nato napišite testni primer, ki bi predstavljal "[5; true; false; 7]".
