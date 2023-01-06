@@ -121,12 +121,45 @@ def fib(n):
 
 ---
 
-### Lahko uporabimo tudi dekorator `lru_cache`
+### Memoiziramo lahko tudi **funkcije več argumentov**
 
 .source[```python
-from functools import lru_cache
+def memoiziraj(f):
+    rezultati = {}
+    def mem_f(*args):
+        if args not in rezultati:
+            rezultati[args] = f(*args)
+        return rezultati[args]
+    return mem_f
+```]
 
-@lru_cache(maxsize=None)
+---
+
+class: question, center
+
+## Levenshteinova razdalja
+
+```
+zadnji izpit
+adnji izpit
+gdnji izpit
+grnji izpit
+greji izpit
+gremi izpit
+gremo izpit
+gremo gizpit
+gremo gazpit
+gremo ga pit
+```
+
+---
+
+### Obstaja tudi vgrajen dekorator `cache`
+
+.source[```python
+from functools import cache
+
+@cache
 def fib(n):
     print(n, end='-')
     if n == 0 or n == 1:
