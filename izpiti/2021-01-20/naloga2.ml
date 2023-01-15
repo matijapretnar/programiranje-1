@@ -77,10 +77,19 @@ let rec pospravi kuhinja =
   Ocena testne kuhinje za cenilko [String.length] je 115.
 [*----------------------------------------------------------------------------*)
 
-let rec oceni cenilka kuhinja =
+let oceni cenilka kuhinja =
   let pomnozi_ceno = function
     | Ponev x -> x
     | Lonec (x, y) -> 3 * (x + y)
-    | Omara xs -> 5 * (List.fold_left (+) 0 xs)
+    | Omara xs -> 5 * List.fold_left ( + ) 0 xs
   in
-  kuhinja |> pretvori cenilka |> List.map pomnozi_ceno |> List.fold_left (+) 0
+  kuhinja
+  |> List.map (pretvori cenilka)
+  |> List.map pomnozi_ceno |> List.fold_left ( + ) 0
+
+(*Popravki:
+  Kuhinja je seznam kuhinjskih elementov. 
+  Vsebino elementov želimo zamenjati z vrednostjo cenilke zanje - dobimo kuhinjo int kuhinjskih elementov.
+  "pretvori cenilka" deluje na posameznem elementu, mi pa imamo seznam - List.map bo vzela to funkcijo in jo izvedla na vseh elementih seznama. 
+  Funkcija oceni ni rekurzivna.
+  *)
