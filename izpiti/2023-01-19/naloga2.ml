@@ -44,7 +44,7 @@ let rec apply t1 t2 =
   match (t1, t2) with
   | Leaf f, Leaf x -> Leaf (f x)
   | Node fs, Node xs -> Node (List.map2 apply fs xs)
-  | _ -> failwith "apply: type error"
+  | _ -> invalid_arg "apply"
 
 (*
 Napišite funkcijo `combine`, tipa:
@@ -63,7 +63,7 @@ let rec combine t1 t2 =
   match (t1, t2) with
   | Leaf f, Leaf g -> Leaf (fun x -> f (g x))
   | Node fs, Node xs -> Node (List.map2 combine fs xs)
-  | _ -> failwith "combine: type error"
+  | _ -> invalid_arg "combine"
 
 let rec apply_smart t1 t2 d1 d2 =
   match (t1, t2) with
@@ -77,7 +77,7 @@ let rec apply_smart t1 t2 d1 d2 =
         | f :: fs, x :: xs -> apply_smart f x d1 d2 :: process fs xs
       in
       Node (process fs xs)
-  | _ -> failwith "apply_smart: type error"
+  | _ -> invalid_arg "apply_smart"
 
 
 let t1 = Node [Node [Leaf (fun x -> x)]; Leaf (fun x -> x * 2)]
