@@ -114,7 +114,7 @@ def filmi_na_strani(st_strani, na_stran=250):
         f'&start={(st_strani - 1) * na_stran + 1}'
     )
     ime_datoteke = 'zajeti-podatki/najbolj-znani-filmi-{}.html'.format(st_strani)
-    orodja.shrani_spletno_stran(url, ime_datoteke)
+    orodja.shrani_spletno_stran(url, ime_datoteke, headers={'Accept-Language': 'en'})
     vsebina = orodja.vsebina_datoteke(ime_datoteke)
     for blok in vzorec_bloka.finditer(vsebina):
         yield izloci_podatke_filma(blok.group(0))

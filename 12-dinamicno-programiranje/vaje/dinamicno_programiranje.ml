@@ -30,8 +30,8 @@ let test_matrix =
  Pripravite tudi funkcijo [convert_path], ki pot pretvori v seznam tež sirčkov
  na poti.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- # optimal_path_bottom test_matrix;;
- - : mouse_direction list = [Right; Down; Down; Right; Down]
+ # optimal_path test_matrix;;
+ - : mouse_direction list = [Right; Down; Right; Down]
  # optimal_path test_matrix |> convert_path test_matrix;;
  - : int list = [1; 2; 4; 5; 1]
 [*----------------------------------------------------------------------------*)

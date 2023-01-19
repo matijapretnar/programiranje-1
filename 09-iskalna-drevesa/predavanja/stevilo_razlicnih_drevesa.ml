@@ -4,23 +4,33 @@ type 'a drevo =
 
 let prazna_mnozica = Prazno
 
-let rec velikost =
-  function
+let rec velikost drevo =
+  match drevo with
   | Prazno -> 0
-  | Sestavljeno (l, _, d) -> 1 + velikost l + velikost d
+  | Sestavljeno (levi, _, desni) ->
+      1 + velikost levi + velikost desni
 
-let rec dodaj x =
-  function
+let rec isci x drevo =
+  match drevo with
+  | Prazno -> false
+  | Sestavljeno (levi, vrednost, desni) ->
+      if x < vrednost then
+        isci x levi
+      else if x > vrednost then
+        isci x desni
+      else
+        true
+      
+let rec dodaj x drevo =
+  match drevo with
   | Prazno -> Sestavljeno (Prazno, x, Prazno)
-  | Sestavljeno (l, y, d) when x < y ->
-      Sestavljeno (dodaj x l, y, d)
-  | Sestavljeno (l, y, d) when x > y ->
-      Sestavljeno (l, y, dodaj x d)
-  | Sestavljeno (_, y, _) as drevo ->
-      (* če pridemo do tega primera, ne velja ne x < y ne y > x,
-         zato sta x in y enaka *)
-      assert (x = y);
-      drevo
+  | Sestavljeno (levi, vrednost, desni) ->
+      if x < vrednost then
+        Sestavljeno (dodaj x levi, vrednost, desni)
+      else if x > vrednost then
+        Sestavljeno (levi, vrednost, dodaj x desni)
+      else
+        drevo
 
 (* ------------------------------------------------------------------------- *)
 
@@ -44,7 +54,7 @@ let stopaj f x =
 
 let _ = Random.self_init ()
 
-(* let primer = nakljucni_seznam 5000 5000 *)
+(* let primer = nakljucni_seznam 20000 20000 *)
 
 let primer = seznam_zaporednih 10000
 

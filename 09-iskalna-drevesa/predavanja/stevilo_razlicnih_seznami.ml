@@ -26,9 +26,9 @@ let stopaj f x =
 
 let _ = Random.self_init ()
 
-(* let primer = nakljucni_seznam 1000 1000 *)
+let primer = nakljucni_seznam 20000 20000
 
-let primer = seznam_zaporednih 5000
+(* let primer = seznam_zaporednih 10000 *)
 
 let n = stopaj stevilo_razlicnih primer
 

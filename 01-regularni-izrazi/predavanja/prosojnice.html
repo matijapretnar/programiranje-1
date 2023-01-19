@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Regularni izrazi</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Regularni izrazi
+
+## Programiranje 1
+
+---
+
+background-image: url(../../zapiski/slike/250-najbolj-znanih-filmov.png)
+background-size: auto 90%
+
+---
+
+class: question, center, middle
+
+## `vse_pojavitve`
+
+.terminal.left[```python
+>>> vse_pojavitve('Ena sama je, mama!', 'ma')
+Ena sama je, mama!
+      ^^
+Ena sama je, mama!
+             ^^
+Ena sama je, mama!
+               ^^
+```]
+
+---
+
+class: question, center, middle
+
+## `podatki_filma`
+
+.mini.terminal.left[```python
+>>> podatki_filma('<a href="/title/tt0076759/?ref_=adv_li_tt">'
+                  'Star Wars: Episode IV - A New Hope</a>')
+(76759, 'Star Wars: Episode IV - A New Hope')
+
+>>> podatki_filma('<a href="/title/tt0086190/?ref_=adv_li_tt">'
+                  'Star Wars: Episode VI - Return of the Jedi</a>')
+(86190, 'Star Wars: Episode VI - Return of the Jedi')
+```]
+
+---
+
+### Če želimo, lahko podatke **izluščimo ročno**
+
+.mini.bad-example[```python
+def podatki_filma(niz):
+    pred_sifro = '<a href="/title/tt'
+    vmes = '/?ref_=adv_li_tt">'
+    za_naslovom = '</a>'
+    zacetek_sifre = niz.index(pred_sifro) + len(pred_sifro)
+    konec_sifre = niz.index(vmes)
+    zacetek_naslova = konec_sifre + len(vmes)
+    konec_naslova = niz.index(za_naslovom)
+    sifra = int(niz[zacetek_sifre:konec_sifre])
+    naslov = niz[zacetek_naslova:konec_naslova]
+    return sifra, naslov
+```]
+
+---
+
+### Boljše\* je, če uporabimo **regularne izraze**
+
+.mini.good-example[```python
+def podatki_filma(niz):
+    vzorec = (r'<a href="/title/tt(?P<sifra>\d+)'
+              r'/\?ref_=adv_li_tt">(?P<naslov>.*?)</a>')
+    pojavitev = re.search(vzorec, niz)
+    sifra = int(pojavitev.group('sifra'))
+    naslov = pojavitev.group('naslov')
+    return sifra, naslov
+```]
+
+\*Še boljše\*\* je, če uporabimo orodje za obdelavo HTMLja
+
+\*\*Ali pa ne
+
+---
+
+### Predpostavimo **neprekrivajoča ujemanja**
+
+## .center[`ala`]
+
+.good-example[```
+Tralalala
+  ^^^
+Tralalala
+      ^^^
+```]
+
+.bad-example[```
+Tralalala
+  ^^^
+Tralalala
+    ^^^
+Tralalala
+      ^^^
+```]
+
+---
+
+### **Katerikoli znak** predstavimo z vzorcem `.`
+
+## .center[`.a`]
+
+```text
+Ena sama je, mama!
+ ^^
+Ena sama je, mama!
+    ^^
+Ena sama je, mama!
+      ^^
+Ena sama je, mama!
+             ^^
+Ena sama je, mama!
+               ^^
+```
+
+---
+
+### **Piko** predstavimo z vzorcem `\.`
+
+## .center[`.\\..`]
+
+```text
+akad. prof. dr. Jana Obvlada
+   ^^^
+akad. prof. dr. Jana Obvlada
+         ^^^
+akad. prof. dr. Jana Obvlada
+             ^^^
+```
+
+---
+
+### **Števke** predstavimo z vzorcem `\d`
+
+## .center[`\d.`]
+
+```text
+Potrebujem 500g moke.
+           ^^
+Potrebujem 500g moke.
+             ^^
+```
+
+---
+
+### **Alfanumerične** znake predstavimo z `\w`
+
+## .center[`e\w`]
+
+```text
+Potrebujem 500g moke.
+    ^^
+Potrebujem 500g moke.
+        ^^
+```
+
+---
+
+### **Bele znake** predstavimo z vzorcem `\s`
+
+## .center[`\w\s`]
+
+```text
+Potrebujem 500g moke.
+         ^^
+Potrebujem 500g moke.
+              ^^
+```
+
+---
+
+### **Komplement** dobimo z veliko tiskano črko
+
+## .center[`\D\w\s`]
+
+```text
+Potrebujem 500g moke.
+        ^^^
+```
+
+---
+
+### Vzorec `\b` označuje **mejo** med besednim in nebesednim znakom
+
+## .center[`\bkaj\b`]
+
+```text
+Je pravo vprašanje kaj ali zakaj?
+                   ^^^
+```
+
+## .center[`\Bbel\B`]
+
+```text
+Svet ni niti bel, niti črnobel.
+                           ^^^
+```
+
+---
+
+### **Posamezne znake** naštejemo v `[...]`
+
+## .center[`.[aeiou].`]
+
+```text
+ata, mama, teta, stric
+ ^^^
+ata, mama, teta, stric
+     ^^^
+ata, mama, teta, stric
+           ^^^
+ata, mama, teta, stric
+                   ^^^
+```
+
+---
+
+### **Razpon znakov** predstavimo z `[...-...]`
+
+## .center[`.[aeiou][a-z]`]
+
+```text
+ata, mama, teta, stric
+     ^^^
+ata, mama, teta, stric
+           ^^^
+ata, mama, teta, stric
+                   ^^^
+```
+
+---
+
+### **Komplement znakov** predstavimo z `[^...]`
+
+## .center[`[aeiou][^m][aeiou]`]
+
+```text
+ata, mama, teta, stric
+^^^
+ata, mama, teta, stric
+            ^^^
+```
+
+---
+
+### **Več pojavitev** vzorca označimo z `*`
+
+
+## .center[`d*a`]
+
+```text
+Oddal sem davčno napoved
+ ^^^
+Oddal sem davčno napoved
+          ^^
+Oddal sem davčno napoved
+                  ^
+```
+
+---
+
+### **Vsaj eno pojavitev** vzorca označimo s `+`
+
+
+## .center[`d+a`]
+
+```text
+Oddal sem davčno napoved
+ ^^^
+Oddal sem davčno napoved
+          ^^
+```
+
+---
+
+### Kvantifikatorji so v osnovi **požrešni**
+
+## .center[`d.*a`]
+
+```text
+Oddal sem davčno napoved
+ ^^^^^^^^^^^^^^^^^^
+```
+
+## .center[`d.+a`]
+
+```text
+Oddal sem davčno napoved
+ ^^^^^^^^^^^^^^^^^^
+```
+
+---
+
+### Če želimo **najkrajša ujemanja**, dodamo še `?`
+
+
+## .center[`d.*?a`]
+
+```text
+Oddal sem davčno napoved
+ ^^^
+Oddal sem davčno napoved
+          ^^
+```
+
+## .center[`d.+?a`]
+
+```text
+Oddal sem davčno napoved
+ ^^^
+Oddal sem davčno napoved
+          ^^^^^^^^^
+```
+
+---
+
+### Samostojen kvantifikator `?` predstavlja **morebitno pojavitev**
+
+## .center[`da?`]
+
+```text
+Oddal sem davčno napoved
+ ^
+Oddal sem davčno napoved
+  ^^
+Oddal sem davčno napoved
+          ^^
+Oddal sem davčno napoved
+                       ^
+```
+
+---
+
+### **Število pojavitev** določimo z `{m,n}`
+
+## .center[`[Bb]r{4,5}`]
+
+```text
+"Brrrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+ ^^^^^
+"Brrrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+        ^^^^^^
+"Brrrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+                       ^^^^^^
+```
+
+* `?` je okrajšava za `{0,1}`
+
+---
+
+### Zgornjo mejo **lahko izpustimo**
+
+## .center[`[Bb]r{4,}`]
+
+```text
+"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+       ^^^^^^^
+"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+                      ^^^^^^^^
+```
+
+* `*` je okrajšava za `{0,}`
+* `+` je okrajšava za `{1,}`
+
+
+---
+
+### Tudi spodnjo mejo **lahko izpustimo**
+
+## .center[`[Bb]r{,5}`]
+
+```text
+"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+ ^^^^
+"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+       ^^^^^^
+"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+                ^^^^
+"Brrr, brrrrrr, brrr, brrrrrrr," je drgetal.
+                      ^^^^^^
+```
+
+---
+
+### Vzorec lahko razdelimo na **skupine**
+
+## .center[`([^aeiou][aeiou])+`]
+
+```text
+tralala hopsasa
+ ^^^^^^
+tralala hopsasa
+        ^^
+tralala hopsasa
+           ^^^^
+```
+
+---
+
+### Skupine so tudi **oštevilčene**
+
+## .center[`(\d+) (\w+)`]
+
+```text
+Potrebujem 500 g moke in 250 ml vode.
+           ^^^^^
+           111 2
+           00000
+Potrebujem 500 g moke in 250 ml vode.
+                         ^^^^^^
+                         111 22
+                         000000
+```
+
+---
+
+### Na prejšnje skupine se lahko **skličemo**
+
+## .center[`(\w+) \1`]
+
+```text
+Ha ha ha, he he, kako smešno.
+   ^^^^^
+Ha ha ha, he he, kako smešno.
+          ^^^^^
+```
+
+---
+
+class: question, center, middle
+
+## Uporaba regularnih izrazov v<br>VS Code
+
+---
+
+class: question, center, middle
+
+## Uporaba regularnih izrazov v<br>Pythonu
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>

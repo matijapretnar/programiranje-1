@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Naivni Bayesov klasifikator</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../pomozno/prosojnice.css" />
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Naivni Bayesov klasifikator
+
+## Programiranje 1
+
+---
+
+### Kako bi določili **žanr** filma **iz opisa**?
+
+```python3
+opis = """In 1938, after his father Professor Henry Jones, Sr.
+          goes missing while pursuing the Holy Grail, Professor
+          Henry "Indiana" Jones, Jr. finds himself up against
+          Adolf Hitler's Nazis again to stop them from obtaining
+          its powers."""
+```
+
+```
+>>> zanri_iz_opisa(opis)
+["Adventure", "Action", "Comedy"]
+```
+
+Takemu programu pravimo **klasifikator**
+
+---
+
+### Strukturo stavkov pozabimo in gledamo le **množico besed**
+
+```python3
+besede = {'"Indiana"', '1938,', 'Adolf', 'Grail,', 'Henry',
+          "Hitler's", 'Holy', 'In', 'Jones,', 'Jr.', 'Nazis',
+          'Professor', 'Sr.', 'after', 'again', 'against',
+          'father', 'finds', 'from', 'goes', 'himself', 'his',
+          'its', 'missing', 'obtaining', 'powers.', 'pursuing',
+          'stop', 'the', 'them', 'to', 'up', 'while'}
+```
+
+```
+>>> zanri_iz_besed(besede)
+["Adventure", "Action", "Comedy"]
+```
+
+---
+
+### Strukturo stavkov pozabimo in gledamo le **množico besed**
+
+```python3
+koreni = {'$', 'adolf', 'after', 'again', 'against', 'father',
+          'fin', 'from', 'g', 'grail', 'h', 'henry', 'himself',
+          'hitler', 'holy', 'in', 'indian', 'it', 'jon', 'jr',
+          'missing', 'naz', 'obtaining', 'power', 'professor',
+          'pursuing', 'sr', 'stop', 't', 'th', 'them', 'up',
+          'whil'}
+```
+
+```
+>>> zanri_iz_korenov(koreni)
+["Adventure", "Action", "Comedy"]
+```
+
+---
+
+### Potrebujemo **verjetnosti** posameznih žanrov ob danih korenih
+
+# $$P(Ž_i | K_1 \cap \cdots \cap K_n)$$
+
+Nato lahko vzamemo žanre z **najvišjimi verjetnostmi**.
+
+---
+
+### Verjetnosti lahko **ocenimo iz vzorca**
+
+# $$P(A) \approx \frac{|D_A|}{|D|}$$
+
+# $$P(A | B) = \frac{P(A \cap B)}{P(B)} \approx \frac{|D_{A \cap B}|}{|D_B|}$$
+
+Pri čemer je \\(D\\) množica vseh podatkov, \\(D_A\\) pa množica tistih, ki zadoščajo pogoju \\(A\\).
+
+---
+
+### Pri izračunu si pomagamo z **Bayesovim izrekom**
+
+# $$P(A | B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B | A) P(A)}{P(B)}$$
+
+Zato govorimo o **Bayesovem** klasifikatorju.
+
+---
+
+### Pri izračunu si pomagamo z **Bayesovim izrekom**
+
+# $$P(Ž_i | K_1 \cap \cdots \cap K_n)$$
+
+---
+
+### Pri izračunu si pomagamo z **Bayesovim izrekom**
+
+# $$\frac{P(K_1 \cap \cdots \cap K_n | Ž_i) P(Ž_i)}{P(K_1 \cap \cdots \cap K_n)}$$
+
+---
+
+### Ker nas zanima samo vrstni red, **imenovalce zanemarimo**
+
+# $$P(K_1 \cap \cdots \cap K_n | Ž_i) P(Ž_i)$$
+
+---
+
+### Predpostavimo, da so pojavitve korenov med seboj **neodvisne**
+
+# $$P(K_1 | Ž_i) \cdots P(K_n | Ž_i) P(Ž_i)$$
+
+Zato govorimo o **naivnem** Bayesovem klasifikatorju.
+
+---
+
+class: question, middle
+
+```python3
+opis = """In 1938, after his father Professor Henry Jones, Sr.
+          goes missing while pursuing the Holy Grail, Professor
+          Henry "Indiana" Jones, Jr. finds himself up against
+          Adolf Hitler's Nazis again to stop them from obtaining
+          its powers."""
+```
+
+```
+>>> zanri_iz_opisa(opis)
+["Adventure", "Action", "Comedy"]
+```
+
+</textarea>
+<script src="../../pomozno/prosojnice.js"></script>
+</body>
+</html>
