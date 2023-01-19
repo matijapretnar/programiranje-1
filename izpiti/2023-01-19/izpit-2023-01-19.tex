@@ -18,7 +18,7 @@
 Napišite funkcijo \verb|permutacije : 'a -> 'a -> 'a -> ('a * 'a * 'a) list|, ki sprejme tri argumente in vrne seznam vseh možnih permutacij (elementi so med seboj različni), kjer vrstni red v seznamu ni važen.
 
 \podnaloga
-Napišite funkcijo \verb|zip_opt : 'a list -> 'b list -> ('a option * 'b option) list|, ki sprejme seznam parov in vrne parov istoležnih elementov, ali vrednosti \verb|None|, če je kateri od seznamov krajši.
+Napišite funkcijo \verb|zip_opt : 'a list -> 'b list -> ('a option * 'b option) list|, ki sprejme dva seznama in vrne seznam parov istoležnih elementov, ali vrednosti \verb|None|, če je kateri od seznamov krajši.
 
 \begin{verbatim}
   # zip_opt [1; 2; 3] [true; false];;
@@ -27,7 +27,7 @@ Napišite funkcijo \verb|zip_opt : 'a list -> 'b list -> ('a option * 'b option)
 \end{verbatim}
   
 \podnaloga
-Napišite funkcijo \verb|zip_default : 'a list -> 'b list -> 'a -> 'b -> ('a * 'b) list|, ki sprejme dva seznama in dve privzeti vrednosti ter vrne seznam parov elementov, kjer je prvi element in prvega seznama, drugi pa iz drugega. Če je kateri od seznamov krajši, naj funkcija uporabi ustrezno privzeto vrednost.
+Napišite funkcijo \verb|zip_default : 'a list -> 'b list -> 'a -> 'b -> ('a * 'b) list|, ki sprejme dva seznama in dve privzeti vrednosti ter vrne seznam parov istoležnih elementov. Če je kateri od seznamov krajši, naj funkcija uporabi ustrezno privzeto vrednost.
 
 \podnaloga
 Definirajmo tip \verb|response| kot:
