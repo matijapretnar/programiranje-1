@@ -33,11 +33,14 @@ def run(sudoku, timeout):
         output,
         flags=re.DOTALL,
     )
-    result = (
-        "CORRECT" if match.group("solution").strip() == expected_solution else "WRONG"
-    )
-    time = float(match.group("time"))
-    return result, time
+    if match:
+        result = (
+            "CORRECT" if match.group("solution").strip() == expected_solution else "WRONG"
+        )
+        time = float(match.group("time"))
+        return result, time
+    else:
+        return "FORMAT", None
 
 
 def add_benchmarks(name, sudokus, csv_name, timeout=60, baseline=None):
@@ -50,7 +53,8 @@ def add_benchmarks(name, sudokus, csv_name, timeout=60, baseline=None):
             print(f"{name} {sudoku_shortname}... ", end="", flush=True)
             try:
                 result, time = run(sudoku, timeout)
-                time /= baseline
+                if time is not None:
+                    time /= baseline
             except subprocess.CalledProcessError:
                 result = "ERROR"
                 time = None
