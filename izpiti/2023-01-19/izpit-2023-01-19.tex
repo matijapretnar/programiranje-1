@@ -38,7 +38,7 @@ Napišite funkcijo
 \begin{verbatim}
   distribute: ('a -> response) -> 'a list -> 'a list * 'a list * 'a list
 \end{verbatim}
-ki vrne tri sezname. V prvem so tisti elementi, kjer podana funkcija vrne \verb|Right|, v drugem tisti, kjer funkcija vrne \verb|Middle|, ostali pa v tretjem. Elementi v končni seznamih naj nastopajo v enakem vrstnem redu, kot so nastopali v prvotnem seznamu.
+ki vrne tri sezname. V prvem so tisti elementi, kjer podana funkcija vrne \verb|Right|, v drugem tisti, kjer funkcija vrne \verb|Middle|, ostali pa v tretjem. Elementi v končnih seznamih naj nastopajo v enakem vrstnem redu, kot so nastopali v prvotnem seznamu.
 
 \begin{verbatim}
 # distribute (fun x -> if x < 0 then Left else if x = 0 then Middle else Right) 
@@ -50,12 +50,12 @@ ki vrne tri sezname. V prvem so tisti elementi, kjer podana funkcija vrne \verb|
 \podnaloga
 Vsoto $A + B$ lahko predstavimo s tipom
 \begin{verbatim}
-  type ('a, 'b) vsota = Left of 'a | Right of 'b
+  type ('a, 'b) sum = Left of 'a | Right of 'b
 \end{verbatim}
 Definirajte preslikavi
 \begin{verbatim}
-  iso1 : (('a, 'b) vsota -> 'c) -> ('a -> 'c) * ('b -> 'c)
-  iso2 : ('a -> 'c) * ('b -> 'c) ->  (('a, 'b) vsota -> 'c)
+  iso1 : (('a, 'b) sum -> 'c) -> ('a -> 'c) * ('b -> 'c)
+  iso2 : ('a -> 'c) * ('b -> 'c) ->  (('a, 'b) sum -> 'c)
 \end{verbatim}
 ki ustrezata izomorfizmu $C^{A + B} \cong C^A \times C^B$.
 
@@ -83,7 +83,11 @@ Napišite funkcijo
 \begin{verbatim}
   combine : ('a -> 'b) list_tree -> ('c -> 'a) list_tree -> ('c -> 'b) list_tree
 \end{verbatim}
-ki sprejme dve drevesi, katerih elementi so funkcije, in vrne novo drevo, kjer je vsak element kompozitum istoležnih funkcij. Predpostavite lahko, da sta drevesi popolnoma enake oblike. Za vsa (smiselna) drevesa mora veljati: \verb|map (combine t1 t2) t3 == (map t1 (map t2 t3))|
+ki sprejme dve drevesi, katerih elementi so funkcije, in vrne novo drevo, kjer je vsak element kompozitum istoležnih funkcij. Predpostavite lahko, da sta drevesi popolnoma enake oblike. Za vsa (smiselna) drevesa mora veljati
+\begin{verbatim}
+  map (combine f g) t == (map f (map g t))
+\end{verbatim}
+vendar vam tega ni treba dokazovati.
 
 \podnaloga
 Napišite funkcijo
@@ -91,7 +95,7 @@ Napišite funkcijo
   apply_smart : ('a -> 'b) list_tree -> 'a list_tree ->
                 ('a -> 'b) -> 'a -> 'b list_tree
 \end{verbatim}
-ki sprejme dve drevesi ter dve privzeti vrednosti (od katerih je prva funkcija) in vrne novo drevo, kjer je vsak element rezultat aplikacije funkcije iz prvega drevesa na istoležnem elementu iz drugega drevesa. Drevesi nista nujno enake oblike, ampak se lahko notranja vozlišča razlikujejo v številu otrok. Kjer število otrok ni enako, namesto manjkajočih otrok (in njihovih potomcev) uporabite ustrezno privzeto vrednost, da dobite enako obliko kot jo ima drevo s presežkom otrok. Oblika končnega drevesa je unija oblik obeh vhodnih dreves.
+ki sprejme dve drevesi ter dve privzeti vrednosti (od katerih je prva funkcija) in vrne novo drevo, kjer je vsak element rezultat aplikacije funkcije iz prvega drevesa na istoležnem elementu iz drugega drevesa. Drevesi nista nujno enake oblike, ampak se lahko notranja vozlišča razlikujejo v številu otrok. Kjer število otrok ni enako, se vrsta otroka (list oz. vozlišče) v krajšem seznamu ujema s tistimi na začetku daljšega seznama. Namesto manjkajočih otrok (in njihovih potomcev) uporabite ustrezno privzeto vrednost, da dobite enako obliko kot jo ima drevo s presežkom otrok. Oblika končnega drevesa je unija oblik obeh vhodnih dreves.
 
 \begin{verbatim}
 # apply_smart ( Node [Node [Leaf (fun x -> x)]; Leaf (fun x -> x * 2)]) 
@@ -140,9 +144,7 @@ ki sprejme dve drevesi ter dve privzeti vrednosti (od katerih je prva funkcija) 
 Bacek Jon se nahaja pred gorskim grebenom, 
 ki ga mora preplezati in se pri tem najesti
 (trenutno še) živih zelišč, ki poraščajo 
-gorovje, da mu bo na koncu ostalo čim več energije za nove potegavščine.
-
-Greben predstavimo z dvema seznamoma seznamov enakih dimenzij:
+gorovje, da mu bo na koncu ostalo čim več energije za nove potegavščine. Greben predstavimo z dvema seznamoma seznamov enakih dimenzij:
 \begin{verbatim}
     60  50  40  30  20  30  40  50  60  70
   40  50  60  73  80      40  60  30  20  40
@@ -151,12 +153,12 @@ Greben predstavimo z dvema seznamoma seznamov enakih dimenzij:
 oziroma v Pythonu kot
 \begin{verbatim}
 [                            [
- [60, 50, 40, 30, 20],        [30, 40, 50, 60, 70],
- [40, 50, 60, 73, 80],        [40, 60, 30, 20, 40],
- [10, 20, 30, 40, 50],        [10, 20, 90, 40, 50],
+  [60, 50, 40, 30, 20],        [30, 40, 50, 60, 70],
+  [40, 50, 60, 73, 80],        [40, 60, 30, 20, 40],
+  [10, 20, 30, 40, 50],        [10, 20, 90, 40, 50],
 ]                            ]
 \end{verbatim}
-v OCamlu pa podobno, samo s podpičji.
+v OCamlu pa podobno, samo s tipom \verb|array|.
 
 Jon sprehod začne povsem spodaj levo na točki z 
 vrednostjo 10 in konča povsem desno na točki 
@@ -179,6 +181,6 @@ izračunal največjo količino energije, ki jo ima lahko bacek
 ob koncu poti in pripadajoče zaporedje premikov. Premike navzgor, navzdol, desno in diagonalno (neodvisno od smeri) označimo z \verb|U|, \verb|D|, \verb|R| in \verb|X|.
 Predpostavite lahko, da bo čez greben vedno obstajala pot, pri kateri Jonu ne bo zmanjkalo energije.
 
-Bacek lahko prikazan primer preskače tako, da mu na koncu ostane 818 enot energije, če sledi poti \verb|['X', 'R', 'R', 'R', 'R', 'X', 'R', 'R', 'R', 'R', 'D', 'R', 'R']|.
+Bacek lahko prikazan primer preskače tako, da mu na koncu ostane 818 enot energije, če sledi poti \verb|["X", "R", "R", "R", "R", "X", "R", "R", "R", "R", "D", "R", "R"]|.
 
 \end{document}

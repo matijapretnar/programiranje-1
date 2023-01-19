@@ -10,4 +10,4 @@ type response = Left | Middle | Right
 
 (* 1. e) *)
 
-type ('a, 'b) vsota = Left of 'a | Right of 'b
+type ('a, 'b) sum = Left of 'a | Right of 'b
