@@ -115,7 +115,7 @@ mem_fib 4
 mem_fib 4
 ```
 
-Na prvi pogled je videti, kot da memoizacija deluje pravilno, saj je drugi klic `mem_fib` vrnil že izračunano vrednost. Vendar ob natančnem pregledu vidimo, da se ja primer vrednost pri `2` izračunala večkrat. Težava je v tem, da si `mem_fib` shrani vrednosti, na katerih je bil poklican. Če pa rezultata še ne pozna, pokliče funkcij `fib`, ki pa o že izračunanih vrednostih ne ve nič, kar vodi do velikega števila klicev. Če `mem_fib` na primer pokličemo na 5, mu poprej izračunana vrednost nič ne pomaga, saj `fib 5` pokliče `fib 4` in ne `mem_fib 4`.
+Na prvi pogled je videti, kot da memoizacija deluje pravilno, saj je drugi klic `mem_fib` vrnil že izračunano vrednost. Vendar ob natančnem pregledu vidimo, da se ja primer vrednost pri `2` izračunala večkrat. Težava je v tem, da si `mem_fib` shrani vrednosti, na katerih je bil poklican. Če pa rezultata še ne pozna, pokliče funkcijo `fib`, ki pa o že izračunanih vrednostih ne ve nič, kar vodi do velikega števila klicev. Če `mem_fib` na primer pokličemo na 5, mu poprej izračunana vrednost nič ne pomaga, saj `fib 5` pokliče `fib 4` in ne `mem_fib 4`.
 
 ```{code-cell}
 mem_fib 5

@@ -21,7 +21,7 @@ kernelspec:
    vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
 ```
 
-Podatkovne strukture, ki smo jih v OCamlu spoznali do sedaj so bile nespremenljive. Res smo govorili, da smo seznamu na začetek dodali glavo, vendar s tem prvotnega seznama nismo spremenili, temveč smo naredili nov seznam, ki je imel starega za rep. V Pythonu smo seznam lahko dejansko spremenili. Na primer, sledeča funkcija `f` ob vsakem klicu seznam `sez` razširi z enim elementom:
+Podatkovne strukture, ki smo jih v OCamlu spoznali do sedaj, so bile nespremenljive. Res smo govorili, da smo seznamu na začetek dodali glavo, vendar s tem prvotnega seznama nismo spremenili, temveč smo naredili nov seznam, ki je imel starega za rep. V Pythonu smo seznam lahko dejansko spremenili. Na primer, sledeča funkcija `f` ob vsakem klicu seznam `sez` razširi z enim elementom:
 
 ```python
 sez = [1, 2, 3]

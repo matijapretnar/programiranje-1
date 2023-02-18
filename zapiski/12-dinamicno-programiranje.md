@@ -70,7 +70,7 @@ Podvojevanju se lahko izognemo na dva načina. Prvi je _memoizacija_, pri kateri
 ![](slike/izracun-vnaprej1.png)
 ![](slike/izracun-vnaprej2.png)
 
-V primeru računanja števila stolpov je tak vrstni red samo en: od $1$ do $n$, zato ni vprašanja, kako se bomo lotili dela. Vsako izračunano vrednost si bomo shranili v seznam in nadaljevali z naslednjo. V resnici ne rabimo vseh izračunanih vrednosti, temveč samo zadnje tri:
+V primeru računanja števila stolpov je tak vrstni red samo en: od $1$ do $n$, zato ni vprašanja, kako se bomo lotili dela. Vsako izračunano vrednost si bomo shranili v seznam in nadaljevali z naslednjo. V resnici ne potrebujemo vseh izračunanih vrednosti, temveč samo zadnje tri:
 
 ```{code-cell}
 def hitro_stevilo_stolpov(n):
