@@ -69,7 +69,7 @@ let rec dolzina = function
   | _ :: xs -> 1 + dolzina xs
 ```
 
-Če izračunamo dolžino seznama `[1; 2; 3]`, se bo funkcija rekurzivno poklicala trikrat in vsakem klicu bo svoje delo odložila na sklad:
+Če izračunamo dolžino seznama `[1; 2; 3]`, se bo funkcija rekurzivno poklicala trikrat in ob vsakem klicu bo svoje delo odložila na sklad:
 
 ```ocaml
 dolzina [1; 2; 3]
@@ -94,7 +94,7 @@ Kot vidimo, dolžino računamo sproti, zato sklad ne raste:
 
 ```ocaml
 dolzina' 0 [1; 2; 3]
-= dolzina' (1 + 0) [2; 3]
+= dolzina' (0 + 1) [2; 3]
 = dolzina' 1 [2; 3]
 = dolzina' (1 + 1) [3]
 = dolzina' 2 [3]
@@ -181,7 +181,7 @@ List.map String.length ["To"; "je"; "en"; "seznam"]
 
 ## Anonimne funkcije
 
-Recimo, da iz seznama želimo pobrisati vse pojavitve določenega elementa. To enostavno naredimo s funkcijo `List.filter`, ko obdrži vse elemente, ki zadoščajo danemu predikatu:
+Recimo, da iz seznama želimo pobrisati vse pojavitve določenega elementa. To enostavno naredimo s funkcijo `List.filter`, ki obdrži vse elemente, ki zadoščajo danemu predikatu:
 
 ```{code-cell}
 let pobrisi x sez =
@@ -246,7 +246,7 @@ f 10
 f 50
 ```
 
-Videti je, kot da funkcija `f` podvoji svoj argument oziroma množi z $2$. Naše opažanje je pravilno. Funkcije dveh argumentov so namreč le funkcije _enega_ argumenta (prvega), ki vrnejo funkcijo _enega_ argumenta (drugega). Ko ta funkcija dobi še drugi argument ima na voljo vse, kar potrebuje, in lahko izračuna končno vrednost. Na primer, ob klicu `zmnozi 2` funkcija `zmnozi` dobi prvi argument, vendar potrebuje še drugega, da lahko izračuna produkt. Ko ga dobi, ga pomnoži s poprej podanim argumentom `2` in vrne rezultat. V resnici nam `zmnozi 2` ni treba shraniti v `f`, temveč lahko direktno pišemo:
+Videti je, kot da funkcija `f` podvoji svoj argument oziroma množi z $2$. Naše opažanje je pravilno. Funkcije dveh argumentov so namreč le funkcije _enega_ argumenta (prvega), ki vrnejo funkcijo _enega_ argumenta (drugega). Ko ta funkcija dobi še drugi argument, ima na voljo vse, kar potrebuje, in lahko izračuna končno vrednost. Na primer, ob klicu `zmnozi 2` funkcija `zmnozi` dobi prvi argument, vendar potrebuje še drugega, da lahko izračuna produkt. Ko ga dobi, ga pomnoži s poprej podanim argumentom `2` in vrne rezultat. V resnici nam `zmnozi 2` ni treba shraniti v `f`, temveč lahko direktno pišemo:
 
 ```{code-cell}
 (zmnozi 2) 3

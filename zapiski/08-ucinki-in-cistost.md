@@ -113,7 +113,7 @@ in če še enkrat pokličemo `g(3)`, dobimo:
 17
 ```
 
-Ker funkcija `f` ob klicu spreminja seznam, bomo vsakič dobili drugačen odgovor. O tem, kaj vračata funkciji `f` in `g` tako zelo težko sklepamo. Če pa imamo čiste funkcije (na primer spodnjo, ki ne spreminja obstoječega seznama, temveč vrača novega), potem ob vsakem klicu dobimo enak odgovor.
+Ker funkcija `f` ob klicu spreminja seznam, bomo vsakič dobili drugačen odgovor. O tem, kaj vračata funkciji `f` in `g`, tako zelo težko sklepamo. Če pa imamo čiste funkcije (na primer spodnjo, ki ne spreminja obstoječega seznama, temveč vrača novega), potem ob vsakem klicu dobimo enak odgovor.
 
 ```{code-cell}
 let seznam = [1; 2; 3]
@@ -172,7 +172,7 @@ Iz teh enačb na primer takoj sledi trditev `obrni [x] = [x]`.
     = obrni (x :: [])
         (ker je `[x]` okrajšava za `x :: []`)
     = [] @ [x]
-        (po (3))
+        (po (4))
     = [x]
         (po (1))
 

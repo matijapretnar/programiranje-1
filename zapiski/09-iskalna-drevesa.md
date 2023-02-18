@@ -47,7 +47,7 @@ Rešitev deluje pravilno, vendar ne preveč učinkovito, saj se moramo vsakič s
 
 ![](slike/09-iskalna-drevesa/iskalno-drevo.png)
 
-Če imamo iskalno drevo lahko s spustom v ustrezno vejo ugotovimo, ali vsebuje dani element. Na primer, število 15 je manjše od korena 21, zato mora biti v levem otroku. Ker je večje od korena 9, mora biti v desnem otroku, kjer potem tudi je v korenu.
+Če imamo iskalno drevo, lahko s spustom v ustrezno vejo ugotovimo, ali vsebuje dani element. Na primer, število 15 je manjše od korena 21, zato mora biti v levem otroku. Ker je večje od korena 9, mora biti v desnem otroku, kjer potem tudi je v korenu.
 
 ![](slike/09-iskalna-drevesa/iskalno-drevo-najdi.png)
 
