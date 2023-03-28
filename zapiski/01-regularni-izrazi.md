@@ -481,3 +481,37 @@ film['zanri'] = film['zanri'].strip().split(', ')
 Pri igralcih in režiserjih je zadeva še bolj zapletena, ker ima vsak izmed njih še svojo šifro osebe, pa tudi zanima nas, na katerem mestu je kdo napisan (glavne vloge so na začetku, stranske pa kasneje). Tudi tu najprej zajamemo del vsebine, kjer so podatki o igralcih, nato pa znotraj tega dela z manjšim vzorcem izluščimo podatke. Celoten program lahko najdemo [tu](../01-regularni-izrazi/predavanja/preberi_podatke.py).
 
 ## Knjižnica Beautiful Soup
+
+Kot smo omenili, regularni izrazi nujno najboljše orodje za analizo spletnih strani, saj delujejo na nivoju znakov, HTML pa ima bogatejšo strukturo gnezdenih značk z atributi. No, vsaj v teoriji. V praksi pa dostikrat ni tako, saj so ljudje pri pisanju HTMLja površni, saj značk ne zaključujejo ali jih neustrezno gnezdijo, na primer `<strong>Krepko in <em>ležeče</strong></em>`. Tako v šali rečemo, da HTML lahko predstavimo z juho, v kateri plavajo značke. In po tej juhi se imenuje tudi knjižnica za analizo HTMLja [Beautiful Soup](https://www.crummy.com/software/). Knjižnico moramo tako kot `requests` najprej namestiti, uvozimo z ukazom:
+
+```{code-cell}
+import bs4
+```
+
+HTML pa pretvorimo v ustrezen objekt z:
+
+```{code-cell}
+juha = bs4.BeautifulSoup(html, 'html.parser')
+```
+
+Na objektu imamo na voljo več metod. Naštejmo štiri, ki jih bomo potrebovali v našem primeru:
+
+- `find_all`, ki najde vse potomce, ki zadoščajo danim lastnostim,
+- `get`, ki vrne vrednost danega atributa,
+- `string`, ki vrne vsebino značke in
+- `find_next_sibling`, ki vrne naslednjega sorojenca.
+
+S pomočjo njih bi lahko osnovne podatke o filmih prebrali tako, da najprej najdemo vse značke `<a>`, katerih atribut `href` se konča s `?ref_=adv_li_tt`. Iz povezave lahko izluščimo šifro, iz značke, ki ji sledi, pa še naslov in leto izida. Za vse tri moramo uporabiti regularne izraze, saj na neki točki vseeno zmanjka HTML strukture in moramo iskati po nizih.
+
+```{code-cell}
+for povezava in juha.find_all('a'):
+    url = povezava.get('href')
+    if url and url.endswith('?ref_=adv_li_tt'):
+        naslov = povezava.string
+        id = int(re.search('\d{7}', url).group(0))
+        znacka_z_letom = povezava.find_next_sibling()
+        niz_z_letom = znacka_z_letom.string
+        vzorec_leta = r'(\([IVXLCDM]+\) )?\((?P<leto>.*?)\)'
+        leto = int(re.fullmatch(vzorec_leta, niz_z_letom).group('leto'))
+        print({'id': id, 'naslov': naslov, 'leto': leto})
+```
