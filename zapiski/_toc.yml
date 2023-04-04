@@ -1,21 +1,13 @@
-- file: 00-uvod.md
-
-- part: Analiza podatkov
-  chapters:
-  - file: 01-regularni-izrazi.md
-  - file: 02-zajem-podatkov.md
-  - file: 03-knjiznica-pandas.md
-  - file: 04-naivni-bayesov-klasifikator.md
-  
-
-- part: Funkcijsko programiranje
+format: jb-book
+root: 00-uvod.md
+parts:
+- caption: Funkcijsko programiranje
   chapters:
   - file: 05-uvod-v-ocaml.md
   - file: 06-funkcije.md
   - file: 07-definicije-tipov.md
   - file: 08-ucinki-in-cistost.md
-  
-- part: Podatkovne strukture in algoritmi
+- caption: Podatkovne strukture in algoritmi
   chapters:
   - file: 09-iskalna-drevesa.md
   - file: 10-spremenljive-podatkovne-strukture.md

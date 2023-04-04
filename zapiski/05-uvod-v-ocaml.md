@@ -21,7 +21,7 @@ kernelspec:
    vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
 ```
 
-_Funkcijsko programiranje_ je pristop k pisanju programov prek sestavljanja funkcij in njihove uporabe na vrednostih. Nasproten pristop bi bilo na primer _imperativno programiranje_, v katerem programe pišemo kot zaporedja ukazov, ki spreminjajo računalnikovo stanje. Programi, napisani v funkcijskem stilu, so dostikrat krajši in preglednejši, poleg tega pa dostikrat omogočajo porazdeljeno računanje. Zaradi vseh teh lastnosti veliko modernih programskih jezikov vpeljuje ideje iz funkcijskega programiranja. Da se bomo lahko osredotočili na te ideje, si bomo ogledali programski jezik OCaml, ki je bil eden prvih in je še danes eden najbolj popularnih funkcijskih jezikov.
+Zaradi vseh teh lastnosti veliko modernih programskih jezikov vpeljuje ideje iz funkcijskega programiranja. Da se bomo lahko osredotočili na te ideje, si bomo ogledali programski jezik OCaml, ki je bil eden prvih in je še danes eden najbolj popularnih funkcijskih jezikov.
 
 ## Delo z OCamlom
 
