@@ -52,7 +52,8 @@ def save_string_to_file(text, directory, filename):
 
 
 def save_frontpage(directory, filename):
-    """Funkcija vrne celotno vsebino datoteke "directory"/"filename" kot niz"""
+    """Funkcija shrani vsebino spletne strani na naslovu "page" v datoteko
+    "directory"/"filename"."""
     text = download_url_to_string(cats_frontpage_url)
     save_string_to_file(text, directory, filename)
     return None
