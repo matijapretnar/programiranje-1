@@ -1,0 +1,123 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\begin{document}
+
+\izpit{Programiranje I: 1.~izpit}{28.\ avgust 2023}{
+  Čas reševanja je 120 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\podnaloga
+Napišite funkcijo \verb|vzporedna : int * int -> int * int -> bool|, ki preveri, ali sta podana vektorja vzporedna.
+
+\podnaloga
+Napišite funkcijo \verb|zlozi_pocez : 'a list -> 'b list -> ('a * 'b) list|, ki sprejme dva seznama in vrne nov seznam, kjer so elementi prekrižani pari elementov. Predpostavite lahko, da sta seznama enakih in sodih dolžin.
+
+\begin{verbatim}
+# zlozi_pocez [1; 2; 3; 4] [1.1; 2.2; 3.3; 4.4];;
+- : (int * float) list = [(1, 2.2); (2, 1.1); (3, 4.4); (4, 3.3)]
+\end{verbatim}
+
+\podnaloga
+Napišite funkcijo \verb|kompozitumi : ('a -> 'a) -> int -> ('a -> 'a) list|, ki sprejme funkcijo in nenegativno število ter vrne seznam zaporednih kompozitumov te funkcije s samo sabo, torej \verb|potenciraj f n| = $[\mathtt{f}^1; \mathtt{f}^2; \dots; \mathtt{f}^\mathtt{n}]$, kjer je $f^i = \underbrace{f \circ \cdots \circ f}_i$
+
+\podnaloga
+Napišite funkcijo \verb|repi : 'a list -> 'a list list|, ki sprejme seznam in vrne seznam vseh njegovih repov.
+\begin{verbatim}
+# repi [1;2;3];;
+- : int list list = [[1; 2; 3]; [2; 3]; [3]; []]
+\end{verbatim}
+
+\podnaloga
+Vsoto $A + B$ lahko predstavimo s tipom
+\begin{verbatim}
+  type ('a, 'b) sum = Left of 'a | Right of 'b
+\end{verbatim}
+Definirajte preslikavi
+\begin{verbatim}
+  iso1 : ('a * ('b, 'c) sum) -> (('a * 'b), ('a * 'c)) sum
+  iso2 : (('a * 'b), ('a * 'c)) sum -> ('a * ('b, 'c) sum)
+\end{verbatim}
+ki ustrezata izomorfizmu $A \times (B + C) \cong A \times B + A \times C$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+S tipom \verb|game_tree| predstavimo odločitveno drevo igre. Igra je lahko bodisi zaključena z zmagovalcem ali z neodločenim izidom bodisi je na potezi igralec, ki mora izbrati med nepraznim seznamom možnosti. Vsaka možnost je opisana z verjetnostjo, da jo igralec izbere, in z novim odločitvenim drevesom, ki opisuje nadaljevanje igre po izbiri.
+
+\begin{verbatim}
+type player = White | Black
+
+type game_tree =
+  | Winner of player
+  | Tie
+  | Decision of player * (float * game_tree) list
+\end{verbatim}
+%
+Na primer, drevo
+%
+\begin{verbatim}
+let primer =
+  Decision ( White, [
+    (0.3, Decision (Black, [ (0.5, Winner White); (0.5, Winner Black) ]));
+    (0.7, Decision (Black, [ (0.5, Tie);          (0.5, Winner Black) ]));
+  ] )
+\end{verbatim}
+%
+predstavlja igro, v kateri beli z verjetnostjo \verb|0.3| izbere možnost, po kateri črni z enako verjetnostjo izbere svoj poraz ali zmago, z verjetnostjo \verb|0.7| pa možnost, po kateri črni izbira med neodločenim izidom in zmago.
+
+Drevo je \emph{veljavno}, če so vse verjetnosti v seznamu možnosti števila med \verb|0.0| in \verb|1.0|, ki se seštejejo v \verb|1.0|. Pri tem lahko predpostavite, da ne bo prišlo do napak pri seštevanju števil s plavajočo vejico.
+
+\podnaloga
+Napišite funkcijo \verb|prestej_zmage: game_tree -> int|, ki prešteje število listov, v katerih zmaga beli igralec.
+
+\podnaloga
+Napišite funkcijo \verb|rezultat: game_tree -> result|, ki izračuna verjetnosti, da zmaga beli igralec, da zmaga črni igralec in da se igra konča z neodločenim izidom. Pri tem je tip \verb|result| podan kot:
+%
+\begin{verbatim}
+type result = { white_wins : float; black_wins : float; ties : float }
+\end{verbatim}
+%
+Predpostavite lahko, da je drevo igre veljavno.
+
+\begin{verbatim}
+  # rezultat primer;;
+  - : result = {white_wins = 0.15; black_wins = 0.5; ties = 0.35}
+\end{verbatim}
+  
+\podnaloga
+Napišite funkcijo \verb|je_veljavno: game_tree -> bool|, ki sprejme drevo igre in preveri, če je veljavno.
+
+\podnaloga
+Napišite funkcijo \verb|odigraj_igro: game_tree -> int list -> (player * float) option|, ki sprejme drevo igre in seznam odločitev, ki jih zaporedoma ubirata igralca, ter izračuna, kdo bo zmagal, ter kolikšna je verjetnost danega poteka igre. Vsaka odločitev je predstavljena z indeksom v seznamu možnosti, ki so na voljo na trenutni potezi. Če je seznam odločitev prekratek, ne vodi do zmagovalca, ali pa kakšen indeks ni v skladu s seznamom možnosti, naj funkcija vrne \verb|None|. Predpostavite lahko, da je drevo igre veljavno.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+Dedek Peter je skuhal gigantski lonec marmelade, zdaj pa bi z njo napolnil kozarce različnih velikosti, pri tem pa mu je na pomoč priskočilo $k$ vnukov. Dedek vsakič z začetka police vzame nekaj zaporednih kozarcev, pokliče naslednjega vnuka ter mu jih izroči. Ko ostane samo še en vnuk, mu da vse preostale kozarce. Kljub različni starosti so vsi vnuki enako spretni pri polnjenju kozarcev in sicer za vsak kozarec potrebujejo toliko časa, kot je velik, čas za menjavo med dvema kozarcema pa je zanemarljiv.
+
+Napišite funkcijo
+\begin{verbatim}
+  polnjenje_marmelade(polica: list[int], k: int) -> tuple[int, list[list[int]]]
+\end{verbatim}
+oziroma
+\begin{verbatim}
+  polnjenje_marmelade : int list -> int -> int * int list list
+\end{verbatim}
+ki vzame velikosti kozarcev na polici in število vnukov ter izračuna najkrajši čas, v katerem lahko napolnijo kozarce, ter razdelitev kozarcev med vnuke. Če je takih razdelitev več, naj funkcija vrne poljubno.
+
+Na primer, če so na polici kozarci velikosti $1, 2, 6, 5, 3, 4$ in ima dedek $3$ vnuke, lahko kozarce najhitreje napolnijo v $9$ enotah časa, če si jih razdelijo kot $(1, 2, 6), (5), (3, 4)$ ali kot $(1, 2, 6), (5, 3), (4)$.
+
+
+\end{document}

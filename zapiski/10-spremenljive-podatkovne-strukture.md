@@ -21,7 +21,7 @@ kernelspec:
    vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
 ```
 
-Podatkovne strukture, ki smo jih v OCamlu spoznali do sedaj so bile nespremenljive. Res smo govorili, da smo seznamu na začetek dodali glavo, vendar s tem prvotnega seznama nismo spremenili, temveč smo naredili nov seznam, ki je imel starega za rep. V Pythonu smo seznam lahko dejansko spremenili. Na primer, sledeča funkcija `f` ob vsakem klicu seznam `sez` razširi z enim elementom:
+Podatkovne strukture, ki smo jih v OCamlu spoznali do sedaj, so bile nespremenljive. Res smo govorili, da smo seznamu na začetek dodali glavo, vendar s tem prvotnega seznama nismo spremenili, temveč smo naredili nov seznam, ki je imel starega za rep. V Pythonu smo seznam lahko dejansko spremenili. Na primer, sledeča funkcija `f` ob vsakem klicu seznam `sez` razširi z enim elementom:
 
 ```python
 sez = [1, 2, 3]
@@ -352,4 +352,69 @@ done
 
 ## Fisher-Yatesov algoritem
 
+[Fisher-Yatesov algoritem](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) uporabimo, kadar želimo premešati tabelo. Deluje tako, da postopoma gradi naključno permutacijo prvotnega seznama. Najprej izmed vseh elementov izbere enega za prvo mesto, nato izmed vseh preostalih izbere naslednjega za drugo mesto in tako naprej. Vsako permutacijo tako dobimo natanko z verjetnostjo $1/n!$, torej so vse enako verjetne. Algoritem je učinkovit, saj ne gradimo nove tabele, temveč spreminjamo obstoječo. Ko izmed vseh neizbranih elementov izberemo tistega za $i$-to mesto, ga zamenjamo z elementom na mestu $i$, ki gre s tem med preostale neizbrane elemente. Po $n - 1$ korakih je neizbran samo še en element, ki ga prihranimo za zadnje mesto.
+
+Algoritem v OCamlu napišemo kot:
+
+```{code-cell}
+let fisher_yates tabela =
+  let n = Array.length tabela in
+  for i = 0 to n - 2 do
+    let j = i + Random.int (n - i) in
+    zamenjaj tabela i j
+  done
+```
+
+Pri tem je v $i$-tem koraku naključno izberemo med $i$-tim in $n$-tim izberemo $j$-ti element, ki ga zamenjamo z $i$-tim. Ker v tabelah do elementov dostopamo v konstantnem času, je časovna zahtevnost celotnega algoritma $O(n)$. To je tudi optimalno, saj v manj kot $n$ korakih ne moremo ustvariti permutacije $n$ elementov. Če bi namesto tabele želeli premešati seznam, je najenostavneje, če ga pretvorimo v tabelo, jo premešamo, in nato pretvorimo nazaj v seznam.
+
+Pri Fisher-Yatesovem algoritmu je treba paziti na pravilno izbiro indeksov, saj sicer ne dobimo vseh permutacij z enakimi verjetnostmi. Na primer, če bi v izbiri $i$-tega elementa izbirali od $i + 1$ naprej, bi dobili samo $(n - 1)!$ možnih permutacij (recimo zagotovo ne moremo dobiti identične permutacije).
+
 ## [Naivni algoritmi za urejanje](https://visualgo.net/en/sorting)
+
+Še bolj uporabno kot premešanje tabele pa je njeno urejanje. Obstajajo trije naivni algoritmi za urejanje tabel, ki jih bomo spoznali v tem poglavju in delujejo v času $O(n^2)$. V naslednjem poglavju bomo spoznali dva zapletenejša in učinkovitejša algoritma, ki delujeta v času $O(n \log n)$. A kljub temu, da kvadratna časovna zahtevnost kmalu zahteva svoj davek, so naivni algoritmi dostikrat hitrejši pri kratkih seznamih in jih v praksi dostikrat uporabimo v kombinaciji z naprednejšimi, kadar dolžina seznama pade pod določeno mejo.
+
+Prvi algoritem je _urejanje z izbiranjem_ (oz. _selection sort_), ki deluje tako, da postopoma izbere najmanjši element in ga postavi na prvo mesto, nato izbere naslednji najmanjši element in ga postavi na drugo mesto, in tako naprej. V OCamlu urejanje z izbiranjem napišemo
+
+```{code-cell}
+
+dva učinkovitejša pa bomo spoznali v naslednjem. Prvi algoritem je _urejanje z izbiranjem_ (oz. _selection sort_), ki deluje tako, da postopoma izbere najmanjši element in ga postavi na prvo mesto, nato izbere naslednji najmanjši element in ga postavi na drugo mesto, in tako naprej. V OCamlu urejanje z izbiranjem napišemo
+
+```{code-cell}
+let uredi_z_izbiranjem tabela =
+  let n = Array.length tabela in
+  for i = 0 to n - 2 do
+    let j = najmanjsi tabela i (n - 1) in
+    zamenjaj tabela i j
+  done
+```
+
+Drugi algoritem deluje tako, da postopoma zamenjuje pare zaporednih elementov, ki so v napačnem vrstnem redu. Če se na tak način postopoma sprehodimo čez vse pare v tabeli, bo največji element priplaval na zadnje mesto, zaradi česar algoritem imenujemo _urejanje z mehurčki_ (oz. _bubble sort_). Postopek ponovimo na preostalih manjših elementih, s čimer na predzadnje mesto priplava drugi največji element, in tako naprej. V zanko lahko dodamo še pogoj, da se zanka prekine, če v obhodu ni bilo nobenih zamenjav, saj to pomeni, da je tabela že urejena. V OCamlu urejanje z mehurčki napišemo kot:
+
+```{code-cell}
+let uredi_z_mehurcki tabela =
+  let n = Array.length tabela in
+  for i = 0 to n - 2 do
+    for j = 0 to n - i - 2 do
+      if tabela.(j) > tabela.(j + 1) then
+        zamenjaj tabela j (j + 1)
+    done
+  done
+```
+
+Tretji algoritem pa je _urejanje z vstavljanjem_ (oz. _insertion sort_) in deluje tako, kot urejamo karte pri taroku (za tiste, ki jih urejamo). V roki imamo urejene karte in vsakič, ko dobimo novo, jo postavimo na pravo mesto. Pri urejanju tabel nimamo dveh tabel, temveč eno samo, v kateri na levi strani postopoma gradimo urejeni del, na desni pa so še nerazporejeni elementi. V OCamlu urejanje z vstavljanjem napišemo kot:
+
+```{code-cell}
+let uredi_z_vstavljanjem tabela =
+  let n = Array.length tabela in
+  for i = 1 to n - 1 do
+    let x = tabela.(i) in
+    let j = ref i in
+    while !j > 0 && tabela.(!j - 1) > x do
+      tabela.(!j) <- tabela.(!j - 1);
+      decr j
+    done;
+    tabela.(!j) <- x
+  done
+```
+
+Spremenljivka `i` beleži indeks elementa `x`, ki mu poskušamo najti mesto v urejenem delu tabele, ki sega od indeksa `0` do vključno indeksa `i - 1`. Začnemo z `i = 1`, saj je ne glede na vrednost prvega elementa del tabele od indeksa `0` do `0` vedno urejen. S spremenljivko `j` se vračamo nazaj po seznamu ter element na mestu `j - 1` zamikamo v desno, dokler ne najdemo elementa, ki je večji od `x`. Na tisti točki z `x` povozimo element na mestu `j - 1`, saj je prejšnji element že prekopiran na mesto `j`. Če bi želeli, bi lahko `x` tako kot pri urejanju z mehurčki zaporedoma menjali z manjšimi elementi, dokler ne najdemo mesta zanj, vendar bi s tem povečali število pisanj v tabelo.

@@ -21,7 +21,7 @@ kernelspec:
    vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
 ```
 
-_Funkcijsko programiranje_ je pristop k pisanju programov prek sestavljanja funkcij in njihove uporabe na vrednostih. Nasproten pristop bi bilo na primer _imperativno programiranje_, v katerem programe pišemo kot zaporedja ukazov, ki spreminjajo računalnikovo stanje. Programi, napisani v funkcijskem stilu, so dostikrat krajši in preglednejši, poleg tega pa dostikrat omogočajo porazdeljeno računanje. Zaradi vseh teh lastnosti veliko modernih programskih jezikov vpeljuje ideje iz funkcijskega programiranja. Da se bomo lahko osredotočili na te ideje, si bomo ogledali programski jezik OCaml, ki je bil eden prvih in je še danes eden najbolj popularnih funkcijskih jezikov.
+Zaradi vseh teh lastnosti veliko modernih programskih jezikov vpeljuje ideje iz funkcijskega programiranja. Da se bomo lahko osredotočili na te ideje, si bomo ogledali programski jezik OCaml, ki je bil eden prvih in je še danes eden najbolj popularnih funkcijskih jezikov.
 
 ## Delo z OCamlom
 
@@ -312,7 +312,7 @@ Vsaka vrednost v OCamlu ima svoj tip, tudi funkcije. Tip funkcije je oblike <cod
 string_of_int
 ```
 
-Podoben tip imajo tudi funkcije več argumentov (kaj točno pa ta tip predstavlja, pa bomo še videli):
+Podoben tip imajo tudi funkcije več argumentov (kaj točno ta tip predstavlja, pa bomo še videli):
 
 ```{code-cell}
 atan2
@@ -470,7 +470,7 @@ let ustrezen_pozdrav = function
   | ime -> "Dober dan, " ^ ime ^ "!"
 ```
 
-Vsakič, ko pišemo `match` ali `function` moramo biti pozorni na vrstni red vzorcev:
+Vsakič, ko pišemo `match` ali `function`, moramo biti pozorni na vrstni red vzorcev:
 
 ```{code-cell}
 let neustrezen_pozdrav = function
@@ -542,7 +542,7 @@ and je_liho = function
 
 ## Primerjava s Pythonom
 
-Kljub temu, da Python in OCaml podpirata precej podobnih konceptov (funkcije, pogojne stavke, sezname, nabore, tipe, ...) pa imata tudi kar nekaj razlik. Ena izmed njih je način, na katerega te konstrukte uporabljamo. OCaml je _deklarativni_ jezik, kar pomeni, da programe sestavljamo s pomočjo definicij vrednosti. Natančneje, OCaml je _funkcijski jezik_, saj pri sestavljanju ključno vlogo igrajo funkcije (poznamo tudi _logične_ deklarativne jezike, kot na primer Prolog, kjer vrednosti opisujemo s pogoji, ki računalnik vodijo do končne rešitve). Na primer, $10!$ v OCamlu najenostavneje izračunamo tako, da napišemo njeno matematično definicijo:
+Kljub temu da Python in OCaml podpirata precej podobnih konceptov (funkcije, pogojne stavke, sezname, nabore, tipe, ...), pa imata tudi kar nekaj razlik. Ena izmed njih je način, na katerega te konstrukte uporabljamo. OCaml je _deklarativni_ jezik, kar pomeni, da programe sestavljamo s pomočjo definicij vrednosti. Natančneje, OCaml je _funkcijski jezik_, saj pri sestavljanju ključno vlogo igrajo funkcije (poznamo tudi _logične_ deklarativne jezike, kot na primer Prolog, kjer vrednosti opisujemo s pogoji, ki računalnik vodijo do končne rešitve). Na primer, $10!$ v OCamlu najenostavneje izračunamo tako, da napišemo njeno matematično definicijo:
 
 ```ocaml
 let rec fakulteta n =
@@ -550,7 +550,7 @@ let rec fakulteta n =
 in fakulteta 10
 ```
 
-Kljub temu, da tudi Python vsebuje prvine funkcijskega programiranja, pa je v osnovi _imperativni_ (zaradi vloge objektov pa tudi _objektni_) jezik, kjer računalnik usmerjamo prek zaporedja ukazov, ki začetno stanje spravijo v želeno stanje. Na primer, fakulteto bi izračunali tako, da bi si izbrali spremenljivko za hranjenje vrednosti, nato pa to spremenljivko postopoma spreminjali, dokler ne bi dobili iskanega števila:
+Kljub temu da tudi Python vsebuje prvine funkcijskega programiranja, pa je v osnovi _imperativni_ (zaradi vloge objektov pa tudi _objektni_) jezik, kjer računalnik usmerjamo prek zaporedja ukazov, ki začetno stanje spravijo v želeno stanje. Na primer, fakulteto bi izračunali tako, da bi si izbrali spremenljivko za hranjenje vrednosti, nato pa to spremenljivko postopoma spreminjali, dokler ne bi dobili iskanega števila:
 
 ```python
 fakulteta = 1
@@ -566,7 +566,7 @@ let je_majhen x =
   if x < 10 then "Da" else false
 ```
 
-dobimo napako še preden funkcijo pokličemo. V nasprotju z OCamlom bo Python enako definicijo sprejel:
+dobimo napako, še preden funkcijo pokličemo. V nasprotju z OCamlom bo Python enako definicijo sprejel:
 
 ```python
 def je_majhen(x):

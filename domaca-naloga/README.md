@@ -2,6 +2,8 @@
 
 Domača naloga od vas zahteva da napišete program, ki reši uganko [sudoku](https://sl.wikipedia.org/wiki/Sudoku). Osnovno ogrodje smo vam že pripravili, samo pa morate dokončati nekaj manjkajočih delov in izboljšati učinkovitost reševanja. Za več točk se od vas pričakuje, da boste nekatere že pripravljene funkcije popravili in dodali zmožnost reševanja nestandardnih sudokujev. Poleg pravilnega in učinkovitega delovanja se pričakuje, da bo programska koda berljiva. To ne pomeni samo tega, da so spremenljivke ustrezno poimenovane, koda lepo zamaknjena, zahtevnejši deli pa pokomentirani, temveč tudi to, da je program napišete v duhu funkcijskega programiranja.
 
+Datoteke domače naloge boste oddali prek spletne učilnice. Priporočamo, da nalogo vseeno pišete prek Gita, vendar v ločenem in zasebnem repozitoriju, da je ne bi kdo prepisal brez vaše vednosti.
+
 **NALOGO MORATE REŠEVATI SAMOSTOJNO. ČE NE VESTE, ALI DOLOČENA STVAR POMENI SODELOVANJE, RAJE VPRAŠAJTE!**
 
 ## Terminologija
@@ -74,15 +76,19 @@ V ukazni vrstici poženite:
 
     ocamlc -g model.ml solver.ml main.ml -o sudoku.exe
 
-Če ste si OCaml namestili na sistemu Windows s pomočjo `fdopen` namesto `ocamlc` uporabite:
+Če ste si OCaml namestili na sistemu Windows s pomočjo `fdopen` namesto `ocamlc` uporabite (kjer poti ustrezno popravite tako, kot ste to storili v pripravi okolja za vaje).:
 
     C:\OCaml64\usr\local\bin\ocaml-env.exe exec -- C:\OCaml64\home\???\.opam\4.12.0+mingw64c\bin\ocamlc.exe
+
+*Če ob zagonu v naslednji vrstici dobite napako `cannot exec`, potem `ocamlc.exe` v zgornjem ukazu zamenjajte z `ocamlopt.exe`*
 
 To ustvari datoteko `sudoku.exe`, ki ob klicu
 
     ./sudoku.exe primer-1.sdk primer-2.sdk ...
 
 reši sudokuje v datotekah `primer-1.sdk`, `primer-2.sdk`, ...
+
+*Če ob zagonu dobite napako `End of file`, sledite navodilom na https://ucilnica2021.fmf.uni-lj.si/mod/forum/discuss.php?d=18334*
 
 V mapi `sudokuji` najdete testne datoteke, ki vsebujejo primere običajnih sudokujev. Program lahko na vseh sudokujih poženete kot
 
@@ -97,17 +103,6 @@ Vsaka datoteka `.sdk` ima tudi pripadajočo datoteko `.out`, v kateri je praviln
 Če boste med reševanjem naloge naleteli na težavo z lokalno namestitvijo OCamla, to čim prej sporočite asistentu Filipu, da vam lahko pomagamo usposobiti vse potrebno.
 
 Če boste domačo nalogo reševali v okoljih, ki ne podpirajo branja datotek (npr. prek spletne storitve), si poglejte spodnji del datoteke `main.ml`, kjer je prikazana uporaba v takem primeru. Za delo v takih okoljih boste verjetno morali tudi vse datoteke združiti v eno samo. To najlaže naredite tako, da jih po vrsti skopirate v eno datoteko in odstranite kvalificirane klice (npr. klic oblike `Model.problem_of_string` nadomestite s `problem_of_string`).
-
-## Kriterij
-
-**NALOGO MORATE REŠEVATI SAMOSTOJNO. ČE NE VESTE, ALI DOLOČENA STVAR POMENI SODELOVANJE, RAJE VPRAŠAJTE!**
-
-Z domačo nalogo je možno doseči do 20 točk. Pri točkovanju velja sledeči kriterij:
-
-- 5 točk : Program, ki pravilno reši vsakega od priloženih običajnih sudokujev.
-- 5 točk : Berljivost in eleganca kode.
-- 5 točk : Učinkovitost programa za reševanje.
-- 5 točk : Razširitve programa na nestandardne sudokuje.
 
 ### Razširitve
 
@@ -127,9 +122,5 @@ Vrstica pogoja je oblike `K: X (x1,y1);...;(xn;yn)`, kjer je vsota (medsebojno r
 Vhodni podatki razširjenih testnih primerov so v datotekah `sudokuji/puscice-*.sdk`, `sudokuji/termometri-*.sdk`, `sudokuji/kletke-*.sdk`.
 Vhodni podatki se začnejo z običajno mrežo kot pri obicajnih sudokujih, čemur sledi prazna vrstica in vrstice, ki opisujejo dodatne zahteve.
 Pri branju vse vrstice, ki se začnejo z `#`, ignorirajte kot komentarje.
-
-## Oddaja domače naloge
-
-Datoteke domače naloge boste oddali prek spletne učilnice. Priporočamo, da nalogo vseeno pišete prek Gita, vendar v ločenem in zasebnem repozitoriju, da je ne bi kdo prepisal brez vaše vednosti.
 
 **NALOGO MORATE REŠEVATI SAMOSTOJNO. ČE NE VESTE, ALI DOLOČENA STVAR POMENI SODELOVANJE, RAJE VPRAŠAJTE!**

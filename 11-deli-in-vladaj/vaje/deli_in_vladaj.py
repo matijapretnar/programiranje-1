@@ -1,6 +1,85 @@
 import random
 
 ###############################################################################
+# Če imamo dve urejeni tabeli, potem urejeno združeno tabelo dobimo tako, da
+# urejeni tabeli zlijemo. Pri zlivanju vsakič vzamemo manjšega od začetnih
+# elementov obeh tabel. Zaradi učinkovitosti ne ustvarjamo nove tabele, ampak
+# rezultat zapisujemo v že pripravljeno tabelo (ustrezne dolžine).
+#
+# Funkcija naj deluje v času O(n), kjer je n dolžina tarčne tabele.
+#
+# Sestavite funkcijo [merge(target, list_1, list_2)], ki v tabelo [target]
+# zlije tabeli [list_1] in [list_2]. V primeru, da sta elementa v obeh tabelah
+# enaka, naj bo prvi element iz prve tabele.
+#
+# Primer:
+#
+#     >>> list_1 = [1, 3, 5, 7, 10]
+#     >>> list_2 = [1, 2, 3, 4, 5, 6, 7]
+#     >>> target = [-1 for _ in range(len(list_1) + len(list_2))]
+#     >>> merge(target, list_1, list_2)
+#     >>> target
+#     [1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 7, 10]
+#
+###############################################################################
+
+
+def merge(target, list1, list2):
+    # We assume lenghts of list1 and list2 exactly add up to that of target
+    i1, i2 = 0, 0
+    for j in range(len(target)):
+        if (i2 >= len(list2)) or (i1 < len(list1) and list1[i1] <= list2[i2]):
+            target[j] = list1[i1]
+            i1 += 1
+        else:
+            target[j] = list2[i2]
+            i2 += 1
+    return
+
+###############################################################################
+# Tabelo želimo urediti z zlivanjem (merge sort). Tabelo razdelimo na polovici,
+# ju rekurzivno uredimo in nato zlijemo z uporabo funkcije [zlij].
+#
+# Namig: prazna tabela in tabela z enim samim elementom sta vedno urejeni.
+#
+# Napišite funkcijo [mergesort(a)], ki uredi tabelo [a] s pomočjo zlivanja. Za
+# razliko od hitrega urejanja tu tabele lahko kopirate, zlivanje pa je potrebno
+# narediti na mestu.
+#
+#     >>> a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
+#     >>> mergesort(a)
+#     >>> a
+#     [2, 3, 4, 5, 10, 11, 15, 17, 18]
+###############################################################################
+
+
+def mergesort(a):
+    if len(a) <= 1:
+        return
+    else:
+        half = len(a) // 2
+        a1, a2 = a[:half], a[half:]
+        mergesort(a1)
+        mergesort(a2)
+        merge(a, a1, a2)
+        return
+
+
+def test_mergesort(n, max_l, max_k):
+    """ Performs a series of randomised tests on the mergesort algorithm. """
+    for _ in range(n):
+        l = random.randint(0, max_l)
+        a = [random.randint(-max_k, max_k) for _ in range(l)]
+        a_mergesort = a[:]
+        mergesort(a_mergesort)
+        if a_mergesort != sorted(a):
+            return a
+
+###############################################################################
+# Na predavanjih ste implementirali imperativno verzijo pivotiranja v OCamlu, 
+# prepišite jo v Python in jo uporabite kot osnovo za reševanje problemov s 
+# pomočjo metode deli in vladaj.
+# 
 # Želimo definirati pivotiranje na mestu za tabelo [a]. Ker bi želeli
 # pivotirati zgolj dele tabele, se omejimo na del tabele, ki se nahaja med
 # indeksoma [start] in [end] (vključujoč oba robova).
@@ -172,77 +251,4 @@ def test_quicksort(n, max_l, max_k):
         if a_quicksort != sorted(a):
             return a
 
-###############################################################################
-# Če imamo dve urejeni tabeli, potem urejeno združeno tabelo dobimo tako, da
-# urejeni tabeli zlijemo. Pri zlivanju vsakič vzamemo manjšega od začetnih
-# elementov obeh tabel. Zaradi učinkovitosti ne ustvarjamo nove tabele, ampak
-# rezultat zapisujemo v že pripravljeno tabelo (ustrezne dolžine).
-#
-# Funkcija naj deluje v času O(n), kjer je n dolžina tarčne tabele.
-#
-# Sestavite funkcijo [merge(target, list_1, list_2)], ki v tabelo [target]
-# zlije tabeli [list_1] in [list_2]. V primeru, da sta elementa v obeh tabelah
-# enaka, naj bo prvi element iz prve tabele.
-#
-# Primer:
-#
-#     >>> list_1 = [1, 3, 5, 7, 10]
-#     >>> list_2 = [1, 2, 3, 4, 5, 6, 7]
-#     >>> target = [-1 for _ in range(len(list_1) + len(list_2))]
-#     >>> merge(target, list_1, list_2)
-#     >>> target
-#     [1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 7, 10]
-#
-###############################################################################
 
-
-def merge(target, list1, list2):
-    # We assume lenghts of list1 and list2 exactly add up to that of target
-    i1, i2 = 0, 0
-    for j in range(len(target)):
-        if (i2 >= len(list2)) or (i1 < len(list1) and list1[i1] <= list2[i2]):
-            target[j] = list1[i1]
-            i1 += 1
-        else:
-            target[j] = list2[i2]
-            i2 += 1
-    return
-
-###############################################################################
-# Tabelo želimo urediti z zlivanjem (merge sort). Tabelo razdelimo na polovici,
-# ju rekurzivno uredimo in nato zlijemo z uporabo funkcije [zlij].
-#
-# Namig: prazna tabela in tabela z enim samim elementom sta vedno urejeni.
-#
-# Napišite funkcijo [mergesort(a)], ki uredi tabelo [a] s pomočjo zlivanja. Za
-# razliko od hitrega urejanja tu tabele lahko kopirate, zlivanje pa je potrebno
-# narediti na mestu.
-#
-#     >>> a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
-#     >>> mergesort(a)
-#     >>> a
-#     [2, 3, 4, 5, 10, 11, 15, 17, 18]
-###############################################################################
-
-
-def mergesort(a):
-    if len(a) <= 1:
-        return
-    else:
-        half = len(a) // 2
-        a1, a2 = a[:half], a[half:]
-        mergesort(a1)
-        mergesort(a2)
-        merge(a, a1, a2)
-        return
-
-
-def test_mergesort(n, max_l, max_k):
-    """ Performs a series of randomised tests on the mergesort algorithm. """
-    for _ in range(n):
-        l = random.randint(0, max_l)
-        a = [random.randint(-max_k, max_k) for _ in range(l)]
-        a_mergesort = a[:]
-        mergesort(a_mergesort)
-        if a_mergesort != sorted(a):
-            return a

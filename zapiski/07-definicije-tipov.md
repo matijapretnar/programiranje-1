@@ -115,7 +115,7 @@ Tedaj bo tip imel natanko pet možnih vrednosti in OCaml nas bo opozoril, če po
 [XS; XS; L; M; M; XM]
 ```
 
-Vsaka izmed naštetih konstruktorjev lahko sprejme tudi argumente vnaprej določenega tipa:
+Vsak izmed naštetih konstruktorjev lahko sprejme tudi argumente vnaprej določenega tipa:
 
 ```{code-cell}
 type geometrijski_objekt =

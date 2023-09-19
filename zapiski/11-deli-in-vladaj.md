@@ -27,9 +27,9 @@ kernelspec:
 2. podnaloge **rekurzivno rešimo**
 3. dobljene rešitve **združimo** v rešitev prvotne naloge
 
-Vse naloge niso take, na primer problem osmih kraljic, v katerem moramo na šahovsko desko postaviti osem kraljic, tako da se med seboj ne napadajo. Tudi če znamo postaviti štiri kraljice na manjšo ploščo, nam to pri postavljanju osmih kraljic nič ne pomaga.
+Vse naloge niso take, na primer problem trgovskega potnika, pri katerem moramo najti najcenejši cikel, ki obišče vsa vozlišča na grafu. Tudi če znamo najti najcenejši cikel na manjšem grafu, nam to pri iskanju cikla v večjem grafu nič ne pomaga.
 
-![8 kraljic](slike/8-kraljic.png)
+![Problem trgovskega potnika](slike/trgovski-potnik.png)
 
 Ampak precej nalog pa lastnost optimalne strukture ima in pri tem predmetu bomo pogledali dve splošni strategiji za njihovo reševanje. Prva strategija, ki jo bomo spoznali v tem poglavju, je strategija _deli in vladaj_, v katerem nam uspe nalogo razdeliti na _za konstantni faktor_ manjše podnaloge (na primer iz velikosti $n$ na velikost $n / 2$):
 
@@ -54,7 +54,7 @@ $$\begin{aligned}
   a^n &= a \cdot a^{n - 1}
 \end{aligned}$$
 
-ki pa zahteva $n - 1$ množenj in ima tako časovno zahtevnost $O(n)$ ob predpostavki, da ima množenje časovno zahtevnost $O(1)$ (kar pri poljubno velikih številih sicer ni več res). Število množenj lahko zmanjšamo, če opazimo, da lahko sode potence izračunamo kot kvadrate njihovih korenov. Na primer, če poznamo $a^18$ lahko $a^36$ izračunamo samo z enim množenjem. Podobno lahko $a^18$ samo z enim množenjem izračunamo iz $a^9$. Pri lihih potencah je postopek le malenkostno drugačen, saj je na primer $a^9 = a \cdot a^8$, kjer zopet nastopa soda potenca. V splošnem je torej postopek, ki ga imenujemo _hitro potenciranje_, podan z rekurzivno zvezo:
+ki pa zahteva $n - 1$ množenj in ima tako časovno zahtevnost $O(n)$ ob predpostavki, da ima množenje časovno zahtevnost $O(1)$ (kar pri poljubno velikih številih sicer ni več res). Število množenj lahko zmanjšamo, če opazimo, da lahko sode potence izračunamo kot kvadrate njihovih korenov. Na primer, če poznamo $a^{18}$ lahko $a^{36}$ izračunamo samo z enim množenjem. Podobno lahko $a^{18}$ samo z enim množenjem izračunamo iz $a^9$. Pri lihih potencah je postopek le malenkostno drugačen, saj je na primer $a^9 = a \cdot a^8$, kjer zopet nastopa soda potenca. V splošnem je torej postopek, ki ga imenujemo _hitro potenciranje_, podan z rekurzivno zvezo:
 
 $$\begin{aligned}
   a^0 &= 1 \\
@@ -191,13 +191,13 @@ $$T(n) = O(n) + 2 \cdot T(n / 2)$$
 kjer s $T(n)$ označimo čas, ki ga potrebujemo, da uredimo seznam dolžine $n$. Rešitev te enačbe je $T(n) = O(n \log n)$, kar je precej hitreje od naivnih algoritmov za urejanje, ki delujejo v času $O(n^2)$. Reševanje takih enačb presega obseg tega predmeta, intuicija za njim pa ni preveč zapletena. Enačbo postopoma razpisujemo:
 
 
-\begin{align}
+$$\begin{aligned}
   T(n)
   &= O(n) + 2 T(n / 2) \\
   &= O(n) + 2 (O(n / 2) + 2 T(n / 4)) \\
   &= O(n) + 2 O(n / 2) + 4 T(n / 4) \\
   &= O(n) + 2 O(n / 2) + 4 O(n / 4) + 8 T(n / 8)
-\end{align}
+\end{aligned}$$
 
 Vidimo, da v vsakem koraku dobimo dodaten člen z zahtevnostjo $O(n)$, kar po $k$ korakih znaša
 
