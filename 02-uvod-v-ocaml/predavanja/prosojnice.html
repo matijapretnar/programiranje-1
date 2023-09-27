@@ -385,6 +385,28 @@ class: question, center, middle
 
 ---
 
+### **Tabele** imajo tip <code>tip<sub>el</sub> array</code>
+
+.terminal[```
+# [|1; 2; 3; 4|];;
+- : int array = [|1; 2; 3; 4|]
+
+# [|'a'; 'b'; 'c'; 'd'|];;
+- : char array = [|'a'; 'b'; 'c'; 'd'|]
+
+# [|'a'; 'b'; 'c'; 'd'|].(0);;
+- : char = 'a'
+
+# [|'a'; 'b'; 'c'; 'd'|].(1)
+  ;;
+- : char = 'b'
+
+# [|'a'; 'b'; 'c'; 'd'|].(-1);;
+Exception: Invalid_argument "index out of bounds".
+```]
+
+---
+
 ### **Seznami** imajo tip <code>tip<sub>el</sub> list</code>
 
 .terminal[```
