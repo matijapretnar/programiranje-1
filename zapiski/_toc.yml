@@ -7,6 +7,7 @@ parts:
   - file: 03-funkcije.md
   - file: 04-definicije-tipov.md
   - file: 05-induktivni-tipi.md
+  - file: 06-ucinki.md
 - caption: Podatkovne strukture in algoritmi
   chapters:
   - file: 08-iskalna-drevesa.md
