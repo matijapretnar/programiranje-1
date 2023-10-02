@@ -66,11 +66,11 @@ table {
     color: blue;
 }
 
-.good-example {
+.good-example, .good-example code {
     background-color: #ddf !important;
 }
 
-.bad-example {
+.bad-example, .bad-example code {
     background-color: #fdd !important;
 }
 
