@@ -93,7 +93,7 @@ Ko se projekt odpre, lahko normalno uporabljate taske, ki so na voljo na repozit
 
 ### 4\. Preverjanje namestitve
 
-Odprite poljubno OCaml datoteko (recimo [to](https://github.com/matijapretnar/programiranje-1/blob/master/05-uvod-v-ocaml/predavanja/primeri.ml)) in poženite ukaz `Run Tasks` in izberite task `OCaml`.
+Odprite poljubno OCaml datoteko (recimo [to](https://github.com/matijapretnar/programiranje-1/blob/master/02-uvod-v-ocaml/predavanja/primeri.ipynb)) in poženite ukaz `Run Tasks` in izberite task `OCaml`.
 
 V konzolo vpišite `fakulteta 10;;` in preverite, če je rezultat pravilen.
 
