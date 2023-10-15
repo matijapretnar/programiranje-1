@@ -22,6 +22,29 @@ background-size: auto 90%
 
 ---
 
+
+### Python je **proceduralni** &amp; **imperativni** jezik
+
+.source[```python
+fakulteta = 1
+for i in range(1, 11):
+    fakulteta *= i
+```]
+
+Računalniku damo zaporedje ukazov, ki začetno stanje spravijo v želeno stanje.
+
+### OCaml je **funkcijski** &amp; **deklarativni** jezik
+
+.source[```python
+let rec fakulteta n =
+  if n = 0 then 1 else n * fakulteta (n - 1)
+in fakulteta 10
+```]
+
+Želeni rezultat programa opišemo s sestavljanjem funkcij.
+
+---
+
 class: center, middle
 
 ## Delo z OCamlom
