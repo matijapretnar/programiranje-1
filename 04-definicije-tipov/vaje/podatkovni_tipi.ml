@@ -20,7 +20,15 @@
  # dollar_to_euro (Dollar 0.5);;
  - : euro = Euro 0.4305
 [*----------------------------------------------------------------------------*)
+type dollar = Dollar of float
 
+type euro = Euro of float
+
+let dollar_to_euro (d:dollar) = match d with
+  |Dollar d -> Euro (d *. 0.94)
+
+let euro_to_dollar (Euro e) =
+  Dollar (e /. 0.94)
 
 
 (*----------------------------------------------------------------------------*]
@@ -34,7 +42,15 @@
  # to_pound (Yen 100.);;
  - : currency = Pound 0.007
 [*----------------------------------------------------------------------------*)
-
+type currency =
+  |Jen of float
+  |Funt of float
+  |Sv_krona of float
+let to_pound (x:currency) =
+  match x with
+  |Jen x -> Funt (x *. 1.5)
+  |Sv_krona x -> Funt (x*. 1.1)
+  |Funt x -> Funt x
 
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
@@ -56,7 +72,12 @@
 
  Nato napišite testni primer, ki bi predstavljal "[5; true; false; 7]".
 [*----------------------------------------------------------------------------*)
+type intbool_list =
+  |Nil
+  |Int of int * intbool_list
+  |Boo of bool * intbool_list
 
+let test = Int(5, Boo(true, Boo(false, Int(7, Nil))))
 
 
 (*----------------------------------------------------------------------------*]
@@ -65,14 +86,33 @@
  oz. [f_bool].
 [*----------------------------------------------------------------------------*)
 
-let rec intbool_map = ()
+let rec intbool_map f_int f_bool = function
+  | Nil -> Nil
+  | Int(x, xs) -> Int(f_int x, intbool_map f_int f_bool xs)
+  | Boo(x, xs) -> Boo(f_bool x, intbool_map f_int f_bool xs)
 
 (*----------------------------------------------------------------------------*]
  Funkcija [intbool_reverse] obrne vrstni red elementov [intbool_list] seznama.
  Funkcija je repno rekurzivna.
 [*----------------------------------------------------------------------------*)
 
-let rec intbool_reverse = ()
+let rec intbool_reverse list=
+  let rec aux list acc =
+    match list with
+    |Nil -> acc
+    |Int (x,xs) -> aux (xs) (Int(x, acc))
+    |Boo (x,xs) -> aux (xs) (Boo(x, acc))
+  in
+  aux list Nil
+
+let rec intbool_map f_int f_bool (ib_list : intbool_list) =
+  let rec aux (ib_list : intbool_list) (acc : intbool_list) =
+    match ib_list with
+    |Nil -> acc
+    |Int (x, xs) -> aux (xs) (Int(f_int x, acc))
+    |Boo (x, xs) -> aux (xs) (Boo(f_bool x, acc))
+  in
+  intbool_reverse (aux ib_list (Nil))
 
 (*----------------------------------------------------------------------------*]
  Funkcija [intbool_separate ib_list] loči vrednosti [ib_list] v par [list]
@@ -80,7 +120,14 @@ let rec intbool_reverse = ()
  vrednosti. Funkcija je repno rekurzivna in ohranja vrstni red elementov.
 [*----------------------------------------------------------------------------*)
 
-let rec intbool_separate = ()
+let rec intbool_separate iblist =
+       let rec aux iblist ilist blist=
+         match iblist with
+         |Nil -> (ilist, blist)
+         |Int (x,xs) -> aux (xs) (x::ilist) blist
+         |Boo (x,xs) -> aux (xs) ilist (x::blist)
+       in
+       aux (intbool_reverse iblist) [] []
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Določeni ste bili za vzdrževalca baze podatkov za svetovno priznano čarodejsko
@@ -97,7 +144,12 @@ let rec intbool_separate = ()
  raziskovanje oz. historian, teacher in researcher. Definirajte tip
  [specialisation], ki loči med temi zaposlitvami.
 [*----------------------------------------------------------------------------*)
+type magic =
+  |Fire
+  |Frost
+  |Arcane
 
+  type specialisation = Historian | Teacher | Researcher
 
 
 (*----------------------------------------------------------------------------*]
@@ -114,8 +166,13 @@ let rec intbool_separate = ()
  # professor;;
  - : wizard = {name = "Matija"; status = Employed (Fire, Teacher)}
 [*----------------------------------------------------------------------------*)
+type status =
+  |Newbie
+  |Student of magic*int
+  |Employed of magic*specialisation
 
-
+type wizard = {name : string ; status : status}
+let professor = {name = "Matija"; status = Employed(Fire, Teacher)}
 
 (*----------------------------------------------------------------------------*]
  Želimo prešteti koliko uporabnikov posamezne od vrst magije imamo na akademiji.
@@ -127,7 +184,13 @@ let rec intbool_separate = ()
  # update {fire = 1; frost = 1; arcane = 1} Arcane;;
  - : magic_counter = {fire = 1; frost = 1; arcane = 2}
 [*----------------------------------------------------------------------------*)
+type magic_counter = {fire : int ; frost : int ; arcane : int}
 
+let update counter magic =
+  match magic with
+  |Fire -> {counter with fire = counter.fire +1}
+  |Frost -> {counter with frost = counter.frost +1}
+  |Arcane -> {counter with arcane = counter.arcane +1}
 
 
 (*----------------------------------------------------------------------------*]
@@ -138,8 +201,16 @@ let rec intbool_separate = ()
  - : magic_counter = {fire = 3; frost = 0; arcane = 0}
 [*----------------------------------------------------------------------------*)
 
-let rec count_magic = ()
-
+let rec count_magic list =
+       let rec aux counter wlist =
+       match wlist with
+       |[] -> counter
+       |{name; status}::ostali -> (
+              match status with
+              |Newbie -> aux counter ostali
+              |Student (magic, _) -> aux (update counter magic) ostali
+              |Employed (magic, _) -> aux (update counter magic) ostali)
+       in aux {fire = 0; frost = 0; arcane= 0} list
 (*----------------------------------------------------------------------------*]
  Želimo poiskati primernega kandidata za delovni razpis. Študent lahko postane
  zgodovinar po vsaj treh letih študija, raziskovalec po vsaj štirih letih
@@ -154,4 +225,17 @@ let rec count_magic = ()
  - : string option = Some "Jaina"
 [*----------------------------------------------------------------------------*)
 
-let rec find_candidate = ()
+let rec find_candidate rmagic position list =
+       let qulified =
+              match position with
+              | Historian -> 3
+              | Teacher -> 5
+              | Researcher -> 4 
+       in
+
+       match list with
+       | [] -> None
+       | {name; status}::ostali -> 
+              match status with
+              | Student (magic, l) when magic = rmagic && l = qulified -> Some name
+              | _ -> find_candidate rmagic position ostali
