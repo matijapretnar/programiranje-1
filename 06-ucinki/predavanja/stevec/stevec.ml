@@ -1,12 +1,7 @@
 open Vdom
 
-type model = {
-  stevec : int
-}
-
-type msg =
-  | Povecaj
-  | Pomanjsaj
+type model = { stevec : int }
+type msg = Povecaj | Pomanjsaj
 
 let update stari_model msg =
   match msg with
@@ -14,18 +9,17 @@ let update stari_model msg =
   | Pomanjsaj -> { stevec = stari_model.stevec - 1 }
 
 let view model =
-  div [
-    elt "h1" [text (string_of_int model.stevec)];
-    elt "button" ~a:[onclick (fun _ -> Povecaj)] [text "+"];
-    elt "button" ~a:[onclick (fun _ -> Pomanjsaj); disabled (model.stevec <= 0)] [text "-"];
-  ]
+  div
+    [
+      elt "h1" [ text (string_of_int model.stevec) ];
+      elt "button" ~a:[ onclick (fun _ -> Povecaj) ] [ text "+" ];
+      elt "button"
+        ~a:[ onclick (fun _ -> Pomanjsaj); disabled (model.stevec <= 0) ]
+        [ text "-" ];
+    ]
 
 let init = { stevec = 0 }
-
-
-
-let app =
-  simple_app ~init ~view ~update ()
+let app = simple_app ~init ~view ~update ()
 
 let () =
   let open Js_browser in
