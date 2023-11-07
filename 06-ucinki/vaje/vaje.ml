@@ -67,18 +67,10 @@ let beri_niz model =
 let izpisi_rezultat model =
   print_endline "Ne vem, ali je bil niz sprejet ali ne"
 
-let view model =
-  match model.stanje_vmesnika with
-  | SeznamMoznosti -> izpisi_moznosti ()
-  | IzpisAvtomata -> izpisi_avtomat model.avtomat; ZamenjajVmesnik SeznamMoznosti
-  | BranjeNiza -> beri_niz model
-  | RezultatPrebranegaNiza -> izpisi_rezultat model; ZamenjajVmesnik SeznamMoznosti
+let view (model: model) : msg =
+  failwith "TODO"
 
-let init avtomat = {
-  avtomat;
-  stanje_avtomata = avtomat.zacetno_stanje;
-  stanje_vmesnika = SeznamMoznosti
-}
+let init avtomat = failwith "TODO"
 
 let rec main_loop model =
   let msg = view model in
