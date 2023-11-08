@@ -3,10 +3,10 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.8.0
+    format_version: 0.13
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: OCaml 4.11
+  display_name: OCaml default
   language: OCaml
   name: ocaml-jupyter
 ---
@@ -298,12 +298,15 @@ t
 Lahko pa tabelo obrnemo tudi na mestu tako, da prvi element zamenjamo z zadnjim, drugega s predzadnjim in tako naprej do sredine. Pri tem si lahko pomagamo tudi z zanko `for`:
 
 ```{code-cell}
+let zamenjaj tabela i j =
+  let t = tabela.(i) in
+  tabela.(i) <- tabela.(j);
+  tabela.(j) <- t
+
 let obrni_na_mestu tabela =
   let n = Array.length tabela in
   for i = 0 to n / 2 - 1 do
-    let t = tabela.(i) in
-    tabela.(i) <- tabela.(n - i - 1);
-    tabela.(n - i - 1) <- t
+    zamenjaj tabela i (n - i - 1)
   done
 ```
 
@@ -376,16 +379,21 @@ Pri Fisher-Yatesovem algoritmu je treba paziti na pravilno izbiro indeksov, saj 
 Prvi algoritem je _urejanje z izbiranjem_ (oz. _selection sort_), ki deluje tako, da postopoma izbere najmanjši element in ga postavi na prvo mesto, nato izbere naslednji najmanjši element in ga postavi na drugo mesto, in tako naprej. V OCamlu urejanje z izbiranjem napišemo
 
 ```{code-cell}
-
-dva učinkovitejša pa bomo spoznali v naslednjem. Prvi algoritem je _urejanje z izbiranjem_ (oz. _selection sort_), ki deluje tako, da postopoma izbere najmanjši element in ga postavi na prvo mesto, nato izbere naslednji najmanjši element in ga postavi na drugo mesto, in tako naprej. V OCamlu urejanje z izbiranjem napišemo
-
-```{code-cell}
 let uredi_z_izbiranjem tabela =
   let n = Array.length tabela in
   for i = 0 to n - 2 do
-    let j = najmanjsi tabela i (n - 1) in
-    zamenjaj tabela i j
+    let indeks_min = ref i in
+    for j = i + 1 to n - 1 do
+      if tabela.(j) < tabela.(!indeks_min) then indeks_min := j
+    done;
+    zamenjaj tabela i !indeks_min
   done
+```
+
+```{code-cell}
+let t = [|4; 2; 1; 3; 9; 5; 6; 8; 7; 0|] in
+uredi_z_izbiranjem t;
+t
 ```
 
 Drugi algoritem deluje tako, da postopoma zamenjuje pare zaporednih elementov, ki so v napačnem vrstnem redu. Če se na tak način postopoma sprehodimo čez vse pare v tabeli, bo največji element priplaval na zadnje mesto, zaradi česar algoritem imenujemo _urejanje z mehurčki_ (oz. _bubble sort_). Postopek ponovimo na preostalih manjših elementih, s čimer na predzadnje mesto priplava drugi največji element, in tako naprej. V zanko lahko dodamo še pogoj, da se zanka prekine, če v obhodu ni bilo nobenih zamenjav, saj to pomeni, da je tabela že urejena. V OCamlu urejanje z mehurčki napišemo kot:
@@ -399,6 +407,12 @@ let uredi_z_mehurcki tabela =
         zamenjaj tabela j (j + 1)
     done
   done
+```
+
+```{code-cell}
+let t = [|4; 2; 1; 3; 9; 5; 6; 8; 7; 0|] in
+uredi_z_mehurcki t;
+t
 ```
 
 Tretji algoritem pa je _urejanje z vstavljanjem_ (oz. _insertion sort_) in deluje tako, kot urejamo karte pri taroku (za tiste, ki jih urejamo). V roki imamo urejene karte in vsakič, ko dobimo novo, jo postavimo na pravo mesto. Pri urejanju tabel nimamo dveh tabel, temveč eno samo, v kateri na levi strani postopoma gradimo urejeni del, na desni pa so še nerazporejeni elementi. V OCamlu urejanje z vstavljanjem napišemo kot:
@@ -415,6 +429,12 @@ let uredi_z_vstavljanjem tabela =
     done;
     tabela.(!j) <- x
   done
+```
+
+```{code-cell}
+let t = [|4; 2; 1; 3; 9; 5; 6; 8; 7; 0|] in
+uredi_z_vstavljanjem t;
+t
 ```
 
 Spremenljivka `i` beleži indeks elementa `x`, ki mu poskušamo najti mesto v urejenem delu tabele, ki sega od indeksa `0` do vključno indeksa `i - 1`. Začnemo z `i = 1`, saj je ne glede na vrednost prvega elementa del tabele od indeksa `0` do `0` vedno urejen. S spremenljivko `j` se vračamo nazaj po seznamu ter element na mestu `j - 1` zamikamo v desno, dokler ne najdemo elementa, ki je večji od `x`. Na tisti točki z `x` povozimo element na mestu `j - 1`, saj je prejšnji element že prekopiran na mesto `j`. Če bi želeli, bi lahko `x` tako kot pri urejanju z mehurčki zaporedoma menjali z manjšimi elementi, dokler ne najdemo mesta zanj, vendar bi s tem povečali število pisanj v tabelo.
