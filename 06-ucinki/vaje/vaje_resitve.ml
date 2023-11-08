@@ -1,3 +1,23 @@
+(* 
+Če uporabljate spletno verzijo OCamla, potem branje iz standardnega vhoda ne deluje pravilno.
+Standardni vhod lahko simuliramo z prednastavljenimi vrednostmi.
+Odkomentirajte spodnjih nekaj vrstic, ki simulirajo branje prednastavljenega niza.
+*)
+
+let vhod = ref [
+  "1";
+  "1";
+  "2";
+  "000000001";
+  "1"
+]
+
+let read_line () =
+  match !vhod with
+  | [] -> failwith "Ni več vhodnih podatkov"
+  | x :: xs -> vhod := xs; print_endline x; x
+
+
 type stanje = {
   oznaka : string
 }
@@ -13,8 +33,13 @@ let preberi_znak avt q chr =
   let (_, _, q') = List.find (fun (q1, chr', q2) -> q1 = q && chr = chr') avt.prehodi in
   q'
 
+(* String.fold_left je podprt samo od 4.13 naprej *)
+
+let s_fold_left f acc s = 
+  s |> String.to_seq |> Seq.fold_left f acc
+
 let preberi_niz avt q str =
-  String.fold_left (preberi_znak avt) q str
+  s_fold_left (preberi_znak avt) q str
 
 let ali_sprejema_niz avt str =
   let koncno_stanje = preberi_niz avt avt.zacetno_stanje str in
