@@ -98,7 +98,7 @@ internet        |    64 ZB | 150 let
 
 class: question, center, middle
 
-# [<span style="color: blue">Simulator 8-bitnega računalnika</span>](https://schweigi.github.io/assembler-simulator/)
+# [Simulator 8-bitnega računalnika](https://schweigi.github.io/assembler-simulator/)
 
 ---
 
@@ -115,7 +115,7 @@ class: question, center, middle
 #### `MOV A, 42`
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   0  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:   0  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -127,7 +127,7 @@ class: question, center, middle
 ### Vrednost lahko preberemo tudi **iz registra ali pomnilnika**
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   0  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:   0  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -137,7 +137,7 @@ class: question, center, middle
 #### `MOV C, A`
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   2  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:  42  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -149,7 +149,7 @@ class: question, center, middle
 ### Nastavimo lahko tudi **vrednost pomnilnika**
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   2  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:  42  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -159,7 +159,7 @@ class: question, center, middle
 #### `MOV [24], 42`
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   2  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:  42  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -171,7 +171,7 @@ class: question, center, middle
 ### Z operacijo `INC`/`DEC` **povečamo/zmanjšamo** vrednost
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   2  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:  42  │  D:   0  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -181,7 +181,7 @@ class: question, center, middle
 #### `INC D`
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   2  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:  42  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -204,7 +204,7 @@ class: question, center, middle
 ### Z operacijo `ADD`/`SUB` prvi vrednosti **prištejemo/odštejemo** drugo
 
 .mini[```plaintext
-  A:  2  │  B:   0  │  C:   2  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 42  │  B:   0  │  C:  42  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -214,7 +214,7 @@ class: question, center, middle
 #### `ADD A, C`
 
 .mini[```plaintext
-  A:  4  │  B:   0  │  C:   2  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 84  │  B:   0  │  C:  42  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -226,7 +226,7 @@ class: question, center, middle
 ### **Če je rezultat 0**, se nastavi zastavica `Z` (_zero_)
 
 .mini[```plaintext
-  A:  4  │  B:   0  │  C:   2  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
+  A: 84  │  B:   0  │  C:  42  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -236,7 +236,7 @@ class: question, center, middle
 #### `SUB C, [24]`
 
 .mini[```plaintext
-  A:  4  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:1 | C:0
+  A: 84  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -248,7 +248,7 @@ class: question, center, middle
 ### **Če rezultat prečka 0**, se nastavi zastavica `C` (_carry_)
 
 .mini[```plaintext
-  A:  4  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:1 | C:0
+  A: 84  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:1 | C:0
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -258,7 +258,7 @@ class: question, center, middle
 #### `ADD A, 200`
 
 .mini[```plaintext
-  A:  8  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:1
+  A: 28  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:1
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0
@@ -270,7 +270,7 @@ class: question, center, middle
 ### Z operacijo `MUL`/`DIV` register `A` **množimo/delimo** z operandom
 
 .mini[```plaintext
-  A:  8  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:1
+  A: 28  │  B:   0  │  C:   0  │  D:   1  | SP:  29  | IP: ... | Z:0 | C:1
 ───────┬─┴──────────┴──────────┴──────────┴──────────┴─────────┴─────┴─────
     00 |    0     0     0     0     0     0     0     0     0     0
     10 |    0     0     0     0     0     0     0     0     0     0

@@ -162,7 +162,7 @@ Običajne funkcije med števili, nizi, seznami in podobnimi vrednostmi so funkci
 
 ## Standardna knjižnica
 
-Spoznali smo že funkcijo `preslikaj`, ki vzame funkcijo in jo uporabi na vseh elementih seznama. To in še mnogo drugih podobnih funkcij, ki so zelo uporabne pri pisanju programov, najdemo v [standardni knjižnici]((http://caml.inria.fr/pub/docs/manual-ocaml/libref/)), ki je razdeljena na module, na primer:
+Spoznali smo že funkcijo `preslikaj`, ki vzame funkcijo in jo uporabi na vseh elementih seznama. To in še mnogo drugih podobnih funkcij, ki so zelo uporabne pri pisanju programov, najdemo v [standardni knjižnici](http://caml.inria.fr/pub/docs/manual-ocaml/libref/), ki je razdeljena na module, na primer:
 
 - osnovni modul [`Stdlib`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html), ki je vedno naložen in ga ni treba posebej navajati,
 - modul [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html) za delo z nizi,

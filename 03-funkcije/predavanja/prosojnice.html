@@ -10,9 +10,15 @@
 
 class: center, middle
 
-# Funkcije
+# Funkcijsko programiranje
 
 ## Programiranje 1
+
+---
+
+class: center, middle
+
+## Sistem tipov
 
 ---
 
@@ -77,7 +83,7 @@ TypeError: unsupported operand type(s)
 
 ---
 
-### OCamlovi tipi so bogatejši od Pythonovih
+### OCamlovi tipi so **bogatejši** od Pythonovih
 
 .terminal[```
 # [(1, ['a']); (10, []); (0, ['x'; 'y'])];;
@@ -97,7 +103,137 @@ TypeError: unsupported operand type(s)
 
 ---
 
-### Klic funkcije je **repen**, če se izvede zadnji
+class: center, middle
+
+## Ujemanje vzorcev
+
+---
+
+### Ujemanje izvede **prvo** vejo, pri kateri se<br>vrednost **ujema z vzorcem**
+
+```
+match vrednost with
+| vzorec1 -> veja1
+| vzorec2 -> veja2
+| ... -> ...
+```
+
+```
+function
+| vzorec1 -> veja1
+| vzorec2 -> veja2
+| ... -> ...
+```
+
+---
+
+### Vsaka **konstanta** je vzorec
+
+```
+function
+| true -> "res"
+| false -> "ni res"
+```
+
+```
+function
+| 1 -> "ena"
+| 2 -> "dva"
+```
+
+---
+
+### Vzorec `_` se ujema z **vsemi** vrednostim
+
+```
+function
+| 1 -> "ena"
+| 2 -> "dva"
+| _ -> "veliko"
+```
+
+---
+
+### Spremenljivka je vzorec, ki se ujema z **vsemi** vrednosti,<br>ter v veji omogoči **dostop do zajete vrednosti**
+
+```
+function
+| 1 -> "ena"
+| 2 -> "dva"
+| x -> "število " ^ string_of_int x
+```
+
+---
+
+class: question
+
+### **Katera veja** se izvede v spodnjem ujemanju?
+
+```
+let x = 3 in
+match 4 with
+| x -> "Ali se jaz ujemam?"
+| y -> "Ali se šele jaz?"
+```
+
+---
+
+### Vzorec `(v1, v2, ...)` ustreza **naborom**,<br>pri čemer so `v1`, `v2`, … **nadaljnji** vzorci
+
+```
+function
+| (0, 0) -> "izhodišče"
+| (_, 0) -> "abscisa"
+| (0, _) -> "ordinata"
+| (_, _) -> "nekje drugje"
+```
+
+---
+
+### Vzorec `v when pogoj` se ujema le ob **izpolnjenem pogoju**
+
+```
+function
+| (0, 0) -> "izhodišče"
+| (_, 0) -> "abscisa"
+| (0, _) -> "ordinata"
+| (x, y) when x = y -> "diagonala lihih kvadrantov"
+| (_, _) -> "nekje drugje"
+```
+
+#### Zakaj ne pišemo `| (x, x) -> "diagonala lihih kvadrantov"`?
+
+---
+
+### S praznim **seznamom** se ujema `[]`, s sestavljenim pa `v1 :: v2`
+
+```
+function
+| [] -> "prazen"
+| _ :: [] -> "en element"
+| _ :: _ :: [] -> "dva elementa"
+| _ :: _ :: _ -> "vsaj dva elementa"
+```
+
+### Za sezname dane dolžine lahko uporabimo tudi `[v1; v2; ...]`
+
+```
+function
+| [] -> "prazen"
+| [_] -> "en element"
+| [_; _] -> "dva elementa"
+| _ :: _ :: _ -> "vsaj dva elementa"
+```
+
+---
+
+class: center, middle
+
+## Repni klici
+
+---
+
+### Ob klicu funkcije računalnik trenutno delo **odloži na sklad**
 
 .bad-example[```
 let f x = 4 * x
@@ -115,11 +251,9 @@ let h x = 3 * g x
 = 42
 ```
 
-Računalnik mora najprej izračunati rezultat funkcije, zato si delo odloži na sklad.
-
 ---
 
-### Klic funkcije je **repen**, če se izvede zadnji
+### Če je klic funkcije **repen**, lahko delo opravimo sproti
 
 .good-example[```
 let f x = 3 * x
@@ -137,11 +271,9 @@ let h x = g (4 * x)
 = 42
 ```
 
-Računalnik pri repnem klicu lahko delo opravi sproti in mu ga ni treba shranjevati.
-
 ---
 
-### Funkciji, kjer so vsi rekurzivni klici repni, pravimo **repno rekurzivna**
+### Pri rekurzivnih funkcijah velikost sklada **hitro narašča**
 
 .bad-example[```
 let rec dolzina = function
@@ -162,7 +294,7 @@ let rec dolzina = function
 
 ---
 
-### Funkciji, kjer so vsi rekurzivni klici repni, pravimo **repno rekurzivna**
+### Funkciji, kjer so vsi rekurzivni klici repni,<br>pravimo **repno rekurzivna**
 
 .good-example[```
 let rec dolzina' acc = function
@@ -186,7 +318,7 @@ let rec dolzina' acc = function
 class: center, middle, question
 
 ## `vsota` in `preslikaj`
-### pretvori v repno rekurzijo
+### pretvori v repno rekurzivno
 
 ---
 
@@ -207,6 +339,12 @@ let rec f x y =
 # f 0 10000000;;
 - : int = 10000000
 ```]
+
+---
+
+class: center, middle, question
+
+## repna rekurzija v zbirniku
 
 ---
 
@@ -232,7 +370,7 @@ RecursionError: maximum recursion depth exceeded
 
 ---
 
-### Če rekurzija ni repna, lahko prekoračimo sklad
+### Tudi v OCamlu bomo **prekoračili sklad**, če rekurzija ne bo repna
 
 .source[```
 let rec f y =
@@ -252,25 +390,10 @@ Stack overflow during evaluation
 
 ---
 
-### Python je **proceduralni** &amp; **imperativni** jezik
+class: center, middle
 
-.source[```python
-fakulteta = 1
-for i in range(1, 11):
-    fakulteta *= i
-```]
+## Funkcije višjega reda
 
-Računalniku damo zaporedje ukazov, ki začetno stanje spravijo v želeno stanje.
-
-### OCaml je **funkcijski** &amp; **deklarativni** jezik
-
-.source[```python
-let rec fakulteta n =
-  if n = 0 then 1 else n * fakulteta (n - 1)
-in fakulteta 10
-```]
-
-Želeni rezultat programa opišemo s sestavljanjem funkcij.
 ---
 
 ### Nekatere funkcije za argumente sprejemajo druge funkcije
@@ -288,9 +411,17 @@ val trikrat : ('a -> 'a) -> 'a -> 'a = <fun>
 
 ### Takim funkcijam pravimo, da so **višjega reda**
 
+#### funkcija prvega reda … funkcija, ki sprejema osnovne vrednosti<br>funkcija reda \\(n\\) … funkcija, ki sprejema funkcije reda \\(n - 1\\)
+
 ---
 
-### Anonimne funkcije pišemo kot `fun x -> ...`
+class: center, middle, question
+
+## [zanimivi](https://math.andrej.com/2006/03/21/interesting-higher-order-functionals/) primeri funkcij višjega reda
+
+---
+
+### **Anonimne funkcije** pišemo kot `fun x -> ...`
 
 .terminal[```
 # let moja_funkcija x = 2 * x + 1;;
@@ -311,7 +442,27 @@ val moja_funkcija' : int -> int = <fun>
 
 ---
 
-### Ne boste verjeli, kaj se je zgodilo, ko so<br>funkciji dveh argumentov podali le enega!
+### **Vgrajene funkcije** kličemo z `Modul.funkcija`
+
+.terminal[```
+# List.map String.length ["Ti"; "si"; "konj"];;
+- : int list = [2; 2; 4]
+```]
+
+- osnovni modul [`Stdlib`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html)
+- modul za nize [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html)
+- modul za sezname [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
+- seznam [vseh modulov](http://caml.inria.fr/pub/docs/manual-ocaml/libref/) v standardni knjižnici
+
+---
+
+class: center, middle
+
+## Curryi<sup>?</sup>ranje
+
+---
+
+### Kaj se zgodi, če funkciji **dveh argumentov** podamo le **enega**?
 
 .source[```
 let zmnozi x y = x * y
@@ -326,11 +477,11 @@ let zmnozi x y = x * y
 
 --
 
-### Ne dobimo napake, temveč novo **funkcijo**
+### Ne dobimo napake, temveč **novo funkcijo**
 
 ---
 
-### Kakšno funkcijo dobimo?
+### **Kakšno** funkcijo dobimo?
 
 .terminal[```
 # let f = zmnozi 2;;
@@ -365,7 +516,7 @@ class: center, middle
 
 - - -
 
-### Takim funkcijam rečemo **curryirane** ([H. Curry](https://en.wikipedia.org/wiki/Haskell_Curry))
+### Takim funkcijam rečemo **curryi<sup>?</sup>rane** ([H. Curry](https://en.wikipedia.org/wiki/Haskell_Curry))
 
 ---
 
@@ -403,7 +554,7 @@ val zmnozi' : int * int -> int = <fun>
 
 ---
 
-### Uporaba delno uporabljenih funkcij
+### Curryirane funkcije lahko **delno uporabimo**
 
 .terminal[```
 # preslikaj (zmnozi 2) [10; 20; 30];;
@@ -418,26 +569,30 @@ val zmnozi' : int * int -> int = <fun>
 
 ---
 
-### Tipa `A * B -> C` in `A -> B -> C` sta izomorfna
+### Tipa `A * B -> C` in `A -> B -> C` sta **izomorfna**
 
 .terminal[```
 # let curry f = fun x y -> f (x, y);;
-val curry :
-  ('a * 'b -> 'c) -> 'a -> 'b -> 'c = <fun>
+val curry : ('a * 'b -> 'c) -> 'a -> 'b -> 'c = <fun>
 
 # let uncurry g = fun (x, y) -> g x y;;
-val uncurry :
-  ('a -> 'b -> 'c) -> 'a * 'b -> 'c = <fun>```]
+val uncurry : ('a -> 'b -> 'c) -> 'a * 'b -> 'c = <fun>```]
 
 ### $$C^{A \times B} \cong (C^B)^A$$
 
 ### $$curry \colon C^{A \times B} \to (C^B)^A, uncurry \colon (C^B)^A \to C^{A \times B}$$
 
-### Postopku pravimo **curryiranje**
+### Postopku pravimo **curryi<sup>?</sup>ranje**, obratu **razcurryi<sup>?</sup>ranje**
 
 ---
 
-### Veliko funkcij na seznamih ima enako strukturo
+class: center, middle
+
+## `fold`
+
+---
+
+### Veliko funkcij na seznamih ima **enako strukturo**
 
 .source[```
 let rec vsota = function
@@ -455,7 +610,7 @@ let rec vsota = function
 
 ---
 
-### Veliko funkcij na seznamih ima enako strukturo
+### Veliko funkcij na seznamih ima **enako strukturo**
 
 .source[```
 let rec produkt = function
@@ -473,7 +628,7 @@ let rec produkt = function
 
 ---
 
-### Veliko funkcij na seznamih ima enako strukturo
+### Veliko funkcij na seznamih ima **enako strukturo**
 
 .source[```
 let rec dolzina = function
@@ -491,7 +646,7 @@ let rec dolzina = function
 
 ---
 
-### Veliko funkcij na seznamih ima enako strukturo
+### Veliko funkcij na seznamih ima **enako strukturo**
 
 .source[```
 let rec preslikaj f = function
@@ -509,7 +664,7 @@ let rec preslikaj f = function
 
 ---
 
-### Splošni vzorec zajame funkcija `zlozi_desno`
+### **Splošni vzorec** zajame funkcija `zlozi_desno`
 
 .source[```
 let rec zlozi_desno f xs z = match xs with
@@ -536,7 +691,7 @@ class: question, center, middle
 
 ---
 
-### Z druge strani zlaga `zlozi_levo`
+### **Z druge strani** zlaga `zlozi_levo`
 
 ```
   zlozi_desno f [1; 2; 3] z
@@ -554,6 +709,8 @@ class: question, center, middle
 = (f (f (f z 1) 2) 3)
 ```
 
+#### `zlozi_levo` je tudi repno rekurzivna
+
 ---
 
 class: question, center, middle
@@ -570,20 +727,6 @@ class: question, center, middle
 # zlozi_levo (fun xs x -> x :: xs) [] [1; 2; 3];;
 - : int list = [3; 2; 1]
 ```]
-
----
-
-### Vgrajene funkcije kličemo z `Modul.funkcija`
-
-.terminal[```
-# List.map String.length ["Ti"; "si"; "konj"];;
-- : int list = [2; 2; 4]
-```]
-
-- osnovni modul [`Stdlib`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html)
-- modul za nize [`String`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html)
-- modul za sezname [`List`](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
-- seznam [vseh modulov](http://caml.inria.fr/pub/docs/manual-ocaml/libref/) v standardni knjižnici
 
 </textarea>
 <script src="../../pomozno/prosojnice.js"></script>

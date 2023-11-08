@@ -51,6 +51,10 @@ a.reveal:hover {
     background-color: black;
 }
 
+.question a {
+    color: lightblue;
+}
+
 table {
     margin: auto;
     font-size: 1.5em;
@@ -75,13 +79,14 @@ table {
 }
 
 .terminal code {
+    filter: invert(1);
     border-radius: 10px;
-    background-color: #222 !important;
 }
 
 .terminal code * {
-    color: white !important;
-    font-weight: normal;
+    /* color: white; */
+    /* font-weight: normal; */
+    text-shadow: 0 0 1px;
 }
 
 .handwritten h1 {
