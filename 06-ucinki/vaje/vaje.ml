@@ -106,7 +106,7 @@ let init avtomat = {
 let rec main_loop model =
   let msg = view model in
   let model' = update model msg in
-  main_loop model'
+  main_loop model' 
 
 let vsebuje_samo_nicle =
   let ima_enke = { oznaka = "ima 1" }
