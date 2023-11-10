@@ -62,19 +62,17 @@ let rec izpisi_moznosti () =
       izpisi_moznosti ()
 
 let izpisi_avtomat avtomat =
-  print_endline "STANJA:";
-  print_endline "->(A)";
-  (* začetno stanje *)
-  print_endline " ((B))";
-  (* stanje, ki je sprejemno *)
-  print_endline "  (C)";
-  (* še eno stanje, ki ni sprejemno *)
-  print_endline " ((D))";
-  (* in še eno stanje, ki je sprejemno *)
-  print_endline "PREHODI:";
-  print_endline "  (A)--[0]->(B)";
-  print_endline "  (A)--[1]->(C)";
-  print_endline "  (A)--[0]->(D)"
+  let izpisi_stanje stanje =
+    let prikaz = stanje.oznaka in
+    let prikaz =
+      if stanje = avtomat.zacetno_stanje then "-> " ^ prikaz else prikaz
+    in
+    let prikaz =
+      if List.mem stanje avtomat.sprejemna_stanja then prikaz ^ " +" else prikaz
+    in
+    print_endline prikaz
+  in
+  List.iter izpisi_stanje avtomat.stanja
 
 let beri_niz model =
   print_string "Vnesi niz > ";
@@ -82,10 +80,27 @@ let beri_niz model =
   PreberiNiz str
 
 let izpisi_rezultat model =
-  print_endline "Ne vem, ali je bil niz sprejet ali ne"
+  if List.mem model.stanje_avtomata model.avtomat.sprejemna_stanja then
+    print_endline "Niz je bil sprejet"
+  else print_endline "Niz ni bil sprejet"
 
-let view (model : model) : msg = failwith "TODO"
-let init avtomat = failwith "TODO"
+let view model =
+  match model.stanje_vmesnika with
+  | SeznamMoznosti -> izpisi_moznosti ()
+  | IzpisAvtomata ->
+      izpisi_avtomat model.avtomat;
+      ZamenjajVmesnik SeznamMoznosti
+  | BranjeNiza -> beri_niz model
+  | RezultatPrebranegaNiza ->
+      izpisi_rezultat model;
+      ZamenjajVmesnik SeznamMoznosti
+
+let init avtomat =
+  {
+    avtomat;
+    stanje_avtomata = avtomat.zacetno_stanje;
+    stanje_vmesnika = SeznamMoznosti;
+  }
 
 let rec main_loop model =
   let msg = view model in
