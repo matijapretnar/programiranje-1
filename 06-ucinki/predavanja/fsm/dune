@@ -1,0 +1,7 @@
+(executable
+ (name fsm)
+ (libraries vdom)
+ (modes js)
+ (promote
+  (until-clean)
+  (only fsm.bc.js)))

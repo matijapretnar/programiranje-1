@@ -23,6 +23,35 @@ background-size: auto 90%
 ---
 
 
+### Python je **proceduralni** &amp; **imperativni** jezik
+
+.source[```python
+fakulteta = 1
+for i in range(1, 11):
+    fakulteta *= i
+```]
+
+Računalniku damo zaporedje ukazov, ki začetno stanje spravijo v želeno stanje.
+
+### OCaml je **funkcijski** &amp; **deklarativni** jezik
+
+.source[```python
+let rec fakulteta n =
+  if n = 0 then 1 else n * fakulteta (n - 1)
+in fakulteta 10
+```]
+
+Želeni rezultat programa opišemo s sestavljanjem funkcij.
+
+---
+
+class: center, middle
+
+## Delo z OCamlom
+
+---
+
+
 ### Naš **prvi program** v OCamlu
 
 .terminal[```
@@ -96,6 +125,12 @@ val se_boljsi_odgovor : int = 43
 # let najboljsi_odgovor = se_boljsi_odgovor + 1;;
 val najboljsi_odgovor : int = 44
 ```]
+
+---
+
+class: center, middle
+
+## Osnovne vrednosti
 
 ---
 
@@ -196,6 +231,12 @@ Error: This expression has type float but an
 # 'a';;
 - : char = 'a'
 ```]
+
+---
+
+class: center, middle
+
+## Funkcije
 
 ---
 
@@ -337,6 +378,12 @@ and je_liho = function
 
 ---
 
+class: center, middle
+
+## Sestavljene vrednosti
+
+---
+
 ### **Nabori** imajo tip <code>tip<sub>1</sub> \* tip<sub>2</sub> \* … \* tip<sub>n</sub></code>
 
 .terminal[```
@@ -428,6 +475,12 @@ Exception: Invalid_argument "index out of bounds".
 
 ---
 
+class: center, middle
+
+## Seznami
+
+---
+
 class: question, center
 
 
@@ -486,6 +539,12 @@ class: question, center, middle
 
 ---
 
+class: center, middle
+
+## Polimorfizem
+
+---
+
 ### Kaj je tip funkcije `@`?
 
 .terminal[```
@@ -518,7 +577,7 @@ int list list -> int list list -> int list list
 
 ---
 
-### Vrednostim, ki imajo v tipih spremenljivke, pravimo **parametrično polimorfne**
+### Vrednostim, ki se pri vseh tipih obnašajo enako,<br>pravimo **parametrično polimorfne**
 
 .terminal[```
 # (@);;
@@ -533,6 +592,8 @@ int list list -> int list list -> int list list
 # [];;
 - : 'a list = []
 ```]
+
+#### Če funkcija deluje na več tipih, vendar različno, govorimo o **ad-hoc** polimorfizmu (npr. `+` v Pythonu)
 
 ---
 
