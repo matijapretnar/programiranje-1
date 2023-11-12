@@ -7,23 +7,25 @@ type avtomat = {
   prehodi : (stanje * char * stanje) list;
 }
 
-let preberi_znak avt q chr =
+let preberi_znak avtomat q znak =
   match
-    List.find_opt (fun (q1, chr', _q2) -> q1 = q && chr = chr') avt.prehodi
+    List.find_opt
+      (fun (q1, znak', _q2) -> q1 = q && znak = znak')
+      avtomat.prehodi
   with
   | None -> None
   | Some (_, _, q') -> Some q'
 
-let preberi_niz avt q str =
-  let aux acc chr =
-    match acc with None -> None | Some q -> preberi_znak avt q chr
+let preberi_niz avtomat q niz =
+  let aux acc znak =
+    match acc with None -> None | Some q -> preberi_znak avtomat q znak
   in
-  str |> String.to_seq |> Seq.fold_left aux (Some q)
+  niz |> String.to_seq |> Seq.fold_left aux (Some q)
 
-let ali_sprejema_niz avt str =
-  match preberi_niz avt avt.zacetno_stanje str with
+let ali_sprejema_niz avtomat niz =
+  match preberi_niz avtomat avtomat.zacetno_stanje niz with
   | None -> false
-  | Some koncno_stanje -> List.mem koncno_stanje avt.sprejemna_stanja
+  | Some koncno_stanje -> List.mem koncno_stanje avtomat.sprejemna_stanja
 
 let ravno_prav_nicel =
   let q0 = { oznaka = "q0" }

@@ -1,198 +1,216 @@
 open Vdom
 open Model
+open Vektor
+
+module Parametri = struct
+  let barva_sprejemnega_stanja = "green"
+  let barva_trenutnega_stanja = "yellow"
+  let barva_zacetnega_stanja = "blue"
+  let debelina_crt = 2.
+  let dolzina_konice = 10.
+  let dolzina_puscice_zacetnega_stanja = 20.
+  let naklon_konice = 0.4
+  let polmer_oznake = 10.
+  let polmer_sprejemnega_stanja = 5.
+  let polmer_stanja = 20.
+  let polmer_zanke = 25.
+  let privzeta_barva_crt = "black"
+  let privzeta_barva_polnila = "white"
+end
 
 let int_of_float_attr tag value = int_attr tag (int_of_float value)
 
-type config = {
-  final_offset : float;
-  initial_state_arrow_length : float;
-  label_radius : float;
-  loop_radius : float;
-  state_radius : float;
-  transition_color : string;
-  transition_width : float;
-}
-
-let config =
-  {
-    final_offset = 2.;
-    initial_state_arrow_length = 30.;
-    label_radius = 10.;
-    loop_radius = 25.;
-    state_radius = 10.;
-    transition_color = "black";
-    transition_width = 2.;
-  }
-
-let svg_circle ?(a = []) center radius =
+let svg_krog ?(a = []) sredisce polmer =
   svg_elt "circle"
     ~a:
       ([
-         int_of_float_attr "cx" center.x;
-         int_of_float_attr "cy" center.y;
-         int_of_float_attr "r" radius;
+         int_of_float_attr "cx" sredisce.x;
+         int_of_float_attr "cy" sredisce.y;
+         int_of_float_attr "r" polmer;
        ]
       @ a)
     []
 
-let svg_line ?(a = []) source target =
+let svg_daljica ?(a = []) zacetek konec =
   svg_elt "line"
     ~a:
       ([
-         int_of_float_attr "x1" source.x;
-         int_of_float_attr "y1" source.y;
-         int_of_float_attr "x2" target.x;
-         int_of_float_attr "y2" target.y;
+         int_of_float_attr "x1" zacetek.x;
+         int_of_float_attr "y1" zacetek.y;
+         int_of_float_attr "x2" konec.x;
+         int_of_float_attr "y2" konec.y;
        ]
       @ a)
     []
 
-let svg_arrow ?(a = []) ?(slope = 0.4) ?(size = 10.) source target =
-  let vec = target --. source in
-  let norm = { x = -.vec.y; y = vec.x } in
-  let ltipvec = midpoint ~lambda:slope (-1. **. vec) norm in
-  let rtipvec = midpoint ~lambda:slope (-1. **. vec) (-1. **. norm) in
-  let ltip = target ++. (size **. normalize ltipvec) in
-  let rtip = target ++. (size **. normalize rtipvec) in
+let svg_puscica ?(a = []) zacetek konec =
+  let vektor = konec --. zacetek in
+  let normala = { x = -.vektor.y; y = vektor.x } in
+  let vektor_leve_konice =
+    sredina ~lambda:Parametri.naklon_konice (-1. **. vektor) normala
+  in
+  let vektor_desne_konice =
+    sredina ~lambda:Parametri.naklon_konice (-1. **. vektor) (-1. **. normala)
+  in
+  let leva_konica =
+    konec ++. (Parametri.dolzina_konice **. normiraj vektor_leve_konice)
+  in
+  let desna_konica =
+    konec ++. (Parametri.dolzina_konice **. normiraj vektor_desne_konice)
+  in
   svg_elt "g"
     [
-      svg_line ~a source target;
-      svg_line ~a target ltip;
-      svg_line ~a target rtip;
+      svg_daljica ~a zacetek konec;
+      svg_daljica ~a konec leva_konica;
+      svg_daljica ~a konec desna_konica;
     ]
 
-let svg_text ?(a = []) position label =
+let svg_oznaka ?(a = []) polozaj besedilo =
   svg_elt "text"
     ~a:
       ([
-         int_of_float_attr "x" position.x;
-         int_of_float_attr "y" position.y;
+         int_of_float_attr "x" polozaj.x;
+         int_of_float_attr "y" polozaj.y;
          attr "text-anchor" "middle";
          attr "dominant-baseline" "central";
        ]
       @ a)
-    [ text label ]
+    [ text besedilo ]
 
-let view_state model state =
-  let position = state_position model state in
-  let state_color =
-    if state = model.fsm.zacetno_stanje then "green"
-    else if List.mem state model.fsm.sprejemna_stanja then "blue"
-    else "red"
+let prikaz_stanja model q =
+  let polozaj = polozaj_stanja model q in
+  let barva_robu =
+    if q = model.avtomat.zacetno_stanje then Parametri.barva_zacetnega_stanja
+    else if List.mem q model.avtomat.sprejemna_stanja then
+      Parametri.barva_sprejemnega_stanja
+    else Parametri.privzeta_barva_crt
   in
-  let fill_color = if state = model.current_state then "yellow" else "white" in
-  let elements =
+  let barva_polnila =
+    if q = model.stanje_avtomata then Parametri.barva_trenutnega_stanja
+    else Parametri.privzeta_barva_polnila
+  in
+  let svg_elementi =
     [
-      svg_circle
-        ~a:[ attr "stroke" state_color; attr "fill" fill_color ]
-        position config.state_radius;
-      svg_text position state.oznaka;
+      svg_krog
+        ~a:[ attr "stroke" barva_robu; attr "fill" barva_polnila ]
+        polozaj Parametri.polmer_stanja;
+      svg_oznaka polozaj q.oznaka;
     ]
   in
-  let elements =
-    if state = model.fsm.zacetno_stanje then
-      svg_arrow
-        ~a:[ float_attr "stroke-width" 2.; attr "stroke" "black" ]
-        (position
+  let svg_elementi =
+    if q = model.avtomat.zacetno_stanje then
+      svg_puscica
+        ~a:[ attr "stroke" Parametri.barva_zacetnega_stanja ]
+        (polozaj
         --. {
-              x = config.state_radius +. config.initial_state_arrow_length;
-              y = 0.1;
+              x =
+                Parametri.polmer_stanja
+                +. Parametri.dolzina_puscice_zacetnega_stanja;
+              y = 0.;
             })
-        (position --. { x = config.state_radius; y = 0.1 })
-      :: elements
-    else elements
+        (polozaj --. { x = Parametri.polmer_stanja; y = 0. })
+      :: svg_elementi
+    else svg_elementi
   in
-  let elements =
-    if List.mem state model.fsm.sprejemna_stanja then
-      elements
+  let svg_elementi =
+    if List.mem q model.avtomat.sprejemna_stanja then
+      svg_elementi
       @ [
-          svg_circle
-            ~a:[ attr "stroke" state_color; attr "fill" "none" ]
-            position
-            (config.state_radius -. config.final_offset);
+          svg_krog
+            ~a:[ attr "fill" "none" ]
+            polozaj
+            (Parametri.polmer_stanja -. Parametri.polmer_sprejemnega_stanja);
         ]
-    else elements
+    else svg_elementi
   in
 
   svg_elt "g"
-    ~a:[ onmousedown ~prevent_default:() (fun _ -> DragStart state) ]
-    elements
+    ~a:[ onmousedown ~prevent_default:() (fun _ -> ZacniPremikVozlisca q) ]
+    svg_elementi
 
-let view_loop source label =
-  let label_pos = source --. { x = 0.; y = 2. *. config.loop_radius } in
+let prikaz_zanke zacetek oznaka =
+  let polozaj_oznake =
+    zacetek --. { x = 0.; y = 2. *. Parametri.polmer_zanke }
+  in
   svg_elt "g"
     [
-      svg_arrow
-        ~a:
-          [
-            float_attr "stroke-width" config.transition_width;
-            attr "stroke" config.transition_color;
-          ]
-        ~slope:0.5
-        (source ++. { x = config.state_radius +. 2.; y = -3. })
-        (source ++. { x = config.state_radius; y = -2. });
-      svg_circle
-        ~a:[ attr "stroke" "black"; attr "fill" "none" ]
-        (source --. { x = 0.; y = config.loop_radius })
-        config.loop_radius;
-      svg_circle ~a:[ attr "fill" "white" ] label_pos config.label_radius;
-      svg_text label_pos label;
+      svg_puscica
+        ~a:[ attr "stroke" Parametri.privzeta_barva_crt ]
+        (zacetek ++. { x = Parametri.polmer_stanja +. 2.; y = -3. })
+        (zacetek ++. { x = Parametri.polmer_stanja; y = -2. });
+      svg_krog
+        ~a:[ attr "stroke" Parametri.privzeta_barva_crt; attr "fill" "none" ]
+        (zacetek --. { x = 0.; y = Parametri.polmer_zanke })
+        Parametri.polmer_zanke;
+      svg_oznaka polozaj_oznake oznaka;
     ]
 
-let view_transition source destination label =
-  let lambda = config.state_radius /. distance source destination in
-  let sour = midpoint ~lambda source destination in
-  let targ = midpoint ~lambda:(1. -. lambda) source destination in
-  let label_pos = midpoint ~lambda:0.3 source destination in
+let prikaz_prehoda zacetek konec oznaka =
+  let lambda = Parametri.polmer_stanja /. razdalja zacetek konec in
+  let zacetek_puscice = sredina ~lambda zacetek konec in
+  let konec_puscice = sredina ~lambda:(1. -. lambda) zacetek konec in
+  let polozaj_oznake = sredina ~lambda:0.3 zacetek konec in
   svg_elt "g"
     [
-      svg_arrow
+      svg_puscica
         ~a:
           [
-            float_attr "stroke-width" config.transition_width;
-            attr "stroke" config.transition_color;
+            int_of_float_attr "stroke-width" Parametri.debelina_crt;
+            attr "stroke" Parametri.privzeta_barva_crt;
           ]
-        sour targ;
-      svg_circle ~a:[ attr "fill" "white" ] label_pos config.label_radius;
-      svg_text label_pos label;
+        zacetek_puscice konec_puscice;
+      svg_krog ~a:[ attr "fill" "white" ] polozaj_oznake Parametri.polmer_oznake;
+      svg_oznaka polozaj_oznake oznaka;
     ]
 
-let view_fsm model =
-  let state_els = List.map (view_state model) model.fsm.stanja in
-  let transition_els =
+let prikaz_znakov model =
+  elt "h1"
+    [
+      text (model.prebrani_znaki |> List.to_seq |> String.of_seq);
+      text (">" ^ (model.neprebrani_znaki |> List.to_seq |> String.of_seq));
+    ]
+
+let prikaz_avtomata model =
+  let stanja = List.map (prikaz_stanja model) model.avtomat.stanja in
+  let prehodi =
     List.map
       (fun (src, chr, dst) ->
-        let label = String.make 1 chr in
-        if src = dst then view_loop (state_position model src) label
+        let svg_oznaka = String.make 1 chr in
+        if src = dst then prikaz_zanke (polozaj_stanja model src) svg_oznaka
         else
-          view_transition (state_position model src) (state_position model dst)
-            label)
-      model.fsm.prehodi
+          prikaz_prehoda (polozaj_stanja model src) (polozaj_stanja model dst)
+            svg_oznaka)
+      model.avtomat.prehodi
   in
-  transition_els @ state_els
-
-let view model =
-  let drag =
-    match model.mode with
-    | Dragging _ ->
+  let a =
+    match model.nacin with
+    | PremikanjeVozlisca _ ->
         [
-          onmousemove (fun ev -> DragMove { x = ev.x; y = ev.y });
-          onmouseup (fun _ -> DragEnd);
+          onmousemove (fun ev -> PremakniVozlisce { x = ev.x; y = ev.y });
+          onmouseup (fun _ -> KoncajPremikVozlisca);
         ]
     | _ -> []
   in
+  svg_elt "svg"
+    ~a:
+      (a
+      @ [
+          int_of_float_attr "width" model.sirina;
+          int_of_float_attr "height" model.visina;
+          int_of_float_attr "stroke-width" Parametri.debelina_crt;
+        ])
+    (prehodi @ stanja)
+
+let view model =
   elt "article"
     [
-      elt "h1" [ text (model.characters |> List.to_seq |> String.of_seq) ];
-      svg_elt "svg"
-        ~a:
-          (drag
-          @ [
-              int_of_float_attr "width" model.width;
-              int_of_float_attr "height" model.height;
-            ])
-        (view_fsm model);
+      prikaz_znakov model;
+      prikaz_avtomata model;
       elt "button"
-        ~a:[ onclick (fun _ -> Next); disabled (model.characters = []) ]
-        [ text "next" ];
+        ~a:
+          [
+            onclick (fun _ -> PreberiNaslednjiZnak);
+            disabled (model.neprebrani_znaki = []);
+          ]
+        [ text "preberi naslednji znak" ];
     ]

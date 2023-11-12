@@ -82,9 +82,9 @@ let init avtomat =
     stanje_vmesnika = SeznamMoznosti;
   }
 
-let rec main_loop model =
+let rec loop model =
   let msg = view model in
   let model' = update model msg in
-  main_loop model'
+  loop model'
 
-let _ = main_loop (init ravno_prav_nicel)
+let _ = loop (init ravno_prav_nicel)
