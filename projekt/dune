@@ -1,7 +1,18 @@
+(library
+ (name avtomat)
+ (modules avtomat))
+
 (executable
  (name spletniVmesnik)
- (libraries vdom)
+ (libraries vdom avtomat)
+ (modules model spletniVmesnik view)
  (modes js)
  (promote
   (until-clean)
   (only spletniVmesnik.bc.js)))
+
+(executable
+ (name tekstovniVmesnik)
+ (libraries avtomat)
+ (modules tekstovniVmesnik)
+ (promote (until-clean)))

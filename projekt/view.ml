@@ -76,8 +76,8 @@ let svg_text ?(a = []) position label =
 let view_state model state =
   let position = state_position model state in
   let state_color =
-    if state = model.fsm.initial then "green"
-    else if List.mem state model.fsm.final then "blue"
+    if state = model.fsm.zacetno_stanje then "green"
+    else if List.mem state model.fsm.sprejemna_stanja then "blue"
     else "red"
   in
   let fill_color = if state = model.current_state then "yellow" else "white" in
@@ -86,11 +86,11 @@ let view_state model state =
       svg_circle
         ~a:[ attr "stroke" state_color; attr "fill" fill_color ]
         position config.state_radius;
-      svg_text position state.name;
+      svg_text position state.oznaka;
     ]
   in
   let elements =
-    if state = model.fsm.initial then
+    if state = model.fsm.zacetno_stanje then
       svg_arrow
         ~a:[ float_attr "stroke-width" 2.; attr "stroke" "black" ]
         (position
@@ -103,7 +103,7 @@ let view_state model state =
     else elements
   in
   let elements =
-    if List.mem state model.fsm.final then
+    if List.mem state model.fsm.sprejemna_stanja then
       elements
       @ [
           svg_circle
@@ -158,7 +158,7 @@ let view_transition source destination label =
     ]
 
 let view_fsm model =
-  let state_els = List.map (view_state model) model.fsm.states in
+  let state_els = List.map (view_state model) model.fsm.stanja in
   let transition_els =
     List.map
       (fun (src, chr, dst) ->
@@ -167,7 +167,7 @@ let view_fsm model =
         else
           view_transition (state_position model src) (state_position model dst)
             label)
-      model.fsm.transitions
+      model.fsm.prehodi
   in
   transition_els @ state_els
 
