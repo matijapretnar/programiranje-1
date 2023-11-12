@@ -164,11 +164,16 @@ let prikaz_prehoda zacetek konec oznaka =
     ]
 
 let prikaz_znakov model =
-  elt "h1"
-    [
-      text (model.prebrani_znaki |> List.to_seq |> String.of_seq);
-      text (">" ^ (model.neprebrani_znaki |> List.to_seq |> String.of_seq));
-    ]
+  match model.nacin with
+  | VnasanjeNiza ->
+      elt "h1" [ input ~a:[ onchange (fun niz -> VnesiNiz niz) ] [] ]
+  | _ ->
+      elt "h1"
+        ~a:[ ondblclick (fun _ -> ZacniVnosNiza) ]
+        [
+          text (model.prebrani_znaki |> List.to_seq |> String.of_seq);
+          text (">" ^ (model.neprebrani_znaki |> List.to_seq |> String.of_seq));
+        ]
 
 let prikaz_avtomata model =
   let stanja = List.map (prikaz_stanja model) model.avtomat.stanja in

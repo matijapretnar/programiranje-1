@@ -1,6 +1,6 @@
 open Avtomat
 
-type nacin = Normal | PremikanjeVozlisca of stanje
+type nacin = PrivzetNacin | VnasanjeNiza | PremikanjeVozlisca of stanje
 
 type model = {
   avtomat : avtomat;
@@ -22,7 +22,7 @@ let init sirina visina avtomat string =
   {
     avtomat;
     polozaji;
-    nacin = Normal;
+    nacin = PrivzetNacin;
     sirina;
     visina;
     prebrani_znaki = [];
@@ -35,6 +35,8 @@ type msg =
   | ZacniPremikVozlisca of stanje
   | PremakniVozlisce of Vektor.t
   | KoncajPremikVozlisca
+  | ZacniVnosNiza
+  | VnesiNiz of string
 
 let polozaj_stanja model q = List.assoc q model.polozaji
 
@@ -63,5 +65,14 @@ let update model = function
               model.polozaji
           in
           { model with polozaji }
-      | Normal -> model)
-  | KoncajPremikVozlisca -> { model with nacin = Normal }
+      | _ -> model)
+  | KoncajPremikVozlisca -> { model with nacin = PrivzetNacin }
+  | ZacniVnosNiza -> { model with nacin = VnasanjeNiza }
+  | VnesiNiz niz ->
+      {
+        model with
+        stanje_avtomata = model.avtomat.zacetno_stanje;
+        neprebrani_znaki = niz |> String.to_seq |> List.of_seq;
+        prebrani_znaki = [];
+        nacin = PrivzetNacin;
+      }
