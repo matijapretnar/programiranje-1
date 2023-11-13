@@ -3,7 +3,7 @@ open Vdom
 
 let app =
   simple_app
-    ~init:(init 500. 500. Avtomat.ravno_prav_nicel "001010101011")
+    ~init:(init 500. 500. Avtomat.enke_1mod3)
     ~view:View.view ~update ()
 
 let () =
@@ -12,10 +12,11 @@ let () =
     Vdom_blit.run app |> Vdom_blit.dom
     |> Js_browser.Element.append_child
          (match
-            Js_browser.Document.get_element_by_id Js_browser.document
+            Js_browser.Document.get_elements_by_class_name Js_browser.document
               "container"
+            |> Array.to_list
           with
-         | Some element -> element
-         | None -> Js_browser.Document.document_element Js_browser.document)
+         | element :: _ -> element
+         | [] -> Js_browser.Document.document_element Js_browser.document)
   in
   Window.set_onload window run

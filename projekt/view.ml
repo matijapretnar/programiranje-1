@@ -4,9 +4,9 @@ open Vektor
 
 module Parametri = struct
   let barva_sprejemnega_stanja = "green"
-  let barva_trenutnega_stanja = "yellow"
-  let barva_zacetnega_stanja = "blue"
-  let debelina_crt = 2.
+  let barva_trenutnega_stanja = "rgb(255, 242, 202)"
+  let barva_zacetnega_stanja = "rgb(8, 118, 155)"
+  let debelina_crt = 3.
   let dolzina_konice = 10.
   let dolzina_puscice_zacetnega_stanja = 20.
   let naklon_konice = 0.4
@@ -142,6 +142,7 @@ let prikaz_zanke zacetek oznaka =
         ~a:[ attr "stroke" Parametri.privzeta_barva_crt; attr "fill" "none" ]
         (zacetek --. { x = 0.; y = Parametri.polmer_zanke })
         Parametri.polmer_zanke;
+      svg_krog ~a:[ attr "fill" "white" ] polozaj_oznake Parametri.polmer_oznake;
       svg_oznaka polozaj_oznake oznaka;
     ]
 
@@ -163,17 +164,36 @@ let prikaz_prehoda zacetek konec oznaka =
       svg_oznaka polozaj_oznake oznaka;
     ]
 
-let prikaz_znakov model =
+let prikaz_vnesenega_niza model =
   match model.nacin with
   | VnasanjeNiza ->
-      elt "h1" [ input ~a:[ onchange (fun niz -> VnesiNiz niz) ] [] ]
-  | _ ->
-      elt "h1"
-        ~a:[ ondblclick (fun _ -> ZacniVnosNiza) ]
+      elt "h2"
         [
-          text (model.prebrani_znaki |> List.to_seq |> String.of_seq);
-          text (">" ^ (model.neprebrani_znaki |> List.to_seq |> String.of_seq));
+          input
+            ~a:[ onchange (fun niz -> VnesiNiz niz); value model.vneseni_niz ]
+            [];
         ]
+  | _ ->
+      let m = model.indeks_naslednjega_znaka
+      and n = String.length model.vneseni_niz in
+      let prebrani = String.sub model.vneseni_niz 0 m
+      and neprebrani = String.sub model.vneseni_niz m (n - m) in
+      elt "h2"
+        ~a:[ ondblclick (fun _ -> ZacniVnosNiza) ]
+        [ text prebrani; elt "mark" [ text neprebrani ] ]
+
+let prikaz_gumba_za_naslednji_znak model =
+  elt "a"
+    ~a:
+      [
+        attr "role" "button";
+        attr "href" "#";
+        onclick (fun _ -> PreberiNaslednjiZnak);
+        disabled
+          (model.nacin = VnasanjeNiza
+          || model.indeks_naslednjega_znaka >= String.length model.vneseni_niz);
+      ]
+    [ text "preberi naslednji znak" ]
 
 let prikaz_avtomata model =
   let stanja = List.map (prikaz_stanja model) model.avtomat.stanja in
@@ -191,7 +211,9 @@ let prikaz_avtomata model =
     match model.nacin with
     | PremikanjeVozlisca _ ->
         [
-          onmousemove (fun ev -> PremakniVozlisce { x = ev.x; y = ev.y });
+          onmousemove (fun ev ->
+              PremakniVozlisce
+                { x = Lazy.force ev.element_x; y = Lazy.force ev.element_y });
           onmouseup (fun _ -> KoncajPremikVozlisca);
         ]
     | _ -> []
@@ -209,13 +231,7 @@ let prikaz_avtomata model =
 let view model =
   elt "article"
     [
-      prikaz_znakov model;
+      elt "header"
+        [ prikaz_vnesenega_niza model; prikaz_gumba_za_naslednji_znak model ];
       prikaz_avtomata model;
-      elt "button"
-        ~a:
-          [
-            onclick (fun _ -> PreberiNaslednjiZnak);
-            disabled (model.neprebrani_znaki = []);
-          ]
-        [ text "preberi naslednji znak" ];
     ]

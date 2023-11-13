@@ -87,4 +87,4 @@ let rec loop model =
   let model' = update model msg in
   loop model'
 
-let _ = loop (init ravno_prav_nicel)
+let _ = loop (init enke_1mod3)

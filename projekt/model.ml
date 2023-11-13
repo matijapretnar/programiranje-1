@@ -8,13 +8,12 @@ type model = {
   nacin : nacin;
   sirina : float;
   visina : float;
-  prebrani_znaki : char list;
-  neprebrani_znaki : char list;
+  vneseni_niz : string;
+  indeks_naslednjega_znaka : int;
   stanje_avtomata : stanje;
 }
 
-let init sirina visina avtomat string =
-  let neprebrani_znaki = string |> String.to_seq |> List.of_seq in
+let init sirina visina avtomat =
   let polozaji =
     Vektor.koreni_enote (List.length avtomat.stanja) sirina visina
     |> List.combine avtomat.stanja
@@ -25,8 +24,8 @@ let init sirina visina avtomat string =
     nacin = PrivzetNacin;
     sirina;
     visina;
-    prebrani_znaki = [];
-    neprebrani_znaki;
+    vneseni_niz = "";
+    indeks_naslednjega_znaka = 0;
     stanje_avtomata = avtomat.zacetno_stanje;
   }
 
@@ -41,19 +40,19 @@ type msg =
 let polozaj_stanja model q = List.assoc q model.polozaji
 
 let update model = function
-  | PreberiNaslednjiZnak -> (
-      match model.neprebrani_znaki with
-      | znak :: neprebrani_znaki -> (
-          match preberi_znak model.avtomat model.stanje_avtomata znak with
-          | None -> model
-          | Some q' ->
-              {
-                model with
-                stanje_avtomata = q';
-                prebrani_znaki = model.prebrani_znaki @ [ znak ];
-                neprebrani_znaki;
-              })
-      | [] -> model)
+  | PreberiNaslednjiZnak
+    when model.indeks_naslednjega_znaka <= String.length model.vneseni_niz -> (
+      print_endline "P";
+      let znak = String.get model.vneseni_niz model.indeks_naslednjega_znaka in
+      match preberi_znak model.avtomat model.stanje_avtomata znak with
+      | None -> model
+      | Some q' ->
+          {
+            model with
+            stanje_avtomata = q';
+            indeks_naslednjega_znaka = succ model.indeks_naslednjega_znaka;
+          })
+  | PreberiNaslednjiZnak -> model
   | ZacniPremikVozlisca q -> { model with nacin = PremikanjeVozlisca q }
   | PremakniVozlisce position -> (
       match model.nacin with
@@ -68,11 +67,11 @@ let update model = function
       | _ -> model)
   | KoncajPremikVozlisca -> { model with nacin = PrivzetNacin }
   | ZacniVnosNiza -> { model with nacin = VnasanjeNiza }
-  | VnesiNiz niz ->
+  | VnesiNiz vneseni_niz ->
       {
         model with
         stanje_avtomata = model.avtomat.zacetno_stanje;
-        neprebrani_znaki = niz |> String.to_seq |> List.of_seq;
-        prebrani_znaki = [];
+        vneseni_niz;
+        indeks_naslednjega_znaka = 0;
         nacin = PrivzetNacin;
       }

@@ -27,18 +27,18 @@ let ali_sprejema_niz avtomat niz =
   | None -> false
   | Some koncno_stanje -> List.mem koncno_stanje avtomat.sprejemna_stanja
 
-let ravno_prav_nicel =
+let enke_1mod3 =
   let q0 = { oznaka = "q0" }
   and q1 = { oznaka = "q1" }
   and q2 = { oznaka = "q2" } in
   let prehodi =
     [
-      (q0, '0', q1);
-      (q1, '0', q2);
-      (q2, '0', q0);
-      (q0, '1', q0);
-      (q1, '1', q1);
-      (q2, '1', q2);
+      (q0, '0', q0);
+      (q1, '0', q1);
+      (q2, '0', q2);
+      (q0, '1', q1);
+      (q1, '1', q2);
+      (q2, '1', q0);
     ]
   in
   {
