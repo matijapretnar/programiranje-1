@@ -7,6 +7,29 @@ type avtomat = {
   prehodi : (stanje * char * stanje) list;
 }
 
+let stanje oznaka = { oznaka }
+
+let prazen_avtomat zacetno_stanje =
+  {
+    stanja = [ zacetno_stanje ];
+    zacetno_stanje;
+    sprejemna_stanja = [];
+    prehodi = [];
+  }
+
+let dodaj_nesprejemno_stanje stanje avtomat =
+  { avtomat with stanja = stanje :: avtomat.stanja }
+
+let dodaj_sprejemno_stanje stanje avtomat =
+  {
+    avtomat with
+    stanja = stanje :: avtomat.stanja;
+    sprejemna_stanja = stanje :: avtomat.sprejemna_stanja;
+  }
+
+let dodaj_prehod stanje1 znak stanje2 avtomat =
+  { avtomat with prehodi = (stanje1, znak, stanje2) :: avtomat.prehodi }
+
 let preberi_znak avtomat q znak =
   match
     List.find_opt
@@ -28,22 +51,13 @@ let ali_sprejema_niz avtomat niz =
   | Some koncno_stanje -> List.mem koncno_stanje avtomat.sprejemna_stanja
 
 let enke_1mod3 =
-  let q0 = { oznaka = "q0" }
-  and q1 = { oznaka = "q1" }
-  and q2 = { oznaka = "q2" } in
-  let prehodi =
-    [
-      (q0, '0', q0);
-      (q1, '0', q1);
-      (q2, '0', q2);
-      (q0, '1', q1);
-      (q1, '1', q2);
-      (q2, '1', q0);
-    ]
-  in
-  {
-    stanja = [ q0; q1; q2 ];
-    zacetno_stanje = q0;
-    sprejemna_stanja = [ q1 ];
-    prehodi;
-  }
+  let q0 = stanje "q0" and q1 = stanje "q1" and q2 = stanje "q2" in
+  prazen_avtomat q0
+  |> dodaj_sprejemno_stanje q1
+  |> dodaj_nesprejemno_stanje q2
+  |> dodaj_prehod q0 '0' q0
+  |> dodaj_prehod q1 '0' q1
+  |> dodaj_prehod q2 '0' q2
+  |> dodaj_prehod q0 '1' q1
+  |> dodaj_prehod q1 '1' q2
+  |> dodaj_prehod q2 '1' q0

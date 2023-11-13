@@ -3,7 +3,7 @@ open Model
 open Vektor
 
 module Parametri = struct
-  let barva_sprejemnega_stanja = "green"
+  let barva_sprejemnega_stanja = "rgb(56, 142, 60)"
   let barva_trenutnega_stanja = "rgb(255, 242, 202)"
   let barva_zacetnega_stanja = "rgb(8, 118, 155)"
   let debelina_crt = 3.
@@ -117,7 +117,7 @@ let prikaz_stanja model q =
       svg_elementi
       @ [
           svg_krog
-            ~a:[ attr "fill" "none" ]
+            ~a:[ attr "stroke" Parametri.barva_sprejemnega_stanja; attr "fill" "none" ]
             polozaj
             (Parametri.polmer_stanja -. Parametri.polmer_sprejemnega_stanja);
         ]
