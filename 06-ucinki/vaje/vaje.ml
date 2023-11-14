@@ -9,6 +9,7 @@ type avtomat = {
   prehodi : (stanje * char * stanje) list
 }
 
+
 let preberi_znak avt q chr =
   let (_, _, q') = List.find (fun (q1, chr', q2) -> q1 = q && chr = chr') avt.prehodi in
   q'
