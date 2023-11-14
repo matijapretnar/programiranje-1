@@ -174,14 +174,16 @@ let prikaz_vnesenega_niza model =
       elt "h2"
         [
           input
-            ~a:[ onchange (fun niz -> VnesiNiz niz); value model.vneseni_niz ]
+            ~a:
+              [
+                onchange (fun niz -> VnesiNiz niz);
+                value (Trak.v_niz model.trak);
+              ]
             [];
         ]
   | _ ->
-      let m = model.indeks_naslednjega_znaka
-      and n = String.length model.vneseni_niz in
-      let prebrani = String.sub model.vneseni_niz 0 m
-      and neprebrani = String.sub model.vneseni_niz m (n - m) in
+      let prebrani = Trak.prebrani model.trak
+      and neprebrani = Trak.neprebrani model.trak in
       elt "h2"
         ~a:[ ondblclick (fun _ -> ZacniVnosNiza) ]
         [ text prebrani; elt "mark" [ text neprebrani ] ]
@@ -193,9 +195,7 @@ let prikaz_gumba_za_naslednji_znak model =
         attr "role" "button";
         attr "href" "#";
         onclick (fun _ -> PreberiNaslednjiZnak);
-        disabled
-          (model.nacin = VnasanjeNiza
-          || model.indeks_naslednjega_znaka >= String.length model.vneseni_niz);
+        disabled (model.nacin = VnasanjeNiza || Trak.je_na_koncu model.trak);
       ]
     [ text "preberi naslednji znak" ]
 

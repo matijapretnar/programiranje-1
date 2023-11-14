@@ -2,14 +2,46 @@ open Avtomat
 
 type nacin = PrivzetNacin | VnasanjeNiza | PremikanjeVozlisca of stanje
 
+module type TRAK = sig
+  type t
+
+  val prazen : t
+  val trenutni_znak : t -> char
+  val je_na_koncu : t -> bool
+  val premakni_naprej : t -> t
+  val iz_niza : string -> t
+  val v_niz : t -> string
+  val prebrani : t -> string
+  val neprebrani : t -> string
+end
+
+module Trak : TRAK = struct
+  type t = { niz : string; indeks_trenutnega_znaka : int }
+
+  let trenutni_znak trak = String.get trak.niz trak.indeks_trenutnega_znaka
+  let je_na_koncu trak = String.length trak.niz = trak.indeks_trenutnega_znaka
+
+  let premakni_naprej trak =
+    { trak with indeks_trenutnega_znaka = succ trak.indeks_trenutnega_znaka }
+
+  let iz_niza niz = { niz; indeks_trenutnega_znaka = 0 }
+  let prazen = iz_niza ""
+  let v_niz trak = trak.niz
+
+  let prebrani trak = String.sub trak.niz 0 trak.indeks_trenutnega_znaka
+
+  and neprebrani trak =
+    String.sub trak.niz trak.indeks_trenutnega_znaka
+      (String.length trak.niz - trak.indeks_trenutnega_znaka)
+end
+
 type model = {
   avtomat : avtomat;
   polozaji : (stanje * Vektor.t) list;
   nacin : nacin;
   sirina : float;
   visina : float;
-  vneseni_niz : string;
-  indeks_naslednjega_znaka : int;
+  trak : Trak.t;
   stanje_avtomata : stanje;
 }
 
@@ -24,8 +56,7 @@ let init sirina visina avtomat =
     nacin = PrivzetNacin;
     sirina;
     visina;
-    vneseni_niz = "";
-    indeks_naslednjega_znaka = 0;
+    trak = Trak.prazen;
     stanje_avtomata = avtomat.zacetno_stanje;
   }
 
@@ -40,17 +71,16 @@ type msg =
 let polozaj_stanja model q = List.assoc q model.polozaji
 
 let update model = function
-  | PreberiNaslednjiZnak
-    when model.indeks_naslednjega_znaka <= String.length model.vneseni_niz -> (
+  | PreberiNaslednjiZnak when Trak.je_na_koncu model.trak -> (
       print_endline "P";
-      let znak = String.get model.vneseni_niz model.indeks_naslednjega_znaka in
+      let znak = Trak.trenutni_znak model.trak in
       match preberi_znak model.avtomat model.stanje_avtomata znak with
       | None -> model
       | Some q' ->
           {
             model with
             stanje_avtomata = q';
-            indeks_naslednjega_znaka = succ model.indeks_naslednjega_znaka;
+            trak = Trak.premakni_naprej model.trak;
           })
   | PreberiNaslednjiZnak -> model
   | ZacniPremikVozlisca q -> { model with nacin = PremikanjeVozlisca q }
@@ -71,7 +101,6 @@ let update model = function
       {
         model with
         stanje_avtomata = model.avtomat.zacetno_stanje;
-        vneseni_niz;
-        indeks_naslednjega_znaka = 0;
+        trak = Trak.iz_niza vneseni_niz;
         nacin = PrivzetNacin;
       }
