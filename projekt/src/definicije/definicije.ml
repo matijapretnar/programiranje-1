@@ -117,6 +117,40 @@ module Trak : TRAK = struct
       (String.length trak.niz - trak.indeks_trenutnega_znaka)
 end
 
+module type ZAGNANIAVTOMAT = sig
+  type t
+
+  val pozeni : Avtomat.t -> Trak.t -> t
+  val avtomat : t -> Avtomat.t
+  val trak : t -> Trak.t
+  val stanje : t -> Stanje.t
+  val korak_naprej : t -> t option
+  val je_v_sprejemnem_stanju : t -> bool
+end
+
+module ZagnaniAvtomat : ZAGNANIAVTOMAT = struct
+  type t = { avtomat : Avtomat.t; trak : Trak.t; stanje : Stanje.t }
+
+  let pozeni avtomat trak =
+    { avtomat; trak; stanje = Avtomat.zacetno_stanje avtomat }
+
+  let avtomat { avtomat; _ } = avtomat
+  let trak { trak; _ } = trak
+  let stanje { stanje; _ } = stanje
+
+  let korak_naprej { avtomat; trak; stanje } =
+    let stanje' =
+      Avtomat.prehodna_funkcija avtomat stanje (Trak.trenutni_znak trak)
+    in
+    match stanje' with
+    | None -> None
+    | Some stanje' ->
+        Some { avtomat; trak = Trak.premakni_naprej trak; stanje = stanje' }
+
+  let je_v_sprejemnem_stanju { avtomat; stanje; _ } =
+    Avtomat.je_sprejemno_stanje avtomat stanje
+end
+
 let preberi_niz avtomat q niz =
   let aux acc znak =
     match acc with
