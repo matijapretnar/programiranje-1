@@ -1,0 +1,3 @@
+(library
+ (name avtomat)
+ (modules avtomat))

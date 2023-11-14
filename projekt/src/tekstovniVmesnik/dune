@@ -1,0 +1,7 @@
+(executable
+ (name tekstovniVmesnik)
+ (libraries avtomat)
+ (modules tekstovniVmesnik)
+ (promote
+  (until-clean)
+  (into ../..)))

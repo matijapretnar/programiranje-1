@@ -1,0 +1,9 @@
+(executable
+ (name spletniVmesnik)
+ (libraries vdom avtomat)
+ (modules model spletniVmesnik view vektor)
+ (modes js)
+ (promote
+  (until-clean)
+  (into ../../html)
+  (only spletniVmesnik.bc.js)))
