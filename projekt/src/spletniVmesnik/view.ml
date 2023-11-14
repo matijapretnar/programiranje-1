@@ -79,16 +79,17 @@ let svg_oznaka ?(a = []) polozaj besedilo =
     [ text besedilo ]
 
 let prikaz_stanja model q =
+  let avtomat = ZagnaniAvtomat.avtomat model.avtomat in
   let polozaj = polozaj_stanja model q in
   let barva_robu =
-    if q = Avtomat.zacetno_stanje model.avtomat then
-      Parametri.barva_zacetnega_stanja
-    else if Avtomat.je_sprejemno_stanje model.avtomat q then
+    if q = Avtomat.zacetno_stanje avtomat then Parametri.barva_zacetnega_stanja
+    else if Avtomat.je_sprejemno_stanje avtomat q then
       Parametri.barva_sprejemnega_stanja
     else Parametri.privzeta_barva_crt
   in
   let barva_polnila =
-    if q = model.stanje_avtomata then Parametri.barva_trenutnega_stanja
+    if q = ZagnaniAvtomat.stanje model.avtomat then
+      Parametri.barva_trenutnega_stanja
     else Parametri.privzeta_barva_polnila
   in
   let svg_elementi =
@@ -100,7 +101,7 @@ let prikaz_stanja model q =
     ]
   in
   let svg_elementi =
-    if q = Avtomat.zacetno_stanje model.avtomat then
+    if q = Avtomat.zacetno_stanje avtomat then
       svg_puscica
         ~a:[ attr "stroke" Parametri.barva_zacetnega_stanja ]
         (polozaj
@@ -115,7 +116,7 @@ let prikaz_stanja model q =
     else svg_elementi
   in
   let svg_elementi =
-    if Avtomat.je_sprejemno_stanje model.avtomat q then
+    if Avtomat.je_sprejemno_stanje avtomat q then
       svg_elementi
       @ [
           svg_krog
@@ -170,22 +171,18 @@ let prikaz_prehoda zacetek konec oznaka =
       svg_oznaka polozaj_oznake oznaka;
     ]
 
-let prikaz_vnesenega_niza model =
+let prikaz_traku model =
+  let trak = ZagnaniAvtomat.trak model.avtomat in
   match model.nacin with
   | VnasanjeNiza ->
       elt "h2"
         [
           input
-            ~a:
-              [
-                onchange (fun niz -> VnesiNiz niz);
-                value (Trak.v_niz model.trak);
-              ]
+            ~a:[ onchange (fun niz -> VnesiNiz niz); value (Trak.v_niz trak) ]
             [];
         ]
   | _ ->
-      let prebrani = Trak.prebrani model.trak
-      and neprebrani = Trak.neprebrani model.trak in
+      let prebrani = Trak.prebrani trak and neprebrani = Trak.neprebrani trak in
       elt "h2"
         ~a:[ ondblclick (fun _ -> ZacniVnosNiza) ]
         [ text prebrani; elt "mark" [ text neprebrani ] ]
@@ -197,13 +194,16 @@ let prikaz_gumba_za_naslednji_znak model =
         attr "role" "button";
         attr "href" "#";
         onclick (fun _ -> PreberiNaslednjiZnak);
-        disabled (model.nacin = VnasanjeNiza || Trak.je_na_koncu model.trak);
+        disabled
+          (model.nacin = VnasanjeNiza
+          || model.avtomat |> ZagnaniAvtomat.trak |> Trak.je_na_koncu);
       ]
     [ text "preberi naslednji znak" ]
 
 let prikaz_avtomata model =
+  let avtomat = ZagnaniAvtomat.avtomat model.avtomat in
   let stanja =
-    List.map (prikaz_stanja model) (Avtomat.seznam_stanj model.avtomat)
+    List.map (prikaz_stanja model) (avtomat |> Avtomat.seznam_stanj)
   in
   let prehodi =
     List.map
@@ -213,7 +213,7 @@ let prikaz_avtomata model =
         else
           prikaz_prehoda (polozaj_stanja model src) (polozaj_stanja model dst)
             svg_oznaka)
-      (Avtomat.seznam_prehodov model.avtomat)
+      (Avtomat.seznam_prehodov avtomat)
   in
   let a =
     match model.nacin with
@@ -239,7 +239,6 @@ let prikaz_avtomata model =
 let view model =
   elt "article"
     [
-      elt "header"
-        [ prikaz_vnesenega_niza model; prikaz_gumba_za_naslednji_znak model ];
+      elt "header" [ prikaz_traku model; prikaz_gumba_za_naslednji_znak model ];
       prikaz_avtomata model;
     ]

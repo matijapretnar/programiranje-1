@@ -1,10 +1,7 @@
-open Model
-open Vdom
-
 let app =
-  simple_app
-    ~init:(init 500. 500. Definicije.enke_1mod3)
-    ~view:View.view ~update ()
+  Vdom.simple_app
+    ~init:(Model.init 500. 500. Definicije.enke_1mod3)
+    ~view:View.view ~update:Model.update ()
 
 let () =
   let open Js_browser in

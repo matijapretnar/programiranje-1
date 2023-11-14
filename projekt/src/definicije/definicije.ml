@@ -139,13 +139,15 @@ module ZagnaniAvtomat : ZAGNANIAVTOMAT = struct
   let stanje { stanje; _ } = stanje
 
   let korak_naprej { avtomat; trak; stanje } =
-    let stanje' =
-      Avtomat.prehodna_funkcija avtomat stanje (Trak.trenutni_znak trak)
-    in
-    match stanje' with
-    | None -> None
-    | Some stanje' ->
-        Some { avtomat; trak = Trak.premakni_naprej trak; stanje = stanje' }
+    if Trak.je_na_koncu trak then None
+    else
+      let stanje' =
+        Avtomat.prehodna_funkcija avtomat stanje (Trak.trenutni_znak trak)
+      in
+      match stanje' with
+      | None -> None
+      | Some stanje' ->
+          Some { avtomat; trak = Trak.premakni_naprej trak; stanje = stanje' }
 
   let je_v_sprejemnem_stanju { avtomat; stanje; _ } =
     Avtomat.je_sprejemno_stanje avtomat stanje
