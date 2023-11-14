@@ -117,7 +117,11 @@ let prikaz_stanja model q =
       svg_elementi
       @ [
           svg_krog
-            ~a:[ attr "stroke" Parametri.barva_sprejemnega_stanja; attr "fill" "none" ]
+            ~a:
+              [
+                attr "stroke" Parametri.barva_sprejemnega_stanja;
+                attr "fill" "none";
+              ]
             polozaj
             (Parametri.polmer_stanja -. Parametri.polmer_sprejemnega_stanja);
         ]

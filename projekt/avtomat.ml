@@ -52,12 +52,7 @@ let ali_sprejema_niz avtomat niz =
 
 let enke_1mod3 =
   let q0 = stanje "q0" and q1 = stanje "q1" and q2 = stanje "q2" in
-  prazen_avtomat q0
-  |> dodaj_sprejemno_stanje q1
+  prazen_avtomat q0 |> dodaj_sprejemno_stanje q1
   |> dodaj_nesprejemno_stanje q2
-  |> dodaj_prehod q0 '0' q0
-  |> dodaj_prehod q1 '0' q1
-  |> dodaj_prehod q2 '0' q2
-  |> dodaj_prehod q0 '1' q1
-  |> dodaj_prehod q1 '1' q2
-  |> dodaj_prehod q2 '1' q0
+  |> dodaj_prehod q0 '0' q0 |> dodaj_prehod q1 '0' q1 |> dodaj_prehod q2 '0' q2
+  |> dodaj_prehod q0 '1' q1 |> dodaj_prehod q1 '1' q2 |> dodaj_prehod q2 '1' q0
