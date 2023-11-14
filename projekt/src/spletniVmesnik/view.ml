@@ -1,6 +1,7 @@
 open Vdom
 open Model
 open Vektor
+open Definicije
 
 module Parametri = struct
   let barva_sprejemnega_stanja = "rgb(56, 142, 60)"
@@ -80,8 +81,9 @@ let svg_oznaka ?(a = []) polozaj besedilo =
 let prikaz_stanja model q =
   let polozaj = polozaj_stanja model q in
   let barva_robu =
-    if q = model.avtomat.zacetno_stanje then Parametri.barva_zacetnega_stanja
-    else if List.mem q model.avtomat.sprejemna_stanja then
+    if q = Avtomat.zacetno_stanje model.avtomat then
+      Parametri.barva_zacetnega_stanja
+    else if Avtomat.je_sprejemno_stanje model.avtomat q then
       Parametri.barva_sprejemnega_stanja
     else Parametri.privzeta_barva_crt
   in
@@ -94,11 +96,11 @@ let prikaz_stanja model q =
       svg_krog
         ~a:[ attr "stroke" barva_robu; attr "fill" barva_polnila ]
         polozaj Parametri.polmer_stanja;
-      svg_oznaka polozaj q.oznaka;
+      svg_oznaka polozaj (Stanje.v_niz q);
     ]
   in
   let svg_elementi =
-    if q = model.avtomat.zacetno_stanje then
+    if q = Avtomat.zacetno_stanje model.avtomat then
       svg_puscica
         ~a:[ attr "stroke" Parametri.barva_zacetnega_stanja ]
         (polozaj
@@ -113,7 +115,7 @@ let prikaz_stanja model q =
     else svg_elementi
   in
   let svg_elementi =
-    if List.mem q model.avtomat.sprejemna_stanja then
+    if Avtomat.je_sprejemno_stanje model.avtomat q then
       svg_elementi
       @ [
           svg_krog
@@ -200,7 +202,9 @@ let prikaz_gumba_za_naslednji_znak model =
     [ text "preberi naslednji znak" ]
 
 let prikaz_avtomata model =
-  let stanja = List.map (prikaz_stanja model) model.avtomat.stanja in
+  let stanja =
+    List.map (prikaz_stanja model) (Avtomat.seznam_stanj model.avtomat)
+  in
   let prehodi =
     List.map
       (fun (src, chr, dst) ->
@@ -209,7 +213,7 @@ let prikaz_avtomata model =
         else
           prikaz_prehoda (polozaj_stanja model src) (polozaj_stanja model dst)
             svg_oznaka)
-      model.avtomat.prehodi
+      (Avtomat.seznam_prehodov model.avtomat)
   in
   let a =
     match model.nacin with

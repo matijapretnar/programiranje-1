@@ -1,3 +1,4 @@
+open Definicije
 open Avtomat
 
 type stanje_vmesnika =
@@ -8,8 +9,8 @@ type stanje_vmesnika =
   | OpozoriloONapacnemNizu
 
 type model = {
-  avtomat : avtomat;
-  stanje_avtomata : stanje;
+  avtomat : t;
+  stanje_avtomata : Stanje.t;
   stanje_vmesnika : stanje_vmesnika;
 }
 
@@ -17,7 +18,7 @@ type msg = PreberiNiz of string | ZamenjajVmesnik of stanje_vmesnika
 
 let update model = function
   | PreberiNiz str -> (
-      match Avtomat.preberi_niz model.avtomat model.stanje_avtomata str with
+      match preberi_niz model.avtomat model.stanje_avtomata str with
       | None -> { model with stanje_vmesnika = OpozoriloONapacnemNizu }
       | Some stanje_avtomata ->
           {
@@ -40,16 +41,16 @@ let rec izpisi_moznosti () =
 
 let izpisi_avtomat avtomat =
   let izpisi_stanje stanje =
-    let prikaz = stanje.oznaka in
+    let prikaz = Stanje.v_niz stanje in
     let prikaz =
-      if stanje = avtomat.zacetno_stanje then "-> " ^ prikaz else prikaz
+      if stanje = zacetno_stanje avtomat then "-> " ^ prikaz else prikaz
     in
     let prikaz =
-      if List.mem stanje avtomat.sprejemna_stanja then prikaz ^ " +" else prikaz
+      if je_sprejemno_stanje avtomat stanje then prikaz ^ " +" else prikaz
     in
     print_endline prikaz
   in
-  List.iter izpisi_stanje avtomat.stanja
+  List.iter izpisi_stanje (seznam_stanj avtomat)
 
 let beri_niz _model =
   print_string "Vnesi niz > ";
@@ -57,7 +58,7 @@ let beri_niz _model =
   PreberiNiz str
 
 let izpisi_rezultat model =
-  if List.mem model.stanje_avtomata model.avtomat.sprejemna_stanja then
+  if je_sprejemno_stanje model.avtomat model.stanje_avtomata then
     print_endline "Niz je bil sprejet"
   else print_endline "Niz ni bil sprejet"
 
@@ -78,7 +79,7 @@ let view model =
 let init avtomat =
   {
     avtomat;
-    stanje_avtomata = avtomat.zacetno_stanje;
+    stanje_avtomata = zacetno_stanje avtomat;
     stanje_vmesnika = SeznamMoznosti;
   }
 

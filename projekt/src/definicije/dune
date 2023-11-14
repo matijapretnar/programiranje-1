@@ -1,0 +1,3 @@
+(library
+ (name definicije)
+ (modules definicije))

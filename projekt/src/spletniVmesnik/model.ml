@@ -1,54 +1,22 @@
+open Definicije
 open Avtomat
 
-type nacin = PrivzetNacin | VnasanjeNiza | PremikanjeVozlisca of stanje
-
-module type TRAK = sig
-  type t
-
-  val prazen : t
-  val trenutni_znak : t -> char
-  val je_na_koncu : t -> bool
-  val premakni_naprej : t -> t
-  val iz_niza : string -> t
-  val v_niz : t -> string
-  val prebrani : t -> string
-  val neprebrani : t -> string
-end
-
-module Trak : TRAK = struct
-  type t = { niz : string; indeks_trenutnega_znaka : int }
-
-  let trenutni_znak trak = String.get trak.niz trak.indeks_trenutnega_znaka
-  let je_na_koncu trak = String.length trak.niz = trak.indeks_trenutnega_znaka
-
-  let premakni_naprej trak =
-    { trak with indeks_trenutnega_znaka = succ trak.indeks_trenutnega_znaka }
-
-  let iz_niza niz = { niz; indeks_trenutnega_znaka = 0 }
-  let prazen = iz_niza ""
-  let v_niz trak = trak.niz
-
-  let prebrani trak = String.sub trak.niz 0 trak.indeks_trenutnega_znaka
-
-  and neprebrani trak =
-    String.sub trak.niz trak.indeks_trenutnega_znaka
-      (String.length trak.niz - trak.indeks_trenutnega_znaka)
-end
+type nacin = PrivzetNacin | VnasanjeNiza | PremikanjeVozlisca of Stanje.t
 
 type model = {
-  avtomat : avtomat;
-  polozaji : (stanje * Vektor.t) list;
+  avtomat : t;
+  polozaji : (Stanje.t * Vektor.t) list;
   nacin : nacin;
   sirina : float;
   visina : float;
   trak : Trak.t;
-  stanje_avtomata : stanje;
+  stanje_avtomata : Stanje.t;
 }
 
 let init sirina visina avtomat =
   let polozaji =
-    Vektor.koreni_enote (List.length avtomat.stanja) sirina visina
-    |> List.combine avtomat.stanja
+    Vektor.koreni_enote (List.length (seznam_stanj avtomat)) sirina visina
+    |> List.combine (seznam_stanj avtomat)
   in
   {
     avtomat;
@@ -57,12 +25,12 @@ let init sirina visina avtomat =
     sirina;
     visina;
     trak = Trak.prazen;
-    stanje_avtomata = avtomat.zacetno_stanje;
+    stanje_avtomata = zacetno_stanje avtomat;
   }
 
 type msg =
   | PreberiNaslednjiZnak
-  | ZacniPremikVozlisca of stanje
+  | ZacniPremikVozlisca of Stanje.t
   | PremakniVozlisce of Vektor.t
   | KoncajPremikVozlisca
   | ZacniVnosNiza
@@ -74,7 +42,7 @@ let update model = function
   | PreberiNaslednjiZnak when Trak.je_na_koncu model.trak -> (
       print_endline "P";
       let znak = Trak.trenutni_znak model.trak in
-      match preberi_znak model.avtomat model.stanje_avtomata znak with
+      match prehodna_funkcija model.avtomat model.stanje_avtomata znak with
       | None -> model
       | Some q' ->
           {
@@ -100,7 +68,7 @@ let update model = function
   | VnesiNiz vneseni_niz ->
       {
         model with
-        stanje_avtomata = model.avtomat.zacetno_stanje;
+        stanje_avtomata = zacetno_stanje model.avtomat;
         trak = Trak.iz_niza vneseni_niz;
         nacin = PrivzetNacin;
       }

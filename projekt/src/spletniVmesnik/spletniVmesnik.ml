@@ -3,7 +3,7 @@ open Vdom
 
 let app =
   simple_app
-    ~init:(init 500. 500. Avtomat.enke_1mod3)
+    ~init:(init 500. 500. Definicije.enke_1mod3)
     ~view:View.view ~update ()
 
 let () =

@@ -1,6 +1,6 @@
 (executable
  (name tekstovniVmesnik)
- (libraries avtomat)
+ (libraries definicije)
  (modules tekstovniVmesnik)
  (promote
   (until-clean)
