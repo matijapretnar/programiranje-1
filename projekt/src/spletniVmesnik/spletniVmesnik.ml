@@ -1,6 +1,6 @@
 let app =
   Vdom.simple_app
-    ~init:(Model.init 500. 500. Definicije.enke_1mod3)
+    ~init:(Model.init 500. 500. Definicije.Avtomat.enke_1mod3)
     ~view:View.view ~update:Model.update ()
 
 let () =
