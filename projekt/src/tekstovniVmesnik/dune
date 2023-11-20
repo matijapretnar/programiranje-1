@@ -1,7 +1,6 @@
 (executable
  (name tekstovniVmesnik)
  (libraries definicije)
- (modules tekstovniVmesnik)
  (promote
-  (until-clean)
-  (into ../..)))
+  (into ../..)
+  (until-clean)))

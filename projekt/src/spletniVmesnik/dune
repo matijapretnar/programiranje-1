@@ -1,7 +1,6 @@
 (executable
  (name spletniVmesnik)
  (libraries vdom definicije)
- (modules model spletniVmesnik view vektor)
  (modes js)
  (promote
   (until-clean)

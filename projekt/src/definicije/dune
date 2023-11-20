@@ -1,3 +1,2 @@
 (library
- (name definicije)
- (modules definicije))
+ (name definicije))
