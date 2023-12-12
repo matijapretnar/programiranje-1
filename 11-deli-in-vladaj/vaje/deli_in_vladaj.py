@@ -20,7 +20,29 @@
 #     [1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 7, 10]
 #
 ###############################################################################
+def merge(target, list_1, list_2):
+    i = 0
+    list_1.reverse()
+    list_2.reverse()
+    while min(len(list_1), len(list_2)):
+        if list_1[-1] > list_2[-1]:
+            target[i] = list_2.pop()
+        else:
+            target[i] = list_1.pop()
+        i += 1
+    while len(list_1)>0:
+        target[i] = list_1.pop()
+        i += 1
+    while len(list_2)>0:
+        target[i] = list_2.pop()
+        i += 1
+    return target
 
+list_1 = [1, 3, 5, 7, 10]
+list_2 = [1, 2, 3, 4, 5, 6, 7]
+target = [-1 for _ in range(len(list_1) + len(list_2))]
+merge(target, list_1, list_2)
+print(target)
 
 ###############################################################################
 # Tabelo želimo urediti z zlivanjem (merge sort). Tabelo razdelimo na polovici,
@@ -37,7 +59,17 @@
 #     >>> a
 #     [2, 3, 4, 5, 10, 11, 15, 17, 18]
 ###############################################################################
-
+def mergesort(a):
+    if len(a)<2:
+        return a
+    else:
+        b = a[:(len(a))//2].copy()
+        c = a[(len(a))//2:].copy()
+        return merge(a, mergesort(b), mergesort(c))
+    
+a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
+mergesort(a)
+print(a)
 ###############################################################################
 # Na predavanjih ste implementirali imperativno verzijo pivotiranja v OCamlu, 
 # prepišite jo v Python in jo uporabite kot osnovo za reševanje problemov s 
@@ -70,7 +102,30 @@
 #     >>> a
 #     [10, 0, 2, 4, 11, 5, 17, 15, 18]
 ###############################################################################
+def pivot(a, start, end):
+    if len(a[start:end+1]) < 2:
+        return 0
+    else:
+        pi = a[start]
+        i = start+1
+        j = end+1
+        while j-i > 1:
+            if a[i] > pi:
+                if a[j] < pi:
+                    k = a[i]
+                    a[i] = a[j]
+                    a[j] = k
+                    i+= 1
+                j -= 1
+            else:            
+                i += 1
+        
+        a[start] = a[i-1]
+        a[i-1] = pi
+        return i-1
 
+a = [10, 4, 5, 15, 11, 2, 17, 0, 18]
+print(pivot(a, 1, 7))
 
 ###############################################################################
 # V tabeli želimo poiskati vrednost k-tega elementa po velikosti.
@@ -86,7 +141,13 @@
 # po velikosti. Funkcija sme spremeniti tabelo [a]. Cilj naloge je, da jo
 # rešite brez da v celoti uredite tabelo [a].
 ###############################################################################
-
+def kth_element(a, k):
+    
+    b = pivot(a, 0, len(a)-1)
+    if k == b:
+        return a[k]
+    elif k < b:
+        kth_element()
 
 ###############################################################################
 # Tabelo a želimo urediti z algoritmom hitrega urejanja (quicksort).
