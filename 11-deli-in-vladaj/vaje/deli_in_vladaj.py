@@ -108,24 +108,28 @@ def pivot(a, start, end):
     else:
         pi = a[start]
         i = start+1
-        j = end+1
-        while j-i > 1:
+        #print(i, end)
+        j = end
+        while (j-i) >= 0:
+            #print(j-i, "razlika")
             if a[i] > pi:
+                #print(a[i], "i")
                 if a[j] < pi:
+                    #print(a[j], "j")
                     k = a[i]
                     a[i] = a[j]
                     a[j] = k
                     i+= 1
                 j -= 1
             else:            
-                i += 1
+                i = i+ 1
         
         a[start] = a[i-1]
         a[i-1] = pi
         return i-1
 
 a = [10, 4, 5, 15, 11, 2, 17, 0, 18]
-print(pivot(a, 1, 7))
+print(pivot(a, 1, 7), "fun")
 
 ###############################################################################
 # V tabeli želimo poiskati vrednost k-tega elementa po velikosti.
@@ -142,12 +146,19 @@ print(pivot(a, 1, 7))
 # rešite brez da v celoti uredite tabelo [a].
 ###############################################################################
 def kth_element(a, k):
-    
-    b = pivot(a, 0, len(a)-1)
-    if k == b:
-        return a[k]
-    elif k < b:
-        kth_element()
+    def aux(a, k, start, end):
+        b = pivot(a, start, end)
+        if b == k:
+            return a[b]
+        elif k < b:
+            return aux(a, k, start, b)
+        else:
+            return aux(a, k, b+1, end)
+
+    return aux(a, k, 0, len(a)-1)
+
+a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
+print(kth_element(a, 3))
 
 ###############################################################################
 # Tabelo a želimo urediti z algoritmom hitrega urejanja (quicksort).
@@ -163,3 +174,19 @@ def kth_element(a, k):
 #     >>> a
 #     [2, 3, 4, 5, 10, 11, 15, 17, 18]
 ###############################################################################
+
+def quicksort(a):
+    def aux(a, start, end):
+        if len(a)<2 or end-start<1:
+            None
+        else:
+            ind = pivot(a, start, end)
+            aux(a, start, ind-1)
+            aux(a, ind+1, end)
+
+    aux(a, 0, len(a)-1)
+    return a
+
+a = [10, 4, 5, 15, 11, 3, 17, 2, 18]
+b = [10, 4, 5, 15, 11, 2, 17, 0, 18]
+print(quicksort(a), quicksort(b))
