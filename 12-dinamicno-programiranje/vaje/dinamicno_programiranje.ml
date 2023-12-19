@@ -21,6 +21,15 @@ let test_matrix =
      [| 2 ; 4 ; 5 |];
      [| 7 ; 0 ; 1 |] |]
 
+let max_cheese cheese_matrix =
+  let n = Array.length cheese_matrix in
+  let m = Array.length cheese_matrix.(0) in 
+  let rec aux (i, j) = 
+    if (i,j) = (n-1, m-1) then (cheese_matrix.(n-1)).(m-1)
+    else if (i>n-1) || (j>n-1) then 0
+    else (cheese_matrix.(i)).(j) + max (aux (i+1,j)) (aux (i, j+1)) in
+  aux(0,0)
+
 (*----------------------------------------------------------------------------*]
  Poleg količine sira, ki jo miška lahko poje, jo zanima tudi točna pot, ki naj
  jo ubere, da bo prišla do ustrezne pojedine.
@@ -38,7 +47,37 @@ let test_matrix =
 
 type mouse_direction = Down | Right
 
-
+let optimal_path mat =
+  let n = Array.length mat in
+  let m = Array.length mat.(0) and
+    i = ref 0 and
+    j = ref 0 in 
+  let rec aux (i, j) = 
+    if (i,j) = (n-1, m-1) then (mat.(n-1)).(m-1)
+    else if (i>n-1) || (j>m-1) then 0
+    else (mat.(i)).(j) + max (aux (i+1,j)) (aux (i, j+1)) in
+  let sez = ref [] in
+  while !i < n-1 || !j < m-1 do
+    if (aux (!i+1,!j)) < (aux (!i, !j+1)) then (j := !j + 1; sez := Right :: !sez)
+    else (i := !i + 1; sez := Down :: !sez)
+  done;
+  List.rev !sez
+    
+let convert_path mat pot =
+  let n = Array.length mat in
+  let m = Array.length mat.(0) and
+    i,j = ref 0, ref 0 and
+    sez = ref [] in
+  while !i < n-1 || !j<m-1 do
+    let rec auz pot =
+      match pot with
+      | [] -> (i := n; j := m)
+      | x :: xs when x = Right -> (j := !j +1; sez := mat.(!i).(!j) :: !sez; auz xs)
+      | x :: xs when x = Down  -> (i := !i +1; sez := mat.(!i).(!j) :: !sez; auz xs) 
+    in
+    auz pot
+  done; 
+  mat.(n-1).(m-1) :: List.rev !sez
 (*----------------------------------------------------------------------------*]
  Rešujemo problem sestavljanja alternirajoče obarvanih stolpov. Imamo štiri
  različne tipe gradnikov, dva modra in dva rdeča. Modri gradniki so višin 2 in
