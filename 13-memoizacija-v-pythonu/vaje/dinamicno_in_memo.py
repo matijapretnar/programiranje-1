@@ -10,12 +10,58 @@ from functools import cache
 # Primer: v seznamu `[2, 3, 6, 8, 4, 4, 6, 7, 12, 8, 9]` kot rezultat vrne
 # podzaporedje `[2, 3, 4, 4, 6, 7, 8, 9]`.
 # -----------------------------------------------------------------------------
+def najdaljse_narascajoce_podazporedje(sez):
+    @cache
+    def aux(z, i):
+        if len(sez) == i:
+            return 0
+        elif sez[i]>= z:
+            return max(aux(z, i+1), 1+aux(sez[i], i+1))
+        else:
+            return aux(z, i+1)
+    return aux(float("-inf"), 0)
+    
+s1 = [2,0,0]    
+s2 = [0,0,0]
+s3 = [float("-inf"), 1, float("-inf"), 6]
+s4 = []
 
+def najdaljse_narascajoce_podazporedje(sez):
+    @cache
+    def aux(z, i):
+        if len(sez) == i:
+            return []
+        elif sez[i]>= z:
+            a = [sez[i]] + aux(sez[i], i+1)
+            b = aux(z, i+1)
+            if len(a)<len(b):
+                return b
+            else:
+                return a          
+        else:
+            return aux(z, i+1)
+    return aux(float("-inf"), 0)
 # -----------------------------------------------------------------------------
 # Rešitev sedaj popravite tako, da funkcija `vsa_najdaljsa` vrne seznam vseh
 # najdaljših naraščajočih podzaporedij.
 # -----------------------------------------------------------------------------
-
+def najdaljse_narascajoce_podazporedje(sez):
+    @cache
+    def aux(z, i):
+        if len(sez) == i:
+            return [[]]
+        elif sez[i]>= z:
+            a = []
+            for j in aux(sez[i], i+1):
+                a.append([sez[i]]+j)
+            b = aux(z, i+1)
+            if len(a[0])<len(b[0]):
+                return b
+            else:
+                return a          
+        else:
+            return aux(z, i+1)
+    return aux(float("-inf"), 0)
 
 
 # =============================================================================
@@ -43,6 +89,20 @@ from functools import cache
 # dva.
 # =============================================================================
 
+def zabica(mocvara):
+    def aux(e, i):
+        if len(mocvara) <= i:
+            return 0
+        elif len(mocvara) <= i+e:
+            return 1
+        elif e <0:
+            return float("inf")
+        else:
+            return min(1 + aux(e-1+mocvara[i],i+1), aux(e-1, i+1))
+    return aux(0, 0)
+
+m1 = [2, 4, 1, 2, 1, 3, 1, 1, 5]
+m2 = [4, 1, 8, 2, 11, 1, 1, 1, 1, 1]
 
 
 # =============================================================================
