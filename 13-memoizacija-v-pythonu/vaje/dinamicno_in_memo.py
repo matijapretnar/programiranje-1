@@ -88,7 +88,7 @@ def najdaljse_narascajoce_podazporedje(sez):
 # treh skokih, v močvari `[4, 1, 8, 2, 11, 1, 1, 1, 1, 1]` pa potrebuje zgolj
 # dva.
 # =============================================================================
-
+# ne dela!!!
 def zabica(mocvara):
     def aux(e, i):
         if len(mocvara) <= i:
