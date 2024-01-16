@@ -125,7 +125,29 @@ m2 = [4, 1, 8, 2, 11, 1, 1, 1, 1, 1]
 #     [1, 1, 0, 0, 1, 1, 0, 1, 1]
 #     [0, 1, 1, 0, 1, 1, 0, 1, 1]
 # =============================================================================
-
+def nageljni(n, m, l):
+    vrni = []
+    def aux(n, m, sez):
+        if m == 0:
+            for i in range(n):
+                sez.append(0)
+            vrni.append(sez)
+        elif n == l and m == 1:
+            for i in range(l):
+                sez.append(1)
+            vrni.append(sez)    
+        elif n >= m*l + m-1:
+            a = sez.copy()
+            b = sez.copy()
+            b.append(0)
+            for i in range(l):
+                a.append(1)
+            a.append(0)
+            aux(n-1, m, b)
+            aux(n-l-1, m-1, a)
+        
+    aux(n, m, [])
+    return vrni  
 
 
 # =============================================================================
@@ -170,6 +192,27 @@ m2 = [4, 1, 8, 2, 11, 1, 1, 1, 1, 1]
 # zapil). Funkcija `pobeg` sprejme seznam, ki predstavlja finska mesta in vrne
 # seznam indeksov mest, v katerih se Mortimer ustavi.
 # =============================================================================
+def pobeg(sez):
+    ok_poti = []
+    
+    def aux(pot, denar):
+        mesto = pot[-1]
+        if mesto > len(sez)-1:
+            if denar >= 0:
+                ok_poti.append(pot)
+        else:
+            for (m, c) in sez[mesto]:
+                if m > mesto:
+                    p = pot.copy()
+                    p.append(m)
+                    aux(p, denar + c)
+    aux([0], 0)
+    
+    return min(ok_poti, key = len, default = "None")
+    
+    
+p1 = [[(1, 10), (3, -10)],[(2, 10), (5, -20)],[(3, -10)],[(4, 15)],[(5, 0)]] 
+p2 = [[(3, -11), (0, 3)], [(1, 1)], [(0, 4)], [(2, -4)]]
 
 
 
@@ -208,3 +251,32 @@ m2 = [4, 1, 8, 2, 11, 1, 1, 1, 1, 1]
 # 
 # medtem ko iz vrste 5 in stolpca 0 ne more pobegniti.
 # =============================================================================
+def pot_pobega(soba, vrsta, stolpec, koraki):
+    vrni = []
+    def aux (pot, gorivo, v, s):
+        if soba[v][s] == 1:
+            vrni.append(pot)
+        elif gorivo > 0 and soba[v][s] == 0:
+            if v> 0:
+                a = pot.copy()
+                a.append("gor")
+                aux(a, gorivo -1, v-1, s)
+            if s> 0:
+                a = pot.copy()
+                a.append("levo")
+                aux(a, gorivo -1, v, s-1)
+            if v< len(soba)-1:
+                a = pot.copy()
+                a.append("dol")
+                aux(a, gorivo -1, v+1, s)
+            if s< len(soba[0])-1:
+                a = pot.copy()
+                a.append("desno")
+                aux(a, gorivo -1, v, s+1)
+    aux ([], koraki, vrsta, stolpec)
+    if vrni == []:
+        return "None"
+    return vrni
+
+m1 = [[0, 1, 0, 0, 2],[0, 2, 2, 0, 0],[0, 0, 2, 2, 0],[2, 0, 0, 2, 0],[0, 2, 2, 0, 0],[0, 0, 0, 2, 2]]
+m2 = [[0, 1, 0, 0, 2],[0, 2, 2, 0, 0],[0, 0, 2, 2, 0],[2, 0, 0, 0, 0],[0, 2, 2, 0, 0],[0, 0, 0, 2, 2]]
