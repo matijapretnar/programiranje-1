@@ -1,3 +1,5 @@
+spletniVmesnik.bc.js
+
 *.pyc
 .ipynb_checkpoints
 
@@ -20,4 +22,3 @@ _build
 venv
 env
 node_modules
-*.bc.js

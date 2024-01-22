@@ -1,9 +1,10 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.134.1/containers/alpine/.devcontainer/base.Dockerfile
-ARG PYTHON_VERSION="3.8"
-ARG OCAML_VERSION="4.11"
+ARG PYTHON_VERSION="3.10"
+ARG OCAML_VERSION="4.14"
 FROM python:${PYTHON_VERSION}-buster as base-python
 
 # https://pythonspeed.com/articles/multi-stage-docker-python/
+
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 RUN python -m pip install --upgrade pip
@@ -16,12 +17,12 @@ RUN pip install --no-cache-dir --no-warn-script-location pandas numpy jupyter re
 # We can use smaller image
 # FROM ocaml/opam2:debian-10
 # This is fixed, use newer one, but as of 18.11.2020, ocaml 4.13 is not yet supported
-FROM ocurrent/opam:debian-10-ocaml-${OCAML_VERSION}
+FROM ocaml/opam:debian-12-ocaml-${OCAML_VERSION}
 # Redeclare arg: https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
 ARG OCAML_VERSION
 
 # Needed for merlin
-RUN opam update && opam depext --yes --install jupyter ocaml-lsp-server ocamlformat utop
+RUN opam update && opam depext --yes --install jupyter ocaml-lsp-server ocamlformat utop dune vdom.0.3
 RUN opam user-setup install
 RUN /home/opam/.opam/${OCAML_VERSION}/bin/ocaml-jupyter-opam-genspec
 
@@ -44,7 +45,8 @@ ENV OCAML_DOCKER_PATH='/home/opam/.opam/'${OCAML_VERSION}'/bin'
 ENV PATH="$OCAML_DOCKER_PATH:$PATH"
 
 # Install Jupyter kernel for OCaml
-RUN jupyter kernelspec install --name ocaml-jupyter "$(opam var share)/jupyter" --user
+# This fails when looking for libffi.so.6
+# RUN jupyter kernelspec install --name ocaml-jupyter "$(opam var share)/jupyter" --user
 
 # This enables us to install additional Python libraries
 USER root
