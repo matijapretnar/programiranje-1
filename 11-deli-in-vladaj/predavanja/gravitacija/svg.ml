@@ -42,6 +42,15 @@ let svg_daljica ?(a = []) zacetek konec =
       @ a)
     []
 
+let svg_pravokotnik ?(a = []) min max =
+  svg_elt "g"
+    [
+      svg_daljica ~a min { x = max.x; y = min.y };
+      svg_daljica ~a { x = max.x; y = min.y } max;
+      svg_daljica ~a max { x = min.x; y = max.y };
+      svg_daljica ~a { x = min.x; y = max.y } min;
+    ]
+
 let svg_puscica ?(a = []) zacetek konec =
   let vektor = konec --. zacetek in
   let normala = { x = -.vektor.y; y = vektor.x } in
