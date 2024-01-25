@@ -8,7 +8,7 @@
  - : int = 4
 [*----------------------------------------------------------------------------*)
 
-let square = ()
+let square x = x * x
 
 (*----------------------------------------------------------------------------*]
  Funkcija [middle_of_triple] vrne srednji element trojice.
@@ -17,7 +17,8 @@ let square = ()
  - : bool = false
 [*----------------------------------------------------------------------------*)
 
-let middle_of_triple = ()
+let middle_of_triple (x1, x2, x3) = x2
+  
 
 (*----------------------------------------------------------------------------*]
  Funkcija [starting_element] vrne prvi element danega seznama. V primeru
@@ -27,8 +28,10 @@ let middle_of_triple = ()
  - : int = 1
 [*----------------------------------------------------------------------------*)
 
-let starting_element = ()
-
+let starting_element lst = (match lst with
+    | [] -> failwith "ne gre"
+    | x::xs -> x
+ )
 (*----------------------------------------------------------------------------*]
  Funkcija [multiply] zmnoži vse elemente seznama. V primeru praznega seznama
  vrne vrednost, ki je smiselna za rekurzijo.
@@ -37,7 +40,10 @@ let starting_element = ()
  - : int = 48
 [*----------------------------------------------------------------------------*)
 
-let rec multiply = ()
+let rec multiply lst = (match lst with
+  | [] -> 1
+  | gl::rp -> gl * (multiply (rp))
+)
 
 (*----------------------------------------------------------------------------*]
  Napišite funkcijo ekvivalentno python kodi:
@@ -54,7 +60,10 @@ let rec multiply = ()
  - : int list = [-1; 7; 0]
 [*----------------------------------------------------------------------------*)
 
-let rec sum_int_pairs = ()
+let rec sum_int_pairs lst = (match lst with
+ | [] -> 0
+ | gl::rp -> fst(gl) + snd(gl) + (sum_int_pairs(rp))
+)
 
 (*----------------------------------------------------------------------------*]
  Funkcija [get k list] poišče [k]-ti element v seznamu [list]. Številčenje
@@ -65,7 +74,10 @@ let rec sum_int_pairs = ()
  - : int = 1
 [*----------------------------------------------------------------------------*)
 
-let rec get = ()
+let rec get k lst = match lst with
+| [] -> failwith "opala"
+| gl::rp -> if k <= 0 then gl else get (k - 1) rp
+ 
 
 (*----------------------------------------------------------------------------*]
  Funkcija [double] podvoji pojavitve elementov v seznamu.
