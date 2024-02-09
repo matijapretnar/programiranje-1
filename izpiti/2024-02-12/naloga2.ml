@@ -26,11 +26,11 @@ let example1 =
     ( Variable '0',
       Some
         [
-          Node (Variable '1', Some []);
-          Node (Constant '[', Some []);
-          Node (Variable '0', Some []);
-          Node (Constant ']', Some []);
-          Node (Variable '0', Some []);
+          Node (Variable '1', None);
+          Node (Constant '[', None);
+          Node (Variable '0', None);
+          Node (Constant ']', None);
+          Node (Variable '0', None);
         ] )
 
 let rules1 =
@@ -51,22 +51,65 @@ Napišite funkcijo `veljavno : l_tree -> bool`, ki preveri, ali je dano drevo ve
 Oba podana primera dreves sta veljavna.
 *)
 
+let depth tree =
+  let rec depth' tree d =
+    match tree with
+    | Node (_, None) -> d
+    | Node (_, Some lst) ->
+        List.fold_left (fun acc t -> max acc (depth' t (d + 1))) d lst
+  in
+  depth' tree 0
+
+let veljavno tree =
+  let rec veljavno' tree =
+    match tree with
+    | Node (_, None) -> true
+    | Node (_, Some []) -> false
+    | Node (_, Some (x :: xs)) ->
+        let d = depth x in
+        List.fold_left (fun acc t -> acc && depth t = d && veljavno' t) true xs
+  in
+  veljavno' tree
+
 (* 2. b) *)
 
 (*
-Napišite funkcijo `preslikaj : rules -> element -> result list`, ki za podan seznam pravil in element vrne rezultat, v katerega se element preslika.
+Napišite funkcijo `preslikaj : rules -> element -> element list`, ki za podan seznam pravil in element vrne rezultat, v katerega se element preslika.
 Lahko predpostavite, da je element vedno možno preslikati.
 Če je element konstanta, naj funkcija vrne seznam, ki vsebuje samo ta element, ne glede na seznam pravil.
 *)
 
+let preslikaj (rules : rules) (element : element) : element list =
+  match element with
+  | Constant c -> [ Constant c ]
+  | Variable v ->
+      let rec preslikaj' rules v =
+        match rules with
+        | [] -> failwith "Preslikava ne obstaja"
+        | (x, y) :: xs -> if x = v then y else preslikaj' xs v
+      in
+      preslikaj' rules v
+
 (* 2. c) *)
 
 (*
-Napišite funkcijo `zadnja_vrstica : l_tree -> element list`, ki vrne seznam elementov zadnje vrstice drevesa.
+Napišite funkcijo `zadnja_vrstica : l_tree -> char list`, ki vrne seznam elementov zadnje vrstice drevesa.
 Lahko predpostavite, da je drevo vedno veljavno.
 Elementi v rezultatu naj bodo v istem vrstnem redu, kot se pojavijo v drevesu, če bi ga brali od leve proti desni.
 Za vse točke naj bo funkcija repno rekurzivna.
 *)
+
+let zadnja_vrstica tree =
+  let rec zadnja_vrstica' tree acc =
+    match tree with
+    | Node (el, None) -> el :: acc
+    | Node (_, Some lst) ->
+        List.fold_left (fun acc t -> zadnja_vrstica' t acc) acc lst
+  in
+  List.rev (zadnja_vrstica' tree [])
+  |> List.map (fun x -> match x with Variable c -> c | Constant c -> c)
+
+(* 2. d) *)
 
 (* 2. d) *)
 (*
