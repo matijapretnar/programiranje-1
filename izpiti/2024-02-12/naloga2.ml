@@ -99,6 +99,8 @@ Elementi v rezultatu naj bodo v istem vrstnem redu, kot se pojavijo v drevesu, �
 Za vse točke naj bo funkcija repno rekurzivna.
 *)
 
+let to_char = function Variable c -> c | Constant c -> c
+
 let zadnja_vrstica tree =
   let rec zadnja_vrstica' tree acc =
     match tree with
@@ -106,8 +108,7 @@ let zadnja_vrstica tree =
     | Node (_, Some lst) ->
         List.fold_left (fun acc t -> zadnja_vrstica' t acc) acc lst
   in
-  List.rev (zadnja_vrstica' tree [])
-  |> List.map (fun x -> match x with Variable c -> c | Constant c -> c)
+  List.rev (zadnja_vrstica' tree []) |> List.map to_char
 
 (* 2. d) *)
 
@@ -118,6 +119,18 @@ Napišite funkcijo `preveri_pravila : rules -> bool`, ki za dani seznam pravil p
 2. Ponovljiva, torej, ali je vsaka spremenljivka, ki se pojavi na desni strani pravila, tudi na levi.  
 *)
 
+let enolicna pravila =
+  List.map fst pravila |> List.sort_uniq compare |> List.length
+  = List.length pravila
+
+let preveri_pravila rules =
+  let results =
+    List.map snd rules |> List.flatten |> List.map to_char
+    |> List.sort_uniq compare
+  in
+  let arguments = List.map fst rules in
+  enolicna rules && List.for_all (fun c -> List.mem c arguments) results
+
 (* 2. e *)
 
 (*
@@ -127,3 +140,13 @@ Lahko predpostavite, da je drevo vedno veljavno.
 Drevo iz primera `example0` smo dobili tako, da smo dvakrat preslika drevo `Node (Variable 'A', None)` z uporabo `rules0`.
 Drevo iz primera `example1` smo dobili tako, da smo enkrat preslikali drevo `Node (Variable '0', None)` enkrat preslikali z uporabo `rules1`.
 *)
+
+let rec preslikaj_drevo rules tree =
+  let rec preslikaj_drevo' tree =
+    match tree with
+    | Node (el, None) ->
+        Node
+          (el, Some (preslikaj rules el |> List.map (fun x -> Node (x, None))))
+    | Node (el, Some lst) -> Node (el, Some (List.map preslikaj_drevo' lst))
+  in
+  preslikaj_drevo' tree
