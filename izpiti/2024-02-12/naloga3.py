@@ -12,6 +12,7 @@ Ker je Kurent, seveda ne sme iti kar tako, ampak mora upoštevati nekaj pravil:
 - Če se kurent večkrat znajde na istem mestu, bo vsakič pobral vse bobe, ki so na tem mestu (medtem, ko je bil odsoten se bobi obnovijo).
 
 Pomagajte kurentu naiskati pot, ob kateri konča z največjim številom bobov.
+Napišite funkcijo, ki vrne največje število bobov, ki jih lahko Kurent pobere in seznam ukazov, ki jih mora izvesti, da jih pobere, pri tem "D" pomeni korak navzdol, "R" korak desno in "DI" korak diagonalno, JUMP i j pa skok na mesto i, j.
 
 """
 from functools import lru_cache
@@ -82,6 +83,7 @@ def najvec_bobov(matrika):
 
     b = aux(0, 0, 0, False)
     print(aux.cache_info())
+    return b
 
 
 print(najvec_bobov(pustni_torek))
