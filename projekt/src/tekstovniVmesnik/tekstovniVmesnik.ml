@@ -7,6 +7,7 @@ type stanje_vmesnika =
   | BranjeNiza
   | RezultatPrebranegaNiza
   | OpozoriloONapacnemNizu
+  | VrniVPrvotnoStanje
 
 type model = {
   avtomat : t;
@@ -34,7 +35,9 @@ let update model = function
             stanje_avtomata;
             stanje_vmesnika = RezultatPrebranegaNiza;
           })
-  | ZamenjajVmesnik stanje_vmesnika -> { model with stanje_vmesnika }
+  | ZamenjajVmesnik stanje_vmesnika -> if stanje_vmesnika = VrniVPrvotnoStanje 
+            then { avtomat = model.avtomat; stanje_avtomata = zacetno_stanje model.avtomat; stanje_vmesnika }
+            else { model with stanje_vmesnika }
 
 let rec izpisi_moznosti () =
   print_endline "1) izpiši avtomat";
@@ -83,6 +86,8 @@ let view model =
   | OpozoriloONapacnemNizu ->
       print_endline "Niz ni veljaven";
       ZamenjajVmesnik SeznamMoznosti
+  | VrniVPrvotnoStanje -> 
+    ZamenjajVmesnik SeznamMoznosti
 
 let init avtomat =
   {
