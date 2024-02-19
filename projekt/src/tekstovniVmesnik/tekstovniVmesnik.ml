@@ -82,10 +82,10 @@ let view model =
   | BranjeNiza -> beri_niz model
   | RezultatPrebranegaNiza ->
       izpisi_rezultat model;
-      ZamenjajVmesnik SeznamMoznosti
+      ZamenjajVmesnik VrniVPrvotnoStanje
   | OpozoriloONapacnemNizu ->
       print_endline "Niz ni veljaven";
-      ZamenjajVmesnik SeznamMoznosti
+      ZamenjajVmesnik VrniVPrvotnoStanje
   | VrniVPrvotnoStanje -> 
     ZamenjajVmesnik SeznamMoznosti
 
