@@ -41,13 +41,15 @@ let update model = function
 
 let rec izpisi_moznosti () =
   print_endline "1) izpiši avtomat";
-  print_endline "2) preberi niz";
+  print_endline "2) beri znake";
+  print_endline "3) nastavi na začetno stanje";
   print_string "> ";
   match read_line () with
   | "1" -> ZamenjajVmesnik IzpisAvtomata
   | "2" -> ZamenjajVmesnik BranjeNiza
+  | "3" -> ZamenjajVmesnik VrniVPrvotnoStanje
   | _ ->
-      print_endline "** VNESI 1 ALI 2 **";
+      print_endline "** VNESI 1, 2 ALI 3 **";
       izpisi_moznosti ()
 
 let izpisi_avtomat avtomat =
@@ -79,13 +81,13 @@ let view model =
   | IzpisAvtomata ->
       izpisi_avtomat model.avtomat;
       ZamenjajVmesnik SeznamMoznosti
-  | BranjeNiza -> beri_niz model
+  | BranjeNiza -> beri_niz model;
   | RezultatPrebranegaNiza ->
       izpisi_rezultat model;
-      ZamenjajVmesnik VrniVPrvotnoStanje
+      ZamenjajVmesnik SeznamMoznosti;
   | OpozoriloONapacnemNizu ->
       print_endline "Niz ni veljaven";
-      ZamenjajVmesnik VrniVPrvotnoStanje
+      ZamenjajVmesnik SeznamMoznosti;
   | VrniVPrvotnoStanje -> 
     ZamenjajVmesnik SeznamMoznosti
 
