@@ -7,7 +7,6 @@ type stanje_vmesnika =
   | BranjeNiza
   | RezultatPrebranegaNiza
   | OpozoriloONapacnemNizu
-  | VrniVPrvotnoStanje
 
 type model = {
   avtomat : t;
@@ -15,7 +14,7 @@ type model = {
   stanje_vmesnika : stanje_vmesnika;
 }
 
-type msg = PreberiNiz of string | ZamenjajVmesnik of stanje_vmesnika
+type msg = PreberiNiz of string | ZamenjajVmesnik of stanje_vmesnika | VrniVPrvotnoStanje
 
 let preberi_niz avtomat q niz =
   let aux acc znak =
@@ -35,9 +34,8 @@ let update model = function
             stanje_avtomata;
             stanje_vmesnika = RezultatPrebranegaNiza;
           })
-  | ZamenjajVmesnik stanje_vmesnika -> if stanje_vmesnika = VrniVPrvotnoStanje 
-            then { avtomat = model.avtomat; stanje_avtomata = zacetno_stanje model.avtomat; stanje_vmesnika }
-            else { model with stanje_vmesnika }
+  | ZamenjajVmesnik stanje_vmesnika -> { model with stanje_vmesnika }
+  | VrniVPrvotnoStanje -> { model with stanje_avtomata = zacetno_stanje model.avtomat}
 
 let rec izpisi_moznosti () =
   print_endline "1) izpiši avtomat";
@@ -47,7 +45,7 @@ let rec izpisi_moznosti () =
   match read_line () with
   | "1" -> ZamenjajVmesnik IzpisAvtomata
   | "2" -> ZamenjajVmesnik BranjeNiza
-  | "3" -> ZamenjajVmesnik VrniVPrvotnoStanje
+  | "3" -> VrniVPrvotnoStanje
   | _ ->
       print_endline "** VNESI 1, 2 ALI 3 **";
       izpisi_moznosti ()
@@ -77,20 +75,17 @@ let izpisi_rezultat model =
 
 let view model =
   match model.stanje_vmesnika with
-  | SeznamMoznosti -> izpisi_moznosti ()
+  | SeznamMoznosti -> izpisi_moznosti ();
   | IzpisAvtomata ->
       izpisi_avtomat model.avtomat;
-      ZamenjajVmesnik SeznamMoznosti
+      ZamenjajVmesnik SeznamMoznosti;
   | BranjeNiza -> beri_niz model;
   | RezultatPrebranegaNiza ->
       izpisi_rezultat model;
       ZamenjajVmesnik SeznamMoznosti;
   | OpozoriloONapacnemNizu ->
       print_endline "Niz ni veljaven";
-      ZamenjajVmesnik SeznamMoznosti;
-  | VrniVPrvotnoStanje -> 
-    ZamenjajVmesnik SeznamMoznosti
-
+      ZamenjajVmesnik SeznamMoznosti
 let init avtomat =
   {
     avtomat;
