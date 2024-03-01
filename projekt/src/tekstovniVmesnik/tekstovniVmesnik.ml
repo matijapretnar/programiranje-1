@@ -14,7 +14,10 @@ type model = {
   stanje_vmesnika : stanje_vmesnika;
 }
 
-type msg = PreberiNiz of string | ZamenjajVmesnik of stanje_vmesnika
+type msg =
+  | PreberiNiz of string
+  | ZamenjajVmesnik of stanje_vmesnika
+  | VrniVPrvotnoStanje
 
 let preberi_niz avtomat q niz =
   let aux acc znak =
@@ -35,16 +38,24 @@ let update model = function
             stanje_vmesnika = RezultatPrebranegaNiza;
           })
   | ZamenjajVmesnik stanje_vmesnika -> { model with stanje_vmesnika }
+  | VrniVPrvotnoStanje ->
+      {
+        model with
+        stanje_avtomata = zacetno_stanje model.avtomat;
+        stanje_vmesnika = SeznamMoznosti;
+      }
 
 let rec izpisi_moznosti () =
   print_endline "1) izpiši avtomat";
-  print_endline "2) preberi niz";
+  print_endline "2) beri znake";
+  print_endline "3) nastavi na začetno stanje";
   print_string "> ";
   match read_line () with
   | "1" -> ZamenjajVmesnik IzpisAvtomata
   | "2" -> ZamenjajVmesnik BranjeNiza
+  | "3" -> VrniVPrvotnoStanje
   | _ ->
-      print_endline "** VNESI 1 ALI 2 **";
+      print_endline "** VNESI 1, 2 ALI 3 **";
       izpisi_moznosti ()
 
 let izpisi_avtomat avtomat =
