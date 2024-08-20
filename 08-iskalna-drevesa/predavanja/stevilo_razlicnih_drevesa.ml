@@ -54,7 +54,7 @@ let stopaj f x =
 
 let _ = Random.self_init ()
 
-(* let primer = nakljucni_seznam 20000 20000 *)
+(* let primer = nakljucni_seznam 80000 80000 *)
 
 let primer = seznam_zaporednih 10000
 
