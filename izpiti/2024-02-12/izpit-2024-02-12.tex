@@ -1,0 +1,149 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\begin{document}
+
+\izpit{Programiranje I: 2.~izpit}{12.\ februar 2024}{
+  Čas reševanja je 120 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\podnaloga
+Napišite funkcijo \verb|je_pravokotni : int -> int -> int -> bool|, ki preveri, ali podane stranice (v poljubnem vrstnem redu) ustrezajo Pitagorovemu izreku.
+
+\podnaloga
+Napišite funkcijo \verb|geometrijsko : int -> int -> int -> int list|, ki sprejma naravna števila \verb|a|, \verb|q| in \verb|n|, ter vrne prvih \verb|n| členov geometrijske vrste s prvim členom \verb|a| in kvocientom \verb|q|.
+
+\podnaloga
+Napišite funkcijo \verb|premesaj : ('a * 'b * ('c * 'd * 'e)) -> ('c * 'd * ('a * 'e * 'c))|.
+
+\podnaloga
+Napišite funkcijo \verb|odberi : 'a list -> int list -> 'a list|, ki sprejme seznam elementov in seznam indeksov ter vrne seznam elementov, ki se nahajajo na mestih, ki so podani z indeksi.
+Seznam indeksov bo urejen naraščajoče, ne bo vseboval ponovitev in vsi indeksi bodo veljavni glede na dolžino seznama elementov.
+Vaša funkcija mora delovati učinkovito (torej v času, ki je linearen v dolžini vhodnega seznama elementov).
+
+\begin{verbatim}
+  # odberi [ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 ] [ 0; 2; 4; 6; 8 ];;
+  - : int list = [1; 3; 5; 7; 9]
+\end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\begin{verbatim}
+type element = Variable of char | Constant of char
+type result = element list
+(* Seznam pravil podamo s pari, ki spremenljivkam priredijo sliko  *)
+(* Za vse preslikave bomo predpostavili, da so enolične *)
+type rules = (char * result) list
+type l_tree = Node of element * l_tree list option
+
+let example0 =
+  Node
+    ( Variable 'A',
+      Some
+        [
+          Node
+            ( Variable 'A',
+              Some [ Node (Variable 'A', None); Node (Variable 'B', None) ] );
+          Node (Variable 'B', Some [ Node (Variable 'A', None) ]);
+        ] )
+
+let rules0 = [ ('A', [ Variable 'A'; Variable 'B' ]); ('B', [ Variable 'A' ]) ]
+
+let example1 =
+  Node
+    ( Variable '0',
+      Some
+        [
+          Node (Variable '1', None);
+          Node (Constant '[', None);
+          Node (Variable '0', None);
+          Node (Constant ']', None);
+          Node (Variable '0', None);
+        ] )
+
+let rules1 =
+  [
+    ('1', [ Variable '1'; Variable '1' ]);
+    ( '0',
+      [ Variable '1'; Constant '['; Variable '0'; Constant ']'; Constant '0' ]
+    );
+  ]
+\end{verbatim}
+
+\podnaloga
+Element drevesa je \verb|veljaven|, če nima praznega seznama poddreves (če njegovo poddrevo ni enako \verb|Some []|).
+Element drevesa je \verb|list|, če ima za poddrevo \verb|None|.
+Drevo je \verb|veljavno|, če so vsi njegovi elementi veljavni, so globine vseh poddreves enake in so vsa poddrevesa veljavna.
+Napišite funkcijo \verb|veljavno : l_tree -> bool|, ki preveri, ali je dano drevo veljavno.
+Oba podana primera dreves sta veljavna.
+
+
+\podnaloga
+Napišite funkcijo \verb|preslikaj : rules -> element -> element list|, ki za podan seznam pravil in element vrne rezultat, v katerega se element preslika.
+Lahko predpostavite, da je element vedno možno preslikati.
+Če je element konstanta, naj funkcija vrne seznam, ki vsebuje samo ta element, ne glede na seznam pravil.
+
+\podnaloga
+Napišite funkcijo \verb|zadnja_vrstica : l_tree -> char list|, ki vrne seznam elementov zadnje vrstice drevesa.
+Lahko predpostavite, da je drevo vedno veljavno.
+Elementi v rezultatu naj bodo v istem vrstnem redu, kot se pojavijo v drevesu, če bi ga brali od leve proti desni.
+Za vse točke naj bo funkcija repno rekurzivna.
+
+\podnaloga
+Napišite funkcijo \verb|preveri_pravila : rules -> bool|, ki za dani seznam pravil preveri, ali so:
+\begin{enumerate}
+  \item enolična, torej ali se vsaka spremenljivka pojavi največ enkrat na levi strani pravila,
+  \item ponovljiva, torej, ali je vsaka spremenljivka, ki se pojavi na desni strani pravila, tudi na levi.
+\end{enumerate}
+
+\podnaloga
+Napišite funkcijo \verb|preslikaj_drevo : rules -> l_tree -> l_tree|, ki za dano drevo in seznam pravil vrne preslikano drevo - drevo, pri katerem smo na spodnjem nivoju enkrat uporabili seznam pravil.
+Preslikano drevo je takšno, da so otroci listov izvirnega drevesa zamenjani listi, kjer so vrednosti novih listov take, kot jih določajo pravila (enako, kot pri funkciji \verb|preslikaj|).
+Lahko predpostavite, da je drevo vedno veljavno.
+Drevo iz primera \verb|example0| smo dobili tako, da smo dvakrat preslikali drevo \verb|Node (Variable 'A', None)| z uporabo \verb|rules0|.
+Drevo iz primera \verb|example1| smo dobili tako, da smo enkrat preslikali drevo \verb|Node (Variable '0', None)| z uporabo \verb|rules1|.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+Kurent mora po dolgi in naporni pustni soboti obiskati še Ameriško mesto (zaradi kulturne izmenjave), ki ga predstavimo z matriko \verb|N x M|.
+Na vsakem mestu v matriki je celo (lahko negativno) število, ki predstavlja količino \verb|bobov|.
+Ker je Kurent, seveda ne sme iti kar tako, ampak mora upoštevati nekaj pravil:
+\begin{itemize}
+  \item Pot po mreži se začne v zgornjem levem kotu in konča v spodnjem desnem kotu.
+  \item Pot začne z 0 bobi in med potjo nikoli ne sme imeti negativnega števila bobov (četudi bi ob pristanku na lokaciji število bobov spet postalo nenegativno to ni sprejemljivo).
+  \item Po mreži se lahko premika le en korak v desno, en krak navzdol ali en korak v desno in en korak navzdol (diagonalno) in ob vsakem takem koraku poje 1 bob.
+  \item Enkrat v sprehodu lahko skoči na poljubno mesto (tudi nazaj na mesto, kjer stoji) v mreži, vendar ob takem skoku poje 3 bobe.
+  \item Ko se kurent nahaja na nekem mestu v mreži pobere vse bobe, ki so na tem mestu (če je število bobov negativno se to odšteje od skupnega števila bobov).
+  \item Če se kurent večkrat znajde na istem mestu, bo vsakič pobral vse bobe, ki so na tem mestu (medtem, ko je bil odsoten se bobi obnovijo).
+\end{itemize}
+
+Pomagajte kurentu poiskati pot, ob kateri konča z največjim številom bobov.
+Napišite funkcijo, ki vrne največje število bobov, ki jih lahko kurent pobere in seznam ukazov, ki jih mora izvesti, da jih pobere, pri tem \verb|D| pomeni korak navzdol, \verb|R| korak desno in \verb|DI| korak diagonalno, \verb|JUMP i j| pa skok na mesto i, j.
+
+\begin{verbatim}
+pustni_torek = [
+    [10, 20, -30, -100, 9],
+    [0, 0, 50, 50, 2],
+    [10, 20, 300, -10, 0],
+    [40, 30, -200, -10, 5],
+]
+
+print(najvec_bobov(pustni_torek))
+# Izhod: (744, ['R', 'DI', 'D', 'JUMP 0 0', 'R', 'DI', 'D', 'R', 'DI'])
+\end{verbatim}
+
+\end{document}
