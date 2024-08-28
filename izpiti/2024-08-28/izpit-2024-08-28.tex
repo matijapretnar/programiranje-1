@@ -139,15 +139,31 @@ Sestavite funkcijo \verb|run_until_end : state -> int array|, ki na procesorju v
 
 Babica in dedek sta na njivi posejala repo. Iz vseh zrn je zrasla samo ena ogromna repa, težka 219.01 kg. Dedku (80 kg) je samemu ni uspelo izpuliti, zato je na pomoč poklical babico (65 kg). Naprezala sta se in naprezala, pa brez uspeha. Mimo je prišel vnuk (42 kg) in začel vleči tudi on. Čez nekaj časa je mimo priskakljala še njegova mlajša sestra (20 kg) in se pridružila ekipi. Mimo je prišel tudi voliček (600 kg), ki pa mu niso dovolili, da bi pomagal, saj v pravljicah na pomoč priskoči lahko le nekdo še manjši. Za njim je pritekel psiček (12 kg), ki je zagrabil vnučko za srajco in začel vleči, pa še vedno ni šlo. Na koncu je mimo prišla še miška (0.02 kg), in s skupnimi močmi jim je uspelo izvleči repo.
 
-Napišite funkcijo \verb|izvleci_repo|, ki kot argument prejme seznam oseb, ki v tem vrstnem redu prihajajo mimo njive z repo. Funkcija naj vrne maso največje repe, ki bi jo lahko izvlekli, ter seznam oseb, ki pri tem sodelujejo. Vsaka oseba je predstavljena s parom \verb|(oseba, masa)|. Da zadostimo pravljičnim pravilom, mora biti vsaka naslednja oseba lažja od prejšnje, osebe pa se lahko pridružijo prejšnjim, ali pa odidejo naprej.
+Napišite funkcijo \verb|izvleci_repo|, ki kot argument prejme seznam oseb, ki v tem vrstnem redu prihajajo mimo njive z repo. Funkcija naj vrne maso največje repe, ki bi jo lahko izvlekli, ter seznam oseb, ki pri tem sodelujejo. Vsaka oseba je predstavljena s parom imena in mase. Da zadostimo pravljičnim pravilom, mora biti vsaka naslednja oseba lažja od prejšnje, osebe pa se lahko pridružijo prejšnjim, ali pa odidejo naprej.
 
 V zgornjem primeru bi za vhod dobili spodnji seznam:
-
-\begin{Verbatim}[fontsize=\small]
-[('dedek', 80.0), ('babica', 65.0), ('vnuk', 42.0), ('vnukinja', 20.0),
- ('volicek', 600.0), ('psicek', 12.0), ('miska', 0.02)]
-\end{Verbatim}
-
-Dedkova ekipa lahko izvleče repo s težo kvečjemu 219.02 kg, če pa bi repo vlekli voliček, psiček in miška, pa bi lahko izvlekli repo z maso 612.02 kg.
-
+\[
+  \big[
+    (\mathit{dedek}, 80),\ 
+    (\mathit{babica}, 65),\ 
+    (\mathit{vnuk}, 42),\ 
+    (\mathit{vnukinja}, 20),\ 
+    (\mathit{voliček}, 600),\ 
+    (\mathit{psiček}, 12),\ 
+    (\mathit{miška}, 0.02)
+  \big]
+\]
+Dedkova ekipa lahko izvleče repo s težo kvečjemu 219.02 kg, če pa bi repo vlekli voliček, psiček in miška, pa bi lahko izvlekli repo z maso 612.02 kg. Na seznamu
+\[
+  \big[
+    (A, 5),\ 
+    (B, 2),\ 
+    (C, 4),\ 
+    (D, 3),\ 
+    (E, 1),\ 
+    (F, 2),\ 
+    (G, 1)
+  \big]
+\]
+pa je optimalna izbira $[A, C, D, F, G]$ s skupno maso $15$. 
 \end{document}
