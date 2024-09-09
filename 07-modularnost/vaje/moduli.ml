@@ -244,7 +244,7 @@ module Polar : COMPLEX = struct
   let i = {magn = 1.; arg = 90.}
 
   let neg {magn; arg} = {magn; arg = arg +. 180.}
-  let conj {magn; arg} = {magn; arg = (mod_float (arg +. 180.) 360.)}
+  let conj {magn; arg} = {magn; arg = (mod_float (-arg) 360.)}
 
   let mul x y = {magn = x.magn *. y.magn ; arg = x.arg +. y.arg}
 
