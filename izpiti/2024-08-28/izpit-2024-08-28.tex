@@ -1,0 +1,169 @@
+\documentclass[arhiv]{../izpit}
+\usepackage{fouriernc}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\begin{document}
+
+\izpit{Programiranje I: 3.~izpit}{28.\ avgust 2024}{
+  Čas reševanja je 120 minut.
+  Veliko uspeha!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\podnaloga
+Napišite predikat \verb|obrnljiva : (int * int) * (int * int) -> bool|, ki za dano dvodimenzionalno matriko pove, ali je obrnljiva, torej da njena determinanta ni enaka 0. (Determinanta matrike $((a, b), (c, d))$ je enaka $ad - bc$.)
+
+\begin{Verbatim}[fontsize=\small]
+# obrnljiva ((3, 4), (0, 0));;
+- : bool = false
+# obrnljiva ((1, 0), (0, 1));;
+- : bool = true
+\end{Verbatim}
+
+\podnaloga
+Napišite funkcijo \verb|natanko_en : int option -> int option -> int option|, ki sprejme morebitna elementa ter vrne element natanko tedaj, ko dobi ravno enega.
+
+\begin{Verbatim}[fontsize=\small]
+# natanko_en (Some 1) (Some 2);;
+- : int option = None
+# natanko_en (Some 1) None;;
+- : int option = Some 1
+# natanko_en None (Some 2);;
+- : int option = Some 2
+# natanko_en None None;;
+- : int option = None
+\end{Verbatim}
+
+\podnaloga
+Napišite funkcijo \verb|razlika_aritmeticnega : int list -> int option|, ki pove, ali je zaporedje števil aritmetično. Če je, vrne razliko, sicer pa \verb|None|. Zaporedja z enim elementom ali manj niso aritmetična.
+
+\begin{Verbatim}[fontsize=\small]
+# razlika_aritmeticnega [];;
+- : int option = None
+# razlika_aritmeticnega [1; 5; 9];;
+- : int option = Some 4
+# razlika_aritmeticnega [3; 4; 5; 2];;
+- : int option = None
+\end{Verbatim}
+
+\podnaloga
+Napišite funkcijo \verb|filtriraj : 'a list -> bool list -> 'a list|, ki sprejme seznam elementov in seznam logičnih vrednosti. Vrne naj seznam tistih elementov prvega seznama, pri katerih se v drugem seznamu na istem mestu nahaja \verb|true|. Funkcija naj ignorira logične vrednosti na koncu seznama, če jih je preveč. Če je seznam logičnih vrednosti prekratek, naj se obnaša, kot da so manjkajoče vrednosti \verb|true|.
+
+\begin{Verbatim}[fontsize=\small]
+# filtriraj [1; 2; 3; 4; 5] [true; false; true; false; true];;
+- : int list = [1; 3; 5]
+# filtriraj [1; 2] [false; true; false; true];;
+- : int list = [2]
+# filtriraj [1; 2; 3; 4; 5] [false];;
+- : int list = [2; 3; 4; 5]
+\end{Verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+Imejmo preprost procesor, sestavljen iz treh komponent:
+%
+\begin{enumerate}
+  \setlength\itemsep{0em}
+  \item pomnilnika, ki je predstavljen s tabelo celih števil \verb|memory|,
+  \item kazalca na trenutni ukaz \verb|instruction_pointer|,
+  \item tabele ukazov \verb|instructions|.
+\end{enumerate}
+%
+Mesta v pomnilniku so oštevilčena z naslovi \verb|#0|, \verb|#1|, …, možni ukazi procesorja pa so:
+%
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item \verb|INC a|, ki za 1 poveča vrednost na mestu \verb|a| v pomnilniku,
+  \item \verb|DEC a|, ki za 1 zmanjša vrednost na mestu \verb|a| v pomnilniku,
+  \item \verb|COPY a1 a2|, ki na mesto \verb|a2| shrani vrednost, shranjeno na mestu \verb|a1|,
+  \item \verb|WRITE x a|, ki na mesto \verb|a| shrani število \verb|x|,
+  \item \verb|JMP ip|, ki kazalec ukaza nastavi na \verb|ip|,
+  \item \verb|JMPZ a ip|, ki kazalec ukaza nastavi na \verb|ip|,
+      če je na mestu \verb|a| v pomnilniku shranjena ničla.
+\end{itemize}
+%
+Program se konča, ko kazalec ukaza skoči iz tabele ukazov. Na primer, program, ki na mesto \verb|#2| zapiše vsoto števil na mestih \verb|#0| in \verb|#1|, bi napisali z zaporedjem ukazov, ki najprej \verb|#0| prekopira v \verb|#2|, \verb|#1| pa v \verb|#3|, nato pa toliko časa povečuje \verb|#2| in zmanjšuje \verb|#3|, dokler \verb|#2| ne doseže 0:
+%
+\begin{Verbatim}[fontsize=\small]
+  0 COPY #0 #2
+  1 COPY #1 #3
+  2 JMPZ #3 6
+  3 INC #2
+  4 DEC #3
+  5 JMP 2
+\end{Verbatim}
+%
+Stanje procesorja v OCamlu predstavimo s tipi:
+%
+\begin{Verbatim}[fontsize=\small]
+type address = Address of int
+
+type instruction =
+  | INC of address | DEC of address
+  | JMP of int | JMPZ of address * int
+  | COPY of address * address | WRITE of int * address
+
+type state = {
+  instructions : instruction array;
+  instruction_pointer : int;
+  memory : int array;
+}
+\end{Verbatim}
+%
+pri čemer v tipu \verb|address| uporabimo konstruktor zato, da ne pride do zmešnjave s tipom \verb|int|.
+
+\podnaloga
+Sestavite funkcijo \verb|increase_instruction_pointer : state -> state|,
+ki za 1 poveča kazalec ukaza.
+
+\podnaloga
+Sestavite funkciji \verb|read_memory : state -> address -> int|, ki prebere vrednost, shranjeno na danem mestu pomnilnika, ter \verb|write_memory : int -> address -> state -> state|, ki na dano mesto v pomnilniku zapiše dano vrednost. Pomnilniško tabelo prvotnega stanja naj funkcija pusti nespremenjeno, vrne pa naj stanje s posodobljeno kopijo prvotne tabele.
+
+\podnaloga
+Sestavite funkcijo \verb|run_instruction : state -> instruction -> state|, ki na danem stanju izvede dani ukaz ter vrne novo stanje. Pri tem ne pozabite, da razen ob skokih po vsakem izvedenem ukazu povečamo kazalec ukaza. Tudi tu pomnilniško tabelo prvotnega stanja pustite nespremenjeno in v končnem stanju vrnite njeno ustrezno posodobljeno kopijo.
+
+\podnaloga
+Sestavite funkcijo \verb|run_until_end : state -> int array|, ki na procesorju v danem stanju toliko časa izvaja ukaze, dokler kazalec ukazov ne skoči iz tabele. Ko se to zgodi, vrnite končno stanje pomnilnika.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\naloga
+
+\emph{Nalogo lahko rešujete v Pythonu ali OCamlu.}
+
+Babica in dedek sta na njivi posejala repo. Iz vseh zrn je zrasla samo ena ogromna repa, težka 219.01 kg. Dedku (80 kg) je samemu ni uspelo izpuliti, zato je na pomoč poklical babico (65 kg). Naprezala sta se in naprezala, pa brez uspeha. Mimo je prišel vnuk (42 kg) in začel vleči tudi on. Čez nekaj časa je mimo priskakljala še njegova mlajša sestra (20 kg) in se pridružila ekipi. Mimo je prišel tudi voliček (600 kg), ki pa mu niso dovolili, da bi pomagal, saj v pravljicah na pomoč priskoči lahko le nekdo še manjši. Za njim je pritekel psiček (12 kg), ki je zagrabil vnučko za srajco in začel vleči, pa še vedno ni šlo. Na koncu je mimo prišla še miška (0.02 kg), in s skupnimi močmi jim je uspelo izvleči repo.
+
+Napišite funkcijo \verb|izvleci_repo|, ki kot argument prejme seznam oseb, ki v tem vrstnem redu prihajajo mimo njive z repo. Funkcija naj vrne maso največje repe, ki bi jo lahko izvlekli, ter seznam oseb, ki pri tem sodelujejo. Vsaka oseba je predstavljena s parom imena in mase. Da zadostimo pravljičnim pravilom, mora biti vsaka naslednja oseba lažja od prejšnje, osebe pa se lahko pridružijo prejšnjim, ali pa odidejo naprej.
+
+V zgornjem primeru bi za vhod dobili spodnji seznam:
+\[
+  \big[
+    (\mathit{dedek}, 80),\ 
+    (\mathit{babica}, 65),\ 
+    (\mathit{vnuk}, 42),\ 
+    (\mathit{vnukinja}, 20),\ 
+    (\mathit{voliček}, 600),\ 
+    (\mathit{psiček}, 12),\ 
+    (\mathit{miška}, 0.02)
+  \big]
+\]
+Dedkova ekipa lahko izvleče repo s težo kvečjemu 219.02 kg, če pa bi repo vlekli voliček, psiček in miška, pa bi lahko izvlekli repo z maso 612.02 kg. Na seznamu
+\[
+  \big[
+    (A, 5),\ 
+    (B, 2),\ 
+    (C, 4),\ 
+    (D, 3),\ 
+    (E, 1),\ 
+    (F, 2),\ 
+    (G, 1)
+  \big]
+\]
+pa je optimalna izbira $[A, C, D, F, G]$ s skupno maso $15$. 
+\end{document}
