@@ -1,7 +1,0 @@
-(executable
- (name stevec)
- (libraries vdom)
- (modes js)
- (promote
-  (until-clean)
-  (only stevec.bc.js)))
