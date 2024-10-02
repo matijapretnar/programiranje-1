@@ -42,7 +42,7 @@ RUN pip install --no-cache-dir --no-warn-script-location jupyter jupyter-book
 # - ocaml-lsp-server: Language server for OCaml (used by IDEs for features like autocompletion)
 # - ocamlformat: Auto-formatting tool for OCaml code
 # - utop: A better interactive OCaml toplevel
-RUN opam install jupyter ocaml-lsp-server ocamlformat utop
+RUN opam install jupyter ocaml-lsp-server ocamlformat.0.26.2 utop
 
 # Generate the OCaml Jupyter kernel specification to enable Jupyter to use OCaml as a kernel
 RUN /home/opam/.opam/4.14/bin/ocaml-jupyter-opam-genspec
