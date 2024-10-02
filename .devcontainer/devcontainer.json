@@ -1,11 +1,12 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 {
 	"name": "Programiranje 1",
-	// "image": "j00sko/programiranje1:latest",
-	// Uncomment the following lines to build a Docker virtual machine.
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
+	// To build a Docker virtual machine locally, comment the "image" line and uncomment
+	// the "build" lines below.
+	"image": "j00sko/programiranje1:latest",
+	// "build": {
+	// 	"dockerfile": "Dockerfile"
+	// },
 	"customizations": {
 		"vscode": {
 			"extensions": [
