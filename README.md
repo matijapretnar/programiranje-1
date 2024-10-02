@@ -24,15 +24,17 @@ Ker je podpora za OCaml na Windowsih že desetletja v povojih, je najpreprostej�
 
 #### Linux & macOS
 
-Tudi tu priporočamo zgoraj opisano namestitev prek Dockerja, saj vključuje vse razširitve in pakete, ki jih potrebujete pri predmetu. Če pa želite namestiti OCaml neposredno, sledite navodilom na [uradni strani](https://ocaml.org/docs/install.html). Python bi morali imeti že nameščen.
+Tudi tu priporočamo zgoraj opisano namestitev prek Dockerja, saj vključuje vse razširitve in pakete, ki jih potrebujete pri predmetu. Če pa želite namestiti OCaml neposredno, sledite navodilom na [uradni strani](https://ocaml.org/docs/install.html). Python bi morali imeti že nameščen. V datoteki [`Dockerfile`](.devcontainer/Dockerfile) lahko pogledate, katere Python (`pip install …`) in OCaml pakete (`opam install …`) morate še namestiti.
 
-#### Spletni vmesnik
+#### Zasilna rešitev
 
 Če vam OCamla ne uspe namestiti, ga lahko uporabljate tudi iz spletnega brskalnika:
 
 - <https://www.ocaml.org/play> (uradna različica, najenostavnejši vmesnik, OCaml 5.0.0)
 - <http://ocaml.besson.link> (več možnosti, verzija OCaml 4.13.1)
 - <https://try.ocamlpro.com> (delo z več datotekami, malo bolj okoren, OCaml 4.14.1)
+
+Z [namestitvijo Pythona](https://www.python.org/downloads/) ne bi smeli imeti večjih težav.
 
 ### 4\. Preverjanje namestitve
 
