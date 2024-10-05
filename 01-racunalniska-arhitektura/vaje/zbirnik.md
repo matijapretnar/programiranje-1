@@ -12,7 +12,7 @@ Zapišite program, ki na sklad zaporedno postavlja števila od 13 do 42.
 
 ## Menjava pomnilniških celic
 
-Zapišite program, ki zamenja vsebini pomnilniških celic na naslovih `[A]` in `[B]`.
+Poleg registrov in sklada lahko podatke shranjujemo tudi v pomnilniške celice. To storimo prek naslovov oblike `[N]`, kjer je `N` zaporedni indeks mesta v pomnilniku, ali `[R]`, kjer je `R` ime registra, v katerem je shranjen indeks. Zapišite program, ki zamenja vsebini pomnilniških celic na naslovih `[A]` in `[B]`.
 
 ## Iskanje najmanjšega števila v seznamu
 
