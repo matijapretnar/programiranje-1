@@ -16,7 +16,7 @@ Zapišite program, ki zamenja vsebini pomnilniških celic na naslovih `[A]` in `
 
 ## Iskanje najmanjšega števila v seznamu
 
-Zapišite program, ki poišče najmanjše število v danem seznamu. Seznam naj bo podan na začetku pomnilnika in sicer tako, da je v prvih dveh celicah ukaz za skok na začetek programa, v tretji celici dolžina seznama, v naslednjih celicah zaporedoma elementi seznama, takoj za njimi pa celica, v katerega naj se zapiše najmanjše število.
+Zapišite program, ki poišče najmanjše število v danem seznamu. Seznam naj bo podan na začetku pomnilnika in sicer tako, da je v prvih dveh celicah ukaz za skok na začetek programa, v tretji celici dolžina seznama, v naslednjih celicah zaporedoma elementi seznama, takoj za njimi pa celica, v katerega naj se zapiše najmanjše število. Podatke lahko v pomnilnik zapišemo z ukazom `DB`, ki se ne prevede v noben strojni ukaz, ampak samo shrani vrednost v naslednji prostor v pomnilniku. Zgornje podatke bi z njim zapisali takole:
 
     JMP main
     dolzina:
