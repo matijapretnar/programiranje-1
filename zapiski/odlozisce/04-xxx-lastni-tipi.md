@@ -21,17 +21,7 @@ kernelspec:
    vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
 ```
 
-Poleg bogatega nabora vgrajenih tipov si tipe v OCamlu lahko definiramo tudi sami.
-
 ## Okrajšave tipov
-
-Najenostavnejši način za definicijo tipov so okrajšave obstoječih tipov. Na primer, tip za $\mathbb{R}^3$ si lahko definiramo kot:
-
-```{code-cell}
-type r3 = float * float * float
-```
-
-Tako kot na primer vgrajeni tip `list` lahko tudi naši tipi vsebujejo parametre:
 
 ```{code-cell}
 type 'a zaporedje = int -> 'a
@@ -42,8 +32,6 @@ type ('k, 'v) slovar = ('k * 'v) list
 Če tip sprejme več parametrov (na primer slovar ima tako tip ključev kot tip vrednosti), jih lahko naštejemo v oklepajih.
 
 ## Zapisni tipi
-
-Recimo, da si definiramo kompleksna števila s pari realnih:
 
 ```{code-cell}
 type kompleksno = float * float
@@ -61,20 +49,16 @@ Toda če smo v mislih imeli polarni zapis, je pravilna definicija:
 let abs (r, _fi) = r
 ```
 
-Zmešnjavi se lahko izognemo, če obe komponenti poimenujemo. V OCamlu to storimo z zapisnimi tipi, ki jih podamo tako, da naštejemo imena polj ter njihove tipe:
 
 ```{code-cell}
 type kartezicno = {re : float; im : float}
 type polarno = {radij : float; kot : float}
 ```
 
-Vrednosti tipov pišemo podobno, le da jih podamo z `=`:
 
 ```{code-cell}
 let i = {re = 0.0; im = 1.0}
 ```
-
-Do komponent dostopamo z `zapis.polje`:
 
 ```{code-cell}
 let abs z = sqrt (z.re ** 2. +. z.im ** 2.)
@@ -83,8 +67,6 @@ let abs z = sqrt (z.re ** 2. +. z.im ** 2.)
 ```{code-cell}
 let abs' z = z.radij
 ```
-
-Z zapisom `{zapis with polje1 = vrednost1, ...}` ustvarimo nov zapis, ki ima z izjemo naštetih vrednosti polja enaka prvotnemu:
 
 ```{code-cell}
 let konjugiraj z = {z with im = -. z.im}
@@ -98,7 +80,7 @@ Kljub temu, da zapise pišemo podobno kot Pythonove slovarje, gre za popolnoma r
 
 ## Vsote
 
-Najzanimivejši tip, ki ga lahko definiramo, pa so _vsote_. Podamo jih tako, da naštejemo možne variante, od katerih je vsaka podana s svojim _konstruktorjem_. Če se želimo omejiti na fiksno množico velikosti oblačil, lahko na primer napišemo enostavno vsoto s petimi variantami:
+ 
 
 ```{code-cell}
 type velikost = XS | S | M | L | XL
@@ -115,8 +97,6 @@ Tedaj bo tip imel natanko pet možnih vrednosti in OCaml nas bo opozoril, če po
 [XS; XS; L; M; M; XM]
 ```
 
-Vsak izmed naštetih konstruktorjev lahko sprejme tudi argumente vnaprej določenega tipa:
-
 ```{code-cell}
 type geometrijski_objekt =
   | Tocka
@@ -128,7 +108,6 @@ type geometrijski_objekt =
 [Tocka; Pravokotnik (1., 2.); Tocka; Krog 3.]
 ```
 
-Tako kot vsote naštejemo po kosih, lahko prek `match` ali `function` po kosih tudi definiramo funkcije na njih.
 
 ```{code-cell}
 let povrsina obj =
@@ -148,7 +127,6 @@ let obseg =
 
 ## Tip `option`
 
-Včasih imamo opravka s funkcijami, ki jih ne moremo povsod dobro definirati. Na primer, glava seznama je definirana samo za sestavljeni seznam. Če želimo, lahko naštejemo le to možnost, vendar bomo potem dobili napako ob izvajanju.
 
 ```{code-cell}
 let slaba_glava (x :: _) = x
@@ -163,60 +141,13 @@ slaba_glava [1; 2; 3]
 slaba_glava []
 ```
 
-Varnejši način je, da uporabimo tip `'a option`, ki predstavlja morebitno vrednost tipa `'a`:
 
 ```ocaml
 type 'a option = None | Some of 'a
 ```
 
-Nato bi lahko glavo seznama definirali tako, da vedno vrne vrednost:
 
-```{code-cell}
-let glava = function
-  | [] -> None
-  | x :: _ -> Some x
-```
-
-```{code-cell}
-glava [1; 2; 3]
-```
-
-```{code-cell}
-glava []
-```
-
-Če uporabimo tip `option`, nas tipi prisilijo, da obravnavamo robne primere. Na primer, prej bi lahko napisali:
-
-```{code-cell}
-let ali_je_slaba_glava_velika xs = slaba_glava xs > 100
-```
-
-Če uporabimo varnejši način, pa rezultata ne moremo neposredno primerjati s `100`:
-
-```{code-cell}
-:tags: [raises-exception]
-let ali_je_glava_velika xs = glava xs > 100
-```
-
-Tipi nas prisilijo, da obravnavamo vse primere in se odločimo, kaj naredimo, če podatka ni na voljo. Lahko bi se na primer odločili, da seznam brez glave nima velike glave:
-
-```{code-cell}
-let ali_je_glava_velika xs =
-  match glava xs with
-  | None -> false
-  | Some x -> x > 100
-```
-
-Lahko bi se odločili tudi drugače, na primer da spet vrnemo morebitni odgovor, v vsakem primeru pa ne bomo pozabili na noben primer:
-
-```{code-cell}
-let ali_je_glava_velika xs =
-  match glava xs with
-  | None -> None
-  | Some x -> Some (x > 100)
-```
-
-Vsote so lahko definirane tudi rekurzivno. Takim tipom pravimo tudi _induktivni_ ali _algebrajski_ tipi. Najenostavnejši primer induktivnega tipa so naravna števila. Predstavimo jih z vsoto z dvema konstruktorjema `Nic` in `Naslednik`, pri čemer slednji sprejme en argument, ki je zopet naravno število.
+Takim tipom pravimo tudi _induktivni_ ali _algebrajski_ tipi. Najenostavnejši primer induktivnega tipa so naravna števila. Predstavimo jih z vsoto z dvema konstruktorjema `Nic` in `Naslednik`, pri čemer slednji sprejme en argument, ki je zopet naravno število.
 
 ```{code-cell}
 type naravno = Nic | Naslednik of naravno
@@ -230,16 +161,6 @@ let rec vsota m n =
   | Nic -> n
   | Naslednik m' -> Naslednik (vsota m' n)
 ```
-
-Še en že poznan primer induktivnega tipa so seznami. Vsak seznam je bodisi prazen, bodisi sestavljen iz glave in repa:
-
-```{code-cell}
-type 'a list =
-  | Prazen
-  | Sestavljen of 'a * 'a list
-```
-
-Sedaj tudi vidimo, zakaj `::` lahko uporabljamo v vzorcih - ni namreč običajna funkcija za sestavljanje seznamov, temveč konstruktor tipa seznamov.
 
 Induktivne tipe se pogosto uporablja za predstavitev izrazov določenega formalnega jezika. Na primer, aritmetične izraze gradimo iz števil ter aritmetičnih operacij. Take izraze bi lahko predstavili s tipom:
 

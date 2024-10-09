@@ -6,5 +6,3 @@ repository:
   url: 'https://github.com/matijapretnar/programiranje-1'
   book_path: zapiski
   branch: zapiski
-launch_buttons:
-  binderhub_url: 'https://mybinder.org'

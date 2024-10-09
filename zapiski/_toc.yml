@@ -3,17 +3,21 @@ root: 00-uvod.md
 parts:
 - caption: Funkcijsko programiranje
   chapters:
-  - file: 02-uvod-v-ocaml.md
-  - file: 03-funkcije.md
-  - file: 04-definicije-tipov.md
-  - file: 05-induktivni-tipi.md
-  - file: 06-ucinki.md
-  - file: 07-modularnost.md
+  # - file: 01-racunalniska-arhitektura.md
+  - file: 02-uvod-v-funkcijsko-programiranje.ipynb
+  - file: 03-rekurzija.ipynb
+  - file: 04-algebrajski-tipi.ipynb
+  - file: 05-abstrakcija.md
+- caption: Dokazovalniki
+  chapters:
+  # - file: 06-curry-howardov-izomorfizem.md
+  # - file: 07-uvod-v-lean.md
+  - file: 08-induktivni-tipi.md
 - caption: Podatkovne strukture in algoritmi
   chapters:
-  - file: 08-iskalna-drevesa.md
-  - file: 09-spremenljive-podatkovne-strukture.md
+  - file: 09-racunska-zahtevnost.md
+  - file: 10-iskalna-drevesa.md
   - file: 11-deli-in-vladaj.md
   - file: 12-dinamicno-programiranje.md
-  - file: 13-memoizacija-v-pythonu.md
-  - file: 14-memoizacija-v-ocamlu.md
+  - file: 13-01-memoizacija-v-pythonu.md
+  - file: 13-02-memoizacija-v-ocamlu.md
