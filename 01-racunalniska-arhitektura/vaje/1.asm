@@ -1,0 +1,7 @@
+MOV A, 7
+MOV B, 2
+MOV C, A
+DIV B
+MUL B
+SUB C, A
+MOV A, C

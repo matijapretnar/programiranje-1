@@ -1,0 +1,11 @@
+MOV A, 13
+MOV B, 1
+MOV C, 43
+MOV D, A
+sestej: 
+PUSH A
+ADD D, B
+MOV A, D
+CMP A, C
+JNZ sestej
+HLT
