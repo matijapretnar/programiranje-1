@@ -6,3 +6,4 @@ repository:
   url: 'https://github.com/matijapretnar/programiranje-1'
   book_path: zapiski
   branch: zapiski
+only_build_toc_files: true
