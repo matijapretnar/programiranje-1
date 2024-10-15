@@ -21,3 +21,6 @@ parts:
   # - file: 12-dinamicno-programiranje.md
   # - file: 13-01-memoizacija-v-pythonu.md
   # - file: 13-02-memoizacija-v-ocamlu.md
+- caption: Domače naloge
+  chapters:
+  - file: dn-1.ipynb
