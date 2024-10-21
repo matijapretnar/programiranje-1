@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 title: Programiranje 1
 author: Matija Pretnar
 exclude_patterns:
@@ -7,3 +8,17 @@ repository:
   book_path: zapiski
   branch: zapiski
 only_build_toc_files: true
+=======
+title: Programiranje 1
+author: Matija Pretnar
+exclude_patterns:
+  - odlozisce/*
+repository:
+  url: 'https://github.com/matijapretnar/programiranje-1'
+  book_path: zapiski
+  branch: zapiski
+only_build_toc_files: true
+execute:
+  exclude_patterns:
+    - 'dn-*.ipynb'
+>>>>>>> 158167c0dd5b06be071a19e45087ea47ac2ebb08
