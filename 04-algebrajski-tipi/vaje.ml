@@ -24,7 +24,7 @@
 
 
 (*----------------------------------------------------------------------------*]
- Definirajte tip [currency] kot en vsotni tip z konstruktorji za jen, funt
+ Definirajte tip [currency] kot en naštevni tip z konstruktorji za jen, funt
  in švedsko krono. Nato napišite funkcijo [to_pound], ki primerno pretvori
  valuto tipa [currency] v funte.
 

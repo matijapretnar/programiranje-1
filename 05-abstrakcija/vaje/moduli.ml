@@ -80,7 +80,7 @@ end
  Napišite implementacijo [NAT], ki temelji na Peanovih aksiomih:
  https://en.wikipedia.org/wiki/Peano_axioms
    
- Osnovni tip modula definirajte kot vsotni tip, ki vsebuje konstruktor za ničlo
+ Osnovni tip modula definirajte kot naštevni tip, ki vsebuje konstruktor za ničlo
  in konstruktor za naslednika nekega naravnega števila.
  Večino funkcij lahko implementirate s pomočjo rekurzije. Naprimer, enakost
  števil [k] in [l] določimo s hkratno rekurzijo na [k] in [l], kjer je osnoven

@@ -60,7 +60,7 @@ type mouse_direction = Down | Right
 (*----------------------------------------------------------------------------*]
  Izračunali smo število stolpov, a naše vrle gradbince sedaj zanima točna
  konfiguracija. Da ne pride do napak pri sestavljanju, bomo stolpe predstavili
- kar kot vsotne tipe. 
+ kar kot naštevne tipe. 
 
  Stolp posamezne barve so temelji (Bottom), ali pa kot glava bloka pripadajoče
  barve in preostanek, ki je stolp nasprotne barve.
