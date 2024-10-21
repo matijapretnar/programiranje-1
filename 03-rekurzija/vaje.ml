@@ -4,7 +4,27 @@
  Definirajte pomožno funkcijo za obračanje seznamov.
 [*----------------------------------------------------------------------------*)
 
-let rec reverse = ()
+let rec reverse_navaden l = match l with
+  | [] -> []
+  | h :: tl -> reverse_navaden tl @ h
+
+let reverse_boljsi to_reverse =
+  let rec reverse_tlr kup_za_obracanje nalozen_kup = match kup_za_obracanje with
+    | [] -> nalozen_kup
+    | x :: xs -> reverse_tlr xs (x :: nalozen_kup )
+  in reverse_tlr to_reverse []
+
+
+let rec sum l = match l with (* ni repno rekurzivna *)
+  | [] -> 0
+  | x :: xs -> (sum xs) + x (* to bo šlo najprej levo računat *)
+
+
+let sum_better l = 
+  let rec sum2 l acc = match l with
+    | [] -> acc
+    | x :: xs -> sum2 xs (acc + x) (* seznam ni prazen *)
+in sum2 l 0
 
 (*----------------------------------------------------------------------------*]
  Funkcija [repeat x n] vrne seznam [n] ponovitev vrednosti [x]. Za neprimerne
@@ -16,7 +36,11 @@ let rec reverse = ()
  - : string list = []
 [*----------------------------------------------------------------------------*)
 
-let rec repeat = ()
+let repeat x n =
+  let rec repeat_pomozna x n l = match n with
+    | 0 -> l
+    | _ -> repeat_pomozna x (n - 1) (x :: l) (* če n različen od 0*)
+in repeat_pomozna x n []
 
 (*----------------------------------------------------------------------------*]
  Funkcija [range] sprejme število in vrne seznam vseh celih števil od 0 do
