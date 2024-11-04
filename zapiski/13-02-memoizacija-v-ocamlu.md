@@ -13,14 +13,6 @@ kernelspec:
 
 # Memoizacija v OCamlu
 
-```{code-cell}
-:tags: [remove-cell, remove-stdout]
-
-(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
-   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
-   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
-```
-
 Osnovna memoizacija v OCamlu poteka podobno tisti v Pythonu. Za začetek si spet poglejmo funkcijo, ki vrne kvadrat celega števila:
 
 ```{code-cell}

@@ -13,14 +13,6 @@ kernelspec:
 
 # Učinki in čistost
 
-```{code-cell}
-:tags: [remove-cell, remove-stdout]
-
-(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
-   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
-   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
-```
-
 Računalniške funkcije so podobne matematičnim v tem, da iz vhodnih vrednosti izračunajo izhodno, vendar se tu podobnost neha. Računalniške funkcije dajo lahko ob enakih vhodih tudi različne izhodne vrednosti, poleg izračuna vrednosti pa včasih še kaj izpišejo na zaslon, preberejo s tipkovnice, sprožijo izjeme, spreminjajo datoteke, pošiljajo podatke in podobno. Vsem odklonom od čistih matematični vrednosti pravimo _stranski_ ali _računski učinki_.
 
 Učinke si bomo ogledali naslednjič, tokrat pa si oglejmo funkcije brez njih, tako imenovane _čiste_ funkcije. Kljub temu, da z njimi lahko postorimo manj, imajo prednost, da o njih lažje razmišljamo. Zaradi tega je v splošnem dobro, da v naših programih napišemo čimveč čistih funkcij, funkcije z učinki pa omejimo kolikor se da. Tako bodo naši programi jasnejši in z manj napakami.

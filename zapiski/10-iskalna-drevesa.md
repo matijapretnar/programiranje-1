@@ -13,14 +13,6 @@ kernelspec:
 
 # Iskalna drevesa
 
-```{code-cell}
-:tags: [remove-cell, remove-stdout]
-
-(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
-   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
-   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
-```
-
 Izračunajmo, koliko različnih elementov vsebuje dani seznam. Ena izmed možnosti je, da se sprehajamo čez seznam ter beležimo seznam elementov, ki smo jih že videli, začenši s praznim seznamom. Vsak element primerjamo z že videnimi in če ga še nismo videli, ga dodamo v seznam.
 
 ```{code-cell}

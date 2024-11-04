@@ -13,14 +13,6 @@ kernelspec:
 
 # Spremenljive podatkovne strukture
 
-```{code-cell}
-:tags: [remove-cell, remove-stdout]
-
-(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
-   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
-   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
-```
-
 Podatkovne strukture, ki smo jih v OCamlu spoznali do sedaj, so bile nespremenljive. Res smo govorili, da smo seznamu na začetek dodali glavo, vendar s tem prvotnega seznama nismo spremenili, temveč smo naredili nov seznam, ki je imel starega za rep. V Pythonu smo seznam lahko dejansko spremenili. Na primer, sledeča funkcija `f` ob vsakem klicu seznam `sez` razširi z enim elementom:
 
 ```python

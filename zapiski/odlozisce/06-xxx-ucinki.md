@@ -13,14 +13,6 @@ kernelspec:
 
 # Učinki
 
-```{code-cell}
-:tags: [remove-cell, remove-stdout]
-
-(* Ko se v Jupytru prvič požene OCaml, program Findlib izpiše neko sporočilo.
-   Da se to sporočilo ne bi videlo v zapiskih, je tu ta celica, ki sproži izpis,
-   vendar ima nastavljeno, da je v zapiskih v celoti skrita. *)
-```
-
 ## Učinki v OCamlu
 
 Za začetek si poglejmo nekaj primerov učinkov v OCamlu. Prva (in zelo pogosto uporabljana) je `print_endline`, ki sprejme niz ter ga izpiše na zaslon in vrne prazen nabor. V splošnem nam prisotnost tipa `unit` v OCamlu sporoča, da se bodo sprožili stranski učinki, saj sicer funkcija, ki bi vrnila `unit`, ne bi storila ničesar koristnega.
