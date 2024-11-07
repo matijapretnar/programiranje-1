@@ -197,3 +197,22 @@
  - : unit = ()
 [*----------------------------------------------------------------------------*)
 
+(*----------------------------------------------------------------------------*]
+ Napišite primerno signaturo za slovarje [DICT] in naredite implementacijo
+ modula z drevesi. 
+ 
+ Modul naj vsebuje prazen slovar [empty] in pa funkcije [get], [insert] in
+ [print] (print naj ponovno deluje zgolj na [(string, int) t].
+[*----------------------------------------------------------------------------*)
+
+
+(*----------------------------------------------------------------------------*]
+ Funkcija [count (module Dict) list] prešteje in izpiše pojavitve posameznih
+ elementov v seznamu [list] s pomočjo izbranega modula slovarjev.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ # count (module Tree_dict) ["b"; "a"; "n"; "a"; "n"; "a"];;
+ a : 3
+ b : 1
+ n : 2
+ - : unit = ()
+[*----------------------------------------------------------------------------*)
