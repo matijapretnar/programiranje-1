@@ -14,3 +14,15 @@ def f (x : Int) := x + 3
 
 def dokaz_nase_izjave : (A × B → C) → (A → (B → C)) :=
   fun (f : (A × B → C)) => (fun (x : A) => (fun (y : B) => f (x, y)))
+
+def dokaz_s_taktikami : (A × B → C) → (A → (B → C)) :=
+  by
+    intro f
+    intro x
+    intro y
+    apply f
+    constructor
+    exact x
+    assumption
+
+#print dokaz_s_taktikami
