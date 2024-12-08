@@ -116,3 +116,19 @@ def size {A : Type} : tree A → Nat :=
 
 theorem size_mirror {A : Type} {t : tree A} : size (mirror t) = size t :=
   sorry
+
+
+--- Indukcija na pomožnih funkcijah z akumulatorjem
+
+theorem concat2 : concat xs (x :: ys) = concat (concat (xs) [x]) ys :=
+  by
+    sorry
+
+-- Definirajte repno rekurzivno funkcijo, ki obrne seznam
+def reverse' {A : Type} : List A → List A :=
+  sorry
+
+-- Dokažite, da je vaša funkcija pravilna
+theorem reverse_eq_reverse' {A : Type} : ∀ {xs : List A}, reverse xs = reverse' xs :=
+  by
+    sorry
