@@ -10,3 +10,6 @@ only_build_toc_files: true
 execute:
   exclude_patterns:
     - 'dn-*.ipynb'
+sphinx:
+  extra_extensions:
+    - sphinx_proof

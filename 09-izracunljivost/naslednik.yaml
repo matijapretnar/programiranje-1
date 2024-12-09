@@ -1,0 +1,17 @@
+input: '1011'
+blank: ' '
+start state: right
+table:
+  right:
+    1    : {write: 1, R: right}
+    0    : {write: 0, R: right}
+    ' '  : {write: ' ', L: carry}
+  carry:
+    1   : {write: 0, L: carry}
+    0   : {write: 1, L: moveToStart}
+    ' ' : {write: 1, L: moveToStart}
+  moveToStart:
+    0   : {write: 0, L: moveToStart}
+    1   : {write: 1, L: moveToStart}
+    ' ' : {write: ' ', R: done}
+  done:
