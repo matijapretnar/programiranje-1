@@ -242,3 +242,62 @@ theorem size_mirror {A : Type} {t : tree A} : size (mirror t) = size t :=
       rw [ihl, ihr]
       rw [Nat.add_assoc, Nat.add_comm (size r) (size l), Nat.add_assoc]
 
+
+--- Indukcija na pomožnih funkcijah z akumulatorjem
+
+theorem concat2 (x : A) (xs ys : List A) : concat xs (x :: ys) = concat (concat (xs) [x]) ys :=
+  by
+    induction xs with
+    | nil => simp [concat]
+    | cons x xs' ih =>
+      simp [concat]
+      assumption
+
+-- Definirajte repno rekurzivno funkcijo, ki obrne seznam
+def reverse_tlrec {A : Type} (xs : List A) : List A :=
+  let rec aux : List A → List A → List A
+    | [], acc => acc
+    | x :: xs', acc => aux xs' (x :: acc)
+  aux xs []
+
+theorem reverse_tlrec.aux_eq_reverse {A : Type} :
+  ∀ {xs : List A}, ∀ {acc : List A}, reverse_tlrec.aux xs acc = concat (reverse xs) acc :=
+  by
+    intro xs
+    induction xs with
+    | nil =>
+      simp [reverse, reverse_tlrec.aux, concat]
+    | cons x xs' ih =>
+      intro acc
+      simp [reverse, reverse_tlrec.aux]
+      rw [← concat2]
+      rw [ih]
+
+-- Dokažite, da je vaša funkcija pravilna
+theorem reverse_eq_reverse_tlrec {A : Type} : ∀ {xs : List A}, reverse xs = reverse_tlrec xs :=
+  by
+    intro xs
+    rw [reverse_tlrec]
+    rw [reverse_tlrec.aux_eq_reverse]
+    rw [trd3]
+
+-- Lepše je z drugače definirano funkcijo reverse
+
+def reverse_direct {A : Type} : List A → List A :=
+  fun xs =>
+    match xs with
+    | [] => []
+    | x :: xs' => (reverse_direct xs') ++ [x]
+
+theorem reverse_tlrec.aux_eq_reverse_direct {A : Type} : ∀ {xs : List A}, ∀ {acc : List A},
+  reverse_tlrec.aux xs acc = (reverse_direct xs) ++ acc :=
+  by
+    intro xs
+    induction xs with
+    | nil =>
+      intro acc
+      simp [reverse_tlrec.aux, reverse_direct]
+    | cons x xs' ih =>
+      intro acc
+      simp [reverse_tlrec.aux, reverse_direct]
+      rw [ih]
