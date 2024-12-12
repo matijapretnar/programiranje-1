@@ -16,11 +16,12 @@ parts:
 - caption: Podatkovne strukture in algoritmi
   chapters:
   - file: 09-izracunljivost.md
-  # - file: 10-iskalna-drevesa.md
-  # - file: 11-deli-in-vladaj.md
-  # - file: 12-dinamicno-programiranje.md
-  # - file: 13-01-memoizacija-v-pythonu.md
-  # - file: 13-02-memoizacija-v-ocamlu.md
+  # - file: 10-racunska-zahtevnost.md
+  - file: 11-iskalna-drevesa.md
+  - file: 12-deli-in-vladaj.md
+  # - file: 13-01-dinamicno-programiranje.md
+  # - file: 13-02-memoizacija-v-pythonu.md
+  # - file: 13-03-memoizacija-v-ocamlu.md
 - caption: Domače naloge
   chapters:
   - file: dn-1.ipynb
