@@ -3,7 +3,7 @@ $$
 f \in O(g) \iff \exists x_0 \exists M. \forall x > x_0. f(x) \leq M * g(x)
 $$
 
-1. $ h \in O(f) \implies a * h \in O(f)$
+1. $h \in O(f) \implies a * h \in O(f)$
 
 2. $h \in O(f) \implies h \in O(f + g)$ za vsak $g$.
 
