@@ -7,7 +7,7 @@ $$
 
 2. $h \in O(f) \implies h \in O(f + g)$ za vsak $g$.
 
-3. $f \in O(g_1) \land f \in O(g_2) \implies f_1 + f_2 \in O(g_1 + g_2)$
+3. $f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(g_1 + g_2)$
 
 4. $h \in O(f_1 + f_2) \implies h \in O(max(f_1, f_2))$
 
