@@ -13,4 +13,4 @@ $$
 
 5. $O(log_b(n)) = O(log_2(n))$
 
-6. $O(n!) = O(n * \log(n))$ (Za $n > 10$)
+6. $O(\log(n!)) = O(n * \log(n))$ (Za $n > 10$)
