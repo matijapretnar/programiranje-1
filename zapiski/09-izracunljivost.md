@@ -76,7 +76,8 @@ Fiksirajmo $\Gamma = \{ 0, 1, \Box \}$. Naj bo $\underline{n}$ trak, ki predstav
 
 $$\underline{42} = \cdots \Box \Box \underset{\uparrow}{1} 0 1 0 1 0 \Box \Box \cdots$$
 
-Za Turingov stroj $M$ definirajmo funkcijo $M : \mathbb{N} \rightharpoonup \mathbb{N}$, kot
+Za Turingov stroj $M$ definirajmo funkcijo $\mathsf{eval}_M : \mathbb{N} \rightharpoonup \mathbb{N}$, kot
+
 $$
 \mathsf{eval}_M(n) = \begin{cases}
   m & \mathsf{run}_M(q_0, \underline{n}, 0) = \underline{m} \\
@@ -126,7 +127,7 @@ Recimo, da tak stroj obstaja. Tedaj lahko definiramo tudi stroj $X$, ki se bo na
 $$
 \mathsf{eval}_X(k_M) = \begin{cases}
     \uparrow & \mathsf{eval}_\mathcal{H}(k_M, k_M) = 1 \\
-    0 & \mathsf{eval}_\mathcal{k_M, k_M} = 0
+    0 & \mathsf{eval}_\mathcal{H}(k_M, k_M) = 0
 \end{cases}
 $$
 
@@ -136,7 +137,7 @@ $$\begin{align*}
 \mathsf{eval}_X(k_X) &= 
 \begin{cases}
     \uparrow & \mathsf{eval}_\mathcal{H}(k_X, k_X) = 1 \\
-    0 & \mathsf{eval}_\mathcal{k_X, k_X} = 0
+    0 & \mathsf{eval}_\mathcal{H}(k_X, k_X) = 0
 \end{cases} \\
 &= \begin{cases}
     \uparrow & \mathsf{eval}_X(k_X) \downarrow \\
