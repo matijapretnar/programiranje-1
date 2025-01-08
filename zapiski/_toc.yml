@@ -26,3 +26,4 @@ parts:
   chapters:
   - file: dn-1.ipynb
   - file: dn-2.ipynb
+  - file: dn-4.ipynb
