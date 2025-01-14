@@ -36,9 +36,9 @@ let elt' t =
   aux [] t
 ```
 Za vsak seznam $l$ velja: `elt' t == elementi t`
-Podobno kot na predavanjih trditev ne moremo dokazati direktno, ampak si pomagamo z indukcijo za funkcijo `aux`. Še več, nekoliko posplošimo trditev, kar nam pride prav v induktivnem koraku.
+Podobno kot na predavanjih trditve ne moremo dokazati direktno, ampak si pomagamo z indukcijo za funkcijo `aux`. Še več, nekoliko posplošimo trditev, kar nam pride prav v induktivnem koraku.
 Dokazujemo torej: "za vsak `t` velja za vsak `acc`:
-`aux acc t == (elementi t) @ acc`". Specifično, za `acc = []` bo potem veljalo `elt' t == aux [] t == elementi t`, kar je ravno zahteva naloge. Pri dokazovanju smo nekoliko bolj pazljivi in za nek `t` dokazujemo da velja za vsak `acc`...
+`aux acc t == (elementi t) @ acc`". Specifično, za `acc = []` bo potem veljalo `elt' t == aux [] t == elementi t`, kar je ravno zahteva naloge. Pri dokazovanju smo nekoliko bolj pazljivi in za nek fiksen `t` dokazujemo da velja za vsak `acc`...
 
 Imamo nek `t` in dokazujemo z indukcijo na obliko `t`, trditev: za vsak  `acc` velja `aux acc t == (elementi t) @ acc`.
 ```

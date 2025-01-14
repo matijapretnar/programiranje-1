@@ -77,7 +77,7 @@ Natančno definirajte pogoje, da funkcija `f` uredi seznam.
  Funkcija [index_min a lower upper] poišče indeks najmanjšega elementa tabele
  [a] med indeksoma [lower] and [upper] (oba indeksa sta vključena).
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- index_min [|0; 2; 9; 3; 6|] 2 4 = 4
+ index_min [|0; 2; 9; 3; 6|] 2 4 = 3
 [*----------------------------------------------------------------------------*)
 
 

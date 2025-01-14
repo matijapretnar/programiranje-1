@@ -1,10 +1,11 @@
-(* ========== Vaja 4: Iskalna Drevesa  ========== *)
+(* ========== Vaje 11: Iskalna Drevesa  ========== *)
 
 (*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*]
  Ocaml omogoča enostavno delo z drevesi. Konstruiramo nov tip dreves, ki so
  bodisi prazna, bodisi pa vsebujejo podatek in imajo dve (morda prazni)
  poddrevesi. Na tej točki ne predpostavljamo ničesar drugega o obliki dreves.
 [*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*)
+
 
 
 (*----------------------------------------------------------------------------*]

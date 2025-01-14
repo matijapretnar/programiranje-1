@@ -1,6 +1,7 @@
 Ponovimo definicijo velikega O:
+
 $$
-f \in O(g) \iff \exists x_0 \exists M. \forall x > x_0. f(x) \leq M * g(x)
+f \in O(g) \iff \exists M. \exists x_0 \forall x > x_0. f(x) \leq M * g(x)
 $$
 
 1. $h \in O(f) \implies a * h \in O(f)$

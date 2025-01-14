@@ -39,6 +39,9 @@ $$
 
 Očitno so tranzicije disjunktne.
 
+Sprejemna stanja so enaka kot v stroju $M$.
+Enostavno je preveriti, da nov stroj besedo sprejme natanko takrat, ko jo tudi stroj $M$.
+
 
 ## Naloga 3
 
@@ -84,4 +87,4 @@ $[\triangleright, \triangleright', x_1, \triangleleft', \triangleright', x_2,  \
 
 Korak simuliramo tako, da se premikamo proti desni.
 Ko pridemo do podčrtanega simbola opravimo korak za k-ti trak, nato pa se premaknemo na naslednji trak.
-Po potrebi moramo vmesne poddtrakove podaljšati, če smo prepisali konec traku.
+Po potrebi moramo vmesne podtrakove podaljšati, če smo prepisali konec traku.
