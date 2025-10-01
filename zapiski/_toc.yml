@@ -3,16 +3,16 @@ root: 00-uvod.md
 parts:
 - caption: Funkcijsko programiranje
   chapters:
-  # - file: 01-racunalniska-arhitektura.md
-  - file: 02-uvod-v-funkcijsko-programiranje.ipynb
-  - file: 03-rekurzija.ipynb
-  - file: 04-podatkovni-tipi.ipynb
-  - file: 05-abstrakcija.ipynb
-# - caption: Dokazovalniki
-  # chapters:
-  # - file: 06-curry-howardov-izomorfizem.md
-  # - file: 07-uvod-v-lean.md
-  # - file: 08-induktivni-tipi.md
+  - file: 01-uvod-v-funkcijsko-programiranje.ipynb
+  - file: 02-rekurzija.ipynb
+  - file: 03-podatkovni-tipi.ipynb
+  - file: 04-abstrakcija.ipynb
+- caption: Dokazovalniki
+  chapters:
+  # - file: 05-curry-howardov-izomorfizem.md
+  # - file: 06-uvod-v-lean.md
+  # - file: 07-odvisni-tipi.md
+  - file: 08-induktivni-tipi.md
 - caption: Podatkovne strukture in algoritmi
   chapters:
   - file: 09-izracunljivost.md
