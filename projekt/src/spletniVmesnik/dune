@@ -1,8 +1,0 @@
-(executable
- (name spletniVmesnik)
- (libraries vdom definicije)
- (modes js)
- (promote
-  (until-clean)
-  (into ../../html)
-  (only spletniVmesnik.bc.js)))
