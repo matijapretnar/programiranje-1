@@ -1,0 +1,1508 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. domača naloga &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dn-2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. domača naloga" href="dn-4.html" />
+    <link rel="prev" title="1. domača naloga" href="dn-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Učinki in čistost</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/dn-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. domača naloga</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podatkovni-tipi">Podatkovni tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registri">Registri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izrazi">Izrazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naslovi">Naslovi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ukazi">Ukazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pomnilnik">Pomnilnik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zacetno-stanje">Začetno stanje</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izvajanje-ukazov">Izvajanje ukazov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branje-stanja">Branje stanja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spreminjanje-registrov">Spreminjanje registrov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skoki">Skoki</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pogojni-skoki">Pogojni skoki</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klici-funkcij">Klici funkcij</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izvajanje-programov">Izvajanje programov</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branje-zbirnika">Branje zbirnika</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registri-in-izrazi">Registri in izrazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciscenje-vrstic">Čiščenje vrstic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oznake">Oznake</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="domaca-naloga">
+<h1>2. domača naloga<a class="headerlink" href="#domaca-naloga" title="Link to this heading">#</a></h1>
+<p>Pri tej nalogi boste napisali svoj simulator računalnika, ki se bo malenkostno razlikoval od <a class="reference external" href="https://schweigi.github.io/assembler-simulator/">tistega, ki smo ga spoznali na predavanjih</a>:</p>
+<ul class="simple">
+<li><p>Simulator bo uporabljal Harvardsko arhitekturo, kar pomeni, da bo ločil med pomnilnikoma za program in podatke.</p></li>
+<li><p>Namesto pomnilnika z omejeno velikostjo bomo imeli samo sklad, ki ga bomo predstavili s poljubno velikim seznamom.</p></li>
+<li><p>Prav tako ne bomo vsega predstavili z 8-bitnimi števili. Za ukaze bomo definirali svoj naštevni tip, števila v pomnilniku pa bodo taka, kot jih podpira OCaml.</p></li>
+</ul>
+<section id="podatkovni-tipi">
+<h2>Podatkovni tipi<a class="headerlink" href="#podatkovni-tipi" title="Link to this heading">#</a></h2>
+<p>Pri vsakem večjem funkcijskem programu je prvi korak definicija ustreznih tipov. V simulatorju bomo imeli dva glavna tipa: <code class="docutils literal notranslate"><span class="pre">instruction</span></code>, s katerim bomo predstavili posamezne ukaze v programu, in <code class="docutils literal notranslate"><span class="pre">state</span></code>, s katerim bomo predstavili trenutno stanje računalnika. Seveda pa si bomo morali pred njima definirati še nekaj pomožnih tipov.</p>
+<section id="registri">
+<h3>Registri<a class="headerlink" href="#registri" title="Link to this heading">#</a></h3>
+<p>Nekateri ukazi za argument sprejmejo register, ki ga spreminjajo, na primer: <code class="docutils literal notranslate"><span class="pre">INC</span> <span class="pre">A</span></code> ali <code class="docutils literal notranslate"><span class="pre">POP</span> <span class="pre">B</span></code>.</p>
+<p>Definirajte naštevni tip <code class="docutils literal notranslate"><span class="pre">register</span></code>, ki bo predstavljal štiri možne registre procesorja <strong>A</strong>, <strong>B</strong>, <strong>C</strong> in <strong>D</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_1</span> <span class="o">=</span> <span class="o">[[</span><span class="nc">A</span><span class="o">;</span> <span class="nc">B</span><span class="o">;</span> <span class="nc">B</span><span class="o">;</span> <span class="nc">A</span><span class="o">];</span> <span class="o">[</span><span class="nc">A</span><span class="o">;</span> <span class="nc">C</span><span class="o">;</span> <span class="nc">D</span><span class="o">;</span> <span class="nc">C</span><span class="o">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_1 : register list list = [[A; B; B; A]; [A; C; D; C]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="izrazi">
+<h3>Izrazi<a class="headerlink" href="#izrazi" title="Link to this heading">#</a></h3>
+<p>Nekateri ukazi poleg registra sprejmejo še dodaten argument, ki je lahko bodisi register, bodisi celoštevilska konstanta, na primer <code class="docutils literal notranslate"><span class="pre">MOV</span> <span class="pre">A,</span> <span class="pre">B</span></code> ali <code class="docutils literal notranslate"><span class="pre">MOV</span> <span class="pre">A,</span> <span class="pre">42</span></code>. Definirajte naštevni tip <code class="docutils literal notranslate"><span class="pre">expression</span></code>, ki predstavlja izraze, ki so lahko registri ali števila.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_2</span> <span class="o">=</span> <span class="o">[</span><span class="nc">Register</span> <span class="nc">B</span><span class="o">;</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_2 : expression list = [Register B; Const 42]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="naslovi">
+<h3>Naslovi<a class="headerlink" href="#naslovi" title="Link to this heading">#</a></h3>
+<p>Ukazi za skoke za argument sprejmejo naslov ukaza v pomnilniku. Naslove bomo predstavili s celimi števili, da pa jih ne bi ponesreči zamešali s celoštevilskimi konstantami, definirajte še tip <code class="docutils literal notranslate"><span class="pre">address</span></code>, ki naj bo naštevni tip z eno samo varianto <code class="docutils literal notranslate"><span class="pre">Address</span></code> s celoštevilskim argumentom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_3</span> <span class="o">=</span> <span class="o">(</span><span class="mi">42</span><span class="o">,</span> <span class="nc">Address</span> <span class="mi">42</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_3 : int * address = (42, Address 42)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ukazi">
+<h3>Ukazi<a class="headerlink" href="#ukazi" title="Link to this heading">#</a></h3>
+<p>Naš simulator bo podpiral naslednje ukaze, pri čemer je <em>R</em> vedno poljuben register, <em>A</em> naslov v ukaznem pomnilniku, <em>E</em> pa izraz, torej bodisi register bodisi celoštevilska konstanta.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>ukaz</p></th>
+<th class="head"><p>opis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">MOV</span></code> <em>R</em>, <em>E</em></p></td>
+<td><p>premakni vrednost izraza <em>E</em> v register <em>R</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>/<code class="docutils literal notranslate"><span class="pre">SUB</span></code> <em>R</em>, <em>E</em></p></td>
+<td><p>register <em>R</em> povečaj/zmanjšaj za <em>E</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">INC</span></code>/<code class="docutils literal notranslate"><span class="pre">DEC</span></code> <em>R</em></p></td>
+<td><p>register <em>R</em> povečaj/zmanjšaj za 1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">MUL</span></code>/<code class="docutils literal notranslate"><span class="pre">DIV</span></code> <em>E</em></p></td>
+<td><p>register <strong>A</strong> pomnoži/deli z <em>E</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">AND</span></code>/<code class="docutils literal notranslate"><span class="pre">OR</span></code>/<code class="docutils literal notranslate"><span class="pre">XOR</span></code> <em>R</em>, <em>E</em></p></td>
+<td><p>v register <em>R</em> shrani rezultat logične operacije <em>R op E</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">NOT</span></code> <em>R</em></p></td>
+<td><p>negiraj register <em>R</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">CMP</span></code> <em>R</em>, <em>E</em></p></td>
+<td><p>primerjaj register <em>R</em> z vrednostjo <em>E</em> ter rezultat primerjave shrani v zastavici <strong>Zero</strong> in <strong>Carry</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">JMP</span></code> <em>A</em></p></td>
+<td><p>skoči na naslov <em>A</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">JA</span></code>/<code class="docutils literal notranslate"><span class="pre">JAE</span></code> <em>A</em></p></td>
+<td><p>skoči na naslov <em>A</em>, če je v zadnji primerjavi veljalo <em>x &gt; y</em> / <em>x ≥ y</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">JB</span></code>/<code class="docutils literal notranslate"><span class="pre">JBE</span></code> <em>A</em></p></td>
+<td><p>skoči na naslov <em>A</em>, če je v zadnji primerjavi veljalo <em>x &lt; y</em> / <em>x ≤ y</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">JE</span></code>/<code class="docutils literal notranslate"><span class="pre">JNE</span></code> <em>A</em></p></td>
+<td><p>skoči na naslov <em>A</em>, če je v zadnji primerjavi veljalo <em>x = y</em> / <em>x ≠ y</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">CALL</span></code> <em>A</em></p></td>
+<td><p>skoči na naslov <em>A</em> in shrani naslov naslednjega ukaza na vrh sklada</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">RET</span></code></p></td>
+<td><p>iz funkcije se vrni na naslov na vrhu sklada</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">PUSH</span></code> <em>E</em></p></td>
+<td><p>vrednost izraza <em>E</em> shrani na vrh sklada</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">POP</span></code> <em>R</em></p></td>
+<td><p>snemi vrednost s sklada in jo shrani v register <em>R</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">HLT</span></code></p></td>
+<td><p>ustavi izvajanje programa</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Dopolnite naslednjo definicijo tipa <code class="docutils literal notranslate"><span class="pre">instruction</span></code>, da bo imel eno varianto za vsakega od zgoraj navedenih ukazov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">instruction</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">MOV</span> <span class="k">of</span> <span class="n">register</span> <span class="o">*</span> <span class="n">expression</span>
+  <span class="c">(* | ADD of TODO *)</span>
+  <span class="c">(* | SUB of TODO *)</span>
+  <span class="o">|</span> <span class="nc">INC</span> <span class="k">of</span> <span class="n">register</span>
+  <span class="c">(* | DEC of TODO *)</span>
+  <span class="c">(* | MUL of TODO *)</span>
+  <span class="o">|</span> <span class="nc">DIV</span> <span class="k">of</span> <span class="n">expression</span>
+  <span class="c">(* | AND of TODO *)</span>
+  <span class="c">(* | OR of TODO *)</span>
+  <span class="c">(* | XOR of TODO *)</span>
+  <span class="c">(* | NOT of TODO *)</span>
+  <span class="c">(* | CMP of TODO *)</span>
+  <span class="o">|</span> <span class="nc">JMP</span> <span class="k">of</span> <span class="n">address</span>
+  <span class="c">(* | JA of TODO *)</span>
+  <span class="c">(* | JAE of TODO *)</span>
+  <span class="c">(* | JB of TODO *)</span>
+  <span class="c">(* | JBE of TODO *)</span>
+  <span class="c">(* | JE of TODO *)</span>
+  <span class="c">(* | JNE of TODO *)</span>
+  <span class="o">|</span> <span class="nc">CALL</span> <span class="k">of</span> <span class="n">address</span>
+  <span class="o">|</span> <span class="nc">RET</span>
+  <span class="o">|</span> <span class="nc">PUSH</span> <span class="k">of</span> <span class="n">expression</span>
+  <span class="o">|</span> <span class="nc">POP</span> <span class="k">of</span> <span class="n">register</span>
+  <span class="o">|</span> <span class="nc">HLT</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type instruction =
+    MOV of register * expression
+  | INC of register
+  | DIV of expression
+  | JMP of address
+  | CALL of address
+  | RET
+  | PUSH of expression
+  | POP of register
+  | HLT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_4</span> <span class="o">=</span> <span class="o">[</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">);</span> <span class="nc">JA</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">);</span> <span class="nc">HLT</span> <span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_4 : instruction list =
+  [MOV (A, Register B); MOV (C, Const 42); JA (Address 10); HLT]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za primer večjega programa se spomnimo programa za izračun Fibonaccijevih števil. S seznamom ukazov, bi ga napisali kot spodaj. Pri tem opazite, da so naslovi ukazov v programu zapisani kot celoštevilski indeksi. Pretvorbo iz berljivih oznak kot so <code class="docutils literal notranslate"><span class="pre">main</span></code>, <code class="docutils literal notranslate"><span class="pre">fib</span></code> in <code class="docutils literal notranslate"><span class="pre">.fib_end</span></code> bomo obravnavali kasneje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">fibonacci</span> <span class="n">n</span> <span class="o">=</span> <span class="o">[</span>
+  <span class="nc">JMP</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">20</span><span class="o">);</span>       <span class="c">(* JMP main *)</span>
+
+<span class="c">(* fib: *)</span>
+  <span class="c">(* ; Shranimo vrednosti registrov *)</span>
+  <span class="nc">PUSH</span> <span class="o">(</span><span class="nc">Register</span> <span class="nc">C</span><span class="o">);</span>      <span class="c">(* PUSH C *)</span>
+  <span class="nc">PUSH</span> <span class="o">(</span><span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span>      <span class="c">(* PUSH B *)</span>
+
+  <span class="c">(* ; V C shranimo začetno vrednost A *)</span>
+  <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">A</span><span class="o">);</span>    <span class="c">(* MOV C, A *)</span>
+
+  <span class="c">(* ; Če je A = 0, je to tudi rezultat *)</span>
+  <span class="nc">CMP</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">0</span><span class="o">);</span>       <span class="c">(* CMP A, 0 *)</span>
+  <span class="nc">JE</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">17</span><span class="o">);</span>        <span class="c">(* JE .fib_end *)</span>
+
+  <span class="c">(* ; Če je A = 1, je to tudi rezultat *)</span>
+  <span class="nc">CMP</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">1</span><span class="o">);</span>       <span class="c">(* CMP A, 1 *)</span>
+  <span class="nc">JE</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">17</span><span class="o">);</span>        <span class="c">(* JE .fib_end *)</span>
+
+  <span class="c">(* ; V nasprotnem primeru najprej izračunamo fib(A - 1) in ga shranimo v B *)</span>
+  <span class="nc">DEC</span> <span class="nc">C</span><span class="o">;</span>                  <span class="c">(* DEC C *)</span>
+  <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">C</span><span class="o">);</span>    <span class="c">(* MOV A, C *)</span>
+  <span class="nc">CALL</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">1</span><span class="o">);</span>       <span class="c">(* CALL fib *)</span>
+  <span class="nc">MOV</span> <span class="o">(</span><span class="nc">B</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">A</span><span class="o">);</span>    <span class="c">(* MOV B, A *)</span>
+
+  <span class="c">(* ; Nato izračunamo še fib(A - 2) in ga shranimo v A *)</span>
+  <span class="nc">DEC</span> <span class="nc">C</span><span class="o">;</span>                  <span class="c">(* DEC C *)</span>
+  <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">C</span><span class="o">);</span>    <span class="c">(* MOV A, C *)</span>
+  <span class="nc">CALL</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">1</span><span class="o">);</span>       <span class="c">(* CALL fib *)</span>
+  
+  <span class="c">(* ; Nazadnje k A prištejemo še B, s čimer dobimo končni rezultat *)</span>
+  <span class="nc">ADD</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span>    <span class="c">(* ADD A, B *)</span>
+  <span class="nc">JMP</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">17</span><span class="o">);</span>       <span class="c">(* JMP .fib_end *)</span>
+
+<span class="c">(* .fib_end: *)</span>
+  <span class="c">(* ; Povrnemo vrednosti registrov in vrnemo rezultat *)</span>
+  <span class="nc">POP</span> <span class="nc">B</span><span class="o">;</span>                  <span class="c">(* POP B *)</span>
+  <span class="nc">POP</span> <span class="nc">C</span><span class="o">;</span>                  <span class="c">(* POP C *)</span>
+  <span class="nc">RET</span><span class="o">;</span>                    <span class="c">(* RET *)</span>
+
+<span class="c">(* main: *)</span>
+  <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Const</span> <span class="n">n</span><span class="o">);</span>       <span class="c">(* MOV A, n *)</span>
+  <span class="nc">CALL</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">1</span><span class="o">);</span>       <span class="c">(* CALL fib *)</span>
+  <span class="nc">HLT</span><span class="o">;</span>                    <span class="c">(* HLT *)</span>
+<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val fibonacci : int -&gt; instruction list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_5</span> <span class="o">=</span> <span class="n">fibonacci</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_5 : instruction list =
+  [JMP (Address 20); PUSH (Register C); PUSH (Register B);
+   MOV (C, Register A); CMP (A, Const 0); JE (Address 17); CMP (A, Const 1);
+   JE (Address 17); DEC C; MOV (A, Register C); CALL (Address 1);
+   MOV (B, Register A); DEC C; MOV (A, Register C); CALL (Address 1);
+   ADD (A, Register B); JMP (Address 17); POP B; POP C; RET;
+   MOV (A, Const 10); CALL (Address 1); HLT]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pomnilnik">
+<h3>Pomnilnik<a class="headerlink" href="#pomnilnik" title="Link to this heading">#</a></h3>
+<p>Morda v nasprotju s pričakovanji ukazov ne bomo shranjevali v sezname tipa <code class="docutils literal notranslate"><span class="pre">instruction</span> <span class="pre">list</span></code>, ampak v tabele tipa <code class="docutils literal notranslate"><span class="pre">instruction</span> <span class="pre">array</span></code>. O tabelah se bomo še pogovarjali, njihova bistvena prednost pa je ta, da do elementa na danem mestu lahko dostopamo takoj, ne da bi se morali sprehoditi po predhodnih elementih. Tabele pišemo tako kot sezname, le da oklepaje pišemo kot <code class="docutils literal notranslate"><span class="pre">[|</span> <span class="pre">...</span> <span class="pre">|]</span></code> namesto kot <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">...</span> <span class="pre">]</span></code>, do posameznega elementa tabele pa dostopamo prek <code class="docutils literal notranslate"><span class="pre">tabela.(indeks)</span></code>, na primer <code class="docutils literal notranslate"><span class="pre">[|</span> <span class="pre">314;</span> <span class="pre">42;</span> <span class="pre">2718</span> <span class="pre">|].(1)</span></code> vrne <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p>
+<p>Nazadnje bomo celotno stanje računalnika predstavili z zapisnim. Definirajte tip <code class="docutils literal notranslate"><span class="pre">state</span></code> s sledečimi polji:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">instructions</span></code>: tabela ukazov v ukaznem pomnilniku,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code>: štiri celoštevilske vrednosti v registrih,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code>: naslov trenutnega ukaza, tipa <code class="docutils literal notranslate"><span class="pre">address</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zero</span></code>, <code class="docutils literal notranslate"><span class="pre">carry</span></code>: vrednosti zastavic <strong>Zero</strong> in <strong>Carry</strong>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stack</span></code>: seznam celoštevilskih vrednosti na skladu.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_6</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">instructions</span> <span class="o">=</span> <span class="o">[|</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">);</span> <span class="nc">JA</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">);</span> <span class="nc">HLT</span> <span class="o">|];</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+  <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">zero</span> <span class="o">=</span> <span class="bp">true</span><span class="o">;</span> <span class="n">carry</span> <span class="o">=</span> <span class="bp">false</span><span class="o">;</span>
+  <span class="n">stack</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_6 : state =
+  {instructions =
+    [|MOV (A, Register B); MOV (C, Const 42); JA (Address 10); HLT|];
+   a = 1; b = 2; c = 3; d = 4; ip = Address 0; zero = true; carry = false;
+   stack = [5; 6; 7]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zacetno-stanje">
+<h3>Začetno stanje<a class="headerlink" href="#zacetno-stanje" title="Link to this heading">#</a></h3>
+<p>Prazno stanje pomnilnika lahko predstavimo z zapisom:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">empty</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">instructions</span> <span class="o">=</span> <span class="o">[||];</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">zero</span> <span class="o">=</span> <span class="bp">false</span><span class="o">;</span>
+  <span class="n">carry</span> <span class="o">=</span> <span class="bp">false</span><span class="o">;</span>
+  <span class="n">stack</span> <span class="o">=</span> <span class="bp">[]</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val empty : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 0;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kljub temu, da so tabele učinkovitejše, so seznami za delo bolj praktični. Zato definirajte funkcijo <code class="docutils literal notranslate"><span class="pre">init</span> <span class="pre">:</span> <span class="pre">instruction</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki sprejme seznam ukazov in vrne začetno stanje računalnika, v katerem so vsi registri in zastavice nastavljeni na nič, sklad pa je prazen. Pri tem si lahko za pretvorbo seznama v tabelo pomagate z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">Array.of_list</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_tipi_7</span> <span class="o">=</span> <span class="n">init</span> <span class="o">[</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">);</span> <span class="nc">JA</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">);</span> <span class="nc">HLT</span> <span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_tipi_7 : state =
+  {instructions =
+    [|MOV (A, Register B); MOV (C, Const 42); JA (Address 10); HLT|];
+   a = 0; b = 0; c = 0; d = 0; ip = Address 0; zero = false; carry = false;
+   stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="izvajanje-ukazov">
+<h2>Izvajanje ukazov<a class="headerlink" href="#izvajanje-ukazov" title="Link to this heading">#</a></h2>
+<p>S pripravljenima tipoma ukazov in stanja se lahko lotimo pisanja funkcij za izvrševanje ukazov.</p>
+<section id="branje-stanja">
+<h3>Branje stanja<a class="headerlink" href="#branje-stanja" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">read_instruction</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">instruction</span> <span class="pre">option</span></code>, ki v danem stanju vrne trenuten ukaz. Če ukaz sega izven območja ukaznega pomnilnika, naj funkcija vrne <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_1</span> <span class="o">=</span>
+  <span class="o">[</span>
+    <span class="n">read_instruction</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">instructions</span> <span class="o">=</span> <span class="o">[|</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">);</span> <span class="nc">JA</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">);</span> <span class="nc">HLT</span> <span class="o">|];</span> <span class="n">ip</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">1</span><span class="o">)</span> <span class="o">};</span>
+    <span class="n">read_instruction</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">instructions</span> <span class="o">=</span> <span class="o">[|</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">);</span> <span class="nc">JA</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">);</span> <span class="nc">HLT</span> <span class="o">|];</span> <span class="n">ip</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">3</span><span class="o">)</span> <span class="o">};</span>
+    <span class="n">read_instruction</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">instructions</span> <span class="o">=</span> <span class="o">[|</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">A</span><span class="o">,</span> <span class="nc">Register</span> <span class="nc">B</span><span class="o">);</span> <span class="nc">MOV</span> <span class="o">(</span><span class="nc">C</span><span class="o">,</span> <span class="nc">Const</span> <span class="mi">42</span><span class="o">);</span> <span class="nc">JA</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">);</span> <span class="nc">HLT</span> <span class="o">|];</span> <span class="n">ip</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">5</span><span class="o">)</span> <span class="o">};</span>
+  <span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_1 : instruction option list =
+  [Some (MOV (C, Const 42)); Some HLT; None]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">read_register</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">register</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code>, ki vrne vrednost registra v danem stanju.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_2</span> <span class="o">=</span>
+  <span class="n">read_register</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">42</span> <span class="o">}</span> <span class="nc">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_2 : int = 42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">read_expression</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">expression</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code>, ki vrne celoštevilsko vrednost izraza v danem stanju.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_3</span> <span class="o">=</span>
+  <span class="n">read_expression</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">}</span> <span class="o">(</span><span class="nc">Register</span> <span class="nc">B</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_3 : int = 20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_4</span> <span class="o">=</span>
+  <span class="n">read_expression</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">}</span> <span class="o">(</span><span class="nc">Const</span> <span class="mi">42</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_4 : int = 42
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spreminjanje-registrov">
+<h3>Spreminjanje registrov<a class="headerlink" href="#spreminjanje-registrov" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">write_register</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">register</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki vrednost registra v danem stanju nastavi na dano število. Funkcija naj vrne novo stanje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_5</span> <span class="o">=</span>
+  <span class="n">write_register</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">42</span> <span class="o">}</span> <span class="nc">D</span> <span class="mi">24</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_5 : state =
+  {instructions = [||]; a = 0; b = 0; c = 42; d = 24; ip = Address 0;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">perform_unop</span> <span class="pre">:</span> <span class="pre">(int</span> <span class="pre">-&gt;</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">register</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki izvede eniško operacijo na vrednosti registra. Funkcija naj vrne novo stanje s spremenjenim registrom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_6</span> <span class="o">=</span>
+  <span class="n">perform_unop</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">101</span> <span class="o">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">}</span> <span class="nc">C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_6 : state =
+  {instructions = [||]; a = 0; b = 0; c = 505; d = 0; ip = Address 0;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">perform_binop</span> <span class="pre">:</span> <span class="pre">(int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">register</span> <span class="pre">-&gt;</span> <span class="pre">expression</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki izvede dvojiško operacijo na danem registru in izrazu. Funkcija naj vrne novo stanje s spremenjenim registrom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_7</span> <span class="o">=</span>
+  <span class="n">perform_binop</span> <span class="o">(</span> <span class="o">*</span> <span class="o">)</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">}</span> <span class="nc">C</span> <span class="o">(</span><span class="nc">Const</span> <span class="mi">101</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_7 : state =
+  {instructions = [||]; a = 0; b = 0; c = 505; d = 0; ip = Address 0;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="skoki">
+<h3>Skoki<a class="headerlink" href="#skoki" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">next</span> <span class="pre">:</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">address</span></code>, ki vrne naslednji naslov (torej povečan za 1, saj v našem primeru vsi ukazi zasedejo enako prostora).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_8</span> <span class="o">=</span>
+  <span class="n">next</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">41</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_8 : address = Address 42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkciji <code class="docutils literal notranslate"><span class="pre">jump</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code> in <code class="docutils literal notranslate"><span class="pre">proceed</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>. Prva naj v danem stanju skoči na dani naslov, druga pa naj skoči na naslednji ukaz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_9</span> <span class="o">=</span>
+  <span class="n">jump</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">42</span><span class="o">}</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_9 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 10;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_10</span> <span class="o">=</span>
+  <span class="n">proceed</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">42</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_10 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 43;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkciji <code class="docutils literal notranslate"><span class="pre">push_stack</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code> in <code class="docutils literal notranslate"><span class="pre">pop_stack</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">*</span> <span class="pre">state</span></code>, ki dodata vrednost na sklad oziroma jo odstranita z njega. Funkcija <code class="docutils literal notranslate"><span class="pre">pop_stack</span></code> poleg spremenjenega stanja vrne tudi odstranjeno vrednost. Če je sklad prazen, naj funkcija <code class="docutils literal notranslate"><span class="pre">pop_stack</span></code> sproži izjemo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_10</span> <span class="o">=</span>
+  <span class="n">push_stack</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">stack</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span> <span class="o">}</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_10 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 0;
+   zero = false; carry = false; stack = [42; 1; 2; 3]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_11</span> <span class="o">=</span>
+  <span class="n">pop_stack</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">stack</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_11 : int * state =
+  (1,
+   {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 0;
+    zero = false; carry = false; stack = [2; 3]})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pogojni-skoki">
+<h3>Pogojni skoki<a class="headerlink" href="#pogojni-skoki" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki primerja vrednosti dveh števil in ustrezno nastavi zastavici <strong>Zero</strong> in <strong>Carry</strong>. Prvo naj nastavi na <code class="docutils literal notranslate"><span class="pre">true</span></code> natanko tedaj, kadar sta števili enaki, drugo pa takrat, kadar je prvo število manjše.Funkcija naj vrne novo stanje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_12</span> <span class="o">=</span>
+  <span class="n">compare</span> <span class="n">empty</span> <span class="mi">24</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_12 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 0;
+   zero = false; carry = true; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">conditional_jump</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">bool</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki skoči na dani naslov, če je podan pogoj izpolnjen. V nasprotnem primeru naj funkcija skoči na naslednji ukaz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_13</span> <span class="o">=</span>
+  <span class="n">conditional_jump</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">42</span> <span class="o">}</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">)</span> <span class="bp">true</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_13 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 10;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_14</span> <span class="o">=</span>
+  <span class="n">conditional_jump</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">42</span> <span class="o">}</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">)</span> <span class="bp">false</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_14 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 43;
+   zero = false; carry = false; stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="klici-funkcij">
+<h3>Klici funkcij<a class="headerlink" href="#klici-funkcij" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">call</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki v danem stanju skoči na dani naslov in na sklad doda naslednji naslov.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_15</span> <span class="o">=</span>
+  <span class="n">call</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">ip</span> <span class="o">=</span> <span class="nc">Address</span> <span class="mi">42</span> <span class="o">}</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">10</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_15 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 10;
+   zero = false; carry = false; stack = [43]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki v danem stanju skoči na naslov, ki je na vrhu sklada, in odstrani ta naslov s sklada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_16</span> <span class="o">=</span>
+  <span class="n">return</span> <span class="o">{</span> <span class="n">empty</span> <span class="k">with</span> <span class="n">ip</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Address</span> <span class="mi">100</span><span class="o">);</span> <span class="n">stack</span> <span class="o">=</span> <span class="o">[</span><span class="mi">42</span><span class="o">;</span> <span class="mi">43</span><span class="o">;</span> <span class="mi">44</span><span class="o">]</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_16 : state =
+  {instructions = [||]; a = 0; b = 0; c = 0; d = 0; ip = Address 42;
+   zero = false; carry = false; stack = [43; 44]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="izvajanje-programov">
+<h3>Izvajanje programov<a class="headerlink" href="#izvajanje-programov" title="Link to this heading">#</a></h3>
+<p>S pomočjo zgoraj definiranih funkcij dopolnite funkcijo <code class="docutils literal notranslate"><span class="pre">run_instruction</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">instruction</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki izvede podani ukaz v danem stanju in vrne novo stanje. Za interpretacije pogojnih skokov si lahko pomagate z <a class="reference external" href="https://schweigi.github.io/assembler-simulator/instruction-set.html">navodili simulatorja</a>, ki smo ga pogledali na predavanjih.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">run_instruction</span> <span class="n">st</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="c">(* | MOV (reg, exp) -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="nc">ADD</span> <span class="o">(</span><span class="n">reg</span><span class="o">,</span> <span class="n">exp</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">perform_binop</span> <span class="o">(</span> <span class="o">+</span> <span class="o">)</span> <span class="n">st</span> <span class="n">reg</span> <span class="n">exp</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="c">(* | SUB (reg, exp) -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="nc">INC</span> <span class="n">reg</span> <span class="o">-&gt;</span> <span class="n">perform_unop</span> <span class="n">succ</span> <span class="n">st</span> <span class="n">reg</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="c">(* | DEC reg -&gt; TODO *)</span>
+  <span class="c">(* | MUL exp -&gt; TODO *)</span>
+  <span class="c">(* | DIV exp -&gt; TODO *)</span>
+  <span class="c">(* Pozor, OCaml land/lor/lxor interpretira kot simbole, zato jih pišemo infiksno! *)</span>
+  <span class="o">|</span> <span class="nc">AND</span> <span class="o">(</span><span class="n">reg</span><span class="o">,</span> <span class="n">exp</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">perform_binop</span> <span class="o">(</span> <span class="ow">land</span> <span class="o">)</span> <span class="n">st</span> <span class="n">reg</span> <span class="n">exp</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="o">|</span> <span class="nc">OR</span> <span class="o">(</span><span class="n">reg</span><span class="o">,</span> <span class="n">exp</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">perform_binop</span> <span class="o">(</span> <span class="ow">lor</span> <span class="o">)</span> <span class="n">st</span> <span class="n">reg</span> <span class="n">exp</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="o">|</span> <span class="nc">XOR</span> <span class="o">(</span><span class="n">reg</span><span class="o">,</span> <span class="n">exp</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">perform_binop</span> <span class="o">(</span> <span class="ow">lxor</span> <span class="o">)</span> <span class="n">st</span> <span class="n">reg</span> <span class="n">exp</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="o">|</span> <span class="nc">NOT</span> <span class="n">reg</span> <span class="o">-&gt;</span> <span class="n">perform_unop</span> <span class="n">lnot</span> <span class="n">st</span> <span class="n">reg</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="c">(* | CMP (reg, exp) -&gt; TODO *)</span>
+  <span class="c">(* | JMP add -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="nc">JA</span> <span class="n">add</span> <span class="o">-&gt;</span> <span class="n">conditional_jump</span> <span class="n">st</span> <span class="n">add</span> <span class="o">(</span><span class="n">not</span> <span class="n">st</span><span class="o">.</span><span class="n">carry</span> <span class="o">&amp;&amp;</span> <span class="n">not</span> <span class="n">st</span><span class="o">.</span><span class="n">zero</span><span class="o">)</span>
+  <span class="c">(* | JAE add -&gt; TODO *)</span>
+  <span class="c">(* | JB add -&gt; TODO *)</span>
+  <span class="c">(* | JBE add -&gt; TODO *)</span>
+  <span class="c">(* | JE add -&gt; TODO *)</span>
+  <span class="c">(* | JNE add -&gt; TODO *)</span>
+  <span class="c">(* | CALL add -&gt; TODO *)</span>
+  <span class="c">(* | RET -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="nc">PUSH</span> <span class="n">exp</span> <span class="o">-&gt;</span> <span class="n">push_stack</span> <span class="n">st</span> <span class="o">(</span><span class="n">read_expression</span> <span class="n">st</span> <span class="n">exp</span><span class="o">)</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="o">|</span> <span class="nc">POP</span> <span class="n">reg</span> <span class="o">-&gt;</span>
+      <span class="k">let</span> <span class="n">n</span><span class="o">,</span> <span class="n">st&#39;</span> <span class="o">=</span> <span class="n">pop_stack</span> <span class="n">st</span> <span class="k">in</span>
+      <span class="n">write_register</span> <span class="n">st&#39;</span> <span class="n">reg</span> <span class="n">n</span> <span class="o">|&gt;</span> <span class="n">proceed</span>
+  <span class="o">|</span> <span class="nc">HLT</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;Cannot execute instruction&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File &quot;[47]&quot;, lines 1-28, characters 25-48:
+ 1 | .........................function
+ 2 |   (* | MOV (reg, exp) -&gt; TODO *)
+ 3 |   | ADD (reg, exp) -&gt; perform_binop ( + ) st reg exp |&gt; proceed
+ 4 |   (* | SUB (reg, exp) -&gt; TODO *)
+ 5 |   | INC reg -&gt; perform_unop succ st reg |&gt; proceed
+...
+25 |   | POP reg -&gt;
+26 |       let n, st&#39; = pop_stack st in
+27 |       write_register st&#39; reg n |&gt; proceed
+28 |   | HLT -&gt; failwith &quot;Cannot execute instruction&quot;
+Warning 8 [partial-match]: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+(RET|MOV (_, _)|SUB (_, _)|DEC _|MUL _|DIV _|CMP (_, _)|JMP _|JAE _|JB _|
+JBE _|JE _|JNE _|CALL _)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val run_instruction : state -&gt; instruction -&gt; state = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">run_program</span> <span class="pre">:</span> <span class="pre">state</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki izvaja ukaze v danem stanju, dokler ne naleti na ukaz <code class="docutils literal notranslate"><span class="pre">HLT</span></code> ali pa ukazni kazalec skoči ven iz ukaznega pomnilnika. Funkcija naj vrne končno stanje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_izvajanje_16</span> <span class="o">=</span>
+  <span class="n">fibonacci</span> <span class="mi">10</span>
+  <span class="o">|&gt;</span> <span class="n">init</span>
+  <span class="o">|&gt;</span> <span class="n">run_program</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_izvajanje_16 : state =
+  {instructions =
+    [|JMP (Address 20); PUSH (Register C); PUSH (Register B);
+      MOV (C, Register A); CMP (A, Const 0); JE (Address 17);
+      CMP (A, Const 1); JE (Address 17); DEC C; MOV (A, Register C);
+      CALL (Address 1); MOV (B, Register A); DEC C; MOV (A, Register C);
+      CALL (Address 1); ADD (A, Register B); JMP (Address 17); POP B; 
+      POP C; RET; MOV (A, Const 10); CALL (Address 1); HLT|];
+   a = 55; b = 0; c = 0; d = 0; ip = Address 22; zero = true; carry = false;
+   stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="branje-zbirnika">
+<h2>Branje zbirnika<a class="headerlink" href="#branje-zbirnika" title="Link to this heading">#</a></h2>
+<p>Da bomo programe lahko pisali v zbirniku, napišimo še funkcije za branje nizov. Predpostavljate lahko, da bodo vsi nizi pravilno oblikovani, zato v primeru napake s <code class="docutils literal notranslate"><span class="pre">failwith</span> <span class="pre">...</span></code> javite ustrezno sporočilo o napaki.</p>
+<section id="registri-in-izrazi">
+<h3>Registri in izrazi<a class="headerlink" href="#registri-in-izrazi" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">parse_register</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">register</span></code>, ki iz niza prebere register.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_1</span> <span class="o">=</span> <span class="n">parse_register</span> <span class="s2">&quot;A&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_1 : register = A
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">parse_expression</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">expression</span></code>, ki iz niza prebere izraz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_2</span> <span class="o">=</span> <span class="n">parse_expression</span> <span class="s2">&quot;A&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_2 : expression = Register A
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_3</span> <span class="o">=</span> <span class="n">parse_expression</span> <span class="s2">&quot;42&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_3 : expression = Const 42
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ciscenje-vrstic">
+<h3>Čiščenje vrstic<a class="headerlink" href="#ciscenje-vrstic" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">clean_line</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code>, ki iz niza odstrani vse presledke in komentarje (ki se začnejo z znakom <code class="docutils literal notranslate"><span class="pre">;</span></code>). Pri iskanju in odstranjevanju komentarjev si pomagajte z uporabo funkcij <code class="docutils literal notranslate"><span class="pre">String.index_opt</span></code> in <code class="docutils literal notranslate"><span class="pre">String.sub</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_4</span> <span class="o">=</span> <span class="n">clean_line</span> <span class="s2">&quot;   MOV A, 42    ; To je komentar   &quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_4 : string = &quot;MOV A, 42&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">clean_lines</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">list</span></code>, ki iz seznama nizov najprej odstrani vse komentarje in presledke, nato pa odstrani vse prazne vrstice.</p>
+</section>
+<section id="oznake">
+<h3>Oznake<a class="headerlink" href="#oznake" title="Link to this heading">#</a></h3>
+<p>Kot smo navajeni iz zbirnika, skokov ne podajamo z indeksi, ampak raje v dele kode napišemo oznake kot so <code class="docutils literal notranslate"><span class="pre">main:</span></code> ali <code class="docutils literal notranslate"><span class="pre">.loop:</span></code>, nato pa se nanje sklicujemo kot <code class="docutils literal notranslate"><span class="pre">JA</span> <span class="pre">.loop</span></code>, <code class="docutils literal notranslate"><span class="pre">JMP</span> <span class="pre">main</span></code>, <code class="docutils literal notranslate"><span class="pre">CALL</span> <span class="pre">fib</span></code> in tako naprej. Oznake bomo hranili v seznamu, ki bo vsaki oznaki priredil ustrezen naslov v ukaznem pomnilniku.</p>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">parse_address</span> <span class="pre">:</span> <span class="pre">(string</span> <span class="pre">*</span> <span class="pre">address)</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">address</span></code>, ki pri danem seznamu oznak iz niza prebere naslov. Naslov je lahko podan direktno s številom ali pa z eno izmed oznak v seznamu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_5</span> <span class="o">=</span> <span class="n">parse_address</span> <span class="o">[(</span><span class="s2">&quot;main&quot;</span><span class="o">,</span> <span class="nc">Address</span> <span class="mi">42</span><span class="o">)]</span> <span class="s2">&quot;main&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_5 : address = Address 42
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_6</span> <span class="o">=</span> <span class="n">parse_address</span> <span class="o">[(</span><span class="s2">&quot;main&quot;</span><span class="o">,</span> <span class="nc">Address</span> <span class="mi">42</span><span class="o">)]</span> <span class="s2">&quot;123&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_6 : address = Address 123
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">parse_label</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">option</span></code>, ki vrne oznako, če se niz konča z dvopičjem, sicer pa vrne <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_7</span> <span class="o">=</span> <span class="n">parse_label</span> <span class="s2">&quot;main:&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_7 : string option = Some &quot;main&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_8</span> <span class="o">=</span> <span class="n">parse_label</span> <span class="s2">&quot;MOV A, 42&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_8 : string option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Da bomo iz kode določili oznake, napišite funkcijo <code class="docutils literal notranslate"><span class="pre">parse_labels</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">(string</span> <span class="pre">*</span> <span class="pre">address)</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">string</span> <span class="pre">list</span></code>, ki iz seznama nizov, ki so bodisi oznake bodisi ukazi, izloči oznake in jim priredi naslove, ostale vrstice pa pusti nespremenjene.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_9</span> <span class="o">=</span>
+  <span class="n">parse_labels</span> <span class="o">[</span><span class="s2">&quot;JMP main&quot;</span><span class="o">;</span> <span class="s2">&quot;main:&quot;</span><span class="o">;</span> <span class="s2">&quot;MOV A, 0&quot;</span><span class="o">;</span> <span class="s2">&quot;loop:&quot;</span><span class="o">;</span> <span class="s2">&quot;INC A&quot;</span><span class="o">;</span> <span class="s2">&quot;JMP loop&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_9 : (string * address) list * string list =
+  ([(&quot;loop&quot;, Address 2); (&quot;main&quot;, Address 1)],
+   [&quot;JMP main&quot;; &quot;MOV A, 0&quot;; &quot;INC A&quot;; &quot;JMP loop&quot;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dopolnite spodnjo funkcijo <code class="docutils literal notranslate"><span class="pre">parse_instruction</span> <span class="pre">:</span> <span class="pre">(string</span> <span class="pre">*</span> <span class="pre">address)</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">instruction</span></code>, ki iz niza prebere ukaz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">parse_instruction</span> <span class="n">labels</span> <span class="n">line</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">tokens</span> <span class="o">=</span>
+    <span class="n">line</span>
+    <span class="o">|&gt;</span> <span class="nn">String</span><span class="p">.</span><span class="n">split_on_char</span> <span class="sc">&#39; &#39;</span>
+    <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">concat_map</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">split_on_char</span> <span class="sc">&#39;,&#39;</span><span class="o">)</span>
+    <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">map</span> <span class="nn">String</span><span class="p">.</span><span class="n">trim</span>
+    <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="k">fun</span> <span class="n">token</span> <span class="o">-&gt;</span> <span class="n">token</span> <span class="o">&lt;&gt;</span> <span class="s2">&quot;&quot;</span><span class="o">)</span>
+  <span class="k">in</span>
+  <span class="k">match</span> <span class="n">tokens</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;MOV&quot;</span><span class="o">;</span> <span class="n">reg</span><span class="o">;</span> <span class="n">exp</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">MOV</span> <span class="o">(</span><span class="n">parse_register</span> <span class="n">reg</span><span class="o">,</span> <span class="n">parse_expression</span> <span class="n">exp</span><span class="o">)</span>
+  <span class="c">(* | [&quot;ADD&quot;; reg; exp] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;SUB&quot;; reg; exp] -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;INC&quot;</span><span class="o">;</span> <span class="n">reg</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">INC</span> <span class="o">(</span><span class="n">parse_register</span> <span class="n">reg</span><span class="o">)</span>
+  <span class="c">(* | [&quot;DEC&quot;; reg] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;MUL&quot;; exp] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;DIV&quot;; exp] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;AND&quot;; reg; exp] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;OR&quot;; reg; exp] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;XOR&quot;; reg; exp] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;NOT&quot;; reg] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;CMP&quot;; reg; exp] -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;JMP&quot;</span><span class="o">;</span> <span class="n">add</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">JMP</span> <span class="o">(</span><span class="n">parse_address</span> <span class="n">labels</span> <span class="n">add</span><span class="o">)</span>
+  <span class="c">(* | [&quot;JA&quot;; add] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;JAE&quot;; add] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;JB&quot;; add] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;JBE&quot;; add] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;JE&quot;; add] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;JNE&quot;; add] -&gt; TODO *)</span>
+  <span class="c">(* | [&quot;CALL&quot;; add] -&gt; TODO *)</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;RET&quot;</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">RET</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;PUSH&quot;</span><span class="o">;</span> <span class="n">exp</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">PUSH</span> <span class="o">(</span><span class="n">parse_expression</span> <span class="n">exp</span><span class="o">)</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;POP&quot;</span><span class="o">;</span> <span class="n">reg</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">POP</span> <span class="o">(</span><span class="n">parse_register</span> <span class="n">reg</span><span class="o">)</span>
+  <span class="o">|</span> <span class="o">[</span><span class="s2">&quot;HLT&quot;</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="nc">HLT</span>
+  <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="o">(</span><span class="s2">&quot;Invalid instruction: &quot;</span> <span class="o">^</span> <span class="n">line</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val parse_instruction : (string * address) list -&gt; string -&gt; instruction =
+  &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_10</span> <span class="o">=</span>
+  <span class="nn">List</span><span class="p">.</span><span class="n">map</span> <span class="o">(</span><span class="n">parse_instruction</span> <span class="o">[(</span><span class="s2">&quot;main&quot;</span><span class="o">,</span> <span class="nc">Address</span> <span class="mi">42</span><span class="o">)])</span> <span class="o">[</span><span class="s2">&quot;MOV A, 42&quot;</span><span class="o">;</span> <span class="s2">&quot;CALL main&quot;</span><span class="o">;</span> <span class="s2">&quot;HLT&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_10 : instruction list =
+  [MOV (A, Const 42); CALL (Address 42); HLT]
+</pre></div>
+</div>
+</div>
+</div>
+<p>S pomočjo zgoraj napisanih funkcij sestavite funkcijo <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">state</span></code>, ki niz razbije na vrstice, prebere ukaze in oznake ter pripravi začetno stanje, nato pa program izvaja vse dokler ne naleti na ukaz <code class="docutils literal notranslate"><span class="pre">HLT</span></code>. Po klicu naj funkcija vrne končno stanje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">fibonacci</span> <span class="o">=</span> <span class="o">{|</span>
+  <span class="nc">JMP</span> <span class="n">main</span>
+  <span class="o">;</span> <span class="nc">Funkcija</span><span class="o">,</span> <span class="n">ki</span> <span class="n">izračuna</span> <span class="n">fib</span><span class="o">(</span><span class="nc">A</span><span class="o">)</span> <span class="k">in</span> <span class="n">vrednost</span> <span class="n">shrani</span> <span class="n">v</span> <span class="n">register</span> <span class="nc">A</span>
+  <span class="n">fib</span><span class="o">:</span>
+      <span class="o">;</span> <span class="nc">Shranimo</span> <span class="n">vrednosti</span> <span class="n">registrov</span>
+      <span class="nc">PUSH</span> <span class="nc">C</span>
+      <span class="nc">PUSH</span> <span class="nc">B</span>
+  
+      <span class="o">;</span> <span class="nc">V</span> <span class="nc">C</span> <span class="n">shranimo</span> <span class="n">začetno</span> <span class="n">vrednost</span> <span class="nc">A</span>
+      <span class="nc">MOV</span> <span class="nc">C</span><span class="o">,</span> <span class="nc">A</span>
+  
+      <span class="o">;</span> <span class="n">Če</span> <span class="n">je</span> <span class="nc">A</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">je</span> <span class="k">to</span> <span class="n">tudi</span> <span class="n">rezultat</span>
+      <span class="nc">CMP</span> <span class="nc">A</span><span class="o">,</span> <span class="mi">0</span>
+      <span class="nn">JE</span> <span class="p">.</span><span class="n">fib_end</span>
+  
+      <span class="o">;</span> <span class="n">Če</span> <span class="n">je</span> <span class="nc">A</span> <span class="o">=</span> <span class="mi">1</span><span class="o">,</span> <span class="n">je</span> <span class="k">to</span> <span class="n">tudi</span> <span class="n">rezultat</span>
+      <span class="nc">CMP</span> <span class="nc">A</span><span class="o">,</span> <span class="mi">1</span>
+      <span class="nn">JE</span> <span class="p">.</span><span class="n">fib_end</span>
+  
+      <span class="o">;</span> <span class="nc">V</span> <span class="n">nasprotnem</span> <span class="n">primeru</span> <span class="n">najprej</span> <span class="n">izračunamo</span> <span class="n">fib</span><span class="o">(</span><span class="nc">A</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">ga</span> <span class="n">shranimo</span> <span class="n">v</span> <span class="nc">B</span>
+      <span class="nc">DEC</span> <span class="nc">C</span>
+      <span class="nc">MOV</span> <span class="nc">A</span><span class="o">,</span> <span class="nc">C</span>
+      <span class="nc">CALL</span> <span class="n">fib</span>
+      <span class="nc">MOV</span> <span class="nc">B</span><span class="o">,</span> <span class="nc">A</span>
+  
+      <span class="o">;</span> <span class="nc">Nato</span> <span class="n">izračunamo</span> <span class="n">še</span> <span class="n">fib</span><span class="o">(</span><span class="nc">A</span> <span class="o">-</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">ga</span> <span class="n">shranimo</span> <span class="n">v</span> <span class="nc">A</span>
+      <span class="nc">DEC</span> <span class="nc">C</span>
+      <span class="nc">MOV</span> <span class="nc">A</span><span class="o">,</span> <span class="nc">C</span>
+      <span class="nc">CALL</span> <span class="n">fib</span>
+      
+      <span class="o">;</span> <span class="nc">Nazadnje</span> <span class="n">k</span> <span class="nc">A</span> <span class="n">prištejemo</span> <span class="n">še</span> <span class="nc">B</span><span class="o">,</span> <span class="n">s</span> <span class="n">čimer</span> <span class="n">dobimo</span> <span class="n">končni</span> <span class="n">rezultat</span>
+      <span class="nc">ADD</span> <span class="nc">A</span><span class="o">,</span> <span class="nc">B</span>
+      <span class="nn">JMP</span> <span class="p">.</span><span class="n">fib_end</span>
+  
+  <span class="o">.</span><span class="n">fib_end</span><span class="o">:</span>
+      <span class="o">;</span> <span class="nc">Povrnemo</span> <span class="n">vrednosti</span> <span class="n">registrov</span> <span class="k">in</span> <span class="n">vrnemo</span> <span class="n">rezultat</span>
+      <span class="nc">POP</span> <span class="nc">B</span>
+      <span class="nc">POP</span> <span class="nc">C</span>
+      <span class="nc">RET</span>
+  
+  <span class="n">main</span><span class="o">:</span>
+      <span class="nc">MOV</span> <span class="nc">A</span><span class="o">,</span> <span class="mi">7</span>
+      <span class="nc">CALL</span> <span class="n">fib</span>
+  <span class="nc">HLT</span>
+<span class="o">|}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val fibonacci : string =
+  &quot;\n  JMP main\n  ; Funkcija, ki izračuna fib(A) in vrednost shrani v register A\n  fib:\n      ; Shranimo vrednosti registrov\n      PUSH C\n      PUSH B\n  \n      ; V C shranimo začetno vrednost A\n      MOV C, A\n  \n      ; Če je A = 0, je to tudi rezultat\n      CMP A, 0\n      JE .fib_end\n  \n      ; Če&quot;... (* string length 872; truncated *)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_branje_11</span> <span class="o">=</span>
+  <span class="n">run</span> <span class="n">fibonacci</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_branje_11 : state =
+  {instructions =
+    [|JMP (Address 20); PUSH (Register C); PUSH (Register B);
+      MOV (C, Register A); CMP (A, Const 0); JE (Address 17);
+      CMP (A, Const 1); JE (Address 17); DEC C; MOV (A, Register C);
+      CALL (Address 1); MOV (B, Register A); DEC C; MOV (A, Register C);
+      CALL (Address 1); ADD (A, Register B); JMP (Address 17); POP B; 
+      POP C; RET; MOV (A, Const 7); CALL (Address 1); HLT|];
+   a = 13; b = 0; c = 0; d = 0; ip = Address 22; zero = true; carry = false;
+   stack = []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dn-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. domača naloga</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dn-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4. domača naloga</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podatkovni-tipi">Podatkovni tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registri">Registri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izrazi">Izrazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naslovi">Naslovi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ukazi">Ukazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pomnilnik">Pomnilnik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zacetno-stanje">Začetno stanje</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izvajanje-ukazov">Izvajanje ukazov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branje-stanja">Branje stanja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spreminjanje-registrov">Spreminjanje registrov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skoki">Skoki</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pogojni-skoki">Pogojni skoki</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klici-funkcij">Klici funkcij</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izvajanje-programov">Izvajanje programov</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branje-zbirnika">Branje zbirnika</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registri-in-izrazi">Registri in izrazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciscenje-vrstic">Čiščenje vrstic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oznake">Oznake</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
