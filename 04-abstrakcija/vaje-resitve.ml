@@ -26,6 +26,7 @@ module type NAT = sig
   val ( * ) : t -> t -> t
   val to_int : t -> int
   val of_int : int -> t
+  val to_str : t -> string
 end
 
 (*----------------------------------------------------------------------------*
@@ -49,6 +50,7 @@ module Nat_int : NAT = struct
   let ( * ) = ( * )
   let to_int x = x
   let of_int x = x
+  let to_str x = "[N_int]: " ^ (string_of_int x)
 end
 
 (*----------------------------------------------------------------------------*
@@ -71,7 +73,10 @@ module Nat_peano : NAT = struct
 
   let zero = Zero
   let one = Suc Zero
-  let rec ( + ) x y = match x with Zero -> y | Suc x' -> Suc (x' + y)
+  let rec ( + ) x y = 
+    match x with 
+      | Zero -> y 
+      | Suc x' -> Suc (x' + y)
 
   let rec ( - ) x y =
     match (x, y) with
@@ -80,40 +85,118 @@ module Nat_peano : NAT = struct
     | Zero, _ -> Zero (* y > x, vrnemo kar 0 *)
 
   let rec ( * ) x y =
-    match (x, y) with
-    | Zero, _ | _, Zero -> Zero
-    | x, Suc Zero -> x
-    | x, Suc y' -> x + (x * y')
+    match x with
+    | Zero -> Zero
+    | Suc x' -> y + (x' * y)
 
   let rec to_int = function Zero -> 0 | Suc x -> Int.add 1 (to_int x)
   let rec of_int = function 0 -> Zero | n -> Suc (of_int (Int.sub n 1))
+
+  let to_str n =
+    let aux = function
+      | Zero -> "Zero"
+      | Suc m -> "Succ(-" ^ string_of_int ((to_int (m+one))) ^ "-(Zero)--)"
+    in
+    "[N_peano]: " ^ aux n
 end
 
 (*----------------------------------------------------------------------------*
-   Z ukazom `let module ImeModula = ... in ...` lahko modul definiramo samo
-   lokalno. To bomo uporabili za to, da bomo lahko enostavno preklapljali med
-   moduloma `Nat_int` in `Nat_peano`, saj bomo enega ali drugega shranili pod ime
-   `Nat`. OCaml sicer pozna tudi ustrezne abstrakcije, ki omogočijo preklapljanje
-   med moduli, na primer [funktorje](https://ocaml.org/docs/functors) ali
-   [prvorazredne module](https://ocaml.org/manual/5.2/firstclassmodules.html), a
-   bomo uporabili preprostejšo rešitev.
+ Ocaml omogoča sestavljanje modulov iz drugih modulov z uporabo [funktorjev]
+ (https://ocaml.org/docs/functors). 
+ Funktor je tako preslikava med moduli, zapišemo jo v obliki modula, ki kot
+ argumente sprejme druge module. Tako uporabi zapis naslednjo strukturo
+ `module Ime_funktorja (Ime_modula : SIG1) : SIG2 = struct ... end`.
 
-   Spodnji izračun dopolnite tako, da sešteje prvih 100 naravnih števil. Ker bo
-   taka vsota tipa `NAT.t`, ki je abstrakten, končni rezultat pretvorite v tip
-   `int` z uporabo funkcije `Nat.to_int`. Če ste oba modula implementirali
-   pravilno, bi morali dobiti enak rezultat ne glede na to, katerega poimenujete
-   `Nat`.
-  [*----------------------------------------------------------------------------*)
+ Modul za računanje z naravnimi števili ima signaturo `CALC` (vanjo lahko 
+ dodate še kakšne funkcije). Module s to signaturo bomo zgradili z uporabo 
+ funktorja `Nat_calculations`, ki sprejme argument modula s signaturo `NAT` 
+ in računal z operacijami, ki jih ima ta signatura. 
+ Napišite funkciji fakultete in vsote prvih 100 naravnih števil, ki jih signatura 
+ `CALC` zahteva.
+[*----------------------------------------------------------------------------*)
+module type CALC = sig
+  type t
 
-let sum_nat_100 =
-  (* let module Nat = Nat_int in *)
-  let module Nat = Nat_peano in
-  let rec sum n =
-    if Nat.eq n Nat.zero then n else Nat.( + ) n (sum (Nat.( - ) n Nat.one))
-  in
-  sum (Nat.of_int 100) |> Nat.to_int
+  val factorial : t -> t
+  val sum_100 : t
+end
 
-let () = assert (sum_nat_100 = 5050)
+module Nat_calculations (N: NAT) : CALC with type t := N.t = struct
+  let rec factorial n = 
+    if N.eq n N.zero then N.one
+    else N.( * ) n (factorial (N.( - ) n N.one))
+
+  let sum_100 = 
+    let rec sum_first n acc =
+      if N.eq n N.zero then acc
+      else sum_first (N.( - ) n N.one) (N.( + ) n acc)
+    in
+    sum_first (N.of_int 100) N.zero
+end
+
+(*----------------------------------------------------------------------------*
+ Z moduli funktorja `Nat_calculations` lahko sedaj preverimo pravilnost
+ implementacij `Nat_int` in `Nat_peano`. Definirajte modula `Nat_int_calc` in
+ `Nat_peano_calc`, ki sta aplikaciji funktorja `Nat_calculations` na argumentih
+ `Nat_int` in `Nat_peano`. Nato za oba primera izračunajte vsoti prvih 100 števil
+  in fakulteto 5.
+[*----------------------------------------------------------------------------*)
+
+module Nat_int_calc = Nat_calculations (Nat_int)
+module Nat_peano_calc = Nat_calculations (Nat_peano)
+
+let sum_100_int = 
+  Nat_int_calc.sum_100 |> Nat_int.to_int
+let fact_5_int = 
+  Nat_int_calc.factorial (Nat_int.of_int 5) |> Nat_int.to_int
+
+let sum_100_peano = 
+  Nat_peano_calc.sum_100 |> Nat_peano.to_int
+let fact_5_peano =
+  Nat_peano_calc.factorial (Nat_peano.of_int 5) |> Nat_peano.to_int
+
+(* val sum_100_int : int = 5050 *)
+(* val sum_100_peano : int = 5050 *)
+(* val fact_5_int : int = 120 *)
+(* val fact_5_peano : int = 120 *)
+
+(*----------------------------------------------------------------------------*
+ Funktor lahko sprejme tudi več modulov, njegova končna signatura pa je poljubna,
+ torej je lahko enaka signaturi modulov, ki ju sprejme kot argumenta.
+ 
+ Napišite funktor `Nat_pair`, ki sprejme dva modula s signaturo `NAT` in vrne
+ modul s signaturo `NAT`. Osnovni tip definiranega modula naj bo par števil 
+ tipov modulov iz argumentov. Računske operacije naj delujejo po komponentah.
+ Pretvorjanje iz in v `int` pa definirajte poljubno.
+[*----------------------------------------------------------------------------*)
+
+module Nat_pair (A: NAT) (B: NAT) : NAT = struct
+  type t = A.t * B.t
+
+  let eq (x1, y1) (x2, y2) = A.eq x1 x2 && B.eq y1 y2
+  let zero = (A.zero, B.zero)
+  let one = (A.one, B.one)
+  let ( + ) (x1, y1) (x2, y2) = (A.( + ) x1 x2, B.( + ) y1 y2)
+  let ( - ) (x1, y1) (x2, y2) = (A.( - ) x1 x2, B.( - ) y1 y2)
+  let ( * ) (x1, y1) (x2, y2) = (A.( * ) x1 x2, B.( * ) y1 y2)
+  let to_int (a, b) = Int.add (A.to_int a) (B.to_int b)
+  let of_int n =
+    let half = n / 2 in
+    (A.of_int half, B.of_int (Int.sub n half))
+  let to_str (a, b) = "[N_pair]: ( " ^ A.to_str a ^ ", " ^ B.to_str b ^ " )"
+end
+
+module Nat_pair_int_peano = Nat_pair (Nat_int) (Nat_peano)
+let primer_pair = 
+  let open Nat_pair_int_peano in
+  let a = of_int 5 in
+  let b = of_int 10 in
+  let c = (a + b) in
+  let () = Printf.printf "Pair a: %s\n" (to_str a) in
+  let () = Printf.printf "Pair b: %s\n" (to_str b) in
+  let () = Printf.printf "Pair c (a + b): %s\n" (to_str c) in
+  let () = Printf.printf "Pair c as int: %d\n" (to_int c) in
+  ()
 
 (*----------------------------------------------------------------------------*
    ## Kompleksna števila
@@ -168,7 +251,14 @@ module type COMPLEX = sig
   type t
 
   val eq : t -> t -> bool
-  (* Dodajte manjkajoče! *)
+  val zero : t
+  val one : t
+  val i : t
+  val neg : t -> t
+  val conj : t -> t
+  val ( ++ ) : t -> t -> t
+  val ( ** ) : t -> t -> t
+  val to_string : t -> string
 end
 
 (*----------------------------------------------------------------------------*
@@ -177,11 +267,34 @@ end
   [*----------------------------------------------------------------------------*)
 
 module Cartesian : COMPLEX = struct
-  type t = { re : float; im : float }
 
-  let eq x y = failwith "later"
-  (* Dodajte manjkajoče! *)
+  type t = {re : float; im : float}
+  
+  let zero = {re = 0.; im = 0.}
+  let one = {re = 1.; im = 0.}
+  let i = {re = 0.; im = 1.}
+  
+  let eq x y = x = y
+  let neg x = {re = -. x.re; im = -. x.im}
+  let conj x = { x with im = -. x.im }
+  let ( ++ ) x y = { re = x.re +. y.re; im = x.im +. y.im }
+  let ( ** ) x y = 
+    { re = (x.re *. y.re) -. (x.im *. y.im);
+      im = (x.re *. y.im) +. (x.im *. y.re) }
+
+  let to_string x = "{re = " ^ string_of_float x.re ^ "; im = " ^ string_of_float x.im ^ "}"
 end
+
+let primer_complex_cartesian = 
+  let () = print_endline "Example in Cartesian." in
+  let i = Cartesian.i in
+  let one = Cartesian.one in 
+  let one_onei = Cartesian.( ++ ) i one in
+  let () = Cartesian.to_string one_onei |> print_endline in
+  let () = Cartesian.neg one_onei |> Cartesian.to_string |> print_endline in
+  let () = Cartesian.conj one_onei |> Cartesian.to_string |> print_endline in
+  let () = Cartesian.( ** ) one_onei one_onei |> Cartesian.to_string |> print_endline in
+  ()
 
 (*----------------------------------------------------------------------------*
    Sedaj napišite še polarno implementacijo kompleksnih števil, kjer ima vsako
@@ -191,12 +304,34 @@ end
   [*----------------------------------------------------------------------------*)
 
 module Polar : COMPLEX = struct
-  type t = { magn : float; arg : float }
+
+  type t = {magn : float; arg : float}
 
   (* Pomožne funkcije za lažje življenje. *)
   let pi = 2. *. acos 0.
-  let rad_of_deg deg = deg /. 180. *. pi
-  let deg_of_rad rad = rad /. pi *. 180.
-  let eq x y = failwith "later"
-  (* Dodajte manjkajoče! *)
+  let rad_of_deg deg = (deg /. 180.) *. pi
+  let deg_of_rad rad = (rad /. pi) *. 180.
+  let normalize_arg arg = if arg >= 2. *. pi then arg -. (2. *. pi) else arg
+
+  let zero = {magn = 0.; arg = 0.}
+  let one = {magn = 1.; arg = 0.}
+  let i = {magn = 1.; arg = pi /. 2.}
+
+  let eq x y = x = y
+  let neg x = { x with arg = normalize_arg (x.arg +. pi) }
+  let conj x = { x with arg = (2. *. pi) -. x.arg}
+  
+  let ( ++ ) x _ = x  (* Implementacija, ki si zasluži čast in slavo *)
+  let ( ** ) x y = 
+    { magn = x.magn *. y.magn; arg = normalize_arg (x.arg +. y.arg) }
+  
+  let to_string x = "{magn = " ^ string_of_float x.magn ^ "; arg = " ^ string_of_float (deg_of_rad x.arg) ^ "°}"
 end
+
+let primer_complex_polar = 
+  let () = print_endline "Example in polar." in
+  let i = Polar.i in
+  let minus_one = Polar.( ** ) i i in
+  let () = Polar.to_string minus_one |> print_endline in
+  let () = Polar.neg minus_one |> Polar.to_string |> print_endline in
+  ()
