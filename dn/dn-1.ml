@@ -23,21 +23,15 @@
 
   let je_sodo n = 
     let izracun = float_of_int n /. 2. -. float_of_int ( n / 2) in
-    if izracun = 0. then
-      true
-    else
-      false
+    if izracun = 0. then true
+    else false
 
-(* assert false...kadar smo prepričani, da se ne bo zgodilo*)
-
-let rec collatz int =
+let rec collatz int = 
   let stevec = [] in
-  if int = 1 then
-  int :: stevec
-  else if je_sodo int then
-    int :: collatz (int / 2)   (* pri rekurziji raiš št. shranti na koncu, ko kličeš*)
-  else
-    int :: collatz (3 * int + 1)
+  match int with
+  | 1 -> int :: stevec
+  | _ when je_sodo int -> int :: collatz (int / 2)
+  | _ -> int :: collatz (3 * int + 1)
 
 let primer_ogrevanje_1 = collatz 1024
 (* val primer_ogrevanje_1 : int list =
@@ -86,7 +80,7 @@ let primer_ogrevanje_4 = fiksne_tocke List.rev [[3]; [1; 4; 1]; [5; 9; 2; 6]; [5
 let sep_concat int nested_list_int = 
   let f sez = [int] @ sez in
   let int_odspredaj = List.concat_map f nested_list_int in
-int_odspredaj @ [int]
+  int_odspredaj @ [int]
 
 let primer_ogrevanje_5 = sep_concat 42 [[1; 2; 3]; [4; 5]; []; [6]]
 (* val primer_ogrevanje_5 : int list = [42; 1; 2; 3; 42; 4; 5; 42; 42; 6; 42] *)
@@ -105,33 +99,24 @@ let primer_ogrevanje_6 = sep_concat 42 []
  pri čemer je zadnji podseznam lahko tudi krajši.
 [*----------------------------------------------------------------------------*)
 
-let first list = List.hd list   (* slaba praksa, zneb se ga in namest tega raj uporab match*)
-let last list = List.hd (List.rev list)
-let last_len list = List.length (List.hd (List.rev list))
-(* let len list = List.length list *)
-
-
-(* let rec first_n n l =
-  match (n, l) with
+let rec take n list =    (* definirane v novah verzijah OCaml*)
+  match (n, list) with
   | (0, _) | (_, []) -> []
-  | (n, x :: xs) -> x :: first_n (n - 1) xs *)
+  | (n, x :: xs) -> x :: take (n - 1) xs 
 
-(* helper: drop first n elements *)
-(* let rec drop_n n l =
-  match (n, l) with
-  | (0, l) -> l
+let rec drop n list =
+  match (n, list) with
+  | (0, list) -> list
   | (_, []) -> []
-  | (n, _ :: xs) -> drop_n (n - 1) xs *)
+  | (n, _ :: xs) -> drop (n - 1) xs 
 
-(* your main function *)
-let rec partition n l =
-  match l with
+let rec partition n list =
+  match list with
   | [] -> []
   | _ ->
-      let chunk = List.take n l in
-      let rest = List.drop n l in
-      chunk :: partition n rest
-
+      let first_n = take n list in
+      let rest = drop n list in
+      first_n :: partition n rest
 
 
 let primer_ogrevanje_7 = partition 3 [1; 2; 3; 4; 5; 6; 7; 8; 9]
@@ -169,11 +154,12 @@ type ('a, 'b) sum = In1 of 'a | In2 of 'b
  ### $A \times B \cong B \times A$
 [*----------------------------------------------------------------------------*)
 
-(* type ('a, 'b) factor = ('a, 'b) *)
+(* kartezicni produkt je kot tuple *)
 
 let phi1 par_AB =
   match par_AB with
   | (a, b) -> (b, a)
+
 let psi1 par_BA = phi1 par_BA
 
 (*----------------------------------------------------------------------------*
@@ -194,6 +180,7 @@ let psi2 menjava_BA = phi2 menjava_BA
 let phi3 _AparBC =
   match _AparBC with
   | (a, (b, c)) -> ((a, b), c)
+
 let psi3 parAB_C =
   match parAB_C with
   | ((a, b), c) -> (a, (b, c))
@@ -241,7 +228,7 @@ let psi6 (f, g) =
     match x with
     | In1 b -> f b
     | In2 c -> g c in
-    h
+  h
 
 (*----------------------------------------------------------------------------*
  ### $(A \times B)^C \cong A^C \times B^C$
@@ -253,8 +240,8 @@ let phi7 f_v_par =
   (g, h)
 
 let psi7 (f, g) = 
-  let f x = (f x, g x) in
-  f
+  let h x = (f x, g x) in
+  h
 
 (*----------------------------------------------------------------------------*
  ## Permutacije
@@ -290,11 +277,10 @@ let permutacija_2 = [3; 9; 1; 7; 5; 4; 6; 8; 2; 0]
  Predpostavite lahko, da sta seznama enakih dolžin.
 [*----------------------------------------------------------------------------*)
 
-(* permutacija1 od i je že enaka permutaciji 2... aka vzamemo elemente 1. permutacije in jih preslikamo z 2.*)
+(* permutacija1 od indeksov je že enaka permutaciji 2... aka vzamemo elemente 1. permutacije in jih preslikamo z 2.*)
 
-let kompozitum l1 l2 =
-  let f value = List.nth l2 value in 
-  List.map f l1
+let kompozitum perm1 perm2 =
+  List.map (fun vrednost -> List.nth perm2 vrednost) perm1
 
 let primer_permutacije_1 = kompozitum permutacija_1 permutacija_1
 (* val primer_permutacije_1 : int list = [0; 1; 2; 3; 4; 5] *)
@@ -312,19 +298,19 @@ let primer_permutacije_2 = kompozitum permutacija_2 permutacija_2
  \mathrm{id},$$ kjer je $\mathrm{id}$ indentiteta.
 [*----------------------------------------------------------------------------*)
 
-let pari l = 
-  let f idx value = (idx, value) in 
-  List.mapi f l
+let pari list =
+  List.mapi (fun id v -> (id, v)) list
 
-let find_idx l (idx, value) =     (*take a look at this function again... except if you're grading it :) *)
-    let g l (idx2, value2) = (if value2 = idx then idx2 else 0)  in
-    let id_vec = List.map (g l) l in
-    List.fold_left ( + ) 0 id_vec
+(*check again, ne zdi se optimalno spisan...except če ocenjuješ kodo :) *)
+let find_idx list (idx, value) =     
+    let index_enake_vrednosti (idx2, value2) = (if value2 = idx then idx2 else 0)  in
+    let idx_vec = List.map index_enake_vrednosti list in
+    List.fold_left ( + ) 0 idx_vec
 
-let inverz l =
-  let seznam_parov = pari l in
-  let find_idx_on_l (idx, value) = find_idx seznam_parov (idx, value) in
-   List.map find_idx_on_l seznam_parov 
+let inverz list =
+  let seznam_parov = pari list in
+  let find_idx_in_list (idx, value) = find_idx seznam_parov (idx, value) in
+   List.map find_idx_in_list seznam_parov 
 
 let primer_permutacije_3 = inverz permutacija_1
 (* val primer_permutacije_3 : int list = [5; 3; 2; 1; 4; 0] *)
@@ -345,11 +331,13 @@ let primer_permutacije_5 = kompozitum permutacija_2 (inverz permutacija_2)
  n-1\}$ naj se pojavi v natanko enem ciklu.
 [*----------------------------------------------------------------------------*)
 
+let first list = List.hd list   (* slaba praksa menda *)
 
 let cikel paired_list =
   let (idx, value) = first paired_list in
   let rec tracking (id, v) storage = 
-    if List.exists (fun x -> x = v) storage then
+    let koncali_cikel x = (x = v) in
+    if List.exists koncali_cikel storage then
       storage
     else
       let next_idx = List.assoc v paired_list in
@@ -532,20 +520,18 @@ let primer_resitve : resitev = [|
 
 (*let dodaj i j n sudoku = 
   let nov_sudoku = sudoku.(i).(j) <- (Some n) in
-  nov_sudoku
-  
-  let sudoku = Array.map (Array.copy ) mreza 
+  nov_sudoku oz. neki z deep copy
   
   alternativna rešitev spodnji z (i) in (j)*)
 
-let dodaj i j n sudoku =        (* n trenutno ni prepoznan kot int*)
-  let g idx e = 
+let dodaj i j n sudoku =
+  let spremeni_kvadratek idx e = 
         if idx != j then e
         else (Some n) in
-  let f id ele = 
+  let v_pravi_vrstici id ele = 
     if id != i then ele
-    else Array.mapi g ele in
-  Array.mapi f sudoku 
+    else Array.mapi spremeni_kvadratek ele in
+  Array.mapi v_pravi_vrstici sudoku 
 
 let primer_sudoku_1 = primer_mreze |> dodaj 0 8 2
 (* val primer_sudoku_1 : mreza =
@@ -700,7 +686,7 @@ let ustreza sudoku resitev =
   let zdruzena = deep_map2 sudoku resitev in
   preveri_ujemanje zdruzena
 
-  (*alternativna exists2*)
+(*alternativna ideja exists2*)
 
 let primer_sudoku_4 = ustreza primer_mreze primer_resitve
 (* val primer_sudoku_4 : bool = true *)
