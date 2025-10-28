@@ -53,12 +53,65 @@ end
 
 module Nat_peano : NAT = struct
 
-  type t = unit (* To morate spremeniti! *)
-  let eq x y = failwith "later"
-  let zero = () (* To morate spremeniti! *)
-  (* Dodajte manjkajoče! *)
+  type t = 
+    | Nic 
+    | Nasl of t
+  let zero = Nic
+  let one = Nasl Nic
+
+  let rec eq m n = 
+    match (m, n) with 
+    | Nic, Nic -> true
+    | Nic, _ | _, Nic -> false
+    | Nasl m', Nasl n' -> eq m' n'
+
+  let rec ( + ) m n = 
+    match n with
+    | Nic -> m
+    | Nasl n' -> Nasl ( ( + ) m n')
+(*ali   | Nasl n' -> Nasl ( m + n') 
+        | Nasl n' -> (Nasl m) + n')  *)
+
+  let rec ( * ) m n =
+    match n with 
+    | Nic -> Nic
+    | Nasl n' -> m + (m * n')
+
+  let rec ( - ) m n =
+    match (m, n) with
+    | m, Nic -> m
+    | Nasl m', Nasl n' -> m' - n'
+    | Nic, _ -> Nic
+
+  let rec to_int n = 
+    match n with
+    | Nic -> 0
+    | Nasl n' -> Int.add 1 (to_int n')
+
+  let rec of_int n =
+    match n with
+    | 0 -> Nic
+    | n' -> Nasl (of_int (Int.sub n' 1))
 
 end
+
+(* the changes that i don't have yet*)
+
+module Nat_int_calc = Nat_calculations (Nat_int)
+module Nat_peano_calc = Nat_calculations (Nat_peano)
+
+let fact_5_int = 
+  Nat_int_calc.factorial (Nat_int.of_int 5) |> Nat_int.to_int
+
+let fact_5_peano =
+  Nat_peano.to_int (
+    Nat_peano_calc.factorial (Nat_peano.of_int 5))
+
+
+
+
+
+
 
 (*----------------------------------------------------------------------------*
  Z ukazom `let module ImeModula = ... in ...` lahko modul definiramo samo
@@ -82,6 +135,7 @@ let sum_nat_100 =
   Nat.zero (* to popravite na ustrezen izračun *)
   (* |> Nat.to_int *)
 (* val sum_nat_100 : int = 5050 *)
+
 
 (*----------------------------------------------------------------------------*
  ## Kompleksna števila

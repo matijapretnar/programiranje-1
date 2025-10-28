@@ -19,19 +19,28 @@
  Namig: Občudujte informativnost tipov funkcij.
 [*----------------------------------------------------------------------------*)
 
-type euro 
+type euro = {
+  vrednost : float;
+}
 
-type dollar 
+type dollar = {
+  value : float;
+}
 
-let dollar_to_euro _ = ()
+let natecaj = 2.
+let exchange = 0.5
 
-let euro_to_dollar _ = ()
+let dollar_to_euro dollar_quant = 
+  { vrednost = (dollar_quant.value /. exchange) }
+
+let euro_to_dollar euro_quant = 
+  { value = (euro_quant.vrednost /. natecaj)}
 
 (* let primer_valute_1 = dollar_to_euro (Dollar 0.5) *)
 (* val primer_valute_1 : euro = Euro 0.4305 *)
 
 (*----------------------------------------------------------------------------*
- Definirajte tip `currency` kot en vsotni tip z konstruktorji za jen, funt in
+ Definirajte tip `currency` kot en vsotni tip s konstruktorji za jen, funt in
  švedsko krono. Nato napišite funkcijo `to_pound`, ki primerno pretvori valuto
  tipa `currency` v funte.
 
@@ -39,9 +48,17 @@ let euro_to_dollar _ = ()
  Ocaml sam opozori, da je potrebno popraviti funkcijo `to_pound`.
 [*----------------------------------------------------------------------------*)
 
-type currency 
+type currency = 
+  | Yen of float
+  | Pound of float
+  | Sweedish_crona of float
 
-let to_pound _ = ()
+
+let to_pound quantity = 
+  match quantity with
+  | Yen yen_q -> Pound (yen_q /. exchange)
+  | Pound pound_q -> Pound pound_q
+  | Sweedish_crona sCr -> Pound (sCr /. natecaj)
 
 (* let primer_valute_2 = to_pound (Yen 100.) *)
 (* val primer_valute_2 : currency = Pound 0.700000000000000067 *)
@@ -69,9 +86,20 @@ let to_pound _ = ()
  Nato napišite testni primer, ki bi predstavljal `[5; true; false; 7]`.
 [*----------------------------------------------------------------------------*)
 
-type intbool_list 
+(*konstruktor vedno vzame tuple, ker lahko vse zapišemo kot en element 
+in vse ostalo 
+Cons pomeni konstruktor*)
 
-let test = ()
+type intbool_list = 
+  | Nil
+  | Int of (int * intbool_list)
+  | Bool of (bool * intbool_list)
+
+let test = Int (5, ( Bool (true, Bool (false, Int (7, Nil)))))
+
+(*let rep = Bool (false, Int (7, Nil))
+let test = Int (5, ( Bool (true, rep)))*)
+
 
 (*----------------------------------------------------------------------------*
  Funkcija `intbool_map f_int f_bool ib_list` preslika vrednosti `ib_list` v nov
@@ -79,7 +107,11 @@ let test = ()
  oz. `f_bool`.
 [*----------------------------------------------------------------------------*)
 
-let rec intbool_map _ _ _ = ()
+let rec intbool_map f_int f_bool ib_list = 
+  match ib_list with
+  | [] -> ()
+  | x :: xs -> ()
+  
 
 (*----------------------------------------------------------------------------*
  Funkcija `intbool_reverse` obrne vrstni red elementov `intbool_list` seznama.
