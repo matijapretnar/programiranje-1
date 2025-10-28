@@ -7,80 +7,91 @@
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- ### Števke
+ ### Collatzovo zaporedje
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Napišite funkcijo `stevke : int -> int -> int list`, ki sprejme pozitivni celi
- števili $b$ in $n$ ter vrne seznam števk števila $n$ v bazi $b$. Pri tem tudi
- za baze, ki so večje od $10$, uporabimo števke od $0$ do $b - 1$.
+ Collatzovo zaporedje se začne s pozitivnim naravnim številom $a_0$ ter
+ nadaljuje kot:
+
+ $$a_{n + 1} = \begin{cases} a_n / 2, & \text{če je } a_n \text{ sodo} \\ 3 a_n
+ + 1, & \text{če je } a_n \text{ liho} \end{cases}$$
+
+ Sestavite funkcijo `collatz : int -> int list`, ki sprejme začetni člen
+ zaporedja in vrne seznam vseh členov, dokler zaporedje ne doseže $1$.
 [*----------------------------------------------------------------------------*)
 
-let stevke _ _ = ()
+let rec collatz _ = ()
 
-let primer_1_1 = stevke 10 12345
-(* val primer_1_1 : int list = [1; 2; 3; 4; 5] *)
+let primer_ogrevanje_1 = collatz 1024
+(* val primer_ogrevanje_1 : int list =
+  [1024; 512; 256; 128; 64; 32; 16; 8; 4; 2; 1] *)
 
-let primer_1_2 = stevke 2 42
-(* val primer_1_2 : int list = [1; 0; 1; 0; 1; 0] *)
-
-let primer_1_3 = stevke 16 (3 * 16 * 16 * 16 + 14 * 16 * 16 + 15 * 16 + 9)
-(* val primer_1_3 : int list = [3; 14; 15; 9] *)
-
-(*----------------------------------------------------------------------------*
- ### Začetek seznama
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `take : int -> 'a list -> 'a list`, ki sprejme naravno
- število in vrne ustrezno število elementov z začetka danega seznama. Če je
- podani seznam krajši od zahtevane dolžine, naj funkcija vrne kar celoten
- seznam.
-[*----------------------------------------------------------------------------*)
-
-let rec take _ _ = ()
-
-let primer_1_4 = take 3 [1; 2; 3; 4; 5]
-(* val primer_1_4 : int list = [1; 2; 3] *)
-
-let primer_1_5 = take 10 [1; 2; 3; 4; 5]
-(* val primer_1_5 : int list = [1; 2; 3; 4; 5] *)
+let primer_ogrevanje_2 = collatz 27
+(* val primer_ogrevanje_2 : int list =
+  [27; 82; 41; 124; 62; 31; 94; 47; 142; 71; 214; 107; 322; 161; 484; 242;
+   121; 364; 182; 91; 274; 137; 412; 206; 103; 310; 155; 466; 233; 700; 350;
+   175; 526; 263; 790; 395; 1186; 593; 1780; 890; 445; 1336; 668; 334; 167;
+   502; 251; 754; 377; 1132; 566; 283; 850; 425; 1276; 638; 319; 958; 479;
+   1438; 719; 2158; 1079; 3238; 1619; 4858; 2429; 7288; 3644; 1822; 911;
+   2734; 1367; 4102; 2051; 6154; 3077; 9232; 4616; 2308; 1154; 577; 1732;
+   866; 433; 1300; 650; 325; 976; 488; 244; 122; 61; 184; 92; 46; 23; 70; 35;
+   106; 53; 160; 80; 40; 20; 10; 5; 16; 8; 4; 2; 1] *)
 
 (*----------------------------------------------------------------------------*
- ### Odstranjevanje ujemajočih
+ ### Fiksne točke
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Napišite funkcijo `drop_while : ('a -> bool) -> 'a list -> 'a list`, ki z
- začetka seznama odstrani vse elemente, ki zadoščajo danemu predikatu. Ko najde
- element, ki predikatu ne zadošča, vrne preostanek seznama.
+ Sestavite funkcijo `fiksne_tocke : ('a -> 'a) -> 'a list -> 'a list`, ki za
+ dano funkcijo in seznam vrne podseznam vseh elementov, ki so fiksne točke.
 [*----------------------------------------------------------------------------*)
 
-let rec drop_while _ _ = ()
+let fiksne_tocke _ _ = ()
 
-let primer_1_6 = drop_while (fun x -> x < 5) [3; 1; 4; 1; 5; 9; 2; 6; 5; 3; 5]
-(* val primer_1_6 : int list = [5; 9; 2; 6; 5; 3; 5] *)
+let primer_ogrevanje_3 = fiksne_tocke (fun x -> x * x) [0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
+(* val primer_ogrevanje_3 : int list = [0; 1] *)
 
-let primer_1_7 = drop_while (fun x -> x < 5) [9; 8; 7; 6; 5; 4; 3; 2; 1; 0]
-(* val primer_1_7 : int list = [9; 8; 7; 6; 5; 4; 3; 2; 1; 0] *)
+let primer_ogrevanje_4 = fiksne_tocke List.rev [[3]; [1; 4; 1]; [5; 9; 2; 6]; [5; 3; 5]; []; [8; 9; 7; 9; 3; 2; 3]]
+(* val primer_ogrevanje_4 : int list list = [[3]; [1; 4; 1]; [5; 3; 5]; []] *)
 
 (*----------------------------------------------------------------------------*
- ### Funkcija `filter_mapi`
+ ### Združevanje z ločilom
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Napišite funkcijo `filter_mapi : (int -> 'a -> 'b option) -> 'a list -> 'b
- list`, ki deluje tako kot `List.filter_map`, le da funkcija poleg elemenov dobi
- še njihove indekse.
+ Napišite funkcijo `sep_concat : 'a -> 'a list list -> 'a list`, ki združi
+ seznam seznamov, pri čemer med elemente različnih seznamov ter na začetek in
+ konec vstavi dano ločilo.
 [*----------------------------------------------------------------------------*)
 
-let filter_mapi _ _ = ()
+let sep_concat _ _ = ()
 
-let primer_1_8 =
-  filter_mapi
-    (fun i x -> if i mod 2 = 0 then Some (x * x) else None)
-    [1; 2; 3; 4; 5; 6; 7; 8; 9]
-(* val primer_1_8 : int list = [1; 9; 25; 49; 81] *)
+let primer_ogrevanje_5 = sep_concat 42 [[1; 2; 3]; [4; 5]; []; [6]]
+(* val primer_ogrevanje_5 : int list = [42; 1; 2; 3; 42; 4; 5; 42; 42; 6; 42] *)
+
+let primer_ogrevanje_6 = sep_concat 42 []
+(* val primer_ogrevanje_6 : int list = [42] *)
+
+(*----------------------------------------------------------------------------*
+ ### Razbitje seznama
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*
+ Napišite funkcijo `partition : int -> 'a list -> 'a list`, ki sprejme pozitivno
+ naravno število $k$ in seznam $[a_0, \dots, a_n]$ ter ga razdeli na zaporedne
+ podsezname $[a_0, \dots, a_{k - 1}], [a_k, \dots, a_{2 k - 1}], \dots$, pri
+ čemer je zadnji podseznam lahko tudi krajši.
+[*----------------------------------------------------------------------------*)
+
+let partition _ _ = ()
+
+let primer_ogrevanje_7 = partition 3 [1; 2; 3; 4; 5; 6; 7; 8; 9]
+(* val primer_ogrevanje_7 : int list list = [[1; 2; 3]; [4; 5; 6]; [7; 8; 9]] *)
+
+let primer_ogrevanje_8 = partition 3 [1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
+(* val primer_ogrevanje_8 : int list list =
+  [[1; 2; 3]; [4; 5; 6]; [7; 8; 9]; [10]] *)
 
 (*----------------------------------------------------------------------------*
  ## Izomorfizmi množic
@@ -156,426 +167,383 @@ let phi7 _ = ()
 let psi7 _ = ()
 
 (*----------------------------------------------------------------------------*
- ## Polinomi
+ ## Permutacije
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Polinome $a_0 + a_1 x + \cdots + a_n x^n$ predstavimo s seznami celoštevilskih
- koeficientov od prostega do vodilnega člena. Na primer, polinom $1 - 2 x + 3
- x^2$ predstavimo s seznamom `[1; -2; 3]`.
+ Permutacije so preureditve elementov $\{0, 1, \dots, n-1\}$, torej bijektivne
+ preslikave $$p \colon \{0, 1, \dots, n-1\} \to \{0, 1, \dots, n-1\}.$$ V nalogi
+ bomo permutacije predstavili s seznamom števil, v katerem je na $i$-tem mestu
+ seznama zapisana slika elementa $i$.
+ Na primer, permutaciji $0 \, 1 \, 2 \, 3 \, 4 \, 5 \choose 5 \, 3 \, 2 \, 1 \,
+ 4 \, 0$ in $0 \, 1 \, 2 \, 3 \, 4 \, 5 \, 6 \, 7 \, 8 \, 9 \choose 3 \, 9 \, 1
+ \, 7 \, 5 \, 4 \, 6 \, 8 \, 2 \, 0$ bi zapisali s seznamoma:
 [*----------------------------------------------------------------------------*)
 
-type polinom = int list
-
-(*----------------------------------------------------------------------------*
- ### Odstranjevanje odvečnih ničel
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `pocisti : polinom -> polinom`, ki s konca seznama
- koeficientov odstrani odvečne ničle.
-[*----------------------------------------------------------------------------*)
-
-let pocisti _ = ()
-
-let primer_3_1 = pocisti [1; -2; 3; 0; 0]
-(* val primer_3_1 : int list = [1; -2; 3] *)
-
-(*----------------------------------------------------------------------------*
- ### Seštevanje
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `( +++ ) : polinom -> polinom -> polinom`, ki sešteje dva
- polinoma.
-[*----------------------------------------------------------------------------*)
-
-let ( +++ ) _ _ = ()
-
-let primer_3_2 = [1; -2; 3] +++ [1; 2]
-(* val primer_3_2 : int list = [2; 0; 3] *)
-
-let primer_3_3 = [1; -2; 3] +++ [1; 2; -3]
-(* val primer_3_3 : int list = [2] *)
-
-(*----------------------------------------------------------------------------*
- ### Množenje
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `( *** ) : polinom -> polinom -> polinom`, ki zmnoži dva
- polinoma.
-[*----------------------------------------------------------------------------*)
-
-let ( *** ) _ _ = ()
-
-let primer_3_4 = [1; 1] *** [1; 1] *** [1; 1]
-(* val primer_3_4 : int list = [1; 3; 3; 1] *)
-
-let primer_3_5 = [1; 1] *** [1; -1]
-(* val primer_3_5 : int list = [1; 0; -1] *)
-
-(*----------------------------------------------------------------------------*
- ### Izračun vrednosti v točki
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `vrednost : polinom -> int -> int`, ki izračuna vrednost
- polinoma v danem argumentu.
-[*----------------------------------------------------------------------------*)
-
-let vrednost _ _ = ()
-
-let primer_3_6 = vrednost [1; -2; 3] 2
-(* val primer_3_6 : int = 9 *)
-
-(*----------------------------------------------------------------------------*
- ### Odvajanje
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `odvod : polinom -> polinom`, ki izračuna odvod polinoma.
-[*----------------------------------------------------------------------------*)
-
-let odvod _ = ()
-
-let primer_3_7 = odvod [1; -2; 3]
-(* val primer_3_7 : int list = [-2; 6] *)
-
-(*----------------------------------------------------------------------------*
- ### Lep izpis
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `izpis : polinom -> string`, ki polinom lepo izpiše. Na
- primer, `izpis [1; -2; 3]` vrne `"3 x^2 - 2 x + 1"` oziroma še bolje kot `"3 x²
- - 2 x + 1"`. Pozorni bodite, da izpis začnete z vodilnim členom.
-[*----------------------------------------------------------------------------*)
-
-let izpis _ = ()
-
-let primer_3_8 = izpis [1; 2; 1]
-(* val primer_3_8 : string = "x² + 2 x + 1" *)
-
-let primer_3_9 = izpis [1; 0; -1; 0; 1; 0; -1; 0; 1; 0; -1; 0; 1]
-(* val primer_3_9 : string = "x¹² - x¹⁰ + x⁸ - x⁶ + x⁴ - x² + 1" *)
-
-let primer_3_10 = izpis [0; -3; 3; -1]
-(* val primer_3_10 : string = "-x³ + 3 x² - 3 x" *)
-
-(*----------------------------------------------------------------------------*
- ## Samodejno odvajanje
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Ob razmahu strojnega učenja, ki optimalno rešitev išče s pomočjo gradientnega
- spusta, si želimo čim bolj enostavno računati odvode. Odvod funkcije $f$ v
- točki $x_0$ lahko seveda ocenimo tako, da v
-
- $$\frac{f (x_0 + h) - f(x_0)}{h}$$
-
- vstavimo dovolj majhno število $h$.
-[*----------------------------------------------------------------------------*)
-
-let priblizek_odvoda f x0 h =
-  (f (x0 +. h) -. f x0) /. h
-(* val priblizek_odvoda : (float -> float) -> float -> float -> float = <fun> *)
-
-let primer_4_1 =
-  let f x = sin x +. cos x +. exp x in
-  List.map (priblizek_odvoda f 1.) [0.1; 0.01; 0.001; 0.0001; 0.00001]
-(* val primer_4_1 : float list =
-  [2.48914386298364931; 2.42384618742050861; 2.41778190719976749;
-   2.41717997997881184; 2.41711983210990411] *)
-
-(*----------------------------------------------------------------------------*
- Pri samodejnem odvajanju izkoristimo to, da poznamo odvode elementarnih
- funkcij, odvode sestavljenih funkcij pa lahko izračunamo iz posameznih odvodov.
- Tako bomo vsako funkcijo predstavili s parom: prvotno funkcijo in njenim
- odvodom.
-[*----------------------------------------------------------------------------*)
-
-type odvedljiva = (float -> float) * (float -> float)
-
-let sinus : odvedljiva = (sin, cos)
-let kosinus : odvedljiva = (cos, (fun x -> -. sin x))
-let eksp : odvedljiva = (exp, exp)
-let ( ++. ) : odvedljiva -> odvedljiva -> odvedljiva =
-  (* pozorni bodite, da anonimni funkciji v paru date med oklepaje *)
-  fun (f, f') (g, g') -> ((fun x -> f x +. g x), (fun x -> f' x +. g' x))
-(* val sinus : odvedljiva = (<fun>, <fun>) *)
-(* val kosinus : odvedljiva = (<fun>, <fun>) *)
-(* val eksp : odvedljiva = (<fun>, <fun>) *)
-(* val ( ++. ) : odvedljiva -> odvedljiva -> odvedljiva = <fun> *)
-
-let primer_4_2 =
-  let (_, f') = sinus ++. kosinus ++. eksp in
-  f' 1.
-(* val primer_4_2 : float = 2.41711314951928813 *)
-
-(*----------------------------------------------------------------------------*
- ### Vrednost odvoda
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkciji `vrednost : odvedljiva -> float -> float` in `odvod :
- odvedljiva -> float -> float`, ki izračunata vrednost funkcije in njenega
- odvoda v danem argumentu.
-[*----------------------------------------------------------------------------*)
-
-let vrednost _ _ = ()
-let odvod _ _ = ()
-
-(*----------------------------------------------------------------------------*
- ### Osnovne funkcije
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkciji `konstanta : float -> odvedljiva` in `identiteta :
- odvedljiva`, ki predstavljata konstantno in identično funkcijo.
-[*----------------------------------------------------------------------------*)
-
-let konstanta _ = ()
-let identiteta = ()
-
-(*----------------------------------------------------------------------------*
- ### Produkt in kvocient
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkciji `( **. ) : odvedljiva -> odvedljiva -> odvedljiva` in `( //.
- ) : odvedljiva -> odvedljiva -> odvedljiva`, ki predstavljata produkt in
- kvocient dveh odvedljivih funkcij.
-[*----------------------------------------------------------------------------*)
-
-let ( **. ) _ _ = ()
-
-let kvadrat = identiteta **. identiteta
-(* val kvadrat : odvedljiva = (<fun>, <fun>) *)
+let permutacija_1 = [5; 3; 2; 1; 4; 0]
+let permutacija_2 = [3; 9; 1; 7; 5; 4; 6; 8; 2; 0]
+(* val permutacija_1 : int list = [5; 3; 2; 1; 4; 0] *)
+(* val permutacija_2 : int list = [3; 9; 1; 7; 5; 4; 6; 8; 2; 0] *)
 
 (*----------------------------------------------------------------------------*
  ### Kompozitum
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Napišite funkcijo `( @@. ) : odvedljiva -> odvedljiva -> odvedljiva`, ki
- predstavlja kompozitum dveh odvedljivih funkcij.
+ Napišite funkcijo `kompozitum : int list -> int list -> int list`, ki sprejme
+ dve permutaciji in vrne njun kompozitum. Za permutaciji $p$ in $q$, je njun
+ kompozitum funkcija
+
+ $$ p \circ q \colon i \mapsto p ( q ( i ) ). $$
+
+ Predpostavite lahko, da sta seznama enakih dolžin.
 [*----------------------------------------------------------------------------*)
 
-let ( @@. ) _ _ = ()
+let kompozitum _ _ = ()
 
-(* POZOR: Primer je zaenkrat zakomentiran, saj ob prazni rešitvi nima tipa *)
-(* let vedno_ena = (kvadrat @@. sinus) ++. (kvadrat @@. kosinus) *)
-(* val vedno_ena : odvedljiva = (<fun>, <fun>) *)
+let primer_permutacije_1 = kompozitum permutacija_1 permutacija_1
+(* val primer_permutacije_1 : int list = [0; 1; 2; 3; 4; 5] *)
 
-(* POZOR: Primer je zaenkrat zakomentiran, saj brez vedno_ena ne deluje *)
-(* let primer_4_3 = vrednost vedno_ena 12345. *)
-(* val primer_4_3 : float = 0.999999999999999889 *)
-
-(* POZOR: Primer je zaenkrat zakomentiran, saj brez vedno_ena ne deluje *)
-(* let primer_4_4 = odvod vedno_ena 12345. *)
-(* val primer_4_4 : float = 0. *)
+let primer_permutacije_2 = kompozitum permutacija_2 permutacija_2
+(* val primer_permutacije_2 : int list = [7; 0; 9; 8; 4; 5; 6; 2; 1; 3] *)
 
 (*----------------------------------------------------------------------------*
- ## Substitucijska šifra
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Substitucijska šifra je preprosta šifra, pri kateri črke abecede med seboj
- permutiramo. Na primer, če bi (angleško) abecedo permutirali kot
-
- ```
- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
- T H E Q U I C K B R W N F X J M P S O V L A Z Y D G
- ```
-
- bi besedo `HELLO` šifrirali kot `KUNNJ`. Ključe, s katerimi šifriramo besedila
- bomo predstavili kar z nizi črk, v katere se slikajo črke abecede.
-[*----------------------------------------------------------------------------*)
-
-let quick_brown_fox = "THEQUICKBRWNFXJMPSOVLAZYDG"
-let rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLM"
-(* val quick_brown_fox : string = "THEQUICKBRWNFXJMPSOVLAZYDG" *)
-(* val rot13 : string = "NOPQRSTUVWXYZABCDEFGHIJKLM" *)
-
-(*----------------------------------------------------------------------------*
- Včasih bomo v primerih uporabljali tudi krajše ključe, a vedno lahko
- predpostavite, da bodo ključi permutacije začetnega dela abecede. Prav tako si
- pri delu lahko pomagate s funkcijama `indeks` in `crka`:
-[*----------------------------------------------------------------------------*)
-
-let indeks c = Char.code c - Char.code 'A'
-let crka i = Char.chr (i + Char.code 'A') 
-(* val indeks : char -> int = <fun> *)
-(* val crka : int -> char = <fun> *)
-
-(*----------------------------------------------------------------------------*
- ### Šifriranje
+ ### Inverz
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Napišite funkcijo `sifriraj : string -> string -> string`, ki besedilo šifrira
- z danim ključem. Vse znake, ki niso velike tiskane črke, pustimo pri miru.
-[*----------------------------------------------------------------------------*)
-
-let sifriraj _ _ = ()
-
-let primer_5_1 = sifriraj quick_brown_fox "HELLO, WORLD!"
-(* val primer_5_1 : string = "KUNNJ, ZJSNQ!" *)
-
-let primer_5_2 = "VENI, VIDI, VICI" |> sifriraj rot13
-(* val primer_5_2 : string = "IRAV, IVQV, IVPV" *)
-
-let primer_5_3 = "VENI, VIDI, VICI" |> sifriraj rot13 |> sifriraj rot13
-(* val primer_5_3 : string = "VENI, VIDI, VICI" *)
-
-(*----------------------------------------------------------------------------*
- ### Inverzni ključ
-[*----------------------------------------------------------------------------*)
-
-(*----------------------------------------------------------------------------*
- Napišite funkcijo `inverz : string -> string`, ki iz ključa izračuna njegov
- inverz.
+ Napiši funkcijo `inverz : int list -> int list`, ki vrne inverz dane
+ permutacije $p$, torej tako permutacijo $p^{-1}$, da velja $$p \circ p^{-1} =
+ \mathrm{id},$$ kjer je $\mathrm{id}$ indentiteta.
 [*----------------------------------------------------------------------------*)
 
 let inverz _ = ()
 
-let primer_5_4 = inverz quick_brown_fox
-(* val primer_5_4 : string = "VIGYCMZBFOHUPLSQDJRAETKNXW" *)
+let primer_permutacije_3 = inverz permutacija_1
+(* val primer_permutacije_3 : int list = [5; 3; 2; 1; 4; 0] *)
 
-let primer_5_5 = inverz rot13
-(* val primer_5_5 : string = "NOPQRSTUVWXYZABCDEFGHIJKLM" *)
+let primer_permutacije_4 = inverz permutacija_2
+(* val primer_permutacije_4 : int list = [9; 2; 8; 0; 5; 4; 6; 3; 7; 1] *)
 
-let primer_5_6 = inverz "BCDEA"
-(* val primer_5_6 : string = "EABCD" *)
+let primer_permutacije_5 = kompozitum permutacija_2 (inverz permutacija_2)
+(* val primer_permutacije_5 : int list = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9] *)
 
 (*----------------------------------------------------------------------------*
- ### Ugibanje ključa
+ ### Razcep na cikle
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Včasih seveda ne poznamo ključa, a vemo, da je besedilo v angleščini. Tako
- lahko ključ poskusimo uganiti tako, da šifrirane besede paroma primerjamo z
- besedami iz slovarja, ki smo si ga sposodili [s
- spleta](https://gist.github.com/deekayen/4148741).
+ Napišite funkcijo `cikli : int list -> int list list`, ki za dano permutacijo
+ vrne seznam ciklov, ki to permutacijo sestavljajo. Vsak element $\{0, 1, \dots,
+ n-1\}$ naj se pojavi v natanko enem ciklu.
 [*----------------------------------------------------------------------------*)
 
-let besede = "the of to and a in is it you that he was for on are with as i his they be at one have this from or had by word but what some we can out other were all there when up use your how said an each she which do their time if will way about many then them write would like so these her long make thing see him two has look more day could go come did number sound no most people my over know water than call first who may down side been now find any new work part take get place made live where after back little only round man year came show every good me give our under name very through just form sentence great think say help low line differ turn cause much mean before move right boy old too same tell does set three want air well also play small end put home read hand port large spell add even land here must big high such follow act why ask men change went light kind off need house picture try us again animal point mother world near build self earth father head stand own page should country found answer school grow study still learn plant cover food sun four between state keep eye never last let thought city tree cross farm hard start might story saw far sea draw left late run don't while press close night real life few north open seem together next white children begin got walk example ease paper group always music those both mark often letter until mile river car feet care second book carry took science eat room friend began idea fish mountain stop once base hear horse cut sure watch color face wood main enough plain girl usual young ready above ever red list though feel talk bird soon body dog family direct pose leave song measure door product black short numeral class wind question happen complete ship area half rock order fire south problem piece told knew pass since top whole king space heard best hour better true . during hundred five remember step early hold west ground interest reach fast verb sing listen six table travel less morning ten simple several vowel toward war lay against pattern slow center love person money serve appear road map rain rule govern pull cold notice voice unit power town fine certain fly fall lead cry dark machine note wait plan figure star box noun field rest correct able pound done beauty drive stood contain front teach week final gave green oh quick develop ocean warm free minute strong special mind behind clear tail produce fact street inch multiply nothing course stay wheel full force blue object decide surface deep moon island foot system busy test record boat common gold possible plane stead dry wonder laugh thousand ago ran check game shape equate hot miss brought heat snow tire bring yes distant fill east paint language among grand ball yet wave drop heart am present heavy dance engine position arm wide sail material size vary settle speak weight general ice matter circle pair include divide syllable felt perhaps pick sudden count square reason length represent art subject region energy hunt probable bed brother egg ride cell believe fraction forest sit race window store summer train sleep prove lone leg exercise wall catch mount wish sky board joy winter sat written wild instrument kept glass grass cow job edge sign visit past soft fun bright gas weather month million bear finish happy hope flower clothe strange gone jump baby eight village meet root buy raise solve metal whether push seven paragraph third shall held hair describe cook floor either result burn hill safe cat century consider type law bit coast copy phrase silent tall sand soil roll temperature finger industry value fight lie beat excite natural view sense ear else quite broke case middle kill son lake moment scale loud spring observe child straight consonant nation dictionary milk speed method organ pay age section dress cloud surprise quiet stone tiny climb cool design poor lot experiment bottom key iron single stick flat twenty skin smile crease hole trade melody trip office receive row mouth exact symbol die least trouble shout except wrote seed tone join suggest clean break lady yard rise bad blow oil blood touch grew cent mix team wire cost lost brown wear garden equal sent choose fell fit flow fair bank collect save control decimal gentle woman captain practice separate difficult doctor please protect noon whose locate ring character insect caught period indicate radio spoke atom human history effect electric expect crop modern element hit student corner party supply bone rail imagine provide agree thus capital won't chair danger fruit rich thick soldier process operate guess necessary sharp wing create neighbor wash bat rather crowd corn compare poem string bell depend meat rub tube famous dollar stream fear sight thin triangle planet hurry chief colony clock mine tie enter major fresh search send yellow gun allow print dead spot desert suit current lift rose continue block chart hat sell success company subtract event particular deal swim term opposite wife shoe shoulder spread arrange camp invent cotton born determine quart nine truck noise level chance gather shop stretch throw shine property column molecule select wrong gray repeat require broad prepare salt nose plural anger claim continent oxygen sugar death pretty skill women season solution magnet silver thank branch match suffix especially fig afraid huge sister steel discuss forward similar guide experience score apple bought led pitch coat mass card band rope slip win dream evening condition feed tool total basic smell valley nor double seat arrive master track parent shore division sheet substance favor connect post spend chord fat glad original share station dad bread charge proper bar offer segment slave duck instant market degree populate chick dear enemy reply drink occur support speech nature range steam motion path liquid log meant quotient teeth shell neck"
-(* val besede : string =
-  "the of to and a in is it you that he was for on are with as i his they be at one have this from or had by word but what some we can out other were all there when up use your how said an each she which do their time if will way about many then them write would like so these her long make thing see h"... (* string length 5837; truncated *) *)
+let cikli _ = ()
+
+let primer_permutacije_6 = cikli permutacija_1
+(* val primer_permutacije_6 : int list list = [[0; 5]; [1; 3]; [2]; [4]] *)
+
+let primer_permutacije_7 = cikli permutacija_2
+(* val primer_permutacije_7 : int list list =
+  [[0; 3; 7; 8; 2; 1; 9]; [4; 5]; [6]] *)
+
+let primer_permutacije_8 = cikli (inverz permutacija_2)
+(* val primer_permutacije_8 : int list list =
+  [[0; 9; 1; 2; 8; 7; 3]; [4; 5]; [6]] *)
 
 (*----------------------------------------------------------------------------*
- Sestavite vrednost `slovar : string list`, ki vsebuje vse besede iz slovarja,
- pretvorjene v velike tiskane črke.
-[*----------------------------------------------------------------------------*)
-
-let slovar = []
-
-let primer_5_7 = take 42 slovar
-(* val primer_5_7 : string list =
-  ["THE"; "OF"; "TO"; "AND"; "A"; "IN"; "IS"; "IT"; "YOU"; "THAT"; "HE";
-   "WAS"; "FOR"; "ON"; "ARE"; "WITH"; "AS"; "I"; "HIS"; "THEY"; "BE"; "AT";
-   "ONE"; "HAVE"; "THIS"; "FROM"; "OR"; "HAD"; "BY"; "WORD"; "BUT"; "WHAT";
-   "SOME"; "WE"; "CAN"; "OUT"; "OTHER"; "WERE"; "ALL"; "THERE"; "WHEN"; "UP"] *)
-
-(* POZOR: Primer je zaenkrat zakomentiran, saj ob prazni rešitvi sproži izjemo *)
-(* let primer_5_8 = List.nth slovar 321 *)
-(* val primer_5_8 : string = "MEASURE" *)
-
-(*----------------------------------------------------------------------------*
- ### Razširjanje ključa s črko
+ ### Transpozicije permutacije
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Med ugibanjem seveda ne bomo poznali celotnega ključa. V tem primeru bomo za
- neznane črke uporabili znak `_`. Na primer, če bi vedeli, da je črka `A` v
- besedilu šifrirana kot `X`, črka `C` pa kot `Y`, bi ključ zapisali kot
- `"X_Y_______________________"`.
-
- Napišite funkcijo `dodaj_zamenjavo : string -> char * char -> string option`,
- ki sprejme ključ ter ga poskusi razširiti z zamenjavo dane črke. Funkcija naj
- vrne `None`, če razširitev vodi v ključ, ki ni bijektiven (torej če ima črka že
- dodeljeno drugo zamenjavo ali če smo isto zamenjavo dodelili dvema različnima
- črkama).
-[*----------------------------------------------------------------------------*)
-
-let dodaj_zamenjavo _ _ = ()
-
-let primer_5_9 = dodaj_zamenjavo "AB__E" ('C', 'X')
-(* val primer_5_9 : string option = Some "ABX_E" *)
-
-let primer_5_10 = dodaj_zamenjavo "ABX_E" ('C', 'X')
-(* val primer_5_10 : string option = Some "ABX_E" *)
-
-let primer_5_11 = dodaj_zamenjavo "ABY_E" ('C', 'E')
-(* val primer_5_11 : string option = None *)
-
-(*----------------------------------------------------------------------------*
- ### Razširjanje ključa z besedo
+ Vsako permutacijo lahko zapišemo kot produkt transpozicij, torej menjav dveh
+ elementov. Na primer, permutacijo $0 \, 1 \, 2 \, 3 \choose 1 \, 0 \, 3 \, 2$
+ dobimo kot produkt transpozicij $(0, 1) \circ (2, 3)$.
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- S pomočjo funkcije `dodaj_zamenjavo` sestavite še funkcijo `dodaj_zamenjave :
- string -> string * string -> string option`, ki ključ razširi z zamenjavami, ki
- prvo besedo preslikajo v drugo.
+ Napišite funkcijo `iz_transpozicij : int -> (int * int) list -> int list`, ki
+ sprejme dolžino permutacije in seznam transpozicij ter vrne permutacijo, ki jim
+ ustreza.
 [*----------------------------------------------------------------------------*)
 
-let dodaj_zamenjave _ _ = ()
+let iz_transpozicij _ _ = ()
 
-let primer_5_12 = dodaj_zamenjave "__________________________" ("HELLO", "KUNNJ")
-(* val primer_5_12 : string option = Some "____U__K___N__J___________" *)
-
-let primer_5_13 = dodaj_zamenjave "ABCDU_____________________" ("HELLO", "KUNNJ")
-(* val primer_5_13 : string option = Some "ABCDU__K___N__J___________" *)
-
-let primer_5_14 = dodaj_zamenjave "ABCDE_____________________" ("HELLO", "KUNNJ")
-(* val primer_5_14 : string option = None *)
+let primer_permutacije_9 = iz_transpozicij 4 [(0, 1); (2, 3)]
+(* val primer_permutacije_9 : int list = [1; 0; 3; 2] *)
 
 (*----------------------------------------------------------------------------*
- ### Vse možne razširitve
+ Napišite funkcijo `v_transpozicije : int list -> (int * int) list`, ki zapiše
+ permutacijo kot produkt transpozicij, torej menjav dveh elementov. Možnih
+ produktov je več, veljati mora le, da je kompozicija dobljenih ciklov enaka
+ prvotni permutaciji.
+
+ *Namig: Pomagate si lahko z lastnostjo, da poljubni cikel razpade na
+ transpozicije po naslednji formuli*
+ $$(i_1, i_2, i_3, \ldots, i_{k-1}, i_k) = (i_1, i_k)\circ(i_1,
+ i_{k-1})\circ(i_1, i_3)\circ(i_1, i_2).$$
 [*----------------------------------------------------------------------------*)
 
-(*----------------------------------------------------------------------------*
- Sestavite funkcijo `mozne_razsiritve : string -> string -> string list ->
- string list`, ki vzame ključ, šifrirano besedo ter slovar vseh možnih besed,
- vrne pa seznam vseh možnih razširitev ključa, ki šifrirano besedo slikajo v eno
- od besed v slovarju.
-[*----------------------------------------------------------------------------*)
+let v_transpozicije _ = ()
 
-let mozne_razsiritve _ _ _ = []
+let primer_permutacije_10 = v_transpozicije permutacija_1
+(* val primer_permutacije_10 : (int * int) list = [(0, 5); (1, 3)] *)
 
-let primer_5_15 =
-  slovar
-  |> mozne_razsiritve (String.make 26 '_') "KUNNJ"
-  |> List.map (fun kljuc -> (kljuc, sifriraj kljuc "KUNNJ"))
-(* val primer_5_15 : (string * string) list =
-  [("_________YC__R______A_____", "CARRY");
-   ("_________DS__O______T_____", "STOOD");
-   ("_________NG__E______R_____", "GREEN");
-   ("_________LW__E______H_____", "WHEEL");
-   ("_________PS__E______L_____", "SLEEP");
-   ("_________YH__P______A_____", "HAPPY");
-   ("_________RF__O______L_____", "FLOOR");
-   ("_________DS__E______P_____", "SPEED");
-   ("_________DB__O______L_____", "BLOOD");
-   ("_________YH__R______U_____", "HURRY");
-   ("_________LS__E______T_____", "STEEL");
-   ("_________TS__E______H_____", "SHEET")] *)
+let primer_permutacije_11 = v_transpozicije permutacija_2
+(* val primer_permutacije_11 : (int * int) list =
+  [(0, 9); (0, 1); (0, 2); (0, 8); (0, 7); (0, 3); (4, 5)] *)
 
 (*----------------------------------------------------------------------------*
- ### Odšifriranje
+ ## Sudoku
 [*----------------------------------------------------------------------------*)
 
 (*----------------------------------------------------------------------------*
- Napišite funkcijo `odsifriraj : string -> string option`, ki sprejme šifrirano
- besedilo in s pomočjo slovarja besed ugane odšifrirano besedilo. Funkcija naj
- vrne `None`, če ni mogoče najti nobenega ustreznega ključa.
+ Sudoku je igra, v kateri mrežo $9 \times 9$ dopolnimo s števili od $1$ do $9$,
+ tako da se nobeno število v nobeni vrstici, stolpcu ali eni od devetih škatel
+ velikosti $3 \times 3$ ne ponovi. Primer začetne postavitve in ustrezne rešitve
+ je:
+
+ ```plaintext
+ +-------+-------+-------+       +-------+-------+-------+
+ | 5 4 . | . 7 . | . . . |       | 5 4 3 | 6 7 8 | 9 1 2 |
+ | 6 . . | 1 9 5 | . . . |       | 6 7 2 | 1 9 5 | 3 4 8 |
+ | . 9 8 | . . . | . 6 . |       | 1 9 8 | 3 4 2 | 5 6 7 |
+ +-------+-------+-------+       +-------+-------+-------+
+ | 8 . . | . 6 . | . . 3 |       | 8 1 9 | 7 6 4 | 2 5 3 |
+ | 4 . . | 8 . 3 | . . 1 |       | 4 2 6 | 8 5 3 | 7 9 1 |
+ | 7 . . | . 2 . | . . 6 |       | 7 3 5 | 9 2 1 | 4 8 6 |
+ +-------+-------+-------+       +-------+-------+-------+
+ | . 6 . | . . 7 | 8 . . |       | 9 6 1 | 5 3 7 | 8 2 4 |
+ | . . . | 4 1 9 | . . 5 |       | 2 8 7 | 4 1 9 | 6 3 5 |
+ | . . . | . 8 . | . 7 9 |       | 3 5 4 | 2 8 6 | 1 7 9 |
+ +-------+-------+-------+       +-------+-------+-------+
+ ```
 [*----------------------------------------------------------------------------*)
 
-let odsifriraj _ = ()
+(*----------------------------------------------------------------------------*
+ Delno izpolnjen sudoku bomo predstavili s tabelo tabel tipa `int option array
+ array`, kjer bomo prazna mesta označili z `None`, rešen sudoku pa s tabelo
+ tabel običajnih števil.
+[*----------------------------------------------------------------------------*)
 
-let primer_5_16 = sifriraj quick_brown_fox "THIS IS A VERY HARD PROBLEM"
-(* val primer_5_16 : string = "VKBO BO T AUSD KTSQ MSJHNUF" *)
+type mreza = int option array array
+type resitev = int array array
 
-let primer_5_17 = odsifriraj "VKBO BO T AUSD KTSQ MSJHNUF"
-(* val primer_5_17 : string option = Some "THIS IS A VERY HARD PROBLEM" *)
+(*----------------------------------------------------------------------------*
+ Na primer, zgornjo mrežo in rešitev bi predstavili s seznamoma:
+[*----------------------------------------------------------------------------*)
+
+let primer_mreze : mreza = [|
+  [|Some 5; Some 4; None;   None;   Some 7; None;   None;   None;   None|];
+  [|Some 6; None;   None;   Some 1; Some 9; Some 5; None;   None;   None|];
+  [|None;   Some 9; Some 8; None;   None;   None;   None;   Some 6; None|];
+  [|Some 8; None;   None;   None;   Some 6; None;   None;   None;   Some 3|];
+  [|Some 4; None;   None;   Some 8; None;   Some 3; None;   None;   Some 1|];
+  [|Some 7; None;   None;   None;   Some 2; None;   None;   None;   Some 6|];
+  [|None;   Some 6; None;   None;   None;   Some 7; Some 8; None;   None|];
+  [|None;   None;   None;   Some 4; Some 1; Some 9; None;   None;   Some 5|];
+  [|None;   None;   None;   None;   Some 8; None;   None;   Some 7; Some 9|]
+|]
+
+let primer_resitve : resitev = [|
+  [|5; 4; 3; 6; 7; 8; 9; 1; 2|];
+  [|6; 7; 2; 1; 9; 5; 3; 4; 8|];
+  [|1; 9; 8; 3; 4; 2; 5; 6; 7|];
+  [|8; 1; 9; 7; 6; 4; 2; 5; 3|];
+  [|4; 2; 6; 8; 5; 3; 7; 9; 1|];
+  [|7; 3; 5; 9; 2; 1; 4; 8; 6|];
+  [|9; 6; 1; 5; 3; 7; 8; 2; 4|];
+  [|2; 8; 7; 4; 1; 9; 6; 3; 5|];
+  [|3; 5; 4; 2; 8; 6; 1; 7; 9|];
+|]
+(* val primer_mreze : mreza =
+  [|[|Some 5; Some 4; None; None; Some 7; None; None; None; None|];
+    [|Some 6; None; None; Some 1; Some 9; Some 5; None; None; None|];
+    [|None; Some 9; Some 8; None; None; None; None; Some 6; None|];
+    [|Some 8; None; None; None; Some 6; None; None; None; Some 3|];
+    [|Some 4; None; None; Some 8; None; Some 3; None; None; Some 1|];
+    [|Some 7; None; None; None; Some 2; None; None; None; Some 6|];
+    [|None; Some 6; None; None; None; Some 7; Some 8; None; None|];
+    [|None; None; None; Some 4; Some 1; Some 9; None; None; Some 5|];
+    [|None; None; None; None; Some 8; None; None; Some 7; Some 9|]|] *)
+(* val primer_resitve : resitev =
+  [|[|5; 4; 3; 6; 7; 8; 9; 1; 2|]; [|6; 7; 2; 1; 9; 5; 3; 4; 8|];
+    [|1; 9; 8; 3; 4; 2; 5; 6; 7|]; [|8; 1; 9; 7; 6; 4; 2; 5; 3|];
+    [|4; 2; 6; 8; 5; 3; 7; 9; 1|]; [|7; 3; 5; 9; 2; 1; 4; 8; 6|];
+    [|9; 6; 1; 5; 3; 7; 8; 2; 4|]; [|2; 8; 7; 4; 1; 9; 6; 3; 5|];
+    [|3; 5; 4; 2; 8; 6; 1; 7; 9|]|] *)
+
+(*----------------------------------------------------------------------------*
+ ### Dopolnitev mreže
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*
+ Napišite funkcijo `dodaj : int -> int -> int -> mreza -> mreza` tako da `dodaj
+ i j n m` vrne mrežo, ki je povsod enaka mreži `m`, le na mestu v vrstici `i` in
+ stolpcu `j` ima zapisano število `n`.
+
+ **Pozor:** OCaml dopušča spreminjanje tabel (o tem se bomo učili kasneje). Vaša
+ funkcija naj te možnosti ne uporablja, temveč naj sestavi in vrne novo tabelo.
+[*----------------------------------------------------------------------------*)
+
+let dodaj _ _ _ _ = ()
+
+let primer_sudoku_1 = primer_mreze |> dodaj 0 8 2
+(* val primer_sudoku_1 : mreza =
+  [|[|Some 5; Some 4; None; None; Some 7; None; None; None; Some 2|];
+    [|Some 6; None; None; Some 1; Some 9; Some 5; None; None; None|];
+    [|None; Some 9; Some 8; None; None; None; None; Some 6; None|];
+    [|Some 8; None; None; None; Some 6; None; None; None; Some 3|];
+    [|Some 4; None; None; Some 8; None; Some 3; None; None; Some 1|];
+    [|Some 7; None; None; None; Some 2; None; None; None; Some 6|];
+    [|None; Some 6; None; None; None; Some 7; Some 8; None; None|];
+    [|None; None; None; Some 4; Some 1; Some 9; None; None; Some 5|];
+    [|None; None; None; None; Some 8; None; None; Some 7; Some 9|]|] *)
+
+(*----------------------------------------------------------------------------*
+ ### Izpiši mrežo
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*
+ Sestavite funkciji `izpis_mreze : mreza -> string` in `izpis_resitve : resitev
+ -> string`, ki sprejmeta mrežo oziroma rešitev in vrneta niz, ki predstavlja
+ izpis v zgornji obliki.
+[*----------------------------------------------------------------------------*)
+
+let izpis_mreze _ = ""
+
+let primer_sudoku_2 = primer_mreze |> izpis_mreze |> print_endline
+(* 
+  +-------+-------+-------+
+  | 5 4 . | . 7 . | . . . |
+  | 6 . . | 1 9 5 | . . . |
+  | . 9 8 | . . . | . 6 . |
+  +-------+-------+-------+
+  | 8 . . | . 6 . | . . 3 |
+  | 4 . . | 8 . 3 | . . 1 |
+  | 7 . . | . 2 . | . . 6 |
+  +-------+-------+-------+
+  | . 6 . | . . 7 | 8 . . |
+  | . . . | 4 1 9 | . . 5 |
+  | . . . | . 8 . | . 7 9 |
+  +-------+-------+-------+
+  
+  val primer_sudoku_2 : unit = ()
+*)
+
+let izpis_resitve _ = ""
+
+let primer_sudoku_3 = primer_resitve |> izpis_resitve |> print_endline
+(*
+  +-------+-------+-------+
+  | 5 4 3 | 6 7 8 | 9 1 2 |
+  | 6 7 2 | 1 9 5 | 3 4 8 |
+  | 1 9 8 | 3 4 2 | 5 6 7 |
+  +-------+-------+-------+
+  | 8 1 9 | 7 6 4 | 2 5 3 |
+  | 4 2 6 | 8 5 3 | 7 9 1 |
+  | 7 3 5 | 9 2 1 | 4 8 6 |
+  +-------+-------+-------+
+  | 9 6 1 | 5 3 7 | 8 2 4 |
+  | 2 8 7 | 4 1 9 | 6 3 5 |
+  | 3 5 4 | 2 8 6 | 1 7 9 |
+  +-------+-------+-------+
+
+  val primer_sudoku_3 : unit = ()
+*)
+
+(*----------------------------------------------------------------------------*
+ ### Preveri, ali rešitev ustreza mreži
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*
+ Napišite funkcijo `ustreza : mreza -> resitev -> bool`, ki preveri, ali rešitev
+ ustreza dani mreži. Rešitev ustreza mreži, če se na vseh mestih, kjer je v
+ mreži podana številka, v rešitvi nahaja enaka številka.
+[*----------------------------------------------------------------------------*)
+
+let ustreza _ _ = ()
+
+let primer_sudoku_4 = ustreza primer_mreze primer_resitve
+(* val primer_sudoku_4 : bool = true *)
+
+(*----------------------------------------------------------------------------*
+ ### Kandidati za dano prazno mesto
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*
+ Napišite funkcije `ni_v_vrstici`, `ni_v_stolpcu` in `ni_v_skatli`, vse tipa
+ `mreza * int -> int -> bool`, ki preverijo, ali se v določeni vrstici, stolpcu
+ oziroma škatli mreže ne nahaja dano število. Vrstice, stolpci in škatle so
+ indeksirani kot:
+
+ ```plaintext
+     0 1 2   3 4 5   6 7 8
+   +-------+-------+-------+
+ 0 |       |       |       |
+ 1 |   0   |   1   |   2   |
+ 2 |       |       |       |
+   +-------+-------+-------+
+ 3 |       |       |       |
+ 4 |   3   |   4   |   5   |
+ 5 |       |       |       |
+   +-------+-------+-------+
+ 6 |       |       |       |
+ 7 |   6   |   7   |   8   |
+ 8 |       |       |       |
+   +-------+-------+-------+
+ ```
+[*----------------------------------------------------------------------------*)
+
+let ni_v_vrstici _ _  = ()
+
+let primer_sudoku_5 = ni_v_vrstici (primer_mreze, 0) 1
+(* val primer_sudoku_5 : bool = true *)
+
+let primer_sudoku_6 = ni_v_vrstici (primer_mreze, 1) 1
+(* val primer_sudoku_6 : bool = false *)
+
+let ni_v_stolpci _ _  = ()
+
+let ni_v_skatli _ _  = ()
+
+(*----------------------------------------------------------------------------*
+ Napišite funkcijo `kandidati : mreza -> int -> int -> int list option`, ki
+ sprejme mrežo in indeksa vrstice in stolpca praznega mesta ter vrne seznam vseh
+ številk, ki se lahko pojavijo na tem mestu. Če je polje že izpolnjeno, naj
+ funkcija vrne `None`.
+[*----------------------------------------------------------------------------*)
+
+let kandidati _ _ _ = ()
+
+let primer_sudoku_7 = kandidati primer_mreze 0 2
+(* val primer_sudoku_7 : int list option = Some [1; 2; 3] *)
+
+let primer_sudoku_8 = kandidati primer_mreze 0 0
+(* val primer_sudoku_8 : int list option = None *)
+
+(*----------------------------------------------------------------------------*
+ ### Iskanje rešitve
+[*----------------------------------------------------------------------------*)
+
+(*----------------------------------------------------------------------------*
+ Napišite funkcijo `resi : mreza -> resitev option`, ki izpolni mrežo sudokuja.
+ Če je dana mreža rešljiva, mora funkcija najti rešitev, ki ustreza začetni
+ mreži in jo vrniti v obliki `Some resitev`, sicer naj vrne `None`.
+ Predpostavite lahko, da je rešitev enolična, zato lahko funkcija vrne prvo, ki
+ jo najde.
+
+ *Namig: Poiščite celico mreže z najmanj kandidati in rekurzivno preizkusite vse
+ možnosti.*
+[*----------------------------------------------------------------------------*)
+
+let rec resi _ = ()
+
+let primer_sudoku_9 = resi primer_mreze
+(* val primer_sudoku_9 : resitev option =
+  Some
+   [|[|5; 4; 3; 6; 7; 8; 9; 1; 2|]; [|6; 7; 2; 1; 9; 5; 3; 4; 8|];
+     [|1; 9; 8; 3; 4; 2; 5; 6; 7|]; [|8; 1; 9; 7; 6; 4; 2; 5; 3|];
+     [|4; 2; 6; 8; 5; 3; 7; 9; 1|]; [|7; 3; 5; 9; 2; 1; 4; 8; 6|];
+     [|9; 6; 1; 5; 3; 7; 8; 2; 4|]; [|2; 8; 7; 4; 1; 9; 6; 3; 5|];
+     [|3; 5; 4; 2; 8; 6; 1; 7; 9|]|] *)
