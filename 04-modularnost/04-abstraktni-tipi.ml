@@ -1,22 +1,23 @@
 module type POLINOM = sig
-    type polinom
-    val vrednost : polinom -> int -> int
-    (** [vrednost p x] po Hornerjevem algoritmu izračuna vrednost
+  type polinom
+
+  val vrednost : polinom -> int -> int
+  (** [vrednost p x] po Hornerjevem algoritmu izračuna vrednost
         polinoma [p] v točki [x].
     *)
-    val odvod : polinom -> polinom
-    val izpis : polinom -> string
-    val ( + ) : polinom -> polinom -> polinom
-    val ( * ) : polinom -> polinom -> polinom
-    val x : polinom
-    val ( ! ) : int -> polinom
-    val ( ** ) : polinom -> int -> polinom
-    val iz_koeficientov : int list -> polinom
-    val v_koeficiente : polinom -> int list
-  end
 
+  val odvod : polinom -> polinom
+  val izpis : polinom -> string
+  val ( + ) : polinom -> polinom -> polinom
+  val ( * ) : polinom -> polinom -> polinom
+  val x : polinom
+  val ( ! ) : int -> polinom
+  val ( ** ) : polinom -> int -> polinom
+  val iz_koeficientov : int list -> polinom
+  val v_koeficiente : polinom -> int list
+end
 
-  module Polinom : POLINOM = struct
+module Polinom : POLINOM = struct
   type polinom = int list
 
   let stevke b n =
@@ -105,12 +106,11 @@ module type POLINOM = sig
   let ( ** ) = potenca
   let iz_koeficientov p = p
   let v_koeficiente p = p
-
-  let (!) n = [n]
+  let ( ! ) n = [ n ]
 end
 
 let _ =
   let open Polinom in
-  x + !1 ** 3 |> odvod |> izpis |> print_endline
+  x + (!1 ** 3) |> odvod |> izpis |> print_endline
 
 let _ = Polinom.((x + !1) ** 3 |> odvod |> izpis |> print_endline)

@@ -12,6 +12,7 @@ end
 
 module CelaStevila : KOLOBAR = struct
   type elt = int
+
   let ( + ) = ( + )
   let ( - ) = ( - )
   let ( * ) = ( * )
@@ -23,6 +24,7 @@ end
 
 module RealnaStevila : KOLOBAR = struct
   type elt = float
+
   let ( + ) = ( +. )
   let ( - ) = ( -. )
   let ( * ) = ( *. )
@@ -30,29 +32,28 @@ module RealnaStevila : KOLOBAR = struct
   let ena = 1.
   let ( ! ) n = float_of_int n
   let izpis x = string_of_float x
-
 end
 
 module type POLINOM = sig
-    type polinom
-    type kolobar
+  type polinom
+  type kolobar
 
-    val vrednost : polinom -> kolobar -> kolobar
-    (** [vrednost p x] po Hornerjevem algoritmu izračuna vrednost
+  val vrednost : polinom -> kolobar -> kolobar
+  (** [vrednost p x] po Hornerjevem algoritmu izračuna vrednost
         polinoma [p] v točki [x].
     *)
-    val odvod : polinom -> polinom
-    val izpis : polinom -> string
-    val ( + ) : polinom -> polinom -> polinom
-    val ( * ) : polinom -> polinom -> polinom
-    val x : polinom
-    val ( !! ) : int -> polinom
-    val ( ! ) : kolobar -> polinom
-    val ( ** ) : polinom -> int -> polinom
-    val iz_koeficientov : kolobar list -> polinom
-    val v_koeficiente : polinom -> kolobar list
-  end
 
+  val odvod : polinom -> polinom
+  val izpis : polinom -> string
+  val ( + ) : polinom -> polinom -> polinom
+  val ( * ) : polinom -> polinom -> polinom
+  val x : polinom
+  val ( !! ) : int -> polinom
+  val ( ! ) : kolobar -> polinom
+  val ( ** ) : polinom -> int -> polinom
+  val iz_koeficientov : kolobar list -> polinom
+  val v_koeficiente : polinom -> kolobar list
+end
 
 module Polinom (K : KOLOBAR) : POLINOM = struct
   type polinom = K.elt list
@@ -78,7 +79,8 @@ module Polinom (K : KOLOBAR) : POLINOM = struct
 
   let pocisti p =
     List.fold_right
-      (fun x acc -> match (x, acc) with a, [] when a = K.nic -> [] | _ -> x :: acc)
+      (fun x acc ->
+        match (x, acc) with a, [] when a = K.nic -> [] | _ -> x :: acc)
       p []
 
   let sestej p1 p2 =
@@ -91,7 +93,8 @@ module Polinom (K : KOLOBAR) : POLINOM = struct
 
   let zmnozi p1 p2 =
     p1
-    |> List.mapi (fun k a -> List.init k (fun _ -> K.nic) @ List.map (K.( * ) a) p2)
+    |> List.mapi (fun k a ->
+           List.init k (fun _ -> K.nic) @ List.map (K.( * ) a) p2)
     |> List.fold_left sestej []
 
   let rec potenca p = (* uporabimo hitro potenciranje *)
@@ -116,7 +119,9 @@ module Polinom (K : KOLOBAR) : POLINOM = struct
       |> String.concat ""
     in
     let clen k a =
-      let predznak, abs_a = if a >= K.nic then ("+", a) else ("-", K.(nic - a)) in
+      let predznak, abs_a =
+        if a >= K.nic then ("+", a) else ("-", K.(nic - a))
+      in
       let monom =
         match k with
         | 0 -> K.izpis abs_a
@@ -144,20 +149,12 @@ module Polinom (K : KOLOBAR) : POLINOM = struct
   let ( ** ) = potenca
   let iz_koeficientov p = p
   let v_koeficiente p = p
-
-  let (!) n = [n]
-  let (!!) n = [K.(!) n]
+  let ( ! ) n = [ n ]
+  let ( !! ) n = [ K.( ! ) n ]
 end
 
-module CelostevilskiPolinom : POLINOM = Polinom(CelaStevila)
-module RealniPolinom : POLINOM = Polinom(RealnaStevila)
+module CelostevilskiPolinom : POLINOM = Polinom (CelaStevila)
+module RealniPolinom : POLINOM = Polinom (RealnaStevila)
 
-let _ =
-  CelostevilskiPolinom.(
-    (x + !!1) ** 3 |> odvod |> izpis |> print_endline
-  )
-
-let _ =
-  RealniPolinom.(
-    (x + !!1) ** 3 |> odvod |> izpis |> print_endline
-  )
+let _ = CelostevilskiPolinom.((x + !!1) ** 3 |> odvod |> izpis |> print_endline)
+let _ = RealniPolinom.((x + !!1) ** 3 |> odvod |> izpis |> print_endline)
