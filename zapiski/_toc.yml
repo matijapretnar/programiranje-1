@@ -25,6 +25,6 @@ parts:
 - caption: Domače naloge
   chapters:
   - file: dn-1.ipynb
-  # - file: dn-2.ipynb
+  - file: dn-2.ipynb
   # - file: dn-4.ipynb
   # - file: dn-5.md
