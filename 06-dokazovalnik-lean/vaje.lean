@@ -20,3 +20,12 @@ theorem eq6 {A B C : Prop} : (B ∨ C) → A ↔ (B → A) ∧ (C → A) :=
 
 theorem eq7 {A B C : Prop} : C → (A ∧ B) ↔ (C → A) ∧ (C → B) :=
   sorry
+
+--
+
+theorem kvadrat_dvoclenika : (a + b)^2 = a^2 + 2 * a * b + b^2 :=
+  by
+    calc
+      (a + b)^2
+      _ = (a + b) * (a + b) := by rw [Nat.pow_two]
+      _ = a^2 + 2 * a * b + b^2 := by sorry
