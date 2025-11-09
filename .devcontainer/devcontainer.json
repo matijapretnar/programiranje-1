@@ -12,7 +12,8 @@
 			"extensions": [
 				"ocamllabs.ocaml-platform",
 				"ms-python.vscode-pylance",
-				"ms-toolsai.jupyter"
+				"ms-toolsai.jupyter",
+				"leanprover.lean4"
 			]
 		}
 	},
