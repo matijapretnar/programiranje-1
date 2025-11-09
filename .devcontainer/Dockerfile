@@ -12,8 +12,9 @@ USER root
 # - pkg-config: A system for managing library compile/link flags
 # - libzmq3-dev: Development libraries for ZeroMQ (a messaging library)
 # - zlib1g-dev: Development library for compression (zlib)
+# - curl ca-certificates unzip: Utilities for downloading and extracting files (needed for lean4 installation)
 RUN apt-get update && \
-    apt-get install -y python3 python3-venv libgmp-dev pkg-config libzmq3-dev zlib1g-dev && \
+    apt-get install -y python3 python3-venv libgmp-dev pkg-config libzmq3-dev zlib1g-dev curl ca-certificates unzip && \
     # Clean up the apt cache to reduce the image size
     rm -rf /var/lib/apt/lists/*
 
@@ -49,6 +50,11 @@ RUN /home/opam/.opam/4.14/bin/ocaml-jupyter-opam-genspec
 
 # Install the OCaml Jupyter kernel for the current user in Jupyter, using the generated specification
 RUN jupyter kernelspec install --name ocaml-jupyter "$(opam var share)/jupyter" --user
+
+# Install elan (Lean version manager)
+RUN curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+    | sh -s -- --default-toolchain leanprover/lean4:stable -y
+ENV PATH="/home/opam/.elan/bin:${PATH}"
 
 # We remove the dummy .gitconfig file, included in the OCaml Docker image, allowing VS Code to replace it
 # with the much more useful local version.
