@@ -74,7 +74,7 @@ def stakniVektor'' {m n : Nat} :
   fun xs ys =>
     match xs with
     -- Manjka dokaz: ⊢ VektorBoolov (0 + n) = VektorBoolov n
-    | VektorBoolov.prazen => Eq.mpr sorry ys -- Dokaz (0+n = n) podamo kot argument dokazu enakosti dolžin vektorjev
+    | VektorBoolov.prazen => Eq.mpr (congrArg VektorBoolov (Nat.zero_add n)) ys -- Dokaz (0+n = n) podamo kot argument dokazu enakosti dolžin vektorjev
     | VektorBoolov.sestavljen x xs' =>
         by
           rw [Nat.succ_add]
@@ -96,6 +96,7 @@ def stakniVektor''' {m n : Nat} :
 
 -- ----- ----- ----- ----- -----
 -- Varno branje elementov vektorja
+-- Definiramo tip, ki predstavlja veljavne indekse za vektor določene dolžine
 inductive Finite : Nat -> Type where
   | fzero : {n : Nat} -> Finite (Nat.succ n)
   | fsucc : {n : Nat} -> Finite n -> Finite (Nat.succ n)
@@ -109,7 +110,10 @@ def elementiFinite3 : List (Finite 3) :=
 
 -- Funkcija za varno branje elementov vektorja
 def vpogled {n : Nat} : VektorBoolov n -> Finite n -> Bool :=
-  sorry
+  fun xs i =>
+    match xs, i with
+    | VektorBoolov.sestavljen x _, Finite.fzero => x
+    | VektorBoolov.sestavljen _ xs', Finite.fsucc (fi) => vpogled xs' fi
 
 -- Vektor z dvema elementoma ([true, false])
 def testniVektor : VektorBoolov 2 :=
@@ -118,7 +122,7 @@ def testniVektor : VektorBoolov 2 :=
 def index1 : Finite 2 :=
   Finite.fsucc Finite.fzero
 
-#eval vpogled testniVektor index1
+#eval vpogled testniVektor index1 -- Izpiše false
 -- Če definiramo prazen vektor, potem `vpogled` ne more biti poklican z nobenim indeksom.
 #eval vpogled VektorBoolov.prazen Finite.fzero
 
@@ -126,8 +130,14 @@ def index1 : Finite 2 :=
 -- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 -- Vektor z elementi poljubnega tipa A
 
-inductive VektorPoljuben where
-  sorry
+inductive VektorPoljuben : Type ->  Nat -> Type where
+  | prazen : {A : Type} -> VektorPoljuben A 0
+  | sestavljen :
+      {A : Type} ->
+      {n : Nat} ->
+      A ->
+      VektorPoljuben A n ->
+      VektorPoljuben A (Nat.succ n)
 
 -- Primer vektorja z elementi tipa Nat
 def vektorNaravnihStevil : VektorPoljuben Nat 3 :=
@@ -135,3 +145,19 @@ def vektorNaravnihStevil : VektorPoljuben Nat 3 :=
     (VektorPoljuben.sestavljen 20
       (VektorPoljuben.sestavljen 30
         (VektorPoljuben.prazen)))
+
+
+inductive VektorPoljubenStrog : Type ->  Nat -> Type where
+  | prazen : (A : Type) -> VektorPoljubenStrog A 0
+  | sestavljen :
+      (A : Type) ->
+      {n : Nat} ->
+      A ->
+      VektorPoljubenStrog A n ->
+      VektorPoljubenStrog A (Nat.succ n)
+
+def VektorStrogNaravnihStevil : VektorPoljubenStrog Nat 3 :=
+  VektorPoljubenStrog.sestavljen Nat 10
+    (VektorPoljubenStrog.sestavljen Nat 20
+      (VektorPoljubenStrog.sestavljen Nat 30
+        (VektorPoljubenStrog.prazen Nat)))

@@ -11,7 +11,7 @@ inductive Sum (α : Type u) (β : Type v) where
 -/
 -- Simbol ⊕ dobimo s tabulacijo \oplus
 universe u
-structure isomorphic (A B : Type u) :=
+structure isomorphic (A B : Type u) where
   (phi : A → B)
   (psi : B → A)
   (left_inv : ∀ x : A, psi (phi x) = x)

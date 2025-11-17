@@ -4,24 +4,26 @@ variable (r : Prop)
 
 -- Izjave napišite na list papirja, nato pa jih dokažite v datoteki.
 
-example : (¬ ∃ x, p x) ↔ (∀ x, ¬ p x) :=
+theorem eq1 : (¬ ∃ x, p x) ↔ (∀ x, ¬ p x) :=
   sorry
 
-example : (r → ∀ x, p x) ↔ (∀ x, r → p x) :=
+theorem eq2 : (r → ∀ x, p x) ↔ (∀ x, r → p x) :=
   sorry
 
-example : r ∧ (∃ x, p x) ↔ (∃ x, r ∧ p x) := by
+theorem eq3 : r ∧ (∃ x, p x) ↔ (∃ x, r ∧ p x) := by
   sorry
 
-example : r ∨ (∀ x, p x) → (∀ x, r ∨ p x) :=
+theorem eq4 : r ∨ (∀ x, p x) → (∀ x, r ∨ p x) :=
   sorry
 
 -- Tu pa nam bo v pomoč klasična logika
 -- namig: `Classical.byContradiction` in `Classical.em` sta lahko v pomoč
 open Classical
+#check Classical.byContradiction
+#check Classical.em
 
-example : (¬ ∀ x, p x) ↔ (∃ x, ¬ p x) :=
+theorem eq5 : (¬ ∀ x, p x) ↔ (∃ x, ¬ p x) :=
  sorry
 
-example : r ∨ (∀ x, p x) ↔ (∀ x, r ∨ p x) :=
+theorem eq6 : r ∨ (∀ x, p x) ↔ (∀ x, r ∨ p x) :=
   sorry
