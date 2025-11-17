@@ -14,10 +14,17 @@ def stakni (xs : List Int) (ys : List Int) :=
   | [] => ys
   | x :: xs' => x :: stakni xs' ys
 
-def sestej (n : Int) (m : Int) :=
+def sestej (n : Nat) (m : Nat) :=
   match n with
   | 0 => m
-  | _ => 1 + sestej (n - 1) m
+  | Nat.succ n' => Nat.succ (sestej n' m)
+
+def sestej_s_taktikami : Nat -> Nat -> Nat :=
+  by
+    intro m n
+    assumption
+
+#print sestej_s_taktikami
 
 def sestej_nat (n m : Nat) :=
   match n with
