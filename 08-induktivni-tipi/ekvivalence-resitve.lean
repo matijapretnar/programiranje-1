@@ -168,7 +168,7 @@ def depth {A : Type} : tree A → Nat :=
     | tree.node _ l r => 1 + Nat.max (depth l) (depth r)
 
 theorem max_comm {a b : Nat} : Nat.max a b = Nat.max b a :=
-  sorry
+  Nat.max_comm a b
 
 def mirror {A : Type} : tree A → tree A :=
   fun t =>
