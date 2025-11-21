@@ -1,57 +1,102 @@
-set_option autoImplicit false
-
 theorem brivec  :
-  (C : Type) → (B : C → C → Prop) →
-  ¬ (∃ (b : C), ∀ (c : C), B b c ↔ ¬ B c c) :=
+  (Č : Type) → (B : Č → Č → Prop) →
+  ¬ (∃ (b : Č), ∀ (č : Č), B b č ↔ ¬ B č č) :=
   by
-    intros C B
-    intro H_obstaja_brivec
-    apply Exists.elim H_obstaja_brivec
-    intros brane H_koga_brije_brane
-    have H_brane_se_ne_brije : ¬ B brane brane :=
+    intro Č
+    intro B
+    intro H
+    cases H
+    rename_i bob Hbob
+    have ali_se_bob_brije := Hbob bob
+    have bob_se_ne_brije : ¬ B bob bob :=
       by
-        intro H_brane_se_brije
-        have H_kako_brane_brije_braneta := H_koga_brije_brane brane
-        have H_brane_se_ne_brije := H_kako_brane_brije_braneta.mp H_brane_se_brije
-        exact (H_brane_se_ne_brije H_brane_se_brije)
-    have H_brane_se_brije :=
-      (H_koga_brije_brane brane).mpr H_brane_se_ne_brije
+        intro bob_se_brije
+        have bob_se_ne_brije :=
+          ali_se_bob_brije.mp bob_se_brije
+        contradiction
+    have bob_se_brije :=
+      ali_se_bob_brije.mpr bob_se_ne_brije
     contradiction
 
-inductive SeznamNaravnih : Type where
-| prazen : SeznamNaravnih
-| sestavljen : Nat → SeznamNaravnih → SeznamNaravnih
+def stakni {A} : List A → List A → List A
+  | [], ys => ys
+  | x :: xs, ys => x :: stakni xs ys
 
-def stakni {A : Type} : List A → List A → List A :=
-  fun xs ys =>
-    match xs with
-    | [] => ys
-    | x :: xs' => x :: stakni xs' ys
+def dolzina {A} : List A → Nat
+  | [] => 0
+  | _ :: xs => dolzina xs + 1
 
-set_option autoImplicit true
-
-theorem prazen_stakni : stakni [] xs = xs :=
+theorem prazen_stakni {A} {xs : List A} : stakni [] xs = xs :=
   by
     simp [stakni]
 
-theorem stakni_prazen : stakni xs [] = xs :=
+theorem stakni_prazen {A} {xs : List A} : stakni xs [] = xs :=
   by
     induction xs with
     | nil => simp [stakni]
     | cons x xs' ih =>
         calc
           stakni (x :: xs') []
-            = x :: stakni xs' [] := by simp [stakni]
+          _ = x :: stakni xs' [] := by simp [stakni]
           _ = x :: xs' := by rw [ih]
 
-theorem stakni_asoc : stakni xs (stakni ys zs) = stakni (stakni xs ys) zs :=
+theorem stakni_dolzina {A} {xs ys : List A} :
+  dolzina (stakni xs ys) = dolzina xs + dolzina ys :=
   by
     induction xs with
-    | nil => simp [stakni]
+    | nil =>
+        calc
+          dolzina (stakni [] ys)
+          _ = dolzina ys := by simp [stakni]
+          _ = 0 + dolzina ys := by rw [Nat.zero_add]
+          _ = dolzina [] + dolzina ys := by simp [dolzina]
     | cons x xs' ih =>
         calc
-          stakni (x :: xs') (stakni ys zs)
-            = x :: (stakni xs' (stakni ys zs)) := by simp [stakni]
-          _ = x :: (stakni (stakni xs' ys) zs) := by rw [ih]
-          _ = stakni (x :: (stakni xs' ys)) zs := by simp [stakni]
-          _ = stakni (stakni (x :: xs') ys) zs := by simp [stakni]
+          dolzina (stakni (x :: xs') ys)
+          _ = dolzina (stakni xs' ys) + 1
+              := by simp [stakni, dolzina]
+          _ = dolzina xs' + dolzina ys + 1
+              := by rw [ih]
+          _ = (dolzina xs' + 1) + dolzina ys
+              := by omega
+          _ = dolzina (x :: xs') + dolzina ys
+              := by simp [dolzina]
+
+#print stakni_dolzina
+
+inductive NeskoncnoVejeceDrevo where
+  | Prazno : NeskoncnoVejeceDrevo
+  | Sestavljeno : (Nat -> NeskoncnoVejeceDrevo) -> NeskoncnoVejeceDrevo
+
+inductive TipKiNePodpiraIndukcije where
+  | Prazen : TipKiNePodpiraIndukcije
+  | Sestavljen : (TipKiNePodpiraIndukcije -> Nat) -> TipKiNePodpiraIndukcije
+
+def vsota : List Int → Int
+  | .nil => 0
+  | .cons x xs => x + vsota xs
+
+def pomozna : List Int → Int → Int :=
+  fun xs => fun acc =>
+    match xs with
+    | .nil => acc
+    | .cons x xs => pomozna xs (acc + x)
+
+def vsota' : List Int → Int :=
+  fun xs => pomozna xs 0
+
+theorem vsota_pomozna : forall (xs : List Int) (acc : Int),
+  acc + vsota xs = pomozna xs acc :=
+  by
+    intro xs
+    induction xs with
+    | nil =>
+        simp [pomozna, vsota]
+    | cons x xs' ih =>
+        intro acc
+        calc
+          acc + vsota (x :: xs')
+          _ = acc + (x + vsota xs') := by simp [vsota]
+          _ = (acc + x) + vsota xs' := by omega
+          _ = pomozna xs' (acc + x) := by rw [ih]
+          _ = pomozna (x :: xs') acc := by simp [pomozna]
