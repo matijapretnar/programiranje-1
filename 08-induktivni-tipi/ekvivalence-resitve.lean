@@ -1,317 +1,336 @@
-def concat {A : Type} : List A → List A → List A :=
+-- Datoteka vsebuje primere ekvivalenc na induktivnih tipih. Razdeljena je na več delov glede na strukturo, za katero dokazujemo ekvivalence.
+
+-- 1. Seznami
+
+-- 1.a. Seznam celih števil (List Int) - primer s predavanj
+def vsota : List Int → Int
+  | .nil => 0
+  | .cons x xs => x + vsota xs
+
+def pomozna : List Int → Int → Int :=
+  fun xs => fun acc =>
+    match xs with
+    | .nil => acc
+    | .cons x xs => pomozna xs (acc + x)
+
+def vsota' : List Int → Int :=
+  fun xs => pomozna xs 0
+
+-- Za lažji dokaz končne ekvivalence vsot najprej dokažemo pomožno lemo,
+-- ki utemelji pravilnost pomožne funkcije z akumulatorjem
+theorem vsota_pomozna : forall (xs : List Int) (acc : Int),
+  acc + vsota xs = pomozna xs acc :=
+  by
+    intro xs
+    induction xs with
+    | nil =>
+        simp [pomozna, vsota]
+    | cons x xs' ih =>
+        intro acc
+        calc
+          acc + vsota (x :: xs')
+          _ = acc + (x + vsota xs') := by simp [vsota]
+          _ = (acc + x) + vsota xs' := by rw [Int.add_assoc] -- lahko kar `by omega`
+          _ = pomozna xs' (acc + x) := by rw [ih]
+          _ = pomozna (x :: xs') acc := by simp [pomozna]
+
+theorem vsoti_enaki : ∀ xs : List Int, vsota xs = vsota' xs :=
+  by
+    intro xs
+    calc
+      vsota xs
+      _ = 0 + vsota xs := by rw [Int.zero_add]
+      _ = pomozna xs 0 := by rw [vsota_pomozna]
+      _ = vsota' xs := by rw [vsota']
+
+-- 1.b. Seznam poljubnega tipa (List A), ogledamo operacije stika, obračanja in dolžine
+
+-- Definicije operacij
+def stakni {A : Type} : List A → List A → List A :=
   fun xs ys =>
     match xs with
     | [] => ys
-    | x :: xs' => x :: concat xs' ys
+    | x :: xs' => x :: stakni xs' ys
 
-#check (concat ["a", "b"] ["c", "d"])
+#eval (stakni ["a", "b"] ["c", "d"])
 
-def reverse {A : Type} : List A → List A :=
+def obrni {A : Type} : List A → List A :=
   fun xs =>
     match xs with
     | [] => []
-    | x :: xs' => concat (reverse xs') [x]
+    | x :: xs' => stakni (obrni xs') [x]
 
+#eval (obrni ["a", "b", "c", "d"])
 
-#check (reverse ["a", "b", "c", "d"])
-
-def length {A : Type} : List A → Nat :=
+def dolzina {A : Type} : List A → Nat :=
   fun xs =>
     match xs with
     | [] => 0
-    | _ :: xs' => 1 + length xs'
+    | _ :: xs' => 1 + dolzina xs'
 
+#eval (dolzina ["a", "b", "c", "d"])
 
-#check (length ["a", "b", "c", "d"])
-
-theorem trd1  {A : Type} {x : A} : reverse [x] = [x] :=
+-- Trditve
+theorem trd1  {A : Type} {x : A} : obrni [x] = [x] :=
   by
-    simp [reverse]
-    simp [concat]
+    simp [obrni, stakni] -- `simp` je *močna taktika*, ki poenostavi izraz glede na dane definicije
+    -- rw [obrni, obrni, stakni]
 
-theorem trd2 {A : Type} {xs ys : List A} : length (concat xs ys) = length xs + length ys :=
-  by
-    induction xs with
-    | nil =>
-      simp [concat, length]
-    | cons x xs' ih =>
-      simp [concat, length]
-      rw [ih, Nat.add_assoc]
-
--- Tega poznamo že iz predavanj
-theorem trd3 {A : Type} {xs : List A} : concat xs [] = xs :=
+-- Trditvi 2 in 3 ste na predavanjih dokazali s pomočjo računanja po korakih `calc`
+theorem trd2 {A : Type} {xs ys : List A} : dolzina (stakni xs ys) = dolzina xs + dolzina ys :=
   by
     induction xs with
     | nil =>
-      simp [concat]
+      simp [dolzina, stakni]
     | cons x xs' ih =>
-      simp [concat]
+      simp [dolzina, stakni]
+      rw [ih]
+      rw [Nat.add_assoc]
+
+theorem trd3 {A : Type} {xs : List A} : stakni xs [] = xs :=
+  by
+    induction xs with
+    | nil =>
+      simp [stakni]
+    | cons x xs' ih =>
+      simp [stakni]
       rw [ih]
 
-theorem trd4 {A : Type} {xs ys zs : List A} : concat (concat xs ys) zs = concat xs (concat ys zs) :=
+theorem trd4 {A : Type} {xs ys zs : List A} : stakni (stakni xs ys) zs = stakni xs (stakni ys zs) :=
   by
     induction xs with
     | nil =>
-      simp [concat]
+      simp [stakni]
     | cons x xs' ih =>
-      simp [concat]
+      simp [stakni]
       rw [ih]
 
-theorem trd5 {A : Type} {xs ys : List A} : reverse (concat xs ys) = concat (reverse ys) (reverse xs) :=
+theorem trd5 {A : Type} {xs ys : List A} : obrni (stakni xs ys) = stakni (obrni ys) (obrni xs) :=
   by
     induction xs with
     | nil =>
-      simp [concat, reverse]
-      rw [trd3]
+      simp [stakni, obrni, trd3]
     | cons x xs' ih =>
-      simp [concat, reverse]
-      rw [ih, trd4]
+      simp [stakni, obrni]
+      rw [ih]
+      rw [trd4]
 
-theorem trd6 {A : Type} {xs : List A} : length (reverse xs) = length xs :=
+theorem trd6 {A : Type} {xs : List A} : dolzina (obrni xs) = dolzina xs :=
   by
     induction xs with
     | nil =>
-      simp [reverse, length]
+      simp [obrni]
     | cons x xs' ih =>
-      simp [reverse, length]
-      rw [trd2, ih]
-      simp [length]
-      rw [Nat.add_comm]
+      simp [obrni, dolzina, trd2]
+      rw [ih]
+      rw [Nat.add_comm] -- lahko tudi `omega`
 
-theorem trd7 {A : Type} {xs : List A} : reverse (reverse xs) = xs :=
+
+theorem trd7 {A : Type} {xs : List A} : obrni (obrni xs) = xs :=
   by
     induction xs with
     | nil =>
-      simp [reverse]
+      simp [obrni]
     | cons x xs' ih =>
-      simp [reverse]
-      rw [trd5, ih]
-      simp [concat]
+      simp [obrni, trd5]
+      rw [ih]
+      simp [stakni]
 
+-- 1.c. Seznam poljubnega tipa (List A), dodamo preslikave
 
-def map {A B : Type} : (A → B) → List A → List B :=
+-- Definicija preslikave
+def preslikaj {A B : Type} : (A → B) → List A → List B :=
   fun f xs =>
     match xs with
     | [] => []
-    | x :: xs' => f x :: map f xs'
+    | x :: xs' => f x :: preslikaj f xs'
 
-theorem map_assoc {A B C : Type} {f : A → B} {g : B → C} {xs : List A} : map g (map f xs) = map (g ∘ f) xs :=
+-- Trditve
+theorem trd8 {A B C : Type} {f : A → B} {g : B → C} {xs : List A} : preslikaj g (preslikaj f xs) = preslikaj (g ∘ f) xs :=
   by
     induction xs with
     | nil =>
-      simp [map]
+      simp [preslikaj]
     | cons x xs' ih =>
-      simp [map]
+      simp [preslikaj]
       rw [ih]
 
-theorem map_id {A : Type} {xs : List A} : map id xs = xs :=
+theorem trd9 {A : Type} {xs : List A} : preslikaj id xs = xs :=
   by
     induction xs with
     | nil =>
-      simp [map]
+      simp [preslikaj]
     | cons x xs' ih =>
-      simp [map]
+      simp [preslikaj]
       rw [ih]
 
-theorem map_concat {A B : Type} {f : A → B} {xs ys : List A} : map f (concat xs ys) = concat (map f xs) (map f ys) :=
+theorem trd10 {A B : Type} {f : A → B} {xs ys : List A} : preslikaj f (stakni xs ys) = stakni (preslikaj f xs) (preslikaj f ys) :=
   by
     induction xs with
     | nil =>
-      simp [concat, map]
+      simp [stakni, preslikaj]
     | cons x xs' ih =>
-      simp [concat, map]
+      simp [stakni, preslikaj]
       rw [ih]
 
-
-theorem map_reverse {A B : Type} {f : A → B} {xs : List A} : map f (reverse xs) = reverse (map f xs) :=
+theorem trd11 {A B : Type} {f : A → B} {xs : List A} : preslikaj f (obrni xs) = obrni (preslikaj f xs) :=
   by
     induction xs with
     | nil =>
-      simp [reverse, map]
+      simp [obrni, preslikaj]
     | cons x xs' ih =>
-      simp [reverse, map]
-      rw [map_concat, ih]
-      simp [reverse, map]
+      simp [obrni, preslikaj]
+      rw [trd10, ih]
+      simp [preslikaj]
 
+-- 2. Dvojiška drevesa
 inductive tree (A : Type) : Type where
   | empty : tree A
   | node : A → tree A → tree A → tree A
 
 #check tree.rec
 
-def tree_map {A B : Type} : (A → B) → tree A → tree B :=
+-- 2.a. Preslikave na drevesih
+def preslikaj_drevo {A B : Type} : (A → B) → tree A → tree B :=
   fun f t =>
-   match t with
-    | tree.empty => tree.empty
-    | tree.node x l r => tree.node (f x) (tree_map f l) (tree_map f r)
+    match t with
+    | .empty => .empty -- Ne potrebujemo `tree.empty`, ker Lean sam sklepa tip
+    | .node x l r => .node (f x) (preslikaj_drevo f l) (preslikaj_drevo f r)
 
-theorem tree_map_empty {A B : Type} {f : A → B} : tree_map f tree.empty = tree.empty :=
+-- Trditvi
+theorem trd12 {A B : Type} {f : A → B} : preslikaj_drevo f tree.empty = tree.empty :=
   by
-    simp [tree_map]
+    simp [preslikaj_drevo]
 
-theorem tree_map_comp {A B C : Type} {f : A → B} {g : B → C} {t : tree A} : tree_map g (tree_map f t) = tree_map (g ∘ f) t :=
+theorem trd13 {A B C : Type} {f : A → B} {g : B → C} {t : tree A} : preslikaj_drevo g (preslikaj_drevo f t) = preslikaj_drevo (g ∘ f) t :=
   by
     induction t with
     | empty =>
-      simp [tree_map]
-    | node x l r ihl ihr =>
-      simp [tree_map]
+      simp [preslikaj_drevo]
+    | node x l r ihl ihr => -- Dobimo dve indukcijski predpostavki, eno za vsako poddrevo
+      simp [preslikaj_drevo]
       rw [ihl, ihr]
-      constructor
-      rfl
-      rfl
+      exact ⟨ rfl, rfl ⟩ -- Lahko `constructor; rfl; rfl`
 
-def depth {A : Type} : tree A → Nat :=
+-- 2.b. Globina drevesa in zrcaljenje drevesa
+def globina {A : Type} : tree A → Nat :=
   fun t =>
     match t with
-    | tree.empty => 0
-    | tree.node _ l r => 1 + Nat.max (depth l) (depth r)
+    | .empty => 0
+    | .node _ l r => 1 + Nat.max (globina l) (globina r)
 
-theorem max_comm {a b : Nat} : Nat.max a b = Nat.max b a :=
+def zrcali {A : Type} : tree A → tree A :=
+  fun t =>
+    match t with
+    | .empty => .empty
+    | .node x l r => .node x (zrcali r) (zrcali l)
+
+theorem max_comm {a b : Nat} : Nat.max a b = Nat.max b a := -- To trditev preberemo iz knjižnice
   Nat.max_comm a b
 
-def mirror {A : Type} : tree A → tree A :=
-  fun t =>
-    match t with
-    | tree.empty => tree.empty
-    | tree.node x l r => tree.node x (mirror r) (mirror l)
-
-theorem mirror_depth {A : Type} {t : tree A} : depth (mirror t) = depth t :=
+-- Trditvi
+theorem trd14 {A : Type} {t : tree A} : globina (zrcali t) = globina t :=
   by
     induction t with
     | empty =>
-      simp [mirror, depth]
+      simp [zrcali, globina]
     | node x l r ihl ihr =>
-      simp [mirror, depth]
+      simp [zrcali, globina]
       rw [ihl, ihr]
       rw [max_comm]
 
-theorem mirror_mirror {A : Type} {t : tree A} : mirror (mirror t) = t :=
+theorem trd15 {A : Type} {t : tree A} : zrcali (zrcali t) = t :=
   by
     induction t with
     | empty =>
-      simp [mirror]
+      simp [zrcali]
     | node x l r ihl ihr =>
-      simp [mirror]
+      simp [zrcali]
       rw [ihl, ihr]
-      simp [mirror]
+      exact ⟨ rfl, rfl ⟩ -- Lahko `constructor; rfl; rfl`
 
-def collect {A : Type} : tree A → List A :=
+-- 2.c. Zbiranje elementov drevesa
+def zberi {A : Type} : tree A → List A :=
   fun t =>
     match t with
-    | tree.empty => []
-    | tree.node x l r => concat (collect l) (concat [x]  (collect r))
+    | .empty => []
+    | .node x l r => stakni (zberi l) (stakni [x] (zberi r))
 
-theorem trd8 {A : Type} {x : A} {xs ys : List A} : concat xs (x::ys) = concat (concat xs [x]) ys :=
+-- Trditvi
+theorem trd16 {A : Type} {y : A} {xs ys : List A} : stakni xs (y::ys) = stakni (stakni xs [y]) ys :=
   by
     induction xs with
     | nil =>
-      simp [concat]
+      simp [stakni]
     | cons x xs' ih =>
-      simp [concat]
+      simp [stakni]
       rw [ih]
 
-
-theorem collect_mirror {A : Type} {t : tree A} : collect (mirror t) = reverse (collect t) :=
+theorem trd17 {A : Type} {t : tree A} : zberi (zrcali t) = obrni (zberi t) :=
   by
     induction t with
     | empty =>
-      simp [mirror, collect, reverse]
+      simp [zrcali, zberi, obrni]
     | node x l r ihl ihr =>
-      simp [mirror, collect, reverse]
+      simp [zrcali, zberi, stakni]
       rw [ihl, ihr]
-      simp [concat]
-      rw [trd5]
-      rw [trd8]
-      simp [reverse]
+      rw [trd16]
+      simp [trd5, obrni]
 
-
-def size {A : Type} : tree A → Nat :=
+-- 2.d. Število elementov drevesa
+def velikost {A : Type} : tree A → Nat :=
   fun t =>
     match t with
-    | tree.empty => 0
-    | tree.node _ l r => 1 + size l + size r
+    | .empty => 0
+    | .node _ l r => 1 + velikost l + velikost r
 
-theorem size_mirror {A : Type} {t : tree A} : size (mirror t) = size t :=
+theorem trd18 {A : Type} {t : tree A} : velikost (zrcali t) = velikost t :=
   by
     induction t with
     | empty =>
-      simp [mirror, size]
+      simp [zrcali, velikost]
     | node x l r ihl ihr =>
-      simp [mirror, size]
+      simp [zrcali, velikost]
       rw [ihl, ihr]
-      rw [Nat.add_assoc, Nat.add_comm (size r) (size l), Nat.add_assoc]
+      rw [Nat.add_assoc, Nat.add_comm (velikost r), Nat.add_assoc] -- Lahko tudi `omega`
 
+-- 3. Indukcija na pomožnih funkcijah z akumulatorjem - Seznami
 
-
---- Indukcija na pomožnih funkcijah z akumulatorjem
-
-theorem concat2 (x : A) (xs ys : List A) : concat xs (x :: ys) = concat (concat (xs) [x]) ys :=
-  by
-    induction xs with
-    | nil => simp [concat]
-    | cons x' xs' ih =>
-      simp [concat]
-      assumption
+-- Začetna definicija obrni
+-- def obrni {A : Type} : List A → List A :=
+--   fun xs =>
+--     match xs with
+--     | [] => []
+--     | x :: xs' => stakni (obrni xs') [x]
 
 -- Definirajte repno rekurzivno funkcijo, ki obrne seznam
--- def reverse' {A : Type} (xs : List A) : List A :=
---   let rec aux : List A → List A → List A
---     | [], acc => acc
---     | x' :: xs', acc => aux xs' (x' :: acc)
---   aux xs []
-
-def reverse' {A : Type} : List A → List A :=
+def obrni' {A : Type} : List A → List A :=
   fun xs =>
-  let rec aux : List A → List A → List A :=
-    fun xs => fun acc =>
-    match xs, acc with
-      | [], acc => acc
-      | x' :: xs', acc => aux xs' (x' :: acc)
-  aux xs []
-
-def reverse'' {A : Type} : List A → List A :=
-  fun xs =>
-    match xs with
-    | [] => []
-    | x :: xs' => (reverse'' xs') ++ [x]
+    let rec aux (sez : List A) (acc : List A) : List A :=
+      match sez with
+      | [] => acc
+      | x :: sez' => aux sez' (x :: acc)
+    aux xs []
 
 -- Dokažite, da je vaša funkcija pravilna
-theorem reverse''_eq_reverse'.aux {A : Type} :
-∀ {xs acc : List A},
-(reverse'' xs) ++ acc = reverse'.aux xs acc :=
+-- Pomožna lema, ki utemelji pravilnost pomožne funkcije z akumulatorjem
+theorem aux_je_pravilen {A : Type} : ∀ (xs acc : List A), obrni'.aux xs acc = stakni (obrni xs) acc :=
   by
-    intro xs
-    induction xs with
+    intro xs acc
+    induction xs generalizing acc with
     | nil =>
-      simp [reverse'', reverse'.aux]
+      simp [obrni, obrni'.aux, stakni]
     | cons x xs' ih =>
-      intro acc
-      simp [reverse'', reverse'.aux]
+      simp [obrni'.aux, obrni]
       rw [ih]
+      rw [trd4] -- asociativnost stika
+      simp [stakni]
 
-theorem reverse''_eq_reverse' {A : Type} :
-∀ {xs : List A}, reverse'' xs = reverse' xs :=
+theorem obrni_enako_obrni' {A : Type} : ∀ {xs : List A}, obrni xs = obrni' xs :=
   by
     intro xs
-    induction xs with
-    | nil =>
-      simp [reverse', reverse'', reverse'.aux]
-    | cons x xs' _ =>
-      simp [reverse', reverse'', reverse'.aux]
-      exact reverse''_eq_reverse'.aux
-
-
-theorem reverse_eq_reverse'.aux {A : Type} :
-∀ {xs acc : List A},
-concat (reverse xs) acc = reverse'.aux xs acc :=
-  by
-    intro xs
-    induction xs with
-    | nil =>
-      simp [reverse, reverse'.aux, concat]
-    | cons x xs' ih =>
-      intro acc
-      simp [reverse, reverse'.aux, concat]
-      rw [← concat2]
-      rw [ih]
+    calc
+      obrni xs
+      _ = stakni (obrni xs) [] := by rw [trd3]
+      _ = obrni'.aux xs [] := by rw [aux_je_pravilen]
+      _ = obrni' xs := by simp [obrni']
