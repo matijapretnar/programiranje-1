@@ -1,4 +1,5 @@
 import itertools
+import os
 import png  # pip install pypng
 
 
@@ -14,15 +15,18 @@ def nalozi_sliko(ime_datoteke):
 
 def shrani_sliko(slika, ime_datoteke):
     vrstice = [list(itertools.chain(*vrstica)) for vrstica in slika]
-    with open(ime_datoteke, 'wb') as datoteka:
-        png.Writer(len(slika[0]), len(slika),
-                   greyscale=False).write(datoteka, vrstice)
+    dirname = os.path.dirname(ime_datoteke)
+    if dirname:
+        os.makedirs(dirname, exist_ok=True)
+    with open(ime_datoteke, "wb") as datoteka:
+        png.Writer(len(slika[0]), len(slika), greyscale=False).write(datoteka, vrstice)
 
 
 def razdalja(piksel1, piksel2):
     r1, g1, b1 = piksel1
     r2, g2, b2 = piksel2
     return abs(r1 - r2) + abs(g1 - g2) + abs(b1 - b2)
+
 
 def energije_vrstice(vrstica):
     sirina = len(vrstica)
@@ -35,22 +39,30 @@ def energije_vrstice(vrstica):
     energije[-1] *= 2
     return energije
 
+
 def odstrani_piksel(vrstica, energije, i):
-    nova_vrstica = vrstica[:i] + vrstica[i + 1:]
-    nove_energije = energije[:i] + energije[i + 1:]
-    if 0 < i < len(vrstica) - 1: 
-        nove_energije[i - 1] += razdalja(vrstica[i - 1], vrstica[i + 1]) - razdalja(vrstica[i - 1], vrstica[i])
-        nove_energije[i] += razdalja(vrstica[i - 1], vrstica[i + 1]) - razdalja(vrstica[i], vrstica[i + 1])
+    nova_vrstica = vrstica[:i] + vrstica[i + 1 :]
+    nove_energije = energije[:i] + energije[i + 1 :]
+    if 0 < i < len(vrstica) - 1:
+        nove_energije[i - 1] += razdalja(vrstica[i - 1], vrstica[i + 1]) - razdalja(
+            vrstica[i - 1], vrstica[i]
+        )
+        nove_energije[i] += razdalja(vrstica[i - 1], vrstica[i + 1]) - razdalja(
+            vrstica[i], vrstica[i + 1]
+        )
     else:
         nove_energije[0] = 2 * razdalja(nova_vrstica[0], nova_vrstica[1])
         nove_energije[-1] = 2 * razdalja(nova_vrstica[-2], nova_vrstica[-1])
     return nova_vrstica, nove_energije
 
+
 def energije_slike(slika):
     return [energije_vrstice(vrstica) for vrstica in slika]
 
+
 def dimenzije(slika):
     return len(slika), len(slika[0])
+
 
 def siv_po_tockah(_slika, energije):
     siv = []
@@ -58,11 +70,11 @@ def siv_po_tockah(_slika, energije):
         siv.append(vrstica.index(min(vrstica)))
     return siv
 
+
 def navpicni_siv(slika, energije):
     visina, sirina = dimenzije(slika)
     energije_stolpcev = [
-        sum(energije[i][j] for i in range(visina))
-        for j in range(sirina)
+        sum(energije[i][j] for i in range(visina)) for j in range(sirina)
     ]
     min_stolpec = energije_stolpcev.index(min(energije_stolpcev))
     siv = [min_stolpec for _ in range(visina)]
@@ -87,6 +99,7 @@ def odstrani_siv(slika, energije_slike, siv):
         energije_nove_slike.append(nove_energije)
     return nova_slika, energije_nove_slike
 
+
 def zavijajoci_siv(slika, energije):
     visina, sirina = dimenzije(slika)
     # šivi iz spodnje vrstice
@@ -105,15 +118,24 @@ def zavijajoci_siv(slika, energije):
         sivi.append(sivi_vrstice)
     return min(sivi[-1])[1]
 
+def zacetni_korak(ime):
+    slika = nalozi_sliko(ime)
+    energije = energije_slike(slika)
+    return slika, energije
 
-slika = nalozi_sliko('smrekica.png')
-energije = energije_slike(slika)
-for i in range(len(slika[0])):
-    print(i)
-    # siv = siv_po_tockah(slika, energije)
-    # shrani_sliko(pokazi_siv(slika, siv), f'po_tockah/smreka-{i}.png')
-    # siv = navpicni_siv(slika, energije)
-    # shrani_sliko(pokazi_siv(slika, siv), f'navpicni/smreka-{i}.png')
-    siv = zavijajoci_siv(slika, energije)
-    shrani_sliko(pokazi_siv(slika, siv), f'zavijajoci/smreka-{i}.png')
+def naslednji_korak(korak, poisci_siv, ime):
+    slika, energije = korak
+    siv = poisci_siv(slika, energije)
+    shrani_sliko(pokazi_siv(slika, siv), ime)
     slika, energije = odstrani_siv(slika, energije, siv)
+    return slika, energije
+
+po_tockah = zacetni_korak("smrekica.png")
+navpicni = zacetni_korak("smrekica.png")
+zavijajoci = zacetni_korak("smrekica.png")
+
+for i in range(len(po_tockah[0]) - len(po_tockah)):
+    print(i)
+    po_tockah = naslednji_korak(po_tockah, siv_po_tockah, f"po_tockah/smreka-{i}.png")
+    navpicni = naslednji_korak(navpicni, navpicni_siv, f"navpicni/smreka-{i}.png")
+    zavijajoci = naslednji_korak(zavijajoci, zavijajoci_siv, f"zavijajoci/smreka-{i}.png")
