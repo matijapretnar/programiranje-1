@@ -347,9 +347,7 @@ done
 
 ## Fisher-Yatesov algoritem
 
-[Fisher-Yatesov algoritem](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) uporabimo, kadar želimo premešati tabelo. Deluje tako, da postopoma gradi naključno permutacijo prvotnega seznama. Najprej izmed vseh elementov izbere enega za prvo mesto, nato izmed vseh preostalih izbere naslednjega za drugo mesto in tako naprej. Vsako permutacijo tako dobimo natanko z verjetnostjo $1/n!$, torej so vse enako verjetne. Algoritem je učinkovit, saj ne gradimo nove tabele, temveč spreminjamo obstoječo. Ko izmed vseh neizbranih elementov izberemo tistega za $i$-to mesto, ga zamenjamo z elementom na mestu $i$, ki gre s tem med preostale neizbrane elemente. Po $n - 1$ korakih je neizbran samo še en element, ki ga prihranimo za zadnje mesto.
-
-Algoritem v OCamlu napišemo kot:
+[Fisher-Yatesov algoritem](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) uporabimo, kadar želimo premešati tabelo. Deluje tako, da postopoma gradi naključno permutacijo prvotnega seznama. Najprej izmed vseh elementov izbere enega za prvo mesto, nato izmed vseh preostalih izbere naslednjega za drugo mesto in tako naprej. Pri tem algoritem vsa števila vodi v eni sami spreminjajoči se tabeli: v levi polovici (do vključno $i$-tega elementa) so že delno premešani elementi, v desni polovici (od $i + 1$-tega do zadnjega) pa so še neizbrani elementi. V $i$-tem koraku izmed vseh neizbranih elementov naključno izberemo enega in ga zamenjamo z $i$-tim elementom. Algoritem v OCamlu napišemo kot:
 
 ```{code-cell}
 let fisher_yates tabela =
@@ -360,9 +358,11 @@ let fisher_yates tabela =
   done
 ```
 
-Pri tem je v $i$-tem koraku naključno izberemo med $i$-tim in $n$-tim izberemo $j$-ti element, ki ga zamenjamo z $i$-tim. Ker v tabelah do elementov dostopamo v konstantnem času, je časovna zahtevnost celotnega algoritma $O(n)$. To je tudi optimalno, saj v manj kot $n$ korakih ne moremo ustvariti permutacije $n$ elementov. Če bi namesto tabele želeli premešati seznam, je najenostavneje, če ga pretvorimo v tabelo, jo premešamo, in nato pretvorimo nazaj v seznam.
+Poglejmo si najprej, zakaj algoritem deluje pravilno, torej da vsako permutacijo dobimo z enako verjetnostjo $1/n!$. Izberimo si neko permutacijo $\pi = (\pi_1, \ldots, \pi_n)$. V prvem koraku moramo izmed vseh $n$ neizbranih indeksov izbrati $\pi_1$, kar se zgodi z verjetnostjo $1 / n$. V naslednjem koraku moramo izmed preostalih $n - 1$ indeksov izbrati $\pi_2$, kar se zgodi z verjetnostjo $1 / (n - 1)$. Podobno nadaljujemo vse do koraka $n - 1$, kjer z verjetnostjo $1 / 2$ med zadnjima dvema številoma izberemo $\pi_{n - 1}$. Med neizbranimi elementi ostane samo še $\pi_n$, ki že leži na zadnjem mestu, na katerem bi moral biti. Torej je verjetnost, da smo izbrali permutacijo $\pi$ enaka $\frac{1}{n} \cdot \frac{1}{n - 1} \cdots \frac{1}{2} = 1 / n!$.
 
-Pri Fisher-Yatesovem algoritmu je treba paziti na pravilno izbiro indeksov, saj sicer ne dobimo vseh permutacij z enakimi verjetnostmi. Na primer, če bi v izbiri $i$-tega elementa izbirali od $i + 1$ naprej, bi dobili samo $(n - 1)!$ možnih permutacij (recimo zagotovo ne moremo dobiti identične permutacije).
+Poglejmo si še učinkovitost algoritma. Naredimo $O(n)$ korakov, na vsakem pa zamenjamo dva elementa, kar lahko storimo v konstantnem času. Skupaj je časovna zahtevnost algoritma enaka $O(n)$. Hitreje kot to ne gre, saj v manj kot $n$ korakih ne moremo ustvariti permutacije $n$ elementov. V nasprotnem primeru bi obstajal element, ki ga v nobenem koraku nismo izbrali, kar pomeni, da nekaterih permutacij ne bi mogli ustvariti.
+
+Če bi si namesto tabele želeli premešati seznam, je najenostavneje, če ga pretvorimo v tabelo, jo premešamo, in nato pretvorimo nazaj v seznam.
 
 ## [Naivni algoritmi za urejanje](https://visualgo.net/en/sorting)
 
