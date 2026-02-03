@@ -9,7 +9,7 @@ parts:
   - file: 04-abstrakcija.ipynb
 - caption: Dokazovalniki
   chapters:
-  # - file: 05-curry-howardov-izomorfizem.md
+  - file: 05-curry-howardov-izomorfizem.ipynb
   # - file: 06-uvod-v-lean.md
   # - file: 07-odvisni-tipi.md
   - file: 08-induktivni-tipi.md
