@@ -11,13 +11,9 @@ kernelspec:
   name: ocaml-jupyter
 ---
 
-# Učinki in čistost
+# Induktivni tipi
 
-Računalniške funkcije so podobne matematičnim v tem, da iz vhodnih vrednosti izračunajo izhodno, vendar se tu podobnost neha. Računalniške funkcije dajo lahko ob enakih vhodih tudi različne izhodne vrednosti, poleg izračuna vrednosti pa včasih še kaj izpišejo na zaslon, preberejo s tipkovnice, sprožijo izjeme, spreminjajo datoteke, pošiljajo podatke in podobno. Vsem odklonom od čistih matematični vrednosti pravimo _stranski_ ali _računski učinki_.
-
-Učinke si bomo ogledali naslednjič, tokrat pa si oglejmo funkcije brez njih, tako imenovane _čiste_ funkcije. Kljub temu, da z njimi lahko postorimo manj, imajo prednost, da o njih lažje razmišljamo. Zaradi tega je v splošnem dobro, da v naših programih napišemo čimveč čistih funkcij, funkcije z učinki pa omejimo kolikor se da. Tako bodo naši programi jasnejši in z manj napakami.
-
-Poleg tega pa si lahko ob čistih funkcijah privoščimo čisto prave matematične dokaze. Da bomo imeli kaj, s čimer bomo lahko delali, si definirajmo sledeče tri funkcije:
+Definirajmo sledeče tri funkcije:
 
 ```{code-cell}
 let rec (@) xs ys =
