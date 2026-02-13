@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Induktivni tipi &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08-induktivni-tipi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Izračunljivost" href="09-izracunljivost.html" />
+    <link rel="prev" title="Odvisni tipi" href="07-odvisni-tipi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/08-induktivni-tipi.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Induktivni tipi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcija-na-seznamih">Indukcija na seznamih</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-dolzina-xs-ys-dolzina-xs-dolzina-ys">Trditev: <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(xs</span> <span class="pre">@</span> <span class="pre">ys)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span> <span class="pre">+</span> <span class="pre">dolzina</span> <span class="pre">ys</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-korak">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcijski-korak">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pravilnost-nacela-indukcije-na-seznamih">Pravilnost načela indukcije na seznamih</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-xs-xs">Trditev: <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">@</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">xs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-xs-ys-zs-xs-ys-zs">Trditev <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">@</span> <span class="pre">(ys</span> <span class="pre">@</span> <span class="pre">zs)</span> <span class="pre">=</span> <span class="pre">(xs</span> <span class="pre">@</span> <span class="pre">ys)</span> <span class="pre">@</span> <span class="pre">zs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-obrni-xs-ys-obrni-ys-obrni-xs">Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(xs</span> <span class="pre">@</span> <span class="pre">ys)</span> <span class="pre">=</span> <span class="pre">obrni</span> <span class="pre">ys</span> <span class="pre">@</span> <span class="pre">obrni</span> <span class="pre">xs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-dolzina-obrni-xs-dolzina-xs">Trditev <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Indukcijski korak</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcija-na-drevesih">Indukcija na drevesih</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-globina-zrcali-t-globina-t">Trditev <code class="docutils literal notranslate"><span class="pre">globina</span> <span class="pre">(zrcali</span> <span class="pre">t)</span> <span class="pre">=</span> <span class="pre">globina</span> <span class="pre">t</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Indukcijski korak</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje-za-utrjevanje">Vaje za utrjevanje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-obrni-obrni-xs-xs">Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">xs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-zrcali-zrcali-t-t">Trditev <code class="docutils literal notranslate"><span class="pre">zrcali</span> <span class="pre">(zrcali</span> <span class="pre">t)</span> <span class="pre">=</span> <span class="pre">t</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-obrni-xs-obrni-xs-tezja">Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">xs</span> <span class="pre">=</span> <span class="pre">obrni'</span> <span class="pre">xs</span></code> (težja)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcija-na-drugih-tipih">Indukcija na drugih tipih</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="induktivni-tipi">
+<h1>Induktivni tipi<a class="headerlink" href="#induktivni-tipi" title="Link to this heading">#</a></h1>
+<p>Definirajmo sledeče tri funkcije:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="o">(@)</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">xs</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">ys</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs&#39;</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">::</span> <span class="o">(</span><span class="n">xs&#39;</span> <span class="o">@</span> <span class="n">ys</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ( @ ) : &#39;a list -&gt; &#39;a list -&gt; &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">obrni</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">obrni</span> <span class="n">xs</span> <span class="o">@</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val obrni : &#39;a list -&gt; &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">dolzina</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+  <span class="o">|</span> <span class="o">_</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dolzina</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val dolzina : &#39;a list -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Iz definicij takoj sledijo enačbe</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span> <span class="pre">&#64;</span> <span class="pre">ys</span> <span class="pre">=</span> <span class="pre">ys</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">::</span> <span class="pre">xs)</span> <span class="pre">&#64;</span> <span class="pre">ys</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">::</span> <span class="pre">(xs</span> <span class="pre">&#64;</span> <span class="pre">ys)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">[]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(x</span> <span class="pre">::</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">obrni</span> <span class="pre">xs</span> <span class="pre">&#64;</span> <span class="pre">[x]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(x</span> <span class="pre">::</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">dolzina</span> <span class="pre">xs</span></code></p></li>
+</ol>
+<p>Iz teh enačb na primer takoj sledi trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">[x]</span> <span class="pre">=</span> <span class="pre">[x]</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>obrni [x]
+= obrni (x :: [])
+    (ker je `[x]` okrajšava za `x :: []`)
+= [] @ [x]
+    (po (4))
+= [x]
+    (po (1))
+</pre></div>
+</div>
+<section id="indukcija-na-seznamih">
+<h2>Indukcija na seznamih<a class="headerlink" href="#indukcija-na-seznamih" title="Link to this heading">#</a></h2>
+<section id="trditev-dolzina-xs-ys-dolzina-xs-dolzina-ys">
+<h3>Trditev: <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(xs</span> <span class="pre">&#64;</span> <span class="pre">ys)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span> <span class="pre">+</span> <span class="pre">dolzina</span> <span class="pre">ys</span></code><a class="headerlink" href="#trditev-dolzina-xs-ys-dolzina-xs-dolzina-ys" title="Link to this heading">#</a></h3>
+<p>Tukaj enostavno odvijanje definicij ne bo pomagalo, saj izraz <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(xs</span> <span class="pre">&#64;</span> <span class="pre">ys)</span></code> ne ustreza ne levi ne desni strani nobene od zgoraj naštetih definicij. Namesto tega uporabimo načelo indukcije za sezname:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P([]) ∧ (∀ z, zs. P(zs) ⇒ P(z :: zs)) ⟹ ∀ ws. P(ws)
+</pre></div>
+</div>
+<p>Torej, lastnost <code class="docutils literal notranslate"><span class="pre">P</span></code> velja za vse sezname <code class="docutils literal notranslate"><span class="pre">ws</span></code>, kadar (1) velja za prazen seznam <code class="docutils literal notranslate"><span class="pre">[]</span></code> in (2) velja za sestavljen seznam <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">::</span> <span class="pre">zs</span></code> ob predpostavki, da velja za rep <code class="docutils literal notranslate"><span class="pre">zs</span></code>. Načelo indukcije je podobno načelu indukcije za naravna števila:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P(0) ∧ (∀ m. P(m) ⇒ P(m⁺)) ⟹ ∀ n. P(n)
+</pre></div>
+</div>
+<p>Torej, lastnost <code class="docutils literal notranslate"><span class="pre">P</span></code> velja za vsa naravna števila <code class="docutils literal notranslate"><span class="pre">n</span></code>, kadar (1) velja za <code class="docutils literal notranslate"><span class="pre">0</span></code> in (2) velja za naslednika <code class="docutils literal notranslate"><span class="pre">m⁺</span></code> ob predpostavki, da velja za <code class="docutils literal notranslate"><span class="pre">m</span></code>. Izjavo dokažemo z indukcijo na levi seznam. Indukcija poteka v dveh korakih:</p>
+<section id="osnovni-korak">
+<h4>Osnovni korak<a class="headerlink" href="#osnovni-korak" title="Link to this heading">#</a></h4>
+<p>V osnovnem koraku pokažemo, da enakost velja, kadar je levi seznam prazen, torej oblike <code class="docutils literal notranslate"><span class="pre">[]</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dolzina ([] @ ys)
+= dolzina ys
+    (po (1))
+= 0 + dolzina ys
+    (po Peanovih aksiomih)
+= dolzina [] + dolzina ys
+    (po (5))
+</pre></div>
+</div>
+</section>
+<section id="indukcijski-korak">
+<h4>Indukcijski korak<a class="headerlink" href="#indukcijski-korak" title="Link to this heading">#</a></h4>
+<p>V indukcijskem koraku pokažemo, da enakost velja za sestavljeni seznam <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">::</span> <span class="pre">xs</span></code> ob predpostavki, da enakost velja za seznam <code class="docutils literal notranslate"><span class="pre">xs</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dolzina ((x :: xs) @ ys)
+= dolzina (x :: (xs @ ys))
+    (po (2))
+= 1 + dolzina (xs @ ys)
+    (po (6))
+= 1 + (dolzina xs + dolzina ys)
+    (po indukcijski prepostavki)
+= (1 + dolzina xs) + dolzina ys)
+    (po Peanovih aksiomih)
+= dolzina (x :: xs) + dolzina ys
+    (po (6))
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pravilnost-nacela-indukcije-na-seznamih">
+<h3>Pravilnost načela indukcije na seznamih<a class="headerlink" href="#pravilnost-nacela-indukcije-na-seznamih" title="Link to this heading">#</a></h3>
+<p>Zakaj sploh smemo uporabiti načelo indukcije? Recimo, da velja</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P([]) ∧ (∀ z, zs. P(zs) ⇒ P(z :: zs))
+</pre></div>
+</div>
+<p>Zakaj potem velja <code class="docutils literal notranslate"><span class="pre">P(ws)</span></code> za poljuben seznam <code class="docutils literal notranslate"><span class="pre">ws</span></code>? Vzemimo nek konkreten seznam, na primer <code class="docutils literal notranslate"><span class="pre">[1;</span> <span class="pre">2;</span> <span class="pre">3]</span></code>, in pokažimo, da velja <code class="docutils literal notranslate"><span class="pre">P([1;</span> <span class="pre">2;</span> <span class="pre">3])</span></code>. Res, po prvem delu predpostavke velja <code class="docutils literal notranslate"><span class="pre">P([])</span></code>. Zato po drugem delu predpostavke velja <code class="docutils literal notranslate"><span class="pre">P([3])</span></code>, saj velja <code class="docutils literal notranslate"><span class="pre">P([])</span></code> in je <code class="docutils literal notranslate"><span class="pre">[3]</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">::</span> <span class="pre">[]</span></code>. Podobno potem iz <code class="docutils literal notranslate"><span class="pre">P([3])</span></code> sledi <code class="docutils literal notranslate"><span class="pre">P([2;</span> <span class="pre">3])</span></code> in na koncu tudi <code class="docutils literal notranslate"><span class="pre">P([1;</span> <span class="pre">2;</span> <span class="pre">3])</span></code>. Tak dokaz bi lahko ponovili za vsak konkreten seznam.</p>
+<p>V splošnem pa se naslonimo na načelo indukcije za naravna števila. Definirajmo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q(n) :=  ∀ ws. |ws| = n ⇒ P(ws)
+</pre></div>
+</div>
+<p>Torej, <code class="docutils literal notranslate"><span class="pre">Q(n)</span></code> velja, če velja <code class="docutils literal notranslate"><span class="pre">P(ws)</span></code> za vse sezname <code class="docutils literal notranslate"><span class="pre">ws</span></code> dolžine <code class="docutils literal notranslate"><span class="pre">n</span></code>. Iz Peanovih aksiomov potem sledi:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q(0) ∧ (∀m. Q(m) ⇒ Q(m+)) ⟹ ∀n. Q(n)
+</pre></div>
+</div>
+<p>Pokažimo, da velja <code class="docutils literal notranslate"><span class="pre">Q(0)</span></code> in <code class="docutils literal notranslate"><span class="pre">∀m.</span> <span class="pre">Q(m)</span> <span class="pre">⇒</span> <span class="pre">Q(m+)</span></code>. Ker velja <code class="docutils literal notranslate"><span class="pre">P([])</span></code> in je <code class="docutils literal notranslate"><span class="pre">[]</span></code> edini seznam dolžine <code class="docutils literal notranslate"><span class="pre">0</span></code>, velja tudi <code class="docutils literal notranslate"><span class="pre">Q(0)</span></code>. Vzemimo poljuben <code class="docutils literal notranslate"><span class="pre">m</span></code> in predpostavimo <code class="docutils literal notranslate"><span class="pre">Q(m)</span></code>. Torej za poljuben seznam <code class="docutils literal notranslate"><span class="pre">zs</span></code> dolžine <code class="docutils literal notranslate"><span class="pre">m</span></code> velja <code class="docutils literal notranslate"><span class="pre">P(zs)</span></code>. Iz predpostavke potem sledi, da velja tudi <code class="docutils literal notranslate"><span class="pre">P(z</span> <span class="pre">::</span> <span class="pre">zs)</span></code>. Ker so vsi seznami dolžine <code class="docutils literal notranslate"><span class="pre">m⁺</span></code> take oblike, smo pokazali <code class="docutils literal notranslate"><span class="pre">Q(m⁺)</span></code>. Po indukciji na naravnih številih torej sledi <code class="docutils literal notranslate"><span class="pre">∀n.</span> <span class="pre">Q(n)</span></code>. Ker je vsak seznam <code class="docutils literal notranslate"><span class="pre">ws</span></code> končen, ima za dolžino neko naravno število, zato velja <code class="docutils literal notranslate"><span class="pre">P(ws)</span></code> za vse sezname <code class="docutils literal notranslate"><span class="pre">ws</span></code>.</p>
+</section>
+<section id="trditev-xs-xs">
+<h3>Trditev: <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">&#64;</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">xs</span></code><a class="headerlink" href="#trditev-xs-xs" title="Link to this heading">#</a></h3>
+<p>Po (1) vemo, da je <code class="docutils literal notranslate"><span class="pre">[]</span> <span class="pre">&#64;</span> <span class="pre">xs</span> <span class="pre">=</span> <span class="pre">xs</span></code>, torej je <code class="docutils literal notranslate"><span class="pre">[]</span></code> leva enota za <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>. To, da je <code class="docutils literal notranslate"><span class="pre">[]</span></code> tudi desna enota, pa ni samoumevno — za dokaz uporabimo indukcijo.</p>
+<section id="id1">
+<h4>Osnovni korak<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Po (1) velja <code class="docutils literal notranslate"><span class="pre">[]</span> <span class="pre">&#64;</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">[]</span></code>, kar dokaže osnovni korak.</p>
+</section>
+<section id="id2">
+<h4>Indukcijski korak<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Prepostavimo, da velja <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">&#64;</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">xs</span></code>. Tedaj velja</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(x :: xs) @ []
+= x :: (xs @ [])
+    (po (2))
+= x :: xs
+    (po indukcijski prepostavki)
+</pre></div>
+</div>
+<p>kar zaključi tudi indukcijski korak.</p>
+</section>
+</section>
+<section id="trditev-xs-ys-zs-xs-ys-zs">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">&#64;</span> <span class="pre">(ys</span> <span class="pre">&#64;</span> <span class="pre">zs)</span> <span class="pre">=</span> <span class="pre">(xs</span> <span class="pre">&#64;</span> <span class="pre">ys)</span> <span class="pre">&#64;</span> <span class="pre">zs</span></code><a class="headerlink" href="#trditev-xs-ys-zs-xs-ys-zs" title="Link to this heading">#</a></h3>
+<p>Operacija stikanja seznamov <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> je tudi asociativna, kar dokažemo z indukcijo na <code class="docutils literal notranslate"><span class="pre">xs</span></code>. Če zapišete dokaz asociativnosti seštevanja, lahko vidite, da poteka podobno, le da se namesto <code class="docutils literal notranslate"><span class="pre">[]</span></code> pojavlja <code class="docutils literal notranslate"><span class="pre">0</span></code>, namesto <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">::</span> <span class="pre">xs</span></code> pa naslednik <code class="docutils literal notranslate"><span class="pre">n⁺</span></code>.</p>
+<section id="id3">
+<h4>Osnovni korak<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[] @ (ys @ zs)
+= ys @ zs
+    (po (1))
+= ([] @ ys) @ zs
+    (po (1))
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h4>Indukcijski korak<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>Prepostavimo, da velja <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">&#64;</span> <span class="pre">(ys</span> <span class="pre">&#64;</span> <span class="pre">zs)</span> <span class="pre">=</span> <span class="pre">(xs</span> <span class="pre">&#64;</span> <span class="pre">ys)</span> <span class="pre">&#64;</span> <span class="pre">zs</span></code>. Tedaj velja</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(x :: xs) @ (ys @ zs)
+= x :: (xs @ (ys @ zs))
+    (po (2))
+= x :: ((xs @ ys) @ zs)
+    (po indukcijski predpostavki)
+= (x :: (xs @ ys)) @ zs
+    (po (2))
+= ((x :: xs) @ ys) @ zs
+    (po (2))
+</pre></div>
+</div>
+</section>
+</section>
+<section id="trditev-obrni-xs-ys-obrni-ys-obrni-xs">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(xs</span> <span class="pre">&#64;</span> <span class="pre">ys)</span> <span class="pre">=</span> <span class="pre">obrni</span> <span class="pre">ys</span> <span class="pre">&#64;</span> <span class="pre">obrni</span> <span class="pre">xs</span></code><a class="headerlink" href="#trditev-obrni-xs-ys-obrni-ys-obrni-xs" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h4>Osnovni korak<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>obrni ([] @ ys)
+= obrni ys
+    (po (1))
+= obrni ys @ []
+    (po prej dokazani trditvi ∀ xs. xs @ [] = xs)
+= obrni ys @ obrni []
+    (po (3))
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4>Indukcijski korak<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>obrni ((x :: xs) @ ys)
+= obrni (x :: (xs @ ys))
+    (po (2))
+= obrni (xs @ ys) @ [x]
+    (po (4))
+= (obrni ys @ obrni xs) @ [x]
+    (po indukcijski predpostavki)
+= obrni ys @ (obrni xs @ [x])
+    (po prej dokazani trditvi ∀ xs, ys, zs. xs @ (ys @ zs) = (xs @ ys) @ zs)
+= obrni ys @ obrni (x :: xs)
+    (po (4))
+</pre></div>
+</div>
+</section>
+</section>
+<section id="trditev-dolzina-obrni-xs-dolzina-xs">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span></code><a class="headerlink" href="#trditev-dolzina-obrni-xs-dolzina-xs" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h4>Osnovni korak<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>Iz definicije (3) sledi <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(obrni</span> <span class="pre">[])</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">[]</span></code>,</p>
+</section>
+<section id="id8">
+<h4>Indukcijski korak<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>Za indukcijski korak moramo pokazati, da velja <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(obrni</span> <span class="pre">(x</span> <span class="pre">::</span> <span class="pre">xs))</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">(x</span> <span class="pre">::</span> <span class="pre">xs)</span></code> ob indukcijski predpostavki <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span></code>.
+Velja:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dolzina (obrni (x :: xs))
+= dolzina (obrni xs @ [x])
+    (po definiciji (4))
+= dolzina (obrni xs) + dolzina [x]
+    (po zgornji lemi)
+= dolzina xs + dolzina [x]
+    (po indukcijski predpostavki)
+= dolzina xs + 1
+    (po definicijah (5) in (6))
+= 1 + dolzina xs
+    (zaradi komutativnosti seštevanja)
+= dolzina (x :: xs)
+    (po definiciji (6))
+</pre></div>
+</div>
+<p>s čimer zaključimo tudi indukcijski korak.</p>
+</section>
+</section>
+</section>
+<section id="indukcija-na-drevesih">
+<h2>Indukcija na drevesih<a class="headerlink" href="#indukcija-na-drevesih" title="Link to this heading">#</a></h2>
+<p>Načela indukcije imamo na voljo tudi na drugih vsotah.
+Na primer, če definiramo tip dvojiških dreves:</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">drevo</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Prazno</span>
+  <span class="o">|</span> <span class="nc">Sest</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">drevo</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">drevo</span>
+</pre></div>
+</div>
+<p>zanj velja načelo indukcije:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P(Prazno) ∧ (∀ l, x, d. P(l) ∧ P(d) ⇒ P(Sest (l, x, d))) ⟹ ∀ t. P(t)
+</pre></div>
+</div>
+<p>Torej, lastnost <code class="docutils literal notranslate"><span class="pre">P</span></code> velja za vsa drevesa <code class="docutils literal notranslate"><span class="pre">t</span></code>, kadar (1) velja za prazno drevo <code class="docutils literal notranslate"><span class="pre">Prazno</span></code> in (2) velja za sestavljeno drevo <code class="docutils literal notranslate"><span class="pre">Sest</span> <span class="pre">(l,</span> <span class="pre">x,</span> <span class="pre">d)</span></code> ob predpostavki, da velja za otroka <code class="docutils literal notranslate"><span class="pre">l</span></code> in <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
+<p>Definirajmo funkciji:</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">zrcali</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">Prazno</span> <span class="o">-&gt;</span> <span class="nc">Prazno</span>
+  <span class="o">|</span> <span class="nc">Sest</span> <span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Sest</span> <span class="o">(</span><span class="n">zrcali</span> <span class="n">d</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">zrcali</span> <span class="n">l</span><span class="o">)</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">globina</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">Prazno</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+  <span class="o">|</span> <span class="nc">Sest</span> <span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="o">_,</span> <span class="n">d</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">max</span> <span class="o">(</span><span class="n">globina</span> <span class="n">l</span><span class="o">)</span> <span class="o">(</span><span class="n">globina</span> <span class="n">d</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Iz definicij sledijo enačbe</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">zrcali</span> <span class="pre">Prazno</span> <span class="pre">=</span> <span class="pre">Prazno</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zrcali</span> <span class="pre">(Sest</span> <span class="pre">(l,</span> <span class="pre">x,</span> <span class="pre">d))</span> <span class="pre">=</span> <span class="pre">Sest</span> <span class="pre">(zrcali</span> <span class="pre">d,</span> <span class="pre">x,</span> <span class="pre">zrcali</span> <span class="pre">l)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">globina</span> <span class="pre">Prazno</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">globina</span> <span class="pre">(Sest</span> <span class="pre">(l,</span> <span class="pre">x,</span> <span class="pre">d))</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">max</span> <span class="pre">(globina</span> <span class="pre">l)</span> <span class="pre">(globina</span> <span class="pre">d)</span></code></p></li>
+</ol>
+<section id="trditev-globina-zrcali-t-globina-t">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">globina</span> <span class="pre">(zrcali</span> <span class="pre">t)</span> <span class="pre">=</span> <span class="pre">globina</span> <span class="pre">t</span></code><a class="headerlink" href="#trditev-globina-zrcali-t-globina-t" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h4>Osnovni korak<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>globina (zrcali Prazno)
+= globina Prazno
+    (po (1))
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h4>Indukcijski korak<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>globina (zrcali (Sest (l, x, d)))
+= globina (Sest (zrcali d, x, zrcali l))
+    (po (2))
+= 1 + max (globina (zrcali d)) (globina (zrcali l))
+    (po (4))
+= 1 + max (globina d) (globina (zrcali l))
+    (po prvi indukcijski predpostavki)
+= 1 + max (globina d) (globina l)
+    (po drugi indukcijski predpostavki)
+= 1 + max (globina l) (globina d)
+    (zaradi komutativnosti max)
+= globina (Sest (l, x, d))
+    (po (4))
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="vaje-za-utrjevanje">
+<h2>Vaje za utrjevanje<a class="headerlink" href="#vaje-za-utrjevanje" title="Link to this heading">#</a></h2>
+<section id="trditev-obrni-obrni-xs-xs">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">xs</span></code><a class="headerlink" href="#trditev-obrni-obrni-xs-xs" title="Link to this heading">#</a></h3>
+</section>
+<section id="trditev-zrcali-zrcali-t-t">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">zrcali</span> <span class="pre">(zrcali</span> <span class="pre">t)</span> <span class="pre">=</span> <span class="pre">t</span></code><a class="headerlink" href="#trditev-zrcali-zrcali-t-t" title="Link to this heading">#</a></h3>
+</section>
+<section id="trditev-obrni-xs-obrni-xs-tezja">
+<h3>Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">xs</span> <span class="pre">=</span> <span class="pre">obrni'</span> <span class="pre">xs</span></code> (težja)<a class="headerlink" href="#trditev-obrni-xs-obrni-xs-tezja" title="Link to this heading">#</a></h3>
+<p>Kot vemo, ima funkcija <code class="docutils literal notranslate"><span class="pre">obrni</span></code>, definirana kot:</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">obrni</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">obrni</span> <span class="n">xs</span> <span class="o">@</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>časovno zahtevnost <span class="math notranslate nohighlight">\(O(n^2)\)</span>, saj se mora zapeljati čez ves seznam, da mu na konec doda <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<p>Bolje je, če uporabimo funkcijo <code class="docutils literal notranslate"><span class="pre">obrni'</span></code>, ki uporablja akumulator in je definirana kot:</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">obrni&#39;</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="n">acc</span> <span class="o">=</span> <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">acc</span>
+    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">aux</span> <span class="o">(</span><span class="n">x</span> <span class="o">::</span> <span class="n">acc</span><span class="o">)</span> <span class="n">xs</span>
+  <span class="k">in</span>
+  <span class="n">aux</span> <span class="bp">[]</span>
+</pre></div>
+</div>
+<p>Pokažite, da za vse sezname <code class="docutils literal notranslate"><span class="pre">xs</span></code> velja <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">xs</span> <span class="pre">=</span> <span class="pre">obrni'</span> <span class="pre">xs</span></code>.</p>
+</section>
+<section id="indukcija-na-drugih-tipih">
+<h3>Indukcija na drugih tipih<a class="headerlink" href="#indukcija-na-drugih-tipih" title="Link to this heading">#</a></h3>
+<p>Definirajmo tipe</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">naravno</span> <span class="o">=</span> <span class="nc">Zero</span> <span class="o">|</span> <span class="nc">Succ</span> <span class="k">of</span> <span class="n">naravno</span>
+<span class="k">type</span> <span class="n">boole</span> <span class="o">=</span> <span class="nc">Resnica</span> <span class="o">|</span> <span class="nc">Laz</span>
+<span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">mogoce</span> <span class="o">=</span> <span class="nc">Nic</span> <span class="o">|</span> <span class="nc">Nekaj</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>Kakšni sta videti načeli indukcije za te tipe?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="07-odvisni-tipi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Odvisni tipi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="09-izracunljivost.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Izračunljivost</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcija-na-seznamih">Indukcija na seznamih</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-dolzina-xs-ys-dolzina-xs-dolzina-ys">Trditev: <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(xs</span> <span class="pre">@</span> <span class="pre">ys)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span> <span class="pre">+</span> <span class="pre">dolzina</span> <span class="pre">ys</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-korak">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcijski-korak">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pravilnost-nacela-indukcije-na-seznamih">Pravilnost načela indukcije na seznamih</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-xs-xs">Trditev: <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">@</span> <span class="pre">[]</span> <span class="pre">=</span> <span class="pre">xs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-xs-ys-zs-xs-ys-zs">Trditev <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">@</span> <span class="pre">(ys</span> <span class="pre">@</span> <span class="pre">zs)</span> <span class="pre">=</span> <span class="pre">(xs</span> <span class="pre">@</span> <span class="pre">ys)</span> <span class="pre">@</span> <span class="pre">zs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-obrni-xs-ys-obrni-ys-obrni-xs">Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(xs</span> <span class="pre">@</span> <span class="pre">ys)</span> <span class="pre">=</span> <span class="pre">obrni</span> <span class="pre">ys</span> <span class="pre">@</span> <span class="pre">obrni</span> <span class="pre">xs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Indukcijski korak</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-dolzina-obrni-xs-dolzina-xs">Trditev <code class="docutils literal notranslate"><span class="pre">dolzina</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">dolzina</span> <span class="pre">xs</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Indukcijski korak</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcija-na-drevesih">Indukcija na drevesih</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-globina-zrcali-t-globina-t">Trditev <code class="docutils literal notranslate"><span class="pre">globina</span> <span class="pre">(zrcali</span> <span class="pre">t)</span> <span class="pre">=</span> <span class="pre">globina</span> <span class="pre">t</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Osnovni korak</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Indukcijski korak</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje-za-utrjevanje">Vaje za utrjevanje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-obrni-obrni-xs-xs">Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">(obrni</span> <span class="pre">xs)</span> <span class="pre">=</span> <span class="pre">xs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-zrcali-zrcali-t-t">Trditev <code class="docutils literal notranslate"><span class="pre">zrcali</span> <span class="pre">(zrcali</span> <span class="pre">t)</span> <span class="pre">=</span> <span class="pre">t</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trditev-obrni-xs-obrni-xs-tezja">Trditev <code class="docutils literal notranslate"><span class="pre">obrni</span> <span class="pre">xs</span> <span class="pre">=</span> <span class="pre">obrni'</span> <span class="pre">xs</span></code> (težja)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indukcija-na-drugih-tipih">Indukcija na drugih tipih</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

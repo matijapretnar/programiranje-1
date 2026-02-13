@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Izračunljivost &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '09-izracunljivost';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spremenljive podatkovne strukture" href="10-racunska-zahtevnost.html" />
+    <link rel="prev" title="Induktivni tipi" href="08-induktivni-tipi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/09-izracunljivost.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Izračunljivost</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turingovi-stroji">Turingovi stroji</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#univerzalni-turingov-stroj">Univerzalni Turingov stroj</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ustavitveni-problem">Ustavitveni problem</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="izracunljivost">
+<h1>Izračunljivost<a class="headerlink" href="#izracunljivost" title="Link to this heading">#</a></h1>
+<section id="turingovi-stroji">
+<h2>Turingovi stroji<a class="headerlink" href="#turingovi-stroji" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p><em>Turingov stroj</em> <span class="math notranslate nohighlight">\(M\)</span> je peterica <span class="math notranslate nohighlight">\((\Gamma, \Box, Q, q_0, \delta)\)</span>, kjer je:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Gamma\)</span> končna množica simbolov</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Box \in \Gamma\)</span> prazni simbol</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> končna množica stanj</p></li>
+<li><p><span class="math notranslate nohighlight">\(q_0 \in Q\)</span> začetno stanje</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta : \Gamma \times Q \rightharpoonup \Gamma \times Q \times \{ \mathtt{L}, \mathtt{R} \}\)</span> prehodna funkcija.</p></li>
+</ul>
+</section>
+</div><p>V nadaljevanju naj <span class="math notranslate nohighlight">\(M\)</span> označuje Turingov stroj podan s peterico <span class="math notranslate nohighlight">\((\Gamma, \Box, Q, q_0, \delta)\)</span>. Označimo <span class="math notranslate nohighlight">\(f(x) \uparrow\)</span>, kadar delna funkcija <span class="math notranslate nohighlight">\(f : X \rightharpoonup Y\)</span> na <span class="math notranslate nohighlight">\(x \in X\)</span> ni definirana.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p><em>Množica trakov</em> <span class="math notranslate nohighlight">\(\mathbb{T}_M\)</span> Turingovega stroja <span class="math notranslate nohighlight">\(M\)</span> je množica vseh funkcij <span class="math notranslate nohighlight">\(t : \mathbb{Z} \to \Gamma\)</span>, ki so povsod razen na končno mnogo vrednostih enake praznemu simbolu:</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbb{T} = \{ t : \mathbb{Z} \to \Gamma \mid \exists m \in \mathbb{N}.\ \forall i \in \mathbb{Z}.\ |i| &gt; m \Rightarrow t(i) = \Box\}
+\]</div>
+</section>
+</div><div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
+<section class="definition-content" id="proof-content">
+<p><em>Konfiguracija</em> Turingovega stroja <span class="math notranslate nohighlight">\(M\)</span> je trojica <span class="math notranslate nohighlight">\((q, t, i) \in \mathbb{K}_M = Q \times \mathbb{T} \times \mathbb{Z}\)</span>, kjer <span class="math notranslate nohighlight">\(q\)</span> opisuje trenutno stanje, <span class="math notranslate nohighlight">\(t\)</span> vsebino traku, <span class="math notranslate nohighlight">\(i\)</span> pa mesto glave na traku.</p>
+</section>
+</div><div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Delna funkcija <span class="math notranslate nohighlight">\(\mathsf{step}_M : \mathbb{K}_M \rightharpoonup \mathbb{K}_M\)</span>, ki na konfiguraciji izvede en korak Turingovega stroja.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathsf{step}_M(q, t, i) = \begin{cases}
+  (q', t[i \mapsto a], i - 1) &amp; \delta(q, t(i)) = (q', a, \mathtt{L}) \\
+  (q', t[i \mapsto a], i + 1) &amp; \delta(q, t(i)) = (q', a, \mathtt{R}) \\
+  \uparrow &amp; \delta(q, t(i)) \uparrow
+\end{cases}
+\end{split}\]</div>
+<p>kjer <span class="math notranslate nohighlight">\(t[i \mapsto a]\)</span> označuje trak, ki je pri <span class="math notranslate nohighlight">\(i\)</span> enak <span class="math notranslate nohighlight">\(a\)</span>, drugje pa enak kot <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+t[i \mapsto a](j) = \begin{cases}
+  a &amp; j = i \\
+  t(j) &amp; j \ne i
+\end{cases}
+\end{split}\]</div>
+</section>
+</div><div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Delna funkcija <span class="math notranslate nohighlight">\(\mathsf{run}_M : \mathbb{K}_M \rightharpoonup \mathbb{T}_M\)</span> Turingov stroj izvaja, dokler se ne ustavi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathsf{run}_M(q, t, i) = \begin{cases}
+  \mathsf{run}_M(q', t', i') &amp; \mathsf{step}_M(q, t, i) = (q', t', i') \\
+  t &amp; \mathsf{step}_M(q, t, i) \uparrow
+\end{cases}
+\end{split}\]</div>
+</section>
+</div><p>Pozor: funkcija <span class="math notranslate nohighlight">\(\mathsf{run}_M\)</span> je definirana le v primeru, kadar se stroj ustavi, torej če <span class="math notranslate nohighlight">\(\mathsf{step}_M\)</span> na neki konfiguraciji ni definiran. Če stroj vedno lahko naredi še en korak, se nikoli ne ustavi in zato <span class="math notranslate nohighlight">\(\mathsf{run}_M\)</span> ni definirana.</p>
+<p>Fiksirajmo <span class="math notranslate nohighlight">\(\Gamma = \{ 0, 1, \Box \}\)</span>. Naj bo <span class="math notranslate nohighlight">\(\underline{n}\)</span> trak, ki predstavlja število <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, zapisano v dvojiškem zapisu. Na primer:</p>
+<div class="math notranslate nohighlight">
+\[\underline{42} = \cdots \Box \Box \underset{\uparrow}{1} 0 1 0 1 0 \Box \Box \cdots\]</div>
+<p>Za Turingov stroj <span class="math notranslate nohighlight">\(M\)</span> definirajmo funkcijo <span class="math notranslate nohighlight">\(\mathsf{eval}_M : \mathbb{N} \rightharpoonup \mathbb{N}\)</span>, kot</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathsf{eval}_M(n) = \begin{cases}
+  m &amp; \mathsf{run}_M(q_0, \underline{n}, 0) = \underline{m} \\
+  \uparrow &amp; \text{sicer}
+\end{cases}
+\end{split}\]</div>
+<div class="proof definition admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Funkcija <span class="math notranslate nohighlight">\(f : \mathbb{N} \rightharpoonup \mathbb{N}\)</span> je <em>izračunljiva</em> natanko tedaj, kadar obstaja Turingov stroj <span class="math notranslate nohighlight">\(M\)</span>, da je <span class="math notranslate nohighlight">\(f = \mathsf{eval}_M\)</span>.</p>
+</section>
+</div><p>Definicijo lahko razširimo na funkcije več spremenljivk <span class="math notranslate nohighlight">\(\mathsf{eval}_M : \mathbb{N}^k \rightharpoonup \mathbb{N}\)</span> tako, da na trak zapišemo več števil, ločenih s presledki</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathsf{eval}_M(n_1, n_2, \dots, n_k) = \begin{cases}
+  m &amp; \mathsf{run}_M(q_0, \underline{n_1}\Box\underline{n_2}\Box\cdots\Box\underline{n_k}, 0) = \underline{m} \\
+  \uparrow &amp; \text{sicer}
+\end{cases}
+\end{split}\]</div>
+</section>
+<section id="univerzalni-turingov-stroj">
+<h2>Univerzalni Turingov stroj<a class="headerlink" href="#univerzalni-turingov-stroj" title="Link to this heading">#</a></h2>
+<div class="proof theorem admonition" id="theorem-6">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Obstaja univerzalni Turingov stroj <span class="math notranslate nohighlight">\(\mathcal{U}\)</span>, da za vsak Turingov stroj <span class="math notranslate nohighlight">\(M\)</span> obstaja njegova koda <span class="math notranslate nohighlight">\(k_M \in \mathbb{N}\)</span>, tako da za vse <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span> velja</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{eval}_\mathcal{U}(k_M, n) \simeq \mathsf{eval}_M(n)\]</div>
+</section>
+</div><p>V resnici lahko univerzalni Turingov stroj simulira <span class="math notranslate nohighlight">\(M\)</span> na vseh vhodih, ne le na <span class="math notranslate nohighlight">\(\underline{n}\)</span>, ampak zgornja trditev je enostavnejša in hkrati dovolj za našo uporabo.</p>
+</section>
+<section id="ustavitveni-problem">
+<h2>Ustavitveni problem<a class="headerlink" href="#ustavitveni-problem" title="Link to this heading">#</a></h2>
+<div class="proof theorem admonition" id="theorem-7">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Ne obstaja Turingov stroj <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>, da bi za vsak Turingov stroj <span class="math notranslate nohighlight">\(M\)</span> veljalo</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathsf{eval}_\mathcal{H}(k_M, n) = \begin{cases}
+  0 &amp; \mathsf{eval}_M(n) \uparrow \\
+  1 &amp; \mathsf{eval}_M(n) \downarrow
+\end{cases}
+\end{split}\]</div>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Recimo, da tak stroj obstaja. Tedaj lahko definiramo tudi stroj <span class="math notranslate nohighlight">\(X\)</span>, ki se bo na vhodu <span class="math notranslate nohighlight">\(k_M\)</span> obnašal ravno nasprotno kot <span class="math notranslate nohighlight">\(M\)</span>: če se bo <span class="math notranslate nohighlight">\(M\)</span> na <span class="math notranslate nohighlight">\(k_M\)</span> ustavil, bo <span class="math notranslate nohighlight">\(X\)</span> divergiral, in obratno.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathsf{eval}_X(k_M) = \begin{cases}
+    \uparrow &amp; \mathsf{eval}_\mathcal{H}(k_M, k_M) = 1 \\
+    0 &amp; \mathsf{eval}_\mathcal{H}(k_M, k_M) = 0
+\end{cases}
+\end{split}\]</div>
+<p>Toda tudi stroj <span class="math notranslate nohighlight">\(X\)</span> mora imeti neko kodo <span class="math notranslate nohighlight">\(k_X\)</span>, zato velja</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathsf{eval}_X(k_X) &amp;= 
+\begin{cases}
+    \uparrow &amp; \mathsf{eval}_\mathcal{H}(k_X, k_X) = 1 \\
+    0 &amp; \mathsf{eval}_\mathcal{H}(k_X, k_X) = 0
+\end{cases} \\
+&amp;= \begin{cases}
+    \uparrow &amp; \mathsf{eval}_X(k_X) \downarrow \\
+    0 &amp; \mathsf{eval}_X(k_X) \uparrow
+\end{cases}
+\end{align*}\end{split}\]</div>
+<p>Torej <span class="math notranslate nohighlight">\(X\)</span> na <span class="math notranslate nohighlight">\(k_X\)</span> divergira natanko takrat, kadar konvergira in obratno. To pa je protislovje.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08-induktivni-tipi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Induktivni tipi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="10-racunska-zahtevnost.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spremenljive podatkovne strukture</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turingovi-stroji">Turingovi stroji</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#univerzalni-turingov-stroj">Univerzalni Turingov stroj</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ustavitveni-problem">Ustavitveni problem</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

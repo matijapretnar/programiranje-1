@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Uvod v Lean &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06-uvod-v-lean';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Odvisni tipi" href="07-odvisni-tipi.html" />
+    <link rel="prev" title="Curry-Howardov izomorfizem" href="05-curry-howardov-izomorfizem.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/06-uvod-v-lean.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Uvod v Lean</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicije-vrednosti">Definicije vrednosti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polimorfne-funkcije">Polimorfne funkcije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicitni-argumenti">Implicitni argumenti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rekurzija">Rekurzija</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-prop">Tip <code class="docutils literal notranslate"><span class="pre">Prop</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dokazovanje-s-taktikami">Dokazovanje s taktikami</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uvod-v-lean">
+<h1>Uvod v Lean<a class="headerlink" href="#uvod-v-lean" title="Link to this heading">#</a></h1>
+<p>Kot smo videli, lahko OCaml uporabljamo za pisanje dokazov, vendar je to precej nerodno. Zato si bomo ogledali Lean, programski jezik, ki je namenjen prav pisanju dokazov. Lean je sicer tudi splošno uporaben programski jezik, vendar se bomo osredotočili predvsem na njegovo uporabo pri dokazovanju.</p>
+<section id="definicije-vrednosti">
+<h2>Definicije vrednosti<a class="headerlink" href="#definicije-vrednosti" title="Link to this heading">#</a></h2>
+<p>V Leanu funkcije definiramo podobno kot v OCamlu, le da namesto <code class="docutils literal notranslate"><span class="pre">let</span></code> in <code class="docutils literal notranslate"><span class="pre">=</span></code> pišemo <code class="docutils literal notranslate"><span class="pre">def</span></code> in <code class="docutils literal notranslate"><span class="pre">:=</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">podvoji</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">x</span>
+</pre></div>
+</div>
+<p>Lean nima interaktivne konzole tako kot OCaml, temveč se nam v urejevalniku ob strani odpre <em>InfoView</em>, v katerem lahko vidimo informacije o trenutno označenem delu kode. Če želimo izračunati preprosto vrednost, lahko uporabimo ukaz <code class="docutils literal notranslate"><span class="pre">#eval</span></code>. Na primer</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span><span class="w"> </span><span class="n">podvoji</span><span class="w"> </span><span class="mi">21</span>
+</pre></div>
+</div>
+<p>Ker bomo Lean prvenstveno uporabljali za preverjanje dokazov, nas končne vrednosti ne bodo zanimale toliko kot tipi. Tako Lean podpira tudi ukaz <code class="docutils literal notranslate"><span class="pre">#check</span></code>, ki nam izpiše tip izraza:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span><span class="w"> </span><span class="n">podvoji</span>
+</pre></div>
+</div>
+<p>Vidimo tip <code class="docutils literal notranslate"><span class="pre">Nat</span> <span class="pre">→</span> <span class="pre">Nat</span></code>, v katerem lahko opazimo nekaj novosti:</p>
+<ul class="simple">
+<li><p>tipe v Leanu običajno pišemo z veliko začetnico</p></li>
+<li><p>Lean podpira pisanje kode v Unicodeu, čeprav lahko namesto <code class="docutils literal notranslate"><span class="pre">→</span></code> pišemo tudi <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>.</p></li>
+<li><p>Lean ima tudi tip <code class="docutils literal notranslate"><span class="pre">Nat</span></code>, ki ustreza naravnim številom.</p></li>
+</ul>
+<p>Tako kot OCaml je tudi Lean tip funkcije <code class="docutils literal notranslate"><span class="pre">podvoji</span></code> izpeljal samodejno. A običajno bomo tipe pisali sami. Na primer, če želimo funkcijo definirati na celih številih, lahko pišemo:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">podvoji</span><span class="w"> </span><span class="o">(</span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Int</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">x</span>
+</pre></div>
+</div>
+<p>ali z anonimno funkcijo kot:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">podvoji</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">x</span>
+</pre></div>
+</div>
+<p>Lean podpira tudi razstavljanje vrednosti. Funkcijo za stikanje seznamov, ki jo v OCamlu poznamo pod <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, definiramo kot:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">stakni_seznama_celih</span><span class="w"> </span><span class="o">(</span><span class="n">xs</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">Int</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">ys</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">Int</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">stakni_seznama_celih</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="n">ys</span>
+
+<span class="k">#eval</span><span class="w"> </span><span class="n">stakni_seznama_celih</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">2</span><span class="o">,</span><span class="w"> </span><span class="mi">3</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="mi">5</span><span class="o">,</span><span class="w"> </span><span class="mi">6</span><span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="polimorfne-funkcije">
+<h2>Polimorfne funkcije<a class="headerlink" href="#polimorfne-funkcije" title="Link to this heading">#</a></h2>
+<p>Zgornja funkcija stika le sezname celih števil, vendar jo lahko naredimo tudi polimorfno. Tu moramo biti malo bolj eksplicitni kot v OCamlu, saj Lean podpira veliko bogatejše tipe, zato moramo bolj natančno povedati, kakšnega želimo. To storimo tako, da funkciji dodamo še dodaten argument <code class="docutils literal notranslate"><span class="pre">A</span></code> tipa <code class="docutils literal notranslate"><span class="pre">Type</span></code>, torej tip.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">polimorfni_stakni</span><span class="w"> </span><span class="o">(</span><span class="n">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">xs</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">A</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">ys</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">A</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">polimorfni_stakni</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="n">ys</span>
+</pre></div>
+</div>
+<p>Curryranje bi lahko podali kot:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">curry</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="bp">×</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">C</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="o">(</span><span class="n">B</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">C</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">fun</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">⟨</span><span class="n">x</span><span class="o">,</span><span class="w"> </span><span class="n">y</span><span class="o">⟩</span>
+</pre></div>
+</div>
+</section>
+<section id="implicitni-argumenti">
+<h2>Implicitni argumenti<a class="headerlink" href="#implicitni-argumenti" title="Link to this heading">#</a></h2>
+<p>Ko tako funkcijo kličemo, moramo tudi tip podati eksplicitno:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span><span class="w"> </span><span class="n">polimorfni_stakni</span><span class="w"> </span><span class="n">Bool</span><span class="w"> </span><span class="o">[</span><span class="n">true</span><span class="o">,</span><span class="w"> </span><span class="n">false</span><span class="o">,</span><span class="w"> </span><span class="n">true</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">true</span><span class="o">,</span><span class="w"> </span><span class="n">true</span><span class="o">]</span>
+<span class="k">#check</span><span class="w"> </span><span class="n">polimorfni_stakni</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">2</span><span class="o">,</span><span class="w"> </span><span class="mi">3</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="mi">5</span><span class="o">,</span><span class="w"> </span><span class="mi">6</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Ker je to precej gostobesedno, Lean podpira tudi <em>implicitne argumente</em>, ki jih bo poskusil izpolniti sam s pomočjo drugih argumentov. Take argumente pišemo v zavitih oklepajih in jih pri klicih funkcij izpustimo. Na primer, če staknemo dva seznama, mora Lean že za ta dva seznama vedeti, kakšnega tipa sta, zato bo argument <code class="docutils literal notranslate"><span class="pre">A</span></code> lahko izpolnil sam:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">stakni</span><span class="w"> </span><span class="o">{</span><span class="n">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">xs</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">A</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">ys</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">A</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">stakni</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="n">ys</span>
+
+<span class="k">#check</span><span class="w"> </span><span class="n">stakni</span><span class="w"> </span><span class="o">[</span><span class="n">true</span><span class="o">,</span><span class="w"> </span><span class="n">false</span><span class="o">,</span><span class="w"> </span><span class="n">true</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">true</span><span class="o">,</span><span class="w"> </span><span class="n">true</span><span class="o">]</span>
+<span class="k">#check</span><span class="w"> </span><span class="n">stakni</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">2</span><span class="o">,</span><span class="w"> </span><span class="mi">3</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="mi">4</span><span class="o">,</span><span class="w"> </span><span class="mi">5</span><span class="o">,</span><span class="w"> </span><span class="mi">6</span><span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="rekurzija">
+<h2>Rekurzija<a class="headerlink" href="#rekurzija" title="Link to this heading">#</a></h2>
+<p>Zdaj, ko smo na kratko spoznali Lean, se lahko vrnemo k pisanju dokazov. Ena izmed težav, ki smo jih imeli v OCamlu, je bila neomejena rekurzija, saj smo z njeno pomočjo lahko napisali program poljubnega tipa. V Leanu pa je rekurzija omejena, saj nam dopušča le funkcije, ki se zagotovo ustavijo. Lean to običajno preveri prek <em>strukturne rekurzije</em>, pri kateri so argumenti v rekurzivnih klicih sestavni deli prvotnih argumentov. Na primer v zgornjem stikanju seznamov se rekurzivno pokličemo na repu prvega seznama. Tako je ob vsakem klicu argument strukturno manjši, zato se bo izvajanje na neki točki zagotovo končalo. Če bi se pri pisanju zatipkali in poklicali na prvotnem seznamu, bi Lean to definicijo zavrnil:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">napacni_stakni</span><span class="w"> </span><span class="o">{</span><span class="n">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">xs</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">A</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">ys</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="n">A</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">napacni_stakni</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="n">ys</span>
+</pre></div>
+</div>
+<p>Če se ozremo nazaj na rekurzivne funkcije, ki smo jih pisali v OCamlu, za skoraj vse vidimo, da so strukturno rekurzivne. V Leanu lahko pišemo tudi funkcije, ki niso strukturno rekurzivne, pa se vseeno ustavijo, na primer Evklidov algoritem, a moramo v tem primeru Lean z ustreznim dokazom prepričati sami.</p>
+</section>
+<section id="tip-prop">
+<h2>Tip <code class="docutils literal notranslate"><span class="pre">Prop</span></code><a class="headerlink" href="#tip-prop" title="Link to this heading">#</a></h2>
+<p>Tako kot v OCamlu bi tudi v Leanu lahko zapisali funkcijo, ki ustreza izjavi <span class="math notranslate nohighlight">\(((P \lor Q) \Rightarrow R) \implies (P \Rightarrow R) \land (Q \Rightarrow R)\)</span>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">dist</span><span class="w"> </span><span class="o">{</span><span class="n">P</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">Sum</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="o">((</span><span class="n">P</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">×</span><span class="w"> </span><span class="o">(</span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">))</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">fun</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">Sum</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="o">(</span>
+<span class="w">    </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="o">(</span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">P</span><span class="o">)</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">(</span><span class="n">Sum.inl</span><span class="w"> </span><span class="n">x</span><span class="o">)),</span>
+<span class="w">    </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="o">(</span><span class="n">y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Q</span><span class="o">)</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">(</span><span class="n">Sum.inr</span><span class="w"> </span><span class="n">y</span><span class="o">))</span>
+<span class="w">  </span><span class="o">)</span>
+</pre></div>
+</div>
+<p>A Lean za izjave ponuja poseben tip <code class="docutils literal notranslate"><span class="pre">Prop</span></code>, ki igra podobno vlogo kot <code class="docutils literal notranslate"><span class="pre">Type</span></code>, le da ga Lean obravnava le med preverjanjem tipov, pri izvajanju pa ga pobriše. Leanovi tipi so namreč tako močni (to bomo spoznali naslednjič), da lahko v njih izrazimo tudi izjave, ki jim zadoščajo vrednosti. Na primer funkcija za stikanje seznamov ima v OCamlu tip <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span></code>. V Leanu ji sicer lahko določimo tip <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">A</span> <span class="pre">→</span> <span class="pre">List</span> <span class="pre">A</span> <span class="pre">→</span> <span class="pre">List</span> <span class="pre">A</span></code>, lahko pa bi dodatno povedali, da je dolžina vrnjenega seznama vsota dolžin argumentov ali celo kaj takega:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} (xs &#64; ys)_i = \begin{cases}
+  xs_i &amp; i &lt; |xs| \\
+  ys_{i - |xs|} &amp; i ≥ |xs|
+\end{cases} \end{split}\]</div>
+<p>Tako izjavo bi lahko v duhu Curry-Howardovega izomorfizma predstavili z ustreznim tipom, sestavljenim iz funkcij, produktov, vsot in odvisnih tipov, ki jih bomo spoznali naslednjič. Težava je, da ob izvajanju funkcija potem ne bi le stikala seznamov, temveč bi tudi ustrezno prerazporejala kose dokaza. To zahteva svoj čas in prostor, sploh ker so dokazi lastnosti funkcij so ponavadi precej daljši od funkcij samih. K sreči moramo dokaze preveriti le pred izvajanjem, kasneje pa jih ne potrebujemo več. Tudi v matematiki lahko dokaze izjav pozabimo, ko smo jih enkrat preverili (razen na ustnih izpitih ali seveda takrat, ko želimo iz njih črpati ideje za druge dokaze).</p>
+<p>V ta namen Lean torej ponuja tip <code class="docutils literal notranslate"><span class="pre">Prop</span></code>, ki ga bo Lean ob izvajanju pobrisal. Tako kot imamo konstruktorje tipov kot sta <code class="docutils literal notranslate"><span class="pre">×</span></code> ali <code class="docutils literal notranslate"><span class="pre">Sum</span></code> (njun tip v Leanu je <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">→</span> <span class="pre">Type</span> <span class="pre">→</span> <span class="pre">Type</span></code>), imamo tudi ustrezne konstruktorje izjav, na primer <code class="docutils literal notranslate"><span class="pre">∧</span></code> in <code class="docutils literal notranslate"><span class="pre">∨</span></code> tipa <code class="docutils literal notranslate"><span class="pre">Prop</span> <span class="pre">→</span> <span class="pre">Prop</span> <span class="pre">→</span> <span class="pre">Prop</span></code>. Z njimi bi zgornjo izjavo ustrezneje predstavili kot:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">dist_prop</span><span class="w"> </span><span class="o">{</span><span class="n">P</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Prop</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">P</span><span class="w"> </span><span class="bp">∨</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="o">((</span><span class="n">P</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">∧</span><span class="w"> </span><span class="o">(</span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">))</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">fun</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">P</span><span class="w"> </span><span class="bp">∨</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">And.intro</span>
+<span class="w">    </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="o">(</span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">P</span><span class="o">)</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">(</span><span class="n">Or.inl</span><span class="w"> </span><span class="n">x</span><span class="o">))</span>
+<span class="w">    </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="o">(</span><span class="n">y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Q</span><span class="o">)</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">(</span><span class="n">Or.inr</span><span class="w"> </span><span class="n">y</span><span class="o">))</span>
+</pre></div>
+</div>
+<p>Prednost tipa <code class="docutils literal notranslate"><span class="pre">Prop</span></code> je v tem, da lahko z njim predpostavimo tudi izjave, ki nimajo ustrezne konstrukcije. Na primer v Leanu lahko enostavno predpostavimo aksiom izključene tretje možnosti:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">axiom</span><span class="w"> </span><span class="n">excluded_middle</span><span class="w"> </span><span class="o">(</span><span class="n">P</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Prop</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="bp">∨</span><span class="w"> </span><span class="bp">¬</span><span class="w"> </span><span class="n">P</span>
+</pre></div>
+</div>
+<p>Če bi podobno hoteli narediti pri tipu <code class="docutils literal notranslate"><span class="pre">Type</span></code>, bi moral Lean ob izvajanju skonstruirati funkcijo tipa <code class="docutils literal notranslate"><span class="pre">Sum</span> <span class="pre">P</span> <span class="pre">(P</span> <span class="pre">→</span> <span class="pre">Empty)</span></code>, ki seveda ne obstaja. Pri tipu <code class="docutils literal notranslate"><span class="pre">Prop</span></code> te težave ni, saj se vrednost <code class="docutils literal notranslate"><span class="pre">excluded_middle</span></code> ob izvajanju sploh ne bo pojavila.</p>
+</section>
+<section id="dokazovanje-s-taktikami">
+<h2>Dokazovanje s taktikami<a class="headerlink" href="#dokazovanje-s-taktikami" title="Link to this heading">#</a></h2>
+<p>Poleg pisanja dokazov s funkcijami Lean podpira tudi pisanje dokazov s pomočjo <em>taktik</em>. Taktike so ukazi, ki računalniku dajo napotke, kako naj konstruira dokaze. Zgornjo izjavo <code class="docutils literal notranslate"><span class="pre">dist_prop</span></code> smo sicer dokazali z neposredno konstrukcijo funkcije, a pri zapletenejših izjavah je to bolj nerodno. Pri pisanju dokazov lahko Leanu z ukazom <code class="docutils literal notranslate"><span class="pre">by</span></code> sporočimo, naj preklopi na taktični način. V njem lahko v pogledu <em>InfoView</em> vidimo trenutni cilj ter vse predpostavke, ki jih imamo na voljo. Izjavo <code class="docutils literal notranslate"><span class="pre">dist_prop</span></code> bi s taktikami dokazali na sledeč način. Seveda bi taktike pisali interaktivno glede na spreminjajoči se cilj. Tu bomo cilje zapisali v komentarje.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">dist_prop_s_taktikami</span><span class="w"> </span><span class="o">{</span><span class="n">P</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Prop</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">P</span><span class="w"> </span><span class="bp">∨</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="o">((</span><span class="n">P</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">)</span><span class="w"> </span><span class="bp">∧</span><span class="w"> </span><span class="o">(</span><span class="n">Q</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">R</span><span class="o">))</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">  </span><span class="c1">-- cilj: (P ∨ Q → R) → (P → R) ∧ (Q → R)</span>
+<span class="w">  </span><span class="n">intro</span><span class="w"> </span><span class="n">H</span><span class="w">  </span><span class="c1">-- vpelje predpostavko </span>
+<span class="w">  </span><span class="c1">-- predpostavka H : P ∨ Q → R</span>
+<span class="w">  </span><span class="c1">-- cilj: (P → R) ∧ (Q → R)</span>
+<span class="w">  </span><span class="n">constructor</span><span class="w">  </span><span class="c1">-- konjunkcijo sestavi iz dveh delov</span>
+<span class="w">  </span><span class="bp">·</span><span class="w"> </span><span class="c1">-- cilj: (P → R)</span>
+<span class="w">    </span><span class="n">intro</span><span class="w"> </span><span class="n">H_P</span>
+<span class="w">    </span><span class="c1">-- predpostavka H : P ∨ Q → R</span>
+<span class="w">    </span><span class="c1">-- predpostavka H_P : P</span>
+<span class="w">    </span><span class="c1">-- cilj: R</span>
+<span class="w">    </span><span class="n">apply</span><span class="w"> </span><span class="n">H</span><span class="w">  </span><span class="c1">-- uporabi predpostavko H</span>
+<span class="w">    </span><span class="c1">-- predpostavka H : P ∨ Q → R</span>
+<span class="w">    </span><span class="c1">-- predpostavka H_P : P</span>
+<span class="w">    </span><span class="c1">-- cilj: P ∨ Q</span>
+<span class="w">    </span><span class="n">left</span><span class="w">  </span><span class="c1">-- izmed dveh možnih konstruktorjev za P ∨ Q izbere levega</span>
+<span class="w">    </span><span class="c1">-- predpostavka H : P ∨ Q → R</span>
+<span class="w">    </span><span class="c1">-- predpostavka H_P : P</span>
+<span class="w">    </span><span class="c1">-- cilj: P</span>
+<span class="w">    </span><span class="n">assumption</span><span class="w">  </span><span class="c1">-- cilj dokaže natanko predpostavka H_P</span>
+
+<span class="w">  </span><span class="bp">·</span><span class="w"> </span><span class="c1">-- cilj: (Q → R)</span>
+<span class="w">    </span><span class="c1">-- tu bi lahko ponovili zgornje korake ali kaj podobnega, lahko pa tudi na</span>
+<span class="w">    </span><span class="c1">-- poljubni točki z exact podamo ekspliciten dokaz</span>
+<span class="w">    </span><span class="n">exact</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="n">H_Q</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">(</span><span class="n">Or.inr</span><span class="w"> </span><span class="n">H_Q</span><span class="o">))</span>
+</pre></div>
+</div>
+<p>S taktikami smo računalnik usmerjali, da je v ozadju spisal ekspliciten dokaz. Ogledamo si ga lahko z ukazom <code class="docutils literal notranslate"><span class="pre">#print</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#print</span><span class="w"> </span><span class="n">dist_prop_s_taktikami</span>
+<span class="c1">-- izpiše:</span>
+<span class="c1">-- def dist_prop_s_taktikami : ∀ {P Q R : Prop}, (P ∨ Q → R) → (P → R) ∧ (Q → R) :=</span>
+<span class="c1">-- fun {P Q R} H =&gt; ⟨fun H_P =&gt; H (Or.inl H_P), fun H_Q =&gt; H (Or.inr H_Q)⟩</span>
+</pre></div>
+</div>
+<p>Zdaj smo rešili dve težavi od zadnjič: (1) neomejeno rekurzijo in (2) nerodno pisanje dokazov s funkcijami. V naslednjem poglavju si bomo ogledali še, kako bi predstavili predikate in kvantifikatorje.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05-curry-howardov-izomorfizem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Curry-Howardov izomorfizem</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07-odvisni-tipi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Odvisni tipi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicije-vrednosti">Definicije vrednosti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polimorfne-funkcije">Polimorfne funkcije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicitni-argumenti">Implicitni argumenti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rekurzija">Rekurzija</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-prop">Tip <code class="docutils literal notranslate"><span class="pre">Prop</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dokazovanje-s-taktikami">Dokazovanje s taktikami</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

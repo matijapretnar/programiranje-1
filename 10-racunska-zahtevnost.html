@@ -1,0 +1,1398 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spremenljive podatkovne strukture &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10-racunska-zahtevnost';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Iskalna drevesa" href="11-iskalna-drevesa.html" />
+    <link rel="prev" title="Izračunljivost" href="09-izracunljivost.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/10-racunska-zahtevnost.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spremenljive podatkovne strukture</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predstavitev-seznamov-v-pomnilniku">Predstavitev seznamov v pomnilniku</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-array">Tip <code class="docutils literal notranslate"><span class="pre">array</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zanki-for-in-while">Zanki <code class="docutils literal notranslate"><span class="pre">for</span></code> in <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-yatesov-algoritem">Fisher-Yatesov algoritem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naivni-algoritmi-za-urejanje">Naivni algoritmi za urejanje</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spremenljive-podatkovne-strukture">
+<h1>Spremenljive podatkovne strukture<a class="headerlink" href="#spremenljive-podatkovne-strukture" title="Link to this heading">#</a></h1>
+<p>Podatkovne strukture, ki smo jih v OCamlu spoznali do sedaj, so bile nespremenljive. Res smo govorili, da smo seznamu na začetek dodali glavo, vendar s tem prvotnega seznama nismo spremenili, temveč smo naredili nov seznam, ki je imel starega za rep. V Pythonu smo seznam lahko dejansko spremenili. Na primer, sledeča funkcija <code class="docutils literal notranslate"><span class="pre">f</span></code> ob vsakem klicu seznam <code class="docutils literal notranslate"><span class="pre">sez</span></code> razširi z enim elementom:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sez</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">sez</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">sez</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">17</span>
+</pre></div>
+</div>
+<p>Podobne funkcije v OCamlu sploh (še) ne znamo napisati. Tudi če napišemo nekaj podobnega:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">sez</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">sez</span> <span class="o">=</span> <span class="n">x</span> <span class="o">::</span> <span class="n">sez</span> <span class="k">in</span>
+    <span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">sez</span>
+<span class="k">let</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span>
+    <span class="n">f</span> <span class="n">x</span> <span class="o">+</span> <span class="n">f</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val sez : int list = [1; 2; 3]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val f : int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val g : int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>funkcija <code class="docutils literal notranslate"><span class="pre">f</span></code> ne spremeni seznama <code class="docutils literal notranslate"><span class="pre">sez</span></code>, temveč naredi nov seznam in ga lokalno poimenuje z istim imenom. Posledično bo ta novi seznam vedno dolžine 4:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">f</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 8
+</pre></div>
+</div>
+</div>
+</div>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<p>Kot praktičen programski jezik pa OCaml pozna tudi spremenljive podatkovne strukture. Najenostavnejša od njih so <em>reference</em>. Reference imajo tip oblike <code class="docutils literal notranslate"><span class="pre">τ</span> <span class="pre">ref</span></code> in predstavljajo eno samo spremenljivo vrednost tipa <code class="docutils literal notranslate"><span class="pre">τ</span></code>. Predstavljamo si jo lahko kot sklic (oz. referenco) do nekega prostora v pomnilniku. Novo referenco ustvarimo s funkcijo <code class="docutils literal notranslate"><span class="pre">ref</span></code>, ki sprejme začetno vrednost, spravljeno v prostoru, in vrne sklic nanj:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : &#39;a -&gt; &#39;a ref = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">r</span> <span class="o">=</span> <span class="n">ref</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val r : int ref = {contents = 20}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sklic <code class="docutils literal notranslate"><span class="pre">r</span></code> torej kaže na prostor v pomnilniku, v katerem je trenutno shranjena vrednost <code class="docutils literal notranslate"><span class="pre">20</span></code>. Če želimo dostopati do trenutne vrednosti reference, uporabimo operacijo <code class="docutils literal notranslate"><span class="pre">!</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(!)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : &#39;a ref -&gt; &#39;a = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="n">r</span> <span class="o">+</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 120
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če želimo spremeniti vrednost, uporabimo operacijo <code class="docutils literal notranslate"><span class="pre">:=</span></code>, ki sprejme referenco ter njeno novo vrednost.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(:=)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : &#39;a ref -&gt; &#39;a -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tip rezultata <code class="docutils literal notranslate"><span class="pre">unit</span></code> nam nakazuje, da funkcija ne vrne ničesar koristnega temveč sproži stranski učinek spremembe pomnilnika.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">:=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kljub temu da so seznami v OCamlu nespremenljivi, pa so reference spremenljive, zato lahko z njimi naredimo program, ki se obnaša kot tisti v Pythonu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">sklic_na_seznam</span> <span class="o">=</span> <span class="n">ref</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span>
+    <span class="n">sklic_na_seznam</span> <span class="o">:=</span> <span class="n">x</span> <span class="o">::</span> <span class="o">!</span><span class="n">sklic_na_seznam</span><span class="o">;</span>
+    <span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="o">!</span><span class="n">sklic_na_seznam</span>
+<span class="k">let</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span>
+    <span class="n">f</span> <span class="n">x</span> <span class="o">+</span> <span class="n">f</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val sklic_na_seznam : int list ref = {contents = [1; 2; 3]}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val f : int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val g : int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tokrat v funkciji <code class="docutils literal notranslate"><span class="pre">f</span></code> nismo s pomočjo <code class="docutils literal notranslate"><span class="pre">let</span></code> definirali nove vrednosti z istim imenom, temveč smo uporabili operacijo <code class="docutils literal notranslate"><span class="pre">:=</span></code> in spremenili vsebino obstoječega sklica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">f</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 13
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reference so v resnici samo poseben primer spremenljivih zapisov. Ob definiciji zapisnega tipa v OCamlu lahko namreč nekatera polja s ključno besedo <code class="docutils literal notranslate"><span class="pre">mutable</span></code> označimo za spremenljiva ter jih potem spreminjamo s pomočjo operacije <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">racun</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">lastnik</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">stevilka</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span>
+  <span class="k">mutable</span> <span class="n">znesek</span> <span class="o">:</span> <span class="kt">float</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type racun = { lastnik : string; stevilka : int; mutable znesek : float; }
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">moj_racun</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">lastnik</span> <span class="o">=</span> <span class="s2">&quot;jaz&quot;</span><span class="o">;</span>
+  <span class="n">stevilka</span> <span class="o">=</span> <span class="mi">27004498</span><span class="o">;</span>
+  <span class="n">znesek</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val moj_racun : racun = {lastnik = &quot;jaz&quot;; stevilka = 27004498; znesek = 0.}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">moj_racun</span><span class="o">.</span><span class="n">znesek</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : float = 0.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">moj_racun</span><span class="o">.</span><span class="n">znesek</span> <span class="o">&lt;-</span> <span class="mi">1000</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">moj_racun</span><span class="o">.</span><span class="n">znesek</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : float = 1000.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reference ter operacije na njih pa bi lahko definirali kot:</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">ref</span> <span class="o">=</span> <span class="o">{</span><span class="k">mutable</span> <span class="n">contents</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span><span class="o">}</span>
+
+<span class="k">let</span> <span class="n">ref</span> <span class="n">x</span> <span class="o">=</span> <span class="o">{</span><span class="n">contents</span> <span class="o">=</span> <span class="n">x</span><span class="o">}</span>
+
+<span class="k">let</span> <span class="o">(!)</span> <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">contents</span>
+
+<span class="k">let</span> <span class="o">(:=)</span> <span class="n">r</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">contents</span> <span class="o">&lt;-</span> <span class="n">x</span>
+</pre></div>
+</div>
+</section>
+<section id="predstavitev-seznamov-v-pomnilniku">
+<h2>Predstavitev seznamov v pomnilniku<a class="headerlink" href="#predstavitev-seznamov-v-pomnilniku" title="Link to this heading">#</a></h2>
+<p>Videli smo že, da je OCamlov tip <code class="docutils literal notranslate"><span class="pre">list</span></code> v pomnilniku predstavljen z verižnimi seznami. Vsak seznam je bodisi prazen, bodisi je sestavljen iz glave in repa. Na primer, seznam <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">s</span> <span class="pre">=</span> <span class="pre">[6;</span> <span class="pre">2;</span> <span class="pre">4]</span></code> ustreza predstavitvi</p>
+<p><img alt="" src="_images/seznam-ocaml.png" /></p>
+<p>Po pomnilniku seveda ne moremo risati puščic. Namesto tega so celice oštevilčene, kazalci pa so potem samo njihovi naslovi:</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">:</span> <span class="mi">19</span>         <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>  <span class="mi">22</span>   <span class="mi">0</span>
+               <span class="mi">1</span>   <span class="mi">6</span>  <span class="mi">15</span>   <span class="mi">1</span>   <span class="mi">4</span>  <span class="mi">30</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+<p>OCaml pa poleg verižnih seznamov pozna tudi tip <code class="docutils literal notranslate"><span class="pre">array</span></code>, kjer so podatko predstavljeni s <em>tabelami</em>, torej v zaporednih prostorih v pomnilniku. V tem primeru moramo na začetku tabele podati tudi njeno velikost, da se ve, kje se konča (verižni seznami se končajo, ko kazalec kaže na prazen seznam). Tabele tako kot sezname pišemo v oglate oklepaje, le da dodamo še dve navpični črti. Preden si pogledamo funkcije za delo s tabelami, si oglejmo še njihovo predstavitev v pomnilniku. Tabelo, definirano z <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">s</span> <span class="pre">=</span> <span class="pre">[|6;</span> <span class="pre">2;</span> <span class="pre">4|]</span></code>, v pomnilniku predstavimo kot</p>
+<p><img alt="" src="_images/tabela-ocaml.png" /></p>
+<p>oziroma natančneje kot</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">:</span> <span class="mi">19</span>         <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">3</span>   <span class="mi">6</span>   <span class="mi">2</span>   <span class="mi">4</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Pythonovi seznami so prav tako predstavljeni s tabelami in imajo podobno predstavitev kot tip <code class="docutils literal notranslate"><span class="pre">array</span></code> v OCamlu. Ena razlika je, da so Pythonove tabele razširljive, zato poleg podatka o velikosti vsebujejo še podatek o rezerviranem prostoru (če ga velikost preseže, Python rezervira večji kos pomnilnika in tabelo prenese vanj). Poleg tega pa je Python dinamičen jezik, zato mora v pomnilniku hraniti še podatke o trenutnem tipu. Torej je slika Pythonovega seznama <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">[6,</span> <span class="pre">2,</span> <span class="pre">4]</span></code> približno taka:</p>
+<p><img alt="" src="_images/tabela-python.png" /></p>
+<p>malo bolj natančno pa kot</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="p">:</span> <span class="mi">19</span>         <span class="mi">0</span>   <span class="mi">0</span> <span class="mi">123</span>   <span class="mi">6</span>   <span class="mi">0</span>   <span class="mi">0</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span> <span class="mi">123</span>   <span class="mi">4</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+             <span class="mi">246</span>   <span class="mi">3</span>   <span class="mi">6</span>   <span class="mi">3</span>  <span class="mi">29</span>  <span class="mi">11</span>
+               <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span> <span class="mi">123</span>   <span class="mi">2</span>
+</pre></div>
+</div>
+<p>kjer si lahko predstavljamo, da sta na mestih <code class="docutils literal notranslate"><span class="pre">123</span></code> in <code class="docutils literal notranslate"><span class="pre">246</span></code> shranjeni še definiciji razredov <code class="docutils literal notranslate"><span class="pre">int</span></code> in <code class="docutils literal notranslate"><span class="pre">list</span></code>. Različne predstavitve v pomnilniku vodijo v različne računske zahtevnosti operacij. Za seznam dolžine <span class="math notranslate nohighlight">\(n\)</span> so časovne zahtevnosti osnovnih operacij sledeče:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>operacija</p></th>
+<th class="head text-center"><p>OCaml <code class="docutils literal notranslate"><span class="pre">array</span></code></p></th>
+<th class="head text-center"><p>Python <code class="docutils literal notranslate"><span class="pre">list</span></code></p></th>
+<th class="head text-center"><p>OCaml <code class="docutils literal notranslate"><span class="pre">list</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>indeksiranje</p></td>
+<td class="text-center"><p>O(1)</p></td>
+<td class="text-center"><p>O(1)</p></td>
+<td class="text-center"><p>O(n)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>dodaj na začetek</p></td>
+<td class="text-center"><p>O(n)</p></td>
+<td class="text-center"><p>O(n)</p></td>
+<td class="text-center"><p>O(1)</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>dodaj na konec</p></td>
+<td class="text-center"><p>O(n)</p></td>
+<td class="text-center"><p>O(1)</p></td>
+<td class="text-center"><p>O(n)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>dolžina</p></td>
+<td class="text-center"><p>O(1)</p></td>
+<td class="text-center"><p>O(1)</p></td>
+<td class="text-center"><p>O(n)</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>izračun repa</p></td>
+<td class="text-center"><p>O(n)</p></td>
+<td class="text-center"><p>O(n)</p></td>
+<td class="text-center"><p>O(1)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tip-array">
+<h2>Tip <code class="docutils literal notranslate"><span class="pre">array</span></code><a class="headerlink" href="#tip-array" title="Link to this heading">#</a></h2>
+<p>Tabele v OCamlu so v veliko pogledih podobne seznamom. Tip <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">array</span></code> predstavlja tabelo elementov tipa <code class="docutils literal notranslate"><span class="pre">'a</span></code>, v modulu <a class="reference external" href="https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html"><code class="docutils literal notranslate"><span class="pre">Array</span></code></a> pa so na voljo običajne funkcije:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="o">[|</span><span class="mi">10</span><span class="o">;</span> <span class="mi">20</span><span class="o">;</span> <span class="mi">30</span><span class="o">|]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="n">succ</span> <span class="o">[|</span><span class="mi">10</span><span class="o">;</span> <span class="mi">20</span><span class="o">;</span> <span class="mi">30</span><span class="o">|]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|11; 21; 31|]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Array</span><span class="p">.</span><span class="n">make</span> <span class="mi">3</span> <span class="sc">&#39;a&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : char array = [|&#39;a&#39;; &#39;a&#39;; &#39;a&#39;|]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Array</span><span class="p">.</span><span class="n">of_list</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">7</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|5; 2; 1; 4; 3; 6; 8; 7|]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Array</span><span class="p">.</span><span class="n">make_matrix</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array array = [|[|0; 0|]; [|0; 0|]|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tako kot v Pythonu so OCamlove tabele indeksirane in do elementa z indeksom <code class="docutils literal notranslate"><span class="pre">i</span></code> dostopamo prek <code class="docutils literal notranslate"><span class="pre">tabela.(i)</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="o">[|</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">|]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val t : int array = [|1; 2; 3|]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.(</span><span class="mi">0</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.(</span><span class="mi">2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poleg predstavitve v pomnilniku pa je tip <code class="docutils literal notranslate"><span class="pre">array</span></code> tudi spremenljiv (sicer ne bi bil preveč uporaben, saj bi že za majhno spremembo morali prekopirati celotno tabelo).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|1; 2; 3|]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.(</span><span class="mi">2</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|1; 2; 5|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tako imamo pri funkcijah na tabelah vedno dve možnosti. Lahko vrnemo novo tabelo ali spremenimo obstoječo na mestu. Na primer, tabelo lahko obrnemo tako, da naredimo novo, v kateri so elementi ustrezno preštevilčeni:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">vrni_obrnjeno</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="k">in</span>
+  <span class="nn">Array</span><span class="p">.</span><span class="n">init</span> <span class="n">n</span> <span class="o">(</span><span class="k">fun</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val vrni_obrnjeno : &#39;a array -&gt; &#39;a array = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="n">vrni_obrnjeno</span> <span class="o">[|</span><span class="mi">1</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">10</span><span class="o">;</span> <span class="mi">20</span><span class="o">|]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val t : int array = [|20; 10; 5; 1|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pri tem se prvotna tabela ni spremenila:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|20; 10; 5; 1|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lahko pa tabelo obrnemo tudi na mestu tako, da prvi element zamenjamo z zadnjim, drugega s predzadnjim in tako naprej do sredine. Pri tem si lahko pomagamo tudi z zanko <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">i</span> <span class="n">j</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">i</span><span class="o">)</span> <span class="k">in</span>
+  <span class="n">tabela</span><span class="o">.(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span><span class="o">);</span>
+  <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="n">t</span>
+
+<span class="k">let</span> <span class="n">obrni_na_mestu</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="k">in</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">do</span>
+    <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">i</span> <span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val zamenjaj : &#39;a array -&gt; int -&gt; int -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val obrni_na_mestu : &#39;a array -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t&#39;</span> <span class="o">=</span> <span class="o">[|</span><span class="mi">3</span><span class="o">;</span> <span class="mi">33</span><span class="o">;</span> <span class="mi">333</span><span class="o">;</span> <span class="mi">3333</span><span class="o">|]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val t&#39; : int array = [|3; 33; 333; 3333|]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">obrni_na_mestu</span> <span class="n">t&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">obrni_na_mestu</span></code> ni vrnila ničesar, je pa imela stranski učinek, da se je spremenila tabela <code class="docutils literal notranslate"><span class="pre">t'</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">t&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|3333; 333; 33; 3|]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zanki-for-in-while">
+<h2>Zanki <code class="docutils literal notranslate"><span class="pre">for</span></code> in <code class="docutils literal notranslate"><span class="pre">while</span></code><a class="headerlink" href="#zanki-for-in-while" title="Link to this heading">#</a></h2>
+<p>Kot smo videli, OCaml pozna tudi zanko <code class="docutils literal notranslate"><span class="pre">for</span></code>, ki pa je v primerjavi s Pythonovo precej omejena. V njej imamo lahko le eno spremenljivko, ki se sprehaja le naraščajoče ali padajoče po zaporednih celih številih. Zanke ne vračajo ničesar, zato tudi zahtevamo, da je njihovo telo tipa <code class="docutils literal notranslate"><span class="pre">unit</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">9</span> <span class="k">do</span>
+  <span class="n">print_endline</span> <span class="o">(</span><span class="n">string_of_int</span> <span class="n">i</span><span class="o">)</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">9</span> <span class="k">downto</span> <span class="mi">1</span> <span class="k">do</span>
+  <span class="n">print_endline</span> <span class="o">(</span><span class="n">string_of_int</span> <span class="n">i</span><span class="o">)</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poleg zanke <code class="docutils literal notranslate"><span class="pre">for</span></code> poznamo tudi zanko <code class="docutils literal notranslate"><span class="pre">while</span></code>, ki telo tipa <code class="docutils literal notranslate"><span class="pre">unit</span></code> ponavlja toliko časa, dokler je izpolnjen pogoj tipa <code class="docutils literal notranslate"><span class="pre">bool</span></code>. Če nočemo neskončne zanke, je koristno, da za pogoj izberemo spremenljiv izraz, npr. tak, ki uporablja reference:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ref</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val i : int ref = {contents = 10}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="o">!</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">do</span>
+  <span class="n">decr</span> <span class="n">i</span><span class="o">;</span>
+  <span class="n">print_endline</span> <span class="o">(</span><span class="n">string_of_int</span> <span class="o">!</span><span class="n">i</span><span class="o">)</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fisher-yatesov-algoritem">
+<h2>Fisher-Yatesov algoritem<a class="headerlink" href="#fisher-yatesov-algoritem" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yatesov algoritem</a> uporabimo, kadar želimo premešati tabelo. Deluje tako, da postopoma gradi naključno permutacijo prvotnega seznama. Najprej izmed vseh elementov izbere enega za prvo mesto, nato izmed vseh preostalih izbere naslednjega za drugo mesto in tako naprej. Pri tem algoritem vsa števila vodi v eni sami spreminjajoči se tabeli: v levi polovici (do vključno <span class="math notranslate nohighlight">\(i\)</span>-tega elementa) so že delno premešani elementi, v desni polovici (od <span class="math notranslate nohighlight">\(i + 1\)</span>-tega do zadnjega) pa so še neizbrani elementi. V <span class="math notranslate nohighlight">\(i\)</span>-tem koraku izmed vseh neizbranih elementov naključno izberemo enega in ga zamenjamo z <span class="math notranslate nohighlight">\(i\)</span>-tim elementom. Algoritem v OCamlu napišemo kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">fisher_yates</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="k">in</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span> <span class="k">do</span>
+    <span class="k">let</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nn">Random</span><span class="p">.</span><span class="n">int</span> <span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span><span class="o">)</span> <span class="k">in</span>
+    <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">i</span> <span class="n">j</span>
+  <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val fisher_yates : &#39;a array -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo si najprej, zakaj algoritem deluje pravilno, torej da vsako permutacijo dobimo z enako verjetnostjo <span class="math notranslate nohighlight">\(1/n!\)</span>. Izberimo si neko permutacijo <span class="math notranslate nohighlight">\(\pi = (\pi_1, \ldots, \pi_n)\)</span>. V prvem koraku moramo izmed vseh <span class="math notranslate nohighlight">\(n\)</span> neizbranih indeksov izbrati <span class="math notranslate nohighlight">\(\pi_1\)</span>, kar se zgodi z verjetnostjo <span class="math notranslate nohighlight">\(1 / n\)</span>. V naslednjem koraku moramo izmed preostalih <span class="math notranslate nohighlight">\(n - 1\)</span> indeksov izbrati <span class="math notranslate nohighlight">\(\pi_2\)</span>, kar se zgodi z verjetnostjo <span class="math notranslate nohighlight">\(1 / (n - 1)\)</span>. Podobno nadaljujemo vse do koraka <span class="math notranslate nohighlight">\(n - 1\)</span>, kjer z verjetnostjo <span class="math notranslate nohighlight">\(1 / 2\)</span> med zadnjima dvema številoma izberemo <span class="math notranslate nohighlight">\(\pi_{n - 1}\)</span>. Med neizbranimi elementi ostane samo še <span class="math notranslate nohighlight">\(\pi_n\)</span>, ki že leži na zadnjem mestu, na katerem bi moral biti. Torej je verjetnost, da smo izbrali permutacijo <span class="math notranslate nohighlight">\(\pi\)</span> enaka <span class="math notranslate nohighlight">\(\frac{1}{n} \cdot \frac{1}{n - 1} \cdots \frac{1}{2} = 1 / n!\)</span>.</p>
+<p>Poglejmo si še učinkovitost algoritma. Naredimo <span class="math notranslate nohighlight">\(O(n)\)</span> korakov, na vsakem pa zamenjamo dva elementa, kar lahko storimo v konstantnem času. Skupaj je časovna zahtevnost algoritma enaka <span class="math notranslate nohighlight">\(O(n)\)</span>. Hitreje kot to ne gre, saj v manj kot <span class="math notranslate nohighlight">\(n\)</span> korakih ne moremo ustvariti permutacije <span class="math notranslate nohighlight">\(n\)</span> elementov. V nasprotnem primeru bi obstajal element, ki ga v nobenem koraku nismo izbrali, kar pomeni, da nekaterih permutacij ne bi mogli ustvariti.</p>
+<p>Če bi si namesto tabele želeli premešati seznam, je najenostavneje, če ga pretvorimo v tabelo, jo premešamo, in nato pretvorimo nazaj v seznam.</p>
+</section>
+<section id="naivni-algoritmi-za-urejanje">
+<h2><a class="reference external" href="https://visualgo.net/en/sorting">Naivni algoritmi za urejanje</a><a class="headerlink" href="#naivni-algoritmi-za-urejanje" title="Link to this heading">#</a></h2>
+<p>Še bolj uporabno kot premešanje tabele pa je njeno urejanje. Obstajajo trije naivni algoritmi za urejanje tabel, ki jih bomo spoznali v tem poglavju in delujejo v času <span class="math notranslate nohighlight">\(O(n^2)\)</span>. V naslednjem poglavju bomo spoznali dva zapletenejša in učinkovitejša algoritma, ki delujeta v času <span class="math notranslate nohighlight">\(O(n \log n)\)</span>. A kljub temu, da kvadratna časovna zahtevnost kmalu zahteva svoj davek, so naivni algoritmi dostikrat hitrejši pri kratkih seznamih in jih v praksi dostikrat uporabimo v kombinaciji z naprednejšimi, kadar dolžina seznama pade pod določeno mejo.</p>
+<p>Prvi algoritem je <em>urejanje z izbiranjem</em> (oz. <em>selection sort</em>), ki deluje tako, da postopoma izbere najmanjši element in ga postavi na prvo mesto, nato izbere naslednji najmanjši element in ga postavi na drugo mesto, in tako naprej. V OCamlu urejanje z izbiranjem napišemo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">uredi_z_izbiranjem</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="k">in</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span> <span class="k">do</span>
+    <span class="k">let</span> <span class="n">indeks_min</span> <span class="o">=</span> <span class="n">ref</span> <span class="n">i</span> <span class="k">in</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">do</span>
+      <span class="k">if</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">tabela</span><span class="o">.(!</span><span class="n">indeks_min</span><span class="o">)</span> <span class="k">then</span> <span class="n">indeks_min</span> <span class="o">:=</span> <span class="n">j</span>
+    <span class="k">done</span><span class="o">;</span>
+    <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">i</span> <span class="o">!</span><span class="n">indeks_min</span>
+  <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val uredi_z_izbiranjem : &#39;a array -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="o">[|</span><span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">0</span><span class="o">|]</span> <span class="k">in</span>
+<span class="n">uredi_z_izbiranjem</span> <span class="n">t</span><span class="o">;</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|0; 1; 2; 3; 4; 5; 6; 7; 8; 9|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Drugi algoritem deluje tako, da postopoma zamenjuje pare zaporednih elementov, ki so v napačnem vrstnem redu. Če se na tak način postopoma sprehodimo čez vse pare v tabeli, bo največji element priplaval na zadnje mesto, zaradi česar algoritem imenujemo <em>urejanje z mehurčki</em> (oz. <em>bubble sort</em>). Postopek ponovimo na preostalih manjših elementih, s čimer na predzadnje mesto priplava drugi največji element, in tako naprej. V zanko lahko dodamo še pogoj, da se zanka prekine, če v obhodu ni bilo nobenih zamenjav, saj to pomeni, da je tabela že urejena. V OCamlu urejanje z mehurčki napišemo kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">uredi_z_mehurcki</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="k">in</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span> <span class="k">do</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">2</span> <span class="k">do</span>
+      <span class="k">if</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="k">then</span>
+        <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">j</span> <span class="o">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="k">done</span>
+  <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val uredi_z_mehurcki : &#39;a array -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="o">[|</span><span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">0</span><span class="o">|]</span> <span class="k">in</span>
+<span class="n">uredi_z_mehurcki</span> <span class="n">t</span><span class="o">;</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|0; 1; 2; 3; 4; 5; 6; 7; 8; 9|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tretji algoritem pa je <em>urejanje z vstavljanjem</em> (oz. <em>insertion sort</em>) in deluje tako, kot urejamo karte pri taroku (za tiste, ki jih urejamo). V roki imamo urejene karte in vsakič, ko dobimo novo, jo postavimo na pravo mesto. Pri urejanju tabel nimamo dveh tabel, temveč eno samo, v kateri na levi strani postopoma gradimo urejeni del, na desni pa so še nerazporejeni elementi. V OCamlu urejanje z vstavljanjem napišemo kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">uredi_z_vstavljanjem</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="k">in</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">do</span>
+    <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">i</span><span class="o">)</span> <span class="k">in</span>
+    <span class="k">let</span> <span class="n">j</span> <span class="o">=</span> <span class="n">ref</span> <span class="n">i</span> <span class="k">in</span>
+    <span class="k">while</span> <span class="o">!</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">tabela</span><span class="o">.(!</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="k">do</span>
+      <span class="n">tabela</span><span class="o">.(!</span><span class="n">j</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="n">tabela</span><span class="o">.(!</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+      <span class="n">decr</span> <span class="n">j</span>
+    <span class="k">done</span><span class="o">;</span>
+    <span class="n">tabela</span><span class="o">.(!</span><span class="n">j</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="n">x</span>
+  <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val uredi_z_vstavljanjem : &#39;a array -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="o">[|</span><span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">0</span><span class="o">|]</span> <span class="k">in</span>
+<span class="n">uredi_z_vstavljanjem</span> <span class="n">t</span><span class="o">;</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int array = [|0; 1; 2; 3; 4; 5; 6; 7; 8; 9|]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Spremenljivka <code class="docutils literal notranslate"><span class="pre">i</span></code> beleži indeks elementa <code class="docutils literal notranslate"><span class="pre">x</span></code>, ki mu poskušamo najti mesto v urejenem delu tabele, ki sega od indeksa <code class="docutils literal notranslate"><span class="pre">0</span></code> do vključno indeksa <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">-</span> <span class="pre">1</span></code>. Začnemo z <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">1</span></code>, saj je ne glede na vrednost prvega elementa del tabele od indeksa <code class="docutils literal notranslate"><span class="pre">0</span></code> do <code class="docutils literal notranslate"><span class="pre">0</span></code> vedno urejen. S spremenljivko <code class="docutils literal notranslate"><span class="pre">j</span></code> se vračamo nazaj po seznamu ter element na mestu <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">-</span> <span class="pre">1</span></code> zamikamo v desno, dokler ne najdemo elementa, ki je večji od <code class="docutils literal notranslate"><span class="pre">x</span></code>. Na tisti točki z <code class="docutils literal notranslate"><span class="pre">x</span></code> povozimo element na mestu <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">-</span> <span class="pre">1</span></code>, saj je prejšnji element že prekopiran na mesto <code class="docutils literal notranslate"><span class="pre">j</span></code>. Če bi želeli, bi lahko <code class="docutils literal notranslate"><span class="pre">x</span></code> tako kot pri urejanju z mehurčki zaporedoma menjali z manjšimi elementi, dokler ne najdemo mesta zanj, vendar bi s tem povečali število pisanj v tabelo.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="09-izracunljivost.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Izračunljivost</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11-iskalna-drevesa.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Iskalna drevesa</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predstavitev-seznamov-v-pomnilniku">Predstavitev seznamov v pomnilniku</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-array">Tip <code class="docutils literal notranslate"><span class="pre">array</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zanki-for-in-while">Zanki <code class="docutils literal notranslate"><span class="pre">for</span></code> in <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-yatesov-algoritem">Fisher-Yatesov algoritem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naivni-algoritmi-za-urejanje">Naivni algoritmi za urejanje</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1182 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. domača naloga &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dn-1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. domača naloga" href="dn-2.html" />
+    <link rel="prev" title="Memoizacija v OCamlu" href="13-03-memoizacija-v-ocamlu.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/dn-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. domača naloga</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ogrevanje">Ogrevanje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collatzovo-zaporedje">Collatzovo zaporedje</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fiksne-tocke">Fiksne točke</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zdruzevanje-z-locilom">Združevanje z ločilom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razbitje-seznama">Razbitje seznama</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izomorfizmi-mnozic">Izomorfizmi množic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-cong-b-times-a"><span class="math notranslate nohighlight">\(A \times B \cong B \times A\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-b-cong-b-a"><span class="math notranslate nohighlight">\(A + B \cong B + A\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-times-c-cong-a-times-b-times-c"><span class="math notranslate nohighlight">\(A \times (B \times C) \cong (A \times B) \times C\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-b-c-cong-a-b-c"><span class="math notranslate nohighlight">\(A + (B + C) \cong (A + B) + C\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-c-cong-a-times-b-a-times-c"><span class="math notranslate nohighlight">\(A \times (B + C) \cong (A \times B) + (A \times C)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-b-c-cong-a-b-times-a-c"><span class="math notranslate nohighlight">\(A^{B + C} \cong A^B \times A^C\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-c-cong-a-c-times-b-c"><span class="math notranslate nohighlight">\((A \times B)^C \cong A^C \times B^C\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutacije">Permutacije</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kompozitum">Kompozitum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inverz">Inverz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razcep-na-cikle">Razcep na cikle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpozicije-permutacije">Transpozicije permutacije</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sudoku">Sudoku</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dopolnitev-mreze">Dopolnitev mreže</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izpisi-mrezo">Izpiši mrežo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preveri-ali-resitev-ustreza-mrezi">Preveri, ali rešitev ustreza mreži</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kandidati-za-dano-prazno-mesto">Kandidati za dano prazno mesto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iskanje-resitve">Iskanje rešitve</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="domaca-naloga">
+<h1>1. domača naloga<a class="headerlink" href="#domaca-naloga" title="Link to this heading">#</a></h1>
+<section id="ogrevanje">
+<h2>Ogrevanje<a class="headerlink" href="#ogrevanje" title="Link to this heading">#</a></h2>
+<section id="collatzovo-zaporedje">
+<h3>Collatzovo zaporedje<a class="headerlink" href="#collatzovo-zaporedje" title="Link to this heading">#</a></h3>
+<p>Collatzovo zaporedje se začne s pozitivnim naravnim številom <span class="math notranslate nohighlight">\(a_0\)</span> ter nadaljuje kot:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{n + 1} = \begin{cases} a_n / 2, &amp; \text{če je } a_n \text{ sodo} \\ 3 a_n + 1, &amp; \text{če je } a_n \text{ liho} \end{cases}\end{split}\]</div>
+<p>Sestavite funkcijo <code class="docutils literal notranslate"><span class="pre">collatz</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span></code>, ki sprejme začetni člen zaporedja in vrne seznam vseh členov, dokler zaporedje ne doseže <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_1</span> <span class="o">=</span> <span class="n">collatz</span> <span class="mi">1024</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_1 : int list =
+  [1024; 512; 256; 128; 64; 32; 16; 8; 4; 2; 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_2</span> <span class="o">=</span> <span class="n">collatz</span> <span class="mi">27</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_2 : int list =
+  [27; 82; 41; 124; 62; 31; 94; 47; 142; 71; 214; 107; 322; 161; 484; 242;
+   121; 364; 182; 91; 274; 137; 412; 206; 103; 310; 155; 466; 233; 700; 350;
+   175; 526; 263; 790; 395; 1186; 593; 1780; 890; 445; 1336; 668; 334; 167;
+   502; 251; 754; 377; 1132; 566; 283; 850; 425; 1276; 638; 319; 958; 479;
+   1438; 719; 2158; 1079; 3238; 1619; 4858; 2429; 7288; 3644; 1822; 911;
+   2734; 1367; 4102; 2051; 6154; 3077; 9232; 4616; 2308; 1154; 577; 1732;
+   866; 433; 1300; 650; 325; 976; 488; 244; 122; 61; 184; 92; 46; 23; 70; 35;
+   106; 53; 160; 80; 40; 20; 10; 5; 16; 8; 4; 2; 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fiksne-tocke">
+<h3>Fiksne točke<a class="headerlink" href="#fiksne-tocke" title="Link to this heading">#</a></h3>
+<p>Sestavite funkcijo <code class="docutils literal notranslate"><span class="pre">fiksne_tocke</span> <span class="pre">:</span> <span class="pre">('a</span> <span class="pre">-&gt;</span> <span class="pre">'a)</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span></code>, ki za dano funkcijo in seznam vrne podseznam vseh elementov, ki so fiksne točke.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_3</span> <span class="o">=</span> <span class="n">fiksne_tocke</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">[</span><span class="mi">0</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">10</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_3 : int list = [0; 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_4</span> <span class="o">=</span> <span class="n">fiksne_tocke</span> <span class="nn">List</span><span class="p">.</span><span class="n">rev</span> <span class="o">[[</span><span class="mi">3</span><span class="o">];</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">1</span><span class="o">];</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">6</span><span class="o">];</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">];</span> <span class="bp">[]</span><span class="o">;</span> <span class="o">[</span><span class="mi">8</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_4 : int list list = [[3]; [1; 4; 1]; [5; 3; 5]; []]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zdruzevanje-z-locilom">
+<h3>Združevanje z ločilom<a class="headerlink" href="#zdruzevanje-z-locilom" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">sep_concat</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span></code>, ki združi seznam seznamov, pri čemer med elemente različnih seznamov ter na začetek in konec vstavi dano ločilo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_5</span> <span class="o">=</span> <span class="n">sep_concat</span> <span class="mi">42</span> <span class="o">[[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">];</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">];</span> <span class="bp">[]</span><span class="o">;</span> <span class="o">[</span><span class="mi">6</span><span class="o">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_5 : int list = [42; 1; 2; 3; 42; 4; 5; 42; 42; 6; 42]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_6</span> <span class="o">=</span> <span class="n">sep_concat</span> <span class="mi">42</span> <span class="bp">[]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_6 : int list = [42]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="razbitje-seznama">
+<h3>Razbitje seznama<a class="headerlink" href="#razbitje-seznama" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">partition</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">list</span></code>, ki sprejme pozitivno naravno število <span class="math notranslate nohighlight">\(k\)</span> in seznam <span class="math notranslate nohighlight">\([a_0, \dots, a_n]\)</span> ter ga razdeli na zaporedne podsezname <span class="math notranslate nohighlight">\([a_0, \dots, a_{k - 1}], [a_k, \dots, a_{2 k - 1}], \dots\)</span>, pri čemer je zadnji podseznam lahko tudi krajši.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_7</span> <span class="o">=</span> <span class="n">partition</span> <span class="mi">3</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">9</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_7 : int list list = [[1; 2; 3]; [4; 5; 6]; [7; 8; 9]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_ogrevanje_8</span> <span class="o">=</span> <span class="n">partition</span> <span class="mi">3</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">10</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_ogrevanje_8 : int list list =
+  [[1; 2; 3]; [4; 5; 6]; [7; 8; 9]; [10]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="izomorfizmi-mnozic">
+<h2>Izomorfizmi množic<a class="headerlink" href="#izomorfizmi-mnozic" title="Link to this heading">#</a></h2>
+<p>Na predavanjih smo videli, da funkciji <code class="docutils literal notranslate"><span class="pre">curry</span> <span class="pre">:</span> <span class="pre">('a</span> <span class="pre">*</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">'c)</span> <span class="pre">-&gt;</span> <span class="pre">('a</span> <span class="pre">-&gt;</span> <span class="pre">('b</span> <span class="pre">-&gt;</span> <span class="pre">'c))</span></code> in <code class="docutils literal notranslate"><span class="pre">uncurry</span> <span class="pre">:</span> <span class="pre">('a</span> <span class="pre">-&gt;</span> <span class="pre">('b</span> <span class="pre">-&gt;</span> <span class="pre">'c))</span> <span class="pre">-&gt;</span> <span class="pre">('a</span> <span class="pre">*</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">'c)</span></code> predstavljata izomorfizem množic <span class="math notranslate nohighlight">\(C^{A \times B} \cong (C^B)^A\)</span>, če kartezični produkt predstavimo s produktnim, eksponent pa s funkcijskim tipom.</p>
+<p>Podobno velja tudi za ostale znane izomorfizme, če disjunktno unijo
+$<span class="math notranslate nohighlight">\(A + B = \{ \mathrm{in}_1(a) \mid a \in A \} \cup \{ \mathrm{in}_2(b) \mid b \in B \}\)</span>$
+predstavimo s tipom <code class="docutils literal notranslate"><span class="pre">('a,</span> <span class="pre">'b)</span> <span class="pre">sum</span></code>, definiranim z:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">In1</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">|</span> <span class="nc">In2</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type (&#39;a, &#39;b) sum = In1 of &#39;a | In2 of &#39;b
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite pare funkcij <code class="docutils literal notranslate"><span class="pre">phi1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">psi1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">phi7</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">psi7</span></code>, ki predstavljajo spodnje izomorfizme množic. Tega, da so si funkcije inverzne, ni treba dokazovati.</p>
+<section id="a-times-b-cong-b-times-a">
+<h3><span class="math notranslate nohighlight">\(A \times B \cong B \times A\)</span><a class="headerlink" href="#a-times-b-cong-b-times-a" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-b-cong-b-a">
+<h3><span class="math notranslate nohighlight">\(A + B \cong B + A\)</span><a class="headerlink" href="#a-b-cong-b-a" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-times-b-times-c-cong-a-times-b-times-c">
+<h3><span class="math notranslate nohighlight">\(A \times (B \times C) \cong (A \times B) \times C\)</span><a class="headerlink" href="#a-times-b-times-c-cong-a-times-b-times-c" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-b-c-cong-a-b-c">
+<h3><span class="math notranslate nohighlight">\(A + (B + C) \cong (A + B) + C\)</span><a class="headerlink" href="#a-b-c-cong-a-b-c" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-times-b-c-cong-a-times-b-a-times-c">
+<h3><span class="math notranslate nohighlight">\(A \times (B + C) \cong (A \times B) + (A \times C)\)</span><a class="headerlink" href="#a-times-b-c-cong-a-times-b-a-times-c" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-b-c-cong-a-b-times-a-c">
+<h3><span class="math notranslate nohighlight">\(A^{B + C} \cong A^B \times A^C\)</span><a class="headerlink" href="#a-b-c-cong-a-b-times-a-c" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-times-b-c-cong-a-c-times-b-c">
+<h3><span class="math notranslate nohighlight">\((A \times B)^C \cong A^C \times B^C\)</span><a class="headerlink" href="#a-times-b-c-cong-a-c-times-b-c" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="permutacije">
+<h2>Permutacije<a class="headerlink" href="#permutacije" title="Link to this heading">#</a></h2>
+<p>Permutacije so preureditve elementov <span class="math notranslate nohighlight">\(\{0, 1, \dots, n-1\}\)</span>, torej bijektivne preslikave $<span class="math notranslate nohighlight">\(p \colon \{0, 1, \dots, n-1\} \to \{0, 1, \dots, n-1\}.\)</span><span class="math notranslate nohighlight">\( V nalogi bomo permutacije predstavili s seznamom števil, v katerem je na \)</span>i<span class="math notranslate nohighlight">\(-tem mestu seznama zapisana slika elementa \)</span>i<span class="math notranslate nohighlight">\(.
+Na primer, permutaciji \)</span>0 , 1 , 2 , 3 , 4 , 5 \choose 5 , 3 , 2 , 1 , 4 , 0<span class="math notranslate nohighlight">\( in \)</span>0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 \choose 3 , 9 , 1 , 7 , 5 , 4 , 6 , 8 , 2 , 0$ bi zapisali s seznamoma:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">permutacija_1</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">0</span><span class="o">]</span>
+<span class="k">let</span> <span class="n">permutacija_2</span> <span class="o">=</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">0</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val permutacija_1 : int list = [5; 3; 2; 1; 4; 0]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val permutacija_2 : int list = [3; 9; 1; 7; 5; 4; 6; 8; 2; 0]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="kompozitum">
+<h3>Kompozitum<a class="headerlink" href="#kompozitum" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">kompozitum</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span></code>, ki sprejme dve permutaciji in vrne njun kompozitum. Za permutaciji <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span>, je njun kompozitum funkcija</p>
+<div class="math notranslate nohighlight">
+\[ p \circ q \colon i \mapsto p ( q ( i ) ). \]</div>
+<p>Predpostavite lahko, da sta seznama enakih dolžin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_1</span> <span class="o">=</span> <span class="n">kompozitum</span> <span class="n">permutacija_1</span> <span class="n">permutacija_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_1 : int list = [0; 1; 2; 3; 4; 5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_2</span> <span class="o">=</span> <span class="n">kompozitum</span> <span class="n">permutacija_2</span> <span class="n">permutacija_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_2 : int list = [7; 0; 9; 8; 4; 5; 6; 2; 1; 3]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inverz">
+<h3>Inverz<a class="headerlink" href="#inverz" title="Link to this heading">#</a></h3>
+<p>Napiši funkcijo <code class="docutils literal notranslate"><span class="pre">inverz</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span></code>, ki vrne inverz dane permutacije <span class="math notranslate nohighlight">\(p\)</span>, torej tako permutacijo <span class="math notranslate nohighlight">\(p^{-1}\)</span>, da velja $<span class="math notranslate nohighlight">\(p \circ p^{-1} = \mathrm{id},\)</span><span class="math notranslate nohighlight">\( kjer je \)</span>\mathrm{id}$ indentiteta.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_3</span> <span class="o">=</span> <span class="n">inverz</span> <span class="n">permutacija_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_3 : int list = [5; 3; 2; 1; 4; 0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_4</span> <span class="o">=</span> <span class="n">inverz</span> <span class="n">permutacija_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_4 : int list = [9; 2; 8; 0; 5; 4; 6; 3; 7; 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_5</span> <span class="o">=</span> <span class="n">kompozitum</span> <span class="n">permutacija_2</span> <span class="o">(</span><span class="n">inverz</span> <span class="n">permutacija_2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_5 : int list = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="razcep-na-cikle">
+<h3>Razcep na cikle<a class="headerlink" href="#razcep-na-cikle" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">cikli</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>, ki za dano permutacijo vrne seznam ciklov, ki to permutacijo sestavljajo. Vsak element <span class="math notranslate nohighlight">\(\{0, 1, \dots, n-1\}\)</span> naj se pojavi v natanko enem ciklu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_6</span> <span class="o">=</span> <span class="n">cikli</span> <span class="n">permutacija_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_6 : int list list = [[0; 5]; [1; 3]; [2]; [4]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_7</span> <span class="o">=</span> <span class="n">cikli</span> <span class="n">permutacija_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_7 : int list list =
+  [[0; 3; 7; 8; 2; 1; 9]; [4; 5]; [6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_8</span> <span class="o">=</span> <span class="n">cikli</span> <span class="o">(</span><span class="n">inverz</span> <span class="n">permutacija_2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_8 : int list list =
+  [[0; 9; 1; 2; 8; 7; 3]; [4; 5]; [6]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transpozicije-permutacije">
+<h3>Transpozicije permutacije<a class="headerlink" href="#transpozicije-permutacije" title="Link to this heading">#</a></h3>
+<p>Vsako permutacijo lahko zapišemo kot produkt transpozicij, torej menjav dveh elementov. Na primer, permutacijo <span class="math notranslate nohighlight">\(0 \, 1 \, 2 \, 3 \choose 1 \, 0 \, 3 \, 2\)</span> dobimo kot produkt transpozicij <span class="math notranslate nohighlight">\((0, 1) \circ (2, 3)\)</span>.</p>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">iz_transpozicij</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span></code>, ki sprejme dolžino permutacije in seznam transpozicij ter vrne permutacijo, ki jim ustreza.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_9</span> <span class="o">=</span> <span class="n">iz_transpozicij</span> <span class="mi">4</span> <span class="o">[(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_9 : int list = [1; 0; 3; 2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">v_transpozicije</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span></code>, ki zapiše permutacijo kot produkt transpozicij, torej menjav dveh elementov. Možnih produktov je več, veljati mora le, da je kompozicija dobljenih ciklov enaka prvotni permutaciji.</p>
+<p><em>Namig: Pomagate si lahko z lastnostjo, da poljubni cikel razpade na transpozicije po naslednji formuli</em>
+$<span class="math notranslate nohighlight">\((i_1, i_2, i_3, \ldots, i_{k-1}, i_k) = (i_1, i_k)\circ(i_1, i_{k-1})\circ(i_1, i_3)\circ(i_1, i_2).\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_10</span> <span class="o">=</span> <span class="n">v_transpozicije</span> <span class="n">permutacija_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_10 : (int * int) list = [(0, 5); (1, 3)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_permutacije_11</span> <span class="o">=</span> <span class="n">v_transpozicije</span> <span class="n">permutacija_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_permutacije_11 : (int * int) list =
+  [(0, 9); (0, 1); (0, 2); (0, 8); (0, 7); (0, 3); (4, 5)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sudoku">
+<h2>Sudoku<a class="headerlink" href="#sudoku" title="Link to this heading">#</a></h2>
+<p>Sudoku je igra, v kateri mrežo <span class="math notranslate nohighlight">\(9 \times 9\)</span> dopolnimo s števili od <span class="math notranslate nohighlight">\(1\)</span> do <span class="math notranslate nohighlight">\(9\)</span>, tako da se nobeno število v nobeni vrstici, stolpcu ali eni od devetih škatel velikosti <span class="math notranslate nohighlight">\(3 \times 3\)</span> ne ponovi. Primer začetne postavitve in ustrezne rešitve je:</p>
+<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>+-------+-------+-------+       +-------+-------+-------+
+| 5 4 . | . 7 . | . . . |       | 5 4 3 | 6 7 8 | 9 1 2 |
+| 6 . . | 1 9 5 | . . . |       | 6 7 2 | 1 9 5 | 3 4 8 |
+| . 9 8 | . . . | . 6 . |       | 1 9 8 | 3 4 2 | 5 6 7 |
++-------+-------+-------+       +-------+-------+-------+
+| 8 . . | . 6 . | . . 3 |       | 8 1 9 | 7 6 4 | 2 5 3 |
+| 4 . . | 8 . 3 | . . 1 |       | 4 2 6 | 8 5 3 | 7 9 1 |
+| 7 . . | . 2 . | . . 6 |       | 7 3 5 | 9 2 1 | 4 8 6 |
++-------+-------+-------+       +-------+-------+-------+
+| . 6 . | . . 7 | 8 . . |       | 9 6 1 | 5 3 7 | 8 2 4 |
+| . . . | 4 1 9 | . . 5 |       | 2 8 7 | 4 1 9 | 6 3 5 |
+| . . . | . 8 . | . 7 9 |       | 3 5 4 | 2 8 6 | 1 7 9 |
++-------+-------+-------+       +-------+-------+-------+
+</pre></div>
+</div>
+<p>Delno izpolnjen sudoku bomo predstavili s tabelo tabel tipa <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">option</span> <span class="pre">array</span> <span class="pre">array</span></code>, kjer bomo prazna mesta označili z <code class="docutils literal notranslate"><span class="pre">None</span></code>, rešen sudoku pa s tabelo tabel običajnih števil.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">mreza</span> <span class="o">=</span> <span class="kt">int</span> <span class="n">option</span> <span class="kt">array</span> <span class="kt">array</span>
+<span class="k">type</span> <span class="n">resitev</span> <span class="o">=</span> <span class="kt">int</span> <span class="kt">array</span> <span class="kt">array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type mreza = int option array array
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type resitev = int array array
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na primer, zgornjo mrežo in rešitev bi predstavili s seznamoma:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_mreze</span> <span class="o">:</span> <span class="n">mreza</span> <span class="o">=</span> <span class="o">[|</span>
+  <span class="o">[|</span><span class="nc">Some</span> <span class="mi">5</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">4</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">7</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">Some</span> <span class="mi">6</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">1</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">9</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">5</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">9</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">8</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">6</span><span class="o">;</span> <span class="nc">None</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">Some</span> <span class="mi">8</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">6</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">3</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">Some</span> <span class="mi">4</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">8</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">3</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">1</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">Some</span> <span class="mi">7</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">2</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">6</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">6</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">7</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">8</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">4</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">1</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">9</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">5</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">8</span><span class="o">;</span> <span class="nc">None</span><span class="o">;</span>   <span class="nc">None</span><span class="o">;</span>   <span class="nc">Some</span> <span class="mi">7</span><span class="o">;</span> <span class="nc">Some</span> <span class="mi">9</span><span class="o">|]</span>
+<span class="o">|]</span>
+
+<span class="k">let</span> <span class="n">primer_resitve</span> <span class="o">:</span> <span class="n">resitev</span> <span class="o">=</span> <span class="o">[|</span>
+  <span class="o">[|</span><span class="mi">5</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">8</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">1</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">8</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">3</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">1</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">7</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">6</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">9</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">4</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">2</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">|];</span>
+  <span class="o">[|</span><span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">8</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">9</span><span class="o">|];</span>
+<span class="o">|]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_mreze : mreza =
+  [|[|Some 5; Some 4; None; None; Some 7; None; None; None; None|];
+    [|Some 6; None; None; Some 1; Some 9; Some 5; None; None; None|];
+    [|None; Some 9; Some 8; None; None; None; None; Some 6; None|];
+    [|Some 8; None; None; None; Some 6; None; None; None; Some 3|];
+    [|Some 4; None; None; Some 8; None; Some 3; None; None; Some 1|];
+    [|Some 7; None; None; None; Some 2; None; None; None; Some 6|];
+    [|None; Some 6; None; None; None; Some 7; Some 8; None; None|];
+    [|None; None; None; Some 4; Some 1; Some 9; None; None; Some 5|];
+    [|None; None; None; None; Some 8; None; None; Some 7; Some 9|]|]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_resitve : resitev =
+  [|[|5; 4; 3; 6; 7; 8; 9; 1; 2|]; [|6; 7; 2; 1; 9; 5; 3; 4; 8|];
+    [|1; 9; 8; 3; 4; 2; 5; 6; 7|]; [|8; 1; 9; 7; 6; 4; 2; 5; 3|];
+    [|4; 2; 6; 8; 5; 3; 7; 9; 1|]; [|7; 3; 5; 9; 2; 1; 4; 8; 6|];
+    [|9; 6; 1; 5; 3; 7; 8; 2; 4|]; [|2; 8; 7; 4; 1; 9; 6; 3; 5|];
+    [|3; 5; 4; 2; 8; 6; 1; 7; 9|]|]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dopolnitev-mreze">
+<h3>Dopolnitev mreže<a class="headerlink" href="#dopolnitev-mreze" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">dodaj</span> <span class="pre">:</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">mreza</span> <span class="pre">-&gt;</span> <span class="pre">mreza</span></code> tako da <code class="docutils literal notranslate"><span class="pre">dodaj</span> <span class="pre">i</span> <span class="pre">j</span> <span class="pre">n</span> <span class="pre">m</span></code> vrne mrežo, ki je povsod enaka mreži <code class="docutils literal notranslate"><span class="pre">m</span></code>, le na mestu v vrstici <code class="docutils literal notranslate"><span class="pre">i</span></code> in stolpcu <code class="docutils literal notranslate"><span class="pre">j</span></code> ima zapisano število <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<p><strong>Pozor:</strong> OCaml dopušča spreminjanje tabel (o tem se bomo učili kasneje). Vaša funkcija naj te možnosti ne uporablja, temveč naj sestavi in vrne novo tabelo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_1</span> <span class="o">=</span> <span class="n">primer_mreze</span> <span class="o">|&gt;</span> <span class="n">dodaj</span> <span class="mi">0</span> <span class="mi">8</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_1 : mreza =
+  [|[|Some 5; Some 4; None; None; Some 7; None; None; None; Some 2|];
+    [|Some 6; None; None; Some 1; Some 9; Some 5; None; None; None|];
+    [|None; Some 9; Some 8; None; None; None; None; Some 6; None|];
+    [|Some 8; None; None; None; Some 6; None; None; None; Some 3|];
+    [|Some 4; None; None; Some 8; None; Some 3; None; None; Some 1|];
+    [|Some 7; None; None; None; Some 2; None; None; None; Some 6|];
+    [|None; Some 6; None; None; None; Some 7; Some 8; None; None|];
+    [|None; None; None; Some 4; Some 1; Some 9; None; None; Some 5|];
+    [|None; None; None; None; Some 8; None; None; Some 7; Some 9|]|]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="izpisi-mrezo">
+<h3>Izpiši mrežo<a class="headerlink" href="#izpisi-mrezo" title="Link to this heading">#</a></h3>
+<p>Sestavite funkciji <code class="docutils literal notranslate"><span class="pre">izpis_mreze</span> <span class="pre">:</span> <span class="pre">mreza</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code> in <code class="docutils literal notranslate"><span class="pre">izpis_resitve</span> <span class="pre">:</span> <span class="pre">resitev</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code>, ki sprejmeta mrežo oziroma rešitev in vrneta niz, ki predstavlja izpis v zgornji obliki.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_2</span> <span class="o">=</span> <span class="n">primer_mreze</span> <span class="o">|&gt;</span> <span class="n">izpis_mreze</span> <span class="o">|&gt;</span> <span class="n">print_endline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+-------+-------+
+| 5 4 . | . 7 . | . . . |
+| 6 . . | 1 9 5 | . . . |
+| . 9 8 | . . . | . 6 . |
++-------+-------+-------+
+| 8 . . | . 6 . | . . 3 |
+| 4 . . | 8 . 3 | . . 1 |
+| 7 . . | . 2 . | . . 6 |
++-------+-------+-------+
+| . 6 . | . . 7 | 8 . . |
+| . . . | 4 1 9 | . . 5 |
+| . . . | . 8 . | . 7 9 |
++-------+-------+-------+
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_2 : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_3</span> <span class="o">=</span> <span class="n">izpis_resitve</span> <span class="n">primer_resitve</span> <span class="o">|&gt;</span> <span class="n">print_endline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+-------+-------+
+| 5 4 3 | 6 7 8 | 9 1 2 |
+| 6 7 2 | 1 9 5 | 3 4 8 |
+| 1 9 8 | 3 4 2 | 5 6 7 |
++-------+-------+-------+
+| 8 1 9 | 7 6 4 | 2 5 3 |
+| 4 2 6 | 8 5 3 | 7 9 1 |
+| 7 3 5 | 9 2 1 | 4 8 6 |
++-------+-------+-------+
+| 9 6 1 | 5 3 7 | 8 2 4 |
+| 2 8 7 | 4 1 9 | 6 3 5 |
+| 3 5 4 | 2 8 6 | 1 7 9 |
++-------+-------+-------+
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_3 : unit = ()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preveri-ali-resitev-ustreza-mrezi">
+<h3>Preveri, ali rešitev ustreza mreži<a class="headerlink" href="#preveri-ali-resitev-ustreza-mrezi" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">ustreza</span> <span class="pre">:</span> <span class="pre">mreza</span> <span class="pre">-&gt;</span> <span class="pre">resitev</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>, ki preveri, ali rešitev ustreza dani mreži. Rešitev ustreza mreži, če se na vseh mestih, kjer je v mreži podana številka, v rešitvi nahaja enaka številka.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_4</span> <span class="o">=</span> <span class="n">ustreza</span> <span class="n">primer_mreze</span> <span class="n">primer_resitve</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_4 : bool = true
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kandidati-za-dano-prazno-mesto">
+<h3>Kandidati za dano prazno mesto<a class="headerlink" href="#kandidati-za-dano-prazno-mesto" title="Link to this heading">#</a></h3>
+<p>Napišite funkcije <code class="docutils literal notranslate"><span class="pre">ni_v_vrstici</span></code>, <code class="docutils literal notranslate"><span class="pre">ni_v_stolpcu</span></code> in <code class="docutils literal notranslate"><span class="pre">ni_v_skatli</span></code>, vse tipa <code class="docutils literal notranslate"><span class="pre">mreza</span> <span class="pre">*</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>, ki preverijo, ali se v določeni vrstici, stolpcu oziroma škatli mreže ne nahaja dano število. Vrstice, stolpci in škatle so indeksirani kot:</p>
+<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>    0 1 2   3 4 5   6 7 8
+  +-------+-------+-------+
+0 |       |       |       |
+1 |   0   |   1   |   2   |
+2 |       |       |       |
+  +-------+-------+-------+
+3 |       |       |       |
+4 |   3   |   4   |   5   |
+5 |       |       |       |
+  +-------+-------+-------+
+6 |       |       |       |
+7 |   6   |   7   |   8   |
+8 |       |       |       |
+  +-------+-------+-------+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_5</span> <span class="o">=</span> <span class="n">ni_v_vrstici</span> <span class="o">(</span><span class="n">primer_mreze</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_5 : bool = true
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_6</span> <span class="o">=</span> <span class="n">ni_v_vrstici</span> <span class="o">(</span><span class="n">primer_mreze</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_6 : bool = false
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">kandidati</span> <span class="pre">:</span> <span class="pre">mreza</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">list</span> <span class="pre">option</span></code>, ki sprejme mrežo in indeksa vrstice in stolpca praznega mesta ter vrne seznam vseh številk, ki se lahko pojavijo na tem mestu. Če je polje že izpolnjeno, naj funkcija vrne <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_7</span> <span class="o">=</span> <span class="n">kandidati</span> <span class="n">primer_mreze</span> <span class="mi">0</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_7 : int list option = Some [1; 2; 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_8</span> <span class="o">=</span> <span class="n">kandidati</span> <span class="n">primer_mreze</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_8 : int list option = None
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iskanje-resitve">
+<h3>Iskanje rešitve<a class="headerlink" href="#iskanje-resitve" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">resi</span> <span class="pre">:</span> <span class="pre">mreza</span> <span class="pre">-&gt;</span> <span class="pre">resitev</span> <span class="pre">option</span></code>, ki izpolni mrežo sudokuja. Če je dana mreža rešljiva, mora funkcija najti rešitev, ki ustreza začetni mreži in jo vrniti v obliki <code class="docutils literal notranslate"><span class="pre">Some</span> <span class="pre">resitev</span></code>, sicer naj vrne <code class="docutils literal notranslate"><span class="pre">None</span></code>. Predpostavite lahko, da je rešitev enolična, zato lahko funkcija vrne prvo, ki jo najde.</p>
+<p><em>Namig: Poiščite celico mreže z najmanj kandidati in rekurzivno preizkusite vse možnosti.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_sudoku_9</span> <span class="o">=</span> <span class="n">resi</span> <span class="n">primer_mreze</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_sudoku_9 : resitev option =
+  Some
+   [|[|5; 4; 3; 6; 7; 8; 9; 1; 2|]; [|6; 7; 2; 1; 9; 5; 3; 4; 8|];
+     [|1; 9; 8; 3; 4; 2; 5; 6; 7|]; [|8; 1; 9; 7; 6; 4; 2; 5; 3|];
+     [|4; 2; 6; 8; 5; 3; 7; 9; 1|]; [|7; 3; 5; 9; 2; 1; 4; 8; 6|];
+     [|9; 6; 1; 5; 3; 7; 8; 2; 4|]; [|2; 8; 7; 4; 1; 9; 6; 3; 5|];
+     [|3; 5; 4; 2; 8; 6; 1; 7; 9|]|]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="13-03-memoizacija-v-ocamlu.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Memoizacija v OCamlu</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dn-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2. domača naloga</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ogrevanje">Ogrevanje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collatzovo-zaporedje">Collatzovo zaporedje</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fiksne-tocke">Fiksne točke</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zdruzevanje-z-locilom">Združevanje z ločilom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razbitje-seznama">Razbitje seznama</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izomorfizmi-mnozic">Izomorfizmi množic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-cong-b-times-a"><span class="math notranslate nohighlight">\(A \times B \cong B \times A\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-b-cong-b-a"><span class="math notranslate nohighlight">\(A + B \cong B + A\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-times-c-cong-a-times-b-times-c"><span class="math notranslate nohighlight">\(A \times (B \times C) \cong (A \times B) \times C\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-b-c-cong-a-b-c"><span class="math notranslate nohighlight">\(A + (B + C) \cong (A + B) + C\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-c-cong-a-times-b-a-times-c"><span class="math notranslate nohighlight">\(A \times (B + C) \cong (A \times B) + (A \times C)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-b-c-cong-a-b-times-a-c"><span class="math notranslate nohighlight">\(A^{B + C} \cong A^B \times A^C\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-times-b-c-cong-a-c-times-b-c"><span class="math notranslate nohighlight">\((A \times B)^C \cong A^C \times B^C\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutacije">Permutacije</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kompozitum">Kompozitum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inverz">Inverz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razcep-na-cikle">Razcep na cikle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpozicije-permutacije">Transpozicije permutacije</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sudoku">Sudoku</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dopolnitev-mreze">Dopolnitev mreže</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izpisi-mrezo">Izpiši mrežo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preveri-ali-resitev-ustreza-mrezi">Preveri, ali rešitev ustreza mreži</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kandidati-za-dano-prazno-mesto">Kandidati za dano prazno mesto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iskanje-resitve">Iskanje rešitve</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

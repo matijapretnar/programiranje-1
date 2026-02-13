@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deli in vladaj &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12-deli-in-vladaj';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dinamično programiranje" href="13-01-dinamicno-programiranje.html" />
+    <link rel="prev" title="Iskalna drevesa" href="11-iskalna-drevesa.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/12-deli-in-vladaj.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deli in vladaj</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitro-potenciranje">Hitro potenciranje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urejanje-z-zlivanjem">Urejanje z zlivanjem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#casovna-zahtevnost-urejanja-z-zlivanjem"><strong>Časovna zahtevnost</strong> urejanja z zlivanjem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitro-urejanje">Hitro urejanje</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deli-in-vladaj">
+<h1>Deli in vladaj<a class="headerlink" href="#deli-in-vladaj" title="Link to this heading">#</a></h1>
+<p>Če lahko iz rešitve manjših podnalog sestavimo rešitev celotne naloge, pravimo, da ima naloga <em>lastnost optimalne podstrukture</em>. V tem primeru lahko postopamo v treh korakih:</p>
+<ol class="arabic simple">
+<li><p>nalogo <strong>razdelimo</strong> na manjše podnaloge</p></li>
+<li><p>podnaloge <strong>rekurzivno rešimo</strong></p></li>
+<li><p>dobljene rešitve <strong>združimo</strong> v rešitev prvotne naloge</p></li>
+</ol>
+<p>Vse naloge niso take, na primer problem trgovskega potnika, pri katerem moramo najti najcenejši cikel, ki obišče vsa vozlišča na grafu. Tudi če znamo najti najcenejši cikel na manjšem grafu, nam to pri iskanju cikla v večjem grafu nič ne pomaga.</p>
+<p><img alt="Problem trgovskega potnika" src="_images/trgovski-potnik.png" /></p>
+<p>Ampak precej nalog pa lastnost optimalne strukture ima in pri tem predmetu bomo pogledali dve splošni strategiji za njihovo reševanje. Prva strategija, ki jo bomo spoznali v tem poglavju, je strategija <em>deli in vladaj</em>, v katerem nam uspe nalogo razdeliti na <em>za konstantni faktor</em> manjše podnaloge (na primer iz velikosti <span class="math notranslate nohighlight">\(n\)</span> na velikost <span class="math notranslate nohighlight">\(n / 2\)</span>):</p>
+<p><img alt="" src="_images/deli-in-vladaj.png" /></p>
+<p>Včasih bodo podnaloge manjše samo za neko konstanto (na primer iz velikosti <span class="math notranslate nohighlight">\(n\)</span> na velikost <span class="math notranslate nohighlight">\(n - 1\)</span>), vendar se bodo med seboj prekrivale, kar bomo izkoristili tako, da bomo vsako rešili le enkrat. V tem primeru govorimo o <em>dinamičnem programiranju</em>, ki ga bomo spoznali kasneje.</p>
+<p><img alt="" src="_images/dinamicno-programiranje.png" /></p>
+<p>Kadar pa naloge niso ne za konstantni faktor manjše in se ne prekrivajo, pa ni neke splošne strategije in običajno gre za zahtevne naloge, kjer ni učinkovite rešitve.</p>
+<p><img alt="" src="_images/preiskovanje.png" /></p>
+<p>Oglejmo si strategijo deli in vladaj na nekaj najbolj znanih primerih:</p>
+<section id="hitro-potenciranje">
+<h2>Hitro potenciranje<a class="headerlink" href="#hitro-potenciranje" title="Link to this heading">#</a></h2>
+<p>Potenciranje lahko definiramo s pomočjo množenja prek sledeče rekurzivne zveze</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  a^0 &amp;= 1 \\
+  a^n &amp;= a \cdot a^{n - 1}
+\end{aligned}\end{split}\]</div>
+<p>ki pa zahteva <span class="math notranslate nohighlight">\(n - 1\)</span> množenj in ima tako časovno zahtevnost <span class="math notranslate nohighlight">\(O(n)\)</span> ob predpostavki, da ima množenje časovno zahtevnost <span class="math notranslate nohighlight">\(O(1)\)</span> (kar pri poljubno velikih številih sicer ni več res). Število množenj lahko zmanjšamo, če opazimo, da lahko sode potence izračunamo kot kvadrate njihovih korenov. Na primer, če poznamo <span class="math notranslate nohighlight">\(a^{18}\)</span> lahko <span class="math notranslate nohighlight">\(a^{36}\)</span> izračunamo samo z enim množenjem. Podobno lahko <span class="math notranslate nohighlight">\(a^{18}\)</span> samo z enim množenjem izračunamo iz <span class="math notranslate nohighlight">\(a^9\)</span>. Pri lihih potencah je postopek le malenkostno drugačen, saj je na primer <span class="math notranslate nohighlight">\(a^9 = a \cdot a^8\)</span>, kjer zopet nastopa soda potenca. V splošnem je torej postopek, ki ga imenujemo <em>hitro potenciranje</em>, podan z rekurzivno zvezo:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  a^0 &amp;= 1 \\
+  a^n &amp;= \begin{cases}
+    (a^{n / 2})^2 &amp; \text{$n$ je sod} \\
+    a \cdot (a^{(n - 1) / 2})^2 &amp; \text{$n$ je lih}
+  \end{cases}
+\end{aligned}\end{split}\]</div>
+<p>Ker v vsakem koraku <span class="math notranslate nohighlight">\(n\)</span> razpolovimo, moramo narediti približno <span class="math notranslate nohighlight">\(\log_2 n\)</span> množenj, torej je časovna zahtevnost hitrega potenciranja enaka <span class="math notranslate nohighlight">\(O(\log n)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">potenciraj</span> <span class="n">a</span> <span class="o">=</span>
+  <span class="k">function</span>
+  <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+  <span class="o">|</span> <span class="n">n</span> <span class="o">-&gt;</span>
+      <span class="k">let</span> <span class="n">k</span> <span class="o">=</span> <span class="n">potenciraj</span> <span class="n">a</span> <span class="o">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span>
+      <span class="k">if</span> <span class="n">n</span> <span class="ow">mod</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">then</span> <span class="n">k</span> <span class="o">*</span> <span class="n">k</span> <span class="k">else</span> <span class="n">a</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">k</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val potenciraj : int -&gt; int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">potenciraj</span> <span class="mi">2</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 1024
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na podoben način lahko z <span class="math notranslate nohighlight">\(O(\log n)\)</span> računskimi operacijami izračunamo tudi <span class="math notranslate nohighlight">\(n\)</span>-to Fibonaccijevo število. Tu seveda predpostavka o konstantnem času odpade, saj števila zelo hitro naraščajo. Definicijo <span class="math notranslate nohighlight">\(f_n = f_{n - 1} + f_{n - 2}\)</span> lahko razširimo v (na prvi pogled nesmiselen) sistem enačb:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  f_n &amp;= f_{n - 1} + f_{n - 2} \\
+  f_{n - 1} &amp;= f_{n - 1}
+\end{aligned}\end{split}\]</div>
+<p>ki pa ga lahko pretvorimo v matrično enačbo</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+    f_n \\ f_{n - 1}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 &amp; 1 \\
+    1 &amp; 0
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    f_{n - 1} \\ f_{n - 2}
+  \end{pmatrix}\end{split}\]</div>
+<p>kar lahko razpišemo v</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+    f_n \\ f_{n - 1}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 &amp; 1 \\
+    1 &amp; 0
+  \end{pmatrix}^{n - 1}
+  \cdot
+  \begin{pmatrix}
+    f_1 \\ f_0
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 &amp; 1 \\
+    1 &amp; 0
+  \end{pmatrix}^{n - 1}
+  \cdot
+  \begin{pmatrix}
+    1 \\ 0
+  \end{pmatrix}\end{split}\]</div>
+<p>Torej je <span class="math notranslate nohighlight">\(f_n\)</span> enak prvi komponenti matrike <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0\end{pmatrix}^{n - 1}\)</span>, ki pa jo lahko izračunamo s pomočjo hitrega potenciranja. Če bi matriko diagonalizirali, pa iz te potence dobimo znano Binetovo formulo.</p>
+</section>
+<section id="urejanje-z-zlivanjem">
+<h2>Urejanje z zlivanjem<a class="headerlink" href="#urejanje-z-zlivanjem" title="Link to this heading">#</a></h2>
+<p>Strategija deli in vladaj je zelo koristna pri urejanju seznamov. Prvi algoritem, ki ga bomo spoznali, je <em>urejanje z zlivanjem</em> ali <em>mergesort</em>. Ta deluje tako, da seznam razdelimo na dva manjša podseznama (vseeno kakšna, le da vsak vsebuje približno polovico elementov prvotnega seznama), nato pa vsakega rekurzivno uredimo. Ko sta obe polovici urejeni, ju lahko <em>zlijemo</em> tako, da z njunih začetkov postopoma jemljemo najmanjše še ne vzete elemente:</p>
+<p><img alt="" src="_images/urejanje-z-zlivanjem.png" /></p>
+<p>V OCamlu lahko delitev na pol najenostavneje izvedemo tako, da damo v eno polovico elemente na lihih, v drugo pa elemente na sodih mestih:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">razdeli_na_pol</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+      <span class="k">let</span> <span class="n">xs1</span><span class="o">,</span> <span class="n">xs2</span> <span class="o">=</span> <span class="n">razdeli_na_pol</span> <span class="n">xs</span> <span class="k">in</span>
+      <span class="n">x</span> <span class="o">::</span> <span class="n">xs2</span><span class="o">,</span> <span class="n">xs1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val razdeli_na_pol : &#39;a list -&gt; &#39;a list * &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">razdeli_na_pol</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list * int list = ([1; 3; 5; 7], [2; 4; 6; 8])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zlivanje naredimo tako, da primerjamo glavi dveh seznamov, izberemo manjšo ter nadaljujemo rekurzivno. Ko je eden izmed seznamov prazen, vzamemo preostale elemente drugega seznama:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">zlij</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">ys</span>
+  <span class="o">|</span> <span class="o">_,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">xs</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs&#39;</span><span class="o">,</span> <span class="n">y</span> <span class="o">::</span> <span class="n">ys&#39;</span> <span class="o">-&gt;</span>
+      <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="k">then</span>
+        <span class="n">x</span> <span class="o">::</span> <span class="n">zlij</span> <span class="n">xs&#39;</span> <span class="n">ys</span>
+      <span class="k">else</span>
+        <span class="n">y</span> <span class="o">::</span> <span class="n">zlij</span> <span class="n">xs</span> <span class="n">ys&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val zlij : &#39;a list -&gt; &#39;a list -&gt; &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">zlij</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">10</span><span class="o">;</span> <span class="mi">11</span><span class="o">;</span> <span class="mi">100</span><span class="o">;</span> <span class="mi">101</span><span class="o">;</span> <span class="mi">110</span><span class="o">;</span> <span class="mi">111</span><span class="o">]</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">20</span><span class="o">;</span> <span class="mi">22</span><span class="o">;</span> <span class="mi">200</span><span class="o">;</span> <span class="mi">202</span><span class="o">;</span> <span class="mi">220</span><span class="o">;</span> <span class="mi">222</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list = [1; 2; 10; 11; 20; 22; 100; 101; 110; 111; 200; 202; 220; 222]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Seznam potem uredimo tako, kot smo omenili na začetku: razdelimo ga na pol, obe polovici rekurzivno uredimo in ju zlijemo. Pri tem ne smemo pozabiti na robni primer, ko je seznam tako majhen, da ga ne moremo več razdeliti na dve polovici:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">uredi_z_zlivanjem</span> <span class="n">sez</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">sez</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">|</span> <span class="o">[_]</span> <span class="o">-&gt;</span> <span class="n">sez</span>
+  <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span>
+    <span class="k">let</span> <span class="n">sez1</span><span class="o">,</span> <span class="n">sez2</span> <span class="o">=</span> <span class="n">razdeli_na_pol</span> <span class="n">sez</span> <span class="k">in</span>
+    <span class="k">let</span> <span class="n">sez1&#39;</span> <span class="o">=</span> <span class="n">uredi_z_zlivanjem</span> <span class="n">sez1</span>
+    <span class="k">and</span> <span class="n">sez2&#39;</span> <span class="o">=</span> <span class="n">uredi_z_zlivanjem</span> <span class="n">sez2</span> <span class="k">in</span>
+    <span class="n">zlij</span> <span class="n">sez1&#39;</span> <span class="n">sez2&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val uredi_z_zlivanjem : &#39;a list -&gt; &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">uredi_z_zlivanjem</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list = [1; 2; 3; 3; 4; 5; 7; 9]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="casovna-zahtevnost-urejanja-z-zlivanjem">
+<h2><strong>Časovna zahtevnost</strong> urejanja z zlivanjem<a class="headerlink" href="#casovna-zahtevnost-urejanja-z-zlivanjem" title="Link to this heading">#</a></h2>
+<p>Izračunajmo časovno zahtevnost urejanja z zlivanjem. Da uredimo seznam dolžine <span class="math notranslate nohighlight">\(n\)</span>, ga moramo najprej razdeliti na pol, kar lahko naredimo v času <span class="math notranslate nohighlight">\(O(n)\)</span>. Če želimo biti bolj učinkoviti, lahko delamo zgolj s premikanjem indeksov in ga tako razdelimo v času <span class="math notranslate nohighlight">\(O(1)\)</span>, vendar to splošne časovne zahtevnosti ne bo spremenilo, saj moramo seznama tudi zliti, kar zahteva <span class="math notranslate nohighlight">\(O(n)\)</span> časa, saj moramo narediti nov seznam dolžine <span class="math notranslate nohighlight">\(n\)</span>. Ostane nam še čas, ki ga porabimo za rekurzivno ureditev. Ker urejamo dva polovico manjša seznama, lahko vse skupaj zapišemo z rekurzivno zvezo</p>
+<div class="math notranslate nohighlight">
+\[T(n) = O(n) + 2 \cdot T(n / 2)\]</div>
+<p>kjer s <span class="math notranslate nohighlight">\(T(n)\)</span> označimo čas, ki ga potrebujemo, da uredimo seznam dolžine <span class="math notranslate nohighlight">\(n\)</span>. Rešitev te enačbe je <span class="math notranslate nohighlight">\(T(n) = O(n \log n)\)</span>, kar je precej hitreje od naivnih algoritmov za urejanje, ki delujejo v času <span class="math notranslate nohighlight">\(O(n^2)\)</span>. Reševanje takih enačb presega obseg tega predmeta, intuicija za njim pa ni preveč zapletena. Enačbo postopoma razpisujemo:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  T(n)
+  &amp;= O(n) + 2 T(n / 2) \\
+  &amp;= O(n) + 2 (O(n / 2) + 2 T(n / 4)) \\
+  &amp;= O(n) + 2 O(n / 2) + 4 T(n / 4) \\
+  &amp;= O(n) + 2 O(n / 2) + 4 O(n / 4) + 8 T(n / 8)
+\end{aligned}\end{split}\]</div>
+<p>Vidimo, da v vsakem koraku dobimo dodaten člen z zahtevnostjo <span class="math notranslate nohighlight">\(O(n)\)</span>, kar po <span class="math notranslate nohighlight">\(k\)</span> korakih znaša</p>
+<div class="math notranslate nohighlight">
+\[T(n) = k O(n) + 2^k T(n / 2^k)\]</div>
+<p>Ker lahko <span class="math notranslate nohighlight">\(n\)</span> razpolovimo <span class="math notranslate nohighlight">\(\lceil \log_2 n \rceil\)</span>-krat, na koncu dobimo</p>
+<div class="math notranslate nohighlight">
+\[T(n) = \lceil \log_2 n \rceil O(n) + 2^{\lceil \log_2 n \rceil} O(1) = O(n \log n)\]</div>
+</section>
+<section id="hitro-urejanje">
+<h2>Hitro urejanje<a class="headerlink" href="#hitro-urejanje" title="Link to this heading">#</a></h2>
+<p>Drugi znani algoritem za urejanje pa je <em>hitro urejanje</em> ali <em>quicksort</em>. Tudi ta deluje tako, da seznam razdeli na dva manjša podseznama, vsakega rekurzivno uredi, na koncu pa obe urejeni polovici združi. Razlika je v tem, da več dela opravi pri deljenju seznama na dva dela. Pri tem elemente uredi tako, da so v eni polovici manjši, v drugi polovici pa večji elementi. Posledica tega je, da je združevanje enostavno, saj obe polovici samo še staknemo. Elemente razdelimo po velikosti glede na izbrani element, ki mu pravimo <em>pivot</em> in ga običajno vzamemo z začetka seznama. Na primer, v spodnji sliki za pivot vzamemo število <span class="math notranslate nohighlight">\(3\)</span>. Postopku deljenja zato pravimo <em>pivotiranje</em>.</p>
+<p><img alt="" src="_images/hitro-urejanje.png" /></p>
+<p>V OCamlu seznam enostavno pivotiramo s pomočjo funkcije <code class="docutils literal notranslate"><span class="pre">List.partition</span></code>, ki seznam razdeli na elemente, ki zadoščajo predikatu, in tiste, ki mu ne.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">pivotiraj</span> <span class="n">p</span> <span class="n">xs</span> <span class="o">=</span>
+  <span class="nn">List</span><span class="p">.</span><span class="n">partition</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="o">)</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val pivotiraj : &#39;a -&gt; &#39;a list -&gt; &#39;a list * &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">pivotiraj</span> <span class="mi">3</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list * int list = ([2; 1; 3], [5; 9; 7; 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">hitro_uredi</span> <span class="n">sez</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">sez</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">|</span> <span class="o">[_]</span> <span class="o">-&gt;</span> <span class="n">sez</span>
+  <span class="o">|</span> <span class="n">p</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+    <span class="k">let</span> <span class="n">sez1</span><span class="o">,</span> <span class="n">sez2</span> <span class="o">=</span> <span class="n">pivotiraj</span> <span class="n">p</span> <span class="n">xs</span> <span class="k">in</span>
+    <span class="k">let</span> <span class="n">sez1&#39;</span> <span class="o">=</span> <span class="n">hitro_uredi</span> <span class="n">sez1</span>
+    <span class="k">and</span> <span class="n">sez2&#39;</span> <span class="o">=</span> <span class="n">hitro_uredi</span> <span class="n">sez2</span> <span class="k">in</span>
+    <span class="n">sez1&#39;</span> <span class="o">@</span> <span class="n">p</span> <span class="o">::</span> <span class="n">sez2&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val hitro_uredi : &#39;a list -&gt; &#39;a list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">hitro_uredi</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">9</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list = [1; 2; 3; 3; 4; 5; 7; 9]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za pivotiranje in stikanje skupaj porabimo linearno mnogo časa. Tako ob predpostavki, da pivot pade približno na sredino urejenega seznama, pri hitrem urejanju seznam velikosti <span class="math notranslate nohighlight">\(n\)</span> razdelimo na dva podseznama velikosti <span class="math notranslate nohighlight">\(n / 2\)</span>, zato za časovno zahtevnost zopet dobimo enačbo</p>
+<div class="math notranslate nohighlight">
+\[T(n) = O(n) + 2 T(n / 2) = O(n \log n)\]</div>
+<p>Vendar zgornji predpostavki ni vedno zadoščeno. Na primer, če je seznam že urejen (ali skoraj urejen), je prvi seznam skoraj prazen, drugi pa le malenkost manjši, zato dobimo enačbo <span class="math notranslate nohighlight">\(T(n) = O(n) + T(n - 1)\)</span>, kar vodi v zahtevnost <span class="math notranslate nohighlight">\(O(n^2)\)</span>. Temu se lahko izognemo tako, da za pivot izberemo naključni element, da seznam pred urejanjem premešamo (npr. s Fisher-Yatesovim algoritmom), ali kaj podobnega. V praksi se tako izkaže, da je hitro urejanje kljub slabši asimptotski zahtevnosti hitrejše od urejanja z zlivanjem.</p>
+<p>Poleg tega ima hitro urejanje dodatno prednost, da z njim lahko seznam predstavljen s tabelo uredimo na mestu brez porabe dodatnega prostora.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">i</span> <span class="n">j</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">i</span><span class="o">)</span> <span class="k">in</span>
+  <span class="n">tabela</span><span class="o">.(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span><span class="o">);</span>
+  <span class="n">tabela</span><span class="o">.(</span><span class="n">j</span><span class="o">)</span> <span class="o">&lt;-</span> <span class="n">t</span>
+
+<span class="k">let</span> <span class="n">pivotiraj_na_mestu</span> <span class="n">tabela</span> <span class="n">i0</span> <span class="n">j0</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">tabela</span><span class="o">.(</span><span class="n">i0</span><span class="o">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ref</span> <span class="o">(</span><span class="n">i0</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="k">and</span> <span class="n">j</span> <span class="o">=</span> <span class="n">ref</span> <span class="n">j0</span> <span class="k">in</span>
+  <span class="k">while</span> <span class="o">!</span><span class="n">i</span> <span class="o">&lt;</span> <span class="o">!</span><span class="n">j</span> <span class="k">do</span>
+    <span class="k">while</span> <span class="o">!</span><span class="n">i</span> <span class="o">&lt;</span> <span class="o">!</span><span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">tabela</span><span class="o">.(!</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="n">pivot</span> <span class="k">do</span>
+      <span class="n">incr</span> <span class="n">i</span>
+    <span class="k">done</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">!</span><span class="n">i</span> <span class="o">&lt;</span> <span class="o">!</span><span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">tabela</span><span class="o">.(!</span><span class="n">j</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">pivot</span> <span class="k">do</span>
+      <span class="n">decr</span> <span class="n">j</span>
+    <span class="k">done</span><span class="o">;</span>
+    <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="o">!</span><span class="n">i</span> <span class="o">!</span><span class="n">j</span>
+  <span class="k">done</span><span class="o">;</span>
+  <span class="k">let</span> <span class="n">p</span> <span class="o">=</span> <span class="k">if</span> <span class="n">tabela</span><span class="o">.(!</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="n">pivot</span> <span class="k">then</span> <span class="o">!</span><span class="n">i</span> <span class="k">else</span> <span class="o">!</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">in</span>
+  <span class="n">zamenjaj</span> <span class="n">tabela</span> <span class="n">i0</span> <span class="n">p</span><span class="o">;</span>
+  <span class="n">p</span>
+
+<span class="k">let</span> <span class="n">hitro_uredi_na_mestu</span> <span class="n">tabela</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">uredi_med_indeksoma</span> <span class="n">i</span> <span class="n">j</span> <span class="o">=</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="k">then</span>
+      <span class="k">let</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pivotiraj_na_mestu</span> <span class="n">tabela</span> <span class="n">i</span> <span class="n">j</span> <span class="k">in</span>
+      <span class="n">uredi_med_indeksoma</span> <span class="n">i</span> <span class="o">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+      <span class="n">uredi_med_indeksoma</span> <span class="o">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="n">j</span>
+  <span class="k">in</span>
+  <span class="n">uredi_med_indeksoma</span> <span class="mi">0</span> <span class="o">(</span><span class="nn">Array</span><span class="p">.</span><span class="n">length</span> <span class="n">tabela</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val zamenjaj : &#39;a array -&gt; int -&gt; int -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val pivotiraj_na_mestu : &#39;a array -&gt; int -&gt; int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val hitro_uredi_na_mestu : &#39;a array -&gt; unit = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Oba algoritma za urejanje, ki smo ju spoznali, imata optimalno časovno zahtevnost za urejanje s primerjavo. To pomeni, da ima vsak algoritem, ki bi pri urejanju uporabljal primerjavo elementov, časovno zahtevnost vsaj <span class="math notranslate nohighlight">\(O(n \log n)\)</span>. Razlog se skriva v tem, da vsak tak algoritem porodi odločitveno drevo, v katerem so vozlišča primerjave elementov, listi pa permutacije prvotnega seznama.</p>
+<p>Na primer, eno tako drevo, ki ga porodi urejanje z mehurčki na seznamu <span class="math notranslate nohighlight">\([x, y, z]\)</span>, je:</p>
+<p><img alt="" src="_images/odlocitveno-drevo.png" /></p>
+<p>Če bi izbrali drug algoritem, bi dobili drugačno drevo. Bolj plitko je drevo, hitrejši je algoritem. Toda ne glede na to, kako plitko je drevo, mora imeti vsaj <span class="math notranslate nohighlight">\(n!\)</span> listov, ker obstaja vsaj toliko različnih permutacij, ki jih mora vrniti. Zato mora biti odločitveno drevo globine vsaj <span class="math notranslate nohighlight">\(\log n!\)</span>. Hitro lahko ocenimo, da je <span class="math notranslate nohighlight">\(n! &gt; (n / 2)^{n / 2}\)</span>, zato je <span class="math notranslate nohighlight">\(\log(n!) &gt; (n / 2) \log(n / 2) = O(n \log n)\)</span>.</p>
+<p>Če pri urejanju uporabljamo še dodatne predpostavke, na primer, da so vsi elementi števila v nekem razponu, pridemo do <a class="reference external" href="https://visualgo.net/en/sorting">še hitrejših algoritmov</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11-iskalna-drevesa.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Iskalna drevesa</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="13-01-dinamicno-programiranje.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dinamično programiranje</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitro-potenciranje">Hitro potenciranje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urejanje-z-zlivanjem">Urejanje z zlivanjem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#casovna-zahtevnost-urejanja-z-zlivanjem"><strong>Časovna zahtevnost</strong> urejanja z zlivanjem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitro-urejanje">Hitro urejanje</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

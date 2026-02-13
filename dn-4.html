@@ -1,0 +1,1064 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. domača naloga &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dn-4';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. domača naloga" href="dn-5.html" />
+    <link rel="prev" title="2. domača naloga" href="dn-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/dn-4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>4. domača naloga</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slovarji">Slovarji</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stroga-ureditev">Stroga ureditev</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avlslovar">AVLSlovar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turingovi-stroji">Turingovi stroji</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sestavljanje-turingovih-strojev">Sestavljanje Turingovih strojev</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="domaca-naloga">
+<h1>4. domača naloga<a class="headerlink" href="#domaca-naloga" title="Link to this heading">#</a></h1>
+<section id="slovarji">
+<h2>Slovarji<a class="headerlink" href="#slovarji" title="Link to this heading">#</a></h2>
+<p>Na predavanjih in vajah smo si ogledali iskalna drevesa in implementacijo
+AVL-dreves za predstavitev množic. V tej nalogi morate s pomočjo AVL-dreves
+implementirati <code class="docutils literal notranslate"><span class="pre">slovar</span></code>, ki preslika ključe tipa <code class="docutils literal notranslate"><span class="pre">'k</span></code> v vrednosti tipa <code class="docutils literal notranslate"><span class="pre">'v</span></code>.</p>
+<section id="stroga-ureditev">
+<h3>Stroga ureditev<a class="headerlink" href="#stroga-ureditev" title="Link to this heading">#</a></h3>
+<p>Za predstavitev slovarja potrebujemo strogo ureditev na tipu ključev.
+Najprej definiramo tip <code class="docutils literal notranslate"><span class="pre">ureditev</span></code>, ki predstavlja možne izide
+primerjave dveh elementov, nato pa še modul <code class="docutils literal notranslate"><span class="pre">UREJEN_TIP</span></code>, s katerim
+lahko primerjamo abstraktne elemente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">ureditev</span> <span class="o">=</span> <span class="nc">Less</span> <span class="o">|</span> <span class="nc">Equal</span> <span class="o">|</span> <span class="nc">Greater</span>
+
+<span class="k">module</span> <span class="k">type</span> <span class="nc">UREJEN_TIP</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">t</span>
+
+  <span class="k">val</span> <span class="n">primerjaj</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">ureditev</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nc">INT_UREJEN_TIP</span> <span class="o">:</span> <span class="nc">UREJEN_TIP</span> <span class="k">with</span> <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">int</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">int</span>
+
+  <span class="k">let</span> <span class="n">primerjaj</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="k">then</span> <span class="nc">Less</span> <span class="k">else</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">then</span> <span class="nc">Greater</span> <span class="k">else</span> <span class="nc">Equal</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type ureditev = Less | Equal | Greater
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type UREJEN_TIP = sig type t val primerjaj : t -&gt; t -&gt; ureditev end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module INT_UREJEN_TIP :
+  sig type t = int val primerjaj : t -&gt; t -&gt; ureditev end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sestavite modul <code class="docutils literal notranslate"><span class="pre">STRING_UREJEN_TIP</span></code>, ki implementira <code class="docutils literal notranslate"><span class="pre">UREJEN_TIP</span></code> za tip
+<code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">STRING_UREJEN_TIP</span> <span class="o">:</span> <span class="nc">UREJEN_TIP</span> <span class="k">with</span> <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">string</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">string</span>
+
+  <span class="k">let</span> <span class="n">primerjaj</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+<span class="k">end</span><span class="o">;;</span>
+
+<span class="nn">STRING_UREJEN_TIP</span><span class="p">.</span><span class="n">primerjaj</span> <span class="s2">&quot;abc&quot;</span> <span class="s2">&quot;abd&quot;</span>
+<span class="c">(* - : ureditev = Less *)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module STRING_UREJEN_TIP :
+  sig type t = string val primerjaj : t -&gt; t -&gt; ureditev end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : ureditev = Less
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za poljuben tip lahko definiramo <code class="docutils literal notranslate"><span class="pre">razširitev</span></code> z najmanjšim in največjim
+elementom. Sestavite parametriziran modul <code class="docutils literal notranslate"><span class="pre">RAZSIRJEN_UREJEN_TIP</span></code>, ki
+sprejme modul, ki implementira signaturo <code class="docutils literal notranslate"><span class="pre">UREJEN_TIP</span></code>, in vrne modul, ki
+implementira signaturo <code class="docutils literal notranslate"><span class="pre">UREJEN_TIP</span></code> za razširjeni tip.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">razsiritev</span> <span class="o">=</span> <span class="nc">MinInf</span> <span class="o">|</span> <span class="nc">PlusInf</span> <span class="o">|</span> <span class="nc">Value</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span>
+
+<span class="k">module</span> <span class="nc">RAZSIRJEN_UREJEN_TIP</span> <span class="o">(</span><span class="nc">U</span> <span class="o">:</span> <span class="nc">UREJEN_TIP</span><span class="o">)</span> <span class="o">:</span>
+  <span class="nc">UREJEN_TIP</span> <span class="k">with</span> <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="nn">U</span><span class="p">.</span><span class="n">t</span> <span class="n">razsiritev</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="nn">U</span><span class="p">.</span><span class="n">t</span> <span class="n">razsiritev</span>
+
+  <span class="k">let</span> <span class="n">primerjaj</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nc">LIFTED_INT_UREJEN_TIP</span> <span class="o">=</span> <span class="nc">RAZSIRJEN_UREJEN_TIP</span> <span class="o">(</span><span class="nc">INT_UREJEN_TIP</span><span class="o">);;</span>
+
+<span class="nn">LIFTED_INT_UREJEN_TIP</span><span class="p">.</span><span class="n">primerjaj</span> <span class="nc">MinInf</span> <span class="o">(</span><span class="nc">Value</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c">(* - : ureditev = Less *)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;a razsiritev = MinInf | PlusInf | Value of &#39;a
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module RAZSIRJEN_UREJEN_TIP :
+  functor (U : UREJEN_TIP) -&gt;
+    sig type t = U.t razsiritev val primerjaj : t -&gt; t -&gt; ureditev end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module LIFTED_INT_UREJEN_TIP :
+  sig
+    type t = INT_UREJEN_TIP.t razsiritev
+    val primerjaj : t -&gt; t -&gt; ureditev
+  end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : ureditev = Less
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="avlslovar">
+<h3>AVLSlovar<a class="headerlink" href="#avlslovar" title="Link to this heading">#</a></h3>
+<p>Sestavite parametriziran modul <code class="docutils literal notranslate"><span class="pre">MAKE_SLOVAR</span></code>, ki sprejme modul, ki
+implementira <code class="docutils literal notranslate"><span class="pre">UREJEN_TIP</span></code>, in vrne modul s signaturo <code class="docutils literal notranslate"><span class="pre">SLOVAR</span></code>. Vaš slovar
+naj bo implementiran z AVL-drevesi, tako da je vstavljanje in iskanje v
+slovarju v času <code class="docutils literal notranslate"><span class="pre">O(log</span> <span class="pre">n)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">SLOVAR</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">kljuc</span>
+  <span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+
+  <span class="k">val</span> <span class="n">prazen</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="c">(** Vrne prazen slovar. *)</span>
+  <span class="k">val</span> <span class="n">dodaj</span> <span class="o">:</span> <span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="c">(** Doda nov par `kljuc`, `vrednost` v slovar. Če ključ v slovarju že obstaja, </span>
+<span class="c">      se njegova vrednost posodobi. *)</span>
+  <span class="k">val</span> <span class="n">popravi</span> <span class="o">:</span> <span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="c">(** Popravi vrednost pod ključem `kljuc` s funkcijo `f`. Če ključ v slovarju</span>
+<span class="c">      ne obstaja, se pokliče `f None`, sicer `f (Some vrednost)`. Če je rezultat</span>
+<span class="c">      klica `f` enak `None`, se par odstrani iz slovarja, če je rezultat klica </span>
+<span class="c">      `Some v`, se pod ključ `kljuc` zapiše vrednost `v`.*)</span>
+  <span class="k">val</span> <span class="n">odstrani</span> <span class="o">:</span> <span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="c">(** Odstrani par s ključem `kljuc` iz slovarja. Če ključa v slovarju ni, naj </span>
+<span class="c">      funkcija vrne prvotni slovar in ne sproži napake. *)</span>
+  <span class="k">val</span> <span class="n">velikost</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">int</span>
+  <span class="c">(** Vrne število elementov v slovarju. *)</span>
+  <span class="k">val</span> <span class="n">kljuci</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">kljuc</span> <span class="kt">list</span>
+  <span class="c">(** Našteje ključe v slovarju v enakem vrstnem redu kot to določa urejenost. *)</span>
+  <span class="k">val</span> <span class="n">vrednosti</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span>
+  <span class="c">(** Našteje vrednosti v slovarju v enakem vrstnem redu kot to določa urejenost</span>
+<span class="c">      pripadajočih ključev. *)</span>
+  <span class="k">val</span> <span class="n">najmanjsi_opt</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span><span class="o">)</span> <span class="n">option</span>
+  <span class="c">(** Vrne najmanjši ključ v slovarju ali `None`, če je slovar prazen. *)</span>
+  <span class="k">val</span> <span class="n">najvecji_opt</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span><span class="o">)</span> <span class="n">option</span>
+  <span class="c">(** Vrne največji ključ v slovarju ali `None`, če je slovar prazen. *)</span>
+  <span class="k">val</span> <span class="n">poisci_opt</span> <span class="o">:</span> <span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span>
+  <span class="c">(** Poišče vrednost pod ključem `kljuc`. Če ključ v slovarju ne obstaja,</span>
+<span class="c">      vrne `None`. *)</span>
+  <span class="k">val</span> <span class="n">iter</span> <span class="o">:</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">unit</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">unit</span>
+  <span class="c">(** Izvede funkcijo za vsak par ključ, vrednost v slovarju v enakem vrstnem </span>
+<span class="c">      redu kot ga določa urejenost. *)</span>
+  <span class="k">val</span> <span class="n">zlozi</span> <span class="o">:</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span>
+  <span class="c">(** Zloži slovar z dano funkcijo in začetno vrednostjo. Elementi se obdelajo</span>
+<span class="c">      v enakem vrstnem redu kot ga določa urejenost.</span>
+<span class="c">  </span>
+<span class="c">      Specifično za</span>
+<span class="c">      `zlozi f slovar acc = f k_n v_n (... (f k_2 v_2 (f k_1 v_1 acc))...)`</span>
+<span class="c">      , kjer so `(k_1, v_1), ..., (k_n, v_n)` pari ključ, vrednost v slovarju </span>
+<span class="c">      urejeni po ključih.</span>
+<span class="c">  *)</span>
+  <span class="k">val</span> <span class="n">preslikaj</span> <span class="o">:</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="n">t</span>
+  <span class="c">(** Preslika vrednosti v slovarju z dano funkcijo. *)</span>
+  <span class="k">val</span> <span class="n">preslikaji</span> <span class="o">:</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="n">t</span>
+  <span class="c">(** Preslika vrednosti v slovarju z dano funkcijo, ki poleg vrednosti dobi še</span>
+<span class="c">      pripadajoči ključ. *)</span>
+  <span class="k">val</span> <span class="n">vsebuje</span> <span class="o">:</span> <span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="c">(** Preveri, ali slovar vsebuje podan ključ. *)</span>
+  <span class="k">val</span> <span class="n">za_vse</span> <span class="o">:</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="c">(** Preveri, ali za vse pare ključ, vrednost v slovarju velja podan pogoj. *)</span>
+  <span class="k">val</span> <span class="n">obstaja</span> <span class="o">:</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="c">(** Preveri, ali obstaja vsaj en par ključ, vrednost v slovarju, ki izpolnjuje</span>
+<span class="c">      podan pogoj. *)</span>
+  <span class="k">val</span> <span class="n">v_seznam</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span><span class="o">)</span> <span class="kt">list</span>
+  <span class="c">(** Pretvori slovar v seznam parov ključ, vrednost v enakem vrstnem redu kot</span>
+<span class="c">      to določa urejenost. *)</span>
+  <span class="k">val</span> <span class="n">iz_seznama</span> <span class="o">:</span> <span class="o">(</span><span class="n">kljuc</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span><span class="o">)</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="c">(** Ustvari slovar iz seznama parov ključ, vrednost. Če se ključi v seznamu</span>
+<span class="c">      ponavljajo, naj enak ključ obdrži zadnjo vrednost. *)</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nc">MAKE_SLOVAR</span> <span class="o">(</span><span class="nc">U</span> <span class="o">:</span> <span class="nc">UREJEN_TIP</span><span class="o">)</span> <span class="o">:</span> <span class="nc">SLOVAR</span> <span class="k">with</span> <span class="k">type</span> <span class="n">kljuc</span> <span class="o">=</span> <span class="nn">U</span><span class="p">.</span><span class="n">t</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">kljuc</span> <span class="o">=</span> <span class="nn">U</span><span class="p">.</span><span class="n">t</span>
+  <span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">unit</span>
+
+  <span class="k">let</span> <span class="n">prazen</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">=</span> <span class="bp">()</span>
+  <span class="k">let</span> <span class="n">dodaj</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">popravi</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">odstrani</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">velikost</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">kljuci</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">vrednosti</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">najmanjsi_opt</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">najvecji_opt</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">poisci_opt</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">iter</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">zlozi</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">preslikaj</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">preslikaji</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">vsebuje</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">za_vse</span> <span class="o">_</span> <span class="o">_=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">obstaja</span> <span class="o">_</span> <span class="o">_=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">v_seznam</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">iz_seznama</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nc">SLOVAR_NIZ</span> <span class="o">=</span> <span class="nc">MAKE_SLOVAR</span> <span class="o">(</span><span class="nc">STRING_UREJEN_TIP</span><span class="o">)</span>
+
+<span class="k">let</span> <span class="n">slovar</span> <span class="o">=</span>
+  <span class="nn">SLOVAR_NIZ</span><span class="p">.</span><span class="n">iz_seznama</span>
+    <span class="o">[</span> <span class="o">(</span><span class="s2">&quot;jabolko&quot;</span><span class="o">,</span> <span class="s2">&quot;apple&quot;</span><span class="o">);</span> <span class="o">(</span><span class="s2">&quot;banana&quot;</span><span class="o">,</span> <span class="s2">&quot;banana&quot;</span><span class="o">);</span> <span class="o">(</span><span class="s2">&quot;cesnja&quot;</span><span class="o">,</span> <span class="s2">&quot; cherry&quot;</span><span class="o">)</span> <span class="o">]</span>
+  <span class="o">|&gt;</span> <span class="nn">SLOVAR_NIZ</span><span class="p">.</span><span class="n">dodaj</span> <span class="s2">&quot;datelj&quot;</span> <span class="s2">&quot;date&quot;</span>
+  <span class="o">|&gt;</span> <span class="nn">SLOVAR_NIZ</span><span class="p">.</span><span class="n">odstrani</span> <span class="s2">&quot;banana&quot;</span>
+  <span class="o">|&gt;</span> <span class="nn">SLOVAR_NIZ</span><span class="p">.</span><span class="n">popravi</span> <span class="s2">&quot;cesnja&quot;</span> <span class="o">(</span><span class="k">function</span>
+       <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="s2">&quot;cherry&quot;</span>
+       <span class="o">|</span> <span class="nc">Some</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="o">(</span><span class="s2">&quot;sour &quot;</span> <span class="o">^</span> <span class="n">v</span><span class="o">))</span>
+  <span class="o">|&gt;</span> <span class="nn">SLOVAR_NIZ</span><span class="p">.</span><span class="n">preslikaj</span> <span class="nn">String</span><span class="p">.</span><span class="n">length</span>
+  <span class="o">|&gt;</span> <span class="nn">SLOVAR_NIZ</span><span class="p">.</span><span class="n">v_seznam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exception NeObstaja
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type SLOVAR =
+  sig
+    type kljuc
+    type &#39;a t
+    val prazen : &#39;a t
+    val dodaj : kljuc -&gt; &#39;a -&gt; &#39;a t -&gt; &#39;a t
+    val popravi : kljuc -&gt; (&#39;a option -&gt; &#39;a option) -&gt; &#39;a t -&gt; &#39;a t
+    val odstrani : kljuc -&gt; &#39;a t -&gt; &#39;a t
+    val velikost : &#39;a t -&gt; int
+    val elementi : &#39;a t -&gt; (kljuc * &#39;a) list
+    val kljuci : &#39;a t -&gt; kljuc list
+    val vrednosti : &#39;a t -&gt; &#39;a list
+    val najmanjsi : &#39;a t -&gt; kljuc * &#39;a
+    val najmanjsi_opt : &#39;a t -&gt; (kljuc * &#39;a) option
+    val najvecji : &#39;a t -&gt; kljuc * &#39;a
+    val najvecji_opt : &#39;a t -&gt; (kljuc * &#39;a) option
+    val poisci : kljuc -&gt; &#39;a t -&gt; &#39;a
+    val poisci_opt : kljuc -&gt; &#39;a t -&gt; &#39;a option
+    val iter : (kljuc -&gt; &#39;a -&gt; unit) -&gt; &#39;a t -&gt; unit
+    val zlozi : (kljuc -&gt; &#39;a -&gt; &#39;b -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b -&gt; &#39;b
+    val preslikaj : (&#39;a -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b t
+    val preslikaji : (kljuc -&gt; &#39;a -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b t
+    val vsebuje : kljuc -&gt; &#39;a t -&gt; bool
+    val za_vse : (kljuc -&gt; &#39;a -&gt; bool) -&gt; &#39;a t -&gt; bool
+    val obstaja : (kljuc -&gt; &#39;a -&gt; bool) -&gt; &#39;a t -&gt; bool
+    val v_seznam : &#39;a t -&gt; (kljuc * &#39;a) list
+    val iz_seznama : (kljuc * &#39;a) list -&gt; &#39;a t
+  end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module MAKE_SLOVAR :
+  functor (U : UREJEN_TIP) -&gt;
+    sig
+      type kljuc = U.t
+      type &#39;a t
+      val prazen : &#39;a t
+      val dodaj : kljuc -&gt; &#39;a -&gt; &#39;a t -&gt; &#39;a t
+      val popravi : kljuc -&gt; (&#39;a option -&gt; &#39;a option) -&gt; &#39;a t -&gt; &#39;a t
+      val odstrani : kljuc -&gt; &#39;a t -&gt; &#39;a t
+      val velikost : &#39;a t -&gt; int
+      val elementi : &#39;a t -&gt; (kljuc * &#39;a) list
+      val kljuci : &#39;a t -&gt; kljuc list
+      val vrednosti : &#39;a t -&gt; &#39;a list
+      val najmanjsi : &#39;a t -&gt; kljuc * &#39;a
+      val najmanjsi_opt : &#39;a t -&gt; (kljuc * &#39;a) option
+      val najvecji : &#39;a t -&gt; kljuc * &#39;a
+      val najvecji_opt : &#39;a t -&gt; (kljuc * &#39;a) option
+      val poisci : kljuc -&gt; &#39;a t -&gt; &#39;a
+      val poisci_opt : kljuc -&gt; &#39;a t -&gt; &#39;a option
+      val iter : (kljuc -&gt; &#39;a -&gt; unit) -&gt; &#39;a t -&gt; unit
+      val zlozi : (kljuc -&gt; &#39;a -&gt; &#39;b -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b -&gt; &#39;b
+      val preslikaj : (&#39;a -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b t
+      val preslikaji : (kljuc -&gt; &#39;a -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b t
+      val vsebuje : kljuc -&gt; &#39;a t -&gt; bool
+      val za_vse : (kljuc -&gt; &#39;a -&gt; bool) -&gt; &#39;a t -&gt; bool
+      val obstaja : (kljuc -&gt; &#39;a -&gt; bool) -&gt; &#39;a t -&gt; bool
+      val v_seznam : &#39;a t -&gt; (kljuc * &#39;a) list
+      val iz_seznama : (kljuc * &#39;a) list -&gt; &#39;a t
+    end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module SLOVAR_NIZ :
+  sig
+    type kljuc = STRING_UREJEN_TIP.t
+    type &#39;a t = &#39;a MAKE_SLOVAR(STRING_UREJEN_TIP).t
+    val prazen : &#39;a t
+    val dodaj : kljuc -&gt; &#39;a -&gt; &#39;a t -&gt; &#39;a t
+    val popravi : kljuc -&gt; (&#39;a option -&gt; &#39;a option) -&gt; &#39;a t -&gt; &#39;a t
+    val odstrani : kljuc -&gt; &#39;a t -&gt; &#39;a t
+    val velikost : &#39;a t -&gt; int
+    val elementi : &#39;a t -&gt; (kljuc * &#39;a) list
+    val kljuci : &#39;a t -&gt; kljuc list
+    val vrednosti : &#39;a t -&gt; &#39;a list
+    val najmanjsi : &#39;a t -&gt; kljuc * &#39;a
+    val najmanjsi_opt : &#39;a t -&gt; (kljuc * &#39;a) option
+    val najvecji : &#39;a t -&gt; kljuc * &#39;a
+    val najvecji_opt : &#39;a t -&gt; (kljuc * &#39;a) option
+    val poisci : kljuc -&gt; &#39;a t -&gt; &#39;a
+    val poisci_opt : kljuc -&gt; &#39;a t -&gt; &#39;a option
+    val iter : (kljuc -&gt; &#39;a -&gt; unit) -&gt; &#39;a t -&gt; unit
+    val zlozi : (kljuc -&gt; &#39;a -&gt; &#39;b -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b -&gt; &#39;b
+    val preslikaj : (&#39;a -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b t
+    val preslikaji : (kljuc -&gt; &#39;a -&gt; &#39;b) -&gt; &#39;a t -&gt; &#39;b t
+    val vsebuje : kljuc -&gt; &#39;a t -&gt; bool
+    val za_vse : (kljuc -&gt; &#39;a -&gt; bool) -&gt; &#39;a t -&gt; bool
+    val obstaja : (kljuc -&gt; &#39;a -&gt; bool) -&gt; &#39;a t -&gt; bool
+    val v_seznam : &#39;a t -&gt; (kljuc * &#39;a) list
+    val iz_seznama : (kljuc * &#39;a) list -&gt; &#39;a t
+  end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val slovar : &#39;a list = []
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="turingovi-stroji">
+<h2>Turingovi stroji<a class="headerlink" href="#turingovi-stroji" title="Link to this heading">#</a></h2>
+<p>Na predavanjih in vajah smo si ogledali Turingove stroje. Pred vami je
+neučinkovito implementiran Turingov stroj. Vaša naloga je, da implementacijo
+s pomočjo slovarjev izboljšate tako, da bo deloval učinkoviteje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">direction</span> <span class="o">=</span> <span class="nc">Left</span> <span class="o">|</span> <span class="nc">Right</span>
+<span class="k">type</span> <span class="n">state</span> <span class="o">=</span> <span class="kt">string</span>
+
+<span class="k">module</span> <span class="k">type</span> <span class="nc">TAPE</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">t</span>
+
+  <span class="k">val</span> <span class="n">make</span> <span class="o">:</span> <span class="kt">string</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">print</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">unit</span>
+  <span class="k">val</span> <span class="n">read</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">char</span>
+  <span class="k">val</span> <span class="n">move</span> <span class="o">:</span> <span class="n">direction</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">write</span> <span class="o">:</span> <span class="kt">char</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nc">Tape</span> <span class="o">:</span> <span class="nc">TAPE</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">left</span> <span class="o">:</span> <span class="kt">char</span> <span class="kt">list</span><span class="o">;</span> <span class="n">right</span> <span class="o">:</span> <span class="kt">char</span> <span class="kt">list</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">make</span> <span class="n">str</span> <span class="o">=</span> <span class="o">{</span> <span class="n">left</span> <span class="o">=</span> <span class="bp">[]</span><span class="o">;</span> <span class="n">right</span> <span class="o">=</span> <span class="n">str</span> <span class="o">|&gt;</span> <span class="nn">String</span><span class="p">.</span><span class="n">to_seq</span> <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">of_seq</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">print</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">List</span><span class="p">.</span><span class="n">rev_append</span> <span class="n">left</span> <span class="n">right</span> <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">to_seq</span> <span class="o">|&gt;</span> <span class="nn">String</span><span class="p">.</span><span class="n">of_seq</span> <span class="o">|&gt;</span> <span class="n">print_endline</span><span class="o">;</span>
+    <span class="n">print_endline</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">make</span> <span class="o">(</span><span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">left</span><span class="o">)</span> <span class="sc">&#39; &#39;</span> <span class="o">^</span> <span class="s2">&quot;^&quot;</span><span class="o">)</span>
+
+  <span class="k">let</span> <span class="n">read</span> <span class="o">{</span> <span class="n">right</span> <span class="o">}</span> <span class="o">=</span> <span class="k">match</span> <span class="n">right</span> <span class="k">with</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="sc">&#39; &#39;</span> <span class="o">|</span> <span class="n">chr</span> <span class="o">::</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">chr</span>
+
+  <span class="k">let</span> <span class="n">move</span> <span class="n">dir</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="o">(</span><span class="n">dir</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">)</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="nc">Left</span><span class="o">,</span> <span class="sc">&#39; &#39;</span> <span class="o">::</span> <span class="n">left</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="nc">Left</span><span class="o">,</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">=</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">right</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="nc">Left</span><span class="o">,</span> <span class="bp">[]</span><span class="o">,</span> <span class="n">right</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span> <span class="o">=</span> <span class="bp">[]</span><span class="o">;</span> <span class="n">right</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span> <span class="o">::</span> <span class="n">right</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="nc">Right</span><span class="o">,</span> <span class="bp">[]</span><span class="o">,</span> <span class="sc">&#39; &#39;</span> <span class="o">::</span> <span class="n">right</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="nc">Right</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">right</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span> <span class="o">=</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="nc">Right</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span> <span class="o">::</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">=</span> <span class="bp">[]</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">write</span> <span class="n">chr</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="n">right</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="k">when</span> <span class="n">chr</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">=</span> <span class="o">[</span> <span class="n">chr</span> <span class="o">]</span> <span class="o">}</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">::</span> <span class="n">right</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">left</span><span class="o">;</span> <span class="n">right</span> <span class="o">=</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">right</span> <span class="o">}</span>
+<span class="k">end</span>
+
+<span class="k">let</span> <span class="n">primer_trak</span> <span class="o">=</span>
+  <span class="nn">Tape</span><span class="p">.</span><span class="o">(</span>
+    <span class="n">make</span> <span class="s2">&quot;ABCDE&quot;</span> <span class="o">|&gt;</span> <span class="n">move</span> <span class="nc">Left</span> <span class="o">|&gt;</span> <span class="n">move</span> <span class="nc">Left</span> <span class="o">|&gt;</span> <span class="n">move</span> <span class="nc">Right</span> <span class="o">|&gt;</span> <span class="n">move</span> <span class="nc">Right</span>
+    <span class="o">|&gt;</span> <span class="n">move</span> <span class="nc">Right</span> <span class="o">|&gt;</span> <span class="n">move</span> <span class="nc">Right</span> <span class="o">|&gt;</span> <span class="n">write</span> <span class="sc">&#39;!&#39;</span> <span class="o">|&gt;</span> <span class="n">print</span><span class="o">)</span>
+
+<span class="k">module</span> <span class="k">type</span> <span class="nc">MACHINE</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">t</span>
+
+  <span class="k">val</span> <span class="n">make</span> <span class="o">:</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">initial</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">state</span>
+  <span class="k">val</span> <span class="n">add_transition</span> <span class="o">:</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="o">-&gt;</span> <span class="n">direction</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">step</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">t</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">state</span> <span class="o">*</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">t</span><span class="o">)</span> <span class="n">option</span>
+  <span class="k">val</span> <span class="n">run</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="kt">unit</span>
+  <span class="k">val</span> <span class="n">speed_run</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="kt">unit</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nc">MachineNeucinkovito</span> <span class="o">:</span> <span class="nc">MACHINE</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">initial</span> <span class="o">:</span> <span class="n">state</span><span class="o">;</span>
+    <span class="n">transitions</span> <span class="o">:</span> <span class="o">(</span><span class="n">state</span> <span class="o">*</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">state</span> <span class="o">*</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">direction</span><span class="o">)</span> <span class="kt">list</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">make</span> <span class="n">initial</span> <span class="o">_</span><span class="n">states</span> <span class="o">=</span> <span class="o">{</span> <span class="n">initial</span><span class="o">;</span> <span class="n">transitions</span> <span class="o">=</span> <span class="bp">[]</span> <span class="o">}</span>
+  <span class="k">let</span> <span class="n">initial</span> <span class="o">{</span> <span class="n">initial</span> <span class="o">}</span> <span class="o">=</span> <span class="n">initial</span>
+
+  <span class="k">let</span> <span class="n">add_transition</span> <span class="n">st</span> <span class="n">chr</span> <span class="n">st&#39;</span> <span class="n">chr&#39;</span> <span class="n">dir</span> <span class="n">tm</span> <span class="o">=</span>
+    <span class="o">{</span> <span class="n">tm</span> <span class="k">with</span> <span class="n">transitions</span> <span class="o">=</span> <span class="o">(</span><span class="n">st</span><span class="o">,</span> <span class="n">chr</span><span class="o">,</span> <span class="n">st&#39;</span><span class="o">,</span> <span class="n">chr&#39;</span><span class="o">,</span> <span class="n">dir</span><span class="o">)</span> <span class="o">::</span> <span class="n">tm</span><span class="o">.</span><span class="n">transitions</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">step</span> <span class="n">tm</span> <span class="n">st</span> <span class="n">tape</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">chr</span> <span class="o">=</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">read</span> <span class="n">tape</span> <span class="k">in</span>
+    <span class="k">match</span>
+      <span class="nn">List</span><span class="p">.</span><span class="n">find_opt</span>
+        <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">st&#39;</span><span class="o">,</span> <span class="n">chr&#39;</span><span class="o">,</span> <span class="o">_,</span> <span class="o">_,</span> <span class="o">_)</span> <span class="o">-&gt;</span> <span class="n">st</span> <span class="o">=</span> <span class="n">st&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">chr</span> <span class="o">=</span> <span class="n">chr&#39;</span><span class="o">)</span>
+        <span class="n">tm</span><span class="o">.</span><span class="n">transitions</span>
+    <span class="k">with</span>
+    <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+    <span class="o">|</span> <span class="nc">Some</span> <span class="o">(_,</span> <span class="o">_,</span> <span class="n">st&#39;</span><span class="o">,</span> <span class="n">chr&#39;</span><span class="o">,</span> <span class="n">dir</span><span class="o">)</span> <span class="o">-&gt;</span>
+        <span class="nc">Some</span> <span class="o">(</span><span class="n">st&#39;</span><span class="o">,</span> <span class="n">tape</span> <span class="o">|&gt;</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">write</span> <span class="n">chr&#39;</span> <span class="o">|&gt;</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">move</span> <span class="n">dir</span><span class="o">)</span>
+
+  <span class="k">let</span> <span class="n">run</span> <span class="n">tm</span> <span class="n">str</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="k">rec</span> <span class="n">step&#39;</span> <span class="o">(</span><span class="n">st</span><span class="o">,</span> <span class="n">tape</span><span class="o">)</span> <span class="o">=</span>
+      <span class="o">(</span><span class="nn">Tape</span><span class="p">.</span><span class="n">print</span> <span class="n">tape</span><span class="o">;</span>
+      <span class="n">print_endline</span> <span class="n">st</span><span class="o">;</span>
+      <span class="k">match</span> <span class="n">step</span> <span class="n">tm</span> <span class="n">st</span> <span class="n">tape</span> <span class="k">with</span>
+      <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="bp">()</span>
+      <span class="o">|</span> <span class="nc">Some</span> <span class="n">config&#39;</span> <span class="o">-&gt;</span> <span class="n">step&#39;</span> <span class="n">config&#39;</span><span class="o">)</span>
+    <span class="k">in</span>
+    <span class="n">step&#39;</span> <span class="o">(</span><span class="n">initial</span> <span class="n">tm</span><span class="o">,</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">make</span> <span class="n">str</span><span class="o">)</span>
+
+  <span class="k">let</span> <span class="n">speed_run</span> <span class="n">tm</span> <span class="n">str</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">step&#39;</span> <span class="o">(</span><span class="n">st</span><span class="o">,</span> <span class="n">tape</span><span class="o">)</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="n">step</span> <span class="n">tm</span> <span class="n">st</span> <span class="n">tape</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">print</span> <span class="n">tape</span>
+    <span class="o">|</span> <span class="nc">Some</span> <span class="n">config&#39;</span> <span class="o">-&gt;</span> <span class="n">step&#39;</span> <span class="n">config&#39;</span>
+  <span class="k">in</span>
+  <span class="n">step&#39;</span> <span class="o">(</span><span class="n">initial</span> <span class="n">tm</span><span class="o">,</span> <span class="nn">Tape</span><span class="p">.</span><span class="n">make</span> <span class="n">str</span><span class="o">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type direction = Left | Right
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type state = string
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type TAPE =
+  sig
+    type t
+    val make : string -&gt; t
+    val print : t -&gt; unit
+    val read : t -&gt; char
+    val move : direction -&gt; t -&gt; t
+    val write : char -&gt; t -&gt; t
+  end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Tape : TAPE
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AB!DE
+  ^
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_trak : unit = ()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type MACHINE =
+  sig
+    type t
+    val make : state -&gt; state list -&gt; t
+    val initial : t -&gt; state
+    val add_transition :
+      state -&gt; char -&gt; state -&gt; char -&gt; direction -&gt; t -&gt; t
+    val step : t -&gt; state -&gt; Tape.t -&gt; (state * Tape.t) option
+    val run : t -&gt; state -&gt; unit
+    val speed_run : t -&gt; state -&gt; unit
+  end
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module MachineNeucinkovito : MACHINE
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sestavite modul <code class="docutils literal notranslate"><span class="pre">MachineUcinkovito</span></code>, ki učinkovito implementira signaturo
+<code class="docutils literal notranslate"><span class="pre">MACHINE</span></code> z uporabo slovarja, ki ste ga implementirali pred tem. Na kratko
+analizirajte časovno zahtevnost operacij <code class="docutils literal notranslate"><span class="pre">add_transition</span></code> in <code class="docutils literal notranslate"><span class="pre">step</span></code> v
+primerjavi z neučinkovito implementacijo.</p>
+<p>Namig:<br />
+Za dodatne točke je časovna zahtevnost iskanja prehoda v funkciji
+<code class="docutils literal notranslate"><span class="pre">speed_run</span></code> z nekaj preprocesiranja konstantna.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">MachineUcinkovito</span> <span class="o">:</span> <span class="nc">MACHINE</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">unit</span>
+
+  <span class="k">let</span> <span class="n">make</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">initial</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">add_transition</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">step</span> <span class="o">_</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">run</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+  <span class="k">let</span> <span class="n">speed_run</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="k">assert</span> <span class="bp">false</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module MachineUcinkovito : MACHINE
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sestavljanje-turingovih-strojev">
+<h3>Sestavljanje Turingovih strojev<a class="headerlink" href="#sestavljanje-turingovih-strojev" title="Link to this heading">#</a></h3>
+<p>Sestavite Turingov stroj, ki na vhodnem nizu prepozna palindrom (iz <code class="docutils literal notranslate"><span class="pre">0</span></code> in
+<code class="docutils literal notranslate"><span class="pre">1</span></code>). Če je na vhodnem nizu palindrom, naj na koncu na traku zapiše <code class="docutils literal notranslate"><span class="pre">1</span></code>,
+sicer <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="c">(* let palindrom_stroj : MachineUcinkovito.t = assert false *)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sestavite Turingov stroj, ki na vhod sprejme niz <code class="docutils literal notranslate"><span class="pre">n</span></code> enic in na koncu na
+traku zapiše <code class="docutils literal notranslate"><span class="pre">n^2</span></code> enic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="c">(* let kvadrat_stroj : MachineUcinkovito.t = assert false *)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sestavite Turingov stroj, ki na začetku na traku sprejme število <code class="docutils literal notranslate"><span class="pre">n</span></code>,
+zapisano v dvojiškem zapisu, na koncu pa naj bo na traku zapisanih
+natanko <code class="docutils literal notranslate"><span class="pre">n</span></code> enic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="c">(* let enice_stroj : MachineUcinkovito.t = assert false *)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sestavite ravno obratni Turingov stroj, torej tak, ki na začetku na traku
+sprejme število <code class="docutils literal notranslate"><span class="pre">n</span></code> enic, na koncu pa naj bo na traku zapisano število <code class="docutils literal notranslate"><span class="pre">n</span></code>
+v dvojiškem zapisu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="c">(* let dvojski_stroj : MachineUcinkovito.t = assert false *)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sestavite Turingov stroj, ki na začetku na traku sprejme oklepaje <code class="docutils literal notranslate"><span class="pre">(</span></code> in
+<code class="docutils literal notranslate"><span class="pre">)</span></code>, <code class="docutils literal notranslate"><span class="pre">[</span></code> in <code class="docutils literal notranslate"><span class="pre">]</span></code> ter <code class="docutils literal notranslate"><span class="pre">{</span></code> in <code class="docutils literal notranslate"><span class="pre">}</span></code>. Stroj naj na traku izpiše <code class="docutils literal notranslate"><span class="pre">1</span></code>, če so
+oklepaji pravilno uravnoteženi in gnezdeni, ter <code class="docutils literal notranslate"><span class="pre">0</span></code> sicer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="c">(* let uravnotezeni_oklepaji_stroj : MachineUcinkovito.t = assert false *)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter-4.14.1"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter-4.14.1",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter-4.14.1'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dn-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. domača naloga</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dn-5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5. domača naloga</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slovarji">Slovarji</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stroga-ureditev">Stroga ureditev</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avlslovar">AVLSlovar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turingovi-stroji">Turingovi stroji</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sestavljanje-turingovih-strojev">Sestavljanje Turingovih strojev</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

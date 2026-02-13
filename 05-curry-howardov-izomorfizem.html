@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Curry-Howardov izomorfizem &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05-curry-howardov-izomorfizem';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uvod v Lean" href="06-uvod-v-lean.html" />
+    <link rel="prev" title="Abstrakcija" href="04-abstrakcija.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05-curry-howardov-izomorfizem.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Curry-Howardov izomorfizem</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-mnozicah-dokazov">O množicah dokazov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#povezava-med-izjavami-in-tipi">Povezava med izjavami in tipi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omejitve-ocamla">Omejitve OCamla</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="curry-howardov-izomorfizem">
+<h1>Curry-Howardov izomorfizem<a class="headerlink" href="#curry-howardov-izomorfizem" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence">Curry-Howardov izomorfizem</a> povezuje logiko s teorijo tipov. V grobem pravi, da lahko vsaki logični izjavi priredimo ustrezen tip v programskem jeziku, ki ima predstavnika natanko takrat, ko ima izjava dokaz. Curry-Howardov izomorfizem ni pomemben le zaradi globoke in lepe povezave dveh različnih področij, temveč ima tudi praktične posledice, saj na njem slonijo sodobni dokazovalni pomočniki, programi, ki matematične dokaze preverjajo na podoben način, kot OCaml preverja tipe.</p>
+<section id="o-mnozicah-dokazov">
+<h2>O množicah dokazov<a class="headerlink" href="#o-mnozicah-dokazov" title="Link to this heading">#</a></h2>
+<p>Poglejmo si enostaven primer. Izjavo <span class="math notranslate nohighlight">\(P \land Q\)</span> lahko dokažemo tako, da dokažemo <span class="math notranslate nohighlight">\(P\)</span> in <span class="math notranslate nohighlight">\(Q\)</span> posebej. Obratno lahko iz <span class="math notranslate nohighlight">\(P \land Q\)</span> izpeljemo tako <span class="math notranslate nohighlight">\(P\)</span> kot <span class="math notranslate nohighlight">\(Q\)</span>. Torej dokaz izjave <span class="math notranslate nohighlight">\(P \land Q\)</span> ustreza natanko paru dokazov za <span class="math notranslate nohighlight">\(P\)</span> in za <span class="math notranslate nohighlight">\(Q\)</span>. Če z <span class="math notranslate nohighlight">\(\mathcal{D}_R\)</span> množico vseh dokazov izjave <span class="math notranslate nohighlight">\(R\)</span>, velja <span class="math notranslate nohighlight">\(\mathcal{D}_{P \land Q} \simeq \mathcal{D}_P \times \mathcal{D}_Q\)</span>.</p>
+<p>Če ne privzamemo aksioma o izključeni tretji možnosti, podobna povezava velja med disjunkcijo in vsoto. Izjavo <span class="math notranslate nohighlight">\(P \lor Q\)</span> dokažemo natanko takrat, kadar dokažemo <span class="math notranslate nohighlight">\(P\)</span> ali dokažemo <span class="math notranslate nohighlight">\(Q\)</span>. Oziroma na krajše: <span class="math notranslate nohighlight">\(\mathcal{D}_{P \lor Q} \simeq \mathcal{D}_P + \mathcal{D}_Q\)</span>.</p>
+<p>Zanimiva je tudi povezava med implikacijo in funkcijami. Izjavo <span class="math notranslate nohighlight">\(P \Rightarrow Q\)</span> dokažemo tako, da ob predpostavki <span class="math notranslate nohighlight">\(P\)</span> dokažemo <span class="math notranslate nohighlight">\(Q\)</span>, kar pomeni, da je vsak dokaz izjave <span class="math notranslate nohighlight">\(P \Rightarrow Q\)</span> postopek, ki iz vsakega dokaza izjave <span class="math notranslate nohighlight">\(P\)</span> izpelje dokaz izjave <span class="math notranslate nohighlight">\(Q\)</span>, oziroma <span class="math notranslate nohighlight">\(\mathcal{D}_{P \Rightarrow Q} \simeq \mathcal{D}_P \to \mathcal{D}_Q\)</span>.</p>
+<p>Za primer vzemimo tavtologijo <span class="math notranslate nohighlight">\((P \land Q \Rightarrow R) \Rightarrow (P \Rightarrow (Q \Rightarrow R))\)</span>. Kako bi s pomočjo Curry-Howardovega izomorfizma preverili, da je resnična? Po zgornjih pravilih velja:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{D}_{(P \land Q \Rightarrow R) \Rightarrow (P \Rightarrow (Q \Rightarrow R))} \simeq (\mathcal{D}_P \times \mathcal{D}_Q \to \mathcal{D}_R) \to (\mathcal{D}_P \to (\mathcal{D}_Q \to \mathcal{D}_R)).
+\]</div>
+<p>Če nam uspe najti funkcijo <span class="math notranslate nohighlight">\((\mathcal{D}_P \times \mathcal{D}_Q \to \mathcal{D}_R) \to (\mathcal{D}_P \to (\mathcal{D}_Q \to \mathcal{D}_R))\)</span> bomo našli tudi dokaz naše izjave. To je enostavno, saj gre le za konkreten primer izomorfizma <span class="math notranslate nohighlight">\((A \times B \to C) \simeq (A \to (B \to C))\)</span>, ki velja za poljubne množice <span class="math notranslate nohighlight">\(A, B, C\)</span>. Tako obstaja ne le preslikava ampak celo bijekcija <span class="math notranslate nohighlight">\((\mathcal{D}_P \times \mathcal{D}_Q \to \mathcal{D}_R) \to (\mathcal{D}_P \to (\mathcal{D}_Q \to \mathcal{D}_R))\)</span>.</p>
+<p>Za logično neresnico <span class="math notranslate nohighlight">\(\bot\)</span> seveda velja <span class="math notranslate nohighlight">\(\mathcal{D}_\bot = \emptyset\)</span>, za logično resnico <span class="math notranslate nohighlight">\(\top\)</span> pa izberemo enojec <span class="math notranslate nohighlight">\(\mathcal{D}_\top = \{*\}\)</span> z enim samim trivialnim dokazom, ki ga običajno označujemo z <span class="math notranslate nohighlight">\(*\)</span>.</p>
+<p>Za negacijo lahko iz <span class="math notranslate nohighlight">\(\lnot P = P \Rightarrow \bot\)</span> izpeljemo <span class="math notranslate nohighlight">\(\mathcal{D}_{\lnot P} = \mathcal{D}_P \to \emptyset\)</span>. Izjava <span class="math notranslate nohighlight">\(\lnot P\)</span> bo tako imela dokaz takrat, kadar je množica njenih dokazov <span class="math notranslate nohighlight">\(\mathcal{D}_P \to \emptyset\)</span> neprazna. Množica preslikav v prazno množico pa je neprazna natanko takrat, kadar je prazna njena domena, v tem primeru <span class="math notranslate nohighlight">\(\mathcal{D}_P\)</span>. Torej ima <span class="math notranslate nohighlight">\(\lnot P\)</span> dokaz natanko takrat, kadar ga <span class="math notranslate nohighlight">\(P\)</span> nima.</p>
+</section>
+<section id="povezava-med-izjavami-in-tipi">
+<h2>Povezava med izjavami in tipi<a class="headerlink" href="#povezava-med-izjavami-in-tipi" title="Link to this heading">#</a></h2>
+<p>V programskem jeziku z dovolj močnimi tipi, kot je OCaml, lahko predstavimo vse zgoraj opisane konstrukcije, kar nam omogoča, da dokazov ne pišemo samo “na papir”, temveč v preverljivo programsko kodo.</p>
+<p>Na primer, če želimo pokazati, da izjava <span class="math notranslate nohighlight">\((P \land Q \Rightarrow R) \Rightarrow (P \Rightarrow (Q \Rightarrow R))\)</span> drži za poljubne <span class="math notranslate nohighlight">\(P, Q, R\)</span>, je dovolj, da skonstruiramo polimorfno preslikavo tipa <code class="docutils literal notranslate"><span class="pre">(('p</span> <span class="pre">*</span> <span class="pre">'q</span> <span class="pre">-&gt;</span> <span class="pre">'r)</span> <span class="pre">-&gt;</span> <span class="pre">('p</span> <span class="pre">-&gt;</span> <span class="pre">('q</span> <span class="pre">-&gt;</span> <span class="pre">'r)))</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">dokaz_nase_izjave</span> <span class="o">:</span> <span class="o">((</span><span class="k">&#39;</span><span class="n">p</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">q</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">q</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)))</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="n">dokaz_iz_p_in_q_sledi_r</span> <span class="o">-&gt;</span>
+    <span class="k">fun</span> <span class="n">dokaz_p</span> <span class="o">-&gt;</span>
+      <span class="k">fun</span> <span class="n">dokaz_q</span> <span class="o">-&gt;</span>
+        <span class="k">let</span> <span class="n">dokaz_p_in_q</span> <span class="o">=</span> <span class="o">(</span><span class="n">dokaz_p</span><span class="o">,</span> <span class="n">dokaz_q</span><span class="o">)</span> <span class="k">in</span>
+        <span class="k">let</span> <span class="n">dokaz_r</span> <span class="o">=</span> <span class="n">dokaz_iz_p_in_q_sledi_r</span> <span class="n">dokaz_p_in_q</span> <span class="k">in</span>
+        <span class="n">dokaz_r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val dokaz_nase_izjave : (&#39;p * &#39;q -&gt; &#39;r) -&gt; &#39;p -&gt; &#39;q -&gt; &#39;r = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če bi bili v dokazu malomarni, bi nas OCaml na to opozoril, saj se tipi ne bi ujemali:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">napacen_dokaz</span> <span class="o">:</span> <span class="o">((</span><span class="k">&#39;</span><span class="n">p</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">q</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">q</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)))</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="n">dokaz_iz_p_in_q_sledi_r</span> <span class="o">-&gt;</span>
+    <span class="k">fun</span> <span class="n">dokaz_p</span> <span class="o">-&gt;</span> <span class="n">dokaz_iz_p_in_q_sledi_r</span> <span class="n">dokaz_p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[17]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">43</span><span class="o">-</span><span class="mi">50</span><span class="p">:</span>
+<span class="mi">3</span> <span class="o">|</span>     <span class="n">fun</span> <span class="n">dokaz_p</span> <span class="o">-&gt;</span> <span class="n">dokaz_iz_p_in_q_sledi_r</span> <span class="n">dokaz_p</span>
+                                               <span class="o">^^^^^^^</span>
+<span class="ne">Error</span>: This expression has type &#39;p but an expression was expected of type
+         <span class="s1">&#39;p * &#39;</span><span class="n">q</span>
+       <span class="n">The</span> <span class="nb">type</span> <span class="n">variable</span> <span class="s1">&#39;p occurs inside &#39;</span><span class="n">p</span> <span class="o">*</span> <span class="s1">&#39;q</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mimogrede: isto funkcijo bi lahko napisali tudi na krajše. V resnici smo jo že videli, gre za funkcijo <code class="docutils literal notranslate"><span class="pre">curry</span></code>, le imena parametrov so druga:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">curry</span> <span class="n">f</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="n">f</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val curry : (&#39;a * &#39;b -&gt; &#39;c) -&gt; &#39;a -&gt; &#39;b -&gt; &#39;c = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>V OCamlu imamo že vgrajene ustrezne tipe za konjunkcijo (produkt <code class="docutils literal notranslate"><span class="pre">*</span></code>), implikacijo (funkcijski tip <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>) in resnico (enotski tip <code class="docutils literal notranslate"><span class="pre">unit</span></code>). Za disjunkcijo lahko vsoto definiramo sami:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">p</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">q</span><span class="o">)</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">Left</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">p</span> <span class="o">|</span> <span class="nc">Right</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type (&#39;p, &#39;q) sum = Left of &#39;p | Right of &#39;q
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dokaz izjave <span class="math notranslate nohighlight">\(((P \lor Q) \Rightarrow R) \implies (P \Rightarrow R) \land (Q \Rightarrow R)\)</span> tako ustreza funkciji tipa <code class="docutils literal notranslate"><span class="pre">(('p,</span> <span class="pre">'q)</span> <span class="pre">sum</span> <span class="pre">-&gt;</span> <span class="pre">'r)</span> <span class="pre">-&gt;</span> <span class="pre">('p</span> <span class="pre">-&gt;</span> <span class="pre">'r)</span> <span class="pre">*</span> <span class="pre">('q</span> <span class="pre">-&gt;</span> <span class="pre">'r)</span></code>, ki jo lahko na primer definiramo kot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">dokaz2</span> <span class="o">:</span> <span class="o">((</span><span class="k">&#39;</span><span class="n">p</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">q</span><span class="o">)</span> <span class="n">sum</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)</span> <span class="o">*</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">q</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">r</span><span class="o">)</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="n">dokaz_iz_p_ali_q_sledi_r</span> <span class="o">-&gt;</span> <span class="o">(</span>
+    <span class="o">(</span><span class="k">fun</span> <span class="n">dokaz_p</span> <span class="o">-&gt;</span> <span class="n">dokaz_iz_p_ali_q_sledi_r</span> <span class="o">(</span><span class="nc">Left</span> <span class="n">dokaz_p</span><span class="o">)),</span>
+    <span class="o">(</span><span class="k">fun</span> <span class="n">dokaz_q</span> <span class="o">-&gt;</span> <span class="n">dokaz_iz_p_ali_q_sledi_r</span> <span class="o">(</span><span class="nc">Right</span> <span class="n">dokaz_q</span><span class="o">))</span>
+  <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val dokaz2 : ((&#39;p, &#39;q) sum -&gt; &#39;r) -&gt; (&#39;p -&gt; &#39;r) * (&#39;q -&gt; &#39;r) = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobno lahko z naštevnim tipom brez konstruktorjev definiramo prazen tip <code class="docutils literal notranslate"><span class="pre">empty</span></code>, z njegovo pomočjo pa še tip za negacijo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">empty</span>
+<span class="k">type</span> <span class="k">&#39;</span><span class="n">p</span> <span class="n">not</span> <span class="o">=</span> <span class="k">&#39;</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">empty</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type empty
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;p not = &#39;p -&gt; empty
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">iz_p_sledi_ne_ne_p</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">p</span> <span class="n">not</span> <span class="n">not</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">h_p</span> <span class="n">h_ne_p</span> <span class="o">-&gt;</span> <span class="n">h_ne_p</span> <span class="n">h_p</span>
+
+<span class="k">let</span> <span class="n">iz_ne_p_ali_q_sledi_ne_p_in_ne_q</span> <span class="o">:</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">p</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">q</span><span class="o">)</span> <span class="n">sum</span> <span class="n">not</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">p</span> <span class="n">not</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">q</span> <span class="n">not</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="n">h_ne_p_ali_q</span> <span class="o">-&gt;</span> <span class="o">(</span>
+    <span class="o">(</span><span class="k">fun</span> <span class="n">h_p</span> <span class="o">-&gt;</span> <span class="n">h_ne_p_ali_q</span> <span class="o">(</span><span class="nc">Left</span> <span class="n">h_p</span><span class="o">)),</span>
+    <span class="o">(</span><span class="k">fun</span> <span class="n">h_q</span> <span class="o">-&gt;</span> <span class="n">h_ne_p_ali_q</span> <span class="o">(</span><span class="nc">Right</span> <span class="n">h_q</span><span class="o">))</span>
+  <span class="o">)</span>
+  
+<span class="k">let</span> <span class="n">iz_ne_p_in_ne_q_sledi_ne_p_ali_q</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">p</span> <span class="n">not</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">q</span> <span class="n">not</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">p</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">q</span><span class="o">)</span> <span class="n">sum</span> <span class="n">not</span> <span class="o">=</span>
+ <span class="k">fun</span> <span class="o">(</span><span class="n">h_ne_p</span><span class="o">,</span> <span class="n">h_ne_q</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">Left</span> <span class="n">h_p</span> <span class="o">-&gt;</span> <span class="n">h_ne_p</span> <span class="n">h_p</span>
+  <span class="o">|</span> <span class="nc">Right</span> <span class="n">h_q</span> <span class="o">-&gt;</span> <span class="n">h_ne_q</span> <span class="n">h_q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val iz_p_sledi_ne_ne_p : &#39;p -&gt; &#39;p not not = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val iz_ne_p_ali_q_sledi_ne_p_in_ne_q : (&#39;p, &#39;q) sum not -&gt; &#39;p not * &#39;q not =
+  &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val iz_ne_p_in_ne_q_sledi_ne_p_ali_q : &#39;p not * &#39;q not -&gt; (&#39;p, &#39;q) sum not =
+  &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="omejitve-ocamla">
+<h2>Omejitve OCamla<a class="headerlink" href="#omejitve-ocamla" title="Link to this heading">#</a></h2>
+<p>Na zgornji način nam lahko OCaml služi kot preprost dokazovalnik. Ima pa več omejitev:</p>
+<ol class="arabic simple">
+<li><p>Pisanje dokazov s pomočjo funkcij je precej nerodno. Nekateri dokazovalniki (npr. Lean ali Rocq) tako namesto tega uporabljajo <em>taktike</em>, s pomočjo katerih računalniku dajemo le napotke, kakšne dokaze naj konstruira. Spet v drugih dokazovalnikih (npr. Agda ali Idris) pa dokaze res pišemo neposredno, vendar nam pri tem interaktivno pomaga urejevalnik.</p></li>
+<li><p>S tipi v OCamlu lahko izrazimo le formule v izjavnem računu, ki ne vsebujejo predikatov in kvantifikatorjev. Razmislimo, čemu bi ustrezal predikat <span class="math notranslate nohighlight">\(S\)</span>, ki pove, ali je naravno število sodo. Za vsako število <span class="math notranslate nohighlight">\(n\)</span> imamo torej izjavo <span class="math notranslate nohighlight">\(S(n)\)</span> in zato njej pripadajoč tip. Torej bi v OCamlu predikatu <span class="math notranslate nohighlight">\(S\)</span> ustrezala funkcija, ki vsakemu številu priredi svoj tip! Pri lihih številih bi bil ta tip prazen, pri sodih pa ne. V splošnem bi potrebovali funkcije iz vrednosti v tipe. V OCamlu imamo običajne funkcije iz vrednosti v vrednosti in celo konstruktorje tipov (npr. <code class="docutils literal notranslate"><span class="pre">option</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, …), ki slikajo tipe v tipe. Funkcij iz vrednosti v tipe pa žal nimamo.</p></li>
+<li><p>S pomočjo rekurzije lahko v OCamlu definiramo funkcije tipov, ki ustrezajo neresničnim izjavam. Na primer, izjava <span class="math notranslate nohighlight">\(P \Rightarrow Q\)</span> v splošnem ne drži, vendar lahko vedno napišemo:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">iz_p_sledi_q</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">q</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="n">dokaz_p</span> <span class="o">-&gt;</span>
+    <span class="k">let</span> <span class="n">dokaz_q</span> <span class="o">=</span> <span class="n">iz_p_sledi_q</span> <span class="n">dokaz_p</span> <span class="k">in</span>
+    <span class="n">dokaz_q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val iz_p_sledi_q : &#39;p -&gt; &#39;q = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Res, če tej funkciji kot argument podamo dokaz za <span class="math notranslate nohighlight">\(P\)</span>, bo na koncu izvajanja funkcija vrnila dokaz za <span class="math notranslate nohighlight">\(Q\)</span>. Se pa znamo malo načakati…</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-abstrakcija.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Abstrakcija</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06-uvod-v-lean.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uvod v Lean</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-mnozicah-dokazov">O množicah dokazov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#povezava-med-izjavami-in-tipi">Povezava med izjavami in tipi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omejitve-ocamla">Omejitve OCamla</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

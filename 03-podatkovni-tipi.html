@@ -1,0 +1,1652 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Podatkovni tipi &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-podatkovni-tipi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Abstrakcija" href="04-abstrakcija.html" />
+    <link rel="prev" title="Rekurzija" href="02-rekurzija.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03-podatkovni-tipi.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Podatkovni tipi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#okrajsave-tipov">Okrajšave tipov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oznacba-tipov">Označba tipov</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zapisni-tipi">Zapisni tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicija-zapisnih-tipov">Definicija zapisnih tipov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razstavljanje-zapisov">Razstavljanje zapisov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posodabljanje-zapisov">Posodabljanje zapisov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pametni-konstruktorji">Pametni konstruktorji</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastevni-tipi">Naštevni tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicije-nastevnih-tipov">Definicije naštevnih tipov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razstavljanje-nastevnih-tipov">Razstavljanje naštevnih tipov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konstruktorji-z-argumenti">Konstruktorji z argumenti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nastevni-tipi-z-eno-samo-varianto">Naštevni tipi z eno samo varianto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebrajski-tipi">Algebrajski tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naravna-stevila">Naravna števila</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verizni-seznami">Verižni seznami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aritmeticni-izrazi">Aritmetični izrazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dvojiska-drevesa">Dvojiška drevesa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje">Vaje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valute">Valute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesani-seznami">Mešani seznami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carodeji">Čarodeji</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="podatkovni-tipi">
+<h1>Podatkovni tipi<a class="headerlink" href="#podatkovni-tipi" title="Link to this heading">#</a></h1>
+<p>Poleg bogatega nabora vgrajenih tipov si tipe v OCamlu lahko definiramo tudi sami.</p>
+<section id="okrajsave-tipov">
+<h2>Okrajšave tipov<a class="headerlink" href="#okrajsave-tipov" title="Link to this heading">#</a></h2>
+<p>Najenostavnejši način za definicijo tipov so okrajšave obstoječih tipov. Na primer, tip za <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> si lahko definiramo kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">r3</span> <span class="o">=</span> <span class="kt">float</span> <span class="o">*</span> <span class="kt">float</span> <span class="o">*</span> <span class="kt">float</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type r3 = float * float * float
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tako kot na vgrajena tipa <code class="docutils literal notranslate"><span class="pre">list</span></code> in <code class="docutils literal notranslate"><span class="pre">option</span></code> lahko tudi naši tipi vsebujejo parametre:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">zaporedje</span> <span class="o">=</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;a zaporedje = int -&gt; &#39;a
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če tip sprejme več parametrov (na primer slovar ima tako tip ključev kot tip vrednosti), jih lahko naštejemo v oklepajih.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">k</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">v</span><span class="o">)</span> <span class="n">slovar</span> <span class="o">=</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">k</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">v</span><span class="o">)</span> <span class="kt">list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type (&#39;k, &#39;v) slovar = (&#39;k * &#39;v) list
+</pre></div>
+</div>
+</div>
+</div>
+<section id="oznacba-tipov">
+<h3>Označba tipov<a class="headerlink" href="#oznacba-tipov" title="Link to this heading">#</a></h3>
+<p>Tudi če si definiramo svoj tip, bo OCaml privzeto izračunal najbolj splošni tip:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">vsota_r3</span> <span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">,</span> <span class="n">z1</span><span class="o">)</span> <span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">,</span> <span class="n">z2</span><span class="o">)</span> <span class="o">=</span>
+  <span class="o">(</span><span class="n">x1</span> <span class="o">+.</span> <span class="n">x2</span><span class="o">,</span> <span class="n">y1</span> <span class="o">+.</span> <span class="n">y2</span><span class="o">,</span> <span class="n">z1</span> <span class="o">+.</span> <span class="n">z2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val vsota_r3 :
+  float * float * float -&gt; float * float * float -&gt; float * float * float =
+  &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če želimo vsiliti svoj tip, to na poljubnem vzorcu ali izrazu storimo z označbo <code class="docutils literal notranslate"><span class="pre">(...</span> <span class="pre">:</span> <span class="pre">tip)</span></code>. Tip rezultata funkcije vsilimo z <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">...</span> <span class="pre">:</span> <span class="pre">tip</span> <span class="pre">=</span> <span class="pre">...</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">vsota_r3</span> <span class="o">((</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">,</span> <span class="n">z1</span><span class="o">)</span> <span class="o">:</span> <span class="n">r3</span><span class="o">)</span> <span class="o">((</span><span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">,</span> <span class="n">z2</span><span class="o">)</span> <span class="o">:</span> <span class="n">r3</span><span class="o">)</span> <span class="o">:</span> <span class="n">r3</span> <span class="o">=</span>
+  <span class="o">(</span><span class="n">x1</span> <span class="o">+.</span> <span class="n">x2</span><span class="o">,</span> <span class="n">y1</span> <span class="o">+.</span> <span class="n">y2</span><span class="o">,</span> <span class="n">z1</span> <span class="o">+.</span> <span class="n">z2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val vsota_r3 : r3 -&gt; r3 -&gt; r3 = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternativni način zgornje označbe je tudi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">vsota_r3&#39;</span> <span class="o">:</span> <span class="n">r3</span> <span class="o">-&gt;</span> <span class="n">r3</span> <span class="o">-&gt;</span> <span class="n">r3</span> <span class="o">=</span>
+ <span class="k">fun</span> <span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">,</span> <span class="n">z1</span><span class="o">)</span> <span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">,</span> <span class="n">z2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">x1</span> <span class="o">+.</span> <span class="n">x2</span><span class="o">,</span> <span class="n">y1</span> <span class="o">+.</span> <span class="n">y2</span><span class="o">,</span> <span class="n">z1</span> <span class="o">+.</span> <span class="n">z2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val vsota_r3&#39; : r3 -&gt; r3 -&gt; r3 = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="zapisni-tipi">
+<h2>Zapisni tipi<a class="headerlink" href="#zapisni-tipi" title="Link to this heading">#</a></h2>
+<p>Kompleksna števila predstavimo s pari realnih števil:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">kompleksno</span> <span class="o">=</span> <span class="kt">float</span> <span class="o">*</span> <span class="kt">float</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type kompleksno = float * float
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kako bi izračunali absolutno vrednost kompleksnega števila? Ena možnost je:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">abs</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">=</span> <span class="n">sqrt</span> <span class="o">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.</span> <span class="o">+.</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val abs : float * float -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Toda če smo v mislih imeli polarni zapis, je pravilna definicija:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">abs</span> <span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="o">_)</span> <span class="o">=</span> <span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val abs : &#39;a * &#39;b -&gt; &#39;a = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ali pa datume, ki jih ponavadi predstavimo s trojico celih števil:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">datum</span> <span class="o">=</span> <span class="kt">int</span> <span class="o">*</span> <span class="kt">int</span> <span class="o">*</span> <span class="kt">int</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type datum = int * int * int
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kateri vrstni red smo uporabili: dan, mesec, leto, kot smo navajeni v Sloveniji, ali leto, mesec, dan, kot je mednarodni standard? Mogoče celo mesec, dan, leto, kot je navada v Združenih državah?</p>
+<section id="definicija-zapisnih-tipov">
+<h3>Definicija zapisnih tipov<a class="headerlink" href="#definicija-zapisnih-tipov" title="Link to this heading">#</a></h3>
+<p>Zmešnjavi se lahko izognemo, če komponente poimenujemo. V OCamlu to storimo z zapisnimi tipi, ki jih podamo tako, da naštejemo imena polj ter njihove tipe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">kartezicno</span> <span class="o">=</span> <span class="o">{</span><span class="n">re</span> <span class="o">:</span> <span class="kt">float</span><span class="o">;</span> <span class="n">im</span> <span class="o">:</span> <span class="kt">float</span><span class="o">}</span>
+<span class="k">type</span> <span class="n">polarno</span> <span class="o">=</span> <span class="o">{</span><span class="n">radij</span> <span class="o">:</span> <span class="kt">float</span><span class="o">;</span> <span class="n">kot</span> <span class="o">:</span> <span class="kt">float</span><span class="o">}</span>
+<span class="k">type</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type kartezicno = { re : float; im : float; }
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type polarno = { radij : float; kot : float; }
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type datum = { dan : int; mesec : int; leto : int; }
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vrednosti tipov pišemo podobno, le da jih podamo z <code class="docutils literal notranslate"><span class="pre">=</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">i</span> <span class="o">=</span> <span class="o">{</span><span class="n">re</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.;</span> <span class="n">im</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.}</span>
+<span class="k">let</span> <span class="n">i&#39;</span> <span class="o">=</span> <span class="o">{</span> <span class="n">radij</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.;</span> <span class="n">kot</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.}</span>
+<span class="k">let</span> <span class="n">osamosvojitev</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">=</span> <span class="mi">25</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="mi">1991</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val i : kartezicno = {re = 0.; im = 1.}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val i&#39; : polarno = {radij = 1.; kot = 0.}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val osamosvojitev : datum = {dan = 25; mesec = 6; leto = 1991}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kljub temu, da zapise pišemo podobno kot Pythonove slovarje, gre za popolnoma različni strukturi. Zapisi so poimenovani kartezični produkti, torej heterogeni, Pythonovi slovarji pa so običajno homogeni, torej so vsi ključi enega in vse vrednosti drugega tipa. Poleg tega imena polj zapisov niso vrednosti, ki bi si jih lahko podajali naokoli.</p>
+</section>
+<section id="razstavljanje-zapisov">
+<h3>Razstavljanje zapisov<a class="headerlink" href="#razstavljanje-zapisov" title="Link to this heading">#</a></h3>
+<p>Do posameznih komponent dostopamo z <code class="docutils literal notranslate"><span class="pre">zapis.ime_polja</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">abs</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sqrt</span> <span class="o">(</span><span class="n">z</span><span class="o">.</span><span class="n">re</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.</span> <span class="o">+.</span> <span class="n">z</span><span class="o">.</span><span class="n">im</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val abs : kartezicno -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">abs&#39;</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">radij</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val abs&#39; : polarno -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+  <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+  
+<span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+  <span class="k">function</span>
+  <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+  <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+  <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_prestopno : int -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val dolzina_meseca : int -&gt; int -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+  <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+  <span class="k">in</span>
+  <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_veljaven : datum -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Včasih je krajše, če zapise razstavimo s pomočjo vzorcev oblike <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">polje1</span> <span class="pre">=</span> <span class="pre">vzorec1;</span> <span class="pre">polje2</span> <span class="pre">=</span> <span class="pre">vzorec2;</span> <span class="pre">…</span> <span class="pre">}</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_veljaven</span> <span class="o">{</span><span class="n">dan</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="n">m</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="n">l</span><span class="o">}</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">d</span> <span class="o">&amp;&amp;</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">l</span> <span class="n">m</span>
+  <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&amp;&amp;</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+  <span class="k">in</span>
+  <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_veljaven : datum -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če za vzorce uporabimo spremenljivke z enakimi imeni kot polja, lahko uporabimo tudi krajšo obliko:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_veljaven</span> <span class="o">{</span><span class="n">dan</span> <span class="o">=</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="n">leto</span><span class="o">}</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="n">mesec</span>
+  <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+  <span class="k">in</span>
+  <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_veljaven : datum -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_veljaven</span> <span class="o">{</span><span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span><span class="o">}</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="n">mesec</span>
+  <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+  <span class="k">in</span>
+  <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_veljaven : datum -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">abs</span> <span class="o">{</span><span class="n">re</span><span class="o">;</span> <span class="n">im</span><span class="o">}</span> <span class="o">=</span> <span class="n">sqrt</span> <span class="o">(</span><span class="n">re</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.</span> <span class="o">+.</span> <span class="n">im</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val abs : kartezicno -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če želimo v vzorcu kakšna polja izpustiti, jih nadomestimo z podčrtajem:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">abs&#39;</span> <span class="o">{</span> <span class="n">radij</span><span class="o">;</span> <span class="o">_</span> <span class="o">}</span> <span class="o">=</span> <span class="n">radij</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val abs&#39; : polarno -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_pred_nasim_stetjem</span> <span class="o">{</span><span class="n">leto</span><span class="o">;</span> <span class="o">_}</span> <span class="o">=</span>
+  <span class="n">leto</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_pred_nasim_stetjem : datum -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="posodabljanje-zapisov">
+<h3>Posodabljanje zapisov<a class="headerlink" href="#posodabljanje-zapisov" title="Link to this heading">#</a></h3>
+<p>Z zapisom <code class="docutils literal notranslate"><span class="pre">{zapis</span> <span class="pre">with</span> <span class="pre">polje1</span> <span class="pre">=</span> <span class="pre">vrednost1;</span> <span class="pre">…}</span></code> ustvarimo nov zapis, ki ima z izjemo naštetih vrednosti polja enaka prvotnemu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">konjugiraj</span> <span class="n">z</span> <span class="o">=</span> <span class="o">{</span><span class="n">z</span> <span class="k">with</span> <span class="n">im</span> <span class="o">=</span> <span class="o">-.</span> <span class="n">z</span><span class="o">.</span><span class="n">im</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val konjugiraj : kartezicno -&gt; kartezicno = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">pred_sto_leti</span> <span class="n">datum</span> <span class="o">=</span>
+  <span class="o">{</span><span class="n">dan</span> <span class="o">=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="o">-</span> <span class="mi">100</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val pred_sto_leti : datum -&gt; datum = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">pred_sto_leti</span> <span class="n">datum</span> <span class="o">=</span>
+  <span class="o">{</span><span class="n">datum</span> <span class="k">with</span> <span class="n">leto</span> <span class="o">=</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="o">-</span> <span class="mi">100</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val pred_sto_leti : datum -&gt; datum = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pametni-konstruktorji">
+<h3>Pametni konstruktorji<a class="headerlink" href="#pametni-konstruktorji" title="Link to this heading">#</a></h3>
+<p>Z lastnimi tipi lahko dosežemo tudi strožje preverjanje veljavnosti vrednosti. Napišimo funkcijo <code class="docutils literal notranslate"><span class="pre">naredi_datum</span></code>, ki vrne datum le, če dani trije argumenti predstavljajo veljaven datum. Takim funkcijam pravimo <em>pametni konstruktorji</em>, saj konstrukcijo vrednosti obogatijo z dodatno logiko.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">naredi_datum</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val naredi_datum : int -&gt; int -&gt; int -&gt; datum option = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span>  <span class="n">naredi_datum</span> <span class="mi">29</span> <span class="mi">2</span> <span class="mi">2000</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : datum option = Some {dan = 29; mesec = 2; leto = 2000}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span>  <span class="n">naredi_datum</span> <span class="mi">29</span> <span class="mi">2</span> <span class="mi">1900</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : datum option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če smo previdni in za konstrukcijo datumov uporabimo le to funkcijo, bodo vsi datumi v našem programu veljavni. Kmalu bomo videli, da nam tudi previden ne bo treba biti, saj bomo uporabo pametnih konstruktorjev tudi vsilili.</p>
+</section>
+</section>
+<section id="nastevni-tipi">
+<h2>Naštevni tipi<a class="headerlink" href="#nastevni-tipi" title="Link to this heading">#</a></h2>
+<p>Najzanimivejši tipi, ki jih lahko definiramo, so <em>naštevni tipi</em>. Tako kot pri zapisnih tipih bomo tudi vrednosti naštevnih tipov sestavljali iz manjših vrednosti. Razlika med njimi je v tem, da morajo biti pri zapisnih tipih prisotne vrednosti <em>vseh</em> naštetih polj, mora biti pri naštevnih tipih prisotna <em>natanko ena</em> izmed naštetih variant.</p>
+<p>Recimo, da si želimo definirati tip pošiljk iz spletne trgovine. Zaenkrat imena in naslove predstavimo z nizi. Tudi vrsto dostave (osebno, po pošti) bi lahko predstavili z nizi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">posiljka</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">naslovnik</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">naslov</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">dostava</span> <span class="o">:</span> <span class="kt">string</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type posiljka = { naslovnik : string; naslov : string; dostava : string; }
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Matija Pretnar&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;5.19&quot;</span><span class="o">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="s2">&quot;osebni prevzem&quot;</span><span class="o">};</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Katja Berčič&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;5.07&quot;</span><span class="o">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="s2">&quot;po pošti&quot;</span><span class="o">};</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Filip Koprivec&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;P.23&quot;</span><span class="o">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="s2">&quot;osebno&quot;</span><span class="o">};</span>
+<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : posiljka list =
+[{naslovnik = &quot;Matija Pretnar&quot;; naslov = &quot;5.19&quot;; dostava = &quot;osebni prevzem&quot;};
+ {naslovnik = &quot;Katja Berčič&quot;; naslov = &quot;5.07&quot;; dostava = &quot;po pošti&quot;};
+ {naslovnik = &quot;Filip Koprivec&quot;; naslov = &quot;P.23&quot;; dostava = &quot;osebno&quot;}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo, da lahko v nize zapišemo karkoli, kar otežuje obdelavo podatkov, pa tudi vodi v nesmisle. Ena možnost je, da dostavo opišemo z logično vrednostjo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">posiljka</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">naslovnik</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">naslov</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">osebni_prevzem</span> <span class="o">:</span> <span class="kt">bool</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type posiljka = {
+  naslovnik : string;
+  naslov : string;
+  osebni_prevzem : bool;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Matija Pretnar&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;5.19&quot;</span><span class="o">;</span> <span class="n">osebni_prevzem</span> <span class="o">=</span> <span class="bp">true</span> <span class="o">};</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Katja Berčič&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;5.07&quot;</span><span class="o">;</span> <span class="n">osebni_prevzem</span> <span class="o">=</span> <span class="bp">false</span> <span class="o">};</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Filip Koprivec&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;P.23&quot;</span><span class="o">;</span> <span class="n">osebni_prevzem</span> <span class="o">=</span> <span class="bp">true</span> <span class="o">};</span>
+<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : posiljka list =
+[{naslovnik = &quot;Matija Pretnar&quot;; naslov = &quot;5.19&quot;; osebni_prevzem = true};
+ {naslovnik = &quot;Katja Berčič&quot;; naslov = &quot;5.07&quot;; osebni_prevzem = false};
+ {naslovnik = &quot;Filip Koprivec&quot;; naslov = &quot;P.23&quot;; osebni_prevzem = true}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ta rešitev ni idealna, saj ne vemo, kaj vse implicira vrednost <code class="docutils literal notranslate"><span class="pre">false</span></code>. Še več: kaj, če bi želeli dodati še tretjo možnost, na primer hitro dostavo? Boljši način je, da uporabimo naštevne tipe.</p>
+<section id="definicije-nastevnih-tipov">
+<h3>Definicije naštevnih tipov<a class="headerlink" href="#definicije-nastevnih-tipov" title="Link to this heading">#</a></h3>
+<p>Naštevne tipe podamo tako, da naštejemo možne variante, od katerih je vsaka podana s svojim <em>konstruktorjem</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">dostava</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span>
+
+<span class="k">type</span> <span class="n">posiljka</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">naslovnik</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">naslov</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">dostava</span> <span class="o">:</span> <span class="n">dostava</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type dostava = OsebniPrevzem | PoPosti
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type posiljka = { naslovnik : string; naslov : string; dostava : dostava; }
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tedaj bo tip imel natanko dve možni vrednosti in OCaml nas bo opozoril, če poskusimo uporabiti nenavedeno varianto:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Matija Pretnar&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;5.19&quot;</span><span class="o">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="nc">OsebniPrevzem</span> <span class="o">};</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Katja Berčič&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;5.07&quot;</span><span class="o">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="nc">PoPosti</span> <span class="o">};</span>
+  <span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Filip Koprivec&quot;</span><span class="o">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;P.23&quot;</span><span class="o">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="nc">Osebno</span> <span class="o">};</span>
+<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[34]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">4</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">61</span><span class="o">-</span><span class="mi">67</span><span class="p">:</span>
+<span class="mi">4</span> <span class="o">|</span>   <span class="p">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Filip Koprivec&quot;</span><span class="p">;</span> <span class="n">naslov</span> <span class="o">=</span> <span class="s2">&quot;P.23&quot;</span><span class="p">;</span> <span class="n">dostava</span> <span class="o">=</span> <span class="n">Osebno</span> <span class="p">};</span>
+                                                                 <span class="o">^^^^^^</span>
+<span class="ne">Error</span>: This variant expression is expected to have type dostava
+       <span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">constructor</span> <span class="n">Osebno</span> <span class="n">within</span> <span class="nb">type</span> <span class="n">dostava</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="razstavljanje-nastevnih-tipov">
+<h3>Razstavljanje naštevnih tipov<a class="headerlink" href="#razstavljanje-nastevnih-tipov" title="Link to this heading">#</a></h3>
+<p>Tako kot naštevne tipe podamo po kosih, lahko prek <code class="docutils literal notranslate"><span class="pre">match</span></code> ali <code class="docutils literal notranslate"><span class="pre">function</span></code> po kosih tudi definiramo funkcije na njih.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">dostava</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type dostava = OsebniPrevzem | PoPosti
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">cena_dostave</span> <span class="o">=</span>
+  <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">.</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val cena_dostave : dostava -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če tip razširimo z dodatno varianto, nas bo prevajalnik sam opozoril nanjo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">dostava</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span>
+  <span class="o">|</span> <span class="nc">HitraDostava</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type dostava = OsebniPrevzem | PoPosti | HitraDostava
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">cena_dostave</span> <span class="o">=</span>
+  <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">.</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File &quot;[38]&quot;, lines 2-4, characters 2-18:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 | ..function
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 |   | OsebniPrevzem -&gt; 0.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 |   | PoPosti -&gt; 2.5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning 8 [partial-match]: this pattern-matching is not exhaustive.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here is an example of a case that is not matched:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HitraDostava
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val cena_dostave : dostava -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">cena_dostave</span> <span class="o">=</span>
+  <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">.</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span>
+  <span class="o">|</span> <span class="nc">HitraDostava</span> <span class="o">-&gt;</span> <span class="mi">4</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val cena_dostave : dostava -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="konstruktorji-z-argumenti">
+<h3>Konstruktorji z argumenti<a class="headerlink" href="#konstruktorji-z-argumenti" title="Link to this heading">#</a></h3>
+<p>Vsak izmed naštetih konstruktorjev lahko sprejme tudi argumente vnaprej določenega tipa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">dostava</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span> <span class="k">of</span> <span class="kt">string</span>
+  <span class="o">|</span> <span class="nc">HitraDostava</span> <span class="k">of</span> <span class="kt">string</span>
+<span class="k">type</span> <span class="n">posiljka</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">naslovnik</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">dostava</span> <span class="o">:</span> <span class="n">dostava</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type dostava = OsebniPrevzem | PoPosti of string | HitraDostava of string
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type posiljka = { naslovnik : string; dostava : dostava; }
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nc">HitraDostava</span> <span class="s2">&quot;Jadranska ulica 21, 1000 Ljubljana&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : dostava = HitraDostava &quot;Jadranska ulica 21, 1000 Ljubljana&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">geometrijski_objekt</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Tocka</span>
+  <span class="o">|</span> <span class="nc">Krog</span> <span class="k">of</span> <span class="kt">float</span>
+  <span class="o">|</span> <span class="nc">Pravokotnik</span> <span class="k">of</span> <span class="kt">float</span> <span class="o">*</span> <span class="kt">float</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type geometrijski_objekt =
+    Tocka
+  | Krog of float
+  | Pravokotnik of float * float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">ploscina</span> <span class="o">=</span>
+  <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">Tocka</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">.</span>
+  <span class="o">|</span> <span class="nc">Krog</span> <span class="n">r</span> <span class="o">-&gt;</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14</span> <span class="o">*.</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span><span class="o">.</span>
+  <span class="o">|</span> <span class="nc">Pravokotnik</span> <span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">s</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">v</span> <span class="o">*.</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ploscina : geometrijski_objekt -&gt; float = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="nc">Tocka</span><span class="o">;</span> <span class="nc">Pravokotnik</span> <span class="o">(</span><span class="mi">1</span><span class="o">.,</span> <span class="mi">2</span><span class="o">.);</span> <span class="nc">Tocka</span><span class="o">;</span> <span class="nc">Krog</span> <span class="mi">3</span><span class="o">.]</span>
+<span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">map</span> <span class="n">ploscina</span>
+<span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">fold_left</span> <span class="o">(+.)</span> <span class="mi">0</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : float = 30.26
+</pre></div>
+</div>
+</div>
+</div>
+<p>Primer naštevnega tipa, ki ga že poznamo, je tip <code class="docutils literal notranslate"><span class="pre">option</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span> <span class="o">=</span> <span class="nc">None</span> <span class="o">|</span> <span class="nc">Some</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;a option = None | Some of &#39;a
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nastevni-tipi-z-eno-samo-varianto">
+<h3>Naštevni tipi z eno samo varianto<a class="headerlink" href="#nastevni-tipi-z-eno-samo-varianto" title="Link to this heading">#</a></h3>
+<p>Naštevni tipi so lahko koristni tudi takrat, ko imajo samo eno varianto, saj s tem lahko ločimo vrednosti, ki so predstavljene z istim osnovnim tipom. Recimo, tako naslove kot telefonske številke lahko predstavimo z nizi. Vendar če za dve vrsti vrednosti uporabljamo isti tip, lahko to vodi do zmešnjave, kakršna se je <a class="reference external" href="https://mathwithbaddrawings.com/2015/08/19/the-smartest-dumb-error-in-the-great-state-of-colorado/">zgodila mestecu Gold Hill</a>.</p>
+<p>Če pa definiramo dva različna naštevna tipa, bo na to namesto nas pazil prevajalnik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">naslov</span> <span class="o">=</span> <span class="nc">Naslov</span> <span class="k">of</span> <span class="kt">string</span>
+<span class="k">type</span> <span class="n">telefon</span> <span class="o">=</span> <span class="nc">Telefon</span> <span class="k">of</span> <span class="kt">string</span>
+
+<span class="k">type</span> <span class="n">dostava</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">OsebniPrevzem</span>
+  <span class="o">|</span> <span class="nc">PoPosti</span> <span class="k">of</span> <span class="n">naslov</span>
+  <span class="o">|</span> <span class="nc">HitraDostava</span> <span class="k">of</span> <span class="n">naslov</span> <span class="o">*</span> <span class="n">telefon</span>
+
+<span class="k">type</span> <span class="n">posiljka</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">naslovnik</span> <span class="o">:</span> <span class="kt">string</span><span class="o">;</span>
+  <span class="n">dostava</span> <span class="o">:</span> <span class="n">dostava</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type naslov = Naslov of string
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type telefon = Telefon of string
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type dostava =
+    OsebniPrevzem
+  | PoPosti of naslov
+  | HitraDostava of naslov * telefon
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type posiljka = { naslovnik : string; dostava : dostava; }
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">{</span> <span class="n">naslovnik</span> <span class="o">=</span> <span class="s2">&quot;Matija Pretnar&quot;</span><span class="o">;</span>
+  <span class="n">dostava</span> <span class="o">=</span> <span class="nc">HitraDostava</span> <span class="o">(</span>
+    <span class="nc">Telefon</span> <span class="s2">&quot;01 4766 600&quot;</span><span class="o">,</span>
+    <span class="nc">Naslov</span> <span class="s2">&quot;Jadranska 21&quot;</span>
+  <span class="o">)}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[47]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">4</span><span class="o">-</span><span class="mi">11</span><span class="p">:</span>
+<span class="mi">3</span> <span class="o">|</span>     <span class="n">Telefon</span> <span class="s2">&quot;01 4766 600&quot;</span><span class="p">,</span>
+        <span class="o">^^^^^^^</span>
+<span class="ne">Error</span>: This variant expression is expected to have type naslov
+       <span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">constructor</span> <span class="n">Telefon</span> <span class="n">within</span> <span class="nb">type</span> <span class="n">naslov</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če ima naštevni tip samo eno varianto, nam ni treba uporabljati konstrukta <code class="docutils literal notranslate"><span class="pre">match</span></code>, ampak lahko vzorec uporabimo neposredno v funkciji:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">je_v_ljubljani</span> <span class="o">(</span><span class="nc">Telefon</span> <span class="n">stevilka</span><span class="o">)</span> <span class="o">=</span>
+  <span class="nn">String</span><span class="p">.</span><span class="n">sub</span> <span class="n">stevilka</span> <span class="mi">0</span> <span class="mi">2</span> <span class="o">=</span> <span class="s2">&quot;01&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val je_v_ljubljani : telefon -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="algebrajski-tipi">
+<h2>Algebrajski tipi<a class="headerlink" href="#algebrajski-tipi" title="Link to this heading">#</a></h2>
+<p>Naštevni tipi so lahko tudi <strong>rekurzivni</strong>. Takim tipom pravimo algebrajski, v nekaterih primerih, ki jih bomo spoznali kasneje, pa tudi induktivni.</p>
+<section id="naravna-stevila">
+<h3>Naravna števila<a class="headerlink" href="#naravna-stevila" title="Link to this heading">#</a></h3>
+<p>Najenostavnejši primer induktivnega tipa so naravna števila. Predstavimo jih z naštevnim tipom s konstruktorjema <code class="docutils literal notranslate"><span class="pre">Nic</span></code> in <code class="docutils literal notranslate"><span class="pre">Naslednik</span></code>, pri čemer slednji sprejme en argument, ki je zopet naravno število.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">naravno</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Nic</span>
+  <span class="o">|</span> <span class="nc">Naslednik</span> <span class="k">of</span> <span class="n">naravno</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type naravno = Nic | Naslednik of naravno
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vsoto naravnih števil podamo z običajno rekurzivno definicijo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">vsota</span> <span class="n">m</span> <span class="n">n</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">m</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="nc">Nic</span> <span class="o">-&gt;</span> <span class="n">n</span>
+  <span class="o">|</span> <span class="nc">Naslednik</span> <span class="n">m&#39;</span> <span class="o">-&gt;</span> <span class="nc">Naslednik</span> <span class="o">(</span><span class="n">vsota</span> <span class="n">m&#39;</span> <span class="n">n</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val vsota : naravno -&gt; naravno -&gt; naravno = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">ena</span> <span class="o">=</span> <span class="nc">Naslednik</span> <span class="nc">Nic</span>
+<span class="k">let</span> <span class="n">dva</span> <span class="o">=</span> <span class="n">vsota</span> <span class="n">ena</span> <span class="n">ena</span>
+<span class="k">let</span> <span class="n">stiri</span> <span class="o">=</span> <span class="n">vsota</span> <span class="n">dva</span> <span class="n">dva</span>
+<span class="k">let</span> <span class="n">sest</span> <span class="o">=</span> <span class="n">vsota</span> <span class="n">stiri</span> <span class="n">dva</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ena : naravno = Naslednik Nic
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val dva : naravno = Naslednik (Naslednik Nic)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val stiri : naravno = Naslednik (Naslednik (Naslednik (Naslednik Nic)))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val sest : naravno =
+  Naslednik (Naslednik (Naslednik (Naslednik (Naslednik (Naslednik Nic)))))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">vsota</span> <span class="n">sest</span> <span class="n">sest</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : naravno =
+Naslednik
+ (Naslednik
+   (Naslednik
+     (Naslednik
+       (Naslednik
+         (Naslednik
+           (Naslednik
+             (Naslednik (Naslednik (Naslednik (Naslednik (Naslednik Nic)))))))))))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="verizni-seznami">
+<h3>Verižni seznami<a class="headerlink" href="#verizni-seznami" title="Link to this heading">#</a></h3>
+<p>Še en znan primer induktivnega tipa so verižni seznami. Vsak seznam je bodisi prazen, bodisi sestavljen iz glave in repa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">seznam</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Prazen</span>
+  <span class="o">|</span> <span class="nc">Sestavljen</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">seznam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;a seznam = Prazen | Sestavljen of &#39;a * &#39;a seznam
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sedaj tudi vidimo, zakaj <code class="docutils literal notranslate"><span class="pre">::</span></code> lahko uporabljamo v vzorcih - ni namreč običajna funkcija za sestavljanje seznamov, temveč konstruktor tipa seznamov.</p>
+</section>
+<section id="aritmeticni-izrazi">
+<h3>Aritmetični izrazi<a class="headerlink" href="#aritmeticni-izrazi" title="Link to this heading">#</a></h3>
+<p>Induktivne tipe se pogosto uporablja za predstavitev izrazov določenega formalnega jezika. Na primer, aritmetične izraze gradimo iz števil ter aritmetičnih operacij. Take izraze bi lahko predstavili s tipom:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">izraz</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Stevilo</span> <span class="k">of</span> <span class="kt">int</span>
+  <span class="o">|</span> <span class="nc">Plus</span> <span class="k">of</span> <span class="n">izraz</span> <span class="o">*</span> <span class="n">izraz</span>
+  <span class="o">|</span> <span class="nc">Minus</span> <span class="k">of</span> <span class="n">izraz</span>
+  <span class="o">|</span> <span class="nc">Krat</span> <span class="k">of</span> <span class="n">izraz</span> <span class="o">*</span> <span class="n">izraz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type izraz =
+    Stevilo of int
+  | Plus of izraz * izraz
+  | Minus of izraz
+  | Krat of izraz * izraz
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na primer, izrazu <span class="math notranslate nohighlight">\(-(5 \times (2 + 7))\)</span> bi ustrezala vrednost</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">i</span> <span class="o">=</span> <span class="nc">Minus</span> <span class="o">(</span>
+  <span class="nc">Krat</span> <span class="o">(</span><span class="nc">Stevilo</span> <span class="mi">5</span><span class="o">,</span> <span class="nc">Plus</span> <span class="o">(</span><span class="nc">Stevilo</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Stevilo</span> <span class="mi">7</span><span class="o">))</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val i : izraz = Minus (Krat (Stevilo 5, Plus (Stevilo 2, Stevilo 7)))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo lahko napišete rekurzivno funkcijo <code class="docutils literal notranslate"><span class="pre">izracunaj</span> <span class="pre">:</span> <span class="pre">izraz</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code>, ki dani izraz prevori v njegovo vrednost. Na primer, za zgornji izraz bi funkcija vrnila <code class="docutils literal notranslate"><span class="pre">-45</span></code>.</p>
+</section>
+<section id="dvojiska-drevesa">
+<h3>Dvojiška drevesa<a class="headerlink" href="#dvojiska-drevesa" title="Link to this heading">#</a></h3>
+<p>Še en induktivni tip, ki ga bomo podrobneje spoznali v kratkem, pa so dvojiška drevesa. Dvojiško drevo je bodisi prazno bodisi ima koren, v katerem je shranjena vrednost, ter dva otroka, ki sta zopet drevesi, na primer (pri čemer praznih dreves ne kažemo):</p>
+<p><img alt="" src="_images/avl-drevo.png" /></p>
+<p>Tip dvojiških dreves podamo s tipom</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">drevo</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Prazno</span>
+  <span class="o">|</span> <span class="nc">Sestavljeno</span> <span class="k">of</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">drevo</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">drevo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;a drevo = Prazno | Sestavljeno of &#39;a drevo * &#39;a * &#39;a drevo
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="vaje">
+<h2>Vaje<a class="headerlink" href="#vaje" title="Link to this heading">#</a></h2>
+<section id="valute">
+<h3>Valute<a class="headerlink" href="#valute" title="Link to this heading">#</a></h3>
+<p>Pri modeliranju denarja ponavadi uporabljamo racionalna števila. Problemi se
+pojavijo, ko uvedemo različne valute. Oglejmo si dva pristopa k izboljšavi varnosti pri uporabi valut.</p>
+<p>Definirajte tipa <code class="docutils literal notranslate"><span class="pre">euro</span></code> in <code class="docutils literal notranslate"><span class="pre">dollar</span></code>, kjer ima vsak od tipov zgolj en konstruktor, ki sprejme racionalno število. Nato napišite funkciji <code class="docutils literal notranslate"><span class="pre">euro_to_dollar</span></code> in <code class="docutils literal notranslate"><span class="pre">dollar_to_euro</span></code>, ki primerno pretvarjata valuti (točne vrednosti pridobite na internetu ali pa si jih izmislite).</p>
+<p>Namig: Občudujte informativnost tipov funkcij.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_valute_1</span> <span class="o">=</span> <span class="n">dollar_to_euro</span> <span class="o">(</span><span class="nc">Dollar</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_valute_1 : euro = Euro 0.4305
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajte tip <code class="docutils literal notranslate"><span class="pre">currency</span></code> kot en vsotni tip z konstruktorji za jen, funt in švedsko krono. Nato napišite funkcijo <code class="docutils literal notranslate"><span class="pre">to_pound</span></code>, ki primerno pretvori valuto tipa <code class="docutils literal notranslate"><span class="pre">currency</span></code> v funte.</p>
+<p>Namig: V tip dodajte še švicarske franke in se navdušite nad dejstvom, da vas Ocaml sam opozori, da je potrebno popraviti funkcijo <code class="docutils literal notranslate"><span class="pre">to_pound</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_valute_2</span> <span class="o">=</span> <span class="n">to_pound</span> <span class="o">(</span><span class="nc">Yen</span> <span class="mi">100</span><span class="o">.)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_valute_2 : currency = Pound 0.700000000000000067
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mesani-seznami">
+<h3>Mešani seznami<a class="headerlink" href="#mesani-seznami" title="Link to this heading">#</a></h3>
+<p>Želimo uporabljati sezname, ki hranijo tako cela števila kot tudi logične vrednosti. To bi lahko rešili tako da uvedemo nov tip, ki predstavlja celo število ali logično vrednost, v nadaljevanju pa bomo raje konstruirali nov tip seznamov.</p>
+<p>Spomnimo se, da lahko tip <code class="docutils literal notranslate"><span class="pre">list</span></code> predstavimo s konstruktorjem za prazen seznam <code class="docutils literal notranslate"><span class="pre">Nil</span></code>(oz. <code class="docutils literal notranslate"><span class="pre">[]</span></code> v Ocamlu) in pa konstruktorjem za člen <code class="docutils literal notranslate"><span class="pre">Cons(x,</span> <span class="pre">xs)</span></code> (oz. <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">::</span> <span class="pre">xs</span></code> v Ocamlu).</p>
+<p>Definirajte tip <code class="docutils literal notranslate"><span class="pre">intbool_list</span></code> z konstruktorji za:</p>
+<ul class="simple">
+<li><p>prazen seznam,</p></li>
+<li><p>člen s celoštevilsko vrednostjo,</p></li>
+<li><p>člen z logično vrednostjo.</p></li>
+</ul>
+<p>Nato napišite testni primer, ki bi predstavljal <code class="docutils literal notranslate"><span class="pre">[5;</span> <span class="pre">true;</span> <span class="pre">false;</span> <span class="pre">7]</span></code>.</p>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">intbool_map</span> <span class="pre">f_int</span> <span class="pre">f_bool</span> <span class="pre">ib_list</span></code> preslika vrednosti <code class="docutils literal notranslate"><span class="pre">ib_list</span></code> v nov <code class="docutils literal notranslate"><span class="pre">intbool_list</span></code> seznam, kjer na elementih uporabi primerno od funkcij <code class="docutils literal notranslate"><span class="pre">f_int</span></code> oz. <code class="docutils literal notranslate"><span class="pre">f_bool</span></code>.</p>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">intbool_reverse</span></code> obrne vrstni red elementov <code class="docutils literal notranslate"><span class="pre">intbool_list</span></code> seznama. Funkcija je repno rekurzivna.</p>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">intbool_separate</span> <span class="pre">ib_list</span></code> loči vrednosti <code class="docutils literal notranslate"><span class="pre">ib_list</span></code> v par <code class="docutils literal notranslate"><span class="pre">list</span></code> seznamov, kjer prvi vsebuje vse celoštevilske vrednosti, drugi pa vse logične vrednosti. Funkcija je repno rekurzivna in ohranja vrstni red elementov.</p>
+</section>
+<section id="carodeji">
+<h3>Čarodeji<a class="headerlink" href="#carodeji" title="Link to this heading">#</a></h3>
+<p>Določeni ste bili za vzdrževalca baze podatkov za svetovno priznano čarodejsko akademijo “Effemef”. Vaša naloga je konstruirati sistem, ki bo omogočil
+pregledno hranjenje podatkov.</p>
+<p>Čarodeje razvrščamo glede na vrsto magije, ki se ji posvečajo. Definirajte tip <code class="docutils literal notranslate"><span class="pre">magic</span></code>, ki loči med magijo ognja, magijo ledu in magijo arkane oz. fire, frost in arcane. Ko se čarodej zaposli na akademiji, se usmeri v zgodovino, poučevanje ali raziskovanje oz. historian, teacher in researcher. Definirajte tip <code class="docutils literal notranslate"><span class="pre">specialisation</span></code>, ki loči med temi zaposlitvami.</p>
+<p>Vsak od čarodejev začne kot začetnik, nato na neki točki postane študent, na koncu pa SE lahko tudi zaposli. Definirajte tip <code class="docutils literal notranslate"><span class="pre">status</span></code>, ki določa ali je čarodej:</p>
+<ul class="simple">
+<li><p>začetnik <code class="docutils literal notranslate"><span class="pre">Newbie</span></code>,</p></li>
+<li><p>študent <code class="docutils literal notranslate"><span class="pre">Student</span></code> (in kateri vrsti magije pripada in koliko časa študira),</p></li>
+<li><p>zaposlen <code class="docutils literal notranslate"><span class="pre">Employed</span></code> (in vrsto magije in specializacijo).</p></li>
+</ul>
+<p>Nato definirajte zapisni tip <code class="docutils literal notranslate"><span class="pre">wizard</span></code> z poljem za ime in poljem za trenuten status ter dodajte primer <code class="docutils literal notranslate"><span class="pre">professor</span></code>, ki je zaposlen učitelj magije ognja, in <code class="docutils literal notranslate"><span class="pre">jaina</span></code>, ki je četrto leto študentka magije ledu.</p>
+<p>Želimo prešteti koliko uporabnikov posamezne od vrst magije imamo na akademiji. Definirajte zapisni tip <code class="docutils literal notranslate"><span class="pre">magic_counter</span></code>, ki v posameznem polju hrani število uporabnikov magije. Nato definirajte funkcijo <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">counter</span> <span class="pre">magic</span></code>, ki vrne nov števec s posodobljenim poljem glede na vrednost <code class="docutils literal notranslate"><span class="pre">magic</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_carovniki_1</span> <span class="o">=</span> <span class="n">update</span> <span class="o">{</span><span class="n">fire</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">frost</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">arcane</span> <span class="o">=</span> <span class="mi">1</span><span class="o">}</span> <span class="nc">Arcane</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_carovniki_1 : magic_counter = {fire = 1; frost = 1; arcane = 2}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">count_magic</span></code> sprejme seznam čarodejev in vrne števec uporabnikov različnih vrst magij.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_carovniki_2</span> <span class="o">=</span> <span class="n">count_magic</span> <span class="o">[</span><span class="n">professor</span><span class="o">;</span> <span class="n">professor</span><span class="o">;</span> <span class="n">professor</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_carovniki_2 : magic_counter = {fire = 3; frost = 0; arcane = 0}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Želimo poiskati primernega kandidata za delovni razpis. Študent lahko postane zgodovinar po vsaj treh letih študija, raziskovalec po vsaj štirih letih študija in učitelj po vsaj petih letih študija. Funkcija <code class="docutils literal notranslate"><span class="pre">find_candidate</span> <span class="pre">magic</span> <span class="pre">specialisation</span> <span class="pre">wizard_list</span></code> poišče prvega primernega kandidata na seznamu čarodejev in vrne njegovo ime, čim ustreza zahtevam za <code class="docutils literal notranslate"><span class="pre">specialisation</span></code> in študira vrsto <code class="docutils literal notranslate"><span class="pre">magic</span></code>. V primeru, da ni primernega kandidata, funkcija vrne <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_carovniki_3</span> <span class="o">=</span>
+  <span class="n">find_candidate</span> <span class="nc">Frost</span> <span class="nc">Researcher</span> <span class="o">[</span><span class="n">professor</span><span class="o">;</span> <span class="n">jaina</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_carovniki_3 : string option = Some &quot;Jaina&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-rekurzija.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Rekurzija</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-abstrakcija.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Abstrakcija</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#okrajsave-tipov">Okrajšave tipov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oznacba-tipov">Označba tipov</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zapisni-tipi">Zapisni tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicija-zapisnih-tipov">Definicija zapisnih tipov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razstavljanje-zapisov">Razstavljanje zapisov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posodabljanje-zapisov">Posodabljanje zapisov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pametni-konstruktorji">Pametni konstruktorji</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastevni-tipi">Naštevni tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicije-nastevnih-tipov">Definicije naštevnih tipov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#razstavljanje-nastevnih-tipov">Razstavljanje naštevnih tipov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konstruktorji-z-argumenti">Konstruktorji z argumenti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nastevni-tipi-z-eno-samo-varianto">Naštevni tipi z eno samo varianto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebrajski-tipi">Algebrajski tipi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naravna-stevila">Naravna števila</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verizni-seznami">Verižni seznami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aritmeticni-izrazi">Aritmetični izrazi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dvojiska-drevesa">Dvojiška drevesa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje">Vaje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valute">Valute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesani-seznami">Mešani seznami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carodeji">Čarodeji</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1421 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Abstrakcija &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04-abstrakcija';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Curry-Howardov izomorfizem" href="05-curry-howardov-izomorfizem.html" />
+    <link rel="prev" title="Podatkovni tipi" href="03-podatkovni-tipi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/04-abstrakcija.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Abstrakcija</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moduli">Moduli</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signature">Signature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicije-signatur">Definicije signatur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preverjanje-skladnosti-implementacije">Preverjanje skladnosti implementacije</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skrivanje-implementacije">Skrivanje implementacije</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstraktni-tipi">Abstraktni tipi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-stetje-razlicnih-elementov">Primer: štetje različnih elementov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje">Vaje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naravna-stevila">Naravna števila</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleksna-stevila">Kompleksna števila</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="abstrakcija">
+<h1>Abstrakcija<a class="headerlink" href="#abstrakcija" title="Link to this heading">#</a></h1>
+<p>Ko pišemo večje programe, je dobro, da jih razdelimo na manjše dele, ki jih lahko ločeno razumemo, razvijamo in preizkušamo. Pravimo, da programe pišemo <em>modularno</em>. V programskih jezikih modularnost dosežemo na več načinov. Eden, na katerega smo že navajeni, je razbitje kode na funkcije. Dostikrat pa želimo sorodne funkcije in podatke združiti v povezane enote.</p>
+<p>V Pythonu to lahko storimo z razredi, ki združujejo določeno vrsto podatkov s funkcijami za delo na njih. Včasih je med seboj povezanih več razredov, ki jih združujemo v posamezne datoteke, ki jim pravimo tudi <em><a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">moduli</a></em>.</p>
+<p>Tudi OCaml pozna module, ki imajo enako ime kot Pythonovi, a so precej naprednejši, saj omogočajo tudi skrivanje podrobnosti implementacije, čemur pravimo <em>abstrakcija</em>. Namen skrivanja podrobnosti seveda ni v zaščiti industrijskih skrivnosti, saj običajno delamo z lastnimi moduli, temveč v tem, da skrijemo podrobnosti in s tem poenostavimo razumevanje, preprečimo nepričakovano uporabo in olajšamo kasnejše spremembe implementacije.</p>
+<section id="moduli">
+<h2>Moduli<a class="headerlink" href="#moduli" title="Link to this heading">#</a></h2>
+<p>OCamlovi moduli so zbirke definicij tipov, funkcij, vrednosti, (kasneje tudi drugih modulov), kot smo jih do sedaj pisali v datoteke ali v ukazno vrstico. V resnici vsaka <code class="docutils literal notranslate"><span class="pre">.ml</span></code> datoteka predstavlja modul, ki vsebuje vse definicije v njej. Do sedaj smo spoznali že nekaj modulov iz standardne knjižnice: <code class="docutils literal notranslate"><span class="pre">String</span></code> za delo z nizi, <code class="docutils literal notranslate"><span class="pre">List</span></code> za delo s seznami ali <code class="docutils literal notranslate"><span class="pre">Random</span></code> za delo z naključnimi vrednostmi.</p>
+<p>Sestavimo svoj modul <code class="docutils literal notranslate"><span class="pre">Datum</span></code> za delo z datumi, v katerega za začetek naberimo funkcije in tipe, ki smo jih videli že prej. Module definiramo z ukazom <code class="docutils literal notranslate"><span class="pre">module</span></code>, vse definicije v modulu pa morajo biti znotraj bloka <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">...</span> <span class="pre">end</span></code>. Glavni tip modula običajno poimenujemo <code class="docutils literal notranslate"><span class="pre">t</span></code>, da pišemo <code class="docutils literal notranslate"><span class="pre">Datum.t</span></code> namesto <code class="docutils literal notranslate"><span class="pre">Datum.datum</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Datum</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+    <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+    <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+    <span class="k">in</span>
+    <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+
+  <span class="k">let</span> <span class="n">to_string</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">Format</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%04d-%02d-%02d&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Datum :
+  sig
+    type t = { dan : int; mesec : int; leto : int; }
+    val je_prestopno : int -&gt; bool
+    val dolzina_meseca : int -&gt; int -&gt; int
+    val je_veljaven : t -&gt; bool
+    val naredi : int -&gt; int -&gt; int -&gt; t option
+    val to_string : t -&gt; string
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do funkcij iz modula dostopamo prek <code class="docutils literal notranslate"><span class="pre">ImeModula.ime_funkcije</span></code>, tako kot smo do sedaj dostopali do funkcij iz modulov <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code> in <code class="docutils literal notranslate"><span class="pre">Random</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">{</span> <span class="n">dan</span> <span class="o">=</span> <span class="mi">25</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="mi">1991</span><span class="o">}</span> <span class="o">|&gt;</span> <span class="nn">Datum</span><span class="p">.</span><span class="n">to_string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : string = &quot;1991-06-25&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Datum</span><span class="p">.</span><span class="n">dolzina_meseca</span> <span class="mi">1991</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 30
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="signature">
+<h2>Signature<a class="headerlink" href="#signature" title="Link to this heading">#</a></h2>
+<p>Tako kot ima vsaka vrednost v OCamlu svoj tip, lahko zgoraj vidimo, da ga imajo tudi moduli. Tipom modulov pravimo <em>signature</em>. Signatura opisuje definirane tipe ter tipe definiranih vrednosti (ne pa njihovih implementacij). Signature pišemo podobno kot module, le da uporabimo blok <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">...</span> <span class="pre">end</span></code>, tipe vrednosti pa podamo s ključno besedo <code class="docutils literal notranslate"><span class="pre">val</span></code>. Definicije tipov ostanejo enake.</p>
+<section id="definicije-signatur">
+<h3>Definicije signatur<a class="headerlink" href="#definicije-signatur" title="Link to this heading">#</a></h3>
+<p>Signature definiramo podobno kot module, le da uporabimo ukaz <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">type</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">DATUM</span> <span class="o">=</span>
+  <span class="k">sig</span>
+    <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="o">}</span>
+    <span class="k">val</span> <span class="n">je_prestopno</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+    <span class="k">val</span> <span class="n">dolzina_meseca</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span>
+    <span class="k">val</span> <span class="n">je_veljaven</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+    <span class="k">val</span> <span class="n">naredi</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span>
+    <span class="k">val</span> <span class="n">to_string</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">string</span>
+  <span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type DATUM =
+  sig
+    type t = { dan : int; mesec : int; leto : int; }
+    val je_prestopno : int -&gt; bool
+    val dolzina_meseca : int -&gt; int -&gt; int
+    val je_veljaven : t -&gt; bool
+    val naredi : int -&gt; int -&gt; int -&gt; t option
+    val to_string : t -&gt; string
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kot smo videli zgoraj, zna OCaml tako signaturo izračunati tudi sam. Toda tako kot smo morali prej nekaterim funkcijam z označbami sami vsiliti tip, bomo enako želeli s signaturami modulov. Razloga sta dva:</p>
+<ol class="arabic simple">
+<li><p>preverjanje skladnosti in</p></li>
+<li><p>skrivanje implementacije.</p></li>
+</ol>
+</section>
+<section id="preverjanje-skladnosti-implementacije">
+<h3>Preverjanje skladnosti implementacije<a class="headerlink" href="#preverjanje-skladnosti-implementacije" title="Link to this heading">#</a></h3>
+<p>Prvi namen signatur je specifikacija vsebine modula. Običajno delo začnemo tako, da v signaturi opišemo, kaj bodo sestavni deli modula, nato pa začnemo pisati implementacijo, ki ji zadošča. Ko definiramo modul, lahko zraven z označbo podamo tudi njegovo signaturo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Datum</span> <span class="o">:</span> <span class="nc">DATUM</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+    <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+    <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+    <span class="k">in</span>
+    <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+
+  <span class="k">let</span> <span class="n">to_string</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">Format</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%04d-%02d-%02d&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Datum : DATUM
+</pre></div>
+</div>
+</div>
+</div>
+<p>Isti signaturi lahko zadošča več modulov, ki se med seboj razlikujejo le v implementaciji. Na primer, tu je malo bolj ohlapna implementacija datumov. Seveda si take implementacije ne želimo, je pa morda dobro začetno izhodišče. Od vsega začetka razvoja pa bo OCaml preverjal, ali se implementacija ujema s signaturo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">VednoVeljavenDatum</span> <span class="o">:</span> <span class="nc">DATUM</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span> <span class="bp">false</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="o">_</span> <span class="o">_</span> <span class="o">=</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="o">_</span> <span class="o">=</span> <span class="bp">true</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span> <span class="nc">Some</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">to_string</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">Format</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%04d-%02d-%02d&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module VednoVeljavenDatum : DATUM
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če kakšna od naštetih funkcij manjka, bo OCaml to opazil in javil napako:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Datum</span> <span class="o">:</span> <span class="nc">DATUM</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+    <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+    <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+    <span class="k">in</span>
+    <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[7]&quot;</span><span class="p">,</span> <span class="n">lines</span> <span class="mi">1</span><span class="o">-</span><span class="mi">22</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">23</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span>
+<span class="g g-Whitespace"> </span><span class="mi">1</span> <span class="o">|</span> <span class="o">.......................</span><span class="n">struct</span>
+<span class="g g-Whitespace"> </span><span class="mi">2</span> <span class="o">|</span>   <span class="nb">type</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="n">dan</span> <span class="p">:</span> <span class="nb">int</span><span class="p">;</span> <span class="n">mesec</span> <span class="p">:</span> <span class="nb">int</span><span class="p">;</span> <span class="n">leto</span> <span class="p">:</span> <span class="nb">int</span> <span class="p">}</span>
+<span class="g g-Whitespace"> </span><span class="mi">3</span> <span class="o">|</span> 
+<span class="g g-Whitespace"> </span><span class="mi">4</span> <span class="o">|</span>   <span class="n">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+<span class="g g-Whitespace"> </span><span class="mi">5</span> <span class="o">|</span>     <span class="p">(</span><span class="n">leto</span> <span class="n">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="n">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="n">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">...</span>
+<span class="mi">19</span> <span class="o">|</span>   <span class="n">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+<span class="mi">20</span> <span class="o">|</span>     <span class="n">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="p">{</span> <span class="n">dan</span><span class="p">;</span> <span class="n">mesec</span><span class="p">;</span> <span class="n">leto</span> <span class="p">}</span> <span class="ow">in</span>
+<span class="mi">21</span> <span class="o">|</span>     <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="n">then</span> <span class="n">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="mi">22</span> <span class="o">|</span> <span class="n">end</span>
+<span class="ne">Error</span>: Signature mismatch:
+       <span class="o">...</span>
+       <span class="n">The</span> <span class="n">value</span> <span class="err">`</span><span class="n">to_string</span><span class="s1">&#39; is required but not provided</span>
+       <span class="n">File</span> <span class="s2">&quot;[4]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">4</span><span class="o">-</span><span class="mi">31</span><span class="p">:</span> <span class="n">Expected</span> <span class="n">declaration</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobno bo preveril, ali se pri vseh definicijah ujemajo tipi.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Datum</span> <span class="o">:</span> <span class="nc">DATUM</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+    <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+    <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+    <span class="k">in</span>
+    <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="o">(</span><span class="n">dan</span><span class="o">,</span> <span class="n">mesec</span><span class="o">,</span> <span class="n">leto</span><span class="o">)</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+
+  <span class="k">let</span> <span class="n">to_string</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">Format</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%04d-%02d-%02d&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[8]&quot;</span><span class="p">,</span> <span class="n">lines</span> <span class="mi">1</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">23</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span>
+<span class="g g-Whitespace"> </span><span class="mi">1</span> <span class="o">|</span> <span class="o">.......................</span><span class="n">struct</span>
+<span class="g g-Whitespace"> </span><span class="mi">2</span> <span class="o">|</span>   <span class="nb">type</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span> <span class="n">dan</span> <span class="p">:</span> <span class="nb">int</span><span class="p">;</span> <span class="n">mesec</span> <span class="p">:</span> <span class="nb">int</span><span class="p">;</span> <span class="n">leto</span> <span class="p">:</span> <span class="nb">int</span> <span class="p">}</span>
+<span class="g g-Whitespace"> </span><span class="mi">3</span> <span class="o">|</span> 
+<span class="g g-Whitespace"> </span><span class="mi">4</span> <span class="o">|</span>   <span class="n">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+<span class="g g-Whitespace"> </span><span class="mi">5</span> <span class="o">|</span>     <span class="p">(</span><span class="n">leto</span> <span class="n">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="n">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="n">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">...</span>
+<span class="mi">22</span> <span class="o">|</span> 
+<span class="mi">23</span> <span class="o">|</span>   <span class="n">let</span> <span class="n">to_string</span> <span class="p">{</span> <span class="n">dan</span><span class="p">;</span> <span class="n">mesec</span><span class="p">;</span> <span class="n">leto</span> <span class="p">}</span> <span class="o">=</span>
+<span class="mi">24</span> <span class="o">|</span>     <span class="n">Format</span><span class="o">.</span><span class="n">sprintf</span> <span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">-</span><span class="si">%02d</span><span class="s2">-</span><span class="si">%02d</span><span class="s2">&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="mi">25</span> <span class="o">|</span> <span class="n">end</span>
+<span class="ne">Error</span>: Signature mismatch:
+       <span class="o">...</span>
+       <span class="n">Values</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+         <span class="n">val</span> <span class="n">naredi</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">*</span> <span class="nb">int</span> <span class="o">*</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span>
+       <span class="ow">is</span> <span class="ow">not</span> <span class="n">included</span> <span class="ow">in</span>
+         <span class="n">val</span> <span class="n">naredi</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span>
+       <span class="n">The</span> <span class="nb">type</span> <span class="nb">int</span> <span class="o">*</span> <span class="nb">int</span> <span class="o">*</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">compatible</span> <span class="k">with</span> <span class="n">the</span> <span class="nb">type</span>
+         <span class="nb">int</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span>
+       <span class="n">Type</span> <span class="nb">int</span> <span class="o">*</span> <span class="nb">int</span> <span class="o">*</span> <span class="nb">int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">compatible</span> <span class="k">with</span> <span class="nb">type</span> <span class="nb">int</span> 
+       <span class="n">File</span> <span class="s2">&quot;[4]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">4</span><span class="o">-</span><span class="mi">46</span><span class="p">:</span> <span class="n">Expected</span> <span class="n">declaration</span>
+       <span class="n">File</span> <span class="s2">&quot;[8]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">19</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">6</span><span class="o">-</span><span class="mi">12</span><span class="p">:</span> <span class="n">Actual</span> <span class="n">declaration</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="skrivanje-implementacije">
+<h3>Skrivanje implementacije<a class="headerlink" href="#skrivanje-implementacije" title="Link to this heading">#</a></h3>
+<p>Glavna prednost uporabe signatur pa je v tem, da lahko z njimi implementacij ne le preverjamo, temveč tudi deloma skrivamo. Če uporabljamo pomožno funkcijo, ki ni del signature, navzven ne bo vidna. Na primer, funkcije za izračun veljavnosti datuma lahko skrijemo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">DATUM</span> <span class="o">=</span>
+  <span class="k">sig</span>
+    <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="o">}</span>
+    <span class="k">val</span> <span class="n">naredi</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span>
+    <span class="k">val</span> <span class="n">to_string</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">string</span>
+  <span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type DATUM =
+  sig
+    type t = { dan : int; mesec : int; leto : int; }
+    val naredi : int -&gt; int -&gt; int -&gt; t option
+    val to_string : t -&gt; string
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Datum</span> <span class="o">:</span> <span class="nc">DATUM</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+    <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+    <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+    <span class="k">in</span>
+    <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+
+  <span class="k">let</span> <span class="n">to_string</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">Format</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%04d-%02d-%02d&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Datum : DATUM
+</pre></div>
+</div>
+</div>
+</div>
+<p>Modul še vedno vsebuje vse funkcije iz signature, zato se OCaml ne pritoži. A če poskusimo dostopati do dodatnih funkcij, bomo dobili napako:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Datum</span><span class="p">.</span><span class="n">naredi</span> <span class="mi">25</span> <span class="mi">6</span> <span class="mi">1991</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : Datum.t option = Some {Datum.dan = 25; mesec = 6; leto = 1991}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Datum</span><span class="p">.</span><span class="n">dolzina_meseca</span> <span class="mi">1991</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[12]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">0</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="n">Datum</span><span class="o">.</span><span class="n">dolzina_meseca</span> <span class="mi">1991</span> <span class="mi">6</span>
+    <span class="o">^^^^^^^^^^^^^^^^^^^^</span>
+<span class="ne">Error</span>: Unbound value Datum.dolzina_meseca
+</pre></div>
+</div>
+</div>
+</div>
+<p>Skrivanje implementacij uporabnikom poenostavi uporabo, saj izpostavi le ključne funkcije. Hkrati pa razvijalcem olajša kasnejše spremembe implementacije, če na primer najdejo boljši algoritem. Če pomožne funkcije ne bi bile skrite, bi se lahko nanje kdo zanašal, kar bi otežilo kasnejše spremembe.</p>
+</section>
+<section id="abstraktni-tipi">
+<h3>Abstraktni tipi<a class="headerlink" href="#abstraktni-tipi" title="Link to this heading">#</a></h3>
+<p>Poleg pomožnih funkcij lahko skrivamo tudi definicije tipov. To ne poenostavlja samo uporabe in kasnejših razširitev, temveč tudi zagotavlja pravilnost podatkov. Recimo, kljub temu, da smo pripravili funkcijo <code class="docutils literal notranslate"><span class="pre">naredi</span></code>, ki bo vedno ustvarila veljaven datum, lahko uporabnik še vedno ustvari neveljaven datum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">{</span> <span class="n">dan</span> <span class="o">=</span> <span class="mi">32</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="mi">2024</span> <span class="o">}</span> <span class="o">|&gt;</span> <span class="nn">Datum</span><span class="p">.</span><span class="n">to_string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : string = &quot;2024-13-32&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Temu se lahko izgonemo tako, da skrijemo definicijo tipa, samo povemo, da obstaja.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">DATUM</span> <span class="o">=</span>
+  <span class="k">sig</span>
+    <span class="k">type</span> <span class="n">t</span>
+    <span class="k">val</span> <span class="n">naredi</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="n">option</span>
+    <span class="k">val</span> <span class="n">to_string</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">string</span>
+  <span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type DATUM =
+  sig
+    type t
+    val naredi : int -&gt; int -&gt; int -&gt; t option
+    val to_string : t -&gt; string
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Datum</span> <span class="o">:</span> <span class="nc">DATUM</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">:</span> <span class="kt">int</span><span class="o">;</span> <span class="n">leto</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">leto</span> <span class="ow">mod</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span> <span class="n">leto</span> <span class="ow">mod</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="k">let</span> <span class="n">dolzina_meseca</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">9</span> <span class="o">|</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="mi">30</span>
+    <span class="o">|</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">je_prestopno</span> <span class="n">leto</span> <span class="k">then</span> <span class="mi">29</span> <span class="k">else</span> <span class="mi">28</span>
+    <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="mi">31</span>
+
+  <span class="k">let</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">veljaven_dan</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">dan</span> <span class="o">&lt;=</span> <span class="n">dolzina_meseca</span> <span class="n">datum</span><span class="o">.</span><span class="n">leto</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span>
+    <span class="k">and</span> <span class="n">veljaven_mesec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&amp;&amp;</span> <span class="n">datum</span><span class="o">.</span><span class="n">mesec</span> <span class="o">&lt;=</span> <span class="mi">12</span>
+    <span class="k">in</span>
+    <span class="n">veljaven_dan</span> <span class="o">&amp;&amp;</span> <span class="n">veljaven_mesec</span>
+
+  <span class="k">let</span> <span class="n">naredi</span> <span class="n">dan</span> <span class="n">mesec</span> <span class="n">leto</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="n">datum</span> <span class="o">=</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">je_veljaven</span> <span class="n">datum</span> <span class="k">then</span> <span class="nc">Some</span> <span class="n">datum</span> <span class="k">else</span> <span class="nc">None</span>
+
+  <span class="k">let</span> <span class="n">to_string</span> <span class="o">{</span> <span class="n">dan</span><span class="o">;</span> <span class="n">mesec</span><span class="o">;</span> <span class="n">leto</span> <span class="o">}</span> <span class="o">=</span>
+    <span class="nn">Format</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%04d-%02d-%02d&quot;</span> <span class="n">leto</span> <span class="n">mesec</span> <span class="n">dan</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Datum : DATUM
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sedaj je edini način, da ustvarimo vrednosti tipa <code class="docutils literal notranslate"><span class="pre">Datum.t</span></code> ta, da pokličemo funkcijo naredi, ki preveri veljavnost. Tudi če uporabnik uporabi identični tip, kot je v implementaciji, bo OCaml preprečil neposredno manipulacijo z njim.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">{</span> <span class="n">dan</span> <span class="o">=</span> <span class="mi">32</span><span class="o">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="mi">2024</span> <span class="o">}</span> <span class="o">|&gt;</span> <span class="nn">Datum</span><span class="p">.</span><span class="n">to_string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;[16]&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="p">{</span> <span class="n">dan</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span> <span class="n">mesec</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="n">leto</span> <span class="o">=</span> <span class="mi">2024</span> <span class="p">}</span> <span class="o">|&gt;</span> <span class="n">Datum</span><span class="o">.</span><span class="n">to_string</span>
+      <span class="o">^^^</span>
+<span class="ne">Error</span>: Unbound record field dan
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poleg tega lahko uporabimo tudi drugačno implementacijo datumov, recimo da mesece predstavimo z naštevnim tipom.</p>
+</section>
+</section>
+<section id="primer-stetje-razlicnih-elementov">
+<h2>Primer: štetje različnih elementov<a class="headerlink" href="#primer-stetje-razlicnih-elementov" title="Link to this heading">#</a></h2>
+<p>Za primer izračunajmo, koliko različnih elementov vsebuje dani seznam. Ena izmed možnosti je, da se sprehajamo čez seznam ter beležimo seznam elementov, ki smo jih že videli, začenši s praznim seznamom. Vsak element primerjamo z že videnimi in če ga še nismo videli, ga dodamo v seznam. Seveda bo ta primer majhen in ga ne bi bilo treba razčlenjevati, a bomo to vseeno storili, da spoznamo pristop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">stevilo_razlicnih</span> <span class="n">xs</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="o">=</span> <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">ze_videni</span>
+    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+        <span class="k">if</span> <span class="nn">List</span><span class="p">.</span><span class="n">mem</span> <span class="n">x</span> <span class="n">ze_videni</span>
+        <span class="k">then</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="n">xs</span>
+        <span class="k">else</span> <span class="n">aux</span> <span class="o">(</span><span class="n">x</span> <span class="o">::</span> <span class="n">ze_videni</span><span class="o">)</span> <span class="n">xs</span>
+  <span class="k">in</span>
+  <span class="n">aux</span> <span class="bp">[]</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val stevilo_razlicnih : &#39;a list -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">stevilo_razlicnih</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišimo še nekaj funkcij, s katerimi bomo izmerili (ne)učinkovitost take implementacije.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">nakljucni_seznam</span> <span class="n">m</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">init</span> <span class="n">n</span> <span class="o">(</span><span class="k">fun</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="nn">Random</span><span class="p">.</span><span class="n">int</span> <span class="n">m</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val nakljucni_seznam : int -&gt; int -&gt; int list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">nakljucni_seznam</span> <span class="mi">5</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list = [4; 0; 2; 1; 4; 0; 4; 0; 1; 0; 2; 0; 4; 3; 0; 2; 1; 1; 3; 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">stevilo_razlicnih</span> <span class="o">@@</span> <span class="n">nakljucni_seznam</span> <span class="mi">5</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">seznam_zaporednih</span> <span class="n">n</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">init</span> <span class="n">n</span> <span class="o">(</span><span class="k">fun</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val seznam_zaporednih : int -&gt; int list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">seznam_zaporednih</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int list = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">stevilo_razlicnih</span> <span class="o">@@</span> <span class="n">seznam_zaporednih</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">stopaj</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">zacetek</span> <span class="o">=</span> <span class="nn">Sys</span><span class="p">.</span><span class="n">time</span> <span class="bp">()</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">f</span> <span class="n">x</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">konec</span> <span class="o">=</span> <span class="nn">Sys</span><span class="p">.</span><span class="n">time</span> <span class="bp">()</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">izpis</span> <span class="o">=</span> 
+    <span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;Porabljen čas: %f ms</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">(</span><span class="mi">1000</span><span class="o">.</span> <span class="o">*.</span> <span class="o">(</span><span class="n">konec</span> <span class="o">-.</span> <span class="n">zacetek</span><span class="o">))</span>
+  <span class="k">in</span>
+  <span class="n">print_endline</span> <span class="n">izpis</span><span class="o">;</span>
+  <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val stopaj : (&#39;a -&gt; &#39;b) -&gt; &#39;a -&gt; &#39;b = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">stopaj</span> <span class="n">stevilo_razlicnih</span> <span class="o">(</span><span class="n">seznam_zaporednih</span> <span class="mi">1000</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porabljen čas: 4.096000 ms
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 1000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">stopaj</span> <span class="n">stevilo_razlicnih</span> <span class="o">(</span><span class="n">seznam_zaporednih</span> <span class="mi">2000</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porabljen čas: 17.794000 ms
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 2000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za dvakrat daljši seznam smo potrebovali okoli štirikrat več časa, saj se mora funkcija <code class="docutils literal notranslate"><span class="pre">List.mem</span></code> sprehajati po vedno daljšem seznamu, da ugotovi, da elementa ni v njem. Razlog za neučinkovitost je v tem, da za beleženje videnih elemente uporabljamo sezname, čeprav potrebujemo samo množice, ki se ne ozirajo na vrstni red in število ponovitev. V kratkem bomo spoznali učinkovite podatkovne strukture za predstavitev množic, zaenkrat pa si pripravimo teren za spremembe implementacij.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">MNOZICA</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">prazna</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">dodaj</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">velikost</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">int</span>
+  <span class="k">val</span> <span class="n">vsebuje</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type MNOZICA =
+  sig
+    type &#39;a t
+    val prazna : &#39;a t
+    val dodaj : &#39;a -&gt; &#39;a t -&gt; &#39;a t
+    val velikost : &#39;a t -&gt; int
+    val vsebuje : &#39;a -&gt; &#39;a t -&gt; bool
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Mnozica</span> <span class="o">:</span> <span class="nc">MNOZICA</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">t</span> <span class="o">=</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span>
+  <span class="k">let</span> <span class="n">prazna</span> <span class="o">=</span> <span class="bp">[]</span>
+  <span class="k">let</span> <span class="n">velikost</span> <span class="n">m</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">m</span>
+  <span class="k">let</span> <span class="n">vsebuje</span> <span class="n">x</span> <span class="n">m</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">mem</span> <span class="n">x</span> <span class="n">m</span>
+  <span class="k">let</span> <span class="n">dodaj</span> <span class="n">x</span> <span class="n">m</span> <span class="o">=</span> <span class="k">if</span> <span class="n">vsebuje</span> <span class="n">x</span> <span class="n">m</span> <span class="k">then</span> <span class="n">m</span> <span class="k">else</span> <span class="n">x</span> <span class="o">::</span> <span class="n">m</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Mnozica : MNOZICA
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na ta način naš algoritem namesto kot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">stevilo_razlicnih</span> <span class="n">xs</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="o">=</span> <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">ze_videni</span>
+    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+        <span class="k">if</span> <span class="nn">List</span><span class="p">.</span><span class="n">mem</span> <span class="n">x</span> <span class="n">ze_videni</span>
+        <span class="k">then</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="n">xs</span>
+        <span class="k">else</span> <span class="n">aux</span> <span class="o">(</span><span class="n">x</span> <span class="o">::</span> <span class="n">ze_videni</span><span class="o">)</span> <span class="n">xs</span>
+  <span class="k">in</span>
+  <span class="n">aux</span> <span class="bp">[]</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val stevilo_razlicnih : &#39;a list -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>napišemo kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">stevilo_razlicnih</span> <span class="n">xs</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="o">=</span> <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nn">Mnozica</span><span class="p">.</span><span class="n">velikost</span> <span class="n">ze_videni</span>
+    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">aux</span> <span class="o">(</span><span class="nn">Mnozica</span><span class="p">.</span><span class="n">dodaj</span> <span class="n">x</span> <span class="n">ze_videni</span><span class="o">)</span> <span class="n">xs</span>
+  <span class="k">in</span>
+  <span class="n">aux</span> <span class="nn">Mnozica</span><span class="p">.</span><span class="n">prazna</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val stevilo_razlicnih : &#39;a list -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo, da je definicija precej bolj pregledna, saj smo implementacijo in uporabo množic razdelili na dva dela.</p>
+</section>
+<section id="vaje">
+<h2>Vaje<a class="headerlink" href="#vaje" title="Link to this heading">#</a></h2>
+<section id="naravna-stevila">
+<h3>Naravna števila<a class="headerlink" href="#naravna-stevila" title="Link to this heading">#</a></h3>
+<p>Definirajte signaturo <code class="docutils literal notranslate"><span class="pre">NAT</span></code>, ki določa strukturo naravnih števil. Ima osnovni tip, funkcijo enakosti, ničlo in enko, seštevanje, odštevanje in množenje. Hkrati naj vsebuje pretvorbe iz in v OCamlov <code class="docutils literal notranslate"><span class="pre">int</span></code> tip. Opomba: Funkcije za pretvarjanje ponavadi poimenujemo <code class="docutils literal notranslate"><span class="pre">to_int</span></code> and <code class="docutils literal notranslate"><span class="pre">of_int</span></code>, tako da skupaj z imenom modula dobimo ime <code class="docutils literal notranslate"><span class="pre">NAT.of_int</span></code>, ki nam pove, da pridobivamo naravno število iz celega števila.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">NAT</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">t</span>
+
+  <span class="k">val</span> <span class="n">eq</span>  <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="k">val</span> <span class="n">zero</span> <span class="o">:</span> <span class="n">t</span>
+  <span class="c">(* Dodajte manjkajoče! *)</span>
+  <span class="c">(* val to_int : t -&gt; int *)</span>
+  <span class="c">(* val of_int : int -&gt; t *)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type NAT = sig type t val eq : t -&gt; t -&gt; bool val zero : t end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite implementacijo modula <code class="docutils literal notranslate"><span class="pre">Nat_int</span></code>, ki zgradi modul s signaturo <code class="docutils literal notranslate"><span class="pre">NAT</span></code>, kjer kot osnovni tip uporablja OCamlov tip <code class="docutils literal notranslate"><span class="pre">int</span></code>. Namig: dokler ne implementirate vse funkcij v <code class="docutils literal notranslate"><span class="pre">Nat_int</span></code>, se bo OCaml pritoževal. Temu se lahko izognete tako, da funkcije, ki še niso napisane nadomestite z <code class="docutils literal notranslate"><span class="pre">failwith</span> <span class="pre">&quot;later&quot;</span></code>, vendar to ne deluje za konstante.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Nat_int</span> <span class="o">:</span> <span class="nc">NAT</span> <span class="o">=</span> <span class="k">struct</span>
+
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">int</span>
+  <span class="k">let</span> <span class="n">eq</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="n">failwith</span> <span class="s2">&quot;later&quot;</span>
+  <span class="k">let</span> <span class="n">zero</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="c">(* Dodajte manjkajoče! *)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Nat_int : NAT
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite implementacijo <code class="docutils literal notranslate"><span class="pre">NAT</span></code>, ki temelji na <a class="reference external" href="https://en.wikipedia.org/wiki/Peano_axioms">Peanovih aksiomih</a>. Osnovni tip modula definirajte kot naštevni tip, ki vsebuje konstruktor za ničlo in konstruktor za naslednika nekega naravnega števila. Večino funkcij lahko implementirate s pomočjo rekurzije. Naprimer, enakost števil <code class="docutils literal notranslate"><span class="pre">k</span></code> in <code class="docutils literal notranslate"><span class="pre">l</span></code> določimo s hkratno rekurzijo na <code class="docutils literal notranslate"><span class="pre">k</span></code> in <code class="docutils literal notranslate"><span class="pre">l</span></code>, kjer je osnoven primer <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">=</span> <span class="pre">Zero</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Nat_peano</span> <span class="o">:</span> <span class="nc">NAT</span> <span class="o">=</span> <span class="k">struct</span>
+
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="kt">unit</span> <span class="c">(* To morate spremeniti! *)</span>
+  <span class="k">let</span> <span class="n">eq</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="n">failwith</span> <span class="s2">&quot;later&quot;</span>
+  <span class="k">let</span> <span class="n">zero</span> <span class="o">=</span> <span class="bp">()</span> <span class="c">(* To morate spremeniti! *)</span>
+  <span class="c">(* Dodajte manjkajoče! *)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Nat_peano : NAT
+</pre></div>
+</div>
+</div>
+</div>
+<p>Z ukazom <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">module</span> <span class="pre">ImeModula</span> <span class="pre">=</span> <span class="pre">...</span> <span class="pre">in</span> <span class="pre">...</span></code> lahko modul definiramo samo lokalno. To bomo uporabili za to, da bomo lahko enostavno preklapljali med moduloma <code class="docutils literal notranslate"><span class="pre">Nat_int</span></code> in <code class="docutils literal notranslate"><span class="pre">Nat_peano</span></code>, saj bomo enega ali drugega shranili pod ime <code class="docutils literal notranslate"><span class="pre">Nat</span></code>. OCaml sicer pozna tudi ustrezne abstrakcije, ki omogočijo preklapljanje med moduli, na primer <a class="reference external" href="https://ocaml.org/docs/functors">funktorje</a> ali <a class="reference external" href="https://ocaml.org/manual/5.2/firstclassmodules.html">prvorazredne module</a>, a bomo uporabili preprostejšo rešitev.</p>
+<p>Spodnji izračun dopolnite tako, da sešteje prvih 100 naravnih števil. Ker bo taka vsota tipa <code class="docutils literal notranslate"><span class="pre">NAT.t</span></code>, ki je abstrakten, končni rezultat pretvorite v tip <code class="docutils literal notranslate"><span class="pre">int</span></code> z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">Nat.to_int</span></code>. Če ste oba modula implementirali pravilno, bi morali dobiti enak rezultat ne glede na to, katerega poimenujete <code class="docutils literal notranslate"><span class="pre">Nat</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">sum_nat_100</span> <span class="o">=</span> 
+  <span class="c">(* let module Nat = Nat_int in *)</span>
+  <span class="k">let</span> <span class="k">module</span> <span class="nc">Nat</span> <span class="o">=</span> <span class="nc">Nat_peano</span> <span class="k">in</span>
+  <span class="nn">Nat</span><span class="p">.</span><span class="n">zero</span> <span class="c">(* to popravite na ustrezen izračun *)</span>
+  <span class="c">(* |&gt; Nat.to_int *)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val sum_nat_100 : Nat_peano.t = &lt;abstr&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kompleksna-stevila">
+<h3>Kompleksna števila<a class="headerlink" href="#kompleksna-stevila" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Once upon a time, there was a university with a peculiar tenure
+policy. All faculty were tenured, and could only be dismissed for
+moral turpitude. What was peculiar was the definition of moral
+turpitude: making a false statement in class. Needless to say, the
+university did not teach computer science. However, it had a renowned
+department of mathematics.</p>
+<p>One Semester, there was such a large enrollment in complex variables
+that two sections were scheduled. In one section, Professor Descartes
+announced that a complex number was an ordered pair of reals, and that
+two complex numbers were equal when their corresponding components
+were equal. He went on to explain how to convert reals into complex
+numbers, what “i” was, how to add, multiply, and conjugate complex
+numbers, and how to find their magnitude.</p>
+<p>In the other section, Professor Bessel announced that a complex number
+was an ordered pair of reals the first of which was nonnegative, and
+that two complex numbers were equal if their first components were
+equal and either the first components were zero or the second
+components differed by a multiple of 2π. He then told an entirely
+different story about converting reals, “i”, addition, multiplication,
+conjugation, and magnitude.</p>
+<p>Then, after their first classes, an unfortunate mistake in the
+registrar’s office caused the two sections to be interchanged. Despite
+this, neither Descartes nor Bessel ever committed moral turpitude,
+even though each was judged by the other’s definitions. The reason was
+that they both had an intuitive understanding of type. Having defined
+complex numbers and the primitive operations upon them, thereafter
+they spoke at a level of abstraction that encompassed both of their
+definitions.</p>
+<p>The moral of this fable is that: Type structure is a syntactic
+discipline for enforcing levels of abstraction.</p>
+<p>John C. Reynolds, <em>Types, Abstraction, and Parametric Polymorphism</em>, IFIP83</p>
+</div></blockquote>
+<p>Definirajte signaturo modula kompleksnih števil. Potrebujemo osnovni tip, test enakosti, ničlo, enko, imaginarno konstanto i, negacijo, konjugacijo, seštevanje in množenje.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">COMPLEX</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">eq</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="c">(* Dodajte manjkajoče! *)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type COMPLEX = sig type t val eq : t -&gt; t -&gt; bool end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite kartezično implementacijo kompleksnih števil, kjer ima vsako kompleksno število realno in imaginarno komponento.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Cartesian</span> <span class="o">:</span> <span class="nc">COMPLEX</span> <span class="o">=</span> <span class="k">struct</span>
+
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span><span class="n">re</span> <span class="o">:</span> <span class="kt">float</span><span class="o">;</span> <span class="n">im</span> <span class="o">:</span> <span class="kt">float</span><span class="o">}</span>
+
+  <span class="k">let</span> <span class="n">eq</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="n">failwith</span> <span class="s2">&quot;later&quot;</span>
+  <span class="c">(* Dodajte manjkajoče! *)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Cartesian : COMPLEX
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sedaj napišite še polarno implementacijo kompleksnih števil, kjer ima vsako kompleksno število radij in kot (angl. magnitude in argument). Priporočilo: Seštevanje je v polarnih koordinatah zahtevnejše, zato si ga pustite za konec (lahko tudi za konec stoletja).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Polar</span> <span class="o">:</span> <span class="nc">COMPLEX</span> <span class="o">=</span> <span class="k">struct</span>
+
+  <span class="k">type</span> <span class="n">t</span> <span class="o">=</span> <span class="o">{</span><span class="n">magn</span> <span class="o">:</span> <span class="kt">float</span><span class="o">;</span> <span class="n">arg</span> <span class="o">:</span> <span class="kt">float</span><span class="o">}</span>
+
+  <span class="c">(* Pomožne funkcije za lažje življenje. *)</span>
+  <span class="k">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="mi">2</span><span class="o">.</span> <span class="o">*.</span> <span class="n">acos</span> <span class="mi">0</span><span class="o">.</span>
+  <span class="k">let</span> <span class="n">rad_of_deg</span> <span class="n">deg</span> <span class="o">=</span> <span class="o">(</span><span class="n">deg</span> <span class="o">/.</span> <span class="mi">180</span><span class="o">.)</span> <span class="o">*.</span> <span class="n">pi</span>
+  <span class="k">let</span> <span class="n">deg_of_rad</span> <span class="n">rad</span> <span class="o">=</span> <span class="o">(</span><span class="n">rad</span> <span class="o">/.</span> <span class="n">pi</span><span class="o">)</span> <span class="o">*.</span> <span class="mi">180</span><span class="o">.</span>
+
+  <span class="k">let</span> <span class="n">eq</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="n">failwith</span> <span class="s2">&quot;later&quot;</span>
+  <span class="c">(* Dodajte manjkajoče! *)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module Polar : COMPLEX
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03-podatkovni-tipi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Podatkovni tipi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="05-curry-howardov-izomorfizem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Curry-Howardov izomorfizem</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moduli">Moduli</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signature">Signature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicije-signatur">Definicije signatur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preverjanje-skladnosti-implementacije">Preverjanje skladnosti implementacije</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skrivanje-implementacije">Skrivanje implementacije</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstraktni-tipi">Abstraktni tipi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-stetje-razlicnih-elementov">Primer: štetje različnih elementov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje">Vaje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naravna-stevila">Naravna števila</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleksna-stevila">Kompleksna števila</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

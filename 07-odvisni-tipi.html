@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Odvisni tipi &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07-odvisni-tipi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Induktivni tipi" href="08-induktivni-tipi.html" />
+    <link rel="prev" title="Uvod v Lean" href="06-uvod-v-lean.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/07-odvisni-tipi.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Odvisni tipi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorji">Vektorji</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predikatni-racun">Predikatni račun</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="odvisni-tipi">
+<h1>Odvisni tipi<a class="headerlink" href="#odvisni-tipi" title="Link to this heading">#</a></h1>
+<p>Pri implementaciji Curry-Howardovega izomorfizma v OCamlu smo naleteli na tri ovire, ki pa smo jih v Leanu tudi že deloma rešili:</p>
+<ol class="arabic simple">
+<li><p>Z neomejeno rekurzijo lahko definiramo vrednosti poljubnega tipa, kar pomeni, da lahko dokažemo poljubno izjavo. Lean to reši tako, da nas omeji le na funkcije, za katere imamo dokaz o ustavitvi.</p></li>
+<li><p>Pisanje dokazov neposredno s konstrukcijami vrednosti je nepraktično in ni v duhu dokazov, ki smo jih sicer navajeni. Lean to reši z uvedbo taktik, s katerimi ga usmerjamo pri konstrukciji dokazov.</p></li>
+<li><p>S konstruktorji tipov lahko izrazimo le logične veznike, ne moremo pa izraziti kvantifikatorjev, kar pomeni, da smo v dokazih omejeni le na izjavni račun. Poglejmo si, kako v Leanu to rešimo z uvedbo <em>odvisnih tipov</em>.</p></li>
+</ol>
+<p>Spomnimo se, da v Curry-Howardovem izomorfizmu vsaki izjavi ustreza tip, ki ima predstavnika natanko tedaj, kadar izjavo lahko dokažemo. Če želimo v izjavah uporabiti kvantifikatorje, moramo najprej govoriti o predikatih, torej izjavah, odvisnih od vrednosti. Naj bo <span class="math notranslate nohighlight">\(S(n)\)</span> izjava, da je naravno število <span class="math notranslate nohighlight">\(n\)</span> sodo. Tako je izjava <span class="math notranslate nohighlight">\(S(42)\)</span> resnična, izjava <span class="math notranslate nohighlight">\(S(43)\)</span> pa ne. Tip, ki bi ustrezal izjavi <span class="math notranslate nohighlight">\(S(42)\)</span> bi tako moral biti neprazen, tip <span class="math notranslate nohighlight">\(S(43)\)</span> pa prazen. Torej dobimo tip, ki se spreminja glede na vrednost števila <span class="math notranslate nohighlight">\(n\)</span>. Do sedaj smo spoznali že:</p>
+<ul class="simple">
+<li><p><strong>Vrednosti, ki se spreminjajo glede na vrednosti</strong>: to so običajne funkcije kot je <code class="docutils literal notranslate"><span class="pre">podvoji</span> <span class="pre">:</span> <span class="pre">Nat</span> <span class="pre">→</span> <span class="pre">Nat</span></code> ali <code class="docutils literal notranslate"><span class="pre">zacetnaVrednost</span> <span class="pre">:</span> <span class="pre">(Float</span> <span class="pre">→</span> <span class="pre">Float)</span> <span class="pre">→</span> <span class="pre">Float</span></code>.</p></li>
+<li><p><strong>Tipe, ki se spreminjajo glede na tipe</strong>: to so konstruktorji tipov, na primer <code class="docutils literal notranslate"><span class="pre">List</span></code>, ki iz tipa naravnih števil <code class="docutils literal notranslate"><span class="pre">Nat</span></code> ustvari tip seznamov naravnih števil <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">Nat</span></code>. V OCamlu so bile take funkcije implicitne v parametričnih tipih, v Leanu pa imamo eksplicitno zapisano, da je <code class="docutils literal notranslate"><span class="pre">List</span></code> funkcija tipa <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">→</span> <span class="pre">Type</span></code>. Imamo tudi funkcije z več argumenti, na primer <code class="docutils literal notranslate"><span class="pre">Prod</span> <span class="pre">:</span> <span class="pre">Type</span> <span class="pre">→</span> <span class="pre">Type</span> <span class="pre">→</span> <span class="pre">Type</span></code>, ki iz tipov <code class="docutils literal notranslate"><span class="pre">A</span></code> in <code class="docutils literal notranslate"><span class="pre">B</span></code> naredi njun produkt <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">×</span> <span class="pre">B</span></code>.</p></li>
+<li><p><strong>Vrednosti, ki se spreminjajo glede na tipe</strong>: to morda ni bilo tako očitno, ampak v tej vlogi nastopajo polimorfne funkcije. Zadnjič smo videli, da moramo parametrično polimorfnim funkcijam v definicijah in klicih tipe podati kot eksplicitne argumente, na primer <code class="docutils literal notranslate"><span class="pre">polimorfni_stakni</span> <span class="pre">Int</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span> <span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">6]</span></code>. Lahko bi sicer rekli, da polimorfne funkcije niso zares odvisne od tipov, saj se pri vsakem tipu obnašajo enako, ampak formalno gledano se funkcije vseeno spreminjajo, saj <code class="docutils literal notranslate"><span class="pre">polimorfni_stakni</span> <span class="pre">Int</span></code> sprejme dva seznama celih števil, <code class="docutils literal notranslate"><span class="pre">polimorfni_stakni</span> <span class="pre">Int</span></code> pa ne. Odvisnost od tipov je še bolj očitna pri ad-hoc polimorfizmu. V Pythonu na primer imamo en sam <code class="docutils literal notranslate"><span class="pre">+</span></code>, ki deluje na različne načine: števila sešteva (pri čemer se <code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">*</span> <span class="pre">7</span></code> izračuna na popolnoma drug način kot <code class="docutils literal notranslate"><span class="pre">6.0</span> <span class="pre">*</span> <span class="pre">7.0</span></code>), nize in sezname stika, … V OCamlu imamo zaradi strogih tipov za vsako izmed teh različnih operacij svoj simbol: <code class="docutils literal notranslate"><span class="pre">+</span></code> za cela števila, <code class="docutils literal notranslate"><span class="pre">+.</span></code> za števila s plavajočo vejico, <code class="docutils literal notranslate"><span class="pre">^</span></code> za nize, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> za sezname, … Lean podpira t.i. <em>razrede tipov</em>, ki nam omogočajo, da z enim samim simbolom varno in učinkovito predstavimo operacije pri različnih tipih. To je sicer tema za drugič, ampak je pa definitivno primer vrednosti, ki je dejansko odvisna od tipa.</p></li>
+</ul>
+<p>Spoznajmo še <strong>tipe, ki se spreminjajo glede na vrednosti</strong>.</p>
+<section id="vektorji">
+<h2>Vektorji<a class="headerlink" href="#vektorji" title="Link to this heading">#</a></h2>
+<p>Za začetek si tak tip definirajmo sami. Poznamo že tip seznamov, ki ga lahko v Leanu zapišemo kot:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">where</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">prazen</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Seznam</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">sestavljen</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Seznam</span>
+</pre></div>
+</div>
+<p>ali kot</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">where</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">prazen</span><span class="w"> </span><span class="o">{</span><span class="n">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="n">A</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">sestavljen</span><span class="w"> </span><span class="o">{</span><span class="n">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="n">A</span>
+</pre></div>
+</div>
+<p>če želimo parametrični polimorfizem.</p>
+<p>Definirajmo še tip <em>vektorjev</em>, kar je v računalništvo ime za sezname z dano dolžino. Če je <code class="docutils literal notranslate"><span class="pre">Seznam</span></code> tip seznamov poljubne dolžine, potem bo <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">42</span></code> tip seznamov, ki vsebujejo natanko 42 celih števil, <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">0</span></code> pa tip, ki vsebuje le prazen seznam. V Leanu tip definiramo kot:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">where</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">prazen</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="n">Nat.zero</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">sestavljen</span><span class="w"> </span><span class="o">{</span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="o">(</span><span class="n">Nat.succ</span><span class="w"> </span><span class="n">n</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Prazen vektor je torej tipa <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">0</span></code>, sestavljen vektor pa vsebuje glavo (tipa <code class="docutils literal notranslate"><span class="pre">Int</span></code>) in rep (dolžine <code class="docutils literal notranslate"><span class="pre">n</span></code>), sam pa je dolžine <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+</span> <span class="pre">1</span></code>. Tako kot smo stikali sezname z</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">stakniSeznam</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Seznam</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">fun</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="n">ys</span><span class="w"> </span><span class="bp">=&gt;</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">    </span><span class="bp">|</span><span class="w"> </span><span class="n">Seznam.prazen</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">    </span><span class="bp">|</span><span class="w"> </span><span class="n">Seznam.sestavljen</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span>
+<span class="w">        </span><span class="n">Seznam.sestavljen</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">(</span><span class="n">stakniSeznam</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="n">xs&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>lahko stikamo tudi vektorje:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">stakniVektor</span><span class="w"> </span><span class="o">{</span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="o">(</span><span class="n">n</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">m</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">fun</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="n">ys</span><span class="w"> </span><span class="bp">=&gt;</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">    </span><span class="bp">|</span><span class="w"> </span><span class="n">Vektor.prazen</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">    </span><span class="bp">|</span><span class="w"> </span><span class="n">Vektor.sestavljen</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span>
+<span class="w">        </span><span class="n">Vektor.sestavljen</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">(</span><span class="n">stakniVektor</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="n">ys</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>pri čemer bo Lean popazil, da se bodo dolžine dejansko ujemale. Če bi se na primer pri funkciji <code class="docutils literal notranslate"><span class="pre">stakniSeznam</span></code> zatipkali in zapisali <code class="docutils literal notranslate"><span class="pre">Seznam.prazen</span> <span class="pre">=&gt;</span> <span class="pre">xs</span></code>, se Lean ne bi pritožil (oz. bi se, da spremenljivke <code class="docutils literal notranslate"><span class="pre">ys</span></code> nismo uporabili, vendar bi definicijo vseeno sprejel). Če pa bi zapisali <code class="docutils literal notranslate"><span class="pre">Vektor.prazen</span> <span class="pre">=&gt;</span> <span class="pre">xs</span></code>, pa bi dobili napako</p>
+<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>Type mismatch
+  xs
+has type
+  Vektor m
+but is expected to have type
+  Vektor (n + 0)
+</pre></div>
+</div>
+<p>Opazimo lahko, da smo tip funkcije podali kot <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">m</span> <span class="pre">→</span> <span class="pre">Vektor</span> <span class="pre">n</span> <span class="pre">→</span> <span class="pre">Vektor</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">m)</span></code> in ne kot <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">m</span> <span class="pre">→</span> <span class="pre">Vektor</span> <span class="pre">n</span> <span class="pre">→</span> <span class="pre">Vektor</span> <span class="pre">(m</span> <span class="pre">+</span> <span class="pre">n)</span></code>, kar bi bilo bolj smiselno. To je posledica tega, da je seštevanje naravnih števil v Leanu definirano rekurzivno po drugem argumentu, torej kot <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">+</span> <span class="pre">Nat.succ</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">Nat.succ</span> <span class="pre">(m</span> <span class="pre">+</span> <span class="pre">n)</span></code>, stikanje vektorjev pa po prvem. Če torej vzamemo sestavljen vektor <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">:</span> <span class="pre">Vektor</span> <span class="pre">(Nat.succ</span> <span class="pre">m)</span></code> in poljuben vektor <code class="docutils literal notranslate"><span class="pre">ys</span> <span class="pre">:</span> <span class="pre">Vektor</span> <span class="pre">n</span></code>, za rep velja <code class="docutils literal notranslate"><span class="pre">xs'</span> <span class="pre">:</span> <span class="pre">Vektor</span> <span class="pre">m</span></code>. Torej bo rekurzivni klic <code class="docutils literal notranslate"><span class="pre">stakniVektor</span> <span class="pre">xs'</span> <span class="pre">ys</span></code> tipa <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">m)</span></code>. Če temu dodamo še glavo <code class="docutils literal notranslate"><span class="pre">x</span></code>, dobimo rezultat tipa <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">(Nat.succ</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">m))</span></code>, kar je po definiciji seštevanja enako kot <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">Nat.succ</span> <span class="pre">m)</span></code>, kar smo tudi pričakovali pri argumentih tipa <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">(Nat.succ</span> <span class="pre">m)</span></code> in <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">n</span></code>.</p>
+<p>Seveda lahko definiramo tudi funkcijo <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">m</span> <span class="pre">→</span> <span class="pre">Vektor</span> <span class="pre">n</span> <span class="pre">→</span> <span class="pre">Vektor</span> <span class="pre">(m</span> <span class="pre">+</span> <span class="pre">n)</span></code>, vendar se tu Lean pritoži že pri primeru stikanja s praznim seznamom. Tam za rezultat pričakuje <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">(0</span> <span class="pre">+</span> <span class="pre">n)</span></code>, mi pa smo mu dali <code class="docutils literal notranslate"><span class="pre">ys</span> <span class="pre">:</span> <span class="pre">Vektor</span> <span class="pre">n</span></code>. Po definicij namreč velja samo <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+</span> <span class="pre">0</span> <span class="pre">=</span> <span class="pre">n</span></code>, ne pa tudi <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span></code>. To moramo dokazati ločeno! V tem primeru lahko vstopimo v taktični način, ker za cilj dobimo <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">(0</span> <span class="pre">+</span> <span class="pre">n)</span></code>. Nato uporabimo taktiko <code class="docutils literal notranslate"><span class="pre">rw</span></code>, ki ji kot argument podamo že dokazano trditev <code class="docutils literal notranslate"><span class="pre">zero_add</span> <span class="pre">:</span> <span class="pre">∀</span> <span class="pre">(n</span> <span class="pre">:</span> <span class="pre">Nat),</span> <span class="pre">0</span> <span class="pre">+</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span></code>, s pomočjo katere cilj zamenja v <code class="docutils literal notranslate"><span class="pre">Vektor</span> <span class="pre">n</span></code>, ki mu lahko zadostimo z <code class="docutils literal notranslate"><span class="pre">ys</span></code>. Podobno s trditvijo <code class="docutils literal notranslate"><span class="pre">succ_add</span> <span class="pre">:</span> <span class="pre">∀</span> <span class="pre">(n</span> <span class="pre">m</span> <span class="pre">:</span> <span class="pre">Nat),</span> <span class="pre">(succ</span> <span class="pre">n)</span> <span class="pre">+</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">succ</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">m)</span></code> prepričamo Lean tudi v drugem primeru:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span><span class="w"> </span><span class="n">stakniVektor&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">-&gt;</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">-&gt;</span><span class="w"> </span><span class="n">Vektor</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="k">fun</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="n">ys</span><span class="w"> </span><span class="bp">=&gt;</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="k">with</span>
+<span class="w">    </span><span class="bp">|</span><span class="w"> </span><span class="n">Vektor.prazen</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">        </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">Nat.zero_add</span><span class="o">]</span>
+<span class="w">        </span><span class="n">exact</span><span class="w"> </span><span class="n">ys</span>
+<span class="w">    </span><span class="bp">|</span><span class="w"> </span><span class="n">Vektor.sestavljen</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">        </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">Nat.succ_add</span><span class="o">]</span>
+<span class="w">        </span><span class="n">exact</span><span class="w"> </span><span class="bp">.</span><span class="n">sestavljen</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">(</span><span class="n">stakniVektor&#39;</span><span class="w"> </span><span class="n">xs&#39;</span><span class="w"> </span><span class="n">ys</span><span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="predikatni-racun">
+<h2>Predikatni račun<a class="headerlink" href="#predikatni-racun" title="Link to this heading">#</a></h2>
+<p>S pomočjo odvisnih tipov lahko sedaj definiramo tudi zgoraj omenjeni tip, ki je pri sodih številih neprazen, pri lihih pa je prazen:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span><span class="w"> </span><span class="n">NeprazenPriSodih</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">where</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">nicJeSodo</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">NeprazenPriSodih</span><span class="w"> </span><span class="n">Nat.zero</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">sodoPlusDvaJeSodo</span><span class="w"> </span><span class="o">{</span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">NeprazenPriSodih</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">NeprazenPriSodih</span><span class="w"> </span><span class="o">(</span><span class="n">Nat.succ</span><span class="w"> </span><span class="o">(</span><span class="n">Nat.succ</span><span class="w"> </span><span class="n">n</span><span class="o">))</span>
+</pre></div>
+</div>
+<p>Gre za manjšo prilagoditev tipa <code class="docutils literal notranslate"><span class="pre">Vektor</span></code>. Tu imamo en element pri tipu <code class="docutils literal notranslate"><span class="pre">NeprazenPriSodih</span> <span class="pre">0</span></code>, ter po en element pri tipu <code class="docutils literal notranslate"><span class="pre">NeprazenPriSodih</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">2)</span></code>, če imamo “rep” tipa <code class="docutils literal notranslate"><span class="pre">NeprazenPriSodih</span> <span class="pre">n</span></code>. Hitro lahko vidimo, da ima tip <code class="docutils literal notranslate"><span class="pre">NeprazenPriSodih</span> <span class="pre">n</span></code> predstavnika natanko takrat, kadar je <code class="docutils literal notranslate"><span class="pre">n</span></code> sod. Seveda je še bolje, če namesto <code class="docutils literal notranslate"><span class="pre">Type</span></code> uporabimo <code class="docutils literal notranslate"><span class="pre">Prop</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span><span class="w"> </span><span class="n">Sodo</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Prop</span><span class="w"> </span><span class="n">where</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">nicJeSodo</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Sodo</span><span class="w"> </span><span class="n">Nat.zero</span>
+<span class="w">  </span><span class="bp">|</span><span class="w"> </span><span class="n">sodoPlusDvaJeSodo</span><span class="w"> </span><span class="o">{</span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Sodo</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Sodo</span><span class="w"> </span><span class="o">(</span><span class="n">Nat.succ</span><span class="w"> </span><span class="o">(</span><span class="n">Nat.succ</span><span class="w"> </span><span class="n">n</span><span class="o">))</span>
+</pre></div>
+</div>
+<p>Za vajo lahko dokažete <code class="docutils literal notranslate"><span class="pre">vsota_sodih</span> <span class="pre">{m</span> <span class="pre">n</span> <span class="pre">:</span> <span class="pre">Nat}</span> <span class="pre">:</span> <span class="pre">Sodo</span> <span class="pre">m</span> <span class="pre">→</span> <span class="pre">Sodo</span> <span class="pre">n</span> <span class="pre">→</span> <span class="pre">Sodo</span> <span class="pre">(m</span> <span class="pre">+</span> <span class="pre">n)</span></code>. Mi pa si za primer dokaza v predikatnem računu oglejmo paradoks brivca: brivec, ki bi bril vse, ki se ne brijejo sami, ne obstaja. Predpostavimo, da imamo tip ljudi <code class="docutils literal notranslate"><span class="pre">C</span></code> ter predikat <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">:</span> <span class="pre">C</span> <span class="pre">→</span> <span class="pre">C</span> <span class="pre">→</span> <span class="pre">Prop</span></code>, ki pove, ali prva oseba brije drugo.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span><span class="w"> </span><span class="o">(</span><span class="n">C</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="o">)</span>
+<span class="kd">variable</span><span class="w"> </span><span class="o">(</span><span class="n">B</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Prop</span><span class="o">)</span>
+
+<span class="kd">theorem</span><span class="w"> </span><span class="n">paradoks_brivca</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">¬∃</span><span class="w"> </span><span class="o">(</span><span class="n">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="o">),</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="o">(</span><span class="n">c</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="o">),</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="bp">↔</span><span class="w"> </span><span class="bp">¬</span><span class="n">B</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">  </span><span class="c1">-- cilj: ¬∃ b, ∀ (c : C), B c c ↔ ¬B b c</span>
+<span class="w">  </span><span class="n">intro</span><span class="w"> </span><span class="n">H</span>
+<span class="w">  </span><span class="c1">-- predpostavka H: ∃ b, ∀ (c : C), B c c ↔ ¬B b c</span>
+<span class="w">  </span><span class="c1">-- cilj: False</span>
+<span class="w">  </span><span class="n">cases</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="c1">-- razstavimo eksistenčni kvantifikator</span>
+<span class="w">  </span><span class="n">rename_i</span><span class="w"> </span><span class="n">bob</span><span class="w"> </span><span class="n">koga_brije_bob</span><span class="w"> </span><span class="c1">-- eksplicitno poimenujemo brivca in njegovo lastnost</span>
+<span class="w">  </span><span class="c1">-- predpostavka koga_brije_bob: ∀ (c : C), B c c ↔ ¬B bob c</span>
+<span class="w">  </span><span class="k">have</span><span class="w"> </span><span class="n">kako_se_brije_bob</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">koga_brije_bob</span><span class="w"> </span><span class="n">bob</span><span class="w">  </span><span class="c1">-- poglejmo, ali Bob brije samega sebe</span>
+<span class="w">  </span><span class="c1">-- predpostavka kako_se_brije_bob : B bob bob ↔ ¬B bob bob</span>
+<span class="w">  </span><span class="c1">-- pokažimo, da se B ne brije sam</span>
+<span class="w">  </span><span class="k">have</span><span class="w"> </span><span class="n">bob_se_ne_brije</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">¬</span><span class="n">B</span><span class="w"> </span><span class="n">bob</span><span class="w"> </span><span class="n">bob</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">    </span><span class="c1">-- cilj vmesne leme: ¬B bob bob</span>
+<span class="w">    </span><span class="n">intro</span><span class="w"> </span><span class="n">bob_se_brije</span><span class="w">  </span><span class="c1">-- pokažimo negacijo</span>
+<span class="w">    </span><span class="c1">-- predpostavka bob_se_brije: B bob bob</span>
+<span class="w">    </span><span class="c1">-- cilj: False</span>
+<span class="w">    </span><span class="k">have</span><span class="w"> </span><span class="n">bob_se_ne_brije</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">kako_se_brije_bob.mp</span><span class="w"> </span><span class="n">bob_se_brije</span><span class="w">  </span><span class="c1">-- uporabimo Bobovo lastnost</span>
+<span class="w">    </span><span class="c1">-- predpostavka bob_se_ne_brije: ¬B bob bob</span>
+<span class="w">    </span><span class="n">contradiction</span><span class="w">  </span><span class="c1">-- protislovje</span>
+<span class="w">  </span><span class="c1">-- s have dobimo:</span>
+<span class="w">  </span><span class="c1">-- predpostavka bob_se_ne_brije : ¬B bob bob</span>
+<span class="w">  </span><span class="c1">-- cilj ostaja: False</span>
+<span class="w">  </span><span class="k">have</span><span class="w"> </span><span class="n">bob_se_brije</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">kako_se_brije_bob.mpr</span><span class="w"> </span><span class="n">bob_se_ne_brije</span><span class="w">  </span><span class="c1">-- spet uporabimo Bobovo lastnost</span>
+<span class="w">  </span><span class="n">contradiction</span><span class="w">  </span><span class="c1">-- protislovje</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06-uvod-v-lean.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Uvod v Lean</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08-induktivni-tipi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Induktivni tipi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorji">Vektorji</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predikatni-racun">Predikatni račun</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

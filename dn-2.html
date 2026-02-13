@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. domača naloga &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dn-2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. domača naloga" href="dn-4.html" />
+    <link rel="prev" title="1. domača naloga" href="dn-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-iskalna-drevesa.html">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/dn-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. domača naloga</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministicni-koncni-avtomati">Deterministični končni avtomati</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-dfa">Modul <code class="docutils literal notranslate"><span class="pre">DFA</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izpis-avtomata">Izpis avtomata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sprejemanje-niza">Sprejemanje niza</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nedeterministicni-koncni-avtomati">Nedeterministični končni avtomati</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-nfa">Modul <code class="docutils literal notranslate"><span class="pre">NFA</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Izpis avtomata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Sprejemanje niza</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularni-izrazi">Regularni izrazi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izpisovanje">Izpisovanje</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sprejeti-nizi">Sprejeti nizi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#od-regularnega-izraza-do-avtomata">Od regularnega izraza do avtomata</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="domaca-naloga">
+<h1>2. domača naloga<a class="headerlink" href="#domaca-naloga" title="Link to this heading">#</a></h1>
+<p>V domači nalogi bomo preučevali <em>končne avtomate</em>, enostavne matematične modele računanja. Končni avtomati sicer ne morejo opisati vseh možnih izračunov, so pa zelo uporabni za prepoznavanje vzorcev v nizih.</p>
+<section id="deterministicni-koncni-avtomati">
+<h2>Deterministični končni avtomati<a class="headerlink" href="#deterministicni-koncni-avtomati" title="Link to this heading">#</a></h2>
+<p><em>Deterministični končni avtomat</em> (<em>deterministic finite automaton</em> oz. DFA) nad <em>abecedo</em> <span class="math notranslate nohighlight">\(\Sigma\)</span> je sestavljen iz <em>množice stanj</em> <span class="math notranslate nohighlight">\(Q\)</span> ter <em>prehodne funkcije</em> <span class="math notranslate nohighlight">\(\delta : Q \times \Sigma \rightharpoonup Q\)</span> med njimi. Avtomat začne v enem izmed možnih stanj <span class="math notranslate nohighlight">\(q_0\)</span>, nato pa glede na trenutno stanje in trenutni simbol preide v neko novo stanje in od tam nadaljuje z naslednjim znakom. Če ob pregledu celotnega niza konča v enem od <em>sprejemnih stanj</em> <span class="math notranslate nohighlight">\(F \subseteq Q\)</span>, je niz sprejet, sicer pa ni. Prehodna funkcija <span class="math notranslate nohighlight">\(\delta\)</span> je delno definirana. Če za trenutno stanje in simbol prehod ne obstaja, avtomat niz zavrne.</p>
+<p>Za primer si oglejmo avtomat, ki sprejema nize, sestavljene iz ničel in enic, v katerih je število enic deljivo s tri. Tak avtomat predstavimo z naslednjim diagramom, na katerem je začetno stanje označeno s puščico, sprejemna stanja pa so dvojno obkrožena.</p>
+<p><img alt="DFA" src="_images/dfa.png" /></p>
+<p>V tem avtomatu je abeceda <span class="math notranslate nohighlight">\(\Sigma = \{ 0, 1\}\)</span>, potrebujemo pa tri stanja, za vsak ostanek enega, zato je <span class="math notranslate nohighlight">\(Q = \{ q_0, q_1, q_2 \}\)</span>. Začetno stanje je <span class="math notranslate nohighlight">\(q_0\)</span>, ki je hkrati tudi edino sprejemno stanje. Prehodna funkcija je definirana kot:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\delta\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(1\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(q_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(q_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(q_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Če avtomat na primer prejme niz <span class="math notranslate nohighlight">\(10011\)</span>, bo prehajal skozi stanja:</p>
+<ul class="simple">
+<li><p>Začetno stanje: <span class="math notranslate nohighlight">\(q_0\)</span></p></li>
+<li><p>Prebere <span class="math notranslate nohighlight">\(1\)</span>: prehod v <span class="math notranslate nohighlight">\(q_1\)</span></p></li>
+<li><p>Prebere <span class="math notranslate nohighlight">\(0\)</span>: stanje ostane <span class="math notranslate nohighlight">\(q_1\)</span></p></li>
+<li><p>Prebere <span class="math notranslate nohighlight">\(0\)</span>: stanje ostane <span class="math notranslate nohighlight">\(q_1\)</span></p></li>
+<li><p>Prebere <span class="math notranslate nohighlight">\(1\)</span>: prehod v <span class="math notranslate nohighlight">\(q_2\)</span></p></li>
+<li><p>Prebere <span class="math notranslate nohighlight">\(1\)</span>: prehod v <span class="math notranslate nohighlight">\(q_0\)</span></p></li>
+</ul>
+<p>Ker je stanje <span class="math notranslate nohighlight">\(q_0\)</span> sprejemno, avtomat niz sprejme.</p>
+<section id="modul-dfa">
+<h3>Modul <code class="docutils literal notranslate"><span class="pre">DFA</span></code><a class="headerlink" href="#modul-dfa" title="Link to this heading">#</a></h3>
+<p>Pri implementaciji se bomo omejili na avtomate, ki delujejo nad znaki angleške abecede, stanja pa bomo zaradi preglednosti predstavili kar z nizi. Take avtomate predstavimo s signaturo <code class="docutils literal notranslate"><span class="pre">DFA_SIG</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">DFA_SIG</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">stanje</span> <span class="o">=</span> <span class="kt">string</span>
+  <span class="k">type</span> <span class="n">t</span>
+
+  <span class="c">(* Funkcije za grajenje *)</span>
+  <span class="c">(* Argument tipa [bool] pove, ali naj bo dodano stanje sprejemno *)</span>
+  <span class="k">val</span> <span class="n">ustvari</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">dodaj_stanje</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">dodaj_prehod</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+
+  <span class="c">(* Funkcije za poizvedovanje *)</span>
+  <span class="k">val</span> <span class="n">seznam_stanj</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="kt">list</span>
+  <span class="k">val</span> <span class="n">zacetno_stanje</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span>
+  <span class="k">val</span> <span class="n">je_sprejemno_stanje</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="k">val</span> <span class="n">prehodna_funkcija</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="n">option</span>
+  <span class="k">val</span> <span class="n">seznam_prehodov</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">stanje</span> <span class="o">*</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">stanje</span><span class="o">)</span> <span class="kt">list</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type DFA_SIG =
+  sig
+    type stanje = string
+    type t
+    val ustvari : stanje -&gt; bool -&gt; t
+    val dodaj_stanje : stanje -&gt; bool -&gt; t -&gt; t
+    val dodaj_prehod : stanje -&gt; char -&gt; stanje -&gt; t -&gt; t
+    val seznam_stanj : t -&gt; stanje list
+    val zacetno_stanje : t -&gt; stanje
+    val je_sprejemno_stanje : t -&gt; stanje -&gt; bool
+    val prehodna_funkcija : t -&gt; stanje -&gt; char -&gt; stanje option
+    val seznam_prehodov : t -&gt; (stanje * char * stanje) list
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite modul <code class="docutils literal notranslate"><span class="pre">DFA</span></code>, ki zadošča zgornji signaturi.</p>
+<p>Primer zgornjega avtomata bi lahko zapisali kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">enke_deljive_s_3</span> <span class="o">=</span> <span class="nn">DFA</span><span class="p">.</span><span class="o">(</span>
+    <span class="n">ustvari</span> <span class="s2">&quot;q0&quot;</span> <span class="bp">true</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q1&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q2&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q0&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q0&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q1&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q1&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q2&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q2&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q0&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q1&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q1&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q2&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q2&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q0&quot;</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val enke_deljive_s_3 : DFA.t = &lt;abstr&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="izpis-avtomata">
+<h3>Izpis avtomata<a class="headerlink" href="#izpis-avtomata" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">dot_of_dfa</span> <span class="pre">:</span> <span class="pre">DFA.t</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code>, ki vrne zapis avtomata v formatu <code class="docutils literal notranslate"><span class="pre">dot</span></code>. Na ta način si lahko avtomat ogledate s programom <a class="reference external" href="https://graphviz.org">GraphViz</a> ali kar v <a class="reference external" href="https://www.devtoolsdaily.com/graphviz/">spletnem pregledovalniku</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="bp">()</span> <span class="o">=</span> <span class="n">enke_deljive_s_3</span> <span class="o">|&gt;</span> <span class="n">dot_of_dfa</span> <span class="o">|&gt;</span> <span class="n">print_endline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>digraph DFA {
+  rankdir=LR;
+  size=&quot;8,5&quot;
+  node [shape = doublecircle]; q0;
+  node [shape = circle]; q1 q2;
+  &quot;&quot; [shape=none];
+  &quot;&quot; -&gt; q0;
+  q2 -&gt; q0 [label=&quot;1&quot;];
+  q1 -&gt; q2 [label=&quot;1&quot;];
+  q0 -&gt; q1 [label=&quot;1&quot;];
+  q2 -&gt; q2 [label=&quot;0&quot;];
+  q1 -&gt; q1 [label=&quot;0&quot;];
+  q0 -&gt; q0 [label=&quot;0&quot;];
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sprejemanje-niza">
+<h3>Sprejemanje niza<a class="headerlink" href="#sprejemanje-niza" title="Link to this heading">#</a></h3>
+<p>Sestavite funkcijo <code class="docutils literal notranslate"><span class="pre">dfa_sprejema</span> <span class="pre">:</span> <span class="pre">DFA.t</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>, ki preveri, ali avtomat sprejme podani niz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">nizi</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">razsiri</span> <span class="n">nizi</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">map</span> <span class="o">((^)</span> <span class="s2">&quot;0&quot;</span><span class="o">)</span> <span class="n">nizi</span> <span class="o">@</span> <span class="nn">List</span><span class="p">.</span><span class="n">map</span> <span class="o">((^)</span> <span class="s2">&quot;1&quot;</span><span class="o">)</span> <span class="n">nizi</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">razsiri_zadnjega</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+    <span class="o">|</span> <span class="o">(</span><span class="n">zadnji</span> <span class="o">::</span> <span class="o">_)</span> <span class="k">as</span> <span class="n">vsi</span> <span class="o">-&gt;</span> <span class="n">razsiri</span> <span class="n">zadnji</span> <span class="o">::</span> <span class="n">vsi</span>
+  <span class="k">in</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">loop</span> <span class="n">n</span> <span class="n">vsi</span> <span class="o">=</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">then</span>
+      <span class="n">vsi</span> <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">rev</span> <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">flatten</span>
+    <span class="k">else</span>
+      <span class="n">loop</span> <span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">razsiri_zadnjega</span> <span class="n">vsi</span><span class="o">)</span>
+  <span class="k">in</span>
+  <span class="n">loop</span> <span class="mi">5</span> <span class="o">[[</span><span class="s2">&quot;&quot;</span><span class="o">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val nizi : string list =
+  [&quot;&quot;; &quot;0&quot;; &quot;1&quot;; &quot;00&quot;; &quot;01&quot;; &quot;10&quot;; &quot;11&quot;; &quot;000&quot;; &quot;001&quot;; &quot;010&quot;; &quot;011&quot;; &quot;100&quot;;
+   &quot;101&quot;; &quot;110&quot;; &quot;111&quot;; &quot;0000&quot;; &quot;0001&quot;; &quot;0010&quot;; &quot;0011&quot;; &quot;0100&quot;; &quot;0101&quot;;
+   &quot;0110&quot;; &quot;0111&quot;; &quot;1000&quot;; &quot;1001&quot;; &quot;1010&quot;; &quot;1011&quot;; &quot;1100&quot;; &quot;1101&quot;; &quot;1110&quot;;
+   &quot;1111&quot;; &quot;00000&quot;; &quot;00001&quot;; &quot;00010&quot;; &quot;00011&quot;; &quot;00100&quot;; &quot;00101&quot;; &quot;00110&quot;;
+   &quot;00111&quot;; &quot;01000&quot;; &quot;01001&quot;; &quot;01010&quot;; &quot;01011&quot;; &quot;01100&quot;; &quot;01101&quot;; &quot;01110&quot;;
+   &quot;01111&quot;; &quot;10000&quot;; &quot;10001&quot;; &quot;10010&quot;; &quot;10011&quot;; &quot;10100&quot;; &quot;10101&quot;; &quot;10110&quot;;
+   &quot;10111&quot;; &quot;11000&quot;; &quot;11001&quot;; &quot;11010&quot;; &quot;11011&quot;; &quot;11100&quot;; &quot;11101&quot;; &quot;11110&quot;;
+   &quot;11111&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_dfa</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">dfa_sprejema</span> <span class="n">enke_deljive_s_3</span><span class="o">)</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_dfa : string list =
+  [&quot;&quot;; &quot;0&quot;; &quot;00&quot;; &quot;000&quot;; &quot;111&quot;; &quot;0000&quot;; &quot;0111&quot;; &quot;1011&quot;; &quot;1101&quot;; &quot;1110&quot;;
+   &quot;00000&quot;; &quot;00111&quot;; &quot;01011&quot;; &quot;01101&quot;; &quot;01110&quot;; &quot;10011&quot;; &quot;10101&quot;; &quot;10110&quot;;
+   &quot;11001&quot;; &quot;11010&quot;; &quot;11100&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="nedeterministicni-koncni-avtomati">
+<h2>Nedeterministični končni avtomati<a class="headerlink" href="#nedeterministicni-koncni-avtomati" title="Link to this heading">#</a></h2>
+<p>Nedeterministični končni avtomati (<em>nondeterministic finite automaton</em> oz. NFA) se od determinističnih razlikujejo v dveh pogledih:</p>
+<ul class="simple">
+<li><p>dopuščajo prazne prehode med stanji, torej prehode, ki se zgodijo brez branja simbola iz niza,</p></li>
+<li><p>iz enega stanja lahko obstaja več prehodov za isti simbol.</p></li>
+</ul>
+<p>Prehodno funkcijo <span class="math notranslate nohighlight">\(\delta\)</span> tako definiramo kot <span class="math notranslate nohighlight">\(\delta : Q \times (\Sigma \cup \{ \varepsilon \}) \rightarrow \mathcal{P}(Q)\)</span>, kjer simbol <span class="math notranslate nohighlight">\(\varepsilon\)</span> predstavlja prazen prehod, <span class="math notranslate nohighlight">\(\mathcal{P}(Q)\)</span> pa je potenčna množica množice stanj <span class="math notranslate nohighlight">\(Q\)</span>. Vsak deterministični končni avtomat je tudi nedeterminističen končni avtomat, velja pa tudi obratno. Za vsak nedeterministični končni avtomat lahko ustvarimo ustrezen deterministični končni avtomat, ki sprejema iste nize (namig: za stanja ustreznega DFA vzamemo podmnožice stanj NFA).</p>
+<p>Avtomat sprejme niz, če obstaja pot, ki ji sledimo po prehodih z zaporednimi znaki niza ali praznih prehodih, tako da začnemo v začetnem stanju in končamo v enem od sprejemnih stanj.</p>
+<p>Na primer, vzemimo avtomat, ki sprejema nize, sestavljene iz ničel in enic, v katerih je ali število enic ali število ničel deljivo s 3. Tak avtomat je sestavljen iz začetnega stanja, s praznim prehodom v eno kopijo prejšnjega avtomata ter še enim praznim prehodom v drugo kopijo, v kateri zamenjamo vlogi znakov.</p>
+<p><img alt="NFA" src="_images/nfa.png" /></p>
+<p>Kot pri primeru za deterministični avtomat je avtomat definiran nad abecedo <span class="math notranslate nohighlight">\(\Sigma = \{ 0, 1\}\)</span>, stanj je tokrat sedem, poleg začetnega še po tri v vsaki <em>kopiji</em> avtomata iz prvega primera. Tako je <span class="math notranslate nohighlight">\(Q = \{ q_0, q_{00}, q_{01}, q_{02}, q_{10}, q_{11}, q_{12} \}\)</span>. Začetno stanje je <span class="math notranslate nohighlight">\(q_0\)</span>, sprejemni pa sta <span class="math notranslate nohighlight">\(q_{00}\)</span> in <span class="math notranslate nohighlight">\(q_{10}\)</span>. Prehodna funkcija je definirana kot:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\delta\)</span></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\varepsilon\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(q_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{00}\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(q_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{10}\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(q_{00}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{01}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{00}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(q_{01}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{02}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{01}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(q_{02}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{00}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{02}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(q_{10}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{10}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{11}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(q_{11}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{11}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{12}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(q_{12}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{12}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{q_{10}\}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Če avtomat prejme niz <code class="docutils literal notranslate"><span class="pre">10011</span></code>, bo prehajal skozi stanja:</p>
+<ul class="simple">
+<li><p>Začetno stanje: <span class="math notranslate nohighlight">\(q_0\)</span></p></li>
+<li><p>Pred branjem znaka <code class="docutils literal notranslate"><span class="pre">1</span></code> se lahko po praznih prehodih premakne v stanji <span class="math notranslate nohighlight">\(q_{00}\)</span> in <span class="math notranslate nohighlight">\(q_{10}\)</span>, tako da so njegova možna stanja <span class="math notranslate nohighlight">\(\{q_0, q_{00}, q_{10}\}\)</span></p></li>
+<li><p>Prebere <code class="docutils literal notranslate"><span class="pre">1</span></code>: vsa tri možna stanja se premaknejo, če se lahko (stanje <span class="math notranslate nohighlight">\(q_0\)</span> nima možnega premika), tako so možna stanja <span class="math notranslate nohighlight">\(\{q_{01}, q_{10}\}\)</span></p></li>
+<li><p>Pred branjem novega znaka se zopet lahko vsa možna stanja premaknejo po praznih prehodih, a ker teh ni, ostaneta možni stanji <span class="math notranslate nohighlight">\(\{q_{01}, q_{10}\}\)</span></p></li>
+<li><p>Prebere <code class="docutils literal notranslate"><span class="pre">0</span></code>: po prehodih so možna stanja <span class="math notranslate nohighlight">\(\{q_{01}, q_{11}\}\)</span></p></li>
+<li><p>Prazni premiki in branje <code class="docutils literal notranslate"><span class="pre">0</span></code>: možna stanja <span class="math notranslate nohighlight">\(\{q_{02}, q_{11}\}\)</span></p></li>
+<li><p>Prazni premiki in branje <code class="docutils literal notranslate"><span class="pre">1</span></code>: možna stanja <span class="math notranslate nohighlight">\(\{q_{02}, q_{12}\}\)</span></p></li>
+<li><p>Prazni premiki in branje <code class="docutils literal notranslate"><span class="pre">1</span></code>: možna stanja <span class="math notranslate nohighlight">\(\{q_{02}, q_{10}\}\)</span></p></li>
+<li><p>Prazni premiki: možna stanja ostanejo <span class="math notranslate nohighlight">\(\{q_{02}, q_{10}\}\)</span></p></li>
+</ul>
+<p>Ker je stanje <span class="math notranslate nohighlight">\(q_{10}\)</span> sprejemno, avtomat niz sprejme.</p>
+<section id="modul-nfa">
+<h3>Modul <code class="docutils literal notranslate"><span class="pre">NFA</span></code><a class="headerlink" href="#modul-nfa" title="Link to this heading">#</a></h3>
+<p>Nedeterministične avtomate predstavimo s signaturo <code class="docutils literal notranslate"><span class="pre">NFA_SIG</span></code>, podobno zgornji:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">NFA_SIG</span> <span class="o">=</span> <span class="k">sig</span>
+  <span class="k">type</span> <span class="n">stanje</span> <span class="o">=</span> <span class="kt">string</span>
+  <span class="k">type</span> <span class="n">t</span>
+
+  <span class="c">(* Funkcije za grajenje *)</span>
+  <span class="k">val</span> <span class="n">ustvari</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">dodaj_stanje</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">dodaj_prehod</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+  <span class="k">val</span> <span class="n">dodaj_prazen_prehod</span> <span class="o">:</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">t</span>
+
+  <span class="c">(* Funkcije za poizvedovanje *)</span>
+  <span class="k">val</span> <span class="n">seznam_stanj</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="kt">list</span>
+  <span class="k">val</span> <span class="n">zacetno_stanje</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span>
+  <span class="k">val</span> <span class="n">je_sprejemno_stanje</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="k">val</span> <span class="n">prehodna_funkcija</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="o">-&gt;</span> <span class="kt">char</span> <span class="n">option</span> <span class="o">-&gt;</span> <span class="n">stanje</span> <span class="kt">list</span>
+  <span class="k">val</span> <span class="n">seznam_prehodov</span> <span class="o">:</span> <span class="n">t</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">stanje</span> <span class="o">*</span> <span class="kt">char</span> <span class="n">option</span> <span class="o">*</span> <span class="n">stanje</span><span class="o">)</span> <span class="kt">list</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>module type NFA_SIG =
+  sig
+    type stanje = string
+    type t
+    val ustvari : stanje -&gt; bool -&gt; t
+    val dodaj_stanje : stanje -&gt; bool -&gt; t -&gt; t
+    val dodaj_prehod : stanje -&gt; char -&gt; stanje -&gt; t -&gt; t
+    val dodaj_prazen_prehod : stanje -&gt; stanje -&gt; t -&gt; t
+    val seznam_stanj : t -&gt; stanje list
+    val zacetno_stanje : t -&gt; stanje
+    val je_sprejemno_stanje : t -&gt; stanje -&gt; bool
+    val prehodna_funkcija : t -&gt; stanje -&gt; char option -&gt; stanje list
+    val seznam_prehodov : t -&gt; (stanje * char option * stanje) list
+  end
+</pre></div>
+</div>
+</div>
+</div>
+<p>Napišite modul <code class="docutils literal notranslate"><span class="pre">NFA</span></code>, ki zadošča zgornji signaturi.</p>
+<p>Primer zgornjega avtomata bi lahko zapisali kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">enke_ali_nicle_deljive_s_3</span> <span class="o">=</span> <span class="nn">NFA</span><span class="p">.</span><span class="o">(</span>
+    <span class="n">ustvari</span> <span class="s2">&quot;q0&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q00&quot;</span> <span class="bp">true</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q01&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q02&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q00&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q01&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q01&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q02&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q02&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q00&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q00&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q00&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q01&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q01&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q02&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q02&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q10&quot;</span> <span class="bp">true</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q11&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_stanje</span> <span class="s2">&quot;q12&quot;</span> <span class="bp">false</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q10&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q11&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q11&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q12&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q12&quot;</span> <span class="sc">&#39;1&#39;</span> <span class="s2">&quot;q10&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q10&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q10&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q11&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q11&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prehod</span> <span class="s2">&quot;q12&quot;</span> <span class="sc">&#39;0&#39;</span> <span class="s2">&quot;q12&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prazen_prehod</span> <span class="s2">&quot;q0&quot;</span> <span class="s2">&quot;q00&quot;</span>
+    <span class="o">|&gt;</span> <span class="n">dodaj_prazen_prehod</span> <span class="s2">&quot;q0&quot;</span> <span class="s2">&quot;q10&quot;</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val enke_ali_nicle_deljive_s_3 : NFA.t = &lt;abstr&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Izpis avtomata<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">dot_of_nfa</span> <span class="pre">:</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code>, ki vrne zapis avtomata v formatu <code class="docutils literal notranslate"><span class="pre">dot</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="bp">()</span> <span class="o">=</span> <span class="n">enke_ali_nicle_deljive_s_3</span> <span class="o">|&gt;</span> <span class="n">dot_of_nfa</span> <span class="o">|&gt;</span> <span class="n">print_endline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>digraph NFA {
+  rankdir=LR;
+  size=&quot;8,5&quot;
+  node [shape = doublecircle]; q00 q10;
+  node [shape = circle]; q0 q01 q02 q11 q12;
+  &quot;&quot; [shape=none];
+  &quot;&quot; -&gt; q0;
+  q0 -&gt; q10 [label=&quot;ɛ&quot;];
+  q0 -&gt; q00 [label=&quot;ɛ&quot;];
+  q12 -&gt; q12 [label=&quot;0&quot;];
+  q11 -&gt; q11 [label=&quot;0&quot;];
+  q10 -&gt; q10 [label=&quot;0&quot;];
+  q12 -&gt; q10 [label=&quot;1&quot;];
+  q11 -&gt; q12 [label=&quot;1&quot;];
+  q10 -&gt; q11 [label=&quot;1&quot;];
+  q02 -&gt; q02 [label=&quot;1&quot;];
+  q01 -&gt; q01 [label=&quot;1&quot;];
+  q00 -&gt; q00 [label=&quot;1&quot;];
+  q02 -&gt; q00 [label=&quot;0&quot;];
+  q01 -&gt; q02 [label=&quot;0&quot;];
+  q00 -&gt; q01 [label=&quot;0&quot;];
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Sprejemanje niza<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Sestavite funkcijo <code class="docutils literal notranslate"><span class="pre">nfa_sprejema</span> <span class="pre">:</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>, ki preveri, ali avtomat sprejme podani niz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_nfa</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="n">enke_ali_nicle_deljive_s_3</span><span class="o">)</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_nfa : string list =
+  [&quot;&quot;; &quot;0&quot;; &quot;1&quot;; &quot;00&quot;; &quot;11&quot;; &quot;000&quot;; &quot;111&quot;; &quot;0000&quot;; &quot;0001&quot;; &quot;0010&quot;; &quot;0100&quot;;
+   &quot;0111&quot;; &quot;1000&quot;; &quot;1011&quot;; &quot;1101&quot;; &quot;1110&quot;; &quot;1111&quot;; &quot;00000&quot;; &quot;00011&quot;; &quot;00101&quot;;
+   &quot;00110&quot;; &quot;00111&quot;; &quot;01001&quot;; &quot;01010&quot;; &quot;01011&quot;; &quot;01100&quot;; &quot;01101&quot;; &quot;01110&quot;;
+   &quot;10001&quot;; &quot;10010&quot;; &quot;10011&quot;; &quot;10100&quot;; &quot;10101&quot;; &quot;10110&quot;; &quot;11000&quot;; &quot;11001&quot;;
+   &quot;11010&quot;; &quot;11100&quot;; &quot;11111&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="regularni-izrazi">
+<h2>Regularni izrazi<a class="headerlink" href="#regularni-izrazi" title="Link to this heading">#</a></h2>
+<p>Regularni izrazi so formalni opisi jezikov (množic nizov) nad abecedo <span class="math notranslate nohighlight">\(\Sigma\)</span>. Uporabljajo se za kompaktno opisovanje vzorcev, ki jim morajo nizi ustrezati. Rečemo, da niz <em>ustreza</em> regularnemu izrazu, če ga lahko zgradimo z upoštevanjem pravil, ki jih določa ta izraz.</p>
+<p>Regularni izrazi so sestavljeni iz osnovnih elementov in operacij:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\emptyset\)</span> ne ustreza nobenemu jeziku,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span> ustreza prazen niz,</p></li>
+<li><p>za vsak znak <span class="math notranslate nohighlight">\(a \in \Sigma\)</span>, izrazu <span class="math notranslate nohighlight">\(a\)</span> ustreza natanko natanko niz dolžine 1, sestavljenem le iz znaka <span class="math notranslate nohighlight">\(a\)</span>,</p></li>
+<li><p><em>uniji</em> <span class="math notranslate nohighlight">\(r_1 \mid r_2\)</span> ustreza vsem nizom, ki ustrezajo <span class="math notranslate nohighlight">\(r_1\)</span> ali <span class="math notranslate nohighlight">\(r_2\)</span>,</p></li>
+<li><p><em>stiku</em> <span class="math notranslate nohighlight">\(r_1 r_2\)</span> ustrezajo vsi nizi oblike <span class="math notranslate nohighlight">\(s_1 s_2\)</span>, kjer <span class="math notranslate nohighlight">\(s_1\)</span> ustreza <span class="math notranslate nohighlight">\(r_1\)</span> ter <span class="math notranslate nohighlight">\(s_2\)</span> ustreza <span class="math notranslate nohighlight">\(r_2\)</span>,</p></li>
+<li><p><em>Kleenejevemu zaprtju</em> <span class="math notranslate nohighlight">\(r^*\)</span> ustrezajo vsi nizi oblike <span class="math notranslate nohighlight">\(s_1 s_2 \cdots s_n\)</span> za nek <span class="math notranslate nohighlight">\(n\)</span> (vključno s praznim nizom), kjer vsak izmed nizov <span class="math notranslate nohighlight">\(s_i\)</span> ustreza <span class="math notranslate nohighlight">\(r\)</span>.</p></li>
+</ul>
+<p>Za primer si oglejmo regularni izraz <span class="math notranslate nohighlight">\(a^* b\)</span>. Ta izraz je sestavljen kot stik izrazov <span class="math notranslate nohighlight">\(a^*\)</span> in <span class="math notranslate nohighlight">\(b\)</span> in tako sprejme vse nize, ki se začnejo s poljubnim številom ponovitev (lahko nič) znaka <span class="math notranslate nohighlight">\(a\)</span> in končajo z znakom <span class="math notranslate nohighlight">\(b\)</span>. Izrazu tako ustreza niz <span class="math notranslate nohighlight">\(aaab\)</span>, niz <span class="math notranslate nohighlight">\(aaabb\)</span> pa ne. Nize, v katerih je število enk deljivo s tri, bi lahko opisali z regularnim izrazom <span class="math notranslate nohighlight">\(0^*( 10^*10^*10^* )^*\)</span>.</p>
+<p>Regularne izraze bomo implementirali z algebrajskim tipom, ki ima za konstruktorje zgoraj naštete osnovne elemente in operacije na regularnih izrazih.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">regex</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Empty</span>
+  <span class="o">|</span> <span class="nc">Eps</span>
+  <span class="o">|</span> <span class="nc">Char</span> <span class="k">of</span> <span class="kt">char</span>
+  <span class="o">|</span> <span class="nc">Union</span> <span class="k">of</span> <span class="n">regex</span> <span class="o">*</span> <span class="n">regex</span>
+  <span class="o">|</span> <span class="nc">Concat</span> <span class="k">of</span> <span class="n">regex</span> <span class="o">*</span> <span class="n">regex</span>
+  <span class="o">|</span> <span class="nc">Star</span> <span class="k">of</span> <span class="n">regex</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type regex =
+    Empty
+  | Eps
+  | Char of char
+  | Union of regex * regex
+  | Concat of regex * regex
+  | Star of regex
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">re_enke_deljive_s_3</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">poljubno_nicel</span> <span class="o">=</span> <span class="nc">Star</span> <span class="o">(</span><span class="nc">Char</span> <span class="sc">&#39;0&#39;</span><span class="o">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">enka_in_poljubno_nicel</span> <span class="o">=</span> <span class="nc">Concat</span> <span class="o">(</span><span class="nc">Char</span> <span class="sc">&#39;1&#39;</span><span class="o">,</span> <span class="n">poljubno_nicel</span><span class="o">)</span> <span class="k">in</span>
+  <span class="nc">Concat</span> <span class="o">(</span><span class="n">poljubno_nicel</span><span class="o">,</span> <span class="nc">Star</span> <span class="o">(</span><span class="nc">Concat</span> <span class="o">(</span><span class="nc">Concat</span> <span class="o">(</span><span class="n">enka_in_poljubno_nicel</span><span class="o">,</span> <span class="n">enka_in_poljubno_nicel</span><span class="o">),</span> <span class="n">enka_in_poljubno_nicel</span><span class="o">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val re_enke_deljive_s_3 : regex =
+  Concat (Star (Char &#39;0&#39;),
+   Star
+    (Concat
+      (Concat (Concat (Char &#39;1&#39;, Star (Char &#39;0&#39;)),
+        Concat (Char &#39;1&#39;, Star (Char &#39;0&#39;))),
+      Concat (Char &#39;1&#39;, Star (Char &#39;0&#39;)))))
+</pre></div>
+</div>
+</div>
+</div>
+<section id="izpisovanje">
+<h3>Izpisovanje<a class="headerlink" href="#izpisovanje" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">string_of_regex</span> <span class="pre">:</span> <span class="pre">Regex.t</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code>, ki regularni izraz predstavi z nizom. Pri tem poskusite zapisati čim manj oklepajev, upoštevaje to, da ima Kleenejevo zaprtje najvišjo prioriteto, sledi stik, nato pa unija. Poleg tega sta stik in unija asociativni operaciji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_1</span> <span class="o">=</span> <span class="n">string_of_regex</span> <span class="n">re_enke_deljive_s_3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_1 : string = &quot;0*(10*10*10*)*&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sprejeti-nizi">
+<h3>Sprejeti nizi<a class="headerlink" href="#sprejeti-nizi" title="Link to this heading">#</a></h3>
+<p>Napišite funkcijo <code class="docutils literal notranslate"><span class="pre">regex_sprejema:</span> <span class="pre">regex</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>, ki preveri, ali dan niz ustreza regularnemu izrazu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_2</span> <span class="o">=</span> <span class="n">regex_sprejema</span> <span class="n">re_enke_deljive_s_3</span> <span class="s2">&quot;10011&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_2 : bool = true
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_3</span> <span class="o">=</span> <span class="n">regex_sprejema</span> <span class="n">re_enke_deljive_s_3</span> <span class="s2">&quot;100111&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_3 : bool = false
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="od-regularnega-izraza-do-avtomata">
+<h3>Od regularnega izraza do avtomata<a class="headerlink" href="#od-regularnega-izraza-do-avtomata" title="Link to this heading">#</a></h3>
+<p>Izkaže se, da med regularnimi izrazi in nedeterminističnimi končnimi avtomati obstaja ekvivalenca. Za vsak izraz obstaja ustrezen avtomat, ki sprejema iste nize in obratno. Mi bomo ekvivalenco pokazali le v eno stran tako, da bomo za vsak konstruktor regularnih izrazov definirali ustrezno konstrukcijo na končnih avtomatih.</p>
+<p>Definirajte avtomat <code class="docutils literal notranslate"><span class="pre">prazen_nfa:</span> <span class="pre">NFA.t</span></code>, ki ne sprejme nobenega niza.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_4</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="n">prazen_nfa</span><span class="o">)</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_4 : string list = []
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajte avtomat <code class="docutils literal notranslate"><span class="pre">epsilon_nfa:</span> <span class="pre">NFA.t</span></code>, ki sprejme natanko prazen niz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_5</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="n">epsilon_nfa</span><span class="o">)</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_5 : string list = [&quot;&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajte funkcijo <code class="docutils literal notranslate"><span class="pre">znak_nfa:</span> <span class="pre">char</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span></code>, ki vrne avtomat, ki sprejme natanko niz dolžine ena z znakom v argumentu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_6</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="o">(</span><span class="n">znak_nfa</span> <span class="sc">&#39;0&#39;</span><span class="o">))</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_6 : string list = [&quot;0&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajte funkcijo <code class="docutils literal notranslate"><span class="pre">unija_nfa:</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span></code>, ki vrne avtomat, ki sprejme nize sprejete s katerim koli izmed avtomatov v argumentih.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_7</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="o">(</span><span class="n">unija_nfa</span> <span class="n">epsilon_nfa</span> <span class="o">(</span><span class="n">znak_nfa</span> <span class="sc">&#39;0&#39;</span><span class="o">)))</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_7 : string list = [&quot;&quot;; &quot;0&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajte funkcijo <code class="docutils literal notranslate"><span class="pre">stik_nfa:</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span></code>. Vrnjeni avtomat sprejme nize sestavljene iz stika prvega dela, ki ga sprejme avtomat v prvem argumentu, in drugega dela, ki ga sprejme avtomat v drugem argumentu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_8</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="o">(</span><span class="n">stik_nfa</span> <span class="o">(</span><span class="n">znak_nfa</span> <span class="sc">&#39;0&#39;</span><span class="o">)</span> <span class="o">(</span><span class="n">znak_nfa</span> <span class="sc">&#39;1&#39;</span><span class="o">)))</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_8 : string list = [&quot;01&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajte funkcijo <code class="docutils literal notranslate"><span class="pre">kleenejevo_zaprtje_nfa:</span> <span class="pre">NFA.t</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span></code>. Vrnjeni avtomat naj sprejme nize, ki jih dobimo s poljubnim ponavljanjem nizov, ki jih sprejme avtomat v argumentu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_9</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="o">(</span><span class="n">kleenejevo_zaprtje_nfa</span> <span class="o">(</span><span class="n">znak_nfa</span> <span class="sc">&#39;0&#39;</span><span class="o">)))</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_9 : string list = [&quot;&quot;; &quot;0&quot;; &quot;00&quot;; &quot;000&quot;; &quot;0000&quot;; &quot;00000&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zgoraj definirane funkcije združite v definicijo funkcijo <code class="docutils literal notranslate"><span class="pre">nfa_of_regex:</span> <span class="pre">regex</span> <span class="pre">-&gt;</span> <span class="pre">NFA.t</span></code>, ki danemu regularnemu izrazu priredi <code class="docutils literal notranslate"><span class="pre">NFA</span></code>, ki sprejme isti jezik.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_10</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">nfa_sprejema</span> <span class="o">(</span><span class="n">nfa_of_regex</span> <span class="n">re_enke_deljive_s_3</span><span class="o">))</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_10 : string list =
+  [&quot;&quot;; &quot;0&quot;; &quot;00&quot;; &quot;000&quot;; &quot;111&quot;; &quot;0000&quot;; &quot;0111&quot;; &quot;1011&quot;; &quot;1101&quot;; &quot;1110&quot;;
+   &quot;00000&quot;; &quot;00111&quot;; &quot;01011&quot;; &quot;01101&quot;; &quot;01110&quot;; &quot;10011&quot;; &quot;10101&quot;; &quot;10110&quot;;
+   &quot;11001&quot;; &quot;11010&quot;; &quot;11100&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">primer_regex_11</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">filter</span> <span class="o">(</span><span class="n">regex_sprejema</span> <span class="n">re_enke_deljive_s_3</span><span class="o">)</span> <span class="n">nizi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val primer_regex_11 : string list =
+  [&quot;&quot;; &quot;0&quot;; &quot;00&quot;; &quot;000&quot;; &quot;111&quot;; &quot;0000&quot;; &quot;0111&quot;; &quot;1011&quot;; &quot;1101&quot;; &quot;1110&quot;;
+   &quot;00000&quot;; &quot;00111&quot;; &quot;01011&quot;; &quot;01101&quot;; &quot;01110&quot;; &quot;10011&quot;; &quot;10101&quot;; &quot;10110&quot;;
+   &quot;11001&quot;; &quot;11010&quot;; &quot;11100&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dn-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. domača naloga</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dn-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4. domača naloga</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministicni-koncni-avtomati">Deterministični končni avtomati</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-dfa">Modul <code class="docutils literal notranslate"><span class="pre">DFA</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izpis-avtomata">Izpis avtomata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sprejemanje-niza">Sprejemanje niza</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nedeterministicni-koncni-avtomati">Nedeterministični končni avtomati</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-nfa">Modul <code class="docutils literal notranslate"><span class="pre">NFA</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Izpis avtomata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Sprejemanje niza</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularni-izrazi">Regularni izrazi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izpisovanje">Izpisovanje</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sprejeti-nizi">Sprejeti nizi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#od-regularnega-izraza-do-avtomata">Od regularnega izraza do avtomata</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Iskalna drevesa &#8212; Programiranje 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '11-iskalna-drevesa';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deli in vladaj" href="12-deli-in-vladaj.html" />
+    <link rel="prev" title="Spremenljive podatkovne strukture" href="10-racunska-zahtevnost.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Programiranje 1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Programiranje 1
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Funkcijsko programiranje</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-uvod-v-funkcijsko-programiranje.html">Uvod v funkcijsko programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-rekurzija.html">Rekurzija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-podatkovni-tipi.html">Podatkovni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-abstrakcija.html">Abstrakcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dokazovalniki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05-curry-howardov-izomorfizem.html">Curry-Howardov izomorfizem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-uvod-v-lean.html">Uvod v Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-odvisni-tipi.html">Odvisni tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-induktivni-tipi.html">Induktivni tipi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovne strukture in algoritmi</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09-izracunljivost.html">Izračunljivost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-racunska-zahtevnost.html">Spremenljive podatkovne strukture</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Iskalna drevesa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-deli-in-vladaj.html">Deli in vladaj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-01-dinamicno-programiranje.html">Dinamično programiranje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-02-memoizacija-v-pythonu.html">Memoizacija v Pythonu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-03-memoizacija-v-ocamlu.html">Memoizacija v OCamlu</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domače naloge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dn-1.html">1. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-2.html">2. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-4.html">4. domača naloga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dn-5.html">5. domača naloga</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/11-iskalna-drevesa.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Iskalna drevesa</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-drevesa">AVL drevesa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotacije">Rotacije</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="iskalna-drevesa">
+<h1>Iskalna drevesa<a class="headerlink" href="#iskalna-drevesa" title="Link to this heading">#</a></h1>
+<p>Izračunajmo, koliko različnih elementov vsebuje dani seznam. Ena izmed možnosti je, da se sprehajamo čez seznam ter beležimo seznam elementov, ki smo jih že videli, začenši s praznim seznamom. Vsak element primerjamo z že videnimi in če ga še nismo videli, ga dodamo v seznam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">stevilo_razlicnih</span> <span class="n">xs</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="o">=</span> <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">ze_videni</span>
+    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+        <span class="k">if</span> <span class="nn">List</span><span class="p">.</span><span class="n">mem</span> <span class="n">x</span> <span class="n">ze_videni</span>
+        <span class="k">then</span> <span class="n">aux</span> <span class="n">ze_videni</span> <span class="n">xs</span>
+        <span class="k">else</span> <span class="n">aux</span> <span class="o">(</span><span class="n">x</span> <span class="o">::</span> <span class="n">ze_videni</span><span class="o">)</span> <span class="n">xs</span>
+  <span class="k">in</span>
+  <span class="n">aux</span> <span class="bp">[]</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val stevilo_razlicnih : &#39;a list -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">stevilo_razlicnih</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rešitev deluje pravilno, vendar ne preveč učinkovito, saj se moramo vsakič sprehajati čez celoten seznam do sedaj videnih elementov. Vendar ni treba, da si videne elemente shranjujemo v seznam, saj nas njihov vrstni red ne zanima. Potrebujemo drugačno strukturo, pri kateri je pomembna le vsebovanost, operacije na njej pa so hitre. Taka struktura so <em>iskalna</em> drevesa. Pravimo, da je dvojiško drevo iskalno, če:</p>
+<ul class="simple">
+<li><p>so vsi elementi <strong>levega</strong> otroka <strong>manjši</strong> od korena</p></li>
+<li><p>so vsi elementi <strong>desnega</strong> otroka <strong>večji</strong> od korena</p></li>
+<li><p>sta <strong>oba</strong> otroka tudi <strong>iskalni</strong> drevesi</p></li>
+</ul>
+<p><img alt="" src="_images/iskalno-drevo.png" /></p>
+<p>Če imamo iskalno drevo, lahko s spustom v ustrezno vejo ugotovimo, ali vsebuje dani element. Na primer, število 15 je manjše od korena 21, zato mora biti v levem otroku. Ker je večje od korena 9, mora biti v desnem otroku, kjer potem tudi je v korenu.</p>
+<p><img alt="" src="_images/iskalno-drevo-najdi.png" /></p>
+<p>Podobno bi število 41 moralo biti desno od 21, levo od 53, desno od 40 in levo od 42, kjer pa ni ničesar. Tako števila 41 v drevesu ni.</p>
+<p><img alt="" src="_images/iskalno-drevo-ne-najdi.png" /></p>
+<p>Vidimo, da nam ni treba preiskati vseh elementov v drevesu, temveč največ toliko, kolikor je drevo globoko.</p>
+<p>Podobno poteka vstavljanje elementov v drevo. Potujemo po isti poti, kjer bi pričakovali element. Če pridemo do konca, ne da bi element našli, ga vstavimo na ustrezno prosto mesto.</p>
+<p><img alt="" src="_images/iskalno-drevo-vstavi.png" /></p>
+<p>Tudi brisanje elementov poteka podobno. Najprej element poiščemo. Če ga najdemo šele v listu, je brisanje enostavno:</p>
+<p><img alt="" src="_images/iskalno-drevo-brisi-list.png" /></p>
+<p>Če pa je element, ki ga želimo odstraniti, v korenu, ga ne moremo preprosto pobrisati, saj ima neprazne otroke.</p>
+<p><img alt="" src="_images/iskalno-drevo-brisi-koren.png" /></p>
+<p>V tem primeru ga zamenjamo z ustreznim namestnikom, ki bo večji od vseh elementov v levem in manjši od vseh elementov v desnem otroku. Možna kandidata sta predhodnik, torej največji element v levem, in naslednik, torej najmanjši element v desnem otroku.</p>
+<p><img alt="" src="_images/iskalno-drevo-zamenjaj-koren-s-predhodnikom.png" /></p>
+<p><img alt="" src="_images/iskalno-drevo-zamenjaj-koren-z-naslednikom.png" /></p>
+<section id="avl-drevesa">
+<h2>AVL drevesa<a class="headerlink" href="#avl-drevesa" title="Link to this heading">#</a></h2>
+<p>Operacije v iskalnem drevesu imajo časovno zahtevnost <span class="math notranslate nohighlight">\(O(h)\)</span>, kjer je <span class="math notranslate nohighlight">\(h\)</span> globina drevesa. Če nismo dovolj pozorni, pa lahko hitro končamo z drevesom, ki je zelo redko poseljeno, zato je lahko ta časovna zahtevnost tudi <span class="math notranslate nohighlight">\(O(n)\)</span>, kar ni nič boljše kot v seznamih.</p>
+<p><img alt="" src="_images/neuravnotezeno-drevo.png" /></p>
+<p>Izkoristiti želimo dejstvo, da z globino število možnih mest za elemente narašča eksponentno. Če bo večina teh mest zasedenih, bo globina torej logaritem števila elementov in operacije bodo imele časovno zahtevnost <span class="math notranslate nohighlight">\(O(\log n)\)</span>. Drevesom, v katerih lahko dosežemo tako gosto poselitev, pravimo <em>uravnotežena</em>. Do uravnoteženih dreves lahko pridemo na več načinov, mi pa si bomo ogledali <em>AVL drevesa</em>.</p>
+<p>Iskalno drevo je <em>AVL drevo</em>, če:</p>
+<ul class="simple">
+<li><p>je razlika višin otrok <strong>največ 1</strong></p></li>
+<li><p>sta <strong>oba</strong> otroka tudi <strong>AVL</strong> drevesi</p></li>
+</ul>
+<p><img alt="" src="_images/avl-drevo.png" /></p>
+<p>Iz definicije je videti, da bi moralo biti AVL drevo bolj ali manj uravnoteženo. Pomembno pa je, da lahko to lastnost tudi dokažemo.</p>
+<p>Naj bo <span class="math notranslate nohighlight">\(N(h)\)</span> najmanjše število vozlišč v kakršnemkoli AVL drevesu višine vsaj <span class="math notranslate nohighlight">\(h\)</span>. Nekaj hitrih opazk:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N(0) = 0\)</span>, saj je prazno drevo najmanjše AVL drevo višine vsaj <span class="math notranslate nohighlight">\(0\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(N(1) = 1\)</span>, saj mora drevo višine vsaj <span class="math notranslate nohighlight">\(1\)</span> vsebovati vsaj en element, drevo s samo enim elementom pa je AVL drevo;</p></li>
+<li><p>če je <span class="math notranslate nohighlight">\(h \ge h'\)</span>, je <span class="math notranslate nohighlight">\(N(h) \ge N(h')\)</span>, saj ima vsako drevo z višino vsaj <span class="math notranslate nohighlight">\(h\)</span> tudi višino vsaj <span class="math notranslate nohighlight">\(h'\)</span>.</p></li>
+</ul>
+<p>Vzemimo poljubno AVL drevo <span class="math notranslate nohighlight">\(T\)</span> višine <span class="math notranslate nohighlight">\(h\)</span> s poddrevesoma <span class="math notranslate nohighlight">\(L\)</span> in <span class="math notranslate nohighlight">\(D\)</span>. Vsaj eden od njegovih otrok ima višino <span class="math notranslate nohighlight">\(h - 1\)</span>. Brez škode za splošnost privzemimo, da je to <span class="math notranslate nohighlight">\(L\)</span>. Ker je <span class="math notranslate nohighlight">\(T\)</span> AVL drevo, se morata višini <span class="math notranslate nohighlight">\(L\)</span> in <span class="math notranslate nohighlight">\(D\)</span> razlikovati za največ <span class="math notranslate nohighlight">\(1\)</span>, torej ima drevo <span class="math notranslate nohighlight">\(D\)</span> lahko le višini <span class="math notranslate nohighlight">\(h - 1\)</span> ali <span class="math notranslate nohighlight">\(h - 2\)</span>. Po definiciji funkcije <span class="math notranslate nohighlight">\(N\)</span> ima drevo <span class="math notranslate nohighlight">\(L\)</span> vsaj <span class="math notranslate nohighlight">\(N(h - 1)\)</span>, drevo <span class="math notranslate nohighlight">\(D\)</span> pa vsaj <span class="math notranslate nohighlight">\(N(h - 2)\)</span> elementov. Tedaj ima drevo <span class="math notranslate nohighlight">\(T\)</span> vsaj <span class="math notranslate nohighlight">\(1 + N(h - 1) + N(h - 2)\)</span> elementov. Torej velja</p>
+<div class="math notranslate nohighlight">
+\[N(h) \ge 1 + N(h - 1) + N(h - 2)\]</div>
+<p>oziroma</p>
+<div class="math notranslate nohighlight">
+\[N(h) + 1 \ge (N(h - 1) + 1) + (N(h - 2) + 1)\]</div>
+<p>iz česar hitro sledi, da velja <span class="math notranslate nohighlight">\(N(h) + 1 \ge f_h\)</span>, kjer smo s <span class="math notranslate nohighlight">\(f_h\)</span> označili <span class="math notranslate nohighlight">\(h\)</span>-to Fibonaccijevo število. Torej ima vsako drevo višine vsaj <span class="math notranslate nohighlight">\(h\)</span> vsaj <span class="math notranslate nohighlight">\(O(\left(\frac{1 + \sqrt{5}}{2}\right)^h)\)</span> vozlišč.</p>
+<p>Primer, kjer je spodnja meja dosežena, je Fibonaccijevo drevo. Drevo <span class="math notranslate nohighlight">\(F_0\)</span> je prazno drevo, drevo <span class="math notranslate nohighlight">\(F_1\)</span> vsebuje eno samo vozlišče, drevo <span class="math notranslate nohighlight">\(F_n\)</span> pa definiramo kot sestavljeno drevo, v katerem je levi otrok <span class="math notranslate nohighlight">\(F_{n - 1}\)</span>, desni pa <span class="math notranslate nohighlight">\(F_{n - 2}\)</span> (same vrednosti v drevesu niso tako pomembne, kot njegova oblika). Slika Fibonaccijevega drevesa nam tudi kaže, da lahko AVL drevesa vsebujejo precej praznega prostora.</p>
+<p><img alt="" src="_images/fibonaccijevo-drevo.png" /></p>
+</section>
+<section id="rotacije">
+<h2>Rotacije<a class="headerlink" href="#rotacije" title="Link to this heading">#</a></h2>
+<p>Če imamo AVL drevo, moramo poskrbeti, da bo tako ostalo tudi ob spreminjanju elementov. Na primer, uravnoteženost se lahko pokvari, če element dodamo:</p>
+<p><img alt="" src="_images/dodajanje-pokvari-avl-drevo.png" /></p>
+<p>Prej je desno podddrevo imelo višino 2, po dodatnem elementu pa je višina postala 3, kar se za 2 razlikuje od višine levega poddrevesa. Podobno težavo bi imeli, če bi element levega poddrevesa pobrisali.</p>
+<p><img alt="" src="_images/brisanje-pokvari-avl-drevo.png" /></p>
+<p>Če dodajamo ali odstranjujemo po en element naenkrat, se nam ne more zgoditi, da bi razlika višin postala 3, saj bi že prej morala biti 2, kar pa ni v skladu s tem, da smo prej imeli AVL drevo. V splošnem tako lahko naletimo na dve možni neuravnoteženosti: bodisi je po operaciji za 2 večje levo bodisi desno poddrevo.</p>
+<p><img alt="" src="_images/mozni-neuravnotezenosti.png" /></p>
+<p>Brez škode za splošnost poglejmo možnost, kjer se drevo nagiba v desno. Tudi ta ima dve različici. Lahko se nagiba v desno zaradi skrajno desnega ali zaradi srednjega poddrevesa. Ostalih možnosti ni - če bi bili obe drevesi višine <span class="math notranslate nohighlight">\(h\)</span>, ni težav, če pa bi bili obe višine <span class="math notranslate nohighlight">\(h + 1\)</span>, pa smo imeli težave že pred spremembo elementa.</p>
+<p><img alt="" src="_images/mozni-desni-neuravnotezenosti.png" /></p>
+<p>V prvem primeru uporabimo tako imenovano <em>levo rotacijo</em>, kjer drevo nagnemo v levo. Koren desnega poddrevesa postavimo za koren celotnega drevesa in ustrezno prevežemo vsa poddrevesa.</p>
+<p><img alt="" src="_images/leva-rotacija.png" /></p>
+<p>Hitro lahko preverimo, da je drevo še vedno iskalno ter da neuravnoteženosti ni več. Torej smo dobili AVL drevo. V drugem primeru je malce več dela. Uporabiti moramo <em>desno-levo</em> rotacijo, kjer najprej poddrevo nagnemo v desno, s čimer neuravnoteženost premaknemo čisto na rob, nato pa uporabimo še levo rotacijo.</p>
+<p><img alt="" src="_images/desna-rotacija.png" /></p>
+<p>Tudi tu hitro lahko preverimo, da smo dobili AVL drevo.</p>
+<p>Kljub temu, da je videti da pri rotacijah premikamo vse podatke v drevesu, moramo popraviti le nekaj kazalcev, zaradi česar je časovna zahtevnost rotacij <span class="math notranslate nohighlight">\(O(1)\)</span>, pri vsaki operaciji pa jih moramo narediti največ dvakrat toliko, kolikor je drevo globoko. Tako imajo operacije na AVL drevesih časovno zahtevnost <span class="math notranslate nohighlight">\(O(\log n)\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10-racunska-zahtevnost.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spremenljive podatkovne strukture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="12-deli-in-vladaj.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deli in vladaj</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-drevesa">AVL drevesa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotacije">Rotacije</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
