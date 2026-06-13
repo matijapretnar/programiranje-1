@@ -43,9 +43,9 @@ Delna funkcija $\mathsf{step}_M : \mathbb{K}_M \rightharpoonup \mathbb{K}_M$, ki
 
 $$
 \mathsf{step}_M(q, t, i) = \begin{cases}
-  (q', t[i \mapsto a], i - 1) & \delta(q, t(i)) = (q', a, \mathtt{L}) \\
-  (q', t[i \mapsto a], i + 1) & \delta(q, t(i)) = (q', a, \mathtt{R}) \\
-  \uparrow & \delta(q, t(i)) \uparrow
+  (q', t[i \mapsto a], i - 1) & \delta(t(i), q) = (a, q', \mathtt{L}) \\
+  (q', t[i \mapsto a], i + 1) & \delta(t(i), q) = (a, q', \mathtt{R}) \\
+  \uparrow & \delta(t(i), q) \uparrow
 \end{cases}
 $$
 
