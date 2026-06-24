@@ -34,7 +34,7 @@ inductive Seznam : Type → Type where
 
 če želimo parametrični polimorfizem.
 
-Definirajmo še tip _vektorjev_, kar je v računalništvo ime za sezname z dano dolžino. Če je `Seznam` tip seznamov poljubne dolžine, potem bo `Vektor 42` tip seznamov, ki vsebujejo natanko 42 celih števil, `Vektor 0` pa tip, ki vsebuje le prazen seznam. V Leanu tip definiramo kot:
+Definirajmo še tip _vektorjev_, kar je v računalništvu ime za sezname z dano dolžino. Če je `Seznam` tip seznamov poljubne dolžine, potem bo `Vektor 42` tip seznamov, ki vsebujejo natanko 42 celih števil, `Vektor 0` pa tip, ki vsebuje le prazen seznam. V Leanu tip definiramo kot:
 
 ```lean
 inductive Vektor : Nat → Type where
