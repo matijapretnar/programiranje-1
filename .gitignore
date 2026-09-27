@@ -21,3 +21,6 @@ venv
 env
 node_modules
 *.bc.js
+
+# Zasebne datoteke (osnutki, priprave, zapiski, ipd.)
+99-zasebno/
