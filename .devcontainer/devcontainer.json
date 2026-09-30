@@ -3,7 +3,7 @@
 	"name": "Programiranje 1",
 	// To build a Docker virtual machine locally, comment the "image" line and uncomment
 	// the "build" lines below.
-	"image": "j00sko/programiranje1:latest",
+	"image": "matematik411/programiranje1:latest",
 	// "build": {
 	// 	"dockerfile": "Dockerfile"
 	// },
