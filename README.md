@@ -72,14 +72,4 @@ Na desni strani urejevalnika se odpre podokno Lean Infoview. Ko postavite kazale
 
 ## Zapiski
 
-Viri zapiskov se nahajajo v mapi `zapiski`. Za izdelavo HTML datotek si morate namestiti paket [`jupyter-book`](https://jupyterbook.org/). Nato uporabite ukaz:
-
-```bash
-jupyter-book build zapiski
-```
-
-Če imate ustrezne pravice, lahko HTML najpreprosteje objavite prek [GitHub Pages](https://pages.github.com) tako, da si namestite še paket [`ghp-import`](https://github.com/c-w/ghp-import) in poženete:
-
-```bash
-ghp-import --no-jekyll --no-history --force --push zapiski/_build/html
-```
+Zapiski se nahajajo v sklopu nastajoječga učbenika [Programiranje za matematike](https://matija.pretnar.info/programiranje-za-matematike/programiranje-1/).
