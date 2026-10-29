@@ -10,7 +10,7 @@ module type KOLOBAR = sig
   val izpis : elt -> string
 end
 
-module CelaStevila : KOLOBAR = struct
+module CelaStevila = struct
   type elt = int
 
   let ( + ) = ( + )
@@ -22,7 +22,7 @@ module CelaStevila : KOLOBAR = struct
   let izpis n = string_of_int n
 end
 
-module RealnaStevila : KOLOBAR = struct
+module RealnaStevila = struct
   type elt = float
 
   let ( + ) = ( +. )
@@ -39,9 +39,8 @@ module type POLINOM = sig
   type kolobar
 
   val vrednost : polinom -> kolobar -> kolobar
-  (** [vrednost p x] po Hornerjevem algoritmu izračuna vrednost
-        polinoma [p] v točki [x].
-    *)
+  (** [vrednost p x] po Hornerjevem algoritmu izračuna vrednost polinoma [p] v
+      točki [x]. *)
 
   val odvod : polinom -> polinom
   val izpis : polinom -> string
@@ -55,17 +54,13 @@ module type POLINOM = sig
   val v_koeficiente : polinom -> kolobar list
 end
 
-module Polinom (K : KOLOBAR) : POLINOM = struct
+module Polinom (K : KOLOBAR) : POLINOM with type kolobar = K.elt = struct
   type polinom = K.elt list
   type kolobar = K.elt
 
   let stevke b n =
     let rec aux acc n = if n = 0 then acc else aux ((n mod b) :: acc) (n / b) in
     aux [] n
-
-  let rec drop_while p = function
-    | x :: xs when p x -> drop_while p xs
-    | xs -> xs
 
   let filter_mapi f xs =
     let rec aux i = function
@@ -94,10 +89,11 @@ module Polinom (K : KOLOBAR) : POLINOM = struct
   let zmnozi p1 p2 =
     p1
     |> List.mapi (fun k a ->
-           List.init k (fun _ -> K.nic) @ List.map (K.( * ) a) p2)
+        List.init k (fun _ -> K.nic) @ List.map (K.( * ) a) p2)
     |> List.fold_left sestej []
 
-  let rec potenca p = (* uporabimo hitro potenciranje *)
+  let rec potenca p =
+    (* uporabimo hitro potenciranje *)
     function
     | 0 -> [ K.ena ] (* p⁰ = 1 *)
     | n ->
@@ -112,49 +108,36 @@ module Polinom (K : KOLOBAR) : POLINOM = struct
     | _ :: p -> List.mapi (fun k a -> K.(a * (!k + !1))) p
 
   let izpis p =
-    let potenca k =
+    let eksponent k =
       stevke 10 k
       |> List.map
            (Array.get [| "⁰"; "¹"; "²"; "³"; "⁴"; "⁵"; "⁶"; "⁷"; "⁸"; "⁹" |])
       |> String.concat ""
     in
     let clen k a =
-      let predznak, abs_a =
-        if a >= K.nic then ("+", a) else ("-", K.(nic - a))
-      in
       let monom =
         match k with
-        | 0 -> K.izpis abs_a
-        | 1 when abs_a = K.ena -> "x"
-        | 1 -> K.izpis abs_a ^ " x"
-        | k when abs_a = K.ena -> "x" ^ potenca k
-        | k -> K.izpis abs_a ^ " x" ^ potenca k
+        | 0 -> K.izpis a
+        | 1 when a = K.ena -> "x"
+        | 1 -> K.izpis a ^ " x"
+        | k when a = K.ena -> "x" ^ eksponent k
+        | k -> K.izpis a ^ " x" ^ eksponent k
       in
-      if a = K.nic then None else Some (predznak, monom)
+      if a = K.nic then None else Some monom
     in
-    let cleni = p |> filter_mapi clen |> List.rev in
-    match cleni with
-    | [] -> "0"
-    | (predznak, monom) :: cleni ->
-        let vodilni = if predznak = "+" then monom else "-" ^ monom in
-        let ostali =
-          List.map (fun (predznak, monom) -> predznak ^ " " ^ monom) cleni
-        in
-        String.concat " " (vodilni :: ostali)
+    match p |> filter_mapi clen |> List.rev with
+    | [] -> K.izpis K.nic
+    | cleni -> String.concat " + " cleni
 
   let ( + ) = sestej
   let ( * ) = zmnozi
   let x = [ K.nic; K.ena ]
-  let ena = [ 1 ]
   let ( ** ) = potenca
-  let iz_koeficientov p = p
+  let iz_koeficientov p = pocisti p
   let v_koeficiente p = p
-  let ( ! ) n = [ n ]
-  let ( !! ) n = [ K.( ! ) n ]
+  let ( ! ) a = pocisti [ a ]
+  let ( !! ) n = pocisti [ K.( ! ) n ]
 end
 
-module CelostevilskiPolinom : POLINOM = Polinom (CelaStevila)
-module RealniPolinom : POLINOM = Polinom (RealnaStevila)
-
-let _ = CelostevilskiPolinom.((x + !!1) ** 3 |> odvod |> izpis |> print_endline)
-let _ = RealniPolinom.((x + !!1) ** 3 |> odvod |> izpis |> print_endline)
+module CelostevilskiPolinom = Polinom (CelaStevila)
+module RealniPolinom = Polinom (RealnaStevila)
